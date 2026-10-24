@@ -88,7 +88,7 @@ side of the API before any source is called.
   food programs for immigrants, camping laws), each field cited. A build script validates the data
   against publisher totals: the state PIT counts sum to HUD's 745,652.
 * **API:** FastAPI. **App:** a no-build PWA (vanilla JS) with an offline cache.
-* **Tests:** 115 pytest tests on real captured responses (Christiansburg, VA, Oct 24 2026) and
+* **Tests:** 123 pytest tests on real captured responses (Christiansburg, VA, Oct 24 2026) and
   labeled synthetic responses, Playwright runs of every screen at phone and desktop size (the globe run also fails if any
   profile word appears in any request), and a clean-install
   check of the packaged app.

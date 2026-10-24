@@ -5,7 +5,9 @@ logged or stored per user. Endpoints live under /api; the app itself is served a
 """
 from __future__ import annotations
 
+import hashlib
 import json
+import secrets
 import time
 from pathlib import Path
 
@@ -137,8 +139,34 @@ def policy() -> dict:
     return {"states": load_policy(), "eligibility": load_eligibility()}
 
 
+# The device token is made by the phone, so a script can mint a new one per request and get around the
+# per-device limit. This second limit counts ratings per network address per day, in memory only: the address
+# is hashed with a per-process salt, never written to disk, and the table resets with the process.
+IP_LIMIT_PER_DAY = 40
+_IP_SALT = secrets.token_hex(16)
+_IP_COUNTS: dict[str, list[float]] = {}
+
+
+def _ip_allowed(request: Request) -> bool:
+    fwd = request.headers.get("x-forwarded-for", "")
+    addr = fwd.split(",")[0].strip() or (request.client.host if request.client else "")
+    key = hashlib.sha256((_IP_SALT + addr).encode()).hexdigest()[:24]
+    now = time.time()
+    hits = [t for t in _IP_COUNTS.get(key, []) if now - t < 86_400]
+    if len(hits) >= IP_LIMIT_PER_DAY:
+        _IP_COUNTS[key] = hits
+        return False
+    hits.append(now)
+    _IP_COUNTS[key] = hits
+    if len(_IP_COUNTS) > 50_000:                      # bounded memory
+        _IP_COUNTS.clear()
+    return True
+
+
 @router.post("/ratings")
-def add_rating(body: dict = Body(...)) -> dict:
+def add_rating(request: Request, body: dict = Body(...)) -> dict:
+    if not _ip_allowed(request):
+        raise HTTPException(status_code=429, detail="too many ratings from this network today")
     try:
         return ratings_store.add(body)
     except ratings_store.RatingError as e:

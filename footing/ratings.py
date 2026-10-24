@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 import secrets
 import sqlite3
@@ -82,6 +83,8 @@ def add(body: dict, conn: sqlite3.Connection | None = None, now_ms: float | None
         lat, lon = float(body["lat"]), float(body["lon"])
     except (KeyError, TypeError, ValueError):
         raise RatingError("lat and lon are required")
+    if not (math.isfinite(lat) and math.isfinite(lon) and -90 <= lat <= 90 and -180 <= lon <= 180):
+        raise RatingError("lat and lon must be real coordinates")
     device = str(body.get("device") or "")
     if not 16 <= len(device) <= 64:
         raise RatingError("device token must be 16-64 characters")

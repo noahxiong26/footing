@@ -94,3 +94,25 @@ def test_api_policy_ratings_and_static(tmp_path, monkeypatch):
     for path in ("/fit.js", "/globe.js", "/globe.css", "/i18n.js", "/vendor/maplibre-gl.js",
                  "/vendor/topojson-client.min.js", "/data/states-10m.json", "/data/countries-110m.json"):
         assert client.get(path).status_code == 200, path
+
+
+@pytest.mark.parametrize("lat", ["nan", "inf", 1e309, 91, -91])
+def test_bad_coordinates_are_a_400_not_a_crash(conn, lat):
+    with pytest.raises(ratings.RatingError, match="real coordinates"):
+        ratings.add({"lat": lat, "lon": -80.4, "device": DEV, "overall": 3}, conn, NOW)
+
+
+def test_network_limit_stops_token_minting(tmp_path, monkeypatch):
+    from footing import api
+    monkeypatch.setenv("FOOTING_RATINGS_DB", str(tmp_path / "r.sqlite"))
+    monkeypatch.setattr(api, "IP_LIMIT_PER_DAY", 3)
+    monkeypatch.setattr(api, "_IP_COUNTS", {})
+    client = TestClient(app)
+    codes = []
+    for i in range(5):            # a new device token every time, and a new spot, from one address
+        body = {"lat": 37.10 + i * 0.03, "lon": -80.40, "device": f"minted-token-{i:08d}", "overall": 1}
+        codes.append(client.post("/api/ratings", json=body, headers={"x-forwarded-for": "203.0.113.9"}).status_code)
+    assert codes == [200, 200, 200, 429, 429]
+    other = client.post("/api/ratings", json={**CBURG, "device": "another-person-token", "overall": 4},
+                        headers={"x-forwarded-for": "198.51.100.7"})
+    assert other.status_code == 200

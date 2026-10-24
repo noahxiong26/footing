@@ -39,8 +39,9 @@ point ─▶ snap to ~1 km tile ─▶ 15 source adapters ─▶ places + measur
 pip install -e ".[dev]"
 FOOTING_MODE=replay uvicorn footing.api:app --port 8080     # open http://localhost:8080
 python -m footing receipt --lat 37.1299 --lon -80.4089 --profile car,kids   # same data, CLI
-pytest -q                                                    # 115 tests
-python scripts/build_standalone_demo.py out/demo             # no-server copy of the globe (see HANDOFF §8)
+pytest -q                                                    # 123 tests
+python scripts/build_standalone_demo.py out/demo             # no-server copy of the globe
+python scripts/ui_standalone_smoke.py http://localhost:8799 out/standalone   # click-through of that copy
 python -m footing fit --status undocumented --kids --mixed  # Fit Score ranking, CLI
 ```
 
@@ -186,8 +187,11 @@ Profile chips (car, kids, tonight, on foot) re-weight categories; they never cha
 
 ## Not done yet
 
-* Globe: the camping-law table covers 8 states; the rest are Unknown (not "no ban"). No state-level
-  job or weather data. Per-state "why" sentences are English only. Satellite imagery (EOX
+* Globe: the camping-law table covers 8 states (6 bans or contested bans, plus Georgia and Oklahoma, whose
+  laws push local enforcement and score 25); the rest are Unknown (not "no ban"). Policy data had a second
+  check on Oct 24 (`docs/FACT_CHECK.md`) but has not been reviewed by a legal-aid professional. No state-level
+  job or weather data. Per-state "why" sentences are translated; notes quoted from source documents
+  stay in English and are marked "(en inglés)". Satellite imagery (EOX
   Sentinel-2 cloudless, CC BY-NC-SA) is non-commercial and needs a connection; the vector map works
   offline. Ratings live in SQLite (`FOOTING_RATINGS_DB`); on Cloud Run that is per-instance and
   temporary until a volume or database is attached.
