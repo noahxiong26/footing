@@ -1,0 +1,61 @@
+{
+  "about": "Virginia city and county rules on camping or sleeping in public, one row per locality FIPS, each with a source. Checked 2026-10-24 by news and council-record search, not by reading every local code. A locality that is not listed was not checked; 'checked_none_found' means a search found no ordinance, which is NOT the same as 'allowed' (trespass, park-hours and loitering rules still apply). Statewide: HB1394 (2026), which would have barred localities from penalizing sleeping or resting in public, was continued to 2027 by a House subcommittee in February 2026, so local bans stand.",
+  "statuses": {
+    "ban_citywide": "Camping or sleeping on public property is a crime across the locality. Scored 0.",
+    "ban_partial": "Banned in part of the locality (for example downtown sidewalks or public rights-of-way). Scored 35.",
+    "proposed_not_adopted": "A ban was proposed and not adopted. Not scored: other rules can still be used to move people.",
+    "checked_none_found": "Searched; no camping or sleeping ordinance found. Not scored."
+  },
+  "state_note": {
+    "text": "Virginia has no statewide camping ban, and a 2026 bill to stop local bans (HB1394) was continued to 2027.",
+    "source_title": "WHRO, 'Virginia House committee kills bill to decriminalize homelessness', 2026-02-08",
+    "source_url": "https://www.whro.org/2026-02-08/virginia-house-committee-kills-bill-to-decriminalize-homelessness"
+  },
+  "by_fips": {
+    "51650": {
+      "place": "Hampton",
+      "status": "ban_citywide",
+      "summary": "No sleeping, camping or storing belongings on public property, including parks, beaches, schools and sidewalks. Police warn first and offer help; a summons comes only if the person refuses to leave.",
+      "penalty": "Class 2 misdemeanor: up to 6 months in jail and a $1,000 fine",
+      "adopted": "2026-04-08",
+      "source_title": "WHRO, 'Hampton bans camping and sleeping on public property', 2026-04-09; WAVY, 2026-04-10",
+      "source_url": "https://www.whro.org/local-government/2026-04-09/hampton-bans-camping-and-sleeping-on-public-property"
+    },
+    "51520": {
+      "place": "Bristol",
+      "status": "ban_partial",
+      "summary": "Camping on city-owned streets, sidewalks, alleys and other public rights-of-way is banned (Ordinance 22-9).",
+      "penalty": "Class 4 misdemeanor: fine up to $250",
+      "adopted": "2022-08-09",
+      "source_title": "WSET, 'Bristol, Virginia City Council passes public camping ban', 2022-08-09",
+      "source_url": "https://wset.com/news/local/bristol-virginia-city-council-passes-public-camping-ban"
+    },
+    "51770": {
+      "place": "Roanoke",
+      "status": "ban_partial",
+      "summary": "Camping on downtown sidewalks is banned; in effect since 2022.",
+      "penalty": "Class 4 misdemeanor: fine up to $250",
+      "adopted": "2021-12",
+      "source_title": "WSLS, 'Virginia bill could overturn Roanoke's homeless camping ban', 2026-02-04",
+      "source_url": "https://www.wsls.com/news/local/2026/02/04/virginia-bill-could-overturn-roanokes-homeless-camping-ban"
+    },
+    "51540": {
+      "place": "Charlottesville",
+      "status": "proposed_not_adopted",
+      "summary": "A ban on sleeping, camping and storing belongings in public areas (Class 4 misdemeanor) was proposed by the police chief and tabled indefinitely by City Council in September 2025.",
+      "penalty": null,
+      "adopted": null,
+      "source_title": "Charlottesville Tomorrow, 'Charlottesville City Council tables proposed ordinance that would ban camping on city property', 2025-09",
+      "source_url": "https://www.cvilletomorrow.org/charlottesville-city-council-tables-proposed-ordinance-that-would-ban-camping-on-city-property/"
+    },
+    "51121": {
+      "place": "Montgomery County (Blacksburg, Christiansburg)",
+      "status": "checked_none_found",
+      "summary": "A news search on 2026-10-24 found no camping or sleeping ordinance for Montgomery County, Blacksburg or Christiansburg. Town and county codes were not read line by line.",
+      "penalty": null,
+      "adopted": null,
+      "source_title": "Footing search log, 2026-10-24",
+      "source_url": null
+    }
+  }
+}

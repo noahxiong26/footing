@@ -1,0 +1,264 @@
+{
+"cols": [
+"CoC Number",
+"Total Year-Round Beds (ES, TH, SH)",
+"Total Year-Round Beds (ES)",
+"Total Year-Round Beds (TH)",
+"Total Year-Round Beds (SH)",
+"Total Seasonal Beds (ES)",
+"Total Overflow Beds (ES)",
+"Total Beds for Households without Children (ES, TH, SH)",
+"Total Beds for Households with Children (ES, TH, SH)"
+],
+"va": [
+[
+"VA-500",
+469,
+384,
+44,
+41,
+106,
+85,
+269,
+200
+],
+[
+"VA-501",
+543,
+499,
+44,
+0,
+160,
+124,
+336,
+207
+],
+[
+"VA-502",
+381,
+381,
+0,
+0,
+31,
+0,
+245,
+136
+],
+[
+"VA-503",
+228,
+212,
+16,
+0,
+60,
+0,
+139,
+81
+],
+[
+"VA-504",
+180,
+160,
+20,
+0,
+0,
+24,
+115,
+65
+],
+[
+"VA-505",
+221,
+205,
+16,
+0,
+322,
+16,
+83,
+138
+],
+[
+"VA-507",
+85,
+75,
+10,
+0,
+0,
+0,
+38,
+47
+],
+[
+"VA-508",
+85,
+85,
+0,
+0,
+50,
+0,
+42,
+43
+],
+[
+"VA-513",
+324,
+324,
+0,
+0,
+75,
+44,
+199,
+125
+],
+[
+"VA-514",
+112,
+98,
+14,
+0,
+90,
+0,
+34,
+78
+],
+[
+"VA-521",
+1006,
+803,
+203,
+0,
+272,
+5,
+447,
+559
+],
+[
+"VA-600",
+226,
+206,
+20,
+0,
+39,
+0,
+121,
+105
+],
+[
+"VA-601",
+624,
+491,
+133,
+0,
+483,
+314,
+177,
+440
+],
+[
+"VA-602",
+90,
+90,
+0,
+0,
+30,
+12,
+48,
+42
+],
+[
+"VA-603",
+162,
+152,
+10,
+0,
+50,
+0,
+44,
+118
+],
+[
+"VA-604",
+297,
+243,
+54,
+0,
+44,
+2,
+83,
+214
+]
+],
+"vsheet": "2025",
+"vh": [
+"CoC Number",
+"CoC Name",
+"Homeless Veterans, 2025",
+"Sheltered ES Homeless Veterans, 2025"
+],
+"names": [
+[
+"VA-500",
+"Richmond/Henrico, Chesterfield, Hanover Counties CoC"
+],
+[
+"VA-501",
+"Norfolk,Chesapeake,Suffolk/Isle of Wight, Southampton Counties CoC"
+],
+[
+"VA-502",
+"Roanoke City & County/Salem CoC"
+],
+[
+"VA-503",
+"Virginia Beach CoC"
+],
+[
+"VA-504",
+"Charlottesville CoC"
+],
+[
+"VA-505",
+"Newport News/Hampton/Virginia Peninsula CoC"
+],
+[
+"VA-507",
+"Portsmouth CoC"
+],
+[
+"VA-508",
+"Lynchburg CoC"
+],
+[
+"VA-513",
+"Harrisonburg, Winchester/Western Virginia CoC"
+],
+[
+"VA-514",
+"Fredericksburg/Spotsylvania, Stafford Counties CoC"
+],
+[
+"VA-521",
+"Virginia Balance of State (BoS) CoC"
+],
+[
+"VA-600",
+"Arlington County CoC"
+],
+[
+"VA-601",
+"Fairfax County CoC"
+],
+[
+"VA-602",
+"Loudoun County CoC"
+],
+[
+"VA-603",
+"City of Alexandria CoC"
+],
+[
+"VA-604",
+"Prince William County CoC"
+]
+]
+}

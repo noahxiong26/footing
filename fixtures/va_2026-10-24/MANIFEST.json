@@ -1,0 +1,42 @@
+{
+  "fixture_set": "va_2026-10-24",
+  "captured_at": "2026-10-24T23:30Z to 23:45Z",
+  "how": "Captured live in the Claude desktop app's browser on the owner's laptop (the build sandbox cannot reach these hosts). Each script that ran is saved under scripts/capture/ or described below; results were copied byte-for-byte from the browser's JSON output (not retyped) and their totals were checked.",
+  "files": {
+    "city_incidents_tiles.json": {
+      "script": "scripts/capture/va_incidents_browser.js (run on https://geocoding.geo.census.gov)",
+      "sources": ["https://data.norfolk.gov/resource/r7bn-2egr.json (Norfolk Police incidents, Socrata)",
+                  "https://gisweb.charlottesville.org/arcgis/rest/services/OpenData_2/MapServer/6 (Charlottesville Police crime data)",
+                  "https://geocoding.geo.census.gov/geocoder/geographies/addressbatch (Census batch geocoder, Public_AR_Current)"],
+      "window": "2025-10-24 to capture day",
+      "kept": "counts per 0.01-degree tile in violent / property / enforcement buckets, per-city totals, match rates, and the offense-label-to-bucket table. No address, incident ID or officer name was kept.",
+      "checks": "tile totals equal 'placed' counts: Norfolk 9,143 of 10,941 used incidents (84%), Charlottesville 2,243 of 2,614 (86%)"
+    },
+    "fbi_cde_agencies_2025_va.json": {
+      "script": "scripts/capture/va_cde_browser.js (run on https://cde.ucr.cjis.gov)",
+      "source": "FBI Crime Data Explorer /LATEST/summarized/agency/{ORI}/{V|P}?from=01-2025&to=12-2025, agency list /LATEST/agency/byStateAbbr/VA",
+      "kept": "240 city, town and county agencies: 2025 violent and property offense sums, months reported, CDE population",
+      "checks": "statewide sum 17,811 violent offenses (excluding State Police, campus agencies and Virginia Beach, which reported 0 months)"
+    },
+    "hud_fmr_fy2026_va.json": {
+      "source": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+      "how": "xlsx read in the browser (zip + XML, no library); Virginia rows only",
+      "kept": "133 rows: FIPS, county name, HUD area, metro flag, 2023 population, FMR 0-4 bedrooms"
+    },
+    "hud_hic_2025_va.json": {
+      "source": "https://www.huduser.gov/portal/sites/default/files/xls/2007-2025-HIC-Counts-by-CoC.xlsx (sheet 2025); CoC names from 2011-2025-PIT-Veteran-Counts-by-CoC.xlsx",
+      "kept": "16 Virginia CoCs: year-round, seasonal, overflow beds; beds for adults and for families"
+    },
+    "hud_coc_membership_va.json": {
+      "source": "https://services.arcgis.com/VTyQ9soqVukalItT/ArcGIS/rest/services/Continuum_of_Care_Grantee_Areas/FeatureServer/0",
+      "how": "one point-in-polygon query per locality interior point; see 'method' inside the file",
+      "note": "The layer's unsheltered counts have no year and sum above the 2025 statewide count, so they are kept for reference only and not used."
+    }
+  },
+  "not_captured": {
+    "PIT counts by CoC": "HUD publishes 2007-2025-PIT-Counts-by-CoC only as .xlsb (binary), which the browser reader cannot parse; shelter uses beds per 10,000 residents instead.",
+    "Virginia Beach incidents": "Its ArcGIS incident layer now answers 'Token Required'.",
+    "Virginia Beach FBI counts": "VBPD reported 0 months of 2025 to the FBI CDE; shown as Unknown.",
+    "Virginia State Police per-jurisdiction tables": "Crime in Virginia 2025 (PDF) has no per-locality tables; those are only on the VSP dashboard."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "about": "How a city's offense label becomes one of four buckets for Footing's local-safety signal. Rules are tried in order; the first regex (case-insensitive) that matches wins. Written 2026-10-24 from the offense lists Norfolk (data.norfolk.gov r7bn-2egr) and Charlottesville (gisweb.charlottesville.org OpenData_2/6) actually publish.",
+  "why": {
+    "violent": "Crimes against a person in public: assault, robbery, sexual assault, abduction, homicide, shootings, threats. This is the safety signal.",
+    "property": "Theft of or damage to belongings: larceny, burglary, vehicle theft, vandalism, arson. Matters to someone whose belongings are with them.",
+    "enforcement": "Trespass, disorderly conduct, drunkenness, loitering, drugs, warrants, mental-health custody calls. These measure where police make contact, not danger, and they are concentrated where unhoused people already are. Shown separately as a 'chance of being moved along' signal; never counted as danger.",
+    "other": "Household and domestic offenses (they happen inside homes and say little about a public place), assaults on officers, fraud and paperwork crimes, shoplifting (store theft, not risk to a person), traffic, deaths, missing persons, lost property, animal calls. Not used."
+  },
+  "rules": [
+    ["other", "domestic|family|child|\\bleo\\b|statutory|pornograph|peeping|indecent|obscene|harass|stalk|fraud|forgery|counterfeit|identity|embezzl|extortion|hacking|impersonat|shoplif|hit (&|and) run|accident|death|doa|suicide|overdose|missing|runaway|lost|animal|recovered vehicle|alarm|bomb threat|stolen property|possess stolen|receive stolen|tampering|unauthorized use|weapons? violation|concealed weapon|driving under|\\bdui\\b|traffic|assist agency|assist citizen - (misc|medical|welfare)|non-criminal|suspicious|noise|littering|juvenile|false report|problem solving|initiative"],
+    ["violent", "assault|robbery|carjack|home invasion|rape|sodomy|sexual battery|sexual penetration|forcible|fondling|abduct|kidnap|homicide|murder|manslaughter|brandish|shoot into|reckless use of firearm|shots fired|threaten bodily|threat to burn|intimidation|road rage"],
+    ["property", "larceny|theft|pocket|purse|burglary|stolen vehicle|motor vehicle theft|vandal|graffiti|damage|arson|fire ?bomb"],
+    ["enforcement", "trespass|disorderly|drunk|liquor|curfew|loiter|vagranc|narcotic|drug|paraphernalia|pc - buy|warrant|fugitive|flight to avoid|obstruct|prostitution|mental|tdo|eco\\b"]
+  ]
+}

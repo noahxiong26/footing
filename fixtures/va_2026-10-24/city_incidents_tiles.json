@@ -1,0 +1,1771 @@
+{
+ "captured_at": "2026-10-24T23:33:18.323Z",
+ "window_start": "2025-10-24",
+ "tile_deg": 0.01,
+ "cities": [
+  {
+   "id": "norfolk",
+   "fips": "51710",
+   "name": "Norfolk",
+   "agency": "Norfolk Police Department",
+   "source_url": "https://data.norfolk.gov/resource/r7bn-2egr.json",
+   "license": "Norfolk open data (public)",
+   "records_in_window": 21446,
+   "by_class": {
+    "other": 10505,
+    "property": 6977,
+    "enforcement": 989,
+    "violent": 2975
+   },
+   "used": 10941,
+   "placed": 9143,
+   "not_placed": {
+    "no_block_address": 203,
+    "geocoder_no_match": 1582,
+    "outside_city_fips": 13
+   },
+   "latest_date": "2026-10-24",
+   "offense_classes": {
+    "RUNAWAY": "other",
+    "DRIVING UNDER THE INFLUENCE (EXCEPT MARIJUANA)": "other",
+    "LOST PROPERTY": "other",
+    "RECOVERED VEHICLE- STOLEN OTHER JURISDICTION": "other",
+    "VANDALISM": "property",
+    "FLIGHT TO AVOID/FUGITIVE": "enforcement",
+    "LARCENY - FROM AUTO": "property",
+    "HIT & RUN - PROPERTY": "other",
+    "THREATEN BODILY HARM": "violent",
+    "NARCOTICS VIOLATIONS (FELONY)": "enforcement",
+    "ROAD RAGE THREAT": "violent",
+    "NARCOTIC VIOLATIONS": "enforcement",
+    "DOMESTIC-SIMPLE ASSAULT": "other",
+    "OTHER CRIME OFFENSE": "other",
+    "STALKING": "other",
+    "UNDETERMINED DEATH": "other",
+    "LARCENY - OF BICYCLE": "property",
+    "SIMPLE ASSAULT": "violent",
+    "LARCENY (ALL OTHERS)": "property",
+    "SEXUAL BATTERY": "violent",
+    "BURGLARY - RESIDENCE": "property",
+    "CONCEALED WEAPON": "other",
+    "MISSING PERSON": "other",
+    "LARCENY - FROM BUILDING": "property",
+    "FRAUD, FALSE PRETENSES": "other",
+    "LARCENY - PARTS FROM AUTO": "property",
+    "HIT & RUN - PERSONAL INJURY": "other",
+    "BURGLARY - NONRESIDENCE": "property",
+    "ROBBERY - INDIVIDUAL": "violent",
+    "COUNTERFEITING": "other",
+    "STOLEN VEHICLE": "property",
+    "ALL OTHER OFFENSES": "other",
+    "AUTO FATALITY": "other",
+    "WEAPONS VIOLATIONS (all others)": "other",
+    "HARASSMENT BY COMPUTER": "other",
+    "SHOPLIFTING & CONCEALMENT": "other",
+    "RECKLESS USE OF FIREARM": "violent",
+    "SIMPLE ASSAULT-LEO": "other",
+    "BRANDISHING FIREARM": "violent",
+    "SHOOT INTO OCCUPIED DWELLING": "violent",
+    "EMBEZZLEMENT": "other",
+    "IDENTITY THEFT": "other",
+    "DRUG OVERDOSE": "other",
+    "BURGLARY - COMMERCIAL": "property",
+    "DOMESTIC-AGGRAVATED ASSAULT": "other",
+    "PORNOGRAPHY/OBSCENE MATERIAL": "other",
+    "FRAUD, CREDIT CARD/ATM": "other",
+    "PC - BUY": "enforcement",
+    "RAPE": "violent",
+    "AGGRAVATED ASSAULT - LEO": "other",
+    "NATURAL DEATH": "other",
+    "HOMICIDE": "violent",
+    "AGGRAVATED ASSAULT": "violent",
+    "THREAT TO BURN": "violent",
+    "CHILD ABUSE (FELONY)": "other",
+    "THROW OBJECT/MOVING VEHICLE": "other",
+    "TRESPASSING": "enforcement",
+    "OBSTRUCT JUSTICE": "enforcement",
+    "DAMAGE PRIVATE PROPERTY": "property",
+    "SUICIDE": "other",
+    "OBSCENE COMMUNICATIONS": "other",
+    "FORCIBLE SODOMY": "violent",
+    "CONTRIBUTING (SEX RELATED CASES ONLY)": "other",
+    "ABDUCTION": "violent",
+    "FRAUD, IMPERSONATION": "other",
+    "ROBBERY - BUSINESS": "violent",
+    "EXTORTION": "other",
+    "UNAUTHORIZED USE OF VEHICLE": "other",
+    "AGGRAVATED SEXUAL BATTERY": "violent",
+    "DISORDERLY CONDUCT": "enforcement",
+    "ANIMAL CRUELTY": "other",
+    "FORGERY": "other",
+    "RUNAWAY - OUT OF CITY": "other",
+    "ARSON": "property",
+    "DRUG PARAPHERNALIA": "enforcement",
+    "TAMPERING WITH AUTO": "other",
+    "POSSESS STOLEN PROPERTY": "other",
+    "SHOOT INTO OCCUPIED VEHICLE": "violent",
+    "FRAUD, Wire": "other",
+    "INTIMIDATION": "violent",
+    "CHILD NEGLECT": "other",
+    "CHILD ABUSE (MISD)": "other",
+    "ROBBERY - CARJACKING": "violent",
+    "ROBBERY - HOME INVASION": "violent",
+    "ACCIDENTAL DEATH": "other",
+    "RECEIVE STOLEN PROPERTY": "other",
+    "PRESCRIPTION FRAUD": "other",
+    "CHILD ENDANGERMENT": "other",
+    "OBJECT SEXUAL PENETRATION": "violent",
+    "DUI - MARIJUANA": "other",
+    "BOMB THREAT": "other",
+    "CURFEW/LOITERING/VAGRANCY VIOLATIONS": "enforcement",
+    "IMPERSONATE A POLICE OFFICER": "other",
+    "DAMAGE PUBLIC PROPERTY": "property",
+    "FALSE FIRE ALARM": "other",
+    "CHILD ABUSE (FELONY) by Family Member": "other",
+    "INDECENT EXPOSURE": "other",
+    "GRAFFITI (VANDALISM)": "property",
+    "HIT & RUN FATALITY": "other",
+    "INDECENT EXPOSURE, 3RD Offense": "other",
+    "PROSTITUTION": "enforcement",
+    "INDECENT LIBERTIES W/ CHILD (Custodial care)": "other",
+    "HACKING/COMPUTER INVASION": "other",
+    "LIQUOR LAW VIOLATIONS": "enforcement",
+    "INDECENT LIBERTIES W/ CHILD": "other",
+    "CHILD ABUSE (MISD) by Family Member": "other",
+    "FIRE BOMBING": "property",
+    "LOST CHILD": "other",
+    "ACCIDENTAL INJURY": "other",
+    "POCKETPICKING": "property"
+   },
+   "tiles": [
+    {
+     "tile": "t3682_-7626",
+     "lat": 36.825,
+     "lon": -76.255,
+     "violent": 26,
+     "property": 18,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3682_-7627",
+     "lat": 36.825,
+     "lon": -76.265,
+     "violent": 54,
+     "property": 79,
+     "enforcement": 12
+    },
+    {
+     "tile": "t3682_-7628",
+     "lat": 36.825,
+     "lon": -76.275,
+     "violent": 17,
+     "property": 40,
+     "enforcement": 6
+    },
+    {
+     "tile": "t3682_-7629",
+     "lat": 36.825,
+     "lon": -76.285,
+     "violent": 10,
+     "property": 25,
+     "enforcement": 7
+    },
+    {
+     "tile": "t3683_-7620",
+     "lat": 36.835,
+     "lon": -76.195,
+     "violent": 1,
+     "property": 1,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3683_-7621",
+     "lat": 36.835,
+     "lon": -76.205,
+     "violent": 5,
+     "property": 14,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3683_-7622",
+     "lat": 36.835,
+     "lon": -76.215,
+     "violent": 2,
+     "property": 10,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3683_-7626",
+     "lat": 36.835,
+     "lon": -76.255,
+     "violent": 2,
+     "property": 11,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3683_-7627",
+     "lat": 36.835,
+     "lon": -76.265,
+     "violent": 19,
+     "property": 31,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3683_-7628",
+     "lat": 36.835,
+     "lon": -76.275,
+     "violent": 10,
+     "property": 26,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3683_-7629",
+     "lat": 36.835,
+     "lon": -76.285,
+     "violent": 13,
+     "property": 49,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3683_-7630",
+     "lat": 36.835,
+     "lon": -76.295,
+     "violent": 0,
+     "property": 7,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3684_-7619",
+     "lat": 36.845,
+     "lon": -76.185,
+     "violent": 2,
+     "property": 15,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3684_-7620",
+     "lat": 36.845,
+     "lon": -76.195,
+     "violent": 35,
+     "property": 29,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3684_-7621",
+     "lat": 36.845,
+     "lon": -76.205,
+     "violent": 24,
+     "property": 63,
+     "enforcement": 12
+    },
+    {
+     "tile": "t3684_-7622",
+     "lat": 36.845,
+     "lon": -76.215,
+     "violent": 4,
+     "property": 24,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3684_-7623",
+     "lat": 36.845,
+     "lon": -76.225,
+     "violent": 4,
+     "property": 14,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3684_-7624",
+     "lat": 36.845,
+     "lon": -76.235,
+     "violent": 10,
+     "property": 34,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3684_-7625",
+     "lat": 36.845,
+     "lon": -76.245,
+     "violent": 23,
+     "property": 49,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3684_-7626",
+     "lat": 36.845,
+     "lon": -76.255,
+     "violent": 21,
+     "property": 71,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3684_-7627",
+     "lat": 36.845,
+     "lon": -76.265,
+     "violent": 5,
+     "property": 10,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3684_-7628",
+     "lat": 36.845,
+     "lon": -76.275,
+     "violent": 20,
+     "property": 29,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3684_-7629",
+     "lat": 36.845,
+     "lon": -76.285,
+     "violent": 36,
+     "property": 59,
+     "enforcement": 27
+    },
+    {
+     "tile": "t3684_-7630",
+     "lat": 36.845,
+     "lon": -76.295,
+     "violent": 21,
+     "property": 47,
+     "enforcement": 5
+    },
+    {
+     "tile": "t3685_-7618",
+     "lat": 36.855,
+     "lon": -76.175,
+     "violent": 0,
+     "property": 2,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3685_-7619",
+     "lat": 36.855,
+     "lon": -76.185,
+     "violent": 1,
+     "property": 11,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3685_-7620",
+     "lat": 36.855,
+     "lon": -76.195,
+     "violent": 9,
+     "property": 72,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3685_-7621",
+     "lat": 36.855,
+     "lon": -76.205,
+     "violent": 71,
+     "property": 175,
+     "enforcement": 30
+    },
+    {
+     "tile": "t3685_-7622",
+     "lat": 36.855,
+     "lon": -76.215,
+     "violent": 19,
+     "property": 81,
+     "enforcement": 11
+    },
+    {
+     "tile": "t3685_-7623",
+     "lat": 36.855,
+     "lon": -76.225,
+     "violent": 35,
+     "property": 70,
+     "enforcement": 12
+    },
+    {
+     "tile": "t3685_-7624",
+     "lat": 36.855,
+     "lon": -76.235,
+     "violent": 28,
+     "property": 14,
+     "enforcement": 63
+    },
+    {
+     "tile": "t3685_-7625",
+     "lat": 36.855,
+     "lon": -76.245,
+     "violent": 13,
+     "property": 25,
+     "enforcement": 6
+    },
+    {
+     "tile": "t3685_-7626",
+     "lat": 36.855,
+     "lon": -76.255,
+     "violent": 37,
+     "property": 69,
+     "enforcement": 13
+    },
+    {
+     "tile": "t3685_-7627",
+     "lat": 36.855,
+     "lon": -76.265,
+     "violent": 58,
+     "property": 86,
+     "enforcement": 20
+    },
+    {
+     "tile": "t3685_-7628",
+     "lat": 36.855,
+     "lon": -76.275,
+     "violent": 82,
+     "property": 100,
+     "enforcement": 36
+    },
+    {
+     "tile": "t3685_-7629",
+     "lat": 36.855,
+     "lon": -76.285,
+     "violent": 94,
+     "property": 197,
+     "enforcement": 34
+    },
+    {
+     "tile": "t3685_-7630",
+     "lat": 36.855,
+     "lon": -76.295,
+     "violent": 26,
+     "property": 169,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3685_-7631",
+     "lat": 36.855,
+     "lon": -76.305,
+     "violent": 3,
+     "property": 32,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3686_-7619",
+     "lat": 36.865,
+     "lon": -76.185,
+     "violent": 1,
+     "property": 2,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3686_-7621",
+     "lat": 36.865,
+     "lon": -76.205,
+     "violent": 16,
+     "property": 17,
+     "enforcement": 5
+    },
+    {
+     "tile": "t3686_-7622",
+     "lat": 36.865,
+     "lon": -76.215,
+     "violent": 31,
+     "property": 77,
+     "enforcement": 10
+    },
+    {
+     "tile": "t3686_-7623",
+     "lat": 36.865,
+     "lon": -76.225,
+     "violent": 22,
+     "property": 70,
+     "enforcement": 6
+    },
+    {
+     "tile": "t3686_-7624",
+     "lat": 36.865,
+     "lon": -76.235,
+     "violent": 21,
+     "property": 47,
+     "enforcement": 9
+    },
+    {
+     "tile": "t3686_-7625",
+     "lat": 36.865,
+     "lon": -76.245,
+     "violent": 24,
+     "property": 51,
+     "enforcement": 12
+    },
+    {
+     "tile": "t3686_-7626",
+     "lat": 36.865,
+     "lon": -76.255,
+     "violent": 20,
+     "property": 42,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3686_-7627",
+     "lat": 36.865,
+     "lon": -76.265,
+     "violent": 21,
+     "property": 41,
+     "enforcement": 5
+    },
+    {
+     "tile": "t3686_-7628",
+     "lat": 36.865,
+     "lon": -76.275,
+     "violent": 62,
+     "property": 110,
+     "enforcement": 30
+    },
+    {
+     "tile": "t3686_-7629",
+     "lat": 36.865,
+     "lon": -76.285,
+     "violent": 23,
+     "property": 71,
+     "enforcement": 6
+    },
+    {
+     "tile": "t3686_-7630",
+     "lat": 36.865,
+     "lon": -76.295,
+     "violent": 44,
+     "property": 135,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3686_-7631",
+     "lat": 36.865,
+     "lon": -76.305,
+     "violent": 31,
+     "property": 43,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3686_-7632",
+     "lat": 36.865,
+     "lon": -76.315,
+     "violent": 0,
+     "property": 3,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3687_-7620",
+     "lat": 36.875,
+     "lon": -76.195,
+     "violent": 1,
+     "property": 2,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3687_-7621",
+     "lat": 36.875,
+     "lon": -76.205,
+     "violent": 3,
+     "property": 0,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3687_-7622",
+     "lat": 36.875,
+     "lon": -76.215,
+     "violent": 11,
+     "property": 69,
+     "enforcement": 11
+    },
+    {
+     "tile": "t3687_-7623",
+     "lat": 36.875,
+     "lon": -76.225,
+     "violent": 23,
+     "property": 43,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3687_-7624",
+     "lat": 36.875,
+     "lon": -76.235,
+     "violent": 33,
+     "property": 70,
+     "enforcement": 5
+    },
+    {
+     "tile": "t3687_-7625",
+     "lat": 36.875,
+     "lon": -76.245,
+     "violent": 17,
+     "property": 36,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3687_-7626",
+     "lat": 36.875,
+     "lon": -76.255,
+     "violent": 26,
+     "property": 63,
+     "enforcement": 11
+    },
+    {
+     "tile": "t3687_-7627",
+     "lat": 36.875,
+     "lon": -76.265,
+     "violent": 23,
+     "property": 68,
+     "enforcement": 7
+    },
+    {
+     "tile": "t3687_-7628",
+     "lat": 36.875,
+     "lon": -76.275,
+     "violent": 14,
+     "property": 21,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3687_-7629",
+     "lat": 36.875,
+     "lon": -76.285,
+     "violent": 39,
+     "property": 132,
+     "enforcement": 11
+    },
+    {
+     "tile": "t3687_-7630",
+     "lat": 36.875,
+     "lon": -76.295,
+     "violent": 55,
+     "property": 123,
+     "enforcement": 6
+    },
+    {
+     "tile": "t3687_-7631",
+     "lat": 36.875,
+     "lon": -76.305,
+     "violent": 12,
+     "property": 51,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3687_-7632",
+     "lat": 36.875,
+     "lon": -76.315,
+     "violent": 1,
+     "property": 1,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3688_-7622",
+     "lat": 36.885,
+     "lon": -76.215,
+     "violent": 7,
+     "property": 32,
+     "enforcement": 7
+    },
+    {
+     "tile": "t3688_-7623",
+     "lat": 36.885,
+     "lon": -76.225,
+     "violent": 11,
+     "property": 35,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3688_-7624",
+     "lat": 36.885,
+     "lon": -76.235,
+     "violent": 17,
+     "property": 40,
+     "enforcement": 6
+    },
+    {
+     "tile": "t3688_-7625",
+     "lat": 36.885,
+     "lon": -76.245,
+     "violent": 6,
+     "property": 46,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3688_-7626",
+     "lat": 36.885,
+     "lon": -76.255,
+     "violent": 11,
+     "property": 22,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3688_-7627",
+     "lat": 36.885,
+     "lon": -76.265,
+     "violent": 12,
+     "property": 19,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3688_-7628",
+     "lat": 36.885,
+     "lon": -76.275,
+     "violent": 1,
+     "property": 1,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3688_-7629",
+     "lat": 36.885,
+     "lon": -76.285,
+     "violent": 36,
+     "property": 82,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3688_-7630",
+     "lat": 36.885,
+     "lon": -76.295,
+     "violent": 31,
+     "property": 91,
+     "enforcement": 6
+    },
+    {
+     "tile": "t3688_-7631",
+     "lat": 36.885,
+     "lon": -76.305,
+     "violent": 14,
+     "property": 40,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3688_-7632",
+     "lat": 36.885,
+     "lon": -76.315,
+     "violent": 8,
+     "property": 13,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3689_-7622",
+     "lat": 36.895,
+     "lon": -76.215,
+     "violent": 6,
+     "property": 10,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3689_-7623",
+     "lat": 36.895,
+     "lon": -76.225,
+     "violent": 27,
+     "property": 154,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3689_-7624",
+     "lat": 36.895,
+     "lon": -76.235,
+     "violent": 93,
+     "property": 126,
+     "enforcement": 48
+    },
+    {
+     "tile": "t3689_-7625",
+     "lat": 36.895,
+     "lon": -76.245,
+     "violent": 6,
+     "property": 25,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3689_-7626",
+     "lat": 36.895,
+     "lon": -76.255,
+     "violent": 7,
+     "property": 47,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3689_-7627",
+     "lat": 36.895,
+     "lon": -76.265,
+     "violent": 3,
+     "property": 8,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3689_-7628",
+     "lat": 36.895,
+     "lon": -76.275,
+     "violent": 4,
+     "property": 9,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3689_-7629",
+     "lat": 36.895,
+     "lon": -76.285,
+     "violent": 2,
+     "property": 11,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3689_-7630",
+     "lat": 36.895,
+     "lon": -76.295,
+     "violent": 2,
+     "property": 9,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3689_-7631",
+     "lat": 36.895,
+     "lon": -76.305,
+     "violent": 4,
+     "property": 21,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3689_-7632",
+     "lat": 36.895,
+     "lon": -76.315,
+     "violent": 1,
+     "property": 0,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3690_-7621",
+     "lat": 36.905,
+     "lon": -76.205,
+     "violent": 1,
+     "property": 2,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3690_-7622",
+     "lat": 36.905,
+     "lon": -76.215,
+     "violent": 2,
+     "property": 6,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3690_-7623",
+     "lat": 36.905,
+     "lon": -76.225,
+     "violent": 5,
+     "property": 19,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3690_-7624",
+     "lat": 36.905,
+     "lon": -76.235,
+     "violent": 35,
+     "property": 87,
+     "enforcement": 6
+    },
+    {
+     "tile": "t3690_-7625",
+     "lat": 36.905,
+     "lon": -76.245,
+     "violent": 31,
+     "property": 46,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3690_-7626",
+     "lat": 36.905,
+     "lon": -76.255,
+     "violent": 14,
+     "property": 24,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3690_-7627",
+     "lat": 36.905,
+     "lon": -76.265,
+     "violent": 7,
+     "property": 36,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3690_-7628",
+     "lat": 36.905,
+     "lon": -76.275,
+     "violent": 29,
+     "property": 58,
+     "enforcement": 7
+    },
+    {
+     "tile": "t3690_-7629",
+     "lat": 36.905,
+     "lon": -76.285,
+     "violent": 5,
+     "property": 18,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3690_-7630",
+     "lat": 36.905,
+     "lon": -76.295,
+     "violent": 0,
+     "property": 1,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3690_-7631",
+     "lat": 36.905,
+     "lon": -76.305,
+     "violent": 0,
+     "property": 4,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3691_-7620",
+     "lat": 36.915,
+     "lon": -76.195,
+     "violent": 17,
+     "property": 39,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3691_-7621",
+     "lat": 36.915,
+     "lon": -76.205,
+     "violent": 7,
+     "property": 15,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3691_-7622",
+     "lat": 36.915,
+     "lon": -76.215,
+     "violent": 14,
+     "property": 43,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3691_-7623",
+     "lat": 36.915,
+     "lon": -76.225,
+     "violent": 32,
+     "property": 55,
+     "enforcement": 6
+    },
+    {
+     "tile": "t3691_-7624",
+     "lat": 36.915,
+     "lon": -76.235,
+     "violent": 14,
+     "property": 47,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3691_-7625",
+     "lat": 36.915,
+     "lon": -76.245,
+     "violent": 22,
+     "property": 56,
+     "enforcement": 18
+    },
+    {
+     "tile": "t3691_-7626",
+     "lat": 36.915,
+     "lon": -76.255,
+     "violent": 55,
+     "property": 72,
+     "enforcement": 23
+    },
+    {
+     "tile": "t3691_-7627",
+     "lat": 36.915,
+     "lon": -76.265,
+     "violent": 14,
+     "property": 55,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3691_-7628",
+     "lat": 36.915,
+     "lon": -76.275,
+     "violent": 33,
+     "property": 94,
+     "enforcement": 15
+    },
+    {
+     "tile": "t3691_-7629",
+     "lat": 36.915,
+     "lon": -76.285,
+     "violent": 26,
+     "property": 43,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3691_-7630",
+     "lat": 36.915,
+     "lon": -76.295,
+     "violent": 15,
+     "property": 63,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3691_-7631",
+     "lat": 36.915,
+     "lon": -76.305,
+     "violent": 14,
+     "property": 17,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3691_-7632",
+     "lat": 36.915,
+     "lon": -76.315,
+     "violent": 1,
+     "property": 0,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3692_-7618",
+     "lat": 36.925,
+     "lon": -76.175,
+     "violent": 0,
+     "property": 1,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3692_-7619",
+     "lat": 36.925,
+     "lon": -76.185,
+     "violent": 1,
+     "property": 28,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3692_-7620",
+     "lat": 36.925,
+     "lon": -76.195,
+     "violent": 12,
+     "property": 38,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3692_-7621",
+     "lat": 36.925,
+     "lon": -76.205,
+     "violent": 5,
+     "property": 10,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3692_-7622",
+     "lat": 36.925,
+     "lon": -76.215,
+     "violent": 4,
+     "property": 7,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3692_-7623",
+     "lat": 36.925,
+     "lon": -76.225,
+     "violent": 2,
+     "property": 8,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3692_-7624",
+     "lat": 36.925,
+     "lon": -76.235,
+     "violent": 9,
+     "property": 24,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3692_-7625",
+     "lat": 36.925,
+     "lon": -76.245,
+     "violent": 17,
+     "property": 32,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3692_-7626",
+     "lat": 36.925,
+     "lon": -76.255,
+     "violent": 21,
+     "property": 34,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3692_-7627",
+     "lat": 36.925,
+     "lon": -76.265,
+     "violent": 0,
+     "property": 3,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3692_-7630",
+     "lat": 36.925,
+     "lon": -76.295,
+     "violent": 13,
+     "property": 64,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3692_-7631",
+     "lat": 36.925,
+     "lon": -76.305,
+     "violent": 2,
+     "property": 2,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3692_-7632",
+     "lat": 36.925,
+     "lon": -76.315,
+     "violent": 36,
+     "property": 34,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3693_-7619",
+     "lat": 36.935,
+     "lon": -76.185,
+     "violent": 0,
+     "property": 1,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3693_-7620",
+     "lat": 36.935,
+     "lon": -76.195,
+     "violent": 1,
+     "property": 5,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3693_-7621",
+     "lat": 36.935,
+     "lon": -76.205,
+     "violent": 13,
+     "property": 23,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3693_-7622",
+     "lat": 36.935,
+     "lon": -76.215,
+     "violent": 12,
+     "property": 35,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3693_-7623",
+     "lat": 36.935,
+     "lon": -76.225,
+     "violent": 11,
+     "property": 21,
+     "enforcement": 6
+    },
+    {
+     "tile": "t3693_-7624",
+     "lat": 36.935,
+     "lon": -76.235,
+     "violent": 13,
+     "property": 23,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3693_-7625",
+     "lat": 36.935,
+     "lon": -76.245,
+     "violent": 26,
+     "property": 69,
+     "enforcement": 7
+    },
+    {
+     "tile": "t3693_-7626",
+     "lat": 36.935,
+     "lon": -76.255,
+     "violent": 27,
+     "property": 81,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3693_-7627",
+     "lat": 36.935,
+     "lon": -76.265,
+     "violent": 9,
+     "property": 21,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3693_-7632",
+     "lat": 36.935,
+     "lon": -76.315,
+     "violent": 11,
+     "property": 25,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3693_-7633",
+     "lat": 36.935,
+     "lon": -76.325,
+     "violent": 1,
+     "property": 0,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3694_-7623",
+     "lat": 36.945,
+     "lon": -76.225,
+     "violent": 0,
+     "property": 2,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3694_-7624",
+     "lat": 36.945,
+     "lon": -76.235,
+     "violent": 12,
+     "property": 33,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3694_-7625",
+     "lat": 36.945,
+     "lon": -76.245,
+     "violent": 22,
+     "property": 48,
+     "enforcement": 5
+    },
+    {
+     "tile": "t3694_-7626",
+     "lat": 36.945,
+     "lon": -76.255,
+     "violent": 14,
+     "property": 27,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3694_-7627",
+     "lat": 36.945,
+     "lon": -76.265,
+     "violent": 24,
+     "property": 27,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3694_-7628",
+     "lat": 36.945,
+     "lon": -76.275,
+     "violent": 1,
+     "property": 11,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3694_-7631",
+     "lat": 36.945,
+     "lon": -76.305,
+     "violent": 0,
+     "property": 0,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3694_-7632",
+     "lat": 36.945,
+     "lon": -76.315,
+     "violent": 1,
+     "property": 1,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3694_-7633",
+     "lat": 36.945,
+     "lon": -76.325,
+     "violent": 0,
+     "property": 5,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3695_-7625",
+     "lat": 36.955,
+     "lon": -76.245,
+     "violent": 1,
+     "property": 1,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3695_-7626",
+     "lat": 36.955,
+     "lon": -76.255,
+     "violent": 10,
+     "property": 33,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3695_-7627",
+     "lat": 36.955,
+     "lon": -76.265,
+     "violent": 13,
+     "property": 16,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3695_-7628",
+     "lat": 36.955,
+     "lon": -76.275,
+     "violent": 0,
+     "property": 1,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3696_-7627",
+     "lat": 36.965,
+     "lon": -76.265,
+     "violent": 4,
+     "property": 20,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3696_-7628",
+     "lat": 36.965,
+     "lon": -76.275,
+     "violent": 3,
+     "property": 28,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3696_-7629",
+     "lat": 36.965,
+     "lon": -76.285,
+     "violent": 7,
+     "property": 18,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3696_-7630",
+     "lat": 36.965,
+     "lon": -76.295,
+     "violent": 2,
+     "property": 11,
+     "enforcement": 1
+    }
+   ]
+  },
+  {
+   "id": "charlottesville",
+   "fips": "51540",
+   "name": "Charlottesville",
+   "agency": "Charlottesville Police Department",
+   "source_url": "https://gisweb.charlottesville.org/arcgis/rest/services/OpenData_2/MapServer/6",
+   "license": "City of Charlottesville open data (public)",
+   "records_in_window": 5031,
+   "by_class": {
+    "enforcement": 756,
+    "other": 2417,
+    "property": 1262,
+    "violent": 596
+   },
+   "used": 2614,
+   "placed": 2243,
+   "not_placed": {
+    "no_block_address": 167,
+    "geocoder_no_match": 173,
+    "outside_city_fips": 31
+   },
+   "latest_date": "2026-10-23",
+   "offense_classes": {
+    "Assist Citizen - Mental/TDO/ECO": "enforcement",
+    "Driving Under the Influence": "other",
+    "Misc - Criminal Call": "other",
+    "Animal - Bite": "other",
+    "Vandalism": "property",
+    "Hit and Run": "other",
+    "Drug Equipment Violation": "enforcement",
+    "Larceny - Shoplifitng": "other",
+    "Lost/FoundProperty": "other",
+    "Fraud-wire fraud": "other",
+    "Suspicious Activity": "other",
+    "Larceny - Theft from Building": "property",
+    "Misc - Non-Criminal Call": "other",
+    "Unauthorized Use of Motor Veh": "other",
+    "Assault Simple": "violent",
+    "Motor Vehicle Theft": "property",
+    "Larceny - From Motor Vehicle": "property",
+    "Accident Private Property": "other",
+    "Assist Agency - Backup/Assist": "other",
+    "Burglary": "property",
+    "Traffic Stops": "other",
+    "Drug/Narcotics Violation": "enforcement",
+    "Harassment": "other",
+    "Larceny - All Other": "property",
+    "Noise Complaint": "other",
+    "Animal Complaint": "other",
+    "Assist Citizen - Medical": "other",
+    "Assault Intimidation": "violent",
+    "Accident - w/out Injuries": "other",
+    "Drug Investigation": "enforcement",
+    "Warrant Service": "enforcement",
+    "Forgery/Counterfeiting": "other",
+    "Domestic Disturbance": "other",
+    "Phone Calls - Threat or Obscene": "other",
+    "Fraud-credit card": "other",
+    "Accident Property Damage": "other",
+    "Fraud-impersonation": "other",
+    "Assist Agency - Arrest/warrant": "other",
+    "Fraud-false pretense": "other",
+    "Disorderly Conduct": "enforcement",
+    "Missing Person-juvenile": "other",
+    "Family Offense - Non-Violent": "other",
+    "Trespass": "enforcement",
+    "Missing Person-adult": "other",
+    "Death Investigation - DOA": "other",
+    "Assist Citizen - Welfare Check": "other",
+    "Runaway": "other",
+    "Accident w/Injuries": "other",
+    "Drunkeness DIP": "enforcement",
+    "Suspicious Person": "other",
+    "Suicide Investigation": "other",
+    "Bomb Threat": "other",
+    "Assist Citizen - Misc": "other",
+    "Assist Agency - Other": "other",
+    "Larceny - Of Veh Parts/Access": "property",
+    "Stalking": "other",
+    "Weapons Violations": "other",
+    "Littering/Illegal Dumping": "other",
+    "Sex Offense": "other",
+    "Assault Aggravated": "violent",
+    "Sex Offense - Forcible Rape": "violent",
+    "Robbery - Strong Arm": "violent",
+    "Arson": "property",
+    "Sex Offense-forcible fondling": "violent",
+    "Shots Fired/Illegal Hunting": "violent",
+    "Pornography": "other",
+    "Embezzelment": "other",
+    "Extortion/Blackmail": "other",
+    "Sex Offense-statutory rape": "other",
+    "Sex Offense - Forcible Sodomy": "violent",
+    "Juvenile Investigation": "other",
+    "Child Ab - Contr to Delinquency": "other",
+    "Stolen Property Offenses": "other",
+    "Narcotics": "enforcement",
+    "Kidnap/Abduction": "violent",
+    "Disturbance - Non Domestic": "other",
+    "Robbery - Armed": "violent",
+    "Sex Offense - Assault w/Object": "violent",
+    "Problem Solving Project - PSP": "other",
+    "Comm Relations Initiative - CRI": "other",
+    "Crime Prevent Initiative - CPI": "other",
+    "False Report of Crime": "other",
+    "Larceny - Pocket Picking": "property",
+    "Larceny - From Coin Oper Device": "property",
+    "Phone Calls - Annoying": "other",
+    "Prowler - Peeping  Tom": "other",
+    "Larceny - Purse Snatching": "property",
+    "Traffic - Traffic Hazard": "other"
+   },
+   "tiles": [
+    {
+     "tile": "t3801_-7847",
+     "lat": 38.015,
+     "lon": -78.465,
+     "violent": 3,
+     "property": 12,
+     "enforcement": 16
+    },
+    {
+     "tile": "t3801_-7848",
+     "lat": 38.015,
+     "lon": -78.475,
+     "violent": 11,
+     "property": 20,
+     "enforcement": 19
+    },
+    {
+     "tile": "t3801_-7849",
+     "lat": 38.015,
+     "lon": -78.485,
+     "violent": 10,
+     "property": 19,
+     "enforcement": 12
+    },
+    {
+     "tile": "t3801_-7850",
+     "lat": 38.015,
+     "lon": -78.495,
+     "violent": 2,
+     "property": 6,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3801_-7851",
+     "lat": 38.015,
+     "lon": -78.505,
+     "violent": 25,
+     "property": 41,
+     "enforcement": 29
+    },
+    {
+     "tile": "t3801_-7852",
+     "lat": 38.015,
+     "lon": -78.515,
+     "violent": 2,
+     "property": 13,
+     "enforcement": 7
+    },
+    {
+     "tile": "t3802_-7846",
+     "lat": 38.025,
+     "lon": -78.455,
+     "violent": 0,
+     "property": 3,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3802_-7847",
+     "lat": 38.025,
+     "lon": -78.465,
+     "violent": 24,
+     "property": 49,
+     "enforcement": 35
+    },
+    {
+     "tile": "t3802_-7848",
+     "lat": 38.025,
+     "lon": -78.475,
+     "violent": 37,
+     "property": 46,
+     "enforcement": 54
+    },
+    {
+     "tile": "t3802_-7849",
+     "lat": 38.025,
+     "lon": -78.485,
+     "violent": 57,
+     "property": 87,
+     "enforcement": 57
+    },
+    {
+     "tile": "t3802_-7850",
+     "lat": 38.025,
+     "lon": -78.495,
+     "violent": 36,
+     "property": 41,
+     "enforcement": 31
+    },
+    {
+     "tile": "t3802_-7851",
+     "lat": 38.025,
+     "lon": -78.505,
+     "violent": 7,
+     "property": 27,
+     "enforcement": 13
+    },
+    {
+     "tile": "t3802_-7852",
+     "lat": 38.025,
+     "lon": -78.515,
+     "violent": 8,
+     "property": 48,
+     "enforcement": 17
+    },
+    {
+     "tile": "t3802_-7853",
+     "lat": 38.025,
+     "lon": -78.525,
+     "violent": 5,
+     "property": 4,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3803_-7846",
+     "lat": 38.035,
+     "lon": -78.455,
+     "violent": 1,
+     "property": 14,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3803_-7847",
+     "lat": 38.035,
+     "lon": -78.465,
+     "violent": 7,
+     "property": 24,
+     "enforcement": 10
+    },
+    {
+     "tile": "t3803_-7848",
+     "lat": 38.035,
+     "lon": -78.475,
+     "violent": 32,
+     "property": 32,
+     "enforcement": 56
+    },
+    {
+     "tile": "t3803_-7849",
+     "lat": 38.035,
+     "lon": -78.485,
+     "violent": 78,
+     "property": 132,
+     "enforcement": 124
+    },
+    {
+     "tile": "t3803_-7850",
+     "lat": 38.035,
+     "lon": -78.495,
+     "violent": 62,
+     "property": 207,
+     "enforcement": 59
+    },
+    {
+     "tile": "t3803_-7851",
+     "lat": 38.035,
+     "lon": -78.505,
+     "violent": 3,
+     "property": 41,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3804_-7846",
+     "lat": 38.045,
+     "lon": -78.455,
+     "violent": 2,
+     "property": 2,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3804_-7847",
+     "lat": 38.045,
+     "lon": -78.465,
+     "violent": 2,
+     "property": 8,
+     "enforcement": 4
+    },
+    {
+     "tile": "t3804_-7848",
+     "lat": 38.045,
+     "lon": -78.475,
+     "violent": 0,
+     "property": 7,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3804_-7849",
+     "lat": 38.045,
+     "lon": -78.485,
+     "violent": 4,
+     "property": 8,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3804_-7850",
+     "lat": 38.045,
+     "lon": -78.495,
+     "violent": 8,
+     "property": 45,
+     "enforcement": 5
+    },
+    {
+     "tile": "t3804_-7851",
+     "lat": 38.045,
+     "lon": -78.505,
+     "violent": 19,
+     "property": 55,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3804_-7852",
+     "lat": 38.045,
+     "lon": -78.515,
+     "violent": 0,
+     "property": 2,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3805_-7846",
+     "lat": 38.055,
+     "lon": -78.455,
+     "violent": 0,
+     "property": 3,
+     "enforcement": 0
+    },
+    {
+     "tile": "t3805_-7847",
+     "lat": 38.055,
+     "lon": -78.465,
+     "violent": 0,
+     "property": 1,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3805_-7848",
+     "lat": 38.055,
+     "lon": -78.475,
+     "violent": 3,
+     "property": 11,
+     "enforcement": 5
+    },
+    {
+     "tile": "t3805_-7849",
+     "lat": 38.055,
+     "lon": -78.485,
+     "violent": 5,
+     "property": 18,
+     "enforcement": 8
+    },
+    {
+     "tile": "t3805_-7850",
+     "lat": 38.055,
+     "lon": -78.495,
+     "violent": 24,
+     "property": 37,
+     "enforcement": 27
+    },
+    {
+     "tile": "t3805_-7851",
+     "lat": 38.055,
+     "lon": -78.505,
+     "violent": 11,
+     "property": 19,
+     "enforcement": 16
+    },
+    {
+     "tile": "t3806_-7847",
+     "lat": 38.065,
+     "lon": -78.465,
+     "violent": 1,
+     "property": 2,
+     "enforcement": 1
+    },
+    {
+     "tile": "t3806_-7848",
+     "lat": 38.065,
+     "lon": -78.475,
+     "violent": 0,
+     "property": 2,
+     "enforcement": 3
+    },
+    {
+     "tile": "t3806_-7849",
+     "lat": 38.065,
+     "lon": -78.485,
+     "violent": 1,
+     "property": 13,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3806_-7850",
+     "lat": 38.065,
+     "lon": -78.495,
+     "violent": 6,
+     "property": 8,
+     "enforcement": 2
+    },
+    {
+     "tile": "t3806_-7851",
+     "lat": 38.065,
+     "lon": -78.505,
+     "violent": 0,
+     "property": 3,
+     "enforcement": 0
+    }
+   ]
+  }
+ ]
+}
