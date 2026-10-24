@@ -156,8 +156,9 @@ Globe first (UI track):
 4. Tap **#1** → "Why this score" bars, the rank range, then scroll to the programs and the
    "Before you apply" caution. Tap **Español**.
 5. Switch the layer to **Shelter space**, then back.
-6. Tap **Virginia** → **Zoom in** → the satellite town view → rate a place (4 stars, Spanish
-   spoken) → the heatmap updates.
+6. Tap **Virginia** → **Zoom in** → the satellite town view (dots are real places from the
+   receipt) → **Rate a place here** → tap the spot on the map → 4 stars, Spanish spoken → **Send**
+   → the heatmap updates.
 7. Tap **Hide**.
 
 Then the receipt (Gemma track):
