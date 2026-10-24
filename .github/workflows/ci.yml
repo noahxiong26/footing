@@ -9,6 +9,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -e ".[dev]"
+      - run: python scripts/build_state_policy.py --check
       - run: pytest -q
       # Same check as scripts/clean_install_check.sh: the installed package (not the repo) serves the app.
       - run: bash scripts/clean_install_check.sh

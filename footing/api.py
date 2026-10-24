@@ -9,13 +9,15 @@ import json
 import time
 from pathlib import Path
 
-from fastapi import APIRouter, FastAPI, File, HTTPException, Query, Request, UploadFile
+from fastapi import APIRouter, Body, FastAPI, File, HTTPException, Query, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from fastapi.staticfiles import StaticFiles
 
 from .config import Settings
 from .factors import CATEGORIES, PARAMS, catalog_markdown
+from . import ratings as ratings_store
+from .fit import load_eligibility, load_policy
 from .flyer import FlyerError, read_flyer
 from .gemma import GemmaUnavailable
 from .geo import snap_to_tile
@@ -126,6 +128,26 @@ def factors() -> dict:
     return {"categories": [c.__dict__ for c in CATEGORIES],
             "parameters": [{k: v for k, v in p.__dict__.items() if not callable(v)} for p in PARAMS],
             "markdown": catalog_markdown()}
+
+
+@router.get("/policy")
+def policy() -> dict:
+    """State policy facts + federal eligibility rules. The phone computes the Fit Score from these locally,
+    so the person's status is never sent to this server."""
+    return {"states": load_policy(), "eligibility": load_eligibility()}
+
+
+@router.post("/ratings")
+def add_rating(body: dict = Body(...)) -> dict:
+    try:
+        return ratings_store.add(body)
+    except ratings_store.RatingError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/ratings/heat")
+def ratings_heat() -> dict:
+    return ratings_store.heat()
 
 
 @router.get("/sources")

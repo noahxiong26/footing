@@ -22,7 +22,7 @@ footing = "footing.cli:main"
 include = ["footing*"]
 
 [tool.setuptools.package-data]
-footing = ["static/*.json", "static/*.csv", "web/*"]
+footing = ["static/*.json", "static/*.csv", "web/*.*", "web/vendor/*", "web/data/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

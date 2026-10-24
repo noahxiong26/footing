@@ -48,6 +48,17 @@ def main(argv: list[str] | None = None) -> int:
     fc = sub.add_parser("factors", help="print the factor catalog")
     fc.add_argument("--markdown", action="store_true")
     sub.add_parser("sources", help="list data sources")
+    ft = sub.add_parser("fit", help="rank states by Fit Score for a profile (same formula the phone runs)")
+    ft.add_argument("--status", default="undisclosed", help="e.g. citizen, lpr, refugee_asylee, tps, daca, undocumented")
+    ft.add_argument("--kids", action="store_true")
+    ft.add_argument("--pregnant", action="store_true")
+    ft.add_argument("--mixed", action="store_true", help="household has members with different statuses")
+    ft.add_argument("--tonight", action="store_true")
+    ft.add_argument("--no-id", action="store_true")
+    ft.add_argument("--disability", action="store_true")
+    ft.add_argument("--priorities", default="", help="comma list, most important first: access,affordability,shelter,safety,criminalization,community")
+    ft.add_argument("--top", type=int, default=10)
+    ft.add_argument("--json", action="store_true")
     args = ap.parse_args(argv)
 
     if args.cmd == "factors":
@@ -57,6 +68,23 @@ def main(argv: list[str] | None = None) -> int:
         for s in ALL_SOURCES:
             keys = ", ".join(s.needs) or "none"
             print(f"{s.name:<16} refresh={s.refresh:<8} keys={keys:<26} {s.license}")
+        return 0
+
+    if args.cmd == "fit":
+        from .fit import rank_states
+        profile = {"status": args.status,
+                   "household": {"kids": args.kids, "pregnant": args.pregnant, "mixed": args.mixed},
+                   "situation": {"tonight": args.tonight, "no_id": args.no_id, "disability": args.disability},
+                   "priorities": [p for p in args.priorities.split(",") if p]}
+        ranked = sorted([r for r in rank_states(profile=profile) if r["score"] is not None], key=lambda r: r["rank"])
+        if args.json:
+            print(json.dumps(ranked[: args.top], indent=2))
+            return 0
+        order = [f"{c['id']} {c['weight']:.2f}" for c in ranked[0]["components"]] if ranked else []
+        print("weights (Rank-Order Centroid of your priorities): " + ", ".join(order))
+        for r in ranked[: args.top]:
+            print(f"{r['rank']:>3}. {r['name']:<22} {r['score']:5.1f}  confidence {r['confidence_label']:<6}"
+                  f"  rank range {r['rank_p10']}-{r['rank_p90']}")
         return 0
 
     if args.cmd == "record":

@@ -36,7 +36,7 @@ def main() -> int:
             page.wait_for_timeout(400)
             page.screenshot(path=str(OUT / f"{name}.png"), full_page=full)
 
-        page.goto(f"{BASE}/#/")
+        page.goto(f"{BASE}/#/start")                # "#/" is the globe now; the classic start screen lives here
         page.wait_for_selector("#locate")
         page.click("[data-chip=kids]")
         assert page.get_attribute("[data-chip=kids]", "aria-pressed") == "true"

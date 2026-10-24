@@ -1,12 +1,33 @@
 # Footing
 
 **Where could you land for the next 30 days?** Footing is a free, open-source phone app for
-people experiencing homelessness. Pick a town (or share a location rounded to ~1 km) and it
+people experiencing homelessness, including immigrants whose papers decide which help they can use.
+
+It opens on a **globe**. Tell it your immigration status, who is with you and what matters most,
+and the Earth turns, flies to the U.S., and lights up every state by a **Fit Score** computed *on
+your phone*: help you can actually use with your papers, rent against the minimum wage, how many
+people sleep outside, state immigration-enforcement law, camping bans, and ratings from people who
+have been there. Tap a state to see why it scored that way and which programs you can use; zoom
+into a town to rate a place. Your status never leaves the phone (tested on every request).
+Method and citations: [`docs/RATING_FORMULA.md`](docs/RATING_FORMULA.md).
+
+<p>
+<img src="docs/screenshots/01_intro.png" width="180" alt="Globe intro">
+<img src="docs/screenshots/04_top_fits.png" width="180" alt="Best fits for you">
+<img src="docs/screenshots/05_state_detail.png" width="180" alt="State detail with why this score">
+<img src="docs/screenshots/11_rate.png" width="180" alt="Rate a place">
+</p>
+
+For a single town, pick it (or share a location rounded to ~1 km) and it (or share a location rounded to ~1 km) and it
 prints a **Settle Receipt**: a 0–100 Settle Score built from live public data, what a week of
 food and gas costs there, the nearest EBT grocery, library, restroom, clinic and post office
 with their hours, and a plain reason for every number it could not find.
 
 ```
+profile (on phone) ─▶ 15 statuses × 12 programs + 51 state policy rows ─▶ 6 parts ─▶ rank-order-centroid weights
+      ─▶ Fit Score per state + confidence + rank range (300 perturbed weightings) ─▶ globe choropleth
+anonymous 1-5 ratings ─▶ ~1 km tiles ─▶ time-decayed Bayesian average ─▶ heatmap + "what people here say"
+
 point ─▶ snap to ~1 km tile ─▶ 15 source adapters ─▶ places + measures (each with provenance)
       ─▶ 33 parameters (29 built, 4 planned) ─▶ 10 categories ─▶ Settle Score + confidence
       ─▶ receipt · 30-day plan (Gemma 4) · tonight list · pocket card · town compare
@@ -18,7 +39,9 @@ point ─▶ snap to ~1 km tile ─▶ 15 source adapters ─▶ places + measur
 pip install -e ".[dev]"
 FOOTING_MODE=replay uvicorn footing.api:app --port 8080     # open http://localhost:8080
 python -m footing receipt --lat 37.1299 --lon -80.4089 --profile car,kids   # same data, CLI
-pytest -q                                                    # 74 tests
+pytest -q                                                    # 115 tests
+python scripts/build_standalone_demo.py out/demo             # no-server copy of the globe (see HANDOFF §8)
+python -m footing fit --status undocumented --kids --mixed  # Fit Score ranking, CLI
 ```
 
 Replay mode serves **real responses captured on 2026-10-24** for downtown Christiansburg, VA
@@ -30,6 +53,10 @@ Keyed sources show as Unknown because no keys were set when the fixtures were ca
 
 | Screen | What it shows | Where it comes from |
 | --- | --- | --- |
+| **Globe** (`#/`) | Earth from space; flies to the U.S. and colors every state by your Fit Score (or by ratings, shelter, rent, enforcement law). Hatched = no data | `fit.js` on the phone + `/api/policy` |
+| **About you** | 15 immigration statuses (incl. "prefer not to say"), household, situation, age band, and a reorderable priority list that shows each item's weight live | stays in `localStorage`; "Forget my answers" wipes it |
+| **State** | Score, rank, confidence, 90% rank range, a bar per part with its reason, the programs you can use there, a public-charge caution, 211 and legal-aid links, sources | `fit.js` |
+| **Rate a place** | 1-5 stars on overall / felt safe / respected / could get help, plus fixed tags. Filed under a ~1 km tile, no text | `POST /api/ratings` |
 | **Receipt** | Settle Score, 10 category bars, dollar lines (food week, gas, studio rent), nearest places with open/closed now | `/api/receipt` |
 | **30-day plan** | Day 1 / Week 1 / Month 1 steps, each tied to a real place from the receipt | `/api/plan`: Gemma 4 when `GEMINI_API_KEY` is set, a rule-based plan otherwise |
 | **Tonight** | Places open now within an hour's walk, tonight's low, "Call 211" when no shelter is confirmed | `/api/tonight` |
@@ -38,7 +65,9 @@ Keyed sources show as Unknown because no keys were set when the fixtures were ca
 | **Snap a flyer** | Photo of a paper flyer → service, days/times, phone, address, marked "community-reported, unconfirmed" | `POST /api/flyer` (Gemma 4 vision) |
 
 The front end is a no-build PWA (`footing/web/`): large tap targets, works at 320 px, high
-contrast, no sign-in, nothing stored on the server. The service worker keeps the last good answer
+contrast, English and Spanish on the globe, a "Hide" button that jumps to a weather page, no sign-in.
+The only thing the server stores is anonymous ratings (tile, hour, stars, fixed tags, a salted hash
+of a random device token). The service worker keeps the last good answer
 for each screen, so a receipt or plan opened once still shows with no signal.
 
 ### Gemma 4 grounding
@@ -95,6 +124,9 @@ All endpoints are under `/api` (also served without the prefix). `lat`/`lon` are
 | `GET /api/compare?points=lat,lon;lat,lon[;lat,lon]` | 2–3 places |
 | `POST /api/flyer` (multipart `photo`) | jpeg/png/webp/heic, ≤6 MB; 503 without a Gemini key |
 | `GET /api/factors`, `GET /api/sources` | the factor catalog and source list |
+| `GET /api/policy` | `state_policy.json` + `eligibility.json` (the phone scores with these) |
+| `POST /api/ratings` | `{lat, lon, device, overall, safe?, respect?, help?, tags?}`; any other key is rejected |
+| `GET /api/ratings/heat` | per-tile and per-state Bayesian scores for the heatmap |
 
 ## Sources
 
@@ -114,6 +146,15 @@ All endpoints are under `/api` (also served without the prefix). `lat`/`lon` are
 | Transitland | transit stops | Transitland key | not captured |
 | Kroger | live survival-basket price | client id + secret | not captured |
 | Static tables | DOL minimum wage (VA, MD, WV, NC, TN), USDA Thrifty Food Plan June 2026, county→CoC crosswalk (VA-521, VA-502), HUD HIC/PIT, HRSA sites, local rules | none | wage, TFP and crosswalk filled; HIC/PIT, HRSA and local rules are empty templates |
+
+State policy data (`footing/static/state_policy.json`, rebuilt and validated by
+`python scripts/build_state_policy.py --check`), each field with its source and date: ILRC immigration
+enforcement tiers, NCSL/NILC driver's licenses regardless of status, KFF Medicaid expansion and state
+immigrant health coverage, DOL state minimum wage (July 1, 2026), NLIHC *Out of Reach 2026* housing
+wage, HUD 2025 Point-in-Time counts (state totals reconcile to HUD's 745,652), NILC state food programs,
+and statewide camping laws. Program rules by immigration status (`eligibility.json`) reflect H.R. 1
+(SNAP, Medicaid from Oct 1 2026, ACA credits from Jan 1 2027), the Sept 18 2026 public charge rule, the
+Sept 2026 vacatur of the PRWORA notices, and HUD's Feb 2026 mixed-status proposal (not final).
 
 SNAP store names that say CVS, Walgreens, Rite Aid or Pharmacy also count as pharmacies (marked
 "inferred from USDA SNAP store name"). Opening hours come from OSM `opening_hours`; anything the
@@ -144,6 +185,12 @@ Profile chips (car, kids, tonight, on foot) re-weight categories; they never cha
 * Crime and demographic data are excluded on purpose (`EXCLUDED_ON_PURPOSE`).
 
 ## Not done yet
+
+* Globe: the camping-law table covers 8 states; the rest are Unknown (not "no ban"). No state-level
+  job or weather data. Per-state "why" sentences are English only. Satellite imagery (EOX
+  Sentinel-2 cloudless, CC BY-NC-SA) is non-commercial and needs a connection; the vector map works
+  offline. Ratings live in SQLite (`FOOTING_RATINGS_DB`); on Cloud Run that is per-instance and
+  temporary until a volume or database is attached.
 
 * Keyed sources and Gemma are tested against **synthetic** responses (`tests/synthetic/`, labeled)
   and a local stub; none has been called live with a real key. Run `scripts/record_demo_towns.sh`

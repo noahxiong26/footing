@@ -92,6 +92,7 @@ function startScreen() {
         </div></div>
       <a class="btn" href="#/flyer">Snap a flyer</a>
       <a class="btn" href="tel:211">Talk to a person: call 211</a>
+      <a class="btn" href="#/">Compare every state on the globe</a>
     </div>`;
   view.querySelectorAll("[data-chip]").forEach((b) => b.addEventListener("click", () => {
     const k = b.dataset.chip;
@@ -180,6 +181,8 @@ async function receiptScreen() {
         <a class="btn" href="#/compare?${new URLSearchParams(w)}">Compare towns</a>
         <a class="btn" href="#/tonight?${new URLSearchParams({ lat: w.lat, lon: w.lon })}">Tonight</a>
         <a class="btn" href="#/card?${new URLSearchParams(w)}">Pocket card</a>
+        <a class="btn" href="#/rate?${new URLSearchParams({ lat: w.lat, lon: w.lon })}">Rate this place</a>
+        <a class="btn" href="#/">Back to the globe</a>
       </div>
       <h2>Closest places</h2><p class="dim">Within about a 45-minute walk.</p><ul class="places">${near || "<li class='notice'>No places found in public data for this tile.</li>"}</ul>
       <h2>Not found here</h2><p class="dim">${r.unknowns.length} measures had no data. We say so instead of guessing.</p>
@@ -321,11 +324,18 @@ function flyerScreen() {
 }
 
 // ---------- router ----------
-const routes = { "": startScreen, receipt: receiptScreen, plan: planScreen, tonight: tonightScreen,
+const routes = { "": startScreen, start: startScreen, receipt: receiptScreen, plan: planScreen, tonight: tonightScreen,
   compare: compareScreen, card: cardScreen, flyer: flyerScreen };
 function route() {
   document.body.classList.remove("tonight");
   const name = location.hash.replace(/^#\/?/, "").split("?")[0];
+  // The globe is the front door; every other screen is the original receipt flow.
+  if (window.FootingGlobe && (name === "" || name === "globe" || name === "rate")) {
+    const p = params();
+    window.FootingGlobe.show(name === "rate" && p.lat ? { rate: { lat: +p.lat, lon: +p.lon } } : {});
+    return;
+  }
+  if (window.FootingGlobe) window.FootingGlobe.hide();
   (routes[name] || startScreen)();
   view.focus();
   window.scrollTo(0, 0);
