@@ -4,6 +4,9 @@ Context for any model or person picking up this repo on another computer. Writte
 14:15 ET (the commit that added this file). Everything below was true at that moment; run the
 checks in "Verify the state" before trusting it.
 
+**Get the code:** `git clone https://github.com/noahxiong26/footing` (private repo, owner
+noahxiong26; ask Noah for access). Pull before you start and push your commits when you stop.
+
 ## 1. What this is
 
 **Footing** is an entry for MLH Hacktoberfest Hack Day (Oct 24, 2026). Prize tracks: **Best
@@ -46,7 +49,7 @@ pytest -q                                   # expect: 74 passed
 FOOTING_MODE=replay uvicorn footing.api:app --port 8080   # open http://localhost:8080
 bash scripts/clean_install_check.sh         # expect: every endpoint 200, "clean install OK"
 python scripts/ui_smoke.py http://localhost:8080 out/screens   # needs Playwright Chromium
-git log --oneline                           # 4 commits as of this file
+git log --oneline                           # 5 commits as of this file
 ```
 
 Replay mode needs no network and no keys. It serves real responses captured on 2026-10-24 for
@@ -140,8 +143,9 @@ That is correct behavior, not a bug.
 5. **Deploy, with the owner's OK:** `PROJECT=<id> scripts/deploy_cloud_run.sh` (dry run), then
    `--yes`. Set the Places quota (≤160 Text Search/day) and a $20 budget alert. A budget only
    alerts; it doesn't stop charges.
-6. **Push to GitHub, with the owner's OK.** The repo doesn't exist yet. CI is in
-   `.github/workflows/ci.yml`.
+6. **GitHub:** pushed 2026-10-24 to `noahxiong26/footing` (private). Before submitting, make it
+   public with the owner's OK (the open-source prize needs a public link) and check that the
+   CI run in the Actions tab passes.
 7. Demo video; fill the Devpost [TODO]s (owner's words).
 
 ## 9. Gotchas from this build
