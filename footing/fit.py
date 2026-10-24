@@ -206,6 +206,8 @@ def components(elig, policy, code, profile, community=None):
     camp = st["camping_law"]
     if camp and camp["status"] == "in_effect":
         out["criminalization"] = {"score": 0, "reason": "Statewide camping law: " + camp["note"]}
+    elif camp and camp["status"] == "enforcement_mandate":
+        out["criminalization"] = {"score": 25, "reason": "State law pushes cities to enforce camping bans: " + camp["note"]}
     elif camp and camp["status"] == "contested":
         out["criminalization"] = {"score": 50, "reason": "Statewide camping law in court: " + camp["note"]}
     else:

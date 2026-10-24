@@ -52,6 +52,21 @@ def test_known_2026_rule_changes_are_encoded():
     assert "Sept 18, 2026" in fit.program_rule(ELIG, "public_charge", "tps")["note"]
     assert fit.program_rule(ELIG, "public_charge", "refugee_asylee")["value"] == "no"   # exempt
     assert fit.program_rule(ELIG, "survival", "undocumented")["value"] == "yes"
+    for s in ("asylum_pending", "parole", "tps", "refugee_asylee"):   # H.R. 1: Marketplace credits end 2027
+        assert "Jan 1, 2027" in fit.program_rule(ELIG, "aca", s)["note"], s
+
+
+def test_camping_law_levels_are_ordered_and_documented():
+    # A ban is worse than a law that pushes local enforcement, which is worse than a ban struck down in court.
+    def camp(code):
+        return {c["id"]: c for c in fit.fit_score(ELIG, POLICY, code, {"status": "citizen"})["components"]}["criminalization"]
+    assert camp("TX")["score"] == 0            # HB 1925: statewide ban
+    assert camp("GA")["score"] == 25           # "Safe Neighborhood": enforcement pressure, not a ban
+    assert camp("OK")["score"] == 25
+    assert camp("KY")["score"] == 50           # ban ruled unconstitutional
+    assert camp("VA")["score"] is None         # not checked is Unknown, never "no ban"
+    statuses = {st["camping_law"]["status"] for st in POLICY["states"].values() if st["camping_law"]}
+    assert statuses <= {"in_effect", "enforcement_mandate", "contested"}
 
 
 # ---- formula ----------------------------------------------------------------------------------------

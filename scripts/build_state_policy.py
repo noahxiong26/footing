@@ -194,12 +194,19 @@ STATE_FOOD = {
 }
 
 # ---- Statewide camping laws we could confirm by name (others: not checked) ------------------------------
+# Status values (scored in fit.js / fit.py, method in docs/RATING_FORMULA.md):
+#   in_effect           a state statute bans camping/sleeping on public land                       -> 0
+#   enforcement_mandate a state statute forces or pays for LOCAL enforcement but is not itself a ban -> 25
+#   contested           a statewide ban exists but a court has ruled against it                     -> 50
+# Georgia and Oklahoma were "in_effect" until 2026-10-24. Stateline (June 25, 2026) describes both as
+# "Safe Neighborhood" laws that let owners seek compensation when localities don't enforce camping laws,
+# which is pressure on local enforcement, not a statewide ban. Re-classified after a second check.
 CAMPING = {
     "FL": ("in_effect", "HB 1365 (2024): bans public sleeping/camping; counties may designate areas. Effective Oct 1, 2024."),
     "TX": ("in_effect", "HB 1925 (2021): camping in unapproved public places is a Class C misdemeanor."),
     "TN": ("in_effect", "2022 law: camping on state property is a Class E felony (Tenn. Code 39-14-414)."),
-    "GA": ("in_effect", "'Safe Neighborhood' law: owners can seek compensation if localities don't enforce camping laws."),
-    "OK": ("in_effect", "'Safe Neighborhood' law: owners can seek compensation if localities don't enforce camping laws."),
+    "GA": ("enforcement_mandate", "'Safe Neighborhood' law: owners can seek compensation if localities don't enforce camping laws. Not a statewide ban."),
+    "OK": ("enforcement_mandate", "'Safe Neighborhood' law: owners can seek compensation if localities don't enforce camping laws. Not a statewide ban."),
     "LA": ("in_effect", "2026 law making unauthorized public camping a crime; adds a Homelessness Court diversion."),
     "IN": ("in_effect", "2026 law banning unauthorized camping, sleeping and sheltering on state or local public land (from July 2026)."),
     "KY": ("contested", "HB 5 (2024) unlawful-camping offense; NHLC reports a court ruled the statewide ban unconstitutional."),

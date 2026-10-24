@@ -346,8 +346,8 @@
    "health_adults_all": false,
    "state_food_immigrants": false,
    "camping_law": {
-    "status": "in_effect",
-    "note": "'Safe Neighborhood' law: owners can seek compensation if localities don't enforce camping laws."
+    "status": "enforcement_mandate",
+    "note": "'Safe Neighborhood' law: owners can seek compensation if localities don't enforce camping laws. Not a statewide ban."
    }
   },
   "HI": {
@@ -938,8 +938,8 @@
    "health_adults_all": false,
    "state_food_immigrants": false,
    "camping_law": {
-    "status": "in_effect",
-    "note": "'Safe Neighborhood' law: owners can seek compensation if localities don't enforce camping laws."
+    "status": "enforcement_mandate",
+    "note": "'Safe Neighborhood' law: owners can seek compensation if localities don't enforce camping laws. Not a statewide ban."
    }
   },
   "OR": {
