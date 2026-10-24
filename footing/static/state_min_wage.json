@@ -1,0 +1,17 @@
+{
+  "source": "https://www.dol.gov/agencies/whd/minimum-wage/state",
+  "as_of": "DOL table updated 2026-07-01 (read 2026-10-24)",
+  "federal_usd_hr": 7.25,
+  "states_usd_hr": {
+    "VA": 12.77,
+    "NC": 7.25,
+    "WV": 8.75,
+    "MD": 15.00,
+    "TN": 7.25
+  },
+  "notes": {
+    "TN": "No state minimum wage law; FLSA-covered employers pay the federal $7.25.",
+    "WV": "State rate applies to employers with 6 or more employees at one location.",
+    "_coverage": "Only states checked on 2026-10-24 are listed. Any other state is reported as Unknown, never guessed. Add rows from the DOL table before demoing another region."
+  }
+}

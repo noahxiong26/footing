@@ -1,0 +1,34 @@
+{
+ "_synthetic": "MADE-UP VALUES for parser tests only. Shapes follow each provider's public docs. Never use as data.",
+ "status": "REQUEST_SUCCEEDED",
+ "responseTime": 10,
+ "message": [],
+ "Results": {
+  "series": [
+   {
+    "seriesID": "LAUCN511210000000003",
+    "data": [
+     {
+      "year": "2026",
+      "period": "M08",
+      "periodName": "August",
+      "latest": "true",
+      "value": "4.0",
+      "footnotes": [
+       {}
+      ]
+     },
+     {
+      "year": "2026",
+      "period": "M07",
+      "periodName": "July",
+      "value": "4.2",
+      "footnotes": [
+       {}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "_synthetic": "MADE-UP VALUES for parser tests only. Shapes follow each provider's public docs. Never use as data.",
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "properties": {
+    "event": "Freeze Warning",
+    "severity": "Moderate",
+    "headline": "Synthetic freeze warning",
+    "ends": "2026-10-26T13:00:00-04:00"
+   }
+  },
+  {
+   "properties": {
+    "event": "Winter Storm Warning",
+    "severity": "Severe",
+    "headline": "Synthetic storm",
+    "ends": null
+   }
+  }
+ ],
+ "updated": "2026-10-24T16:00:00+00:00"
+}

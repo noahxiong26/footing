@@ -1,0 +1,12 @@
+{
+ "_synthetic": "MADE-UP VALUES for parser tests only. Shapes follow each provider's public docs. Never use as data.",
+ "data": {
+  "county_name": "Montgomery County",
+  "year": "2026",
+  "basicdata": {
+   "Efficiency": 900,
+   "One-Bedroom": 1000,
+   "Two-Bedroom": 1200
+  }
+ }
+}

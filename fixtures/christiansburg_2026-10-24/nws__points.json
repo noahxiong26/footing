@@ -1,0 +1,1 @@
+{"type":"Feature","properties":{"gridId":"RNK","gridX":58,"gridY":61,"forecast":"https://api.weather.gov/gridpoints/RNK/58,61/forecast","county":"https://api.weather.gov/zones/county/VAC121","forecastZone":"https://api.weather.gov/zones/forecast/VAZ014","timeZone":"America/New_York","relativeLocation":{"type":"Feature","properties":{"city":"Christiansburg","state":"VA"}}}}

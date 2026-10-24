@@ -1,0 +1,1484 @@
+{
+  "receipt_version": 1,
+  "pipeline_version": "0.1.0",
+  "generated_at": "2026-10-24T17:46:05+00:00",
+  "mode": "replay",
+  "tile": {
+    "id": "t3712_-8041",
+    "center": [
+      37.125,
+      -80.405
+    ],
+    "note": "input point snapped to a ~1 km tile; raw location is not used or stored"
+  },
+  "area": {
+    "county_fips": "51121",
+    "county": "Montgomery County",
+    "state": "VA",
+    "nws_city": "Christiansburg, VA"
+  },
+  "profile": [
+    "car",
+    "kids"
+  ],
+  "settle_score": 76.7,
+  "confidence": 0.39,
+  "confidence_label": "medium",
+  "money": [
+    {
+      "label": "Food, 1 week (local survival basket)",
+      "value": null,
+      "unit": "USD/week",
+      "source": null,
+      "as_of": null,
+      "state": "unknown"
+    },
+    {
+      "label": "Food, 1 week (USDA Thrifty Food Plan baseline)",
+      "value": 73.5,
+      "unit": "USD/week",
+      "source": "usda_tfp",
+      "as_of": "Official USDA Thrifty Food Plan, U.S. average, June 2026 (issued August 2026)",
+      "state": "known",
+      "note": "male 20-50, 4-person household basis"
+    },
+    {
+      "label": "Gas, regular",
+      "value": null,
+      "unit": "USD/gal",
+      "source": null,
+      "as_of": null,
+      "state": "unknown"
+    },
+    {
+      "label": "Next step: studio Fair Market Rent",
+      "value": null,
+      "unit": "USD/month",
+      "source": null,
+      "as_of": null,
+      "state": "unknown"
+    },
+    {
+      "label": "Median gross rent (ACS)",
+      "value": null,
+      "unit": "USD/month",
+      "source": null,
+      "as_of": null,
+      "state": "unknown"
+    },
+    {
+      "label": "State minimum wage",
+      "value": 12.77,
+      "unit": "USD/hour",
+      "source": "dol_min_wage",
+      "as_of": "DOL table updated 2026-07-01 (read 2026-10-24)",
+      "state": "known",
+      "note": ""
+    }
+  ],
+  "categories": [
+    {
+      "id": "shelter",
+      "label": "Shelter and safe sleep",
+      "weight": 16.95,
+      "score": null,
+      "state": "unknown",
+      "coverage": 0.0,
+      "freshness": 0.0,
+      "parameters": [
+        {
+          "id": "shelters_3km",
+          "label": "Shelters within 3 km",
+          "weight": 3.0,
+          "unit": "count",
+          "sources": [
+            "osm",
+            "google_places"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=1 (1 shelter -> 63, 3 -> 95); zero trusted only if Google Places answered",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "none found, but OpenStreetMap often misses these; a zero needs Google Places to confirm it (or call 211)"
+        },
+        {
+          "id": "day_centers_5km",
+          "label": "Day centers within 5 km",
+          "weight": 1.0,
+          "unit": "count",
+          "sources": [
+            "osm",
+            "google_places"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=1; zero trusted only if Google Places answered",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "none found, but OpenStreetMap often misses these; a zero needs Google Places to confirm it (or call 211)"
+        },
+        {
+          "id": "bed_pressure",
+          "label": "Shelter beds per unsheltered person (CoC)",
+          "weight": 2.0,
+          "unit": "ratio",
+          "sources": [
+            "static_tables"
+          ],
+          "refresh": "annual",
+          "rule": "HUD HIC beds / PIT unsheltered for the county's CoC: 1.0+ -> 100, 0.2 -> 0",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "beds_per_unsheltered not available"
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "label": "Food and EBT",
+      "weight": 15.07,
+      "score": 70.9,
+      "state": "known",
+      "coverage": 0.92,
+      "freshness": 0.83,
+      "parameters": [
+        {
+          "id": "snap_stores_1km",
+          "label": "SNAP stores within 1 km",
+          "weight": 2.0,
+          "unit": "count",
+          "sources": [
+            "snap"
+          ],
+          "refresh": "weekly",
+          "rule": "count, k=2 (USDA list is complete, so zero is real)",
+          "status": "built",
+          "value": 3.0,
+          "score": 77.7,
+          "state": "known"
+        },
+        {
+          "id": "full_grocery_2km",
+          "label": "Full grocery stores taking SNAP within 2 km",
+          "weight": 2.0,
+          "unit": "count",
+          "sources": [
+            "snap"
+          ],
+          "refresh": "weekly",
+          "rule": "count of Super Store/Supermarket/Large or Medium Grocery, k=1",
+          "status": "built",
+          "value": 2.0,
+          "score": 86.5,
+          "state": "known"
+        },
+        {
+          "id": "free_food_3km",
+          "label": "Food banks and meal sites within 3 km",
+          "weight": 2.0,
+          "unit": "count",
+          "sources": [
+            "osm",
+            "google_places"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=1.5; zero trusted only if Google Places answered",
+          "status": "built",
+          "value": 1.0,
+          "score": 48.7,
+          "state": "known"
+        },
+        {
+          "id": "restaurant_meals_3km",
+          "label": "Restaurant Meals Program places within 3 km",
+          "weight": 0.5,
+          "unit": "count",
+          "sources": [
+            "snap"
+          ],
+          "refresh": "weekly",
+          "rule": "bonus only: counts when present, k=1; a zero is Unknown because only some states run the program",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "none found; Restaurant Meals is a bonus, so a zero is not held against the town"
+        }
+      ]
+    },
+    {
+      "id": "cost",
+      "label": "Cost to stay",
+      "weight": 17.14,
+      "score": null,
+      "state": "unknown",
+      "coverage": 0.0,
+      "freshness": 0.0,
+      "parameters": [
+        {
+          "id": "basket_vs_tfp",
+          "label": "Local survival basket vs USDA Thrifty Food Plan",
+          "weight": 3.0,
+          "unit": "ratio",
+          "sources": [
+            "kroger",
+            "static_tables"
+          ],
+          "refresh": "live",
+          "rule": "basket/TFP week: 0.85 or less -> 100, 1.3 -> 0",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "missing basket_week"
+        },
+        {
+          "id": "gas_vs_us",
+          "label": "Regular gas vs U.S. average",
+          "weight": 5.0,
+          "unit": "ratio",
+          "sources": [
+            "eia"
+          ],
+          "refresh": "weekly",
+          "rule": "local/U.S.: 0.9 -> 100, 1.15 -> 0",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "missing gas_regular and gas_regular_us"
+        },
+        {
+          "id": "rent_burden_fmr",
+          "label": "Studio Fair Market Rent as share of full-time minimum-wage pay",
+          "weight": 3.0,
+          "unit": "share",
+          "sources": [
+            "hud_fmr",
+            "static_tables"
+          ],
+          "refresh": "annual",
+          "rule": "rent / (min wage x 173.3 h): 30% -> 100, 100% -> 0",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "missing fmr_studio"
+        },
+        {
+          "id": "rent_burden_acs",
+          "label": "Median gross rent as share of full-time minimum-wage pay",
+          "weight": 1.0,
+          "unit": "share",
+          "sources": [
+            "census_acs",
+            "static_tables"
+          ],
+          "refresh": "annual",
+          "rule": "same rule, ACS median rent as a reality check on FMR",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "missing median_gross_rent"
+        }
+      ]
+    },
+    {
+      "id": "income",
+      "label": "Income and work",
+      "weight": 9.42,
+      "score": 67.2,
+      "state": "known",
+      "coverage": 0.57,
+      "freshness": 0.65,
+      "parameters": [
+        {
+          "id": "unemployment",
+          "label": "County unemployment rate",
+          "weight": 3.0,
+          "unit": "%",
+          "sources": [
+            "bls_laus"
+          ],
+          "refresh": "monthly",
+          "rule": "3% -> 100, 10% -> 0",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "unemployment_rate not available"
+        },
+        {
+          "id": "min_wage",
+          "label": "State minimum wage",
+          "weight": 2.0,
+          "unit": "USD/hour",
+          "sources": [
+            "static_tables"
+          ],
+          "refresh": "annual",
+          "rule": "$15 -> 100, $7.25 federal floor -> 0",
+          "status": "built",
+          "value": 12.77,
+          "score": 71.2,
+          "state": "known"
+        },
+        {
+          "id": "job_help_5km",
+          "label": "Employment agencies within 5 km",
+          "weight": 2.0,
+          "unit": "count",
+          "sources": [
+            "osm"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=1",
+          "status": "built",
+          "value": 1.0,
+          "score": 63.2,
+          "state": "known"
+        }
+      ]
+    },
+    {
+      "id": "mobility",
+      "label": "Getting around",
+      "weight": 5.65,
+      "score": 96.3,
+      "state": "known",
+      "coverage": 0.77,
+      "freshness": 0.9,
+      "parameters": [
+        {
+          "id": "transit_stops_1km",
+          "label": "Transit stops within 1 km",
+          "weight": 0.9,
+          "unit": "count",
+          "sources": [
+            "transitland"
+          ],
+          "refresh": "live",
+          "rule": "count, k=3",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "no data source answered (Transitland)"
+        },
+        {
+          "id": "essentials_walk",
+          "label": "Median walk to nearest store, pharmacy, library, clinic, post office",
+          "weight": 3.0,
+          "unit": "min",
+          "sources": [
+            "snap",
+            "osm"
+          ],
+          "refresh": "daily",
+          "rule": "straight line x 1.3 at 80 m/min: 10 min -> 100, 45 min -> 0; needs 3 of 5",
+          "status": "built",
+          "value": 11.3,
+          "score": 96.3,
+          "state": "known"
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "label": "Health",
+      "weight": 7.53,
+      "score": 78.7,
+      "state": "known",
+      "coverage": 0.75,
+      "freshness": 0.9,
+      "parameters": [
+        {
+          "id": "clinics_5km",
+          "label": "Clinics and health centers within 5 km",
+          "weight": 2.0,
+          "unit": "count",
+          "sources": [
+            "osm",
+            "hrsa"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=1",
+          "status": "built",
+          "value": 2.0,
+          "score": 86.5,
+          "state": "known"
+        },
+        {
+          "id": "pharmacy_3km",
+          "label": "Pharmacies within 3 km",
+          "weight": 1.0,
+          "unit": "count",
+          "sources": [
+            "osm"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=1",
+          "status": "built",
+          "value": 1.0,
+          "score": 63.2,
+          "state": "known"
+        },
+        {
+          "id": "behavioral_health",
+          "label": "Mental health and substance-use treatment",
+          "weight": 1.0,
+          "unit": "count",
+          "sources": [],
+          "refresh": "static",
+          "rule": "planned",
+          "status": "planned",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "planned: SAMHSA treatment locator"
+        }
+      ]
+    },
+    {
+      "id": "hygiene",
+      "label": "Hygiene and connection",
+      "weight": 7.53,
+      "score": 37.9,
+      "state": "known",
+      "coverage": 0.71,
+      "freshness": 0.9,
+      "parameters": [
+        {
+          "id": "restrooms_water_2km",
+          "label": "Public restrooms and drinking water within 2 km",
+          "weight": 2.0,
+          "unit": "count",
+          "sources": [
+            "osm"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=3",
+          "status": "built",
+          "value": 0.0,
+          "score": 0.0,
+          "state": "known"
+        },
+        {
+          "id": "showers_5km",
+          "label": "Public showers within 5 km",
+          "weight": 2.0,
+          "unit": "count",
+          "sources": [
+            "osm"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=1; OSM rarely maps showers, so zero is Unknown",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "none found, but OpenStreetMap rarely maps public showers; ask 211 or a day center"
+        },
+        {
+          "id": "laundry_5km",
+          "label": "Laundromats within 5 km",
+          "weight": 1.0,
+          "unit": "count",
+          "sources": [
+            "osm"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=1",
+          "status": "built",
+          "value": 1.0,
+          "score": 63.2,
+          "state": "known"
+        },
+        {
+          "id": "library_3km",
+          "label": "Public libraries (Wi-Fi, charging) within 3 km",
+          "weight": 2.0,
+          "unit": "count",
+          "sources": [
+            "osm"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=1",
+          "status": "built",
+          "value": 1.0,
+          "score": 63.2,
+          "state": "known"
+        }
+      ]
+    },
+    {
+      "id": "kids",
+      "label": "Kids and school",
+      "weight": 11.3,
+      "score": 94.5,
+      "state": "known",
+      "coverage": 1.0,
+      "freshness": 0.4,
+      "parameters": [
+        {
+          "id": "schools_5km",
+          "label": "Public schools within 5 km",
+          "weight": 2.0,
+          "unit": "count",
+          "sources": [
+            "urban_ed"
+          ],
+          "refresh": "annual",
+          "rule": "count, k=2 (NCES 2022-23)",
+          "status": "built",
+          "value": 5.0,
+          "score": 91.8,
+          "state": "known"
+        },
+        {
+          "id": "school_levels_5km",
+          "label": "Grade levels covered within 5 km (primary, middle, high)",
+          "weight": 1.0,
+          "unit": "levels",
+          "sources": [
+            "urban_ed"
+          ],
+          "refresh": "annual",
+          "rule": "3 levels -> 100, 0 -> 0",
+          "status": "built",
+          "value": 3.0,
+          "score": 100.0,
+          "state": "known"
+        }
+      ]
+    },
+    {
+      "id": "weather",
+      "label": "Weather risk",
+      "weight": 5.65,
+      "score": 95.3,
+      "state": "known",
+      "coverage": 0.86,
+      "freshness": 1.0,
+      "parameters": [
+        {
+          "id": "weather_alert",
+          "label": "Worst active NWS alert",
+          "weight": 3.0,
+          "unit": "severity",
+          "sources": [
+            "nws"
+          ],
+          "refresh": "live",
+          "rule": "none -> 100, minor -> 75, moderate -> 50, severe -> 15, extreme -> 0",
+          "status": "built",
+          "value": -1.0,
+          "score": 100.0,
+          "state": "known"
+        },
+        {
+          "id": "cold_nights",
+          "label": "Cold-night load, next 7 nights",
+          "weight": 2.0,
+          "unit": "nights",
+          "sources": [
+            "open_meteo"
+          ],
+          "refresh": "live",
+          "rule": "freezing nights + 0.35 x nights at 33-40 \u00b0F: 0 -> 100, 5 -> 0",
+          "status": "built",
+          "value": 0.7,
+          "score": 86.0,
+          "state": "known"
+        },
+        {
+          "id": "hot_days",
+          "label": "Days at 95 \u00b0F or hotter, next 7 days",
+          "weight": 1.0,
+          "unit": "days",
+          "sources": [
+            "open_meteo"
+          ],
+          "refresh": "live",
+          "rule": "0 -> 100, 4 -> 0",
+          "status": "built",
+          "value": 0.0,
+          "score": 100.0,
+          "state": "known"
+        },
+        {
+          "id": "air_quality",
+          "label": "Air quality (AQI)",
+          "weight": 1.0,
+          "unit": "AQI",
+          "sources": [],
+          "refresh": "live",
+          "rule": "planned",
+          "status": "planned",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "planned: AirNow or Open-Meteo air-quality API"
+        }
+      ]
+    },
+    {
+      "id": "legal",
+      "label": "Paperwork and local rules",
+      "weight": 3.77,
+      "score": 86.5,
+      "state": "known",
+      "coverage": 0.33,
+      "freshness": 0.9,
+      "parameters": [
+        {
+          "id": "post_office_5km",
+          "label": "USPS post offices within 5 km (General Delivery mail)",
+          "weight": 2.0,
+          "unit": "count",
+          "sources": [
+            "osm"
+          ],
+          "refresh": "daily",
+          "rule": "count, k=1; private couriers tagged as post offices are excluded",
+          "status": "built",
+          "value": 2.0,
+          "score": 86.5,
+          "state": "known"
+        },
+        {
+          "id": "local_rules",
+          "label": "Camping and sleeping-in-vehicle rules",
+          "weight": 2.0,
+          "unit": "curated",
+          "sources": [
+            "static_tables"
+          ],
+          "refresh": "static",
+          "rule": "curated per county: ban -> 20, no ban found -> 80; empty -> Unknown",
+          "status": "built",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "no curated local rules for this county yet"
+        },
+        {
+          "id": "id_help",
+          "label": "ID and vital-records offices",
+          "weight": 1.0,
+          "unit": "count",
+          "sources": [],
+          "refresh": "static",
+          "rule": "planned",
+          "status": "planned",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "planned: DMV and vital-records office locations"
+        },
+        {
+          "id": "legal_aid",
+          "label": "Civil legal aid offices",
+          "weight": 1.0,
+          "unit": "count",
+          "sources": [],
+          "refresh": "static",
+          "rule": "planned",
+          "status": "planned",
+          "value": null,
+          "score": null,
+          "state": "unknown",
+          "reason": "planned: LSC-funded legal aid office locations"
+        }
+      ]
+    }
+  ],
+  "unknowns": [
+    {
+      "category": "shelter",
+      "parameter": "shelters_3km",
+      "reason": "none found, but OpenStreetMap often misses these; a zero needs Google Places to confirm it (or call 211)"
+    },
+    {
+      "category": "shelter",
+      "parameter": "day_centers_5km",
+      "reason": "none found, but OpenStreetMap often misses these; a zero needs Google Places to confirm it (or call 211)"
+    },
+    {
+      "category": "shelter",
+      "parameter": "bed_pressure",
+      "reason": "beds_per_unsheltered not available"
+    },
+    {
+      "category": "food",
+      "parameter": "restaurant_meals_3km",
+      "reason": "none found; Restaurant Meals is a bonus, so a zero is not held against the town"
+    },
+    {
+      "category": "cost",
+      "parameter": "basket_vs_tfp",
+      "reason": "missing basket_week"
+    },
+    {
+      "category": "cost",
+      "parameter": "gas_vs_us",
+      "reason": "missing gas_regular and gas_regular_us"
+    },
+    {
+      "category": "cost",
+      "parameter": "rent_burden_fmr",
+      "reason": "missing fmr_studio"
+    },
+    {
+      "category": "cost",
+      "parameter": "rent_burden_acs",
+      "reason": "missing median_gross_rent"
+    },
+    {
+      "category": "income",
+      "parameter": "unemployment",
+      "reason": "unemployment_rate not available"
+    },
+    {
+      "category": "mobility",
+      "parameter": "transit_stops_1km",
+      "reason": "no data source answered (Transitland)"
+    },
+    {
+      "category": "health",
+      "parameter": "behavioral_health",
+      "reason": "planned: SAMHSA treatment locator"
+    },
+    {
+      "category": "hygiene",
+      "parameter": "showers_5km",
+      "reason": "none found, but OpenStreetMap rarely maps public showers; ask 211 or a day center"
+    },
+    {
+      "category": "weather",
+      "parameter": "air_quality",
+      "reason": "planned: AirNow or Open-Meteo air-quality API"
+    },
+    {
+      "category": "legal",
+      "parameter": "local_rules",
+      "reason": "no curated local rules for this county yet"
+    },
+    {
+      "category": "legal",
+      "parameter": "id_help",
+      "reason": "planned: DMV and vital-records office locations"
+    },
+    {
+      "category": "legal",
+      "parameter": "legal_aid",
+      "reason": "planned: LSC-funded legal aid office locations"
+    }
+  ],
+  "alerts": [],
+  "place_counts": {
+    "clinic": 2,
+    "community_centre": 1,
+    "drinking_water": 2,
+    "employment_agency": 1,
+    "food_bank": 1,
+    "laundry": 1,
+    "library": 1,
+    "pharmacy": 2,
+    "post_office": 2,
+    "school": 5,
+    "snap_retailer": 10,
+    "toilets": 2
+  },
+  "place_counts_radius_m": 5000,
+  "nearest": {
+    "clinic": [
+      {
+        "id": "osm:node/4042881933",
+        "name": "Montgomery County Health Department",
+        "lat": 37.129457,
+        "lon": -80.4043488,
+        "source": "osm",
+        "tags": {},
+        "distance_m": 498.9,
+        "walk_min": 8.1,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      },
+      {
+        "id": "osm:node/5933297811",
+        "name": "Med Express Urgent Care",
+        "lat": 37.1602181,
+        "lon": -80.4230681,
+        "source": "osm",
+        "tags": {},
+        "distance_m": 4230.9,
+        "walk_min": 68.8,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      }
+    ],
+    "community_centre": [
+      {
+        "id": "osm:way/920626876",
+        "name": "(unnamed)",
+        "lat": 37.1392972,
+        "lon": -80.4061377,
+        "source": "osm",
+        "tags": {},
+        "distance_m": 1593.0,
+        "walk_min": 25.9,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      }
+    ],
+    "drinking_water": [
+      {
+        "id": "osm:node/12094467259",
+        "name": "(unnamed)",
+        "lat": 37.1528195,
+        "lon": -80.4241341,
+        "source": "osm",
+        "tags": {
+          "fee": "no",
+          "access": "yes",
+          "wheelchair": "yes"
+        },
+        "distance_m": 3527.9,
+        "walk_min": 57.3,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      },
+      {
+        "id": "osm:node/12844667650",
+        "name": "(unnamed)",
+        "lat": 37.1579353,
+        "lon": -80.429544,
+        "source": "osm",
+        "tags": {},
+        "distance_m": 4259.7,
+        "walk_min": 69.2,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      }
+    ],
+    "employment_agency": [
+      {
+        "id": "osm:way/1026240730",
+        "name": "Gillmann Services, Inc.",
+        "lat": 37.1425512,
+        "lon": -80.4051024,
+        "source": "osm",
+        "tags": {
+          "opening_hours": "Mo-Fr 07:45-16:30; Sa-Su off",
+          "phone": "+1 540-251-3024",
+          "website": "https://gillmannservices.com/"
+        },
+        "distance_m": 1951.6,
+        "walk_min": 31.7,
+        "hours_known": true,
+        "open_now": false,
+        "closes": null
+      }
+    ],
+    "food_bank": [
+      {
+        "id": "osm:way/1022334571",
+        "name": "Agape Center NRV",
+        "lat": 37.1448246,
+        "lon": -80.4059221,
+        "source": "osm",
+        "tags": {},
+        "distance_m": 2205.9,
+        "walk_min": 35.8,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      }
+    ],
+    "laundry": [
+      {
+        "id": "osm:way/925371159",
+        "name": "E-Z Clean Laundromat",
+        "lat": 37.1346042,
+        "lon": -80.3860429,
+        "source": "osm",
+        "tags": {},
+        "distance_m": 1991.2,
+        "walk_min": 32.4,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      }
+    ],
+    "library": [
+      {
+        "id": "osm:way/880748133",
+        "name": "Christiansburg Library",
+        "lat": 37.1298236,
+        "lon": -80.4137038,
+        "source": "osm",
+        "tags": {
+          "opening_hours": "Mo-Th 09:00-20:00; Fr, Sa 10:00-17:00; Su 13:00-17:00",
+          "phone": "+1 540-382-6964",
+          "website": "https://www.mfrl.org/hours.php?branch=c",
+          "access": "yes",
+          "internet_access": "wlan",
+          "wheelchair": "yes"
+        },
+        "distance_m": 939.7,
+        "walk_min": 15.3,
+        "hours_known": true,
+        "open_now": true,
+        "closes": "17:00"
+      }
+    ],
+    "pharmacy": [
+      {
+        "id": "snapname:619485",
+        "name": "CVS PHARMACY 7543",
+        "lat": 37.136696,
+        "lon": -80.414696,
+        "source": "snap_name",
+        "tags": {
+          "inferred_from": "USDA SNAP store name",
+          "address": "550 N Franklin St, Christiansburg"
+        },
+        "distance_m": 1558.9,
+        "walk_min": 25.3,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      },
+      {
+        "id": "osm:way/165459556",
+        "name": "Walgreens",
+        "lat": 37.162454,
+        "lon": -80.4241075,
+        "source": "osm",
+        "tags": {},
+        "distance_m": 4495.9,
+        "walk_min": 73.1,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      }
+    ],
+    "post_office": [
+      {
+        "id": "osm:way/917629826",
+        "name": "Christiansburg Post Office",
+        "lat": 37.1303122,
+        "lon": -80.4090806,
+        "source": "osm",
+        "tags": {
+          "opening_hours": "Mo-Fr 09:00-13:30",
+          "phone": "+1 540-382-7147",
+          "website": "https://tools.usps.com/locations/home.htm?location=1361153"
+        },
+        "distance_m": 692.7,
+        "walk_min": 11.3,
+        "hours_known": true,
+        "open_now": false,
+        "closes": null
+      },
+      {
+        "id": "osm:way/138313588",
+        "name": "Christiansburg Post Office",
+        "lat": 37.168351,
+        "lon": -80.4172947,
+        "source": "osm",
+        "tags": {
+          "opening_hours": "Mo-Fr 09:00-17:00; Sa 09:00-12:00",
+          "phone": "+1 540-382-8584",
+          "website": "https://tools.usps.com/locations/home.htm?location=1358004"
+        },
+        "distance_m": 4942.1,
+        "walk_min": 80.3,
+        "hours_known": true,
+        "open_now": false,
+        "closes": null
+      }
+    ],
+    "school": [
+      {
+        "id": "nces:510252001021",
+        "name": "CHRISTIANSBURG PRIMARY",
+        "lat": 37.1323,
+        "lon": -80.4154,
+        "source": "urban_ed",
+        "tags": {
+          "level": "primary",
+          "district": "Montgomery County Public Schools",
+          "phone": "(540)382-5175"
+        },
+        "distance_m": 1228.4,
+        "walk_min": 20.0,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      },
+      {
+        "id": "nces:510252002126",
+        "name": "Christiansburg Elementary",
+        "lat": 37.1347,
+        "lon": -80.4166,
+        "source": "urban_ed",
+        "tags": {
+          "level": "primary",
+          "district": "Montgomery County Public Schools",
+          "phone": "(540)382-5172"
+        },
+        "distance_m": 1490.3,
+        "walk_min": 24.2,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      },
+      {
+        "id": "nces:510252001020",
+        "name": "CHRISTIANSBURG MIDDLE",
+        "lat": 37.1227,
+        "lon": -80.4252,
+        "source": "urban_ed",
+        "tags": {
+          "level": "middle",
+          "district": "Montgomery County Public Schools",
+          "phone": "(540)394-2180"
+        },
+        "distance_m": 1809.1,
+        "walk_min": 29.4,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      }
+    ],
+    "snap_retailer": [
+      {
+        "id": "snap:1703789",
+        "name": "High Roller Provisions",
+        "lat": 37.129356,
+        "lon": -80.408463,
+        "source": "snap",
+        "tags": {
+          "store_type": "Specialty Store",
+          "full_grocery": false,
+          "restaurant_meals": false,
+          "incentive_program": null,
+          "address": "4 W Main St, Christiansburg"
+        },
+        "distance_m": 573.5,
+        "walk_min": 9.3,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      },
+      {
+        "id": "snap:1011310",
+        "name": "Speedway 4625",
+        "lat": 37.13028,
+        "lon": -80.403641,
+        "source": "snap",
+        "tags": {
+          "store_type": "Convenience Store",
+          "full_grocery": false,
+          "restaurant_meals": false,
+          "incentive_program": null,
+          "address": "204 Roanoke St, Christiansburg"
+        },
+        "distance_m": 599.3,
+        "walk_min": 9.7,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      },
+      {
+        "id": "snap:754427",
+        "name": "Dollar General Market 9820",
+        "lat": 37.127975,
+        "lon": -80.410934,
+        "source": "snap",
+        "tags": {
+          "store_type": "Super Store",
+          "full_grocery": true,
+          "restaurant_meals": false,
+          "incentive_program": null,
+          "address": "112 W Main St, Christiansburg",
+          "discount_store": true
+        },
+        "distance_m": 621.4,
+        "walk_min": 10.1,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      },
+      {
+        "id": "snap:248386",
+        "name": "Kroger 345",
+        "lat": 37.136528,
+        "lon": -80.41378,
+        "source": "snap",
+        "tags": {
+          "store_type": "Super Store",
+          "full_grocery": true,
+          "restaurant_meals": false,
+          "incentive_program": null,
+          "address": "555 N Franklin St, Christiansburg"
+        },
+        "distance_m": 1499.7,
+        "walk_min": 24.4,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      }
+    ],
+    "toilets": [
+      {
+        "id": "osm:node/12300637503",
+        "name": "(unnamed)",
+        "lat": 37.1575723,
+        "lon": -80.4301084,
+        "source": "osm",
+        "tags": {},
+        "distance_m": 4251.0,
+        "walk_min": 69.1,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      },
+      {
+        "id": "osm:node/12260529978",
+        "name": "(unnamed)",
+        "lat": 37.1592539,
+        "lon": -80.4296838,
+        "source": "osm",
+        "tags": {},
+        "distance_m": 4392.5,
+        "walk_min": 71.4,
+        "hours_known": false,
+        "open_now": null,
+        "closes": null
+      }
+    ]
+  },
+  "local_time": "2026-10-24T13:46-04:00",
+  "time_zone": "America/New_York",
+  "lows_f": [
+    42.8,
+    38.4,
+    38.0,
+    41.4,
+    44.5,
+    41.2,
+    42.6
+  ],
+  "sources": [
+    {
+      "source": "census_geocoder",
+      "status": "ok",
+      "reason": "",
+      "place_count": 0,
+      "measures": {
+        "county_fips": {
+          "id": "county_fips",
+          "value": "51121",
+          "unit": "fips",
+          "source": "census_geocoder",
+          "as_of": null,
+          "note": ""
+        },
+        "county_name": {
+          "id": "county_name",
+          "value": "Montgomery County",
+          "unit": "",
+          "source": "census_geocoder",
+          "as_of": null,
+          "note": ""
+        }
+      },
+      "provenance": {
+        "source": "census_geocoder",
+        "url": "https://geocoding.geo.census.gov/geocoder/",
+        "license": "U.S. Government work (public domain)",
+        "refresh": "annual",
+        "fetched_at": "2026-10-24T17:46:05+00:00",
+        "as_of": null,
+        "mode": "replay"
+      }
+    },
+    {
+      "source": "nws",
+      "status": "ok",
+      "reason": "",
+      "place_count": 0,
+      "measures": {
+        "alerts": {
+          "id": "alerts",
+          "value": [],
+          "unit": "list",
+          "source": "nws",
+          "as_of": "2026-10-24T16:22:01+00:00",
+          "note": ""
+        },
+        "worst_alert_rank": {
+          "id": "worst_alert_rank",
+          "value": -1,
+          "unit": "rank -1..4",
+          "source": "nws",
+          "as_of": null,
+          "note": "-1 means no active alerts"
+        },
+        "nws_city": {
+          "id": "nws_city",
+          "value": "Christiansburg, VA",
+          "unit": "",
+          "source": "nws",
+          "as_of": null,
+          "note": ""
+        },
+        "time_zone": {
+          "id": "time_zone",
+          "value": "America/New_York",
+          "unit": "IANA",
+          "source": "nws",
+          "as_of": null,
+          "note": ""
+        }
+      },
+      "provenance": {
+        "source": "nws",
+        "url": "https://www.weather.gov/documentation/services-web-api",
+        "license": "U.S. Government work (public domain)",
+        "refresh": "live",
+        "fetched_at": "2026-10-24T17:46:05+00:00",
+        "as_of": null,
+        "mode": "replay"
+      }
+    },
+    {
+      "source": "open_meteo",
+      "status": "ok",
+      "reason": "",
+      "place_count": 0,
+      "measures": {
+        "lows_f": {
+          "id": "lows_f",
+          "value": [
+            42.8,
+            38.4,
+            38.0,
+            41.4,
+            44.5,
+            41.2,
+            42.6
+          ],
+          "unit": "\u00b0F",
+          "source": "open_meteo",
+          "as_of": "2026-10-24",
+          "note": ""
+        },
+        "freezing_nights_7d": {
+          "id": "freezing_nights_7d",
+          "value": 0,
+          "unit": "nights",
+          "source": "open_meteo",
+          "as_of": null,
+          "note": ""
+        },
+        "cold_nights_7d": {
+          "id": "cold_nights_7d",
+          "value": 2,
+          "unit": "nights",
+          "source": "open_meteo",
+          "as_of": null,
+          "note": ""
+        },
+        "hot_days_7d": {
+          "id": "hot_days_7d",
+          "value": 0,
+          "unit": "days",
+          "source": "open_meteo",
+          "as_of": null,
+          "note": ""
+        }
+      },
+      "provenance": {
+        "source": "open_meteo",
+        "url": "https://open-meteo.com/",
+        "license": "CC BY 4.0 (free tier: non-commercial use only)",
+        "refresh": "live",
+        "fetched_at": "2026-10-24T17:46:05+00:00",
+        "as_of": null,
+        "mode": "replay"
+      }
+    },
+    {
+      "source": "snap",
+      "status": "ok",
+      "reason": "",
+      "place_count": 10,
+      "measures": {},
+      "provenance": {
+        "source": "snap",
+        "url": "https://www.fna.usda.gov/snap/retailer-locator",
+        "license": "U.S. Government work (public domain)",
+        "refresh": "weekly",
+        "fetched_at": "2026-10-24T17:46:05+00:00",
+        "as_of": "2026-10-21",
+        "mode": "replay"
+      }
+    },
+    {
+      "source": "osm",
+      "status": "ok",
+      "reason": "4 OSM features ignored (not relevant to this user)",
+      "place_count": 19,
+      "measures": {},
+      "provenance": {
+        "source": "osm",
+        "url": "https://www.openstreetmap.org/copyright",
+        "license": "ODbL 1.0 (\u00a9 OpenStreetMap contributors)",
+        "refresh": "daily",
+        "fetched_at": "2026-10-24T17:46:05+00:00",
+        "as_of": "2026-10-24T16:24:06Z",
+        "mode": "replay"
+      }
+    },
+    {
+      "source": "urban_ed",
+      "status": "ok",
+      "reason": "",
+      "place_count": 19,
+      "measures": {},
+      "provenance": {
+        "source": "urban_ed",
+        "url": "https://educationdata.urban.org/documentation/",
+        "license": "Urban Institute Education Data Portal terms; NCES data public domain",
+        "refresh": "annual",
+        "fetched_at": "2026-10-24T17:46:05+00:00",
+        "as_of": "school year 2022-2023",
+        "mode": "replay"
+      }
+    },
+    {
+      "source": "census_acs",
+      "status": "unknown",
+      "reason": "no API key set (census); not captured in fixtures (census_acs/rent_51121: not in fixture set christiansburg_2026-10-24)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null
+    },
+    {
+      "source": "bls_laus",
+      "status": "unknown",
+      "reason": "not captured in fixtures (bls_laus/unemployment_51121: not in fixture set christiansburg_2026-10-24)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null
+    },
+    {
+      "source": "hud_fmr",
+      "status": "unknown",
+      "reason": "no API key set (hud); not captured in fixtures (hud_fmr/fmr_51121: not in fixture set christiansburg_2026-10-24)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null
+    },
+    {
+      "source": "eia",
+      "status": "unknown",
+      "reason": "no API key set (eia); not captured in fixtures (eia/gas_R1Z: not in fixture set christiansburg_2026-10-24)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null
+    },
+    {
+      "source": "google_places",
+      "status": "unknown",
+      "reason": "no API key set (google_maps); not captured in fixtures (google_places/text_shelter: not in fixture set christiansburg_2026-10-24)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null
+    },
+    {
+      "source": "transitland",
+      "status": "unknown",
+      "reason": "no API key set (transitland); not captured in fixtures (transitland/stops: not in fixture set christiansburg_2026-10-24)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null
+    },
+    {
+      "source": "kroger",
+      "status": "unknown",
+      "reason": "no API key set (kroger_id, kroger_secret); not captured in fixtures (kroger/locations: not in fixture set christiansburg_2026-10-24)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null
+    },
+    {
+      "source": "static_tables",
+      "status": "ok",
+      "reason": "",
+      "place_count": 0,
+      "measures": {
+        "min_wage": {
+          "id": "min_wage",
+          "value": 12.77,
+          "unit": "USD/hour",
+          "source": "dol_min_wage",
+          "as_of": "DOL table updated 2026-07-01 (read 2026-10-24)",
+          "note": ""
+        },
+        "tfp_week": {
+          "id": "tfp_week",
+          "value": 73.5,
+          "unit": "USD/week",
+          "source": "usda_tfp",
+          "as_of": "Official USDA Thrifty Food Plan, U.S. average, June 2026 (issued August 2026)",
+          "note": "male 20-50, 4-person household basis"
+        }
+      },
+      "provenance": {
+        "source": "static_tables",
+        "url": "footing/static/",
+        "license": "U.S. Government works (DOL, USDA, HUD); curated rows cite their own source",
+        "refresh": "monthly",
+        "fetched_at": "2026-10-24T17:46:05+00:00",
+        "as_of": null,
+        "mode": "replay"
+      }
+    },
+    {
+      "source": "hrsa",
+      "status": "unknown",
+      "reason": "static/hrsa_sites.csv is empty: download HRSA health center sites first",
+      "place_count": 0,
+      "measures": {},
+      "provenance": {
+        "source": "hrsa",
+        "url": "https://data.hrsa.gov/data/download",
+        "license": "U.S. Government work (public domain)",
+        "refresh": "monthly",
+        "fetched_at": "2026-10-24T17:46:05+00:00",
+        "as_of": null,
+        "mode": "replay"
+      }
+    }
+  ],
+  "excluded_on_purpose": {
+    "crime rates": "Scoring places by crime echoes redlining and steers people away from areas with services.",
+    "demographics (race, income, poverty rate)": "Footing rates access to help, never who lives somewhere."
+  }
+}

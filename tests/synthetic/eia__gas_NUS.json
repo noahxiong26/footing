@@ -1,0 +1,15 @@
+{
+ "_synthetic": "MADE-UP VALUES for parser tests only. Shapes follow each provider's public docs. Never use as data.",
+ "response": {
+  "total": 1,
+  "data": [
+   {
+    "period": "2026-10-19",
+    "duoarea": "NUS",
+    "product": "EPMR",
+    "value": 3.2,
+    "units": "$/GAL"
+   }
+  ]
+ }
+}

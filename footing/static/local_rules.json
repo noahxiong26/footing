@@ -1,0 +1,4 @@
+{
+  "about": "Curated local rules that change whether someone can stay: camping or sleeping-in-public bans, sleeping-in-vehicle rules, safe-parking programs, panhandling ordinances. No national API exists for this (checked 2026-10-24), so it is filled by hand with a citation per row and reviewed before any demo. Empty means Unknown, never 'allowed'.",
+  "by_county_fips": {}
+}

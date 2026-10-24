@@ -1,0 +1,21 @@
+{
+  "fixture_set": "christiansburg_2026-10-24",
+  "point": {"lat": 37.1299, "lon": -80.4089, "label": "Downtown Christiansburg, VA"},
+  "captured_at": "2026-10-24T16:22:00Z",
+  "how": "Captured live from the public APIs through a browser on 2026-10-24 (the build sandbox cannot reach these hosts). Responses are real; some are trimmed as noted.",
+  "files": {
+    "nws__points.json": {"url": "https://api.weather.gov/points/37.1299,-80.4089", "live": true, "trimmed": "kept gridId, gridX, gridY, forecast, county, forecastZone, timeZone, relativeLocation city/state"},
+    "nws__alerts.json": {"url": "https://api.weather.gov/alerts/active?point=37.1299,-80.4089", "live": true, "trimmed": false, "note": "No active alerts at capture time (real result)."},
+    "open_meteo__forecast.json": {"url": "https://api.open-meteo.com/v1/forecast?latitude=37.1299&longitude=-80.4089&daily=temperature_2m_min,temperature_2m_max&temperature_unit=fahrenheit&timezone=America%2FNew_York&forecast_days=7", "live": true, "trimmed": false},
+    "census_geocoder__county.json": {"url": "https://geocoding.geo.census.gov/geocoder/geographies/coordinates?x=-80.4089&y=37.1299&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json", "live": true, "trimmed": false},
+    "snap__retailers.json": {"url": "https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/snap_retailer_location_data/FeatureServer/0/query (envelope -80.43,37.11,-80.38,37.15)", "live": true, "trimmed": "dropped field metadata block; all 10 features kept"},
+    "snap__layer_meta.json": {"url": "https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/snap_retailer_location_data/FeatureServer/0?f=json", "live": true, "trimmed": "kept name, editingInfo, field names"},
+    "osm__amenities.json": {"url": "https://overpass-api.de/api/interpreter (POST, around:8000 of the point)", "live": true, "trimmed": "one business email field removed"},
+    "urban_ed__schools_51.json": {"url": "https://educationdata.urban.org/api/v1/schools/ccd/directory/2022/?fips=51", "live": true, "trimmed": "Montgomery County rows and 14 fields only"}
+  },
+  "not_captured": {
+    "census_acs": "api.census.gov returned a 'Missing Key' page: a key is now required, despite the help page saying 500 keyless queries/day.",
+    "bls_laus": "api.bls.gov returned 'The BLS website is busy' to browser GET requests for both v1 and v2.",
+    "hud_fmr, eia, kroger, google_places, transitland": "Need API keys the team has not created yet."
+  }
+}
