@@ -55,7 +55,8 @@
       sources: "Sources", asOf: "as of",
       top: "Best fits for you", allStates: "All states",
       noRatings: "No ratings yet. Ratings appear here after people who have been somewhere share how it went.",
-      caution: "Before you apply"
+      caution: "Before you apply",
+      tapCloser: "Zoomed in. Now tap the exact spot.", back: "Back"
     },
     es: {
       title: "¿Dónde podrías llegar?",
@@ -82,7 +83,7 @@
       c_access: "Ayuda que puedes usar", c_affordability: "Renta que puedes pagar", c_shelter: "Espacio en albergues",
       c_safety: "Seguridad ante inmigración", c_criminalization: "Leyes contra dormir afuera", c_community: "Lo que dice la gente",
       layer: "Colorear el mapa por", l_fit: "Para ti", l_community: "Opiniones", l_shelter: "Albergues", l_affordability: "Renta", l_safety: "Leyes de inmigración",
-      legendLow: "Poco adecuado", legendHigh: "Muy adecuado", legendUnknown: "Sin datos",
+      legendLow: "Peor", legendHigh: "Mejor", legendUnknown: "Sin datos",
       lo_community: "Mal", hi_community: "Bien", lo_shelter: "Más afuera", hi_shelter: "Más adentro",
       lo_affordability: "Cara", hi_affordability: "Accesible", lo_safety: "Leyes duras", hi_safety: "Protectoras",
       fit: "Para ti", rank: "Puesto", of: "de", confidence: "Qué tan seguros estamos",
@@ -110,13 +111,104 @@
       sources: "Fuentes", asOf: "al",
       top: "Lo mejor para ti", allStates: "Todos los estados",
       noRatings: "Todavía no hay calificaciones. Aparecen aquí cuando la gente que estuvo en un lugar cuenta cómo le fue.",
-      caution: "Antes de solicitar"
+      caution: "Antes de solicitar",
+      tapCloser: "Acercamos el mapa. Ahora toca el lugar exacto.", back: "Volver"
     }
   };
+  /* Spanish for the "why" sentences fit.js builds. fit.js stays English so it matches fit.py exactly
+     (tests/test_fit.py); translation happens only at display time. Notes copied from source documents
+     (KFF, NILC, statutes) are not translated; they keep their English wording and are marked "(en inglés)". */
+  var ES_FIXED = {
+    "SNAP: yes": "SNAP: sí", "SNAP: no": "SNAP: no califica", "SNAP: limited": "SNAP: en parte", "SNAP: varies": "SNAP: depende",
+    "SNAP: yes (disability exemption from the 5-year wait)": "SNAP: sí (la discapacidad te exime de la espera de 5 años)",
+    "SNAP: children can get it now; adults wait 5 years": "SNAP: los niños pueden recibirlo ya; los adultos esperan 5 años",
+    "SNAP: U.S.-citizen children in the family can get it": "SNAP: los niños ciudadanos de la familia pueden recibirlo",
+    "ER care, health centers and emergency Medicaid only": "Solo sala de emergencias, centros de salud y Medicaid de emergencia",
+    "Medicaid expansion state: low-income adults qualify": "Estado con expansión de Medicaid: los adultos de bajos ingresos califican",
+    "No Medicaid expansion; kids, pregnancy or disability can still qualify": "Sin expansión de Medicaid; niños, embarazo o discapacidad aún pueden calificar",
+    "No Medicaid expansion: most adults without kids fall in the coverage gap": "Sin expansión de Medicaid: la mayoría de los adultos sin hijos se quedan sin cobertura",
+    "Many states cover lawfully residing kids and pregnant people now": "Muchos estados cubren ya a niños y embarazadas con residencia legal",
+    "5-year Medicaid wait; Marketplace tax credits available": "Espera de 5 años para Medicaid; hay créditos fiscales del Marketplace",
+    "State covers children regardless of status": "El estado cubre a los niños sin importar su estatus",
+    "Many states cover lawfully residing children": "Muchos estados cubren a niños con residencia legal",
+    "Many states cover lawfully residing pregnant people": "Muchos estados cubren a embarazadas con residencia legal",
+    "No Medicaid for adults since Oct 1, 2026; limited Marketplace help": "Sin Medicaid para adultos desde el 1 de oct. de 2026; poca ayuda del Marketplace",
+    "Emergency Medicaid covers labor and delivery": "El Medicaid de emergencia cubre el parto",
+    "Most states license people with a pending case and work permit": "La mayoría de los estados dan licencia si tienes caso pendiente y permiso de trabajo",
+    "Can get a state ID or license with your documents": "Puedes sacar identificación o licencia estatal con tus documentos",
+    "State requires proof of lawful presence for a license": "El estado pide prueba de presencia legal para la licencia",
+    "You chose not to say your status, so this part is not scored. Help that is open to everyone is listed below.":
+      "Elegiste no decir tu estatus, así que esta parte no se califica. Abajo está la ayuda abierta a todos.",
+    "Add your status (it stays on this phone) to see which programs you can use here.":
+      "Agrega tu estatus (se queda en este teléfono) para ver qué programas puedes usar aquí.",
+    "Shown only if your status could be affected by immigration enforcement.": "Solo se muestra si tu estatus podría verse afectado por la aplicación de leyes de inmigración.",
+    "Not checked: we have not confirmed a statewide camping law either way.": "Sin revisar: no hemos confirmado si hay o no una ley estatal sobre acampar.",
+    "No ratings yet. Be the first to rate a place here.": "Todavía no hay calificaciones. Sé la primera persona en calificar un lugar aquí."
+  };
+  var ES_LABEL = {
+    "Most protective": "La más protectora", "Broad sanctuary protections": "Amplias protecciones de santuario",
+    "Meaningful, more limited protections": "Protecciones reales pero más limitadas", "Smaller steps": "Pasos más pequeños",
+    "No law either way": "Sin ley en ningún sentido", "Mandates participation or bans sanctuary policies": "Obliga a colaborar o prohíbe políticas de santuario",
+    "Broad anti-sanctuary law": "Ley amplia contra santuarios", "Fairly comprehensive anti-immigrant law": "Ley antiinmigrante bastante amplia",
+    "Most far-reaching enforcement laws": "Las leyes de control más duras",
+    "license": "licencia", "limited-purpose license": "licencia de uso limitado", "driving privilege card": "tarjeta de privilegio de manejo",
+    "driver authorization card": "tarjeta de autorización para manejar", "privilege card": "tarjeta de privilegio",
+    "open": "abierto", "limited": "limitado", "closed": "cerrado"
+  };
+  var EN_NOTE = " (en inglés)";
+  var ES_PATTERNS = [
+    [/^State food program: (.*)$/, function (m) { return "Programa estatal de comida: " + m[1] + (m[1] ? EN_NOTE : ""); }],
+    [/^State program for adults: (\w+)\. (.*)$/, function (m) { return "Programa estatal para adultos: " + (ES_LABEL[m[1]] || m[1]) + ". " + m[2] + (m[2] ? EN_NOTE : ""); }],
+    [/^State issues a (.+) regardless of status$/, function (m) { return "El estado da " + (ES_LABEL[m[1]] || m[1]) + " sin importar el estatus"; }],
+    [/^([\d.]+) hours\/week at the \$([\d.]+) minimum wage to afford a 2-bedroom \(\$([\d.]+)\/hr needed\)$/,
+      function (m) { return m[1] + " horas por semana con el salario mínimo de $" + m[2] + " para pagar 2 recámaras (se necesitan $" + m[3] + "/hora)"; }],
+    [/^(\d+)% of ([\d,]+) people without homes slept outside \(Jan 2025 count\)$/,
+      function (m) { return "El " + m[1] + "% de " + m[2] + " personas sin hogar durmió afuera (conteo de enero de 2025)"; }],
+    [/^State law: (.+) \(tier (\d) of 9\)$/, function (m) { return "Ley estatal: " + (ES_LABEL[m[1]] || m[1]) + " (nivel " + m[2] + " de 9)"; }],
+    [/^Statewide camping law: (.*)$/, function (m) { return "Ley estatal contra acampar: " + m[1] + EN_NOTE; }],
+    [/^State law pushes cities to enforce camping bans: (.*)$/, function (m) { return "Una ley estatal presiona a las ciudades para aplicar prohibiciones de acampar: " + m[1] + EN_NOTE; }],
+    [/^Statewide camping law in court: (.*)$/, function (m) { return "Ley estatal contra acampar, en los tribunales: " + m[1] + EN_NOTE; }],
+    [/^(\d+) ratings? from people who have been here$/, function (m) { return m[1] + (m[1] === "1" ? " calificación" : " calificaciones") + " de gente que estuvo aquí"; }]
+  ];
+  function matchPattern(text) {
+    for (var i = 0; i < ES_PATTERNS.length; i++) {
+      var m = text.match(ES_PATTERNS[i][0]);
+      if (m) return ES_PATTERNS[i][1](m);
+    }
+    return null;
+  }
+  function known(text) { return ES_FIXED.hasOwnProperty(text) || matchPattern(text) !== null; }
+  /** Translate one sentence; null when we have no Spanish for it. */
+  function reasonPart(text) { return ES_FIXED.hasOwnProperty(text) ? ES_FIXED[text] : matchPattern(text); }
+  /** Translate a fit.js reason for display. English passes through unchanged.
+      Reasons are joined with "; " by fit.js, but fixed sentences and quoted source notes can contain "; " too,
+      so join the longest run of pieces that is a known sentence, and let a quoted note run until the next
+      piece that is a known sentence on its own. */
+  function reason(lang, text) {
+    if (lang !== "es" || !text) return text;
+    var parts = text.split("; "), out = [], i = 0;
+    while (i < parts.length) {
+      var done = false;
+      for (var j = parts.length; j > i && !done; j--) {
+        var joined = parts.slice(i, j).join("; ");
+        if (ES_FIXED.hasOwnProperty(joined)) { out.push(ES_FIXED[joined]); i = j; done = true; }
+      }
+      if (done) continue;
+      if (matchPattern(parts[i]) !== null) {
+        var k = i + 1;
+        while (k < parts.length && !known(parts[k]) && !ES_FIXED.hasOwnProperty(parts.slice(k, k + 2).join("; "))) k++;
+        var tr = matchPattern(parts.slice(i, k).join("; "));
+        out.push(tr !== null ? tr : parts.slice(i, k).join("; "));
+        i = k; continue;
+      }
+      out.push(parts[i]); i++;
+    }
+    return out.join("; ");
+  }
   function t(lang, key, vars) {
     var s = (S[lang] && S[lang][key]) || S.en[key] || key;
     if (vars) Object.keys(vars).forEach(function (k) { s = s.replace("{" + k + "}", vars[k]); });
     return s;
   }
-  root.FootingI18n = { t: t, strings: S };
+  root.FootingI18n = { t: t, strings: S, reason: reason, _reasonPart: reasonPart };
 })(typeof self !== "undefined" ? self : this);

@@ -10,8 +10,9 @@ What changes compared with the app:
   * no satellite or label tiles (hosted pages can't load outside images), so the vector map stays visible
     when zoomed in; "Hide" blanks the page instead of opening weather.gov
 
-STATUS: generated and served once on 2026-10-24, but the browser run-through was NOT finished.
-Test it (see HANDOFF.md section 8) before showing it to anyone.
+STATUS (2026-10-24, session 3): clicked through end to end by scripts/ui_standalone_smoke.py in headless
+Chromium (software WebGL): intro, about you, map, Virginia, zoom to Christiansburg (21 place dots), rate,
+Spanish, hide. Not yet opened on a real phone or as a hosted claude.ai Artifact.
 """
 from __future__ import annotations
 

@@ -240,7 +240,10 @@
     map.on("click", "states-known", onStateClick);
     map.on("click", "states-unknown", onStateClick);
     map.on("click", function (e) {
-      if (S.view === "rate" && map.getZoom() >= 8) setRatingPoint(e.lngLat.lat, e.lngLat.lng);
+      if (S.view !== "rate") return;
+      // A tap at country or state zoom is tens of km off, so zoom in first and ask for a second, exact tap.
+      if (map.getZoom() < 8) { map.flyTo({ center: e.lngLat, zoom: 11, duration: reduced ? 0 : 1200, essential: true }); toast(t("tapCloser")); return; }
+      setRatingPoint(e.lngLat.lat, e.lngLat.lng);
     });
     ["mousedown", "touchstart", "wheel"].forEach(function (ev) { map.on(ev, stopSpin); });
     map.on("mouseenter", "states-known", function () { map.getCanvas().style.cursor = "pointer"; });
@@ -340,8 +343,12 @@
     var sh = $(".g-sheet");
     if (!sh) return;
     var html = { intro: introView, profile: profileView, top: topView, list: listView, state: stateView, rate: rateView }[S.view]();
-    sh.className = "g-sheet" + (S.view === "profile" || S.view === "rate" || S.view === "list" ? " tall" : "");
+    // The rating form stays short until a spot is picked, so the map is big enough to tap on a phone.
+    var tall = S.view === "profile" || S.view === "list" || (S.view === "rate" && S.ratingPoint);
+    sh.className = "g-sheet" + (tall ? " tall" : "");
     sh.innerHTML = '<button class="g-grip" aria-label="Resize panel" type="button"></button>' + html;
+    if (S.lastView !== S.view || S.lastSelected !== S.selected) sh.scrollTop = 0;   // a new view starts at its title
+    S.lastView = S.view; S.lastSelected = S.selected;
     bindView();
     renderChrome();
     var h = sh.querySelector("h1, h2");
@@ -508,7 +515,7 @@
       return '<div class="g-comp"><span class="name">' + esc(t("c_" + c.id)) + "<em>" + Math.round(100 * c.weight) + "%</em></span>" +
         '<span class="num">' + (unk ? "?" : Math.round(c.score)) + "</span>" +
         '<span class="track' + (unk ? " unknown" : "") + '">' + (unk ? "" : '<span class="fill" style="display:block;width:' + c.score + "%;background:" + rampColor(c.score) + '"></span>') + "</span>" +
-        '<span class="why">' + esc(c.reason) + "</span></div>";
+        '<span class="why">' + esc(I.reason ? I.reason(S.lang, c.reason) : c.reason) + "</span></div>";
     }).join("");
     var rankLine = r.rank ? "<strong>" + esc(t("rank")) + " #" + r.rank + "</strong> " + esc(t("of")) + " " + S.ranked.filter(function (x) { return x.rank; }).length : "";
     return '<h2 id="g-state-title">' + esc(r.name) + "</h2>" +
@@ -542,6 +549,10 @@
       "quiet_place_to_rest", "outlets_wifi", "clean_restrooms", "free_meals_nearby"].map(function (k) {
       return '<button type="button" class="g-chip" data-tag="' + k + '" aria-pressed="' + (r.tags.indexOf(k) !== -1) + '">' + esc(t("tag_" + k)) + "</button>";
     }).join("");
+    if (!S.ratingPoint) {
+      return "<h2>" + esc(t("rateTitle")) + '</h2><p class="g-pick"><strong>' + esc(t("pickSpot")) + "</strong></p><p>" + esc(t("rateHelp")) + "</p>" +
+        '<div class="g-actions"><button class="g-secondary g-wide" data-go="back" type="button">' + esc(t("back")) + "</button></div>";
+    }
     var where = S.ratingPoint ? '<p><strong style="color:var(--g-ink)">' + S.ratingPoint.lat.toFixed(2) + ", " + S.ratingPoint.lon.toFixed(2) + "</strong></p>"
       : "<p>" + esc(t("pickSpot")) + "</p>";
     return "<h2>" + esc(t("rateTitle")) + "</h2><p>" + esc(t("rateHelp")) + "</p>" + where +
@@ -646,6 +657,10 @@
     }
     if (what === "rate") { S.rating = { tags: [] }; S.ratingPoint = null; S.view = "rate"; render(); toast(t("pickSpot")); return; }
     if (what === "send") { sendRating(); return; }
+    if (what === "back") {
+      if (S.ratingMarker) { S.ratingMarker.remove(); S.ratingMarker = null; }
+      S.ratingPoint = null; S.view = S.selected ? "state" : "top"; render(); return;
+    }
   }
 
   function focusHeading() { var h = $(".g-sheet h1, .g-sheet h2"); if (h) h.focus({ preventScroll: true }); }

@@ -84,6 +84,22 @@ def run() -> int:
         page.click("#g-lang")
         page.wait_for_selector("text=Ayuda que puedes usar")
         shot("09_spanish")
+        # Legend labels must never sit under the layer picker (the old Spanish "Sin datos" bug), at 390 and 320 px.
+        for w in (390, 320):
+            page.set_viewport_size({"width": w, "height": 844})
+            page.wait_for_timeout(300)
+            for lang_pass in range(2):
+                hit = page.evaluate("""() => {
+                  const r = (e) => e.getBoundingClientRect(), sel = r(document.querySelector('#g-layer'));
+                  return ['#g-low', '#g-high', '#g-unk'].filter((id) => { const b = r(document.querySelector(id));
+                    return b.right > sel.left && b.left < sel.right && b.bottom > sel.top && b.top < sel.bottom; }); }""")
+                if hit:
+                    errors.append(f"legend {hit} covered by the layer picker at {w}px ({'es' if lang_pass == 0 else 'en'})")
+                page.click("#g-lang")
+        page.set_viewport_size({"width": 390, "height": 844})
+        page.wait_for_selector("text=Ayuda que puedes usar")                # loop above ends in Spanish
+        if "hours/week" in page.inner_text(".g-sheet"):
+            errors.append("Spanish state view still shows the English 'why' sentence for rent")
         page.click("#g-lang")
 
         page.click("#g-listbtn")
