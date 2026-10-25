@@ -1,8 +1,123 @@
 # HANDOFF — Footing (read this first)
 
-Context for any model or person picking up this repo on another computer. First written 2026-10-24
-14:15 ET. Last updated **2026-10-24 ~16:00 ET**, after the globe UI was added. Everything below was true
-at that moment. Run the checks in "Verify the state" before trusting it.
+Last updated **2026-10-24 ~21:20 ET** by the 4th model (Claude Opus 5.5, session 4). The owner stopped the
+session because of a usage cap. The full story is in **`docs/SESSION4_REPORT.md`**: what changed, what is not
+finished and why, the designer notes and the sources. Sections S4.x below are the short version for whoever
+builds next. The older sections from session 3 are kept below them and are still useful, but the S4 sections
+win where they disagree.
+
+## S4.0 What session 4 updated (list this first, per the human notes)
+
+1. Footing is now **Virginia only**. It opens on the 133 counties and independent cities. The 50-state view is
+   behind "All states (beta)".
+2. **Virginia data pipeline:**
+   - `data_raw/` holds the raw captures, documented in `data_raw/README.md`.
+   - `scripts/build_va_localities.py` builds `footing/static/va_localities.json` and validates it against the
+     publisher totals (`--check`).
+3. **Virginia Fit Score with confidence:**
+   - `footing/web/vafit.js` and `footing/vafit.py` produce identical output. `tests/js/run_vafit.js` checks this.
+   - Command line: `python -m footing.vafit --kids --status tps --top 10`.
+4. **Bad coordinates:** `footing/va.py` (`check_point`, `locality_at`) and `/api/va/check`. Ratings refuse
+   points outside Virginia, NaN and open water. Tiles with fewer than 3 ratings are hidden. Each network has a
+   daily cap, keyed on a salted hash.
+5. **New UI** (`footing/web/globe.js`, `globe.css`): the Virginia map, the score mosaic, the reasoning rows with
+   sources, the confidence meter, help places, bedrooms and kids, crime as opt-in, search, and a rating flow
+   with Back.
+6. **8 languages** in `footing/web/i18n_more.js`: en, es, vi, ko, zh, ar (right-to-left), am, fa/Dari
+   (right-to-left). All are machine translated and labeled as such on screen.
+7. **Smaller changes:**
+   - GA and OK are scored as enforcement mandates (25).
+   - Virginia is scored "no statewide ban" (75).
+   - The ACA notes include the 2027 cutoff.
+   - The service worker cache is v6.
+   - The standalone demo includes Virginia.
+8. Tests: **155 pass** (`pytest -q`). The commits are `7936355` and `853aabc`, plus this wrap-up commit.
+
+## S4.1 Unfinished work, in priority order (do these next)
+
+1. **Push to GitHub.**
+   - This session could not: there was no repo access, and the gh token was invalid.
+   - Drive folder `hack 20/25/4th` has `footing.bundle` (full history) and `footing-session4.zip`.
+   - Steps: `git clone footing.bundle footing`, then `cd footing`, then
+     `git remote add origin https://github.com/<owner>/footing.git`, then `git push -u origin main`.
+   - Ask the owner which account to use. Earlier sessions mentioned `jordangangavarapu-cmyk` and
+     `noahxiong26`.
+2. **Rewrite `scripts/ui_globe_smoke.py` for the new UI.** It is out of date and will fail. It still expects
+   `#g-lang` to be a button and the state view.
+   - The new run should cover, at 320, 390 and 1280 px:
+     - intro, then profile (status, kids, bedrooms, crime), then save;
+     - top 5, locality, mosaic and reasons;
+     - search;
+     - layer switch;
+     - every language, including Arabic RTL;
+     - the rating flow (tap far out to zoom in, tap again to pin, send, the locality updates);
+     - Back;
+     - Forget.
+   - Keep the privacy check: no profile word may leave the browser.
+3. **Click through the rating flow and RTL in a real browser.** This has not been done. Fix anything that
+   breaks.
+4. **Publish the standalone demo as a shareable link.**
+   - Build it with `python scripts/build_standalone_demo.py out/demo --fragment` and publish it as a
+     claude.ai Artifact with the `db` capability for ratings.
+   - It is multi-file, so pass `files` for vendor/, data/ and the JS.
+   - A full-page version already builds and loads without errors at `out/demo`.
+5. **Independent fact-check of `va_localities.json`.** A reviewer who did not build it should check 10 random
+   localities: FMR, PIT and HIC, SNAP counts, 287(g), and the 6 local rules. Record the result in
+   `docs/FACT_CHECK.md`.
+6. **Docs:**
+   - Update `README.md` and `FACTORS.md` for Virginia; they still describe the 50-state version.
+   - Add a "Virginia Fit" section to `docs/RATING_FORMULA.md`. Copy the formula from the `vafit.py` docstring
+     and report section 1.
+   - Write `docs/PIPELINE.md`. Report section 3 has the text.
+7. **More local camping rules.** Read the city and county code for the largest localities first: Fairfax,
+   Virginia Beach, Prince William, Loudoun, Chesterfield, Henrico, Norfolk, Chesapeake, Arlington, Richmond,
+   Newport News, Alexandria. Add each as a cited `LOCAL_RULES` row in `scripts/build_va_localities.py`, never
+   from memory.
+8. **Translations:**
+   - Get native review.
+   - Add Tagalog.
+   - Translate the "Details" reasons. This needs templated reasons in both engines; keep parity.
+9. **Record more Virginia towns** for walk-time receipts: Roanoke, Richmond, Blacksburg, Harrisonburg,
+   Alexandria. See `scripts/record_demo_towns.sh`. Gov and OSM sites need a normal network, not this sandbox.
+
+## S4.2 Gotchas learned in session 4
+
+- **Sandbox network.** The sandbox reaches only GitHub and package registries. For government data, use a
+  normal laptop, or the Chrome tool with the write-into-page-and-read-back trick described in
+  `data_raw/README.md`.
+- **Virginia geography:**
+  - Virginia has independent cities, so FIPS codes 510 and above are cities and are separate from the
+    counties around them.
+  - Name matching must handle pairs like "Roanoke city" and "Roanoke County"
+    (`scripts/build_va_localities.py`, `fips_for`).
+  - The us-atlas 10m county shapes erase small cities. Use `web/data/va-localities.json` (TIGER).
+  - TIGER includes water, so `va.py` also checks the us-atlas shoreline.
+- **Engine parity.** The JS and Python engines must match exactly. Use `js_round` and the `num()` printing
+  helper. Sum floats in FIPS order. Run `pytest tests/test_vafit.py` after any change to either engine.
+- **MapLibre locality ids:** the `va` source uses `promoteId: "fips"`, so the expression is `["id"]` and
+  `feature.id` is the FIPS string.
+- **Wording:** shelter data is per Continuum of Care (16 in Virginia, with the Balance of State covering 71
+  localities). Never present it as "this town's shelter".
+- **Three Hampton Roads CoCs** (VA-501, 505, 507) counted shelters only in 2025, so their outside count is
+  carried from 2024 and flagged.
+
+## S4.3 Prompt to paste into the next model
+
+> You are the 5th model continuing Footing, a hackathon app for people experiencing homelessness in Virginia,
+> including immigrants. Read `HANDOFF.md` sections S4.0–S4.2 first, then `docs/SESSION4_REPORT.md`, then
+> `data_raw/README.md`. Run `pytest -q` (expect 155 passed) and `python scripts/build_va_localities.py --check`.
+> Then work through S4.1 in order. Rules from the owner:
+> - Never invent data. Use Unknown with a reason instead.
+> - Say plainly what you could not test.
+> - Keep JS/Python parity, keep the tests green, and add tests for what you change.
+> - "Boil the ocean": complete, tested and documented.
+> - Before you hand off, list what you updated at the top of HANDOFF.md.
+>
+> Before you stop, update S4.0/S4.1 (or add S5.x) and upload to the shared Drive folder "hack 20/25".
+
+---
+
+# Session 3 handoff (older; kept for reference)
 
 ## 0. Where things stand right now (read this if you are taking over)
 
