@@ -56,6 +56,12 @@ was captured**, including the checks on the tile totals.
 files above. Both captures are kept, because comparing them is the only real check either one has: rent
 matches for all 133 localities and the CoC mapping matches for all 133. See `docs/FACT_CHECK.md`.
 
+One note for readers: `second_capture_hud_coc_membership_va.json` records its method as using
+`scripts/va_geo.py`, a script the merge retired along with the rest of `main`'s second engine. The file is a
+capture and has not been edited, so the reference stands as the history of how it was made; the script
+itself is in git history (`git show origin/main:scripts/va_geo.py`), and locality lookup now lives in
+`footing/va.py` on Census TIGER shapes rather than the 1:10M file that note describes.
+
 These files were under `fixtures/` until the merge. That folder is for recorded replay sets for the receipt
 pipeline, each with a `MANIFEST.json` naming one point; a statewide capture dropped in there crashed
 `/api/healthz` and the receipt, plan and tonight endpoints, because the resolver assumed every manifest had
