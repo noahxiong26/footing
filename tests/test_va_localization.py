@@ -65,7 +65,7 @@ def corpus():
     for kids in (False, True):
         for fips in sorted(VA["localities"]):
             requests.append({"fips": fips, "profile": {"status": "undocumented", "show_crime": True,
-                "household": {"kids": kids, "bedrooms": int(fips) % 5}}})
+                "household": {"kids": kids, "bedrooms": int(fips) % 9}}})
     # Every saved block, including zero counts; source/date provenance must survive.
     for tile, counts in VA["incident_tiles"].items():
         requests.append({"fips": counts["fips"], "profile": {"show_crime": True}, "tile": tile})

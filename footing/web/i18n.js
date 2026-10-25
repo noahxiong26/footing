@@ -325,7 +325,8 @@
       var text = template.replace(/\{(\w+)\}/g, function (_, key) {
         if (!Object.prototype.hasOwnProperty.call(values, key)) throw new Error("Missing Virginia reason value: " + key);
         if (segment.key === "rent" && key === "size") {
-          var size = S[lang] && S[lang]["sz" + values.size];
+          var size = S[lang] && (S[lang]["sz" + values.size] ||
+            (values.size > 4 && S[lang].szMany ? S[lang].szMany.replace("{n}", values.size) : null));
           if (!size) throw new Error("Missing Virginia bedroom translation");
           return size;
         }

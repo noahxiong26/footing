@@ -67,6 +67,31 @@ profile. 11 new strings in all 9 languages (machine translated). Checked in Chro
 1280 (ar): every tab reaches its screen and is marked, Cancel keeps answers, confirm clears them and keeps the
 language, no sideways scroll, no page errors; standalone smoke passes. The full globe smoke was not rerun.
 
+**Owner feedback round (Version 4).**
+- **About you is five numbered steps** (papers, household, situation, what matters most, crime reports) with a
+  sticky one-row action bar. Situation answers are grouped (Right now / ID / Background / Age). "Some family are
+  U.S. citizens" is removed from the UI and dropped from saved profiles; `fit.js` still reads `household.mixed`
+  if an old profile has it.
+- **Bedrooms are a typed number with − / +** (0-8, empty = automatic: 1, or 2 with kids). Both engines use
+  `fmr_for`/`fmrFor`: HUD's published FMR for 0-4 and the 4-bedroom FMR + 15% per extra bedroom above that
+  (65 FR 57715, read 2026-10-25), with a `rent_big` reason segment in all 9 languages. Parity tested at 6.
+- **What matters most shows ranks only** (no percentages). Rows cool from the top; a live preview under the list
+  shows the top 3 places for the current order and how far each moved (`previewBlock`, plain `fitScore`, no
+  sampling). Crime wording is now "Use crime reports in my score?" with Yes/No answers.
+- **Layout:** the panel and rail start at `--top-h` (measured top-bar height) + 8 px, so they never sit under the
+  nav; on phones a tall sheet stops below it.
+- **211 buttons say what 211 is**; "Forget my answers" now reads "Reset my answers".
+- **Seven subsidized programs added to `eligibility.json`:** income-limited (tax-credit) apartments, rapid
+  re-housing/eviction help, HUD-VASH, LIHEAP, Lifeline, school meals, child care/Head Start. LIHEAP (HHS IM
+  1998-25), Lifeline (Benton on the May 28, 2026 OLC opinion) and child care (CLASP, June 2026) were read; the
+  Virginia Housing Search, VA HUD-VASH, Virginia DSS and FCC pages are cited as program pages and marked "not
+  read for this row". **These rows need the same independent check as the rest of `docs/FACT_CHECK.md`.**
+- **Programs are grouped** yes → some → check → no, with a gap between groups.
+- **Everyday costs card (ROUGH DEMO ESTIMATE, owner request):** food, phone, getting around (0 where buses are
+  free), laundry/personal care, from fixed amounts scaled by the locality's 1-bedroom FMR against the Virginia
+  median. Labelled "Estimate", explained on the card, **never counted in the score**. Replace with real data
+  (e.g. BLS/USDA plans) before any real use.
+
 **UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
 1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the
    layer picker is cut to "Angkop para"; the brand is cut to "FOOTIN". Consider shorter legend labels or a

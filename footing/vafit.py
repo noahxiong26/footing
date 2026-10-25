@@ -84,23 +84,39 @@ def commas(n) -> str:
     return f"{int(js_round(n)):,}"
 
 
+MAX_BEDROOMS = 8
+
+
 def bedrooms(profile: dict) -> int:
-    """Bedrooms the person needs: their own choice (0-4), else 2 with kids, else 1."""
+    """Bedrooms the person needs: their own whole number (0-8), else 2 with kids, else 1."""
     hh = profile.get("household") or {}
     b = hh.get("bedrooms")
-    if isinstance(b, (int, float)) and not isinstance(b, bool) and 0 <= b <= 4 and int(b) == b:
+    if isinstance(b, (int, float)) and not isinstance(b, bool) and 0 <= b <= MAX_BEDROOMS and int(b) == b:
         return int(b)
     return 2 if hh.get("kids") else 1
 
 
+def fmr_for(loc: dict, b: int) -> int:
+    """HUD publishes 0-4 bedrooms. Larger units: the 4-bedroom FMR plus 15% per extra bedroom
+    (HUD's published rule, e.g. 65 FR 57715). Rounded to whole dollars like the published FMRs."""
+    by = loc["fmr"]["by_bedrooms"]
+    return by[b] if b <= 4 else int(js_round(by[4] * (1 + 0.15 * (b - 4))))
+
+
+def bedroom_word(b: int) -> str:
+    return BEDROOM_WORD[b] if b <= 4 else f"{b}-bedroom"
+
+
 def rent_component(loc, wage, profile):
     b = bedrooms(profile)
-    rent = loc["fmr"]["by_bedrooms"][b]
+    rent = fmr_for(loc, b)
     hours = rent * 12 / (0.30 * 52 * wage)
+    big = (" HUD sets rents above 4 bedrooms at the 4-bedroom rent plus 15% for each extra bedroom."
+           if b > 4 else "")
     return {"score": round1(linear(hours, 40, 140)),
-            "reason": f"{money(rent)}/month for a {BEDROOM_WORD[b]} (HUD fair market rent, FY2026, {loc['fmr']['area']}). "
+            "reason": f"{money(rent)}/month for a {bedroom_word(b)} (HUD fair market rent, FY2026, {loc['fmr']['area']}). "
                       f"At Virginia's ${wage:.2f} minimum wage that takes {int(js_round(hours))} hours of work a week "
-                      f"to keep rent at 30% of pay.",
+                      f"to keep rent at 30% of pay." + big,
             "parts": {"rent": rent, "bedrooms": b, "hours": round1(hours)}}
 
 
@@ -287,10 +303,12 @@ def _reason_data(va, fips, profile, out):
             add(component, "recorded_note", text=text)
 
     b = bedrooms(profile)
-    rent = loc["fmr"]["by_bedrooms"][b]
+    rent = fmr_for(loc, b)
     wage = state["min_wage"]
     add("rent", "rent", rent=money(rent), size=b, area=loc["fmr"]["area"],
         wage=f"{wage:.2f}", hours=int(js_round(rent * 12 / (0.30 * 52 * wage))))
+    if b > 4:
+        add("rent", "rent_big")
     c = loc["coc"]
     kids = bool((profile.get("household") or {}).get("kids"))
     p = out["shelter"]["parts"]

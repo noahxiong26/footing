@@ -316,3 +316,81 @@ body.on-globe > header.top, body.on-globe > main#view { display: none; }
   .g-toast { top: 76px; }
 }
 @media (prefers-reduced-motion: reduce) { .g-nav { scroll-behavior: auto; } }
+
+/* ---- S9: About you as numbered steps ---- */
+.g-steps { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 14px; counter-reset: none; }
+.g-step { border: 1px solid var(--g-line); border-radius: 14px; padding: 12px 14px 14px; background: rgba(232, 236, 244, 0.025); }
+.g-sheet .g-step-h { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; font: 700 17px/1.2 var(--sign); }
+.g-step-h .n { flex: 0 0 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--lamp); color: #10131c; font: 800 14px var(--sign); }
+.g-step .g-fs legend { font: 600 15px/1.3 var(--sans); color: var(--g-ink); padding: 0; margin-bottom: 2px; }
+.g-grp { display: grid; grid-template-columns: 8.5em 1fr; gap: 6px 12px; align-items: center; padding: 8px 0; border-top: 1px dashed var(--g-line); }
+.g-grp:first-of-type { border-top: 0; padding-top: 2px; }
+.g-grp-l { font: 600 12px/1.3 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--g-ink-2); }
+@media (max-width: 420px) { .g-grp { grid-template-columns: 1fr; } }
+.g-beds { padding-top: 10px; border-top: 1px dashed var(--g-line); margin-top: 6px; }
+.g-beds label { display: block; font: 600 14px var(--sans); color: var(--g-ink); margin-bottom: 6px; }
+.g-stepper { display: inline-grid; grid-template-columns: 44px 72px 44px; border: 1px solid var(--g-line); border-radius: 12px; overflow: hidden; }
+.g-stepper button { height: 44px; border: 0; background: rgba(232, 236, 244, 0.06); color: var(--g-ink); font-size: 20px; cursor: pointer; }
+.g-stepper button:hover { background: rgba(232, 236, 244, 0.12); }
+.g-stepper input { width: 72px; height: 44px; border: 0; border-inline: 1px solid var(--g-line); background: transparent; color: var(--g-ink);
+  font: 800 20px var(--sign); text-align: center; -moz-appearance: textfield; appearance: textfield; }
+.g-stepper input::-webkit-outer-spin-button, .g-stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.g-stepper input::placeholder { color: var(--g-ink-2); opacity: 0.7; }
+.g-stepper input:focus-visible, .g-stepper button:focus-visible { outline: 3px solid var(--lamp); outline-offset: -3px; }
+
+/* priorities: a ranking you can feel. The top row glows; each row below cools. No percentages. */
+.g-pri li { grid-template-columns: 40px 1fr 44px 44px; padding: 4px 4px 4px 4px; position: relative; overflow: hidden;
+  border-color: color-mix(in srgb, var(--lamp) calc(var(--heat, 0) * 70%), var(--g-line));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--lamp) calc(var(--heat, 0) * 18%), transparent), transparent 70%); }
+.g-pri .rk { font: 800 22px/1 var(--sign); text-align: center; font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, var(--lamp) calc(var(--heat, 0) * 100%), var(--g-ink-2)); }
+.g-pri .nm { font: 600 15px/1.25 var(--sans); color: var(--g-ink); }
+.g-pri .nm small { display: block; font: 700 11px var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--lamp); margin-top: 2px; }
+.g-pri .w, .g-pri .wbar { display: none; }
+.g-preview { margin-top: 12px; padding: 10px 12px; border-radius: 12px; border: 1px dashed var(--lamp); background: rgba(242, 193, 78, 0.05); }
+.g-preview p { margin: 0 0 6px; }
+.g-preview ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; counter-reset: pv; }
+.g-preview li { display: grid; grid-template-columns: 22px 1fr auto auto; align-items: center; gap: 8px; counter-increment: pv; }
+.g-preview li::before { content: counter(pv); font: 800 14px var(--sign); color: var(--g-ink-2); text-align: center; }
+.g-preview .pn { font: 600 14.5px var(--sans); color: var(--g-ink); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.g-preview .ps { font: 800 14px var(--sign); padding: 2px 8px; border-radius: 8px; font-variant-numeric: tabular-nums; }
+.g-preview .mv { font: 700 12px var(--sans); animation: g-pop 0.5s ease-out; }
+.g-preview .mv.up, .g-preview .mv.new { color: var(--ok); }
+.g-preview .mv.down { color: var(--no); }
+@keyframes g-pop { from { transform: translateY(-4px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .g-preview .mv { animation: none; } }
+.g-about-actions { position: sticky; z-index: 2; bottom: calc(-1 * max(16px, env(safe-area-inset-bottom))); margin-inline: -16px;
+  padding: 10px 16px max(16px, env(safe-area-inset-bottom)); background: #0a0e1b; border-top: 1px solid var(--g-line);
+  grid-template-columns: 3fr 2fr; box-shadow: 0 -12px 16px -8px #0a0e1b; }
+.g-about-actions .g-wide { grid-column: auto; }
+.g-about-actions .g-secondary { background: #0a0e1b; min-height: 48px; font-size: 14.5px; }
+.g-about-actions .g-primary { min-height: 48px; }
+html.g-desk .g-about-actions { margin-inline: -24px; padding-inline: 24px; bottom: -24px; padding-bottom: 24px; }
+
+/* 211 says what it is */
+.g-211 { display: flex; flex-direction: column; justify-content: center; align-items: center; line-height: 1.15; text-align: center; padding-block: 6px; }
+.g-211 small { font: 500 11.5px/1.25 var(--sans); color: var(--g-ink-2); margin-top: 2px; }
+
+/* everyday cost estimate: visibly an estimate, not a scored part */
+.g-cost { margin: 16px 0 6px; padding: 12px 14px; border-radius: 14px; border: 1px dashed var(--g-ink-2); background: rgba(232, 236, 244, 0.03); }
+.g-cost .hd { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.g-sheet .g-cost h3 { margin: 0; }
+.g-cost .est { font: 700 11px var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--g-ink-2); border: 1px solid var(--g-ink-2); border-radius: 10px; padding: 2px 8px; }
+.g-sheet .g-cost-total { font: 800 22px/1.2 var(--sign); color: var(--g-ink); margin: 8px 0 0; }
+.g-cost ul { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 4px; }
+.g-cost li { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--g-ink-2); font-variant-numeric: tabular-nums; }
+.g-cost li span:last-child { color: var(--g-ink); font-weight: 600; }
+
+/* programs: same answers together, with a gap between groups */
+.g-progs li.g-pg-start { margin-top: 10px; }
+
+/* the panel and list always start below the top bar, however many rows it wraps to */
+@media (min-width: 900px) {
+  .g-sheet, .g-sheet.tall, .g-sheet.short { top: calc(var(--top-h, 68px) + 8px); }
+}
+@media (min-width: 1100px) {
+  .g-rail, html.g-desk .g-sheet, html.g-desk .g-sheet.tall, html.g-desk .g-sheet.short { top: calc(var(--top-h, 68px) + 8px); }
+}
+@media (max-width: 899px) {
+  .g-sheet.tall { max-height: calc(100% - var(--top-h, 110px) - 12px); }
+}

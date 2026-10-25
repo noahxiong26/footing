@@ -59,19 +59,27 @@
   function commas(n) { return Math.round(n).toLocaleString("en-US"); }
 
   /** Bedrooms the person needs: their own choice (0-4), else 2 with kids, else 1. */
+  var MAX_BEDROOMS = 8;
   function bedrooms(profile) {
     var hh = profile.household || {};
     var b = hh.bedrooms;
-    if (typeof b === "number" && b >= 0 && b <= 4 && Math.floor(b) === b) return b;
+    if (typeof b === "number" && b >= 0 && b <= MAX_BEDROOMS && Math.floor(b) === b) return b;
     return hh.kids ? 2 : 1;
   }
+  /** HUD publishes 0-4 bedrooms; larger units are the 4-bedroom FMR plus 15% per extra bedroom. */
+  function fmrFor(loc, b) {
+    var by = loc.fmr.by_bedrooms;
+    return b <= 4 ? by[b] : Math.round(by[4] * (1 + 0.15 * (b - 4)));
+  }
+  function bedroomWord(b) { return b <= 4 ? BEDROOM_WORD[b] : b + "-bedroom"; }
 
   function rentComponent(loc, wage, profile) {
-    var b = bedrooms(profile), rent = loc.fmr.by_bedrooms[b];
+    var b = bedrooms(profile), rent = fmrFor(loc, b);
     var hours = rent * 12 / (0.30 * 52 * wage);
     return { score: round1(linear(hours, 40, 140)),
-      reason: money(rent) + "/month for a " + BEDROOM_WORD[b] + " (HUD fair market rent, FY2026, " + loc.fmr.area + "). At Virginia's $" +
-        wage.toFixed(2) + " minimum wage that takes " + Math.round(hours) + " hours of work a week to keep rent at 30% of pay.",
+      reason: money(rent) + "/month for a " + bedroomWord(b) + " (HUD fair market rent, FY2026, " + loc.fmr.area + "). At Virginia's $" +
+        wage.toFixed(2) + " minimum wage that takes " + Math.round(hours) + " hours of work a week to keep rent at 30% of pay." +
+        (b > 4 ? " HUD sets rents above 4 bedrooms at the 4-bedroom rent plus 15% for each extra bedroom." : ""),
       parts: { rent: rent, bedrooms: b, hours: round1(hours) } };
   }
 
@@ -216,9 +224,10 @@
       out[component].reason_data.segments.push({ key: key, vars: values || {} });
     }
     function note(component, text) { if (text) add(component, "recorded_note", { text: text }); }
-    var b = bedrooms(profile), rent = loc.fmr.by_bedrooms[b], wage = state.min_wage;
+    var b = bedrooms(profile), rent = fmrFor(loc, b), wage = state.min_wage;
     add("rent", "rent", { rent: money(rent), size: b, area: loc.fmr.area,
       wage: wage.toFixed(2), hours: Math.round(rent * 12 / (0.30 * 52 * wage)) });
+    if (b > 4) add("rent", "rent_big");
     var c = loc.coc, kids = !!(profile.household || {}).kids, p = out.shelter.parts;
     add("shelter", "shelter", { name: c.name, pct: Math.round(100 * (c.unsheltered / c.pit_total)), total: commas(c.pit_total) });
     add("shelter", p.people > 0 ? (kids ? "beds_family" : "beds") : (kids ? "beds_family_none" : "beds_none"),
@@ -355,7 +364,7 @@
     return results;
   }
 
-  return { COMPONENTS: COMPONENTS, bedrooms: bedrooms, components: function (va, f, p, c, elig, tile) { return components(va, f, withElig(p, elig), c, tile); },
+  return { COMPONENTS: COMPONENTS, bedrooms: bedrooms, fmrFor: fmrFor, MAX_BEDROOMS: MAX_BEDROOMS, components: function (va, f, p, c, elig, tile) { return components(va, f, withElig(p, elig), c, tile); },
     tileOf: tileOf,
     defaultPriorities: defaultPriorities, fitScore: fitScore, rankLocalities: rankLocalities };
 });

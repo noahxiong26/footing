@@ -117,7 +117,9 @@ def run() -> int:
                 page.click("[data-go=profile]")
                 page.check("input[name=status][value=undocumented]")
                 page.click("[data-chip='household.kids']")
-                page.click("[data-chip='household.mixed']")
+                page.click("[data-chip='household.partner']")
+                check(page.locator("[data-chip='household.mixed']").count() == 0, "the retired 'some family are citizens' option is back")
+                page.fill("#g-beds", "6")                       # typed bedrooms: above HUD's 4, uses the +15% rule
                 page.click("[data-chip='situation.car']")
                 page.click("[data-crime='1']")
                 before = page.inner_text(".g-pri")

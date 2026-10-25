@@ -588,6 +588,8 @@
   }
 
   function updatePeek() {
+    var top = $(".g-top");
+    if (top) document.documentElement.style.setProperty("--top-h", top.offsetHeight + "px");
     var sh = $(".g-sheet");
     if (sh) document.documentElement.style.setProperty("--sheet-peek", Math.min(sh.offsetHeight, window.innerHeight * 0.86) + "px");
   }
@@ -676,7 +678,7 @@
       '<div class="g-actions"><button class="g-primary" data-go="profile" type="button">' + esc(t("start")) + "</button>" +
       '<button class="g-secondary" data-go="skip" type="button">' + esc(t("skip")) + "</button>" +
       (B.standalone ? "" : '<a class="g-secondary" href="#/start">' + esc(t("nearMe")) + "</a>") +
-      '<a class="g-secondary" href="tel:211">' + esc(t("call211short")) + "</a></div>";
+      '' + call211Btn() + "</div>";
   }
 
   /** "Start over": an in-page confirmation (hosted pages cannot show confirm()). */
@@ -686,6 +688,7 @@
       '<button class="g-secondary" data-go="reset-cancel" type="button">' + esc(t("reset_cancel")) + "</button></div>";
   }
 
+  /** About you, as five numbered steps. Each step is one kind of question, so the screen reads top to bottom. */
   function profileView() {
     var p = draft(), hh = p.household || {}, sit = p.situation || {};
     var statuses = S.elig.statuses.map(function (s) {
@@ -698,24 +701,43 @@
     var ages = [["18_24", "age18"], ["25_49", "age25"], ["50_61", "age50"], ["62_plus", "age62"]].map(function (a) {
       return '<button type="button" class="g-chip" data-age="' + a[0] + '" aria-pressed="' + (p.age_band === a[0]) + '">' + esc(t(a[1])) + "</button>";
     }).join("");
-    var beds = [["auto", "bedAuto"], [0, "bed0"], [1, "bed1"], [2, "bed2"], [3, "bed3"], [4, "bed4"]].map(function (b) {
-      var on = b[0] === "auto" ? (hh.bedrooms === undefined || hh.bedrooms === null) : hh.bedrooms === b[0];
-      return '<button type="button" class="g-chip" data-bed="' + b[0] + '" aria-pressed="' + on + '">' + esc(t(b[1])) + "</button>";
-    }).join("");
-    var crime = isVa() ? "<h3>" + esc(t("crimeQ")) + "</h3><p>" + esc(t("crimeHelp")) + '</p><div class="g-chips">' +
+    var group = function (label, html) {
+      return '<div class="g-grp"><span class="g-grp-l">' + esc(label) + '</span><div class="g-chips">' + html + "</div></div>";
+    };
+    var step = function (n, title, body) {
+      return '<li class="g-step"><h3 class="g-step-h"><span class="n" aria-hidden="true">' + n + "</span>" + esc(title) + "</h3>" + body + "</li>";
+    };
+    var beds = "";
+    if (isVa()) {
+      var has = typeof hh.bedrooms === "number";
+      beds = '<div class="g-beds"><label for="g-beds">' + esc(t("bedroomsQ")) + '</label><div class="g-stepper">' +
+        '<button type="button" data-bedstep="-1" aria-label="' + esc(t("down")) + '">&minus;</button>' +
+        '<input id="g-beds" type="number" inputmode="numeric" min="0" max="' + VaFit.MAX_BEDROOMS + '" step="1" value="' + (has ? hh.bedrooms : "") +
+        '" placeholder="' + bedAuto(p) + '" aria-describedby="g-beds-hint">' +
+        '<button type="button" data-bedstep="1" aria-label="' + esc(t("up")) + '">+</button></div>' +
+        '<p class="g-small" id="g-beds-hint">' + esc(t("bedHint")) + "</p></div>";
+    }
+    var crime = isVa() ? step(5, t("step_crime"), "<p><strong>" + esc(t("crimeQ")) + "</strong></p><p>" + esc(t("crimeHelp")) + '</p><div class="g-chips">' +
       '<button type="button" class="g-chip" data-crime="0" aria-pressed="' + !p.show_crime + '">' + esc(t("crimeOff")) + "</button>" +
-      '<button type="button" class="g-chip" data-crime="1" aria-pressed="' + !!p.show_crime + '">' + esc(t("crimeOn")) + "</button></div>" : "";
-    return "<h2>" + esc(t("aboutYou")) + '</h2><div class="g-lock">' + LOCK + "<span>" + esc(t("privacy")) + "</span></div>" + machineNote() +
-      '<fieldset class="g-fs"><legend><h3>' + esc(t("statusQ")) + "</h3></legend>" +
-      "<p>" + esc(t("statusHelp")) + '</p><div class="g-status">' + statuses + "</div></fieldset>" +
-      "<h3>" + esc(t("whoQ")) + '</h3><div class="g-chips">' + ["kids", "pregnant", "partner", "pets", "mixed"].map(function (k) { return chip("household", k); }).join("") + "</div>" +
-      (isVa() ? "<h3>" + esc(t("bedroomsQ")) + '</h3><div class="g-chips g-beds">' + beds + "</div>" : "") +
-      "<h3>" + esc(t("situationQ")) + '</h3><div class="g-chips">' + ["tonight", "car", "no_id", "veteran", "disability"].map(function (k) { return chip("situation", k); }).join("") + "</div>" +
-      "<h3>" + esc(t("ageQ")) + '</h3><div class="g-chips">' + ages + "</div>" +
-      crime + priorityBlock(p) +
-      '<div class="g-actions"><button class="g-primary g-wide" data-go="save" type="button">' + esc(t("showMap")) + "</button>" +
+      '<button type="button" class="g-chip" data-crime="1" aria-pressed="' + !!p.show_crime + '">' + esc(t("crimeOn")) + "</button></div>") : "";
+    return '<h2 class="g-about-h">' + esc(t("aboutYou")) + '</h2><div class="g-lock">' + LOCK + "<span>" + esc(t("privacy")) + "</span></div>" + machineNote() +
+      '<ol class="g-steps">' +
+      step(1, t("step_papers"), '<fieldset class="g-fs"><legend>' + esc(t("statusQ")) + "</legend><p>" + esc(t("statusHelp")) + '</p><div class="g-status">' + statuses + "</div></fieldset>") +
+      step(2, t("step_home"), group(t("whoQ"), ["kids", "pregnant", "partner", "pets"].map(function (k) { return chip("household", k); }).join("")) + beds) +
+      step(3, t("step_now"), group(t("grp_now"), chip("situation", "tonight") + chip("situation", "car")) +
+        group(t("grp_id"), chip("situation", "no_id")) + group(t("grp_bg"), chip("situation", "veteran") + chip("situation", "disability")) +
+        group(t("ageQ"), ages)) +
+      step(4, t("step_matter"), '<div class="g-pri-wrap">' + priorityBlock(p) + "</div>") +
+      crime + "</ol>" +
+      '<div class="g-actions g-about-actions"><button class="g-primary g-wide" data-go="save" type="button">' + esc(t("showMap")) + "</button>" +
       '<button class="g-secondary g-wide" data-go="forget" type="button">' + esc(t("forget")) + "</button></div>";
   }
+
+  function bedAuto(p) {
+    var q = JSON.parse(JSON.stringify(p)); q.household = q.household || {}; delete q.household.bedrooms;
+    return VaFit.bedrooms(q);
+  }
+  function szLabel(b) { return b <= 4 ? t("sz" + b) : t("szMany", { n: b }); }
 
   function currentOrder(p) {
     var prof = JSON.parse(JSON.stringify(p || S.profile || defaultProfile()));
@@ -735,14 +757,36 @@
     return ch2.filter(function (k) { return sample[k] !== undefined; });
   }
 
+  /** Ranking only: the order is what the person controls, so the weights stay out of sight. A live preview shows
+   *  what that order does to their best matches, with how far each place moved since the last change. */
+  var _prevTop = null;
   function priorityBlock(p) {
-    var order = currentOrder(p), w = Fit.rocWeights(order.length);
-    return "<h3>" + esc(t("priQ")) + "</h3><p>" + esc(t("priHelp")) + '</p><ol class="g-pri">' + order.map(function (k, i) {
-      return "<li><span>" + esc(t("c_" + k)) + '</span><span class="w">' + Math.round(100 * w[i]) + "%</span>" +
+    var order = currentOrder(p), n = order.length;
+    var list = '<ol class="g-pri">' + order.map(function (k, i) {
+      var heat = 1 - i / Math.max(1, n - 1);
+      return '<li style="--heat:' + heat.toFixed(2) + '"><span class="rk" aria-hidden="true">' + (i + 1) + '</span><span class="nm">' + esc(t("c_" + k)) +
+        (i === 0 ? '<small>' + esc(t("pri_top")) + "</small>" : "") + "</span>" +
         '<button type="button" data-pri="' + k + '" data-dir="-1" aria-label="' + esc(t("up") + ": " + t("c_" + k)) + '"' + (i === 0 ? " disabled" : "") + ">&uarr;</button>" +
-        '<button type="button" data-pri="' + k + '" data-dir="1" aria-label="' + esc(t("down") + ": " + t("c_" + k)) + '"' + (i === order.length - 1 ? " disabled" : "") + ">&darr;</button>" +
-        '<span class="wbar" style="width:' + (100 * w[i] / w[0]).toFixed(1) + '%"></span></li>';
+        '<button type="button" data-pri="' + k + '" data-dir="1" aria-label="' + esc(t("down") + ": " + t("c_" + k)) + '"' + (i === n - 1 ? " disabled" : "") + ">&darr;</button></li>";
     }).join("") + "</ol>";
+    return "<p>" + esc(t("priHelp")) + "</p>" + list + (isVa() && S.va ? previewBlock(p) : "");
+  }
+
+  function previewBlock(p) {
+    var prof = JSON.parse(JSON.stringify(p)), h = (S.heat || {}).localities || {};
+    var top = Object.keys(S.va.localities).map(function (f) {
+      var r = VaFit.fitScore(S.elig, S.va, f, prof, h);
+      return { fips: f, name: r.name, score: r.score };
+    }).filter(function (r) { return r.score !== null; })
+      .sort(function (a, b) { return b.score - a.score || (a.name < b.name ? -1 : 1); }).slice(0, 3);
+    var before = _prevTop || [];
+    _prevTop = top.map(function (r) { return r.fips; });
+    return '<div class="g-preview" aria-live="polite"><p class="g-small">' + esc(t("pri_preview")) + '</p><ol>' + top.map(function (r, i) {
+      var was = before.indexOf(r.fips), mv = !before.length ? "" : was === -1 ? '<span class="mv new">&#9650;</span>' :
+        was > i ? '<span class="mv up">&#9650;' + (was - i) + "</span>" : was < i ? '<span class="mv down">&#9660;' + (i - was) + "</span>" : "";
+      return '<li><span class="pn">' + esc(r.name) + "</span>" + mv + '<span class="ps" style="background:' + rampColor(r.score) + ";color:" + inkOn(r.score) + '">' +
+        Math.round(r.score) + "</span></li>";
+    }).join("") + "</ol></div>";
   }
 
   function scoreBadge(score) {
@@ -784,7 +828,7 @@
     var bits = [];
     if (who && p.status !== "undisclosed") bits.push(statusLabel(who));
     if ((p.household || {}).kids) bits.push(t("kids"));
-    bits.push(t("sz" + VaFit.bedrooms(p)));
+    bits.push(szLabel(VaFit.bedrooms(p)));
     return "<p>" + esc(bits.join(", ")) + "</p>";
   }
 
@@ -829,7 +873,7 @@
   /** One short line per component in the person's language, built from the numbers. */
   function localLine(c, loc) {
     var kids = !!((S.profile || {}).household || {}).kids;
-    if (c.id === "rent" && c.parts) return t("line_rent", { rent: money(c.parts.rent), size: t("sz" + c.parts.bedrooms), hours: Math.round(c.parts.hours) });
+    if (c.id === "rent" && c.parts) return t("line_rent", { rent: money(c.parts.rent), size: szLabel(c.parts.bedrooms), hours: Math.round(c.parts.hours) });
     if (c.id === "shelter" && c.parts) return t(kids ? "line_shelter_kids" : "line_shelter", { pct: Math.round(100 * c.parts.outside_share), beds: num(c.parts.beds), people: num(c.parts.people) });
     if (c.id === "services") {
       var s = loc.services, osm = s.osm || {}, help = 0;
@@ -891,6 +935,30 @@
       '<p class="g-small">' + esc(t("confLine", { k: known, n: r.components.length })) + "</p>";
   }
 
+  function call211Btn() {
+    return '<a class="g-secondary g-211" href="tel:211"><span>' + esc(t("call211short")) + "</span><small>" + esc(t("call211what")) + "</small></a>";
+  }
+
+  /** Everyday costs: a ROUGH DEMO ESTIMATE, not data. Fixed national-ish amounts scaled by how this
+   *  locality's 1-bedroom rent compares with the Virginia median. Shown, never counted in the score. */
+  var _rentMedian = null;
+  function costCard(loc) {
+    if (!_rentMedian) {
+      var all = Object.keys(S.va.localities).map(function (f) { return S.va.localities[f].fmr.by_bedrooms[1]; }).sort(function (a, b) { return a - b; });
+      _rentMedian = all[Math.floor(all.length / 2)];
+    }
+    var idx = loc.fmr.by_bedrooms[1] / _rentMedian, kids = !!((S.profile || {}).household || {}).kids;
+    var r5 = function (x) { return Math.round(x / 5) * 5; };
+    var rows = [["cost_food", r5((330 + (kids ? 220 : 0)) * (0.85 + 0.15 * idx))], ["cost_phone", 30],
+      [loc.services.fare_free_transit ? "cost_bus_free" : "cost_bus", loc.services.fare_free_transit ? 0 : r5(55 * (0.8 + 0.2 * idx))],
+      ["cost_hygiene", r5(45 * idx)]];
+    var total = rows.reduce(function (a, r) { return a + r[1]; }, 0), wage = S.va.state.min_wage;
+    return '<section class="g-cost" aria-labelledby="g-cost-h"><div class="hd"><h3 id="g-cost-h">' + esc(t("cost_title")) + '</h3><span class="est">' + esc(t("est")) + "</span></div>" +
+      '<p class="g-cost-total">' + esc(t("cost_total", { x: money(total) })) + '</p><p class="g-small">' + esc(t("cost_hours", { h: Math.round(total / wage) })) + "</p>" +
+      "<ul>" + rows.map(function (r) { return "<li><span>" + esc(t(r[0])) + "</span><span>" + money(r[1]) + "</span></li>"; }).join("") + "</ul>" +
+      '<p class="g-small g-cost-note">' + esc(t("cost_note")) + "</p></section>";
+  }
+
   function helpList(loc) {
     var pts = loc.help_points || [];
     if (!pts.length) return "<p>" + esc(t("helpNone")) + "</p>";
@@ -932,11 +1000,12 @@
       confMeter(r) +
       (r.rank_p10 ? '<p class="g-small">' + esc(rangeText(r)) + "</p>" : "") +
       '<div class="g-actions"><button class="g-secondary" data-go="rate" type="button">' + esc(t("rateHere")) + "</button>" +
-      '<a class="g-secondary" href="tel:211">' + esc(t("call211short")) + "</a>" +
+      '' + call211Btn() + "" +
       (town && !B.standalone ? '<a class="g-primary g-wide" href="#/receipt?' + new URLSearchParams({ lat: town.lat, lon: town.lon, profile: legacyProfile() }) + '">' + esc(t("openReceipt", { town: town.label })) + "</a>" : "") +
       "</div><h3>" + esc(t("howBuilt")) + "</h3>" + mosaic(r) +
       '<ul class="g-c2s">' + known.map(card).join("") + "</ul>" +
       (unknown.length ? "<h3>" + esc(t("unknownParts")) + '</h3><ul class="g-c2s">' + unknown.map(card).join("") + "</ul>" : "") +
+      costCard(loc) +
       "<h3>" + esc(t("helpHere")) + "</h3>" + helpList(loc) +
       "<h3>" + esc(t("programsVa")) + '</h3><p class="g-small">' + esc(t("statewide")) + "</p>" + programsHTML("VA") +
       '<p><a href="tel:211" class="g-ink">' + esc(t("call211")) + "</a></p>" + vaSourcesHTML();
@@ -990,20 +1059,27 @@
         if (st.health_children_all) note += " State covers children regardless of status" + (st.health_children_all.note ? " (" + st.health_children_all.note + ")" : "") + ".";
         if (st.health_adults_all) note += " State adult program: " + st.health_adults_all.status + ". " + st.health_adults_all.note;
       }
-      return "<li><span>" + esc(programLabel(g)) + '</span><span class="v ' + rule.value + '">' + esc(t(rule.value)) + "</span>" +
-        (note ? '<span class="note" lang="en">' + esc(note) + "</span>" : "") + "</li>";
+      return { v: rule.value, html: "<span>" + esc(programLabel(g)) + '</span><span class="v ' + rule.value + '">' + esc(t(rule.value)) + "</span>" +
+        (note ? '<span class="note" lang="en">' + esc(note) + "</span>" : "") };
     });
     if (!undisclosed) {
       var dl = st.drivers_license_all;
       var lawful = ["undocumented", "unsure"].indexOf(p.status) === -1;
       var val = lawful ? "yes" : (dl ? "yes" : "no");
-      rows.push("<li><span>" + esc(S.lang === "es" ? "Licencia o identificación estatal" : "Driver's license or state ID") + '</span><span class="v ' + val + '">' + esc(t(val)) + "</span>" +
-        '<span class="note" lang="en">' + esc(lawful ? "With your documents." : (dl ? "This state issues a " + dl.form + " regardless of status (since " + dl.year + ")." : "This state requires proof of lawful presence.")) + "</span></li>");
+      rows.push({ v: val, html: "<span>" + esc(S.lang === "es" ? "Licencia o identificación estatal" : "Driver's license or state ID") + '</span><span class="v ' + val + '">' + esc(t(val)) + "</span>" +
+        '<span class="note" lang="en">' + esc(lawful ? "With your documents." : (dl ? "This state issues a " + dl.form + " regardless of status (since " + dl.year + ")." : "This state requires proof of lawful presence.")) + "</span>" });
     }
     var pc = Fit.programRule(S.elig, "public_charge", p.status);
     var caution = (!undisclosed && pc.value === "limited") ? '<div class="g-caution"><strong>' + esc(t("caution")) + ":</strong> <span lang=\"en\">" + esc(pc.note) +
       '</span><br><a href="https://www.immigrationadvocates.org/legaldirectory/" target="_blank" rel="noopener">' + esc(t("legal")) + "</a></div>" : "";
-    return caution + '<ul class="g-progs">' + rows.join("") + "</ul>";
+    // Same answers sit together: yes, then some, then check, then no. Order within a group is unchanged.
+    var RANK = { yes: 0, limited: 1, varies: 2, no: 3 };
+    rows = rows.map(function (r, i) { return { v: r.v, html: r.html, i: i }; })
+      .sort(function (a, b) { return ((RANK[a.v] === undefined ? 2 : RANK[a.v]) - (RANK[b.v] === undefined ? 2 : RANK[b.v])) || a.i - b.i; });
+    return caution + '<ul class="g-progs">' + rows.map(function (r, i) {
+      var first = i === 0 || rows[i - 1].v !== r.v;
+      return '<li class="g-pg-' + r.v + (first && i ? " g-pg-start" : "") + '">' + r.html + "</li>";
+    }).join("") + "</ul>";
   }
 
   function sourcesHTML() {
@@ -1039,7 +1115,7 @@
       (r.rank_p10 ? "<br><span>" + esc(rangeText(r)) + "</span>" : "") + "</div></div>" +
       '<div class="g-actions">' + (r.state === "VA" ? '<button class="g-primary g-wide" data-go="scope-va" type="button">' + esc(t("scope_va")) + "</button>" : "") +
       '<button class="g-secondary" data-go="fly" type="button">' + esc(t("flyIn")) + "</button>" +
-      '<a class="g-secondary" href="tel:211">' + esc(t("call211short")) + "</a>" +
+      '' + call211Btn() + "" +
       "</div><h3>" + esc(t("why")) + '</h3><div class="g-comps">' + comps + "</div>" +
       "<h3>" + esc(t("programs")) + "</h3>" + programsHTML(r.state) +
       '<p><a href="tel:211" class="g-ink">' + esc(t("call211")) + "</a></p>" + sourcesHTML();
@@ -1088,6 +1164,8 @@
         d[parts[0]] = d[parts[0]] || {};
         d[parts[0]][parts[1]] = !d[parts[0]][parts[1]];
         b.setAttribute("aria-pressed", d[parts[0]][parts[1]]);
+        var bi = sh.querySelector("#g-beds");
+        if (bi) bi.placeholder = bedAuto(d);
         rerenderPriorities();
       });
     });
@@ -1098,13 +1176,28 @@
         sh.querySelectorAll("[data-age]").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.age === d.age_band); });
       });
     });
-    sh.querySelectorAll("[data-bed]").forEach(function (b) {
-      b.addEventListener("click", function () {
-        var d = draft(); d.household = d.household || {};
-        if (b.dataset.bed === "auto") delete d.household.bedrooms; else d.household.bedrooms = +b.dataset.bed;
-        sh.querySelectorAll("[data-bed]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+    var bedIn = sh.querySelector("#g-beds");
+    var setBeds = function (v) {
+      var d = draft(); d.household = d.household || {};
+      if (v === null) delete d.household.bedrooms; else d.household.bedrooms = Math.max(0, Math.min(VaFit.MAX_BEDROOMS, Math.round(v)));
+      return d.household.bedrooms;
+    };
+    if (bedIn) {
+      bedIn.addEventListener("input", function () {
+        var raw = bedIn.value.trim();
+        setBeds(raw === "" || isNaN(+raw) ? null : +raw);
       });
-    });
+      bedIn.addEventListener("change", function () {   // show the value actually used (clamped, whole number)
+        var b = draft().household.bedrooms;
+        bedIn.value = typeof b === "number" ? b : "";
+      });
+      sh.querySelectorAll("[data-bedstep]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var d = draft(), cur = typeof (d.household || {}).bedrooms === "number" ? d.household.bedrooms : bedAuto(d);
+          bedIn.value = setBeds(cur + (+b.dataset.bedstep));
+        });
+      });
+    }
     sh.querySelectorAll("[data-crime]").forEach(function (b) {
       b.addEventListener("click", function () {
         draft().show_crime = b.dataset.crime === "1";
@@ -1140,11 +1233,9 @@
   function draft() { if (!_draft) _draft = JSON.parse(JSON.stringify(S.profile || defaultProfile())); return _draft; }
 
   function rerenderPriorities() {
-    var ol = $(".g-pri");
-    if (!ol) return;
-    var tmp = document.createElement("div");
-    tmp.innerHTML = priorityBlock(draft());
-    ol.replaceWith(tmp.querySelector(".g-pri"));
+    var wrap = $(".g-pri-wrap");
+    if (!wrap) return;
+    wrap.innerHTML = priorityBlock(draft());
     bindPriorities($(".g-sheet"));
   }
 
@@ -1170,10 +1261,11 @@
   }
 
   function go(what) {
-    if (what === "profile") { _draft = null; S.view = "profile"; render(); focusHeading(); return; }
+    if (what === "profile") { _draft = null; _prevTop = null; S.view = "profile"; render(); focusHeading(); return; }
     if (what === "skip") { S.view = "top"; compute(); render(); flyHome(false); return; }
     if (what === "save") {
       S.profile = draft(); _draft = null;
+      if (S.profile.household) delete S.profile.household.mixed;   // option retired in S9
       store.set("footing.globe.profile", S.profile);
       S.view = "top"; compute(); render(); flyHome(false); focusHeading(); return;
     }
