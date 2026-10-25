@@ -37,7 +37,7 @@ win where they disagree.
 
 1. **Push to GitHub.**
    - This session could not: there was no repo access, and the gh token was invalid.
-   - Drive folder `hack 20/25/4th` has `footing.bundle` (full history) and `footing-session4.zip`.
+   - `footing.bundle` (full history), `footing-session4.zip` and `footing-demo-standalone.zip` were sent to the owner in the chat. The Drive tools could not upload binary files, so the owner should drop them into Drive `hack 20/25/4th`. The report and handoff text are there already.
    - Steps: `git clone footing.bundle footing`, then `cd footing`, then
      `git remote add origin https://github.com/<owner>/footing.git`, then `git push -u origin main`.
    - Ask the owner which account to use. Earlier sessions mentioned `jordangangavarapu-cmyk` and
