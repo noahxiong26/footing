@@ -25,6 +25,7 @@ import math
 from functools import lru_cache
 from pathlib import Path
 
+from . import va as vageo
 from .fit import gamma, js_round, linear, load_eligibility, mulberry32, roc_weights, round1, round3, safety_applies
 
 STATIC = Path(__file__).resolve().parent / "static"
@@ -288,6 +289,28 @@ def fit_score(elig, va, fips, profile, community=None):
     return {"fips": fips, "name": va["localities"][fips]["name"],
             "score": None if agg["score"] is None else round1(agg["score"]), "confidence": conf,
             "confidence_label": "high" if conf >= 0.7 else ("medium" if conf >= 0.45 else "low"), "components": rows}
+
+
+def fit_point(elig, va, lat, lon, profile, community=None):
+    """Score the locality a tapped or typed point falls in, with the point's own doubt folded into confidence.
+
+    A locality score does not depend on where in the locality the point is, so the score is exactly
+    fit_score's. What the point changes is how much the answer can be trusted: rounded coordinates or a spot
+    a few hundred metres from a city line mean the numbers may belong to the place next door. That lowers
+    confidence and is listed in `point_issues`; it never alters the score itself. An unusable point gets no
+    score at all and says why (footing.va.check_point). Mirrored in footing/web/vapoint.js.
+    """
+    pt = vageo.check_point(lat, lon)
+    if not pt["ok"]:
+        return {"fips": None, "name": None, "score": None, "confidence": 0.0, "confidence_label": "low",
+                "components": [], "point": pt, "point_issues": [{"code": pt["code"], "text": pt["reason"]}]}
+    out = fit_score(elig, va, pt["fips"], profile, community)
+    out["confidence"] = round3(out["confidence"] * pt["validity"])
+    out["confidence_label"] = ("high" if out["confidence"] >= 0.7 else
+                               "medium" if out["confidence"] >= 0.45 else "low")
+    out["point"] = pt
+    out["point_issues"] = [{"code": i["code"], "text": i["text"]} for i in pt["issues"]]
+    return out
 
 
 def rank_localities(elig=None, va=None, profile=None, community=None, robustness=True, samples=200, kappa=30, seed=11):

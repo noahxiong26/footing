@@ -17,6 +17,7 @@ import math
 from functools import lru_cache
 from pathlib import Path
 
+from .fit import round3
 from .geo import haversine_m
 from .us_states import _decode_arcs, _inside, _ring, state_at
 
@@ -27,8 +28,18 @@ DATA = WEB_DATA / "va-localities.json"
 # us-atlas (Census cartographic, clipped to the shoreline, simplified for 1:10M). Used only to spot open water.
 SHORE = WEB_DATA / "counties-10m.json"
 WATER_TOLERANCE_M = 2000   # the 1:10M shoreline is coarse; closer than this to land counts as land
+# How close to a locality line counts as "the neighbour's numbers may apply". The TIGER outlines are
+# generalized to about 100 m, so the real uncertainty here is the person's own point (a map tap or a GPS
+# fix), not the shape. 1 km is wide enough to catch that and narrow enough not to flag half of a city.
+BOUNDARY_M = 1000
 # Rough box around Virginia, used to tell "just over the border / offshore" from "nowhere near".
 VA_BBOX = (-83.68, 36.54, -75.24, 39.47)
+
+
+def _num(x: float) -> str:
+    """Shortest round-trip text of a float, the way JS String(x) prints it (so both engines agree)."""
+    s = repr(float(x))
+    return s[:-2] if s.endswith(".0") else s
 
 
 def locality_name(fips: str, short: str) -> str:
@@ -111,34 +122,83 @@ def distance_to_land_m(lat: float, lon: float) -> float:
     return min(_seg_dist_m(lat, lon, r[i], r[i + 1]) for r in rings for i in range(len(r) - 1))
 
 
+def boundary_distance_m(lat: float, lon: float, d: dict) -> float:
+    """Metres from the point to the nearest edge of locality `d` (its own outline, holes included)."""
+    best = math.inf
+    for poly in d["rings"]:
+        for ring in poly:
+            for i in range(len(ring) - 1):
+                dist = _seg_dist_m(lat, lon, ring[i], ring[i + 1])
+                if dist < best:
+                    best = dist
+    return best
+
+
+def _decimals(x: float) -> int:
+    """Decimal places in the shortest round-trip text of x, the way JS String(x) would print it."""
+    s = repr(float(x))
+    if s.endswith(".0"):
+        return 0
+    return len(s.split(".")[1]) if "." in s and "e" not in s else 0
+
+
 def check_point(lat, lon) -> dict:
     """Classify an input point. Never guesses: a point that is not usable comes back with ok=False and why.
 
-    Returns {"ok": bool, "code": str, "reason": str, "fips"?: str, "name"?: str}
-      codes: ok | not_a_number | off_globe | outside_virginia | open_water
+    Returns {"ok": bool, "code": str, "reason": str, "fips"?: str, "name"?: str,
+             "validity": float, "issues": [{"code", "text", "factor"}]}
+      codes: ok | not_a_number | off_globe | swapped | outside_virginia | open_water
+
+    A point can be usable and still be doubtful. `issues` lists every doubt with the factor it costs, and
+    `validity` is their product (1.0 = no doubt, 0 = unusable). The score itself is never fudged: validity
+    multiplies the *confidence* in footing.vafit.fit_point, so a rounded or borderline point says so rather
+    than quietly reporting the wrong town's rent. Mirrored in footing/web/vapoint.js (tests/test_vafit.py).
     """
+    issues: list[dict] = []
+
+    def out(ok, code, reason, **extra):
+        validity = 0.0 if not ok else math.prod(i["factor"] for i in issues)
+        return {"ok": ok, "code": code, "reason": reason, "issues": issues, "validity": round3(validity), **extra}
+
     try:
         lat, lon = float(lat), float(lon)
     except (TypeError, ValueError):
-        return {"ok": False, "code": "not_a_number", "reason": "That location is not a pair of numbers."}
+        return out(False, "not_a_number", "That location is not a pair of numbers.")
     if not (math.isfinite(lat) and math.isfinite(lon)):
-        return {"ok": False, "code": "not_a_number", "reason": "That location is not a real number (NaN or infinity)."}
+        return out(False, "not_a_number", "That location is not a real number (NaN or infinity).")
     if not (-90 <= lat <= 90 and -180 <= lon <= 180):
-        return {"ok": False, "code": "off_globe", "reason": "Latitude must be -90..90 and longitude -180..180."}
+        return out(False, "off_globe", "Latitude must be -90..90 and longitude -180..180.")
     d = locality_at(lat, lon)
     if d:
         if distance_to_land_m(lat, lon) > WATER_TOLERANCE_M:
-            return {"ok": False, "code": "open_water", "fips": d["fips"], "name": d["name"],
-                    "reason": f"That point is on open water (inside {d['name']}'s water area). Move it onto land."}
-        return {"ok": True, "code": "ok", "reason": "", "fips": d["fips"], "name": d["name"]}
+            return out(False, "open_water", f"That point is on open water (inside {d['name']}'s water area). "
+                       "Move it onto land.", fips=d["fips"], name=d["name"])
+        # Rounded coordinates: one decimal place is about 11 km, which is bigger than many Virginia cities.
+        if min(_decimals(lat), _decimals(lon)) <= 1:
+            issues.append({"code": "coarse", "factor": 0.6,
+                           "text": "These coordinates are rounded (one decimal place is about 11 km), so the local "
+                                   "numbers may be for a neighbouring city or county."})
+        # Virginia's independent cities are separate from the counties around them and have their own rules,
+        # so a point just inside one line may really belong to the place on the other side of it.
+        edge = boundary_distance_m(lat, lon, d)
+        if edge < BOUNDARY_M:
+            issues.append({"code": "near_boundary", "factor": 0.85,
+                           "text": f"About {int(round(edge))} m from the {d['name']} line, so the neighbouring "
+                                   f"city or county's numbers may apply instead."})
+        return out(True, "ok", "", fips=d["fips"], name=d["name"])
+    # Latitude and longitude the wrong way round is the commonest typo, and in Virginia it always lands in
+    # the Indian Ocean or Asia, so "outside Virginia" would be true but useless. Say what they probably meant.
+    if -90 <= lon <= 90 and locality_at(lon, lat):
+        return out(False, "swapped", f"These look like latitude and longitude swapped. Did you mean "
+                   f"{_num(lon)}, {_num(lat)}?", suggest={"lat": lon, "lon": lat})
     st = state_at(lat, lon)
     if st and st != "VA":
         from .fit import load_policy
         name = load_policy()["states"].get(st, {}).get("name", st)
-        return {"ok": False, "code": "outside_virginia", "state": st,
-                "reason": f"That point is in {name}. Footing covers Virginia only for now."}
+        return out(False, "outside_virginia", f"That point is in {name}. Footing covers Virginia only for now.",
+                   state=st)
     x0, y0, x1, y1 = VA_BBOX
     if x0 <= lon <= x1 and y0 <= lat <= y1:
-        return {"ok": False, "code": "open_water",
-                "reason": "That point is on open water or right on a border, not inside a Virginia city or county."}
-    return {"ok": False, "code": "outside_virginia", "reason": "That point is outside Virginia. Footing covers Virginia only for now."}
+        return out(False, "open_water",
+                   "That point is on open water or right on a border, not inside a Virginia city or county.")
+    return out(False, "outside_virginia", "That point is outside Virginia. Footing covers Virginia only for now.")

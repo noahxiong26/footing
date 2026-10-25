@@ -10,7 +10,7 @@
  */
 (function () {
   "use strict";
-  var Fit = window.FootingFit, VaFit = window.FootingVaFit, I = window.FootingI18n;
+  var Fit = window.FootingFit, VaFit = window.FootingVaFit, I = window.FootingI18n, VaPoint = window.FootingVaPoint;
   var API = "api";
   // Optional host adapter (the standalone demo page sets one; the app uses the Footing API).
   // {policy(), va(), heat(), rate(body), towns(), receipt(town), hide(), dataBase, standalone, noImagery}
@@ -1052,20 +1052,52 @@
     focusHeading();
   }
 
+  /** Check a point the same way footing/va.py does, so the phone and the server agree on what is usable.
+   *  The shoreline file is not loaded on the phone (it is large and only the open-water case needs it);
+   *  footing/ratings.py re-checks with it before storing, so a water tap is still refused, just later. */
+  function checkPoint(lat, lon) {
+    if (!VaPoint || !S.vaGeo) return { ok: !!localityAt(lat, lon), code: "ok", issues: [], validity: 1 };
+    return VaPoint.checkPoint(S.vaGeo, lat, lon, {
+      stateAt: function (la, lo) { return stateCodeAt(la, lo); },
+      stateName: S.policy && S.policy.states ? stateNames() : null,
+    });
+  }
+
+  function stateNames() {
+    if (!S._stateNames) {
+      S._stateNames = {};
+      Object.keys(S.policy.states).forEach(function (c) { S._stateNames[c] = S.policy.states[c].name; });
+    }
+    return S._stateNames;
+  }
+
+  function stateCodeAt(lat, lon) {
+    if (!S.statesGeo) return null;
+    for (var i = 0; i < S.statesGeo.features.length; i++) {
+      var f = S.statesGeo.features[i], b = f.properties.bbox;
+      if (b && (lon < b[0] || lon > b[2] || lat < b[1] || lat > b[3])) continue;
+      if (inFeature(lon, lat, f)) return f.properties.code || null;
+    }
+    return null;
+  }
+
   /** A tap while rating: far out, zoom in on the tap first; close in, check it is in Virginia and drop the pin. */
   function rateTap(lat, lon) {
-    var fips = localityAt(lat, lon);
-    if (!fips) { toast(t("outsideTap")); return; }
+    var pt = checkPoint(lat, lon);
+    // Say what is actually wrong with the spot ("that is in Maryland", "that is on open water") instead of
+    // one catch-all message. The engine writes these in English; t() covers the ones we have translated.
+    if (!pt.ok) { toast(pt.code === "outside_virginia" ? t("outsideTap") : pt.reason || t("outsideTap")); return; }
     if (S.map.getZoom() < 10) {
       S.map.flyTo({ center: [lon, lat], zoom: 12, duration: reduced ? 0 : 1600, essential: true });
       toast(t("tapZoom"));
       return;
     }
-    setRatingPoint(lat, lon, fips);
+    setRatingPoint(lat, lon, pt.fips, pt);
   }
 
-  function setRatingPoint(lat, lon, fips) {
-    S.ratingPoint = { lat: lat, lon: lon, fips: fips || localityAt(lat, lon) };
+  function setRatingPoint(lat, lon, fips, pt) {
+    pt = pt || checkPoint(lat, lon);
+    S.ratingPoint = { lat: lat, lon: lon, fips: fips || localityAt(lat, lon), issues: pt.ok ? pt.issues : [] };
     if (S.ratingMarker) S.ratingMarker.remove();
     var el = document.createElement("div"); el.className = "g-pin";
     if (S.map) S.ratingMarker = new maplibregl.Marker({ element: el }).setLngLat([lon, lat]).addTo(S.map);

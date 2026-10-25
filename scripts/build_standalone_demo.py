@@ -69,6 +69,7 @@ a { color: inherit; }
 <script src="vendor/topojson-client.min.js"></script>
 <script src="fit.js"></script>
 <script src="vafit.js"></script>
+<script src="vapoint.js"></script>
 <script src="i18n.js"></script>
 <script src="i18n_more.js"></script>
 <script src="standalone_backend.js"></script>
@@ -90,7 +91,7 @@ def main(out: Path, wrap: bool = True) -> None:
         shutil.rmtree(out)
     (out / "vendor").mkdir(parents=True)
     (out / "data").mkdir()
-    for f in ("fit.js", "vafit.js", "i18n.js", "i18n_more.js", "globe.js"):
+    for f in ("fit.js", "vafit.js", "vapoint.js", "i18n.js", "i18n_more.js", "globe.js"):
         shutil.copy(WEB / f, out / f)
     shutil.copy(ROOT / "demo" / "standalone_backend.js", out / "standalone_backend.js")
     for f in ("maplibre-gl.js", "topojson-client.min.js", "MAPLIBRE-LICENSE.txt", "TOPOJSON-CLIENT-LICENSE.txt"):
