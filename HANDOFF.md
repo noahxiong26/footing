@@ -123,6 +123,21 @@ errors. It covers the nav bar, About you steps, typed bedrooms (6), a real mouse
 Details, the Norfolk point, the rating flow and "Reset my answers" with confirmation. Screenshots are in ignored
 `out/globe/`. The standalone smoke also passes. Nobody has yet clicked the hosted Artifact on a real phone.
 
+**Day/night, polish, accessibility, rubric (Version 7).**
+- **Day and night from the real sun** (`subsolar`: NOAA declination + equation of time; checked against the
+  equinox, both solstices and Oct 25 1 PM ET over 79°W). A 360×256 canvas source (`skyDraw`, rows spaced in Web
+  Mercator) shades the night with a smooth twilight gradient under the places, so Virginia's lit places glow at
+  night; a faint warm sheen where the sun is high. 2.4 ms per update. The sun button (top left, every screen)
+  shows Virginia's local time and plays 24 hours in 24 seconds. `FootingGlobe.setTime(iso|null)` pins the sky
+  for screenshots and the pitch recording. **Frame rate was not measurable here:** the headless browser renders
+  the map on the CPU at about 5 fps for any globe motion; check the time-lapse on a real GPU.
+- Count-up numbers on a newly opened place; the picked place breathes (`va-selected-glow`).
+- **Accessibility:** skip link, ARIA tabs with arrows/Home/End, priority moves spoken in a polite live region.
+  axe-core 4.10.2, WCAG 2.2 A/AA rules: **0 violations on 18 screens** (en 1280 px, ar 390 px).
+- **`docs/RUBRIC.md`** maps every responsibility/feasibility criterion to evidence and open gaps.
+- **Pitch video draft** (1:45 script, shot list, voice-over, research-backed guidelines, rubric coverage) is a
+  Claude Docs doc owned by Jordan: "Footing pitch video draft".
+
 **UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
 1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the
    layer picker is cut to "Angkop para"; the brand is cut to "FOOTIN". Consider shorter legend labels or a
