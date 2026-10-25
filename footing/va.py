@@ -133,8 +133,10 @@ def check_point(lat, lon) -> dict:
         return {"ok": True, "code": "ok", "reason": "", "fips": d["fips"], "name": d["name"]}
     st = state_at(lat, lon)
     if st and st != "VA":
+        from .fit import load_policy
+        name = load_policy()["states"].get(st, {}).get("name", st)
         return {"ok": False, "code": "outside_virginia", "state": st,
-                "reason": f"That point is in {st}. Footing covers Virginia only for now."}
+                "reason": f"That point is in {name}. Footing covers Virginia only for now."}
     x0, y0, x1, y1 = VA_BBOX
     if x0 <= lon <= x1 and y0 <= lat <= y1:
         return {"ok": False, "code": "open_water",
