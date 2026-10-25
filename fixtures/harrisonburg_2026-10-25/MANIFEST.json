@@ -1,0 +1,530 @@
+{
+  "fixture_set": "harrisonburg_2026-10-25",
+  "point": {
+    "lat": 38.4496,
+    "lon": -78.8689,
+    "label": "Downtown Harrisonburg, VA"
+  },
+  "captured_at": "2026-10-25T06:48:27+00:00",
+  "how": "Existing footing.cli record / pipeline with scripts/record_towns.py request and source audit.",
+  "files": {
+    "census_geocoder__county.json": {
+      "url": "https://geocoding.geo.census.gov/geocoder/geographies/coordinates?x=-78.865&y=38.445&benchmark=Public_AR_Current&vintage=Current_Current&layers=Counties&format=json",
+      "live": true,
+      "trimmed": false,
+      "started_at": "2026-10-25T06:35:29.600281+00:00",
+      "finished_at": "2026-10-25T06:35:29.820806+00:00",
+      "method": "GET",
+      "form": null,
+      "json_body": null,
+      "sha256": "9e990b7b2e1ac3dc1132d068a41673fcfcf1d25287f5573aeebafb6c9ae9fd7c",
+      "sha256_windows_crlf": "0f62144a045d0c7b9061e50d2a916a0b7ec5fe52373a98b324cc98f6e05e5dd2"
+    },
+    "nws__alerts.json": {
+      "url": "https://api.weather.gov/alerts/active?point=38.4450%2C-78.8650",
+      "live": true,
+      "trimmed": false,
+      "started_at": "2026-10-25T06:35:30.665080+00:00",
+      "finished_at": "2026-10-25T06:35:31.069292+00:00",
+      "method": "GET",
+      "form": null,
+      "json_body": null,
+      "sha256": "b23a3b7241cee0d436f8efb7b9ced66c5b9038cf7000259469a27fd7ab13c4c3",
+      "sha256_windows_crlf": "7dd472b2101c07ffbcecb7b1569789bc173ee57ef9de649aad39971c3b8ee03e"
+    },
+    "nws__points.json": {
+      "url": "https://api.weather.gov/points/38.4450,-78.8650",
+      "live": true,
+      "trimmed": false,
+      "started_at": "2026-10-25T06:35:29.830916+00:00",
+      "finished_at": "2026-10-25T06:35:30.661081+00:00",
+      "method": "GET",
+      "form": null,
+      "json_body": null,
+      "sha256": "0559fe62612160f5f7dd859433c56681792194728c5d0ff4e7d2aeda360b621c",
+      "sha256_windows_crlf": "07d5cb591c88b07dec2ecf4a356128a6391179375c8803b45ada80c79e45552c"
+    },
+    "open_meteo__forecast.json": {
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=38.445&longitude=-78.865&daily=temperature_2m_min%2Ctemperature_2m_max&temperature_unit=fahrenheit&timezone=auto&forecast_days=7",
+      "live": true,
+      "trimmed": false,
+      "started_at": "2026-10-25T06:35:31.074286+00:00",
+      "finished_at": "2026-10-25T06:35:31.200045+00:00",
+      "method": "GET",
+      "form": null,
+      "json_body": null,
+      "sha256": "25d6e974b816bb7b37457b6abbb3a9a51416a2ed7cfc15dad0ffd93257c3ad8c",
+      "sha256_windows_crlf": "ecba45843372784556942145c94fbb8faa899c83f8ba8efd8bf685b083404db3"
+    },
+    "osm__amenities.json": {
+      "url": "https://overpass.maprva.org/api/interpreter",
+      "live": true,
+      "trimmed": false,
+      "started_at": "2026-10-25T06:48:14.472484+00:00",
+      "finished_at": "2026-10-25T06:48:15.364625+00:00",
+      "method": "POST",
+      "form": {
+        "data": "[out:json][timeout:25];\n(\n  nwr[\"amenity\"=\"social_facility\"](around:5000,38.445,-78.865);\n  nwr[\"amenity\"~\"^(toilets|shower|drinking_water|library|pharmacy|post_office|food_bank|clinic|community_centre)$\"](around:5000,38.445,-78.865);\n  nwr[\"shop\"=\"laundry\"](around:5000,38.445,-78.865);\n  nwr[\"office\"=\"employment_agency\"](around:5000,38.445,-78.865);\n);\nout center tags;"
+      },
+      "json_body": null,
+      "user_agent": "Mozilla/5.0 (compatible; Footing public-data audit)",
+      "timeout_s": 45.0,
+      "sha256": "4457f327521ffce9b55eea8ff54e36df0d049a12ea7c892c85200d74ddea2c69",
+      "sha256_windows_crlf": "c04ab4f6617873e6d66566d655220259be0b52eb6f5020d3774ad0136eb44a0d"
+    },
+    "snap__layer_meta.json": {
+      "url": "https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/snap_retailer_location_data/FeatureServer/0?f=json",
+      "live": true,
+      "trimmed": false,
+      "started_at": "2026-10-25T06:35:31.205039+00:00",
+      "finished_at": "2026-10-25T06:35:31.339635+00:00",
+      "method": "GET",
+      "form": null,
+      "json_body": null,
+      "sha256": "cb053510d1cbf9e0b50645e3962980a477214455d3eae388647ace0d7078a759",
+      "sha256_windows_crlf": "b2dbdfb106898eea442791ae7a3769505a2e6a49ac2abc0a15baaac7eabe60c8"
+    },
+    "snap__retailers.json": {
+      "url": "https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/snap_retailer_location_data/FeatureServer/0/query?where=1%3D1&geometry=-78.92241%2C38.40003%2C-78.80759%2C38.48997&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&resultOffset=0&resultRecordCount=1000&f=json",
+      "live": true,
+      "trimmed": false,
+      "started_at": "2026-10-25T06:35:31.344640+00:00",
+      "finished_at": "2026-10-25T06:35:31.525219+00:00",
+      "method": "GET",
+      "form": null,
+      "json_body": null,
+      "sha256": "332c12a73defed4446ba1c267c9d36718ca46c3acfaa57c506e294f2750221e9",
+      "sha256_windows_crlf": "d00710f88ba6862a165e9cba4361590f2818274064c0980a239a8054dcfe1e44"
+    },
+    "urban_ed__schools_51.json": {
+      "url": "https://educationdata.urban.org/api/v1/schools/ccd/directory/2022/?fips=51",
+      "live": true,
+      "trimmed": false,
+      "started_at": "2026-10-25T06:36:16.638040+00:00",
+      "finished_at": "2026-10-25T06:36:27.383453+00:00",
+      "method": "GET",
+      "form": null,
+      "json_body": null,
+      "sha256": "9050b96eda7c2744a3d1556ea19b8f4bde0dded3637a8beeb1e1ee3f67acb01b",
+      "sha256_windows_crlf": "26d41f6793c3b783aadbfa711b057c8a93366b5c39a569e0ab9c751d43f2d2bf"
+    }
+  },
+  "not_captured": {
+    "census_acs": "no API key set (census)",
+    "bls_laus": "HTTP 503 from api.bls.gov",
+    "hud_fmr": "no API key set (hud)",
+    "eia": "no API key set (eia)",
+    "google_places": "no API key set (google_maps)",
+    "transitland": "no API key set (transitland)",
+    "kroger": "no API key set (kroger_id, kroger_secret)",
+    "hrsa": "static/hrsa_sites.csv is empty: download HRSA health center sites first"
+  },
+  "first_capture_started_at": "2026-10-25T06:35:29.588280+00:00",
+  "tile": "t3844_-7887",
+  "radius_m": 5000,
+  "request_log": "REQUESTS.jsonl",
+  "source_outcomes": {
+    "census_geocoder": {
+      "source": "census_geocoder",
+      "status": "ok",
+      "reason": "",
+      "place_count": 0,
+      "measures": {
+        "county_fips": {
+          "id": "county_fips",
+          "value": "51660",
+          "unit": "fips",
+          "source": "census_geocoder",
+          "as_of": null,
+          "note": ""
+        },
+        "county_name": {
+          "id": "county_name",
+          "value": "Harrisonburg city",
+          "unit": "",
+          "source": "census_geocoder",
+          "as_of": null,
+          "note": ""
+        }
+      },
+      "provenance": {
+        "source": "census_geocoder",
+        "url": "https://geocoding.geo.census.gov/geocoder/",
+        "license": "U.S. Government work (public domain)",
+        "refresh": "annual",
+        "fetched_at": "2026-10-25T06:46:37+00:00",
+        "as_of": null,
+        "mode": "record"
+      },
+      "started_at": "2026-10-25T06:46:37.367731+00:00",
+      "finished_at": "2026-10-25T06:46:37.373717+00:00",
+      "homepage": "https://geocoding.geo.census.gov/geocoder/",
+      "needs": [],
+      "kind": "network"
+    },
+    "nws": {
+      "source": "nws",
+      "status": "ok",
+      "reason": "",
+      "place_count": 0,
+      "measures": {
+        "alerts": {
+          "id": "alerts",
+          "value": [],
+          "unit": "list",
+          "source": "nws",
+          "as_of": "2026-10-25T06:35:06+00:00",
+          "note": ""
+        },
+        "worst_alert_rank": {
+          "id": "worst_alert_rank",
+          "value": -1,
+          "unit": "rank -1..4",
+          "source": "nws",
+          "as_of": null,
+          "note": "-1 means no active alerts"
+        },
+        "nws_city": {
+          "id": "nws_city",
+          "value": "Harrisonburg, VA",
+          "unit": "",
+          "source": "nws",
+          "as_of": null,
+          "note": ""
+        },
+        "time_zone": {
+          "id": "time_zone",
+          "value": "America/New_York",
+          "unit": "IANA",
+          "source": "nws",
+          "as_of": null,
+          "note": ""
+        }
+      },
+      "provenance": {
+        "source": "nws",
+        "url": "https://www.weather.gov/documentation/services-web-api",
+        "license": "U.S. Government work (public domain)",
+        "refresh": "live",
+        "fetched_at": "2026-10-25T06:46:37+00:00",
+        "as_of": null,
+        "mode": "record"
+      },
+      "started_at": "2026-10-25T06:46:37.377757+00:00",
+      "finished_at": "2026-10-25T06:46:37.388748+00:00",
+      "homepage": "https://www.weather.gov/documentation/services-web-api",
+      "needs": [],
+      "kind": "network"
+    },
+    "open_meteo": {
+      "source": "open_meteo",
+      "status": "ok",
+      "reason": "",
+      "place_count": 0,
+      "measures": {
+        "lows_f": {
+          "id": "lows_f",
+          "value": [
+            35.3,
+            37.5,
+            45.3,
+            45.4,
+            44.1,
+            49.7,
+            50.7
+          ],
+          "unit": "\u00b0F",
+          "source": "open_meteo",
+          "as_of": "2026-10-25",
+          "note": ""
+        },
+        "freezing_nights_7d": {
+          "id": "freezing_nights_7d",
+          "value": 0,
+          "unit": "nights",
+          "source": "open_meteo",
+          "as_of": null,
+          "note": ""
+        },
+        "cold_nights_7d": {
+          "id": "cold_nights_7d",
+          "value": 2,
+          "unit": "nights",
+          "source": "open_meteo",
+          "as_of": null,
+          "note": ""
+        },
+        "hot_days_7d": {
+          "id": "hot_days_7d",
+          "value": 0,
+          "unit": "days",
+          "source": "open_meteo",
+          "as_of": null,
+          "note": ""
+        }
+      },
+      "provenance": {
+        "source": "open_meteo",
+        "url": "https://open-meteo.com/",
+        "license": "CC BY 4.0 (free tier: non-commercial use only)",
+        "refresh": "live",
+        "fetched_at": "2026-10-25T06:46:37+00:00",
+        "as_of": null,
+        "mode": "record"
+      },
+      "started_at": "2026-10-25T06:46:37.391745+00:00",
+      "finished_at": "2026-10-25T06:46:37.395964+00:00",
+      "homepage": "https://open-meteo.com/",
+      "needs": [],
+      "kind": "network"
+    },
+    "snap": {
+      "source": "snap",
+      "status": "ok",
+      "reason": "",
+      "place_count": 64,
+      "measures": {},
+      "provenance": {
+        "source": "snap",
+        "url": "https://www.fna.usda.gov/snap/retailer-locator",
+        "license": "U.S. Government work (public domain)",
+        "refresh": "weekly",
+        "fetched_at": "2026-10-25T06:46:37+00:00",
+        "as_of": "2026-10-21",
+        "mode": "record"
+      },
+      "started_at": "2026-10-25T06:46:37.398960+00:00",
+      "finished_at": "2026-10-25T06:46:37.411959+00:00",
+      "homepage": "https://www.fna.usda.gov/snap/retailer-locator",
+      "needs": [],
+      "kind": "network"
+    },
+    "osm": {
+      "source": "osm",
+      "status": "ok",
+      "reason": "6 OSM features ignored (not relevant to this user)",
+      "place_count": 50,
+      "measures": {},
+      "provenance": {
+        "source": "osm",
+        "url": "https://www.openstreetmap.org/copyright",
+        "license": "ODbL 1.0 (\u00a9 OpenStreetMap contributors)",
+        "refresh": "daily",
+        "fetched_at": "2026-10-25T06:48:15+00:00",
+        "as_of": "2026-10-25T06:47:16Z",
+        "mode": "record"
+      },
+      "started_at": "2026-10-25T06:46:37.414959+00:00",
+      "finished_at": "2026-10-25T06:48:15.373628+00:00",
+      "homepage": "https://wiki.openstreetmap.org/wiki/Overpass_API",
+      "needs": [],
+      "kind": "network"
+    },
+    "urban_ed": {
+      "source": "urban_ed",
+      "status": "ok",
+      "reason": "",
+      "place_count": 10,
+      "measures": {},
+      "provenance": {
+        "source": "urban_ed",
+        "url": "https://educationdata.urban.org/documentation/",
+        "license": "Urban Institute Education Data Portal terms; NCES data public domain",
+        "refresh": "annual",
+        "fetched_at": "2026-10-25T06:48:15+00:00",
+        "as_of": "school year 2022-2023",
+        "mode": "record"
+      },
+      "started_at": "2026-10-25T06:48:15.378621+00:00",
+      "finished_at": "2026-10-25T06:48:15.621890+00:00",
+      "homepage": "https://educationdata.urban.org/documentation/",
+      "needs": [],
+      "kind": "network"
+    },
+    "census_acs": {
+      "source": "census_acs",
+      "status": "unknown",
+      "reason": "no API key set (census)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null,
+      "started_at": "2026-10-25T06:48:15.628897+00:00",
+      "finished_at": "2026-10-25T06:48:15.628897+00:00",
+      "homepage": "https://www.census.gov/data/developers/data-sets/acs-5year.html",
+      "needs": [
+        "census"
+      ],
+      "kind": "network"
+    },
+    "bls_laus": {
+      "source": "bls_laus",
+      "status": "error",
+      "reason": "HTTP 503 from api.bls.gov",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null,
+      "started_at": "2026-10-25T06:48:15.635902+00:00",
+      "finished_at": "2026-10-25T06:48:26.860517+00:00",
+      "homepage": "https://www.bls.gov/lau/",
+      "needs": [],
+      "kind": "network"
+    },
+    "hud_fmr": {
+      "source": "hud_fmr",
+      "status": "unknown",
+      "reason": "no API key set (hud)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null,
+      "started_at": "2026-10-25T06:48:26.869532+00:00",
+      "finished_at": "2026-10-25T06:48:26.869532+00:00",
+      "homepage": "https://www.huduser.gov/portal/dataset/fmr-api.html",
+      "needs": [
+        "hud"
+      ],
+      "kind": "network"
+    },
+    "eia": {
+      "source": "eia",
+      "status": "unknown",
+      "reason": "no API key set (eia)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null,
+      "started_at": "2026-10-25T06:48:26.879550+00:00",
+      "finished_at": "2026-10-25T06:48:26.879550+00:00",
+      "homepage": "https://www.eia.gov/opendata/",
+      "needs": [
+        "eia"
+      ],
+      "kind": "network"
+    },
+    "google_places": {
+      "source": "google_places",
+      "status": "unknown",
+      "reason": "no API key set (google_maps)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null,
+      "started_at": "2026-10-25T06:48:26.893223+00:00",
+      "finished_at": "2026-10-25T06:48:26.895218+00:00",
+      "homepage": "https://developers.google.com/maps/documentation/places/web-service/text-search",
+      "needs": [
+        "google_maps"
+      ],
+      "kind": "network"
+    },
+    "transitland": {
+      "source": "transitland",
+      "status": "unknown",
+      "reason": "no API key set (transitland)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null,
+      "started_at": "2026-10-25T06:48:26.919240+00:00",
+      "finished_at": "2026-10-25T06:48:26.920220+00:00",
+      "homepage": "https://www.transit.land/documentation/rest-api/",
+      "needs": [
+        "transitland"
+      ],
+      "kind": "network"
+    },
+    "kroger": {
+      "source": "kroger",
+      "status": "unknown",
+      "reason": "no API key set (kroger_id, kroger_secret)",
+      "place_count": 0,
+      "measures": {},
+      "provenance": null,
+      "started_at": "2026-10-25T06:48:26.944229+00:00",
+      "finished_at": "2026-10-25T06:48:26.945228+00:00",
+      "homepage": "https://developer.kroger.com/",
+      "needs": [
+        "kroger_id",
+        "kroger_secret"
+      ],
+      "kind": "network"
+    },
+    "static_tables": {
+      "source": "static_tables",
+      "status": "ok",
+      "reason": "",
+      "place_count": 0,
+      "measures": {
+        "min_wage": {
+          "id": "min_wage",
+          "value": 12.77,
+          "unit": "USD/hour",
+          "source": "dol_min_wage",
+          "as_of": "DOL table updated 2026-07-01 (read 2026-10-24)",
+          "note": ""
+        },
+        "tfp_week": {
+          "id": "tfp_week",
+          "value": 73.5,
+          "unit": "USD/week",
+          "source": "usda_tfp",
+          "as_of": "Official USDA Thrifty Food Plan, U.S. average, June 2026 (issued August 2026)",
+          "note": "male 20-50, 4-person household basis"
+        }
+      },
+      "provenance": {
+        "source": "static_tables",
+        "url": "footing/static/",
+        "license": "U.S. Government works (DOL, USDA, HUD); curated rows cite their own source",
+        "refresh": "monthly",
+        "fetched_at": "2026-10-25T06:48:26+00:00",
+        "as_of": null,
+        "mode": "record"
+      },
+      "started_at": "2026-10-25T06:48:26.963239+00:00",
+      "finished_at": "2026-10-25T06:48:26.976359+00:00",
+      "homepage": "footing/static/",
+      "needs": [],
+      "kind": "local_static"
+    },
+    "hrsa": {
+      "source": "hrsa",
+      "status": "unknown",
+      "reason": "static/hrsa_sites.csv is empty: download HRSA health center sites first",
+      "place_count": 0,
+      "measures": {},
+      "provenance": {
+        "source": "hrsa",
+        "url": "https://data.hrsa.gov/data/download",
+        "license": "U.S. Government work (public domain)",
+        "refresh": "monthly",
+        "fetched_at": "2026-10-25T06:48:27+00:00",
+        "as_of": null,
+        "mode": "record"
+      },
+      "started_at": "2026-10-25T06:48:27.002983+00:00",
+      "finished_at": "2026-10-25T06:48:27.019979+00:00",
+      "homepage": "https://data.hrsa.gov/data/download",
+      "needs": [],
+      "kind": "local_static"
+    }
+  },
+  "capture_runs": [
+    {
+      "started_at": "2026-10-25T06:35:29.588280+00:00",
+      "finished_at": "2026-10-25T06:36:34.037212+00:00",
+      "resume": false,
+      "requests": 9,
+      "captured_json": 7,
+      "failed": 2
+    },
+    {
+      "started_at": "2026-10-25T06:46:37.351744+00:00",
+      "finished_at": "2026-10-25T06:48:38.614762+00:00",
+      "resume": true,
+      "timeout_s": 45.0,
+      "browser_ua": true,
+      "fallbacks": true,
+      "requests": 11,
+      "captured_json": 1,
+      "failed": 3
+    }
+  ],
+  "sha256_basis": "sha256 is over the saved JSON text with LF line endings (footing.http.content_sha256). The 2026-10-25 capture ran on Windows and first hashed the CRLF form; that value is kept as sha256_windows_crlf. Both describe the same bytes apart from line endings (checked 2026-10-25)."
+}

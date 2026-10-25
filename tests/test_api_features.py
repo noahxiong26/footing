@@ -16,7 +16,11 @@ def test_app_shell_served():
 def test_healthz_reports_demo(monkeypatch):
     monkeypatch.setenv("FOOTING_MODE", "replay")
     h = client.get("/api/healthz").json()
-    assert h["mode"] == "replay" and h["captured_at"] == "2026-10-24"
+    assert h["mode"] == "replay"
+    # One date per recorded set, deduplicated: Christiansburg 10-24, five towns 10-25.
+    dates = sorted({s["captured_at"] for s in h["recorded"]})
+    assert h["captured_at"] == ", ".join(dates) == "2026-10-24, 2026-10-25"
+    assert len(h["recorded"]) == 6
 
 
 def test_plan_tonight_card_compare(monkeypatch):
@@ -28,8 +32,11 @@ def test_plan_tonight_card_compare(monkeypatch):
     assert "211" in t["fallback"]
     card = client.get("/api/pocket-card.svg", params=P)
     assert card.headers["content-type"].startswith("image/svg+xml")
-    c = client.get("/api/compare", params={"points": "37.1299,-80.4089;37.2710,-79.9414"}).json()
-    assert c["compare"]["settle_scores"][1] is None          # Roanoke not recorded -> no score
+    # Christiansburg and Roanoke are both recorded; Danville (36.586,-79.395) is not.
+    c = client.get("/api/compare", params={"points": "37.1299,-80.4089;37.2710,-79.9414;36.5860,-79.3950"}).json()
+    scores = c["compare"]["settle_scores"]
+    assert isinstance(scores[0], (int, float)) and isinstance(scores[1], (int, float))
+    assert scores[2] is None                                 # not recorded -> no score, never a guess
     assert client.get("/api/compare", params={"points": "37.1"}).status_code == 400
 
 

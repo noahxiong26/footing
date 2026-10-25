@@ -1,0 +1,866 @@
+{
+ "version": 0.6,
+ "generator": "Overpass API 0.7.62.11 87bfad18",
+ "osm3s": {
+  "timestamp_osm_base": "2026-10-25T06:47:16Z",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+ },
+ "elements": [
+  {
+   "type": "node",
+   "id": 356602949,
+   "lat": 38.45022,
+   "lon": -78.8660187,
+   "tags": {
+    "amenity": "clinic",
+    "ele": "408",
+    "gnis:feature_id": "1790824",
+    "healthcare": "clinic",
+    "name": "Harrisonburg Health Clinic"
+   }
+  },
+  {
+   "type": "node",
+   "id": 367986443,
+   "lat": 38.4388581,
+   "lon": -78.8722389,
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:state": "VA",
+    "amenity": "library",
+    "ele": "415",
+    "gnis:feature_id": "1790814",
+    "name": "Madison Memorial Library",
+    "operator:type": "university",
+    "source": "USGS Geonames"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4541336049,
+   "lat": 38.4411441,
+   "lon": -78.8579081,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/harrisonburg-va-pharmacies/780-martin-luther-king-jr-way-harrisonburg-va-22801/storeid=1552"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4632593953,
+   "lat": 38.4519152,
+   "lon": -78.8663648,
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:housenumber": "281",
+    "addr:postcode": "22802",
+    "addr:state": "VA",
+    "addr:street": "North Mason Street",
+    "amenity": "post_office",
+    "brand": "United States Post Office",
+    "brand:wikidata": "Q668687",
+    "name": "Harrisonburg Post Office",
+    "opening_hours": "Mo-Fr 09:00-16:30",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 540-432-1557",
+    "ref": "1361166",
+    "short_name": "USPS",
+    "website": "https://tools.usps.com/locations/home.htm?location=1361166"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4746407305,
+   "lat": 38.4335522,
+   "lon": -78.9019842,
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:housenumber": "1755",
+    "addr:postcode": "22801",
+    "addr:state": "VA",
+    "addr:street": "South High Street",
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "short_name": "CVS",
+    "source": "esri/USA_NAD_Addresses"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4746413549,
+   "lat": 38.4306327,
+   "lon": -78.8417563,
+   "tags": {
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "name": "MedExpress",
+    "operator": "MedExpress",
+    "operator:wikidata": "Q102183820"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4746413567,
+   "lat": 38.4336399,
+   "lon": -78.8407297,
+   "tags": {
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "name": "RMH Healthcare"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4746413584,
+   "lat": 38.4297796,
+   "lon": -78.8403663,
+   "tags": {
+    "amenity": "post_office",
+    "brand": "The UPS Store",
+    "brand:wikidata": "Q7771029",
+    "name": "The UPS Store",
+    "shop": "copyshop",
+    "short_name": "UPS"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5516623238,
+   "lat": 38.4378671,
+   "lon": -78.8704741,
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:postcode": "22801",
+    "amenity": "community_centre",
+    "name": "Madison Union",
+    "opening_hours": "Mo-Th 08:00-23:00; Fr 08:00-24:00; Sa 09:00-24:00; Su 10:00-23:00",
+    "website": "https://info.jmu.edu/madisonunion/",
+    "wheelchair": "limited"
+   }
+  },
+  {
+   "type": "node",
+   "id": 6096320324,
+   "lat": 38.4273113,
+   "lon": -78.8543623,
+   "tags": {
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "name": "Harrisonburg Pediatrics"
+   }
+  },
+  {
+   "type": "node",
+   "id": 6776001232,
+   "lat": 38.4334412,
+   "lon": -78.8825728,
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:housenumber": "1427",
+    "addr:postcode": "22801",
+    "addr:state": "VA",
+    "addr:street": "South Main Street",
+    "name": "Sonshine Coin Laundry",
+    "self_service": "yes",
+    "shop": "laundry",
+    "source": "esri_Virginia"
+   }
+  },
+  {
+   "type": "node",
+   "id": 6977524669,
+   "lat": 38.4179402,
+   "lon": -78.8690494,
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:housenumber": "1151",
+    "addr:postcode": "22801",
+    "addr:state": "VA",
+    "addr:street": "Port Republic Road",
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "dispensing": "yes",
+    "drive_through": "yes",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/harrisonburg-va-pharmacies/1151-port-republic-rd-harrisonburg-va-22801/storeid=7947"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7656785154,
+   "lat": 38.4032344,
+   "lon": -78.8635956,
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:housenumber": "2031",
+    "addr:postcode": "22801",
+    "addr:state": "VA",
+    "addr:street": "Legacy Lane",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "name": "Shenandoah Oral and Facial Surgery"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8117039773,
+   "lat": 38.4237109,
+   "lon": -78.8510018,
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:housenumber": "2101",
+    "addr:postcode": "22801",
+    "addr:state": "VA",
+    "addr:street": "Deyerle Avenue",
+    "amenity": "social_facility",
+    "name": "Brookdale Harrisonburg",
+    "social_facility": "group_home",
+    "social_facility:for": "senior"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11375442052,
+   "lat": 38.4301514,
+   "lon": -78.8765099,
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:housenumber": "1322",
+    "addr:postcode": "22801",
+    "addr:state": "VA",
+    "addr:street": "Hillside Avenue",
+    "amenity": "post_office",
+    "brand": "The UPS Store",
+    "brand:wikidata": "Q7771029",
+    "name": "The UPS Store",
+    "shop": "copyshop",
+    "short_name": "UPS",
+    "source": "esri/USA_NAD_Addresses",
+    "website": "https://locations.theupsstore.com/va/harrisonburg/1322-hillside-ave"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12062511883,
+   "lat": 38.4280926,
+   "lon": -78.88096,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 14208518724,
+   "lat": 38.4254751,
+   "lon": -78.8522945,
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:housenumber": "370",
+    "addr:postcode": "22801",
+    "addr:state": "VA",
+    "addr:street": "Neff Avenue",
+    "addr:unit": "R",
+    "amenity": "social_facility",
+    "brand": "Visiting Angels",
+    "brand:wikidata": "Q139761092",
+    "name": "Visiting Angels",
+    "official_name": "Visiting Angels Senior Home Care",
+    "phone": "+1-540-217-2441",
+    "social_facility": "ambulatory_care",
+    "social_facility:for": "senior",
+    "start_date": "2021-02-05",
+    "website": "https://www.visitingangels.com/harrisonburg/home"
+   }
+  },
+  {
+   "type": "way",
+   "id": 264105730,
+   "center": {
+    "lat": 38.4318669,
+    "lon": -78.8688177
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes",
+    "leisure": "stadium",
+    "name": "JMU Convocation Center",
+    "wikidata": "Q6138800"
+   }
+  },
+  {
+   "type": "way",
+   "id": 336016354,
+   "center": {
+    "lat": 38.4387918,
+    "lon": -78.8720358
+   },
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:state": "VA",
+    "amenity": "library",
+    "building": "university",
+    "ele": "414",
+    "gnis:feature_id": "2102143",
+    "name": "Carrier Library",
+    "operator": "James Madison University",
+    "operator:type": "university",
+    "operator:wikidata": "Q258943",
+    "source": "USGS Geonames",
+    "website": "https://www.lib.jmu.edu/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 368966178,
+   "center": {
+    "lat": 38.4339663,
+    "lon": -78.8581574
+   },
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:housenumber": "1251",
+    "addr:postcode": "22807",
+    "addr:state": "VA",
+    "addr:street": "Carrier Drive",
+    "amenity": "library",
+    "building": "university",
+    "internet_access": "wlan",
+    "name": "Rose Library",
+    "opening_hours": "Mo-Th 00:00-02:00,07:30-24:00; Fr 00:00-02:00,07:30-20:00; Sa 10:00-20:00; Su 10:00-24:00",
+    "operator": "James Madison University",
+    "operator:type": "university",
+    "outdoor_seating": "yes",
+    "website": "https://www.lib.jmu.edu/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 417393591,
+   "center": {
+    "lat": 38.4555399,
+    "lon": -78.8643436
+   },
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:state": "VA",
+    "amenity": "community_centre",
+    "building": "yes",
+    "building:levels": "1",
+    "denomination": "mennonite",
+    "description": "Community Center",
+    "name": "Our Community Place"
+   }
+  },
+  {
+   "type": "way",
+   "id": 441021875,
+   "center": {
+    "lat": 38.4379526,
+    "lon": -78.8700579
+   },
+   "tags": {
+    "amenity": "toilets",
+    "indoor": "room",
+    "level": "3",
+    "male": "yes",
+    "room": "toilets",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 441021876,
+   "center": {
+    "lat": 38.4379476,
+    "lon": -78.8701277
+   },
+   "tags": {
+    "amenity": "toilets",
+    "female": "yes",
+    "indoor": "room",
+    "level": "3",
+    "room": "toilets",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 441092621,
+   "center": {
+    "lat": 38.4340691,
+    "lon": -78.8584597
+   },
+   "tags": {
+    "amenity": "toilets",
+    "indoor": "room",
+    "level": "1",
+    "room": "toilets",
+    "unisex": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 441092622,
+   "center": {
+    "lat": 38.4340688,
+    "lon": -78.858437
+   },
+   "tags": {
+    "amenity": "toilets",
+    "indoor": "room",
+    "level": "1",
+    "room": "toilets",
+    "unisex": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 441097915,
+   "center": {
+    "lat": 38.4340802,
+    "lon": -78.8582473
+   },
+   "tags": {
+    "amenity": "toilets",
+    "indoor": "room",
+    "level": "1",
+    "room": "toilets"
+   }
+  },
+  {
+   "type": "way",
+   "id": 441097917,
+   "center": {
+    "lat": 38.4340798,
+    "lon": -78.8582243
+   },
+   "tags": {
+    "amenity": "toilets",
+    "indoor": "room",
+    "level": "1",
+    "room": "toilets"
+   }
+  },
+  {
+   "type": "way",
+   "id": 468382466,
+   "center": {
+    "lat": 38.4701863,
+    "lon": -78.8791452
+   },
+   "tags": {
+    "addr:housenumber": "1195",
+    "addr:state": "VA",
+    "amenity": "library",
+    "building": "university",
+    "building:levels": "3",
+    "ele": "441",
+    "gnis:feature_id": "2101916",
+    "name": "Sadie A Hartzler Library",
+    "opening_hours": "Mo-Th 07:45-23:30; Fr 07:45-20:00; Sa 10:00-18:00; Su 14:00-23:30",
+    "operator": "Eastern Mennonite University",
+    "operator:type": "university",
+    "source": "USGS Geonames",
+    "website": "https://emu.edu/library/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 534875628,
+   "center": {
+    "lat": 38.474227,
+    "lon": -78.8739684
+   },
+   "tags": {
+    "amenity": "social_facility",
+    "name": "Virginia Mennonite Retirement Community",
+    "social_facility": "group_home",
+    "social_facility:for": "senior",
+    "website": "https://www.vmrc.org/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 544278791,
+   "center": {
+    "lat": 38.4474709,
+    "lon": -78.8685172
+   },
+   "tags": {
+    "addr:city": "Harrisonburg",
+    "addr:housenumber": "174",
+    "addr:postcode": "22801",
+    "addr:state": "VA",
+    "addr:street": "South Main Street",
+    "amenity": "library",
+    "building": "commercial",
+    "ele": "402",
+    "gnis:feature_id": "1790826",
+    "name": "Massanutten Regional Library",
+    "operator:type": "public",
+    "website": "https://www.mrlib.org/",
+    "wikidata": "Q69767198"
+   }
+  },
+  {
+   "type": "way",
+   "id": 588466606,
+   "center": {
+    "lat": 38.4366672,
+    "lon": -78.890174
+   },
+   "tags": {
+    "amenity": "pharmacy",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "CVS"
+   }
+  },
+  {
+   "type": "way",
+   "id": 600348087,
+   "center": {
+    "lat": 38.4417295,
+    "lon": -78.8984501
+   },
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush"
+   }
+  },
+  {
+   "type": "way",
+   "id": 600348091,
+   "center": {
+    "lat": 38.4401925,
+    "lon": -78.8979787
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 649654557,
+   "center": {
+    "lat": 38.4265277,
+    "lon": -78.8543407
+   },
+   "tags": {
+    "amenity": "clinic",
+    "building": "yes",
+    "healthcare": "clinic",
+    "name": "Allergy and Asthma Associates"
+   }
+  },
+  {
+   "type": "way",
+   "id": 649654561,
+   "center": {
+    "lat": 38.4278785,
+    "lon": -78.8549518
+   },
+   "tags": {
+    "amenity": "clinic",
+    "building": "yes",
+    "healthcare": "clinic",
+    "name": "Harrisonburg Family Practice"
+   }
+  },
+  {
+   "type": "way",
+   "id": 656873263,
+   "center": {
+    "lat": 38.4682512,
+    "lon": -78.8706109
+   },
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "Walgreens",
+    "brand:wikidata": "Q1591889",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Walgreens"
+   }
+  },
+  {
+   "type": "way",
+   "id": 849813061,
+   "center": {
+    "lat": 38.4592949,
+    "lon": -78.8740657
+   },
+   "tags": {
+    "addr:housenumber": "720",
+    "addr:street": "Chicago Avenue",
+    "building": "yes",
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "way",
+   "id": 992741680,
+   "center": {
+    "lat": 38.4598117,
+    "lon": -78.8625111
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 992942942,
+   "center": {
+    "lat": 38.4661534,
+    "lon": -78.8763635
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1109880325,
+   "center": {
+    "lat": 38.416628,
+    "lon": -78.9036624
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1110080194,
+   "center": {
+    "lat": 38.4248109,
+    "lon": -78.8694231
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112105108,
+   "center": {
+    "lat": 38.4227367,
+    "lon": -78.8793661
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112105139,
+   "center": {
+    "lat": 38.4205455,
+    "lon": -78.8735652
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112105140,
+   "center": {
+    "lat": 38.4206667,
+    "lon": -78.8739311
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112105141,
+   "center": {
+    "lat": 38.4204019,
+    "lon": -78.8744397
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112105142,
+   "center": {
+    "lat": 38.4201939,
+    "lon": -78.8749514
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112105143,
+   "center": {
+    "lat": 38.4199691,
+    "lon": -78.8745524
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112105163,
+   "center": {
+    "lat": 38.4192702,
+    "lon": -78.8807523
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112106631,
+   "center": {
+    "lat": 38.4024323,
+    "lon": -78.8688212
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112114153,
+   "center": {
+    "lat": 38.4122244,
+    "lon": -78.8586138
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112114182,
+   "center": {
+    "lat": 38.4226303,
+    "lon": -78.8532477
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112162413,
+   "center": {
+    "lat": 38.4176608,
+    "lon": -78.8493917
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1115770048,
+   "center": {
+    "lat": 38.4533023,
+    "lon": -78.8391185
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "apartments"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1117959026,
+   "center": {
+    "lat": 38.4166144,
+    "lon": -78.8553411
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1324924642,
+   "center": {
+    "lat": 38.4121919,
+    "lon": -78.8343523
+   },
+   "tags": {
+    "addr:city": "Rockingham",
+    "addr:housenumber": "3841",
+    "addr:postcode": "22801",
+    "addr:state": "VA",
+    "addr:street": "Stone Spring Road",
+    "amenity": "clinic",
+    "building": "yes",
+    "healthcare": "clinic",
+    "name": "Velocity Urgent Care"
+   }
+  },
+  {
+   "type": "relation",
+   "id": 18175761,
+   "center": {
+    "lat": 38.4111233,
+    "lon": -78.8369722
+   },
+   "tags": {
+    "amenity": "social_facility",
+    "building": "yes",
+    "name": "English Meadows Harrisonburg Campus",
+    "social_facility": "assisted_living",
+    "social_facility:for": "senior",
+    "type": "multipolygon"
+   }
+  }
+ ]
+}

@@ -29,7 +29,7 @@ OFFLINE_OK = ("tiles.maps.eox.at", "basemaps.cartocdn.com", "fonts.g", "demotile
 SECRET_WORDS = ("undocumented", "mixed", "status", "pregnant", "no_id", "situation", "household", "priorities")
 ARGS = ["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"]
 WIDTHS = (320, 390, 1280)
-LANGS = ("en", "ar")
+LANGS = ("en", "ar", "tl")   # Tagalog: added in S8, left-to-right, Latin script
 CHRISTIANSBURG = (37.1299, -80.4089)
 
 # Run in the page: everything that must hold on every screen, whatever the width or language.
@@ -75,11 +75,12 @@ def run() -> int:
             for w in WIDTHS:
                 tag = f"{lang}_{w}"
                 ctx = b.new_context(viewport={"width": w, "height": 800 if w > 900 else 844},
-                                    device_scale_factor=1, locale="ar" if lang == "ar" else "en-US")
+                                    device_scale_factor=1, locale={"ar": "ar", "tl": "fil-PH"}.get(lang, "en-US"))
                 page = ctx.new_page()
                 page.on("pageerror", lambda e, tag=tag: errors.append(f"[{tag}] page error: {e}"))
-                page.on("console", lambda m, tag=tag: errors.append(f"[{tag}] console: {m.text}") if m.type == "error"
-                        and "Failed to load resource" not in m.text and "net::" not in m.text else None)
+                page.on("console", lambda m, tag=tag: errors.append(f"[{tag}] console: {m.text}") if (m.type == "error"
+                        and "Failed to load resource" not in m.text and "net::" not in m.text)
+                        or "Footing: no " in m.text else None)   # a missing reason template is a failure
                 page.on("requestfailed", lambda r, tag=tag: None if any(h in r.url for h in OFFLINE_OK)
                         else errors.append(f"[{tag}] request failed: {r.url}"))
                 page.on("request", lambda r: sent.append({"url": r.url, "body": r.post_data or ""}))
@@ -108,20 +109,40 @@ def run() -> int:
                 if lang == "ar":
                     check(page.evaluate("getComputedStyle(document.querySelector('.g-sheet')).direction") == "rtl",
                           "sheet text is not laid out right-to-left")
-                    check(page.is_visible(".g-machine"), "Arabic screen does not say it is machine translated")
+                if lang != "en":
+                    check(page.is_visible(".g-machine"), f"{lang} screen does not say it is machine translated")
                 shot("01_intro", 1000)
 
                 # Profile: status, household, situation, a priority moved up.
                 page.click("[data-go=profile]")
                 page.check("input[name=status][value=undocumented]")
                 page.click("[data-chip='household.kids']")
-                page.click("[data-chip='household.mixed']")
+                page.click("[data-chip='household.partner']")
+                check(page.locator("[data-chip='household.mixed']").count() == 0, "the retired 'some family are citizens' option is back")
+                page.fill("#g-beds", "6")                       # typed bedrooms: above HUD's 4, uses the +15% rule
                 page.click("[data-chip='situation.car']")
                 page.click("[data-crime='1']")
                 before = page.inner_text(".g-pri")
                 page.click(".g-pri li:nth-child(3) [data-pri][data-dir='-1']") if page.locator(
                     ".g-pri li:nth-child(3) [data-pri][data-dir='-1']").count() else page.click(".g-pri li:nth-child(3) button >> nth=0")
                 check(page.inner_text(".g-pri") != before, "priority order did not change")
+                # Drag with a real mouse: the last row to the top.
+                page.evaluate("document.querySelector('.g-pri').scrollIntoView({block: 'center'})")
+                page.wait_for_timeout(150)
+                last = page.locator(".g-pri li").last
+                lk = last.get_attribute("data-k")
+                src, dst = last.locator(".nm").bounding_box(), page.locator(".g-pri li").first.bounding_box()
+                grab = last.locator(".grip").bounding_box()          # the grip works for mouse and touch
+                src = {"x": grab["x"] - 20 + grab["width"] / 2, "y": grab["y"], "height": grab["height"]}
+                page.mouse.move(src["x"] + 20, src["y"] + src["height"] / 2)
+                page.mouse.down()
+                for i in range(1, 13):
+                    page.mouse.move(src["x"] + 20, src["y"] + src["height"] / 2 + (dst["y"] + dst["height"] / 2 - src["y"] - src["height"] / 2) * i / 12)
+                    page.wait_for_timeout(16)
+                page.mouse.up()
+                page.wait_for_timeout(400)
+                check(page.locator(".g-pri li").first.get_attribute("data-k") == lk, "dragging the last priority to the top did not move it")
+                check(page.locator(".g-pri .w, .g-pri .wbar").count() == 0 or "%" not in page.inner_text(".g-pri"), "priorities still show percentages")
                 page.evaluate("document.querySelector('.g-sheet').scrollTop = 0")
                 shot("02_profile")
                 page.locator(".g-pri").scroll_into_view_if_needed()
@@ -129,16 +150,16 @@ def run() -> int:
 
                 # Top 5.
                 page.click("[data-go=save]")
-                page.wait_for_selector(".g-list .g-row")
+                page.wait_for_selector(".g-sheet .g-list .g-row")
                 page.wait_for_timeout(3500)
-                check(page.locator(".g-list .g-row").count() == 5, "top view does not show exactly 5 places")
+                check(page.locator(".g-sheet .g-list .g-row").count() == 5, "top view does not show exactly 5 places")
                 stored = page.evaluate("JSON.parse(localStorage.getItem('footing.globe.profile'))")
                 check(stored["status"] == "undocumented" and stored["household"]["kids"] is True
                       and stored["situation"]["car"] is True, "profile was not saved on the device")
                 shot("04_top5")
 
                 # A locality: score, mosaic, Details.
-                page.click(".g-list .g-row >> nth=0")
+                page.click(".g-sheet .g-list .g-row >> nth=0")
                 page.wait_for_selector("#g-loc-title")
                 page.wait_for_timeout(1800)
                 check(page.locator(".g-c2s .g-c2").count() >= 5, "locality shows fewer than 5 parts")
@@ -147,27 +168,44 @@ def run() -> int:
                 d = page.locator(".g-c2 details >> nth=0")
                 d.locator("summary").click()
                 check(d.evaluate("e => e.open"), "Details did not open")
-                check(len(d.locator("p[lang=en]").inner_text().strip()) > 20, "Details has no reason text")
+                check(len(d.locator("p.g-reason").inner_text().strip()) > 20, "Details has no reason text")
+                # Every part's Details is in the person's language; only a labelled recorded quote may be English.
+                det = page.evaluate("""(lang) => { const I = FootingI18n, s = FootingGlobe._state;
+                  const r = FootingVaFit.fitScore(s.elig, s.va, s.selected, s.profile, (s.heat || {}).localities || {});
+                  return [...document.querySelectorAll('.g-c2')].map(li => {
+                    const c = r.components.find(x => x.id === li.dataset.component);
+                    return {id: c.id, summary: li.querySelector('summary').textContent, want: I.t(lang, 'details'),
+                      text: li.querySelector('p.g-reason').textContent, english: c.reason,
+                      expect: I.vaReason(lang, c),
+                      stray: [...li.querySelectorAll('p.g-reason [lang=en]')].filter(e => !e.classList.contains('g-quote')).length,
+                      line: li.querySelector('.line').textContent}; }); }""", lang)
+                for c in det:
+                    check(c["summary"] == c["want"], f"{c['id']} Details heading is {c['summary']!r}, not {c['want']!r}")
+                    check(c["text"] == c["expect"], f"{c['id']} Details text differs from FootingI18n.vaReason")
+                    if lang != "en":
+                        check(c["text"] != c["english"], f"{c['id']} Details is still English")
+                        check(c["stray"] == 0, f"{c['id']} Details has unlabelled English")
+                        check(c["line"] != c["english"], f"{c['id']} summary line is the raw English reason")
                 d.scroll_into_view_if_needed()
                 shot("06_details")
 
                 # The full list and search.
-                page.click("#g-listbtn")
+                page.click(".g-nav [data-nav=list]")
                 page.wait_for_selector("#g-q")
-                n_all = page.locator(".g-list li").count()
+                n_all = page.locator(".g-sheet .g-list li").count()
                 check(n_all == 133, f"list shows {n_all} places, not 133")
                 page.fill("#g-q", "Roanoke")
                 page.wait_for_timeout(200)
-                shown = page.locator(".g-list li:visible").all_inner_texts()
+                shown = page.locator(".g-sheet .g-list li:visible").all_inner_texts()
                 check(len(shown) == 2 and all("Roanoke" in s for s in shown), f"search 'Roanoke' shows {shown}")
                 shot("07_search")
                 page.fill("#g-q", "zzzz")
                 page.wait_for_timeout(200)
-                check(page.locator(".g-list li:visible").count() == 0 and page.is_visible(".g-nomatch"),
+                check(page.locator(".g-sheet .g-list li:visible").count() == 0 and page.is_visible(".g-nomatch"),
                       "search with no match does not say so")
                 page.fill("#g-q", "")
                 page.fill("#g-q", "Norfolk")
-                page.click(".g-list li:visible >> nth=0")
+                page.click(".g-sheet .g-list li:visible >> nth=0")
                 page.wait_for_selector("#g-loc-title")
                 check(page.locator(".g-point-note").count() == 0, "list selection kept a previous point")
                 citywide = page.locator("[data-component=crime] .num").inner_text()
@@ -179,8 +217,13 @@ def run() -> int:
                     page.wait_for_timeout(400)
                     page.evaluate("""([lat, lon]) => { const m = FootingGlobe._state.map;
                       m.stop(); const c = m.getCanvas().getBoundingClientRect();
+                      // Aim at the middle of the map a person can actually see: below the top bar, above the
+                      // legend and the sheet. Longer labels (Tagalog at 320 px) make the legend taller.
                       const top = document.querySelector('.g-sheet').getBoundingClientRect().top;
-                      const y = top > 150 ? (110 + top) / 2 : c.top + c.height / 2;
+                      const bar = document.querySelector('.g-top').getBoundingClientRect().bottom;
+                      const leg = document.querySelector('.g-legend');
+                      const floor = Math.min(top, leg && !leg.hidden ? leg.getBoundingClientRect().top : top);
+                      const y = top > 150 ? (bar + floor) / 2 : c.top + c.height / 2;
                       m.easeTo({center: [lon, lat], zoom: 12, duration: 0, padding: {top: 0, bottom: 0, left: 0, right: 0},
                         offset: [0, y - (c.top + c.height / 2)]}); }""", [lat, lon])
                     page.wait_for_function("""([lat, lon]) => { const m = FootingGlobe._state.map;
@@ -211,12 +254,19 @@ def run() -> int:
                       "block summary omits the saved capture window")
                 if lang == "en":
                     check("violent incidents" in line and "not counted as danger" in line, "no block-level crime summary")
-                else:
+                elif lang == "ar":
                     check(any("\u0600" <= ch <= "\u06ff" for ch in line), "block summary is not in Arabic")
+                else:
+                    check("violent incidents" not in line and "insidente" in line, f"block summary is not in Tagalog: {line!r}")
                 crime.locator("summary").click()
                 check(crime.locator("a[href='https://data.norfolk.gov/resource/r7bn-2egr.json']").count() == 1,
                       "point Details lacks the city incident source")
-                check("Norfolk police data" in crime.locator("p[lang=en]").inner_text(), "point still shows the FBI-only reason")
+                reason = crime.locator("p.g-reason").inner_text()
+                # The block count leads; the citywide FBI rate may follow as a comparison.
+                check("Norfolk" in reason and f"{expected['parts']['violent']:,}" in reason.replace("\u202f", ","),
+                      "point still shows the FBI-only reason")
+                if lang == "en":
+                    check("Norfolk police data" in reason, "point reason lost the city source wording")
                 check(page.evaluate("JSON.stringify(FootingGlobe._state.byFips['51710'])") == ranked_before,
                       "a point changed the statewide locality ranking")
                 crime.scroll_into_view_if_needed()
@@ -227,9 +277,9 @@ def run() -> int:
                 check(page.locator(".g-point-note").count() == 0, "whole-locality button kept the point note")
 
                 # Missing FBI reports must stay Unknown, even after viewing a covered block.
-                page.click("#g-listbtn")
+                page.click(".g-nav [data-nav=list]")
                 page.fill("#g-q", "Virginia Beach")
-                page.click(".g-list li:visible >> nth=0")
+                page.click(".g-sheet .g-list li:visible >> nth=0")
                 page.wait_for_selector("#g-loc-title")
                 check(page.locator("[data-component=crime] .num").inner_text() == "?", "Virginia Beach crime is not Unknown")
                 check(page.locator(".g-point-note").count() == 0, "a point leaked into another locality")
@@ -251,12 +301,14 @@ def run() -> int:
 
                 msg = tap(39.29, -76.61)                       # Baltimore
                 check(page.evaluate("FootingGlobe._state.ratingPoint") is None and msg != "", "a tap in Maryland was not refused")
-                if lang == "ar":
-                    check(any("\u0600" <= ch <= "\u06ff" for ch in msg), f"Maryland refusal is not in Arabic: {msg!r}")
+                if lang != "en":
+                    want = page.evaluate("(l) => FootingI18n.t(l, 'outsideTap')", lang)
+                    check(msg == want, f"Maryland refusal is not the {lang} sentence: {msg!r}")
                 msg = tap(37.0, -75.7)                          # Atlantic, off the Eastern Shore
                 check(page.evaluate("FootingGlobe._state.ratingPoint") is None and msg != "", "a tap on open water was not refused")
-                if lang == "ar":
-                    check(any("\u0600" <= ch <= "\u06ff" for ch in msg), f"open-water refusal is not in Arabic: {msg!r}")
+                if lang != "en":
+                    want = page.evaluate("(l) => FootingI18n.t(l, 'waterTap')", lang)
+                    check(msg == want, f"open-water refusal is not the {lang} sentence: {msg!r}")
                 else:
                     check("open water" in msg, f"open-water tap gave the wrong reason: {msg!r}")
                 tap(*CHRISTIANSBURG)
@@ -283,11 +335,17 @@ def run() -> int:
                 shot("10_after_rating", 800)
 
                 # Forget my answers.
-                page.click("#g-listbtn")                        # back to the map view first
+                page.click(".g-nav [data-nav=list]")                        # back to the map view first
                 page.evaluate("FootingGlobe._state.view = 'profile'")
                 page.evaluate("document.querySelector('#g-lang').dispatchEvent(new Event('change'))")
                 page.wait_for_selector("[data-go=forget]")
                 page.click("[data-go=forget]")
+                # Forgetting now asks first, on the same "Start over" screen as the nav bar's button.
+                page.wait_for_selector("[data-go=reset-confirm]")
+                check(page.locator(".g-nav [data-nav=reset][aria-current=page]").count() == 1, "nav does not mark Start over")
+                page.click("[data-go=reset-confirm]")
+                check(page.evaluate("FootingGlobe._state.view") == "intro", "start over did not return to the start screen")
+                check(page.evaluate("FootingGlobe._state.selected") is None, "start over kept the picked place")
                 check(page.evaluate("localStorage.getItem('footing.globe.profile')") is None, "forget left the profile behind")
                 check(page.evaluate("localStorage.getItem('footing.device')") is None, "forget left the device token behind")
                 check(page.evaluate("JSON.parse(localStorage.getItem('footing.lang'))") == lang, "forget also wiped the language")

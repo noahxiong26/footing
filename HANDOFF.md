@@ -1,5 +1,233 @@
 # HANDOFF — Footing (read this first)
 
+## S9.0 A clickable draft to review the UI; S8 checkpoint finished (2026-10-25, Claude Opus 5.5)
+
+**Live demo (private to the owner until shared):** https://claude.ai/artifact/DDBbpzuwhFrMmQThLwLitN
+The standalone app as a claude.ai Artifact with the `db` capability. It has the 133-locality Virginia map, the
+score mosaic, translated Details in 9 languages, search, six recorded towns with place dots, and ratings. Ratings
+go to the artifact's shared `ratings` collection for signed-in viewers who can write, and stay on the device
+otherwise; the toast says which. Rebuild and republish with
+`python scripts/build_standalone_demo.py out/demo-artifact --fragment`, then publish `out/demo-artifact/index.html`
+with its files to the same URL. **The owner asked for this run to end on a presentable, interactive draft so
+the next session can improve the UI from it.** `demo/SITES.json` (a ChatGPT Site) is superseded and unused.
+
+What this session did, on top of S8's checkpoint:
+
+- **Tests: 251 pass**, builder `--check` passes (Linux). S8 left 237/3 failed/8 errors on Windows.
+  - Town captures: the manifests' sha256 values were taken over the Windows CRLF checkout, so all five failed on
+    Linux. Hashes are now taken over LF text (`footing.http.content_sha256`), the recorder and manifest writers
+    always write LF, `.gitattributes` pins `fixtures/**` to LF, and each file keeps its original
+    `sha256_windows_crlf` (checked: same bytes apart from line endings).
+  - `test_healthz_reports_demo` / `test_plan_tonight_card_compare` now expect six recorded towns; the "not
+    recorded -> no score" case uses Danville instead of Roanoke.
+  - The CP1252 errors: every Node subprocess call in the tests decodes UTF-8; a new test fails if one does not.
+- **Locality JSON regenerated** from the reviewed ordinance ledger. Exactly 10 rows changed: nine `limited_ban`
+  (35) park/facility rules (Arlington, Fairfax County, Henrico, Loudoun, Alexandria, Chesapeake, Fairfax city,
+  Lynchburg, Newport News) and Bristol's corrected citation (still provisional broad/0). Fairfax County's
+  clearing policy was replaced by FCPA §1.03(A); the test now says so. No locality has a clearing policy any more,
+  so the translation corpus keeps that template covered with a synthetic row.
+- **Details are translated in the app.** `globe.js` renders `FootingI18n.vaReasonParts`: own-language runs,
+  English evidence quotes in `<span lang="en" dir="ltr" class="g-quote">` after a translated label, and the
+  heading is `t("details")`. Unscored-law and fall-through summary lines use the translated runs too. A missing
+  template falls back to the English reason under "Details (in English)" and logs `Footing: no <lang> reason`,
+  which the smoke treats as a failure. Service-worker caches are v11.
+- **Demo ships all six town receipts** (built from `fixtures/` with `recorded_sets`, not a hard-coded list).
+- **`scripts/ui_globe_smoke.py` covers Tagalog** (en, ar, tl × 320/390/1280) and checks every Details card
+  against `FootingI18n.vaReason`. Its map tap now aims between the top bar and the legend/sheet.
+
+**What was and was not checked here.** `scripts/ui_standalone_smoke.py` passed on the rebuilt demo (11 screens,
+21 Christiansburg dots, no /api calls, no profile data sent). The extended full-app smoke ran through en and ar
+and reached Tagalog at 320 px, where the old tap heuristic hit the taller legend; that fix is in, but **the full
+3-language run was not repeated** (the owner switched the run's goal to the demo). The live Artifact was
+published and its `ratings` store read back (empty, as expected); **nobody has clicked the hosted page yet**,
+including rating as a signed-in viewer. Native-speaker review of all 8 translations is still pending.
+
+**Computer layout (Version 2 of the Artifact, owner request: "computer friendly instead of phone first").**
+At 1100 px and wider, Virginia mode shows three columns: a persistent, searchable list of all 133 places
+(removed in Version 5), the map framed to the space between the panels (`sheetPad()` measures
+both panels, `syncDesk()` applies the layout before any camera move), and a wider details panel
+(`--panel-w: clamp(440px, 34vw, 600px)`) with larger type and two-line mosaic labels. Arabic/Persian mirror it.
+Below 1100 px nothing changed. The top bar says "Hide this page" on desktop where that label is translated
+(en, es); other languages keep their short label. Smoke selectors now target `.g-sheet .g-list` so the rail's
+rows do not count.
+**"Page closed" on the live page:** the quick exit had been triggered (most likely the "Hide" button read as
+"hide this panel"), and in the hosted demo it could not be undone. The cover now has an "Open again" link,
+and its CSS only shows it when not `hidden`. Checked in Chromium at 1440 px (en, ar): 133 rail rows, a rail
+click opens the place and highlights it, Hide then Open again restores the app; no page errors.
+
+**Navigation bar and Start over (Version 3, owner request: switching between screens was confusing).**
+`renderNav()` builds a `<nav class="g-nav">` in the top bar: Start · About you · Best fits · All places ·
+[picked place] · Rate a place · Start over, with `aria-current="page"` on the current screen (`NAV_OF` maps views
+to tabs). Tabs sit inline on >= 1100 px and form a scrollable strip under the brand on phones (phone map padding
+and toasts moved down to 116 px). The old List toggle is hidden; smoke tests click `.g-nav [data-nav=list]`.
+"Start over" (and the profile's "Forget my answers") opens an in-page confirmation (`resetView`); confirming
+clears every `footing.*` key except the language, session storage, the profile, the picked place and point, the
+rating draft and map layer, and returns to Start. Ratings already sent stay in the shared store and contain no
+profile. 11 new strings in all 9 languages (machine translated). Checked in Chromium at 1440 (en), 390 (en) and
+1280 (ar): every tab reaches its screen and is marked, Cancel keeps answers, confirm clears them and keeps the
+language, no sideways scroll, no page errors; standalone smoke passes. The full globe smoke was not rerun.
+
+**Owner feedback round (Version 4).**
+- **About you is five numbered steps** (papers, household, situation, what matters most, crime reports) with a
+  sticky one-row action bar. Situation answers are grouped (Right now / ID / Background / Age). "Some family are
+  U.S. citizens" is removed from the UI and dropped from saved profiles; `fit.js` still reads `household.mixed`
+  if an old profile has it.
+- **Bedrooms are a typed number with − / +** (0-8, empty = automatic: 1, or 2 with kids). Both engines use
+  `fmr_for`/`fmrFor`: HUD's published FMR for 0-4 and the 4-bedroom FMR + 15% per extra bedroom above that
+  (65 FR 57715, read 2026-10-25), with a `rent_big` reason segment in all 9 languages. Parity tested at 6.
+- **What matters most shows ranks only** (no percentages). Rows cool from the top; a live preview under the list
+  shows the top 3 places for the current order and how far each moved (`previewBlock`, plain `fitScore`, no
+  sampling). Crime wording is now "Use crime reports in my score?" with Yes/No answers.
+- **Layout:** the panel and rail start at `--top-h` (measured top-bar height) + 8 px, so they never sit under the
+  nav; on phones a tall sheet stops below it.
+- **211 buttons say what 211 is**; "Forget my answers" now reads "Reset my answers".
+- **Seven subsidized programs added to `eligibility.json`:** income-limited (tax-credit) apartments, rapid
+  re-housing/eviction help, HUD-VASH, LIHEAP, Lifeline, school meals, child care/Head Start. LIHEAP (HHS IM
+  1998-25), Lifeline (Benton on the May 28, 2026 OLC opinion) and child care (CLASP, June 2026) were read; the
+  Virginia Housing Search, VA HUD-VASH, Virginia DSS and FCC pages are cited as program pages and marked "not
+  read for this row". **These rows need the same independent check as the rest of `docs/FACT_CHECK.md`.**
+- **Programs are grouped** yes → some → check → no, with a gap between groups.
+- **Everyday costs card (ROUGH DEMO ESTIMATE, owner request):** food, phone, getting around (0 where buses are
+  free), laundry/personal care, from fixed amounts scaled by the locality's 1-bedroom FMR against the Virginia
+  median. Labelled "Estimate", explained on the card, **never counted in the score**. Replace with real data
+  (e.g. BLS/USDA plans) before any real use.
+
+**Owner feedback round 2 (Version 5).**
+- **Priorities: drag to reorder** (`startDrag` in `globe.js`). Mouse drags the whole row; touch drags the grip
+  so the panel still scrolls. Only transforms change during the drag; the new order is committed after the drop
+  animation lands. The panel auto-scrolls near its edges; the drop uses the final pointer position. Measured in
+  headless Chromium: 16.7 ms median / 16.8 ms p95 frame time while dragging (60 fps). Up/down buttons remain for
+  keyboards and screen readers. The globe smoke now drags the last row to the top with a real mouse.
+- **The left "All places" rail is removed** (the nav's "All places" tab covers it). The computer layout is
+  map + wide right panel (mirrored in RTL); `sheetPad()` frames the map beside the panel.
+- **Numbers are centered** in rank columns and score chips.
+- **"Show my map" is now "Show my best fits"** (`showBest`, 9 languages).
+
+**Readability round (Version 6): answer first, reading optional.**
+- **Start:** title, the language's own "All 133 places" with the number set large, five colored factor chips
+  and one line about sources replace the paragraph.
+- **Best fits:** each of the top 5 shows a factor strip (one segment per part, width = how much it counts for
+  you, color = how well the place does; striped = no data) and rises in with a short stagger.
+- **Place panel:** three at-a-glance numbers (hours of work a week for rent, % of people outside, help places),
+  the confidence explanation folds under "How sure we are", and the rest is split into sticky tabs
+  **Score / Help nearby (count) / Programs**. Factor cards get a fill bar. Default tab is Score; the choice is
+  kept while moving between places (`S.locTab`).
+- **Programs:** three folding groups with counts (You can use, open by default / Maybe: check first / Not open
+  to you); each program's explanation is behind "Why?".
+- 11 new strings in 9 languages. Motion respects `prefers-reduced-motion`.
+- Tagalog at 320 px: long priority names now wrap instead of pushing the ↓ button out of the panel.
+
+**Full globe smoke passes on Version 6 (2026-10-25, Linux, headless Chromium):** `ui_globe_smoke.py` against the
+replay server: 108 screens (en, ar, tl × 320/390/1280), 4,088 requests checked, no profile data sent, no layout
+errors. It covers the nav bar, About you steps, typed bedrooms (6), a real mouse drag of a priority, translated
+Details, the Norfolk point, the rating flow and "Reset my answers" with confirmation. Screenshots are in ignored
+`out/globe/`. The standalone smoke also passes. Nobody has yet clicked the hosted Artifact on a real phone.
+
+**Day/night, polish, accessibility, rubric (Version 7).**
+- **Day and night from the real sun** (`subsolar`: NOAA declination + equation of time; checked against the
+  equinox, both solstices and Oct 25 1 PM ET over 79°W). A 360×256 canvas source (`skyDraw`, rows spaced in Web
+  Mercator) shades the night with a smooth twilight gradient under the places, so Virginia's lit places glow at
+  night; a faint warm sheen where the sun is high. 2.4 ms per update. The sun button (top left, every screen)
+  shows Virginia's local time and plays 24 hours in 24 seconds. `FootingGlobe.setTime(iso|null)` pins the sky
+  for screenshots and the pitch recording. **Frame rate was not measurable here:** the headless browser renders
+  the map on the CPU at about 5 fps for any globe motion; check the time-lapse on a real GPU.
+- Count-up numbers on a newly opened place; the picked place breathes (`va-selected-glow`).
+- **Accessibility:** skip link, ARIA tabs with arrows/Home/End, priority moves spoken in a polite live region.
+  axe-core 4.10.2, WCAG 2.2 A/AA rules: **0 violations on 18 screens** (en 1280 px, ar 390 px).
+- **`docs/RUBRIC.md`** maps every responsibility/feasibility criterion to evidence and open gaps.
+- **Pitch video draft** (1:45 script, shot list, voice-over, research-backed guidelines, rubric coverage) is a
+  Claude Docs doc owned by Jordan: "Footing pitch video draft".
+
+**Version 8 (owner request):** the on-screen clock / sun button is removed; the sky still follows the real sun,
+and `FootingGlobe.playDay()` plays a day for recordings. The Start screen has **See an example person** (TPS,
+two kids, safety first, age 25-49), labelled "Example" on Best fits; saving your own answers drops the label, and
+Reset my answers clears it.
+
+**Hackathon submission prep (2026-10-25).**
+- **`site/`** = the interactive demo, built by `python scripts/build_standalone_demo.py site` (full page, no
+  server). `tests/test_site_build.py` fails if it is stale: **rebuild `site/` after any change to `footing/web`,
+  `demo/standalone_backend.js` or the data.** Serve locally with `python -m http.server -d site 8000`.
+- **`.github/workflows/pages.yml`** deploys `site/` to GitHub Pages on pushes to `main`. A repo admin must
+  turn it on once: Settings → Pages → Source: "GitHub Actions". Expected URL: https://noahxiong26.github.io/footing/
+- README opens with a judges' section and new screenshots (`docs/screenshots/s9/`); `docs/DEVPOST.md` is the
+  current submission text (the team's own [TODO] lines remain); `docs/RUBRIC.md` maps the rubric.
+
+**UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
+1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the
+   layer picker is cut to "Angkop para"; the brand is cut to "FOOTIN". Consider shorter legend labels or a
+   collapsible legend at narrow widths.
+2. The map area above the sheet is small on phones once a locality is open (about 150 px between the top bar
+   and the legend).
+3. Place dots use English kind names in their popups (`kind.replace(/_/g, " ")`, "min walk", "Open now").
+4. Decide whether a park-only "camp only in designated areas" rule should score the same 35 as Roanoke's
+   downtown sidewalk ban. Researched localities now score lower than unchecked ones (which are not counted).
+
+**Next, in order:** review the live demo and list UI changes → run both smokes in full and look at the
+screenshots → the 10-locality independent audit (sample in S8.0; audit inputs are on the Windows machine only)
+→ remaining ordinance gaps from `data_raw/local_rules_research.json` next_action entries (Bristol current code
+first) → native review of translations.
+
+---
+
+## S8.0 Claude: resume this checkpoint first (2026-10-25, Codex)
+
+The owner asked to finish the session and hand work to **Claude**. This is an unfinished checkpoint on
+`codex/claude-handoff-2026-10-25`; `b7aefc8` is the last previously verified main commit. **Do not treat
+S7's green test counts or the older next-model prompt as validation of S8.** No worker committed or pushed.
+
+What is saved:
+
+- **Town receipts:** five new `fixtures/{roanoke,richmond,blacksburg,harrisonburg,alexandria}_2026-10-25/`
+  sets, eight real responses each (40 total), manifests and append-only request logs. Read
+  `docs/TOWN_CAPTURE.md`, `scripts/record_towns.py`, and `tests/test_town_captures.py`. BLS failed with
+  HTTP 503; ACS/HUD/EIA/Places/Transitland/Kroger had no keys; HRSA remains an empty local table. Never
+  fill those gaps with guesses. The recorder and its shell wrapper changed.
+- **Ordinances:** `data_raw/local_rules_research.json` covers 23 localities: nine scoped rules, thirteen
+  Unknown, and disputed Bristol. Read `docs/LOCAL_RULES_REVIEW.md` and the builder diff. Bristol's old
+  broad/0 classification remains provisional. The other locality codes are not all reviewed.
+  **The builder changed but generated `footing/static/va_localities.json` still needs reconciliation.**
+- **Translations:** Tagalog and reusable Virginia reason templates were added in `i18n*.js`, with
+  matching `reason_data` in both vafit engines. English `c.reason` is preserved. Renderer integration is
+  unfinished: use `FootingI18n.vaReason(lang, component)` or `vaReasonParts(lang, component)` (escaped
+  `{text, lang, kind}` runs), switch localized headings to `t("details")`, and replace raw unscored-law
+  reasons too. Native-speaker review is entirely pending. Check whether a translation review doc exists.
+- **Small UI fixes:** language-select arrow and popup fitting around the sheet/legend were implemented;
+  caches bumped to v10. These changes have not completed browser validation.
+- **Hosting:** `demo/SITES.json` records the one registered, private Site. It is **not published**.
+  Reuse project `appgprj_6adda30ead888191a0b182aa7c797982`; never create another Site for this demo.
+  The ignored `out/footing-site` has a Vinext starter and identity; dependency installation was stopped.
+  Durable ratings backend, adapter, schema, packaging script and hosting tests were not implemented.
+  Fetch a fresh source credential through Sites when resuming; no credentials were saved in the repo.
+- **Independent audit inputs:** `scripts/capture_audit_sources.py` retrieved five primary bulk inputs
+  (HUD FMR/HIC/PIT, ICE list, grouped USDA counts) into ignored `out/audit-sources/`, with hashes/URLs.
+  Their metadata is retained in `data_raw/audit_inputs_2026-10-25_MANIFEST.json` for cross-machine resume.
+  The ten-locality comparison report was **not generated**. These files are local, not in the Git push.
+  Empty HTTP200 bodies must remain unverified. A browser-compatible User-Agent fixed HUD downloads;
+  PIT uses `/sites/default/files/xls/2007-2025-PIT-Counts-by-CoC.xlsb`. HUD FMR has malformed workbook
+  properties (`2026- 2-19...`); ignore metadata in memory only, preserve worksheet/source bytes.
+
+Validation before this checkpoint: ordinance-focused tests 20 passed; town-focused tests 25 passed
+before final OSM additions; localization-focused run 50 passed with 8 dictionary-fixture encoding
+errors (Windows CP1252 vs UTF-8). These are partial runs, not an overall green suite. The current full
+suite/data check must be reviewed and rerun. No S8 browser smoke has completed.
+
+**Final checkpoint run:** `pytest -q` completed: **237 passed, 3 failed, 8 errors**. Failures:
+`test_healthz_reports_demo` assumes a single capture date, `test_plan_tonight_card_compare` assumes
+Roanoke is unrecorded, and `test_committed_va_json_matches_build_script` detects the pending regeneration.
+The eight `tests/test_i18n_langs.py` fixture errors are CP1252 decoding of UTF-8 Node output; set explicit
+UTF-8 on its subprocess call. Builder `--check` also confirms the stale generated JSON. These failures
+are saved deliberately in this WIP branch, not described as a finished or deployable release.
+
+Next, in order: review/finish current diffs; regenerate the locality JSON and reconcile the existing
+Fairfax County score assertion; fix explicit UTF-8 decoding in multilingual subprocess tests; wire
+the Details renderer; rerun final town/replay checks; complete the independent sample and remaining
+code research; finish durable hosting; run both browser smokes including Tagalog and inspect screenshots.
+Audit sample: `random.Random(20261025).sample(sorted(localities), 10)` = 51640, 51530, 51117, 51103,
+51680, 51036, 51600, 51197, 51075, 51071. Fairfax **city** 51600 is distinct from Fairfax County 51059.
+Keep using `AGENTS.md` and `docs/DATA_WORK.md` to avoid repeated discovery and bulk recapture.
+
+---
+
 ## S7.0 Point crime in the panel; reuse saved data first (2026-10-25, Codex)
 
 **S5.2 item 4 is implemented.** A map tap opens the locality panel with that point's incident tile.

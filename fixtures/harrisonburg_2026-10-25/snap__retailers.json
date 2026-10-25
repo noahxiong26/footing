@@ -1,0 +1,1620 @@
+{
+ "objectIdFieldName": "ObjectId",
+ "uniqueIdField": {
+  "name": "ObjectId",
+  "isSystemMaintained": true
+ },
+ "globalIdFieldName": "",
+ "geometryType": "esriGeometryPoint",
+ "spatialReference": {
+  "wkid": 4326,
+  "latestWkid": 4326
+ },
+ "fields": [
+  {
+   "name": "Record_ID",
+   "type": "esriFieldTypeInteger",
+   "alias": "Record ID",
+   "sqlType": "sqlTypeInteger",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Name",
+   "type": "esriFieldTypeString",
+   "alias": "Store Name",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Street_Address",
+   "type": "esriFieldTypeString",
+   "alias": "Store Street Address",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Additonal_Address",
+   "type": "esriFieldTypeString",
+   "alias": "Additonal Address",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "City",
+   "type": "esriFieldTypeString",
+   "alias": "City",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "State",
+   "type": "esriFieldTypeString",
+   "alias": "State",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Zip_Code",
+   "type": "esriFieldTypeString",
+   "alias": "Zip Code",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Zip4",
+   "type": "esriFieldTypeString",
+   "alias": "Zip4",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "County",
+   "type": "esriFieldTypeString",
+   "alias": "County",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Type",
+   "type": "esriFieldTypeString",
+   "alias": "Store Type",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Latitude",
+   "type": "esriFieldTypeDouble",
+   "alias": "Latitude",
+   "sqlType": "sqlTypeFloat",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Longitude",
+   "type": "esriFieldTypeDouble",
+   "alias": "Longitude",
+   "sqlType": "sqlTypeFloat",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Incentive_Program",
+   "type": "esriFieldTypeString",
+   "alias": "Incentive Program",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Grantee_Name",
+   "type": "esriFieldTypeString",
+   "alias": "Grantee Name",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "ObjectId",
+   "type": "esriFieldTypeOID",
+   "alias": "ObjectId",
+   "sqlType": "sqlTypeInteger",
+   "domain": null,
+   "defaultValue": null
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "Record_ID": 1641471,
+    "Store_Name": "DollarTree 8116",
+    "Store_Street_Address": "1420 S Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "2911",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.432987,
+    "Longitude": -78.881683,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 3933
+   },
+   "geometry": {
+    "x": -78.881683,
+    "y": 38.43298699999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1633548,
+    "Store_Name": "Mundo Fresco Supermarket",
+    "Store_Street_Address": "1544 E Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "2925",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.430969,
+    "Longitude": -78.883781,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 3936
+   },
+   "geometry": {
+    "x": -78.883781,
+    "y": 38.43096899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 332231,
+    "Store_Name": "Sheetz 332",
+    "Store_Street_Address": "798 E Market St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "    ",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.446743,
+    "Longitude": -78.853394,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 9016
+   },
+   "geometry": {
+    "x": -78.85339399999998,
+    "y": 38.446743
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 352128,
+    "Store_Name": "Kroger 310",
+    "Store_Street_Address": "1790 E Market St",
+    "Additonal_Address": "Ste 60",
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "5118",
+    "County": "HARRISONBURG",
+    "Store_Type": "Super Store",
+    "Latitude": 38.432407,
+    "Longitude": -78.840126,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 11833
+   },
+   "geometry": {
+    "x": -78.840126,
+    "y": 38.43240699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 300234,
+    "Store_Name": "Walmart 1726",
+    "Store_Street_Address": "171 Burgess Rd",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3704",
+    "County": "HARRISONBURG",
+    "Store_Type": "Super Store",
+    "Latitude": 38.435177,
+    "Longitude": -78.853127,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 13618
+   },
+   "geometry": {
+    "x": -78.85312700000001,
+    "y": 38.43517699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 415727,
+    "Store_Name": "Food Lion 1565",
+    "Store_Street_Address": "1021 Port Republic Rd",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3507",
+    "County": "HARRISONBURG",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.420273,
+    "Longitude": -78.869957,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 17519
+   },
+   "geometry": {
+    "x": -78.869957,
+    "y": 38.420272999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 327345,
+    "Store_Name": "SHARP SHOPPER",
+    "Store_Street_Address": "2475 S Main St",
+    "Additonal_Address": "Ste A",
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "7601",
+    "County": "HARRISONBURG",
+    "Store_Type": "Super Store",
+    "Latitude": 38.418591,
+    "Longitude": -78.895493,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 17536
+   },
+   "geometry": {
+    "x": -78.895493,
+    "y": 38.418591
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 391640,
+    "Store_Name": "Walmart Supercenter 2807",
+    "Store_Street_Address": "2160 John Wayland Hwy",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "4509",
+    "County": "HARRISONBURG",
+    "Store_Type": "Super Store",
+    "Latitude": 38.430859,
+    "Longitude": -78.908806,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 24963
+   },
+   "geometry": {
+    "x": -78.90880600000001,
+    "y": 38.430859
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 719156,
+    "Store_Name": "INTERNATIONAL FOODS",
+    "Store_Street_Address": "30 Baxter Dr",
+    "Additonal_Address": "Ste 130",
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "7618",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.41235,
+    "Longitude": -78.903351,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 28024
+   },
+   "geometry": {
+    "x": -78.903351,
+    "y": 38.41235
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 569195,
+    "Store_Name": "ORIENTAL FOOD MARKET",
+    "Store_Street_Address": "911 S High St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "1601",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.440891,
+    "Longitude": -78.885788,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 31997
+   },
+   "geometry": {
+    "x": -78.885788,
+    "y": 38.440891
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 996495,
+    "Store_Name": "CVS 1552",
+    "Store_Street_Address": "780 Martin Luther King Jr Way",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3252",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.440987,
+    "Longitude": -78.857735,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 49658
+   },
+   "geometry": {
+    "x": -78.85773500000002,
+    "y": 38.440986999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 996844,
+    "Store_Name": "CVS 4237",
+    "Store_Street_Address": "1100 S High St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "1521",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.436672,
+    "Longitude": -78.890137,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 49860
+   },
+   "geometry": {
+    "x": -78.890137,
+    "y": 38.436672
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 996859,
+    "Store_Name": "CVS 7947",
+    "Store_Street_Address": "1151 Port Republic Rd",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3509",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.417969,
+    "Longitude": -78.869118,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 49891
+   },
+   "geometry": {
+    "x": -78.86911800000001,
+    "y": 38.41796899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 696460,
+    "Store_Name": "Food Lion 974",
+    "Store_Street_Address": "1751 Virginia Ave Ste K",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "8394",
+    "County": "HARRISONBURG",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.479916,
+    "Longitude": -78.871002,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 53506
+   },
+   "geometry": {
+    "x": -78.871002,
+    "y": 38.47991599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 735362,
+    "Store_Name": "Dollar General 7693",
+    "Store_Street_Address": "1640 Virginia Ave",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "8369",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.4786,
+    "Longitude": -78.871246,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 54412
+   },
+   "geometry": {
+    "x": -78.871246,
+    "y": 38.47860000000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 828465,
+    "Store_Name": "Martins Food Market 6424",
+    "Store_Street_Address": "2035 E Market St",
+    "Additonal_Address": "Ste 115",
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "8881",
+    "County": "HARRISONBURG",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.424294,
+    "Longitude": -78.841492,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 54872
+   },
+   "geometry": {
+    "x": -78.841492,
+    "y": 38.42429400000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 778895,
+    "Store_Name": "Target 2071",
+    "Store_Street_Address": "1995 E Market St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3433",
+    "County": "HARRISONBURG",
+    "Store_Type": "Super Store",
+    "Latitude": 38.426865,
+    "Longitude": -78.840469,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 55840
+   },
+   "geometry": {
+    "x": -78.840469,
+    "y": 38.42686499999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1004989,
+    "Store_Name": "Friendly City Food Co-op",
+    "Store_Street_Address": "150 E Wolfe St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "4116",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.451782,
+    "Longitude": -78.866531,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 58078
+   },
+   "geometry": {
+    "x": -78.86653099999998,
+    "y": 38.451781999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1015291,
+    "Store_Name": "Speedway 4641",
+    "Store_Street_Address": "1437 S Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "2910",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.432449,
+    "Longitude": -78.882767,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 62027
+   },
+   "geometry": {
+    "x": -78.882767,
+    "y": 38.432448999999984
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 674392,
+    "Store_Name": "Food Lion 266",
+    "Store_Street_Address": "1751 S High St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "1553",
+    "County": "HARRISONBURG",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.433914,
+    "Longitude": -78.901695,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 64215
+   },
+   "geometry": {
+    "x": -78.901695,
+    "y": 38.433914
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 918279,
+    "Store_Name": "DollarTree 1457",
+    "Store_Street_Address": "2188 John Wayland Hwy",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "4509",
+    "County": "ROCKINGHAM",
+    "Store_Type": "Other",
+    "Latitude": 38.43177,
+    "Longitude": -78.911156,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 65590
+   },
+   "geometry": {
+    "x": -78.911156,
+    "y": 38.43176999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 922409,
+    "Store_Name": "DollarTree 17",
+    "Store_Street_Address": "1663 E Market St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "5116",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.433266,
+    "Longitude": -78.847916,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 68014
+   },
+   "geometry": {
+    "x": -78.847916,
+    "y": 38.433266
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 923631,
+    "Store_Name": "Costco Wholesale 0238",
+    "Store_Street_Address": "1830 Reservoir St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "8742",
+    "County": "HARRISONBURG",
+    "Store_Type": "Super Store",
+    "Latitude": 38.428768,
+    "Longitude": -78.855499,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 72028
+   },
+   "geometry": {
+    "x": -78.855499,
+    "y": 38.428768
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 883197,
+    "Store_Name": "Walgreens 18425",
+    "Store_Street_Address": "599 Mount Clinton Pike",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "2500",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.468239,
+    "Longitude": -78.870628,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 74357
+   },
+   "geometry": {
+    "x": -78.870628,
+    "y": 38.46823899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 713047,
+    "Store_Name": "Sheetz 222",
+    "Store_Street_Address": "1825 S Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "5729",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.42461,
+    "Longitude": -78.889542,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 76470
+   },
+   "geometry": {
+    "x": -78.88954200000002,
+    "y": 38.42461
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 761547,
+    "Store_Name": "Food Lion 2617",
+    "Store_Street_Address": "85 S Carlton St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "4324",
+    "County": "HARRISONBURG",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.442059,
+    "Longitude": -78.855415,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 76866
+   },
+   "geometry": {
+    "x": -78.855415,
+    "y": 38.44205899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 910229,
+    "Store_Name": "La Confianza Tienda Latina",
+    "Store_Street_Address": "288 N Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "3821",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.452232,
+    "Longitude": -78.867821,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 79085
+   },
+   "geometry": {
+    "x": -78.867821,
+    "y": 38.452232
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1097537,
+    "Store_Name": "Groceries El Chaparro",
+    "Store_Street_Address": "206 Charles St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "4612",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.463802,
+    "Longitude": -78.861259,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 82832
+   },
+   "geometry": {
+    "x": -78.861259,
+    "y": 38.46380200000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1244053,
+    "Store_Name": "Walmart Neighborhood Market 7177",
+    "Store_Street_Address": "1942 Port Republic Rd",
+    "Additonal_Address": null,
+    "City": "Rockingham",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3532",
+    "County": "ROCKINGHAM",
+    "Store_Type": "Super Store",
+    "Latitude": 38.404884,
+    "Longitude": -78.862907,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 103213
+   },
+   "geometry": {
+    "x": -78.86290700000002,
+    "y": 38.40488400000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1166285,
+    "Store_Name": "Family Dollar 10858",
+    "Store_Street_Address": "813 Chicago Ave",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "5606",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.460167,
+    "Longitude": -78.874825,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 117322
+   },
+   "geometry": {
+    "x": -78.874825,
+    "y": 38.460167
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1343782,
+    "Store_Name": "Dollar General 20317",
+    "Store_Street_Address": "49 Tyco St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "    ",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.461277,
+    "Longitude": -78.855125,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 119426
+   },
+   "geometry": {
+    "x": -78.85512500000002,
+    "y": 38.461276999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1231981,
+    "Store_Name": "Family Dollar 26",
+    "Store_Street_Address": "761 E Market St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "4234",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.447723,
+    "Longitude": -78.853996,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 121493
+   },
+   "geometry": {
+    "x": -78.853996,
+    "y": 38.44772300000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1314889,
+    "Store_Name": "7-eleven 39846a 39846A",
+    "Store_Street_Address": "1168 Virginia Ave",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "2520",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.468098,
+    "Longitude": -78.87104,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 121994
+   },
+   "geometry": {
+    "x": -78.87104000000001,
+    "y": 38.46809799999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1285512,
+    "Store_Name": "Pilot Travel Center 491",
+    "Store_Street_Address": "3634 N Valley Pike",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "1111",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.479797,
+    "Longitude": -78.819405,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 127020
+   },
+   "geometry": {
+    "x": -78.81940499999999,
+    "y": 38.479797
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1348674,
+    "Store_Name": "El Milagro Llc",
+    "Store_Street_Address": "620 Hawkins St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "4348",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.445934,
+    "Longitude": -78.855011,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 129530
+   },
+   "geometry": {
+    "x": -78.855011,
+    "y": 38.44593400000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1373541,
+    "Store_Name": "7-Eleven 39953H",
+    "Store_Street_Address": "2950 Spotswood Trl",
+    "Additonal_Address": null,
+    "City": "Rockingham",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "2216",
+    "County": "ROCKINGHAM",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.412937,
+    "Longitude": -78.833313,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 139398
+   },
+   "geometry": {
+    "x": -78.833313,
+    "y": 38.41293699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1005253,
+    "Store_Name": "Buenavista Groceries",
+    "Store_Street_Address": "774 E Market St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "4235",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.447079,
+    "Longitude": -78.853142,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 140224
+   },
+   "geometry": {
+    "x": -78.853142,
+    "y": 38.447078999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1385069,
+    "Store_Name": "A Plus Mart & Checks Cashed",
+    "Store_Street_Address": "383 N Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "3939",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.453194,
+    "Longitude": -78.868042,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 146163
+   },
+   "geometry": {
+    "x": -78.868042,
+    "y": 38.453193999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1384952,
+    "Store_Name": "La Bendicion International Market",
+    "Store_Street_Address": "1903 S Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "5726",
+    "County": "HARRISONBURG",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.423649,
+    "Longitude": -78.890503,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 146857
+   },
+   "geometry": {
+    "x": -78.890503,
+    "y": 38.423649
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1386941,
+    "Store_Name": "Food Maxx International N/A",
+    "Store_Street_Address": "924 W Market St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "2136",
+    "County": "HARRISONBURG",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.452957,
+    "Longitude": -78.884079,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 147786
+   },
+   "geometry": {
+    "x": -78.88407900000001,
+    "y": 38.452957
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1329828,
+    "Store_Name": "Aldi 80031",
+    "Store_Street_Address": "1900 Country Club Rd",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "8840",
+    "County": "HARRISONBURG",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.43306,
+    "Longitude": -78.839539,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 150678
+   },
+   "geometry": {
+    "x": -78.83953899999999,
+    "y": 38.43305999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1330111,
+    "Store_Name": "High Up Gasoline Inc.",
+    "Store_Street_Address": "1011 N Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "4628",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.459587,
+    "Longitude": -78.857239,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 151199
+   },
+   "geometry": {
+    "x": -78.857239,
+    "y": 38.45958699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1331569,
+    "Store_Name": "7-eleven 39892A",
+    "Store_Street_Address": "1911 S High St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "8563",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.431805,
+    "Longitude": -78.905121,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 151620
+   },
+   "geometry": {
+    "x": -78.905121,
+    "y": 38.431805
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1431006,
+    "Store_Name": "Harrisonburg Halal Market And Sweets Llc",
+    "Store_Street_Address": "182 Neff Ave",
+    "Additonal_Address": "Ste W5",
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3488",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.426266,
+    "Longitude": -78.845627,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 154127
+   },
+   "geometry": {
+    "x": -78.845627,
+    "y": 38.426266
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1574462,
+    "Store_Name": "7-Eleven 23904K",
+    "Store_Street_Address": "380 N. Mason Street",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "    ",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.452709,
+    "Longitude": -78.865021,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 154175
+   },
+   "geometry": {
+    "x": -78.865021,
+    "y": 38.452709
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1433268,
+    "Store_Name": "Sinbad",
+    "Store_Street_Address": "2189 S Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "2683",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.422596,
+    "Longitude": -78.893623,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 158200
+   },
+   "geometry": {
+    "x": -78.89362300000002,
+    "y": 38.42259599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1423448,
+    "Store_Name": "7-Eleven 36748A",
+    "Store_Street_Address": "1911 Reservoir St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "8741",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.426731,
+    "Longitude": -78.854897,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 160051
+   },
+   "geometry": {
+    "x": -78.85489699999998,
+    "y": 38.426731
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1407679,
+    "Store_Name": "Mad River Store",
+    "Store_Street_Address": "710 Port Republic Rd",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3328",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.427216,
+    "Longitude": -78.87439,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 167234
+   },
+   "geometry": {
+    "x": -78.87439,
+    "y": 38.427216
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1603556,
+    "Store_Name": "7-Eleven #42218A 42218A",
+    "Store_Street_Address": "2054 Rock Port Drive",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "    ",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.405781,
+    "Longitude": -78.868607,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 168086
+   },
+   "geometry": {
+    "x": -78.868607,
+    "y": 38.40578099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1481295,
+    "Store_Name": "7-eleven 35771b 35771B",
+    "Store_Street_Address": "3275 S Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "2676",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.40583,
+    "Longitude": -78.908905,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 169369
+   },
+   "geometry": {
+    "x": -78.908905,
+    "y": 38.405829999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1440963,
+    "Store_Name": "First Gate Llc",
+    "Store_Street_Address": "20 Charles St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "4608",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.460228,
+    "Longitude": -78.856735,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 173763
+   },
+   "geometry": {
+    "x": -78.85673499999999,
+    "y": 38.460227999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1643714,
+    "Store_Name": "I-81 Truck Stop",
+    "Store_Street_Address": "4070 N Valley Pike",
+    "Additonal_Address": null,
+    "City": "Rockingham",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "1115",
+    "County": "ROCKINGHAM",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.484665,
+    "Longitude": -78.814056,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 188939
+   },
+   "geometry": {
+    "x": -78.814056,
+    "y": 38.48466499999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1180548,
+    "Store_Name": "7-Eleven Store 34510A",
+    "Store_Street_Address": "1010 W Market St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "9001",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.452168,
+    "Longitude": -78.885445,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 189167
+   },
+   "geometry": {
+    "x": -78.885445,
+    "y": 38.45216799999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1254567,
+    "Store_Name": "Dona Fer Grocery Store",
+    "Store_Street_Address": "1060 Virginia Ave",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "2533",
+    "County": "HARRISONBURG",
+    "Store_Type": "Other",
+    "Latitude": 38.46302,
+    "Longitude": -78.869614,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 204458
+   },
+   "geometry": {
+    "x": -78.869614,
+    "y": 38.46301999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1564493,
+    "Store_Name": "Babylon Cuisine",
+    "Store_Street_Address": "1435 S Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "2910",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.433105,
+    "Longitude": -78.882813,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 211080
+   },
+   "geometry": {
+    "x": -78.88281299999998,
+    "y": 38.43310499999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1193140,
+    "Store_Name": "7-Eleven 19337C",
+    "Store_Street_Address": "910 N Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "4627",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.458553,
+    "Longitude": -78.859291,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 213630
+   },
+   "geometry": {
+    "x": -78.859291,
+    "y": 38.458552999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1563329,
+    "Store_Name": "A1 Mart & Checks Cash",
+    "Store_Street_Address": "815 E Market St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "4362",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.445774,
+    "Longitude": -78.854225,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 222439
+   },
+   "geometry": {
+    "x": -78.854225,
+    "y": 38.445774
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1617250,
+    "Store_Name": "7-Eleven #34518B 34518B",
+    "Store_Street_Address": "4025 Quarles Ct",
+    "Additonal_Address": null,
+    "City": "Rockingham",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "8717",
+    "County": "ROCKINGHAM",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.407673,
+    "Longitude": -78.828766,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 233462
+   },
+   "geometry": {
+    "x": -78.828766,
+    "y": 38.407673
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1611906,
+    "Store_Name": "KFC G135626",
+    "Store_Street_Address": "891 Martin Luther King Jr Way",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3277",
+    "County": "HARRISONBURG",
+    "Store_Type": "Restaurant Meals Program",
+    "Latitude": 38.441414,
+    "Longitude": -78.855156,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 235795
+   },
+   "geometry": {
+    "x": -78.855156,
+    "y": 38.44141399999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1650346,
+    "Store_Name": "Sheetz 879",
+    "Store_Street_Address": "54 Valley Ranger Road",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "    ",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.471745,
+    "Longitude": -78.87326,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 238229
+   },
+   "geometry": {
+    "x": -78.87325999999999,
+    "y": 38.471744999999984
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1625132,
+    "Store_Name": "Harrisonburg Farmers Market",
+    "Store_Street_Address": "228 S Liberty St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3622",
+    "County": "HARRISONBURG",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 38.446308,
+    "Longitude": -78.870903,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 238250
+   },
+   "geometry": {
+    "x": -78.870903,
+    "y": 38.446308
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 261208,
+    "Store_Name": "Sheetz 218",
+    "Store_Street_Address": "533 University Blvd",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "3729",
+    "County": "HARRISONBURG",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.4296,
+    "Longitude": -78.856186,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 240172
+   },
+   "geometry": {
+    "x": -78.856186,
+    "y": 38.42959999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1671572,
+    "Store_Name": "Ashti Market",
+    "Store_Street_Address": "2193 S Main St",
+    "Additonal_Address": null,
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22801",
+    "Zip4": "2683",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.422661,
+    "Longitude": -78.893669,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 243225
+   },
+   "geometry": {
+    "x": -78.893669,
+    "y": 38.42266099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1679152,
+    "Store_Name": "Innocent M Grocery.",
+    "Store_Street_Address": "625 Mount Clinton Pike",
+    "Additonal_Address": "Ste K",
+    "City": "Harrisonburg",
+    "State": "VA",
+    "Zip_Code": "22802",
+    "Zip4": "2547",
+    "County": "HARRISONBURG",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.467644,
+    "Longitude": -78.872757,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 243608
+   },
+   "geometry": {
+    "x": -78.872757,
+    "y": 38.467644
+   }
+  }
+ ]
+}

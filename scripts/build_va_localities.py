@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -124,15 +125,13 @@ LOCAL_RULES = {
     "51650": ("broad_ban", "Camping and sleeping outdoors on public property is a Class 2 misdemeanor (up to 6 months and "
               "$1,000). Police must warn several times and offer housing help before a summons. Approved April 8, 2026.",
               "hampton_camping"),
-    # Scored as a broad ban, but this one is a judgement call and the merge recorded it rather than hiding it.
-    # Session 4 read "streets, sidewalks, alleys and other public rights of way" as a broad ban (0); session 3
-    # read the same summary as a partial ban (35), because parks and other city land are not rights of way.
-    # Neither session read the ordinance itself - both cited news coverage. Kept at 0 because the cost of the
-    # two errors is not equal: scoring Bristol harsher than it is costs someone an option, scoring it gentler
-    # sends them somewhere they can be charged. docs/FACT_CHECK.md asks for the city code to settle it.
-    "51520": ("broad_ban", "Camping on city streets, sidewalks, alleys and other public rights of way is a Class 4 "
-              "misdemeanor (up to $250). Passed August 9, 2022. Whether the ban reaches parks and other city "
-              "land, rather than only rights of way, has not been confirmed from the city code.", "bristol_camping"),
+    # Retain the existing conservative classification provisionally. The 2024 amendment expands the
+    # definition to city-owned property, but its operative sentence still lists rights-of-way.
+    # Current compiled text was inaccessible; docs/LOCAL_RULES_REVIEW.md records the unresolved conflict.
+    "51520": ("broad_ban", "Bristol amended City Code §74-8 by Ordinance 24-13, adopted August 27, 2024. "
+              "The council packet expands the camping definition to city-owned property but its prohibition "
+              "still lists streets, sidewalks, alleys and rights-of-way. The current compiled scope remains "
+              "unverified; the broad classification is provisional.", "bristol_council_2024"),
     "51770": ("limited_ban", "Camping on downtown sidewalks is a Class 4 misdemeanor (up to $250). In effect since 2022.",
               "roanoke_camping"),
     "51540": ("site_closure", "The Free Bridge encampment by the Rivanna River closed on Sept 1, 2026; staying there can "
@@ -150,6 +149,80 @@ LOCAL_RULES = {
 }
 # proposed / clearing_policy / checked_none_found: shown to the person, never scored.
 RULE_SCORE = {"broad_ban": 0, "limited_ban": 35, "site_closure": 60}
+
+# Legacy evidence is retained even when replaced. Per-source dates are kept separate from READ_ON.
+_LEGACY_RULE_SOURCE_IDS = frozenset(SOURCES) | {"bristol_council_2024"}
+
+
+def reviewed_local_rules(research: dict) -> tuple[dict, dict]:
+    """Export only explicitly reviewed primary rule text from the dated research ledger.
+
+    Failed access, summaries and zoning-only findings remain in the ledger, never a scored rule.
+    Scope metadata prevents a park-only finding from silently becoming a broad public-property ban.
+    """
+    if research.get("schema_version") != 1:
+        raise ValueError("unsupported local rules research schema")
+    rules, sources = {}, {}
+    names = {x["fips"]: x["name"] for x in localities()}
+    for fips, review in research["localities"].items():
+        if names.get(fips) != review["name"]:
+            raise ValueError(f"{fips}: research locality name/FIPS mismatch")
+        decision = review.get("decision")
+        if decision is None:
+            continue
+        if review["progress"] != "verified_scoped_rule":
+            raise ValueError(f"{fips}: decision requires verified rule text")
+        status = decision["status"]
+        if status not in RULE_SCORE:
+            raise ValueError(f"{fips}: unsupported researched rule status")
+        if decision.get("scope_kind") != {"broad_ban": "public_property_broadly",
+                                          "limited_ban": "named_areas",
+                                          "site_closure": "single_site"}[status]:
+            raise ValueError(f"{fips}: status does not match verified geographic scope")
+        index = decision["evidence_index"]
+        if type(index) is not int or not 0 <= index < len(review["observations"]):
+            raise ValueError(f"{fips}: invalid evidence index")
+        evidence = review["observations"][index]
+        if evidence["outcome"] != "primary_text_read" or evidence.get("kind") not in (
+                "municipal_code", "municipal_regulation", "adopted_ordinance"):
+            raise ValueError(f"{fips}: decision requires primary operative rule text")
+        for key in ("section", "coverage", "title", "publisher", "summary"):
+            if not isinstance(evidence.get(key), str) or not evidence[key].strip():
+                raise ValueError(f"{fips}: missing evidence {key}")
+        if not evidence["url"].startswith("https://"):
+            raise ValueError(f"{fips}: primary rule needs an HTTPS citation")
+        date.fromisoformat(evidence["retrieved_on"])
+        if not isinstance(decision["note"], str) or not decision["note"].strip():
+            raise ValueError(f"{fips}: missing scoped rule note")
+        source_id = decision["source_id"]
+        if not source_id or source_id in _LEGACY_RULE_SOURCE_IDS or source_id in sources:
+            raise ValueError(f"{fips}: duplicate or empty research source id")
+        sources[source_id] = {
+            "title": evidence["title"], "publisher": evidence["publisher"], "url": evidence["url"],
+            "as_of": evidence.get("as_of", "Published rule retrieved " + evidence["retrieved_on"]),
+            "read_on": evidence["retrieved_on"],
+            "note": evidence["section"] + ". Coverage: " + evidence["coverage"]
+                    + " Research and gaps: data_raw/local_rules_research.json.",
+        }
+        rules[fips] = (status, decision["note"], source_id)
+    return rules, sources
+
+
+SOURCES["bristol_council_2024"] = {
+    "title": "Bristol §74-8: adopted 2024 amendment and unresolved scope",
+    "publisher": "City of Bristol, Virginia",
+    "url": "https://d3n9y02raazwpg.cloudfront.net/bristolva/1aedca2c-9eab-11ee-a93d-0050569183fa-f5eb21b6-13a7-4f7f-a766-a9c62b975c0d-1724431285.pdf",
+    "as_of": "Ordinance 24-13 packet; adoption recorded August 27, 2024",
+    "read_on": "2026-10-25",
+    "note": "Printed pp.82–83. Adoption minutes and access failures are in data_raw/local_rules_research.json. "
+            "Operative sentence and definition differ in scope; current compiled text not verified.",
+}
+
+LOCAL_RULES_RESEARCH = json.loads((RAW / "local_rules_research.json").read_text(encoding="utf-8"))
+_reviewed_rules, _reviewed_sources = reviewed_local_rules(LOCAL_RULES_RESEARCH)
+LOCAL_RULES.update(_reviewed_rules)
+SOURCES.update(_reviewed_sources)
+
 
 # ---- Fare-free buses (APTA list Aug 2026; DRPT zero-fare projects FY2025) ------------------------------------------
 FARE_FREE = {
@@ -395,7 +468,7 @@ def build() -> dict:
     return {
         "about": "Virginia localities for the Footing Fit Score. Every field cites SOURCES. null = we could not get it "
                  "(the reason is next to it). A missing local rule means 'not checked yet', never 'no rule'.",
-        "built_on": READ_ON,
+        "built_on": max(READ_ON, LOCAL_RULES_RESEARCH["retrieved_on"]),
         "state": {"camping_law": {"status": "none_statewide",
                                   "note": "No statewide camping ban. HB1394 (2026), which would have stopped cities from "
                                           "punishing people for sleeping in public, was continued to 2027.",
@@ -433,6 +506,12 @@ def validate(data: dict) -> list[str]:
         if not x["pop_2025"] or x["pop_2025"] < 2000:
             errs.append(f"{f}: odd population {x['pop_2025']}")
         rule = x["local_rule"]
+        if rule:
+            allowed_statuses = set(RULE_SCORE) | {"proposed", "clearing_policy", "checked_none_found"}
+            if rule["status"] not in allowed_statuses:
+                errs.append(f"{f}: unsupported local rule status")
+            elif rule["score"] != RULE_SCORE.get(rule["status"]):
+                errs.append(f"{f}: local rule score does not match status")
         if rule and rule["status"] == "checked_none_found":
             # A search that found nothing has nothing to cite; it must also never carry a score.
             if rule["source"] is not None or rule["score"] is not None:

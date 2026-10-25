@@ -1,176 +1,114 @@
-# Footing — Devpost draft
+# Footing — Devpost submission
 
-> Draft for the MLH Hacktoberfest Hack Day submission (Oct 24, 2026). Prize tracks: **Best
-> Open-Source AI Project**, **Best Use of Gemma 4**, and the **UI track**. Lines marked **[TODO]** need your input;
-> everything else matches what the code does today.
+> Submission text for the MLH Hacktoberfest Hack Day. Prize tracks: **UI track** (primary), **Best Open-Source
+> AI Project**, **Best Use of Gemma 4**. Lines marked **[TODO]** need the team's own words; everything else
+> matches what the code does today (2026-10-25). How each judging criterion is met: [`RUBRIC.md`](RUBRIC.md).
 
-**Tagline:** Where could you land for the next 30 days? A Settle Receipt for people without a home,
-built only from public data, that says "we don't know" instead of guessing.
+**Tagline:** If you lost your home tonight, where in Virginia could you actually make it for a month?
 
 ## Inspiration
 
-When you lose housing, the first question is not "where is the nearest shelter" but "can I make it
-*here* for a month?" That depends on things scattered across a dozen agencies: whether a grocery
-store nearby takes EBT, what a week of food and a tank of gas cost, whether the library is open
-tonight to charge a phone, how cold tonight gets, whether the kids can enroll at a school. Apps
-that exist list shelters. None of them add it up, and the ones that try fill gaps with guesses,
-which is dangerous when someone walks two miles on bad information.
+When you lose housing, the question is not only "where is the nearest shelter" but "can I make it *here*?"
+The answer is scattered across a dozen agencies: shelter counts, rents against the minimum wage, which food
+and health programs your papers allow, whether this city punishes sleeping outside, whether the sheriff works
+with ICE. Apps that exist list shelters. None add it up for one person, and the ones that try fill gaps with
+guesses, which is dangerous when someone walks two miles on bad information.
 
-[TODO: one or two sentences of your own on why the team picked this — e.g. something you saw in
-Blacksburg/Christiansburg.]
+[TODO: one or two sentences of your own on why the team picked this.]
 
 ## What it does
 
-**It opens on Earth, seen from space.** Answer a few questions: your immigration papers (15
-choices, including "prefer not to say"), who is with you, what fits your situation, and move what
-matters most to the top. Then the globe turns, flies to the U.S., and the states light up one by
-one in order of how well each fits *you*. Two people see two different maps.
+Footing scores all **133 Virginia cities and counties** for one person and shows the result on a globe that
+follows the real sun: at night, the places that fit you glow like lit windows.
 
-* **A Fit Score per state**, from six parts: help you can actually use with your papers (food,
-  health coverage, an ID), rent against the minimum wage, how many people sleep outside, state
-  immigration-enforcement law, statewide camping bans, and what people who have been there say.
-* **The weights are yours.** Reorder the list and the live percentages change (Rank-Order Centroid
-  weights, a decision-science method). Each state shows a 90% rank range from 300 nearby
-  weightings, so a "#4" that could easily be "#9" says so.
-* **Tap a state** for why it scored that way, the programs you can use there under the 2026
-  rules (H.R. 1's SNAP and Medicaid cuts, the new public charge rule, the court ruling that vacated
-  the PRWORA notices), a "before you apply" caution, free legal help, and 211.
-* **Zoom into a town and rate a place**: 1-5 stars for safe, respected, could get help, plus tags
-  such as "shelter was full" or "Spanish spoken". Ratings become a heatmap, using a Bayesian
-  average so one angry review can't paint a town red.
-* **Your status never leaves your phone.** The score is computed on the device. The rating
-  endpoint rejects any extra field, and our browser test checks every request. A **Hide** button
-  jumps to a weather page and wipes the screen. Fully in **Spanish** with one tap.
+* **Tell it about you, privately.** Immigration papers (15 choices, including "prefer not to say"), who is with
+  you, how many bedrooms (0 to 8), your situation, and what matters most. Everything stays on the phone; a
+  browser test checks every request and fails if any answer leaves the device. **See an example person** shows
+  the whole flow without typing anything.
+* **Drag what matters most to the top.** The ranking re-orders live, and a preview shows the top three places
+  move as you drag. Two people see two different Virginias. Each place shows a 90% rank range from 200
+  re-weightings, so a "#4" that could easily be "#9" says so.
+* **Open a place and see the answer before any reading:** hours of minimum-wage work a week to pay rent, the
+  share of people without homes who slept outside, help places nearby. Then three tabs:
+  * **Score:** each part as a bar, with its plain-language reason and a link to the source (HUD, the Census,
+    USDA, the FBI, ICE's 287(g) list, the city's own code). Parts we could not confirm are a striped "?",
+    never a zero. A rough everyday-cost estimate is shown and labelled as an estimate, never scored.
+  * **Help nearby:** mapped food, clinics, libraries, restrooms and laundries, with hours and phones.
+  * **Programs:** 18 programs plus an ID row, grouped by what *your* papers allow (You can use / Check first / Not open to you),
+    including subsidized housing, rapid re-housing, HUD-VASH, energy help, Lifeline, school meals and child
+    care, with a "talk to legal aid first" warning where public charge applies.
+* **Rate a place** (1–5 stars, tags like "shelter was full" or "Spanish spoken"); ratings become a heatmap with
+  a Bayesian average so one review can't paint a town red. Only a ~1 km tile, the hour, stars and tags are kept.
+* **Nine languages** (English, Spanish, Vietnamese, Korean, Chinese, Arabic, Amharic, Dari/Persian, Tagalog),
+  right-to-left where needed, machine translated and labelled as such on every screen.
+* **Safety:** "Hide this page" blanks the screen at once; "Start over" clears everything after a confirmation.
 
-For a single town, Footing also prints a **Settle Receipt** for any point in the U.S.:
-
-* A **Settle Score (0–100)** over 10 categories: shelter, food and EBT, cost to stay, income,
-  getting around, health, hygiene and connection, kids and school, weather risk, paperwork and local rules.
-* **Dollar lines**: a week of food (USDA Thrifty Food Plan, and a live local basket when Kroger is
-  connected), regular gas (EIA), studio Fair Market Rent (HUD), state minimum wage (DOL).
-* **Nearest places with open/closed right now**: EBT grocery, library, restroom, water, clinic,
-  pharmacy, laundromat, post office (General Delivery), job center.
-* A **confidence** number, and for every Unknown, the reason.
-
-From the receipt:
-
-* **30-day plan (Gemma 4)** — Day 1 / Week 1 / Month 1 steps. Every step is tied to a place the
-  pipeline actually found; Gemma output naming any other place, address or phone is removed
-  before it is shown, and the removed steps are listed. No key or no quota → a rule-based plan.
-* **Tonight** — what is open now within an hour's walk, tonight's low, and "Call 211" when no
-  shelter is confirmed (we never invent one).
-* **Pocket card** — a printable card with up to five places, their hours, 211, and a QR code back
-  to the receipt, for when the phone dies.
-* **Compare towns** — two or three places side by side. Unknown is never compared against a number.
-* **Snap a flyer (Gemma 4 vision)** — photograph a paper flyer on a church door; Gemma pulls out
-  the service, days, phone and address, labeled "community-reported, unconfirmed."
-
-No account, no sign-in. The only thing stored is anonymous ratings. The location is rounded to a ~1 km tile on the phone's
-side of the API before any source is called.
+The server version adds a **Settle Receipt** for any point in the U.S. (live public data for one ~1 km tile),
+a **30-day plan** and a **flyer reader** written by **Gemma 4** and checked against the data before anyone
+sees them, a "tonight" list, a printable pocket card and town comparison.
 
 ## How we built it
 
-* **Pipeline (Python):** 15 source adapters behind one fetcher with live / record / replay modes
-  and an SQLite cache. Keyless: Census Geocoder, NWS, Open-Meteo, USDA SNAP Retailer Locator,
-  OpenStreetMap Overpass, Urban Institute Education Data. Keyed: Census ACS, BLS LAUS, HUD FMR,
-  EIA, Google Places, Transitland, Kroger. Static: DOL minimum wage, USDA Thrifty Food Plan,
-  county→CoC crosswalk.
-* **Scoring:** 33 parameters (29 built), each normalized to 0–100 by a documented count or linear
-  rule (`FACTORS.md`). Category and overall scores average only what is known; confidence weighs
-  coverage and freshness.
-* **Gemma 4** (`gemma-4-26b-a4b-it` via the Gemini API) for the plan and the flyer reader, with a
-  grounding validator in front of the user.
-* **Globe:** MapLibre GL JS 5 (globe projection with atmosphere), offline state/country borders
-  (us-atlas, world-atlas), Sentinel-2 cloudless satellite imagery when online. The Fit Score engine
-  (`fit.js`) has a line-for-line Python twin, and a test runs both and requires identical output.
-* **Policy data:** 51 state rows (ILRC enforcement tiers, driver's licenses, Medicaid expansion,
-  DOL minimum wage, NLIHC *Out of Reach 2026*, HUD 2025 Point-in-Time counts, state health and
-  food programs for immigrants, camping laws), each field cited. A build script validates the data
-  against publisher totals: the state PIT counts sum to HUD's 745,652.
-* **API:** FastAPI. **App:** a no-build PWA (vanilla JS) with an offline cache.
-* **Tests:** 123 pytest tests on real captured responses (Christiansburg, VA, Oct 24 2026) and
-  labeled synthetic responses, Playwright runs of every screen at phone and desktop size (the globe run also fails if any
-  profile word appears in any request), and a clean-install
-  check of the packaged app.
-* **Deploy:** Cloud Run from source, keys in Secret Manager, max 2 instances, and Places quotas
-  sized to stay inside the free tier of our $25 Google Cloud credit.
+* **Data pipeline (Python):** HUD Fair Market Rent FY2026, HUD Point-in-Time and Housing Inventory 2025 (16
+  Continuums of Care), Census population estimates and TIGER boundaries, USDA SNAP retailers, OpenStreetMap,
+  FBI Crime Data Explorer (412 agencies), city incident data for Norfolk and Charlottesville, ICE 287(g), and
+  local camping ordinances read from city codes. A builder validates everything against publisher totals and
+  writes Unknown with a reason whenever a value is missing.
+* **Scoring on the phone:** a Fit Score engine in JavaScript with a line-for-line Python twin; a test runs both
+  on every locality and requires identical output. Rank-Order Centroid weights from the person's ordering.
+* **Gemma 4** (`gemma-4-26b-a4b-it` via the Gemini API) for the plan and the flyer reader, behind a grounding
+  validator: a step must point to a place the pipeline found; any address or phone not in the data is removed.
+* **UI:** MapLibre GL 5 globe projection, a sky texture computed from the sun's position (NOAA declination and
+  equation of time), a no-build vanilla-JS PWA with an offline cache, drag-to-reorder with transform-only
+  animation, WAI-ARIA tabs, a skip link and live-region announcements.
+* **Hosting:** the interactive demo is one 2.4 MB static folder (`site/`) on GitHub Pages: no server, no keys,
+  zero AI calls to score. The server version runs on Cloud Run.
+* **Tests:** 261 pytest tests (engine parity, data validation, translations in all nine languages, replay
+  isolation, the published site matching its source) and two Playwright smoke runs; the full one covers 108
+  screens in English, Arabic and Tagalog at 320, 390 and 1280 px, including a real mouse drag. An axe-core
+  audit finds 0 WCAG 2.2 AA violations on 18 screens.
 
 ## Challenges we ran into
 
-* **The law changed under us.** Between July 2025 and September 2026, SNAP, Medicaid, the ACA
-  credits, public charge and the PRWORA notices all changed, and a court partly undid one change.
-  A single "documented / undocumented" switch would have been wrong for refugees, TPS holders and
-  green-card holders. So we model 15 statuses and date every rule.
-* **"Unknown" on a map.** A state we haven't checked must not look like a bad state, so it is
-  drawn hatched and its weight moves to what we do know.
-
-* **Honest zeros.** OpenStreetMap maps almost no shelters, so "0 shelters" was a lie. We made
-  sparse-source zeros count as Unknown until a second source confirms.
-* **Replay leaking across towns.** Our first demo mode replayed Christiansburg's data for Roanoke
-  and showed a confident score for a town we had never queried. Recorded data now answers only for
-  its own 1 km tile, with a test that fails if it ever leaks again.
-* **Grocery ≠ EBT store.** The nearest EBT retailer was a specialty shop. The planner now prefers
-  full grocery stores by USDA store type.
-* **APIs that don't do what the docs say:** the Urban Institute API ignores its county filter, the
-  Census API now wants a key, and OSM tags FedEx counters as post offices.
+* **The law changed under us.** Between July 2025 and September 2026, SNAP, Medicaid, the ACA credits, public
+  charge and the PRWORA notices all changed, and a court partly undid one change. A single "documented /
+  undocumented" switch would be wrong for refugees, TPS holders and green-card holders, so we model 15 statuses
+  and date every rule.
+* **Virginia's independent cities.** "Roanoke city" and "Roanoke County" are different places with different
+  rents and ordinances; small cities vanish on common map files. Everything is keyed by FIPS code.
+* **Two captures disagreed, and that found a bug.** Comparing two independent FBI captures showed Farmville
+  PD's crime assigned to the wrong county, quintupling its rate. Agencies are now placed by their coordinates.
+* **"Unknown" on a map.** An unchecked place must not look like a bad place: it is striped, and its weight moves
+  to what we do know.
+* **Crime data is not danger data.** Trespass and loitering calls show where police make contact with people
+  without homes; they are counted and shown but never scored as danger, and crime is off unless you turn it on.
 
 ## Accomplishments we're proud of
 
-* Every number on screen can be traced to a source and a timestamp, and every missing number says why.
-* The model cannot send someone to a place that does not exist.
-* A person can learn which states fit their family without ever telling a server their status.
-* It runs offline from recorded data, so the demo does not depend on venue Wi-Fi.
+* Every number on screen traces to a public source and a date, and every missing number says why.
+* A person can see which places fit their family without telling a server anything about themselves.
+* The model can't send someone to a place that does not exist.
+* It runs free, offline after the first load, on a 320 px phone, in nine languages.
 
 ## What we learned
 
-[TODO: in your words. Suggestions: how much "live" public data is really annual; how much the
-UX changes when you design for a cracked phone at 5% battery.]
+[TODO: in your words.]
 
 ## What's next
 
-* Fill shelter capacity from HUD HIC/PIT (loader written) and HRSA health-center sites.
-* Verify the keyed sources live, and record Blacksburg, Radford and Roanoke for the demo.
-* Spanish plan and receipt (the plan endpoint already takes `lang`).
-* Partner with the local CoC (VA-521) and 211 Virginia to confirm shelter data.
+* An independent fact-check of ten random localities, end to end, off the publishers' own pages.
+* Camping rules for the remaining localities, read from each code.
+* Native-speaker review of all eight translations, and testing with screen-reader users and people with lived
+  experience of homelessness.
+* Partner with Virginia's Continuums of Care and 211 Virginia to confirm shelter data.
 
 ## Built with
 
-python · fastapi · gemma-4 · gemini-api · google-places · cloud-run · openstreetmap · usda-snap ·
-national-weather-service · open-meteo · census · hud · eia · bls · playwright · pwa
+javascript · maplibre-gl · python · fastapi · gemma-4 · gemini-api · playwright · axe-core · github-pages ·
+cloud-run · hud · census · usda-snap · fbi-crime-data · openstreetmap · pwa
 
 ## Links
 
-* GitHub: [TODO: repo URL after you push]
-* Demo: [TODO: Cloud Run URL after deploy, or "runs locally in replay mode"]
-* Video: [TODO]
-
-## Demo script (2 minutes)
-
-Globe first (UI track):
-
-1. Open `#/`: Earth from space, slowly turning. Read the privacy line.
-2. **Tell us about you** → "No papers right now", **Kids**, **Some family are U.S. citizens**.
-   Move **Rent** above **Help** with the arrows and watch the percentages change.
-3. **Show my map** → the fly-in, and the states lighting up in rank order. Point at the hatched
-   states, which have no data rather than a bad score.
-4. Tap **#1** → "Why this score" bars, the rank range, then scroll to the programs and the
-   "Before you apply" caution. Tap **Español**.
-5. Switch the layer to **Shelter space**, then back.
-6. Tap **Virginia** → **Zoom in** → the satellite town view (dots are real places from the
-   receipt) → **Rate a place here** → tap the spot on the map → 4 stars, Spanish spoken → **Send**
-   → the heatmap updates.
-7. Tap **Hide**.
-
-Then the receipt (Gemma track):
-
-1. Start screen → tap **Kids with me** → **Christiansburg, VA**. Point out the demo-mode notice
-   (real data recorded today) and the 1 km rounding line.
-2. Receipt: score ~77, confidence medium. Open **Shelter: Unknown** → the reason ("none found, but
-   OpenStreetMap often misses these; a zero needs Google Places to confirm it (or call 211)").
-   This is the honesty pitch.
-3. **30-day plan** → with a key, Gemma 4 writes it; show the "removed steps" note if any.
-4. **Tonight** → what is open now (on a Saturday afternoon: the library, until 17:00), tonight's
-   low, Call 211.
-5. **Pocket card** → print preview.
-6. **Compare** → Roanoke shows "no data" instead of a made-up score.
-7. **Snap a flyer** → photograph a real flyer (bring one).
+* Live demo: https://noahxiong26.github.io/footing/ (after Pages is enabled; see README)
+* GitHub: https://github.com/noahxiong26/footing
+* Video: [TODO: link after upload]

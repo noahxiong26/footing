@@ -84,23 +84,39 @@ def commas(n) -> str:
     return f"{int(js_round(n)):,}"
 
 
+MAX_BEDROOMS = 8
+
+
 def bedrooms(profile: dict) -> int:
-    """Bedrooms the person needs: their own choice (0-4), else 2 with kids, else 1."""
+    """Bedrooms the person needs: their own whole number (0-8), else 2 with kids, else 1."""
     hh = profile.get("household") or {}
     b = hh.get("bedrooms")
-    if isinstance(b, (int, float)) and not isinstance(b, bool) and 0 <= b <= 4 and int(b) == b:
+    if isinstance(b, (int, float)) and not isinstance(b, bool) and 0 <= b <= MAX_BEDROOMS and int(b) == b:
         return int(b)
     return 2 if hh.get("kids") else 1
 
 
+def fmr_for(loc: dict, b: int) -> int:
+    """HUD publishes 0-4 bedrooms. Larger units: the 4-bedroom FMR plus 15% per extra bedroom
+    (HUD's published rule, e.g. 65 FR 57715). Rounded to whole dollars like the published FMRs."""
+    by = loc["fmr"]["by_bedrooms"]
+    return by[b] if b <= 4 else int(js_round(by[4] * (1 + 0.15 * (b - 4))))
+
+
+def bedroom_word(b: int) -> str:
+    return BEDROOM_WORD[b] if b <= 4 else f"{b}-bedroom"
+
+
 def rent_component(loc, wage, profile):
     b = bedrooms(profile)
-    rent = loc["fmr"]["by_bedrooms"][b]
+    rent = fmr_for(loc, b)
     hours = rent * 12 / (0.30 * 52 * wage)
+    big = (" HUD sets rents above 4 bedrooms at the 4-bedroom rent plus 15% for each extra bedroom."
+           if b > 4 else "")
     return {"score": round1(linear(hours, 40, 140)),
-            "reason": f"{money(rent)}/month for a {BEDROOM_WORD[b]} (HUD fair market rent, FY2026, {loc['fmr']['area']}). "
+            "reason": f"{money(rent)}/month for a {bedroom_word(b)} (HUD fair market rent, FY2026, {loc['fmr']['area']}). "
                       f"At Virginia's ${wage:.2f} minimum wage that takes {int(js_round(hours))} hours of work a week "
-                      f"to keep rent at 30% of pay.",
+                      f"to keep rent at 30% of pay." + big,
             "parts": {"rent": rent, "bedrooms": b, "hours": round1(hours)}}
 
 
@@ -266,7 +282,89 @@ def components(va, fips, profile, community=None, tile=None):
                             "reason": f"{c['n']} rating{'' if c['n'] == 1 else 's'} from people who have been here"}
     else:
         out["community"] = {"score": None, "reason": "No ratings yet. Be the first to rate a place here."}
+    _reason_data(va, fips, profile, out)
     return out
+
+
+def _reason_data(va, fips, profile, out):
+    """Presentation descriptors; never parse English or infer facts from scores.
+
+    The English reason remains compatible. Recorded evidence notes are labelled
+    explicitly by the translator, rather than silently falling back to English.
+    """
+    loc, state = va["localities"][fips], va["state"]
+
+    def add(component, key, **values):
+        out[component].setdefault("reason_data", {"version": 1, "segments": []})["segments"].append(
+            {"key": key, "vars": values})
+
+    def note(component, text):
+        if text:
+            add(component, "recorded_note", text=text)
+
+    b = bedrooms(profile)
+    rent = fmr_for(loc, b)
+    wage = state["min_wage"]
+    add("rent", "rent", rent=money(rent), size=b, area=loc["fmr"]["area"],
+        wage=f"{wage:.2f}", hours=int(js_round(rent * 12 / (0.30 * 52 * wage))))
+    if b > 4:
+        add("rent", "rent_big")
+    c = loc["coc"]
+    kids = bool((profile.get("household") or {}).get("kids"))
+    p = out["shelter"]["parts"]
+    add("shelter", "shelter", name=c["name"], pct=int(js_round(100 * (c["unsheltered"] / c["pit_total"]))),
+        total=commas(c["pit_total"]))
+    add("shelter", ("beds_family" if kids else "beds") if p["people"] > 0 else
+        ("beds_family_none" if kids else "beds_none"), beds=commas(p["beds"]), people=commas(p["people"]))
+    if c["unsheltered_carried_from_2024"]:
+        add("shelter", "carried")
+    size = state_totals(va)["coc_size"][c["code"]]
+    if size > 1:
+        add("shelter", "coc_large" if size > BIG_COC else "coc_shared", n=size)
+    s, pop = loc["services"], loc["pop_2025"]
+    add("services", "grocery", n=s["snap"]["full_grocery"],
+        rate=num(round1(s["snap"]["full_grocery"] / pop * 10000)))
+    rm = s["snap"]["restaurant_meals"]
+    add("services", "meals" if rm > 0 else "meals_none", n=rm)
+    help_n = sum((s.get("osm") or {}).get(k) or 0 for k in HELP_KINDS)
+    add("services", "help" if help_n > 0 else "help_none", n=help_n)
+    if s.get("fare_free_transit"):
+        add("services", "transit", system=s["fare_free_transit"]["system"])
+    if pop < SHRINK_POP:
+        add("services", "shrink", pop=commas(pop))
+    r = loc.get("local_rule")
+    if r:
+        add("laws", "law_" + r["status"])
+        note("laws", r["note"])
+    else:
+        add("laws", "law_unchecked", place=loc["name"])
+        note("laws", state["camping_law"]["note"])
+    if "safety" in out:
+        g = loc.get("enforcement_287g") or []
+        tfm = [a for a in g if a["model"] == "Task Force Model"]
+        if tfm or g:
+            a = (tfm or g)[0]
+            add("safety", "safety_task" if tfm else "safety_jail", agency=a["agency"], signed=a["signed"])
+            if not tfm:
+                note("safety", a["model"])
+        else:
+            add("safety", "safety_none", place=loc["name"])
+        note("safety", state["state_287g"]["note"])
+    if "crime" in out:
+        cc, crime = out["crime"], loc.get("crime") or {}
+        if cc["level"] == "block":
+            p, city = cc["parts"], va["incident_cities"][fips]
+            add("crime", "crime_block", v=commas(p["violent"]), e=commas(p["enforcement"]),
+                name=city["name"], start=p["window_start"], end=p["window_end"])
+            if crime.get("violent_per_1k") is not None:
+                add("crime", "crime_city", rate=num(crime["violent_per_1k"]))
+        elif cc["level"] == "none":
+            add("crime", "crime_unknown")
+            note("crime", crime.get("unknown_reason"))
+        else:
+            add("crime", "crime_locality", rate=num(crime["violent_per_1k"]), n=commas(crime["violent_2025"]))
+    n = out["community"].get("n")
+    add("community", "community" if n else "community_none", n=n or 0)
 
 
 def default_priorities(elig, profile):
@@ -339,7 +437,7 @@ def fit_score(elig, va, fips, profile, community=None, tile=None):
         has = c.get("score") is not None
         rows.append({"id": k, "weight": round3(w[i]), "share": round3(w[i] / known) if has and known > 0 else 0,
                      "contribution": round1(w[i] / known * c["score"]) if has and known > 0 else 0,
-                     "score": c["score"] if has else None, "reason": c["reason"], "parts": c.get("parts"),
+                     "score": c["score"] if has else None, "reason": c["reason"], "reason_data": c["reason_data"], "parts": c.get("parts"),
                      "source": c.get("source")})
     conf = round3(agg["confidence"])
     return {"fips": fips, "name": va["localities"][fips]["name"],

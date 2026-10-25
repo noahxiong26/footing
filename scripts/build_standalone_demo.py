@@ -4,15 +4,14 @@
     python -m http.server -d out/demo 8799        # open http://localhost:8799/
 
 What changes compared with the app:
-  * policy data, the recorded Christiansburg receipt and the town list ship as files in data/
+  * policy data, every recorded town receipt (fixtures/*/MANIFEST.json) and the town list ship as files in data/
   * ratings go to `demo/standalone_backend.js`: a claude.ai Artifact `db` store when the page is hosted
     as an Artifact, otherwise they stay on this device only (the toast says so)
   * no satellite or label tiles (hosted pages can't load outside images), so the vector map stays visible
     when zoomed in; "Hide" blanks the page instead of opening weather.gov
 
-STATUS (2026-10-24, session 3): clicked through end to end by scripts/ui_standalone_smoke.py in headless
-Chromium (software WebGL): intro, about you, map, Virginia, zoom to Christiansburg (21 place dots), rate,
-Spanish, hide. Not yet opened on a real phone or as a hosted claude.ai Artifact.
+STATUS (2026-10-25, S9): six recorded towns (Christiansburg plus the five S8 captures). Published as a
+claude.ai Artifact with the `db` capability for shared ratings; see HANDOFF.md S9.0 for the link and checks.
 """
 from __future__ import annotations
 
@@ -24,12 +23,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WEB = ROOT / "footing" / "web"
 STATIC = ROOT / "footing" / "static"
-FIX = ROOT / "fixtures" / "christiansburg_2026-10-24"
-TOWNS = {"ok": True, "mode": "replay", "recorded": [
-    {"label": "Downtown Christiansburg, VA", "lat": 37.1299, "lon": -80.4089, "captured_at": "2026-10-24",
-     "set": "christiansburg_2026-10-24"}]}
+FIXTURES = ROOT / "fixtures"
 
-SHELL = """<title>Footing Globe</title>
+SHELL = """<title>Footing Virginia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Overpass:wght@700;800&display=swap" rel="stylesheet">
 <style>
@@ -38,7 +34,9 @@ SHELL = """<title>Footing Globe</title>
 html, body { height: 100%; margin: 0; background: #05070f; color: #e8ecf4; font-family: var(--sans); }
 * { box-sizing: border-box; }
 a { color: inherit; }
-#cover { position: fixed; inset: 0; background: #ffffff; color: #1b1b1b; display: flex; align-items: center; justify-content: center; font: 16px system-ui, sans-serif; }
+#cover:not([hidden]) { position: fixed; inset: 0; background: #ffffff; color: #1b1b1b; display: flex; align-items: center; justify-content: center; font: 16px system-ui, sans-serif; }
+#cover { z-index: 20; flex-direction: column; gap: 12px; }
+#cover-back { font: 13px system-ui, sans-serif; color: #555; background: none; border: 0; text-decoration: underline; cursor: pointer; }
 .g-top { padding-top: env(safe-area-inset-top, 0px); }
 </style>
 <style>
@@ -64,7 +62,7 @@ a { color: inherit; }
   </div>
   <section class="g-sheet" aria-label="Details"></section>
 </div>
-<div id="cover" hidden><p>Page closed.</p></div>
+<div id="cover" hidden><p>Page closed.</p><button type="button" id="cover-back">Open again</button></div>
 <script src="vendor/maplibre-gl.js"></script>
 <script src="vendor/topojson-client.min.js"></script>
 <script src="fit.js"></script>
@@ -78,12 +76,18 @@ a { color: inherit; }
 """
 
 
-def receipt() -> dict:
-    """The recorded Christiansburg receipt, built from fixtures exactly as replay mode builds it."""
-    import os
-    os.environ.setdefault("FOOTING_MODE", "replay")
-    from footing.pipeline import build_receipt  # noqa: E402  (needs the env var first)
-    return build_receipt(37.1299, -80.4089)
+def towns() -> list[dict]:
+    """Every recorded town, exactly as /api/healthz lists them in replay mode."""
+    from footing.config import Settings
+    from footing.pipeline import recorded_sets
+    return recorded_sets(Settings(mode="replay", fixture_dir=FIXTURES))
+
+
+def receipt(town: dict) -> dict:
+    """One town's receipt, built from its own fixture set exactly as replay mode builds it."""
+    from footing.config import Settings
+    from footing.pipeline import build_receipt
+    return build_receipt(town["lat"], town["lon"], settings=Settings(mode="replay", fixture_dir=FIXTURES / town["set"]))
 
 
 def main(out: Path, wrap: bool = True) -> None:
@@ -101,12 +105,15 @@ def main(out: Path, wrap: bool = True) -> None:
     policy = {"states": json.loads((STATIC / "state_policy.json").read_text()),
               "eligibility": json.loads((STATIC / "eligibility.json").read_text())}
     (out / "data" / "policy.json").write_text(json.dumps(policy, separators=(",", ":")))
-    (out / "data" / "towns.json").write_text(json.dumps(TOWNS))
     shutil.copy(STATIC / "va_localities.json", out / "data" / "va.json")
-    try:
-        (out / "data" / "receipt-christiansburg.json").write_text(json.dumps(receipt(), default=str))
-    except Exception as e:  # the globe still works; the town just shows no place markers
-        print(f"warning: could not build the Christiansburg receipt ({e}); town markers will be missing")
+    recorded = []
+    for town in towns():
+        try:
+            (out / "data" / f"receipt-{town['set']}.json").write_text(json.dumps(receipt(town), default=str))
+            recorded.append(town)
+        except Exception as e:  # the map still works; this town just shows no place markers
+            print(f"warning: could not build the {town['set']} receipt ({e}); it is left out of the town list")
+    (out / "data" / "towns.json").write_text(json.dumps({"ok": True, "mode": "replay", "recorded": recorded}))
     page = (SHELL.replace("@@MAPLIBRE_CSS@@", (WEB / "vendor" / "maplibre-gl.css").read_text())
                  .replace("@@GLOBE_CSS@@", (WEB / "globe.css").read_text()))
     if wrap:   # a plain web server needs a full document; the Artifact host adds its own skeleton (use --fragment)

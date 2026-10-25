@@ -1,0 +1,2931 @@
+{
+ "objectIdFieldName": "ObjectId",
+ "uniqueIdField": {
+  "name": "ObjectId",
+  "isSystemMaintained": true
+ },
+ "globalIdFieldName": "",
+ "geometryType": "esriGeometryPoint",
+ "spatialReference": {
+  "wkid": 4326,
+  "latestWkid": 4326
+ },
+ "fields": [
+  {
+   "name": "Record_ID",
+   "type": "esriFieldTypeInteger",
+   "alias": "Record ID",
+   "sqlType": "sqlTypeInteger",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Name",
+   "type": "esriFieldTypeString",
+   "alias": "Store Name",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Street_Address",
+   "type": "esriFieldTypeString",
+   "alias": "Store Street Address",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Additonal_Address",
+   "type": "esriFieldTypeString",
+   "alias": "Additonal Address",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "City",
+   "type": "esriFieldTypeString",
+   "alias": "City",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "State",
+   "type": "esriFieldTypeString",
+   "alias": "State",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Zip_Code",
+   "type": "esriFieldTypeString",
+   "alias": "Zip Code",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Zip4",
+   "type": "esriFieldTypeString",
+   "alias": "Zip4",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "County",
+   "type": "esriFieldTypeString",
+   "alias": "County",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Type",
+   "type": "esriFieldTypeString",
+   "alias": "Store Type",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Latitude",
+   "type": "esriFieldTypeDouble",
+   "alias": "Latitude",
+   "sqlType": "sqlTypeFloat",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Longitude",
+   "type": "esriFieldTypeDouble",
+   "alias": "Longitude",
+   "sqlType": "sqlTypeFloat",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Incentive_Program",
+   "type": "esriFieldTypeString",
+   "alias": "Incentive Program",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Grantee_Name",
+   "type": "esriFieldTypeString",
+   "alias": "Grantee Name",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "ObjectId",
+   "type": "esriFieldTypeOID",
+   "alias": "ObjectId",
+   "sqlType": "sqlTypeInteger",
+   "domain": null,
+   "defaultValue": null
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "Record_ID": 1426207,
+    "Store_Name": "Royal Deli Mart Inc.",
+    "Store_Street_Address": "1705 Melrose Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "4009",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.284512,
+    "Longitude": -79.965057,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 372
+   },
+   "geometry": {
+    "x": -79.965057,
+    "y": 37.284512
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1187337,
+    "Store_Name": "Brambleton Neighborhood Store",
+    "Store_Street_Address": "3041 Brambleton Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "4403",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.241764,
+    "Longitude": -79.99408,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 2832
+   },
+   "geometry": {
+    "x": -79.99408,
+    "y": 37.241764
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1621264,
+    "Store_Name": "Nu-deli Mart",
+    "Store_Street_Address": "3459 Shenandoah Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "4943",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.281796,
+    "Longitude": -79.995583,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 3980
+   },
+   "geometry": {
+    "x": -79.995583,
+    "y": 37.28179599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 350655,
+    "Store_Name": "ANNWIL GROCERIES",
+    "Store_Street_Address": "1548 Rugby Blvd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "3738",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.290604,
+    "Longitude": -79.961494,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 11621
+   },
+   "geometry": {
+    "x": -79.961494,
+    "y": 37.290603999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 439481,
+    "Store_Name": "Food Lion 607",
+    "Store_Street_Address": "2110 Bennington St SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "3706",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.252361,
+    "Longitude": -79.916565,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 16925
+   },
+   "geometry": {
+    "x": -79.91656499999999,
+    "y": 37.252361
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 328116,
+    "Store_Name": "CVS Pharmacy 3949",
+    "Store_Street_Address": "2001 Colonial Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "3210",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.256145,
+    "Longitude": -79.953766,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 17015
+   },
+   "geometry": {
+    "x": -79.953766,
+    "y": 37.25614499999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 377509,
+    "Store_Name": "Dollar General 3766",
+    "Store_Street_Address": "2312 Orange Ave NE",
+    "Additonal_Address": "Ste. 4",
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "8311",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.291565,
+    "Longitude": -79.910706,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 17620
+   },
+   "geometry": {
+    "x": -79.910706,
+    "y": 37.291565
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 504236,
+    "Store_Name": "Kroger 202",
+    "Store_Street_Address": "4488 Electric Rd",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24018",
+    "Zip4": "0722",
+    "County": "ROANOKE",
+    "Store_Type": "Super Store",
+    "Latitude": 37.233067,
+    "Longitude": -79.976677,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 18772
+   },
+   "geometry": {
+    "x": -79.976677,
+    "y": 37.23306699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 477375,
+    "Store_Name": "Dollar General 3920",
+    "Store_Street_Address": "3422 Plantation Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "3732",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.30645,
+    "Longitude": -79.932632,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 19081
+   },
+   "geometry": {
+    "x": -79.93263200000001,
+    "y": 37.30644999999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 344524,
+    "Store_Name": "GAS N SHOP",
+    "Store_Street_Address": "401 Walnut Ave SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "1227",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.258305,
+    "Longitude": -79.937881,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 20057
+   },
+   "geometry": {
+    "x": -79.93788100000002,
+    "y": 37.25830499999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 304786,
+    "Store_Name": "CVS PHARMACY 6284",
+    "Store_Street_Address": "1916 Orange Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "4040",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.285862,
+    "Longitude": -79.967987,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 23100
+   },
+   "geometry": {
+    "x": -79.967987,
+    "y": 37.285862
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 362844,
+    "Store_Name": "Roanoke Natural Foods Co-Op",
+    "Store_Street_Address": "1319 Grandin Rd SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "2315",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.265217,
+    "Longitude": -79.977608,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 23274
+   },
+   "geometry": {
+    "x": -79.977608,
+    "y": 37.26521700000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 395232,
+    "Store_Name": "CVS PHARMACY 6285",
+    "Store_Street_Address": "702 9th St SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24013",
+    "Zip4": "1810",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.267651,
+    "Longitude": -79.928169,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 24084
+   },
+   "geometry": {
+    "x": -79.928169,
+    "y": 37.267651
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 600177,
+    "Store_Name": "Go Mart 94",
+    "Store_Street_Address": "3519 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "7619",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.302773,
+    "Longitude": -79.944,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 26665
+   },
+   "geometry": {
+    "x": -79.944,
+    "y": 37.302773
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 450454,
+    "Store_Name": "Flowers Bakery Outlet 379",
+    "Store_Street_Address": "3527 Melrose Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "2711",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.293468,
+    "Longitude": -79.995399,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 26725
+   },
+   "geometry": {
+    "x": -79.995399,
+    "y": 37.29346799999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 485893,
+    "Store_Name": "ONE STOP MARKET 3",
+    "Store_Street_Address": "801 Bridge St SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "5501",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.271656,
+    "Longitude": -79.981804,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 27454
+   },
+   "geometry": {
+    "x": -79.98180399999998,
+    "y": 37.271656
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 425072,
+    "Store_Name": "CVS Pharmacy 7577",
+    "Store_Street_Address": "4216 Plantation Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "3138",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.313408,
+    "Longitude": -79.933334,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 29057
+   },
+   "geometry": {
+    "x": -79.933334,
+    "y": 37.313408
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 604981,
+    "Store_Name": "D&G MART",
+    "Store_Street_Address": "1219 Jamison Ave SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24013",
+    "Zip4": "1908",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.270473,
+    "Longitude": -79.923256,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 31236
+   },
+   "geometry": {
+    "x": -79.923256,
+    "y": 37.270473
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 838175,
+    "Store_Name": "Jacks Shop In",
+    "Store_Street_Address": "1825 Melrose Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "4011",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.284817,
+    "Longitude": -79.967438,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 31652
+   },
+   "geometry": {
+    "x": -79.967438,
+    "y": 37.284817000000004
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 470113,
+    "Store_Name": "Dollar General 2507",
+    "Store_Street_Address": "2227 Garden City Blvd SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "3616",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.248978,
+    "Longitude": -79.92028,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 32484
+   },
+   "geometry": {
+    "x": -79.92028,
+    "y": 37.24897800000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 700554,
+    "Store_Name": "ONE STOP MARKET ",
+    "Store_Street_Address": "2223 Williamson Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "4831",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.292854,
+    "Longitude": -79.935074,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 35532
+   },
+   "geometry": {
+    "x": -79.935074,
+    "y": 37.292854
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 607951,
+    "Store_Name": "Kroger 325",
+    "Store_Street_Address": "5050 Rutgers St NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "1323",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.31813,
+    "Longitude": -79.963898,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 35999
+   },
+   "geometry": {
+    "x": -79.963898,
+    "y": 37.31813
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 527877,
+    "Store_Name": "Walmart Supercenter 2312",
+    "Store_Street_Address": "4807 Valley View Blvd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "2018",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.30386,
+    "Longitude": -79.959518,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 36059
+   },
+   "geometry": {
+    "x": -79.95951800000002,
+    "y": 37.30386
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 844854,
+    "Store_Name": "Walgreens 05217",
+    "Store_Street_Address": "4841 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "2331",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.316113,
+    "Longitude": -79.954887,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 39678
+   },
+   "geometry": {
+    "x": -79.954887,
+    "y": 37.316113
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1364175,
+    "Store_Name": "Community Grocery 1",
+    "Store_Street_Address": "124 Elm Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24016",
+    "Zip4": "4106",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.266655,
+    "Longitude": -79.943504,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 39748
+   },
+   "geometry": {
+    "x": -79.943504,
+    "y": 37.266654999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 615452,
+    "Store_Name": "KROGER 400",
+    "Store_Street_Address": "614 Brandon Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "3212",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.25555,
+    "Longitude": -79.956902,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 40678
+   },
+   "geometry": {
+    "x": -79.956902,
+    "y": 37.25555
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 764731,
+    "Store_Name": "Target Store 1162",
+    "Store_Street_Address": "4737 Valley View Blvd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "2000",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.299343,
+    "Longitude": -79.956627,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 43680
+   },
+   "geometry": {
+    "x": -79.956627,
+    "y": 37.29934299999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 997567,
+    "Store_Name": "Local Environmental Agriculture Project Inc.",
+    "Store_Street_Address": "2080 Westover Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "2312",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.264954,
+    "Longitude": -79.979706,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 49744
+   },
+   "geometry": {
+    "x": -79.979706,
+    "y": 37.264953999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 772836,
+    "Store_Name": "DollarTree 246",
+    "Store_Street_Address": "3300 Ferncliff Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "    ",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.305447,
+    "Longitude": -79.980331,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 51995
+   },
+   "geometry": {
+    "x": -79.980331,
+    "y": 37.305446999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 740471,
+    "Store_Name": "Dollar General 7",
+    "Store_Street_Address": "3323 Melrose Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "5909",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.291924,
+    "Longitude": -79.990585,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 60008
+   },
+   "geometry": {
+    "x": -79.990585,
+    "y": 37.291923999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1011322,
+    "Store_Name": "Speedway 4633",
+    "Store_Street_Address": "2121 Orange Ave NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "8303",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.290115,
+    "Longitude": -79.91021,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 62933
+   },
+   "geometry": {
+    "x": -79.91021,
+    "y": 37.290115
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 247707,
+    "Store_Name": "Annwil Groceries 2",
+    "Store_Street_Address": "217 24th St NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "5341",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.28318,
+    "Longitude": -79.976311,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 63244
+   },
+   "geometry": {
+    "x": -79.97631100000001,
+    "y": 37.283179999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 673919,
+    "Store_Name": "Star Valley Minute Mart",
+    "Store_Street_Address": "831 Highland Ave SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24013",
+    "Zip4": "1836",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.266426,
+    "Longitude": -79.928017,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 64185
+   },
+   "geometry": {
+    "x": -79.92801700000001,
+    "y": 37.266426
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 760598,
+    "Store_Name": "Family Dollar 28",
+    "Store_Street_Address": "324 24th St NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "5344",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.284187,
+    "Longitude": -79.976547,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 76077
+   },
+   "geometry": {
+    "x": -79.97654700000001,
+    "y": 37.284187
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 760627,
+    "Store_Name": "DollarTree 6678",
+    "Store_Street_Address": "2917 Brandon Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "3311",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.261448,
+    "Longitude": -79.999565,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 76081
+   },
+   "geometry": {
+    "x": -79.999565,
+    "y": 37.261448
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 760644,
+    "Store_Name": "Family Dollar 22",
+    "Store_Street_Address": "3215 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "4317",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.300755,
+    "Longitude": -79.942047,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 76084
+   },
+   "geometry": {
+    "x": -79.942047,
+    "y": 37.300754999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 959014,
+    "Store_Name": "Tienda el Sol Latino Inc",
+    "Store_Street_Address": "4102 Plantation Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "3136",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.311939,
+    "Longitude": -79.933411,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 80741
+   },
+   "geometry": {
+    "x": -79.933411,
+    "y": 37.311939
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1096046,
+    "Store_Name": "DollarTree 4968",
+    "Store_Street_Address": "3016 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "4314",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.298477,
+    "Longitude": -79.939774,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 82701
+   },
+   "geometry": {
+    "x": -79.939774,
+    "y": 37.29847699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 913421,
+    "Store_Name": "Walgreens 07605",
+    "Store_Street_Address": "2351 Franklin Rd SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "1111",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.249763,
+    "Longitude": -79.955727,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 83119
+   },
+   "geometry": {
+    "x": -79.955727,
+    "y": 37.249763
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 865061,
+    "Store_Name": "Sam's Club 8220",
+    "Store_Street_Address": "1455 Towne Square Blvd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "1618",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.318237,
+    "Longitude": -79.966133,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 85967
+   },
+   "geometry": {
+    "x": -79.966133,
+    "y": 37.31823700000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1100187,
+    "Store_Name": "Hershberger Bp",
+    "Store_Street_Address": "1650 Hershberger Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "7209",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.313831,
+    "Longitude": -79.963188,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 86625
+   },
+   "geometry": {
+    "x": -79.96318799999999,
+    "y": 37.31383099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1133887,
+    "Store_Name": "Roanoke Natural Foods Co-op Market Square",
+    "Store_Street_Address": "1 Market Sq SE",
+    "Additonal_Address": "Ste 115",
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24011",
+    "Zip4": "1429",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.271786,
+    "Longitude": -79.939301,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 92441
+   },
+   "geometry": {
+    "x": -79.939301,
+    "y": 37.27178599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1066710,
+    "Store_Name": "Vinton Farmers' Market",
+    "Store_Street_Address": "204 W Lee Ave",
+    "Additonal_Address": null,
+    "City": "Vinton",
+    "State": "VA",
+    "Zip_Code": "24179",
+    "Zip4": "2504",
+    "County": "ROANOKE",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.280556,
+    "Longitude": -79.89872,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 94469
+   },
+   "geometry": {
+    "x": -79.89872,
+    "y": 37.280556
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1070005,
+    "Store_Name": "Saigon Market",
+    "Store_Street_Address": "2501 Williamson Rd NE",
+    "Additonal_Address": "Ste 12",
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "4896",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.295086,
+    "Longitude": -79.935928,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 98578
+   },
+   "geometry": {
+    "x": -79.935928,
+    "y": 37.295086
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1675531,
+    "Store_Name": "Sunny Food Mart & Deli",
+    "Store_Street_Address": "1016 Hershberger Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "2338",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.316788,
+    "Longitude": -79.953728,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 101409
+   },
+   "geometry": {
+    "x": -79.95372799999998,
+    "y": 37.316788
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1682298,
+    "Store_Name": "Subway Peterscreek",
+    "Store_Street_Address": "3039 Peters Creek Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24019",
+    "Zip4": "2772",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Restaurant Meals Program",
+    "Latitude": 37.319672,
+    "Longitude": -79.999878,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 101411
+   },
+   "geometry": {
+    "x": -79.999878,
+    "y": 37.31967199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1241735,
+    "Store_Name": "Nishi Food Mart 3",
+    "Store_Street_Address": "3609 Plantation Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "3527",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.308624,
+    "Longitude": -79.931664,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 101675
+   },
+   "geometry": {
+    "x": -79.93166400000001,
+    "y": 37.308624
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1118146,
+    "Store_Name": "Dollar General 14606",
+    "Store_Street_Address": "1302 Jamison Ave SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24013",
+    "Zip4": "2016",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.271385,
+    "Longitude": -79.921249,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 103735
+   },
+   "geometry": {
+    "x": -79.921249,
+    "y": 37.27138500000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1071591,
+    "Store_Name": "The Fresh Market 067",
+    "Store_Street_Address": "2207 Colonial Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "3208",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.25555,
+    "Longitude": -79.956902,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 104163
+   },
+   "geometry": {
+    "x": -79.956902,
+    "y": 37.25555
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1088289,
+    "Store_Name": "Tienda La Preferida LLC",
+    "Store_Street_Address": "4720 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "2330",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.31498,
+    "Longitude": -79.954208,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 105599
+   },
+   "geometry": {
+    "x": -79.95420799999998,
+    "y": 37.31497999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1188652,
+    "Store_Name": "Metro Express 1",
+    "Store_Street_Address": "3911 Melrose Ave Nw",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "2633",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.295055,
+    "Longitude": -80.000069,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 107610
+   },
+   "geometry": {
+    "x": -80.000069,
+    "y": 37.295054999999984
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1220645,
+    "Store_Name": "ALDI 66042 66042",
+    "Store_Street_Address": "1521 Hershberger Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "7319",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.314896,
+    "Longitude": -79.960052,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 110467
+   },
+   "geometry": {
+    "x": -79.960052,
+    "y": 37.314896
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1247938,
+    "Store_Name": "Family Dollar 11518",
+    "Store_Street_Address": "1626 Orange Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "4034",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.285114,
+    "Longitude": -79.963905,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 112877
+   },
+   "geometry": {
+    "x": -79.96390500000001,
+    "y": 37.285113999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1192674,
+    "Store_Name": "Local Environmental Agriculture Project Inc.",
+    "Store_Street_Address": "1027 Patterson Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24016",
+    "Zip4": "3405",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.272278,
+    "Longitude": -79.960274,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 113365
+   },
+   "geometry": {
+    "x": -79.960274,
+    "y": 37.272278000000014
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1230369,
+    "Store_Name": "Food Giant Inc.",
+    "Store_Street_Address": "509 24th St Nw",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "5339",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.285503,
+    "Longitude": -79.976166,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 114008
+   },
+   "geometry": {
+    "x": -79.976166,
+    "y": 37.28550299999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1603233,
+    "Store_Name": "Leap Community Store",
+    "Store_Street_Address": "1027 Patterson Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24016",
+    "Zip4": "3405",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.272278,
+    "Longitude": -79.960274,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 117488
+   },
+   "geometry": {
+    "x": -79.960274,
+    "y": 37.272278000000014
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1198793,
+    "Store_Name": "Family Dollar 11042",
+    "Store_Street_Address": "3111 Brambleton Ave",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24018",
+    "Zip4": "3728",
+    "County": "ROANOKE",
+    "Store_Type": "Other",
+    "Latitude": 37.241016,
+    "Longitude": -79.994705,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 120693
+   },
+   "geometry": {
+    "x": -79.994705,
+    "y": 37.241015999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1319045,
+    "Store_Name": "Jack's Market Inc.",
+    "Store_Street_Address": "2419 Williamson Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "4809",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.294422,
+    "Longitude": -79.936012,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 125993
+   },
+   "geometry": {
+    "x": -79.936012,
+    "y": 37.29442199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1180512,
+    "Store_Name": "Walmart Neighborhood Market 3614",
+    "Store_Street_Address": "2141 Dale Ave SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24013",
+    "Zip4": "2135",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.274033,
+    "Longitude": -79.910904,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 126189
+   },
+   "geometry": {
+    "x": -79.910904,
+    "y": 37.274032999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1206201,
+    "Store_Name": "Star Valley Food Mart",
+    "Store_Street_Address": "1614 9th St SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24013",
+    "Zip4": "2712",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.259533,
+    "Longitude": -79.92511,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 127164
+   },
+   "geometry": {
+    "x": -79.92511,
+    "y": 37.259533000000005
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1613167,
+    "Store_Name": "Cove Market 1",
+    "Store_Street_Address": "1723 Cove Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "3331",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.297779,
+    "Longitude": -79.971565,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 130812
+   },
+   "geometry": {
+    "x": -79.971565,
+    "y": 37.29777899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1304497,
+    "Store_Name": "Leap Mobile Market",
+    "Store_Street_Address": "1027 Patterson Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24016",
+    "Zip4": "3405",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.272278,
+    "Longitude": -79.960274,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 137439
+   },
+   "geometry": {
+    "x": -79.960274,
+    "y": 37.272278000000014
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1585225,
+    "Store_Name": "Lick Run Farm Farmstand",
+    "Store_Street_Address": "1626 10th St NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "3806",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.29026,
+    "Longitude": -79.951378,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 140897
+   },
+   "geometry": {
+    "x": -79.951378,
+    "y": 37.290259999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1575427,
+    "Store_Name": "Jennifer Grocery",
+    "Store_Street_Address": "1312 Patterson Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24016",
+    "Zip4": "3308",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.27224,
+    "Longitude": -79.964073,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 147597
+   },
+   "geometry": {
+    "x": -79.964073,
+    "y": 37.27223999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1268396,
+    "Store_Name": "Mr A's Mart",
+    "Store_Street_Address": "421 Campbell Ave SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24013",
+    "Zip4": "1024",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.272003,
+    "Longitude": -79.935158,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 149643
+   },
+   "geometry": {
+    "x": -79.935158,
+    "y": 37.272002999999984
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1462533,
+    "Store_Name": "Quick Way C",
+    "Store_Street_Address": "2702 Colonial Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "3836",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.250771,
+    "Longitude": -79.962181,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 150114
+   },
+   "geometry": {
+    "x": -79.962181,
+    "y": 37.25077099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1569272,
+    "Store_Name": "Orange Avenue Foodmart",
+    "Store_Street_Address": "815 Orange Ave NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "5835",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.282528,
+    "Longitude": -79.924942,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 152515
+   },
+   "geometry": {
+    "x": -79.924942,
+    "y": 37.28252799999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1356757,
+    "Store_Name": "Wasena Market",
+    "Store_Street_Address": "1115 Main St SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "5303",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.264271,
+    "Longitude": -79.958694,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 152705
+   },
+   "geometry": {
+    "x": -79.958694,
+    "y": 37.26427100000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1338098,
+    "Store_Name": "DollarTree 7626",
+    "Store_Street_Address": "3418 Orange Ave NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "6451",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.302937,
+    "Longitude": -79.892639,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 156347
+   },
+   "geometry": {
+    "x": -79.892639,
+    "y": 37.302937000000014
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1434955,
+    "Store_Name": "Asian Grocery & Halal Food",
+    "Store_Street_Address": "3416 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "4051",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.302368,
+    "Longitude": -79.944153,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 156977
+   },
+   "geometry": {
+    "x": -79.944153,
+    "y": 37.302368
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1341780,
+    "Store_Name": "BJ's Wholesale Club 219",
+    "Store_Street_Address": "1419 Hershberger Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "2225",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.314991,
+    "Longitude": -79.959694,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 158975
+   },
+   "geometry": {
+    "x": -79.959694,
+    "y": 37.314990999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1628319,
+    "Store_Name": "Triple S",
+    "Store_Street_Address": "2635 Colonial Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "3833",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.251339,
+    "Longitude": -79.96257,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 159113
+   },
+   "geometry": {
+    "x": -79.96257,
+    "y": 37.25133899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1615154,
+    "Store_Name": "Circle K 2652073",
+    "Store_Street_Address": "1021 Orange Ave NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "5839",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.283031,
+    "Longitude": -79.922836,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 160245
+   },
+   "geometry": {
+    "x": -79.922836,
+    "y": 37.28303100000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1454764,
+    "Store_Name": "Roanoke Grocery Market Rgm Beirut 1",
+    "Store_Street_Address": "3805 Melrose Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "2717",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.294628,
+    "Longitude": -79.99826,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 163717
+   },
+   "geometry": {
+    "x": -79.99826000000002,
+    "y": 37.29462799999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1406110,
+    "Store_Name": "Earth Fare 770",
+    "Store_Street_Address": "2203 Franklin Rd SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "1109",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.251938,
+    "Longitude": -79.953346,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 164476
+   },
+   "geometry": {
+    "x": -79.953346,
+    "y": 37.25193799999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1491123,
+    "Store_Name": "International Asian Halal Market",
+    "Store_Street_Address": "3202 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "4318",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.30035,
+    "Longitude": -79.942085,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 168627
+   },
+   "geometry": {
+    "x": -79.942085,
+    "y": 37.300349999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1416217,
+    "Store_Name": "DollarTree 8560",
+    "Store_Street_Address": "1322 Riverland Rd SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "3610",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.250805,
+    "Longitude": -79.918716,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 169849
+   },
+   "geometry": {
+    "x": -79.91871600000002,
+    "y": 37.25080499999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1517412,
+    "Store_Name": "Sheetz 742",
+    "Store_Street_Address": "3353 Orange Ave NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "6335",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.300053,
+    "Longitude": -79.893623,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 170409
+   },
+   "geometry": {
+    "x": -79.893623,
+    "y": 37.30005299999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1570156,
+    "Store_Name": "7-eleven 11974B",
+    "Store_Street_Address": "3602 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "3328",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.303352,
+    "Longitude": -79.94503,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 171006
+   },
+   "geometry": {
+    "x": -79.94503,
+    "y": 37.303352
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1484659,
+    "Store_Name": "DollarTree 9036",
+    "Store_Street_Address": "4952 Valley View Blvd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "2036",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.30629,
+    "Longitude": -79.969559,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 171351
+   },
+   "geometry": {
+    "x": -79.969559,
+    "y": 37.30628999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1492310,
+    "Store_Name": "Crossroads Foodmart",
+    "Store_Street_Address": "4840 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "2332",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.315872,
+    "Longitude": -79.955376,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 171486
+   },
+   "geometry": {
+    "x": -79.95537600000002,
+    "y": 37.315872000000006
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1483915,
+    "Store_Name": "Duck In Market Llc",
+    "Store_Street_Address": "3630 Franklin Rd SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "2204",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.234711,
+    "Longitude": -79.970146,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 171982
+   },
+   "geometry": {
+    "x": -79.970146,
+    "y": 37.234711
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1500863,
+    "Store_Name": "Snappy Food Mart",
+    "Store_Street_Address": "617 Liberty Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "7826",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.298004,
+    "Longitude": -79.929993,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 173083
+   },
+   "geometry": {
+    "x": -79.929993,
+    "y": 37.298004
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1499765,
+    "Store_Name": "Nishi Food Mart 6",
+    "Store_Street_Address": "2941 Hershberger Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "1943",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.305275,
+    "Longitude": -79.979362,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 173204
+   },
+   "geometry": {
+    "x": -79.979362,
+    "y": 37.305275
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1499770,
+    "Store_Name": "Nishi Food Mart 7",
+    "Store_Street_Address": "2825 Hershberger Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "1941",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.305893,
+    "Longitude": -79.978249,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 173223
+   },
+   "geometry": {
+    "x": -79.978249,
+    "y": 37.305893000000005
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1484838,
+    "Store_Name": "Chester's Shell Station",
+    "Store_Street_Address": "1919 10th St NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "3811",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.292789,
+    "Longitude": -79.948273,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 173500
+   },
+   "geometry": {
+    "x": -79.948273,
+    "y": 37.292789
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1486154,
+    "Store_Name": "Murphy USA 5528",
+    "Store_Street_Address": "4807 Valley View Blvd. NW",
+    "Additonal_Address": "Lot B",
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "    ",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.30077,
+    "Longitude": -79.960838,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 176332
+   },
+   "geometry": {
+    "x": -79.960838,
+    "y": 37.30076999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1377715,
+    "Store_Name": "Super Amanecer 2 0",
+    "Store_Street_Address": "1398 Towne Square Blvd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "1611",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.317528,
+    "Longitude": -79.961571,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 178017
+   },
+   "geometry": {
+    "x": -79.961571,
+    "y": 37.31752799999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1543801,
+    "Store_Name": "Bethlehem Restaurant And Grocery Inc",
+    "Store_Street_Address": "1613 Williamson Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "5126",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.287235,
+    "Longitude": -79.93325,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 182298
+   },
+   "geometry": {
+    "x": -79.93325,
+    "y": 37.287235
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1489562,
+    "Store_Name": "Be Quick Market #2 N/A",
+    "Store_Street_Address": "210 W Virginia Ave",
+    "Additonal_Address": null,
+    "City": "Vinton",
+    "State": "VA",
+    "Zip_Code": "24179",
+    "Zip4": "3318",
+    "County": "ROANOKE",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.2766,
+    "Longitude": -79.901917,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 184121
+   },
+   "geometry": {
+    "x": -79.901917,
+    "y": 37.2766
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 860807,
+    "Store_Name": "La Estrella Latina",
+    "Store_Street_Address": "3728 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "    ",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.30595,
+    "Longitude": -79.946495,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 189012
+   },
+   "geometry": {
+    "x": -79.946495,
+    "y": 37.305949999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 977981,
+    "Store_Name": "La Esquina Latina & Dollar Items",
+    "Store_Street_Address": "4117 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "2816",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.310661,
+    "Longitude": -79.94957,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 189482
+   },
+   "geometry": {
+    "x": -79.94957,
+    "y": 37.310661
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1274721,
+    "Store_Name": "Stop N Stop Shell",
+    "Store_Street_Address": "535 Hardy Rd",
+    "Additonal_Address": null,
+    "City": "Vinton",
+    "State": "VA",
+    "Zip_Code": "24179",
+    "Zip4": "3526",
+    "County": "ROANOKE",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.273605,
+    "Longitude": -79.893585,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 194866
+   },
+   "geometry": {
+    "x": -79.89358499999999,
+    "y": 37.273605
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1280647,
+    "Store_Name": "Va Oms 2 Llc",
+    "Store_Street_Address": "1828 Memorial Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "2012",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.265842,
+    "Longitude": -79.975647,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 195429
+   },
+   "geometry": {
+    "x": -79.975647,
+    "y": 37.265841999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 938486,
+    "Store_Name": "Fast Stop Mart 1",
+    "Store_Street_Address": "2502 Shenandoah Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "5338",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.282196,
+    "Longitude": -79.979607,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 196145
+   },
+   "geometry": {
+    "x": -79.979607,
+    "y": 37.282195999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1156215,
+    "Store_Name": "Happy Shopper",
+    "Store_Street_Address": "931 Gus W Nicks Blvd",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "    ",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.288567,
+    "Longitude": -79.907211,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 200895
+   },
+   "geometry": {
+    "x": -79.907211,
+    "y": 37.28856700000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 840043,
+    "Store_Name": "7-Eleven 11976",
+    "Store_Street_Address": "1410 Grandin Rd SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "2318",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.26429,
+    "Longitude": -79.977386,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 201692
+   },
+   "geometry": {
+    "x": -79.977386,
+    "y": 37.26429
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1284529,
+    "Store_Name": "Sunnyside Market",
+    "Store_Street_Address": "502 Mountain Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24016",
+    "Zip4": "3908",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.266178,
+    "Longitude": -79.950829,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 203470
+   },
+   "geometry": {
+    "x": -79.950829,
+    "y": 37.266178
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1221765,
+    "Store_Name": "Express Stop",
+    "Store_Street_Address": "3509 Plantation Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "3733",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.307995,
+    "Longitude": -79.931541,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 206933
+   },
+   "geometry": {
+    "x": -79.931541,
+    "y": 37.307995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1082417,
+    "Store_Name": "Carniceria Lily",
+    "Store_Street_Address": "1525 Williamson Rd Ne",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "5124",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.285992,
+    "Longitude": -79.933136,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 207484
+   },
+   "geometry": {
+    "x": -79.933136,
+    "y": 37.28599200000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1698056,
+    "Store_Name": "International Mart",
+    "Store_Street_Address": "3109 Brambleton Ave",
+    "Additonal_Address": "D",
+    "City": "Roaoke",
+    "State": "VA",
+    "Zip_Code": "24018",
+    "Zip4": "    ",
+    "County": "ROANOKE",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.241547,
+    "Longitude": -79.99472,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 209062
+   },
+   "geometry": {
+    "x": -79.99472,
+    "y": 37.24154699999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1218182,
+    "Store_Name": "Melrose Stop Mart",
+    "Store_Street_Address": "3458 Melrose Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "2710",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.292866,
+    "Longitude": -79.99427,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 209222
+   },
+   "geometry": {
+    "x": -79.99427,
+    "y": 37.29286599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1036610,
+    "Store_Name": "Boulevard Mart",
+    "Store_Street_Address": "3314 Garden City Blvd SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "4450",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.23262,
+    "Longitude": -79.928406,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 209810
+   },
+   "geometry": {
+    "x": -79.928406,
+    "y": 37.23262
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1282386,
+    "Store_Name": "Joy Mart",
+    "Store_Street_Address": "2118 Bennington St SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "3706",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.252029,
+    "Longitude": -79.91687,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 212123
+   },
+   "geometry": {
+    "x": -79.91687,
+    "y": 37.252028999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1673386,
+    "Store_Name": "N&M Market",
+    "Store_Street_Address": "1102 Orange Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "6324",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.283379,
+    "Longitude": -79.955917,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 216198
+   },
+   "geometry": {
+    "x": -79.955917,
+    "y": 37.283379
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1089240,
+    "Store_Name": "Brother's Mart",
+    "Store_Street_Address": "2801 Melrose Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "3227",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.288387,
+    "Longitude": -79.981033,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 217119
+   },
+   "geometry": {
+    "x": -79.981033,
+    "y": 37.288386999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1189965,
+    "Store_Name": "Metro Express 3",
+    "Store_Street_Address": "104 Gus Nicks Blvd",
+    "Additonal_Address": null,
+    "City": "Vinton",
+    "State": "VA",
+    "Zip_Code": "24179",
+    "Zip4": "2412",
+    "County": "ROANOKE",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.281147,
+    "Longitude": -79.898026,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 218851
+   },
+   "geometry": {
+    "x": -79.898026,
+    "y": 37.28114699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 916470,
+    "Store_Name": "7-Eleven Inc F 21878B",
+    "Store_Street_Address": "1701 9th St SE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24013",
+    "Zip4": "2713",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.257526,
+    "Longitude": -79.924622,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 219957
+   },
+   "geometry": {
+    "x": -79.924622,
+    "y": 37.257526000000006
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1564134,
+    "Store_Name": "Star City Market N/A",
+    "Store_Street_Address": "3745 Williamson Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "3350",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.306629,
+    "Longitude": -79.946587,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 223220
+   },
+   "geometry": {
+    "x": -79.946587,
+    "y": 37.30662899999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1586652,
+    "Store_Name": "Roanoke Halal Food Market",
+    "Store_Street_Address": "2211 Williamson Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "4831",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.292366,
+    "Longitude": -79.934914,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 225612
+   },
+   "geometry": {
+    "x": -79.934914,
+    "y": 37.292366
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1598986,
+    "Store_Name": "K&S African Market",
+    "Store_Street_Address": "2206 Melrose Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "6204",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.285545,
+    "Longitude": -79.972763,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 228966
+   },
+   "geometry": {
+    "x": -79.972763,
+    "y": 37.285544999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1624449,
+    "Store_Name": "Gayles Veggie Plants and Herbs BLK",
+    "Store_Street_Address": "1436 Syracuse Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "3744",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.290771,
+    "Longitude": -79.959175,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 234482
+   },
+   "geometry": {
+    "x": -79.959175,
+    "y": 37.29077099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1619986,
+    "Store_Name": "Market On Melrose",
+    "Store_Street_Address": "2502 Melrose Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "3910",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.286407,
+    "Longitude": -79.97773,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 234483
+   },
+   "geometry": {
+    "x": -79.97773,
+    "y": 37.28640699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1364135,
+    "Store_Name": "S & S Grocery & Deli",
+    "Store_Street_Address": "1303 Patterson Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24016",
+    "Zip4": "3307",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.272907,
+    "Longitude": -79.963806,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 235813
+   },
+   "geometry": {
+    "x": -79.96380599999999,
+    "y": 37.27290699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1624107,
+    "Store_Name": "A And M Market",
+    "Store_Street_Address": "2521 Hollins Rd NE",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "4523",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.29855,
+    "Longitude": -79.925087,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 236760
+   },
+   "geometry": {
+    "x": -79.92508699999999,
+    "y": 37.29855
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1642477,
+    "Store_Name": "Lafayette Mini Mart",
+    "Store_Street_Address": "1035 Lafayette Blvd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "3529",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.29044,
+    "Longitude": -79.975838,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 238080
+   },
+   "geometry": {
+    "x": -79.97583799999998,
+    "y": 37.29043999999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1041472,
+    "Store_Name": "The Grocer",
+    "Store_Street_Address": "621 Townside Rd Sw",
+    "Additonal_Address": "Ste A",
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "2297",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.236423,
+    "Longitude": -79.970673,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 238249
+   },
+   "geometry": {
+    "x": -79.970673,
+    "y": 37.236423
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1312388,
+    "Store_Name": "Skymart",
+    "Store_Street_Address": "3902 Melrose Ave NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24017",
+    "Zip4": "2634",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.294647,
+    "Longitude": -80.000244,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 240466
+   },
+   "geometry": {
+    "x": -80.000244,
+    "y": 37.294647000000005
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1675535,
+    "Store_Name": "STOP IN FOOD STORES 8200",
+    "Store_Street_Address": "2939 Edgewood St SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24015",
+    "Zip4": "2631",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.26215,
+    "Longitude": -79.999916,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 241282
+   },
+   "geometry": {
+    "x": -79.999916,
+    "y": 37.26214999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1690879,
+    "Store_Name": "Foodway Market",
+    "Store_Street_Address": "2201 Liberty Rd NW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24012",
+    "Zip4": "4749",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.29142,
+    "Longitude": -79.939735,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 241368
+   },
+   "geometry": {
+    "x": -79.93973499999998,
+    "y": 37.291419999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1623331,
+    "Store_Name": "7-Eleven 11961J",
+    "Store_Street_Address": "2127 Crystal Spring Ave SW",
+    "Additonal_Address": null,
+    "City": "Roanoke",
+    "State": "VA",
+    "Zip_Code": "24014",
+    "Zip4": "2413",
+    "County": "ROANOKE CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.249039,
+    "Longitude": -79.946724,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 244006
+   },
+   "geometry": {
+    "x": -79.94672399999999,
+    "y": 37.24903900000001
+   }
+  }
+ ]
+}

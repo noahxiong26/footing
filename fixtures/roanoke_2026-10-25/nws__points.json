@@ -1,0 +1,112 @@
+{
+ "@context": [
+  "https://geojson.org/geojson-ld/geojson-context.jsonld",
+  {
+   "@version": "1.1",
+   "wx": "https://api.weather.gov/ontology#",
+   "s": "https://schema.org/",
+   "geo": "http://www.opengis.net/ont/geosparql#",
+   "unit": "http://codes.wmo.int/common/unit/",
+   "@vocab": "https://api.weather.gov/ontology#",
+   "geometry": {
+    "@id": "s:GeoCoordinates",
+    "@type": "geo:wktLiteral"
+   },
+   "city": "s:addressLocality",
+   "state": "s:addressRegion",
+   "distance": {
+    "@id": "s:Distance",
+    "@type": "s:QuantitativeValue"
+   },
+   "bearing": {
+    "@type": "s:QuantitativeValue"
+   },
+   "value": {
+    "@id": "s:value"
+   },
+   "unitCode": {
+    "@id": "s:unitCode",
+    "@type": "@id"
+   },
+   "forecastOffice": {
+    "@type": "@id"
+   },
+   "forecastGridData": {
+    "@type": "@id"
+   },
+   "publicZone": {
+    "@type": "@id"
+   },
+   "county": {
+    "@type": "@id"
+   }
+  }
+ ],
+ "id": "https://api.weather.gov/points/37.275,-79.945",
+ "type": "Feature",
+ "geometry": {
+  "type": "Point",
+  "coordinates": [
+   -79.945,
+   37.275
+  ]
+ },
+ "properties": {
+  "@id": "https://api.weather.gov/points/37.275,-79.945",
+  "@type": "wx:Point",
+  "cwa": "RNK",
+  "type": "land",
+  "forecastOffice": "https://api.weather.gov/offices/RNK",
+  "gridId": "RNK",
+  "gridX": 74,
+  "gridY": 69,
+  "forecast": "https://api.weather.gov/gridpoints/RNK/74,69/forecast",
+  "forecastHourly": "https://api.weather.gov/gridpoints/RNK/74,69/forecast/hourly",
+  "forecastGridData": "https://api.weather.gov/gridpoints/RNK/74,69",
+  "observationStations": "https://api.weather.gov/gridpoints/RNK/74,69/stations",
+  "relativeLocation": {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.9581739,
+     37.278458
+    ]
+   },
+   "properties": {
+    "city": "Roanoke",
+    "state": "VA",
+    "distance": {
+     "unitCode": "wmoUnit:m",
+     "value": 0
+    },
+    "bearing": {
+     "unitCode": "wmoUnit:degree_(angle)",
+     "value": 0
+    }
+   }
+  },
+  "forecastZone": "https://api.weather.gov/zones/forecast/VAZ022",
+  "county": "https://api.weather.gov/zones/county/VAC770",
+  "fireWeatherZone": "https://api.weather.gov/zones/fire/VAZ022",
+  "timeZone": "America/New_York",
+  "radarStation": "KFCX",
+  "astronomicalData": {
+   "sunrise": "2026-10-25T07:37:31-04:00",
+   "sunset": "2026-10-25T18:30:08-04:00",
+   "transit": "2026-10-25T13:03:49-04:00",
+   "civilTwilightBegin": "2026-10-25T07:10:58-04:00",
+   "civilTwilightEnd": "2026-10-25T18:56:41-04:00",
+   "nauticalTwilightBegin": "2026-10-25T06:40:27-04:00",
+   "nauticalTwilightEnd": "2026-10-25T19:27:11-04:00",
+   "astronomicalTwilightBegin": "2026-10-25T06:10:12-04:00",
+   "astronomicalTwilightEnd": "2026-10-25T19:57:26-04:00"
+  },
+  "nwr": {
+   "transmitter": "WXL60",
+   "sameCode": "051770",
+   "areaBroadcast": "https://api.weather.gov/radio/WXL60/broadcast",
+   "pointBroadcast": "https://api.weather.gov/points/37.275,-79.945/radio"
+  }
+ }
+}

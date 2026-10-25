@@ -19,6 +19,15 @@ from typing import Any
 from .config import Settings
 
 
+def content_sha256(body: bytes) -> str:
+    """Hash of a saved response with LF line endings.
+
+    Captures are JSON text. Git may check them out with CRLF on Windows and LF elsewhere, so the
+    receipt hash is taken over the LF form; the same file then verifies on every machine.
+    """
+    return hashlib.sha256(body.replace(b"\r\n", b"\n")).hexdigest()
+
+
 class NotCaptured(Exception):
     """Replay mode, and no fixture exists for this request."""
 
@@ -89,7 +98,8 @@ class Fetcher:
         for secret in self.settings.keys.values():   # some APIs echo the request (and key) back
             if secret and len(secret) >= 6:
                 text = text.replace(secret, "REDACTED")
-        path.write_text(text, encoding="utf-8")
+        # Always LF: a Windows text-mode write would store CRLF and change the receipt hash.
+        path.write_text(text, encoding="utf-8", newline="\n")
 
     # ---- network -------------------------------------------------------
     def _request(self, url, method, form, json_body, headers) -> str:

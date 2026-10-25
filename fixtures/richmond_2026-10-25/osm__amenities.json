@@ -1,0 +1,2197 @@
+{
+ "version": 0.6,
+ "generator": "Overpass API 0.7.62.11 87bfad18",
+ "osm3s": {
+  "timestamp_osm_base": "2026-10-25T06:43:06Z",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+ },
+ "elements": [
+  {
+   "type": "node",
+   "id": 356606291,
+   "lat": 37.5220708,
+   "lon": -77.4482446,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1400",
+    "addr:postcode": "23224",
+    "addr:state": "VA",
+    "addr:street": "Perry Street",
+    "amenity": "community_centre",
+    "check_date": "2026-10-19",
+    "description": "We connect Latino families with tools to thrive and flourish.",
+    "ele": "32",
+    "gnis:feature_id": "2464987",
+    "name": "Sacred Heart Center",
+    "name:es": "Centro Sagrado Coraz\u00f3n",
+    "phone": "+1-804-230-4399",
+    "website": "https://shcrichmond.org"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2986392357,
+   "lat": 37.5273376,
+   "lon": -77.456955,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2024-07-28",
+    "fee": "no",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3068824274,
+   "lat": 37.5209065,
+   "lon": -77.419346,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3071775810,
+   "lat": 37.5349095,
+   "lon": -77.4483424,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2024-12-29",
+    "toilets:disposal": "chemical",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3073831197,
+   "lat": 37.5235848,
+   "lon": -77.4706755,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "no",
+    "check_date": "2025-12-07",
+    "fee": "no",
+    "note": "Update wheelchair assessable.",
+    "unisex": "yes",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3104201907,
+   "lat": 37.5290068,
+   "lon": -77.4557824,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2024-12-29",
+    "fee": "no",
+    "toilets:disposal": "chemical",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3104204314,
+   "lat": 37.5292676,
+   "lon": -77.4512385,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3183297260,
+   "lat": 37.5306846,
+   "lon": -77.4688255,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3355116902,
+   "lat": 37.5537134,
+   "lon": -77.4810094,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "3126",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "West Cary Street",
+    "amenity": "post_office",
+    "brand": "The UPS Store",
+    "brand:short": "UPS",
+    "brand:wikidata": "Q7771029",
+    "check_date": "2025-01-03",
+    "contact:email": "store3557@theupsstore.com",
+    "contact:phone": "+1 804-254-2902",
+    "contact:website": "https://locations.theupsstore.com/va/richmond/3126-w-cary-street",
+    "name": "The UPS Store",
+    "opening_hours": "Mo-Fr 08:30-18:30; Sa 09:00-17:00; Su off",
+    "opening_hours:signed": "yes",
+    "shop": "copyshop",
+    "short_name": "UPS",
+    "source": "esri_USDOT_Virgina",
+    "source:opening_hours": "entrance"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3645025312,
+   "lat": 37.5310428,
+   "lon": -77.4696925,
+   "tags": {
+    "amenity": "drinking_water",
+    "designation": "Human and Canine",
+    "source": "City Water - JRPS"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3823155300,
+   "lat": 37.526622,
+   "lon": -77.4212087,
+   "tags": {
+    "amenity": "toilets",
+    "source": "survey"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3873414486,
+   "lat": 37.5245569,
+   "lon": -77.4561262,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4029013175,
+   "lat": 37.5439155,
+   "lon": -77.4386795,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "312",
+    "addr:postcode": "23219",
+    "addr:state": "VA",
+    "addr:street": "East Broad Street",
+    "amenity": "pharmacy",
+    "brand": "Walgreens",
+    "brand:wikidata": "Q1591889",
+    "check_date": "2022-12-09",
+    "healthcare": "pharmacy",
+    "name": "Walgreens",
+    "opening_hours": "Mo-Fr 08:30-17:00",
+    "phone": "+1 804-655-4419",
+    "source": "esri_USDOT_Virgina"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4042976119,
+   "lat": 37.5399981,
+   "lon": -77.4411908,
+   "tags": {
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "name": "Richmond Health Center"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4255750946,
+   "lat": 37.5460816,
+   "lon": -77.4388761,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "416",
+    "addr:postcode": "23219",
+    "addr:state": "VA",
+    "addr:street": "North 2nd Street",
+    "amenity": "social_facility",
+    "name": "NAACP Richmond Branch",
+    "phone": "+1 804-644-9337",
+    "source": "esri_USDOT_Virgina"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4259861760,
+   "lat": 37.5639143,
+   "lon": -77.4698303,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "2800",
+    "addr:postcode": "23230",
+    "addr:state": "VA",
+    "addr:street": "West Marshall Street",
+    "check_date": "2025-01-29",
+    "contact:phone": "+1 804-355-8091",
+    "contact:website": "https://www.puritancleaners.com/locations/scotts-addition/",
+    "name": "Puritan Cleaners",
+    "opening_hours": "Mo-Fr 07:00-19:00; Sa 08:00-16:00; Su 10:00-16:00",
+    "opening_hours:signed": "yes",
+    "shop": "laundry",
+    "source:opening_hours": "entrance; website"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4264029237,
+   "lat": 37.5597202,
+   "lon": -77.4780467,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "408",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "Cleveland Street",
+    "check_date": "2025-03-08",
+    "laundry_service": "no",
+    "name": "Neighborhood Laundromat, Cleveland Street",
+    "opening_hours": "06:00-23:00",
+    "opening_hours:signed": "no",
+    "phone": "+1 804-286-0668",
+    "self_service": "yes",
+    "shop": "laundry",
+    "source": "esri_USDOT_Virgina",
+    "source:opening_hours": "website",
+    "website": "https://www.laundromatrva.com/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4940945148,
+   "lat": 37.5350515,
+   "lon": -77.4825153,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5125548544,
+   "lat": 37.5586319,
+   "lon": -77.453622,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5126165306,
+   "lat": 37.5405757,
+   "lon": -77.4842099,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5126165307,
+   "lat": 37.5408668,
+   "lon": -77.4828887,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5126174063,
+   "lat": 37.5471816,
+   "lon": -77.4776297,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "female": "yes",
+    "male": "no",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5126174064,
+   "lat": 37.5471282,
+   "lon": -77.4776173,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "female": "no",
+    "male": "yes",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5126174065,
+   "lat": 37.5471522,
+   "lon": -77.4776387,
+   "tags": {
+    "amenity": "drinking_water",
+    "fountain": "bubbler"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5126217564,
+   "lat": 37.547892,
+   "lon": -77.4791996,
+   "tags": {
+    "amenity": "drinking_water",
+    "fountain": "bubbler"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5126217565,
+   "lat": 37.5480286,
+   "lon": -77.4791829,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "toilets:handwashing": "yes",
+    "wheelchair": "limited"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5127037074,
+   "lat": 37.5441509,
+   "lon": -77.4780891,
+   "tags": {
+    "amenity": "drinking_water",
+    "check_date": "2023-10-26",
+    "fountain": "bubbler"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5423592266,
+   "lat": 37.5132908,
+   "lon": -77.4575962,
+   "tags": {
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5695245505,
+   "lat": 37.5560196,
+   "lon": -77.4745458,
+   "tags": {
+    "access": "permissive",
+    "amenity": "toilets",
+    "fee": "no",
+    "female": "yes",
+    "level": "0",
+    "male": "yes",
+    "operator": "Virginia Museum of Fine Arts",
+    "toilets:disposal": "flush",
+    "toilets:position": "seated",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5695245514,
+   "lat": 37.5566696,
+   "lon": -77.475016,
+   "tags": {
+    "access": "permissive",
+    "amenity": "toilets",
+    "fee": "no",
+    "female": "yes",
+    "level": "0",
+    "male": "yes",
+    "operator": "Virginia Museum of Fine Arts",
+    "toilets:disposal": "flush",
+    "toilets:position": "seated;urinal",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5695245518,
+   "lat": 37.5563175,
+   "lon": -77.47458,
+   "tags": {
+    "amenity": "library",
+    "email": "library@vmfa.museum",
+    "level": "0",
+    "name": "Margaret R. and Robert M. Freeman Library",
+    "opening_hours": "Mo-Fr 10:00-17:00; PH off",
+    "operator": "Virginia Museum of Fine Arts",
+    "phone": "+1 804-340-1495",
+    "website": "https://www.vmfa.museum/library/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5715959770,
+   "lat": 37.5340292,
+   "lon": -77.4755121,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5757300060,
+   "lat": 37.5488337,
+   "lon": -77.4802127,
+   "tags": {
+    "amenity": "drinking_water",
+    "fountain": "bubbler"
+   }
+  },
+  {
+   "type": "node",
+   "id": 6960858476,
+   "lat": 37.5561747,
+   "lon": -77.4866475,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "check_date": "2025-01-13",
+    "contact:phone": "+1 804-355-8533",
+    "contact:website": "https://www.cvs.com/store-locator/richmond-va-pharmacies/3514-west-cary-street-richmond-va-23221/storeid=1988",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "opening_hours": "Mo-Fr 09:00-13:30,14:00-21:00; Sa 09:00-13:30,14:00-18:00; Su 10:00-13:30,14:00-18:00",
+    "opening_hours:signed": "yes",
+    "short_name": "CVS",
+    "source:opening_hours": "entrance; website"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7093722586,
+   "lat": 37.5573065,
+   "lon": -77.4738343,
+   "tags": {
+    "amenity": "library",
+    "name": "Helen Wapole Brewer Library",
+    "website": "https://hqudc.org/library-services/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7687358483,
+   "lat": 37.5439692,
+   "lon": -77.4405013,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "205",
+    "addr:postcode": "23219",
+    "addr:state": "VA",
+    "addr:street": "North 2nd Street",
+    "amenity": "post_office",
+    "brand": "United States Post Office",
+    "brand:wikidata": "Q668687",
+    "name": "Richmond Post Office",
+    "opening_hours": "Mo-Fr 09:30-11:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 804-649-3809",
+    "ref": "1357500",
+    "short_name": "USPS",
+    "source": "esri_USDOT_Virgina",
+    "website": "https://tools.usps.com/locations/home.htm?location=1357500"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7687401639,
+   "lat": 37.5404295,
+   "lon": -77.4429772,
+   "tags": {
+    "amenity": "community_centre",
+    "name": "Resource Workforce Center"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7690715600,
+   "lat": 37.5461,
+   "lon": -77.4585501,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "9",
+    "addr:postcode": "23220",
+    "addr:state": "VA",
+    "addr:street": "South Harvie Street",
+    "description": "Temp agency",
+    "name": "Snag Work",
+    "office": "employment_agency",
+    "phone": "+1 866-227-0466",
+    "source": "esri_USDOT_Virgina",
+    "website": "http://snag.work/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8509081431,
+   "lat": 37.5717039,
+   "lon": -77.4460176,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "Walgreens",
+    "brand:wikidata": "Q1591889",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Walgreens"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9080803196,
+   "lat": 37.5765947,
+   "lon": -77.3953936,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "Walgreens",
+    "brand:wikidata": "Q1591889",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Walgreens"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9264391269,
+   "lat": 37.5489949,
+   "lon": -77.4466487,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "Rite Aid",
+    "brand:wikidata": "Q3433273",
+    "check_date": "2024-12-29",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Rite Aid",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "website": "https://www.riteaid.com/locations/va/richmond/520-west-broad-street.html"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9432272665,
+   "lat": 37.5586956,
+   "lon": -77.4535874,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9937920427,
+   "lat": 37.5688913,
+   "lon": -77.39997,
+   "tags": {
+    "name": "Coin Laundry",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10301662212,
+   "lat": 37.5493892,
+   "lon": -77.4146407,
+   "tags": {
+    "name": "Stop & Go Coin Laundry",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10301672809,
+   "lat": 37.5480437,
+   "lon": -77.4357844,
+   "tags": {
+    "amenity": "community_centre",
+    "name": "Club 533"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10582774729,
+   "lat": 37.543132,
+   "lon": -77.4346549,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "612",
+    "addr:postcode": "23219",
+    "addr:state": "VA",
+    "addr:street": "East Marshall Street",
+    "amenity": "social_facility",
+    "name": "The Doorways",
+    "phone": "+1-804-828-6901",
+    "website": "https://www.thedoorways.org/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10860656493,
+   "lat": 37.5574491,
+   "lon": -77.4877669,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "Walgreens",
+    "brand:wikidata": "Q1591889",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Walgreens",
+    "opening_hours": "Mo-Fr 09:00-21:00; Sa 09:00-18:00; Su 10:00-18:00; Dec 31 09:00-17:00; Jan 01 off; 13:30-14:00 off",
+    "opening_hours:signed": "yes",
+    "source:opening_hours": "entrance;website"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10963947592,
+   "lat": 37.546757,
+   "lon": -77.4510654,
+   "tags": {
+    "amenity": "drinking_water",
+    "bottle": "yes",
+    "fee": "no",
+    "fountain": "bubbler",
+    "pet": "yes",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11362442184,
+   "lat": 37.5343319,
+   "lon": -77.477264,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11460323404,
+   "lat": 37.5854684,
+   "lon": -77.4342721,
+   "tags": {
+    "check_date": "2023-12-27",
+    "name": "Wash Land",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11808593614,
+   "lat": 37.5444105,
+   "lon": -77.4625328,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "bottle": "no",
+    "covered": "no",
+    "lit": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11946073444,
+   "lat": 37.5235184,
+   "lon": -77.470699,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12458992015,
+   "lat": 37.5567362,
+   "lon": -77.4863348,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "10",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "North Nansemond Street",
+    "addr:unit": "E",
+    "amenity": "clinic",
+    "check_date": "2024-12-27",
+    "contact:phone": "+1 804-877-8327",
+    "contact:website": "https://www.bonsecours.com/locations/walk-in-urgent-care/richmond/bon-secours-urgent-care-carytown",
+    "healthcare": "clinic",
+    "name": "Bon Secours Urgent Care",
+    "opening_hours": "Mo-Fr 09:00-17:00; Sa-Su off",
+    "opening_hours:signed": "yes",
+    "source:opening_hours": "entrance;website"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12461722977,
+   "lat": 37.5346775,
+   "lon": -77.4471491,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "fee": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12499155349,
+   "lat": 37.5548027,
+   "lon": -77.4882849,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "Kroger",
+    "brand:wikidata": "Q153417",
+    "check_date": "2025-01-13",
+    "dispensing": "yes",
+    "drive_through": "yes",
+    "healthcare": "pharmacy",
+    "name": "Kroger Pharmacy",
+    "opening_hours": "Mo-Fr 09:00-13:00,13:30-20:00; Sa 09:00-13:00,13:30-18:00; Su 10:00-13:00,13:30-17:00",
+    "opening_hours:signed": "yes",
+    "phone": "+1 804-254-6400",
+    "source:opening_hours": "entrance; website",
+    "website": "https://www.kroger.com/stores/pharmacy/va/richmond/029/00504"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12650891589,
+   "lat": 37.5243234,
+   "lon": -77.4491531,
+   "tags": {
+    "amenity": "community_centre",
+    "community_centre:for": "senior",
+    "name": "SPAN Center",
+    "old_name": "Senior Connections",
+    "opening_hours": "Mo-Fr 08:30-17:00",
+    "phone": "+1-804-343-3000",
+    "website": "https://spancenter.org/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13046921400,
+   "lat": 37.5310275,
+   "lon": -77.4697191,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "fee": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13104553287,
+   "lat": 37.5528477,
+   "lon": -77.4157636,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13115056221,
+   "lat": 37.5283236,
+   "lon": -77.4146238,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "fee": "no",
+    "fountain": "bubbler"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13239024382,
+   "lat": 37.5405714,
+   "lon": -77.481731,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "no",
+    "check_date": "2025-12-22",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "note": "As a regular visitor to this park, I appreciate that they\u2019ve added a semi-permanent porta potty near the Dogwood Dell Amphitheater at the end of the parking lot. Great location and surprisingly well-maintained for a porta potty. Much better than nothing!",
+    "portable": "yes",
+    "unisex": "yes",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13289871475,
+   "lat": 37.5405183,
+   "lon": -77.4832606,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "description": "Byrd Park Trails, Richmond, VA 23221",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "note": "Looks like these porta potties are semi-permanent.",
+    "portable": "yes",
+    "unisex": "yes",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13289875063,
+   "lat": 37.5406048,
+   "lon": -77.483173,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "description": "Byrd Park Trails, Richmond, VA 23221",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "portable": "yes",
+    "unisex": "yes",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13290005657,
+   "lat": 37.540494,
+   "lon": -77.4818125,
+   "tags": {
+    "access": "yes",
+    "addr:city": "Richmond",
+    "addr:housenumber": "1401",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "Park Drive",
+    "amenity": "toilets",
+    "changing_table": "no",
+    "female": "yes",
+    "male": "yes",
+    "portable": "yes",
+    "unisex": "yes",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13300270542,
+   "lat": 37.5404468,
+   "lon": -77.4833548,
+   "tags": {
+    "access": "yes",
+    "addr:city": "Richmond",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "Byrd Park Trails",
+    "amenity": "toilets",
+    "changing_table": "no",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "note": "Looks like this is a semi-permanent.",
+    "portable": "yes",
+    "unisex": "yes",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13300495785,
+   "lat": 37.5403566,
+   "lon": -77.4834178,
+   "tags": {
+    "access": "yes",
+    "addr:city": "Richmond",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "Byrd Park Trails",
+    "amenity": "toilets",
+    "changing_table": "no",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "portable": "yes",
+    "unisex": "yes",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13359481944,
+   "lat": 37.5351576,
+   "lon": -77.4826583,
+   "tags": {
+    "access": "yes",
+    "addr:city": "Richmond",
+    "addr:housenumber": "1900",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "Pump House Drive",
+    "amenity": "toilets",
+    "changing_table": "no",
+    "fee": "no",
+    "note": "Right next to the Northbank Trail information",
+    "portable": "yes",
+    "unisex": "yes",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13460941957,
+   "lat": 37.5415411,
+   "lon": -77.4338944,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "800",
+    "addr:postcode": "23219",
+    "addr:state": "VA",
+    "addr:street": "East Broad Street",
+    "amenity": "library",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "Library of Virginia",
+    "opening_hours": "Mo-Sa 08:30-17:00",
+    "operator:type": "public",
+    "ref:isil": "US-vi",
+    "source": "esri_USDOT_Virgina",
+    "website": "https://www.lva.virginia.gov/",
+    "wikidata": "Q6542699",
+    "wikipedia": "en:Library of Virginia"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13468964273,
+   "lat": 37.5406097,
+   "lon": -77.4065561,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1510",
+    "addr:postcode": "23223",
+    "addr:state": "VA",
+    "addr:street": "North 28th Street",
+    "addr:unit": "Suite 100",
+    "amenity": "pharmacy",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Harness Health Pharmacy - Richmond Community Hospital",
+    "opening_hours": "Mo-Fr 09:00-17:00",
+    "phone": "+1-804-325-8795",
+    "website": "https://www.bonsecours.com/locations/pharmacy/richmond/harness-health-pharmacy-richmond-community"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13597917935,
+   "lat": 37.5539384,
+   "lon": -77.4725192,
+   "tags": {
+    "access": "yes",
+    "addr:city": "Richmond",
+    "addr:housenumber": "2601",
+    "addr:postcode": "23220",
+    "addr:state": "VA",
+    "addr:street": "Grove Avenue",
+    "amenity": "toilets",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "name": "Retreat Hospital"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13624127565,
+   "lat": 37.5617371,
+   "lon": -77.4810113,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "3403",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "Patterson Avenue",
+    "amenity": "toilets",
+    "portable": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13624137299,
+   "lat": 37.5550956,
+   "lon": -77.4855405,
+   "tags": {
+    "access": "yes",
+    "addr:city": "Richmond",
+    "addr:housenumber": "3410",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "West Cary Street",
+    "amenity": "toilets",
+    "fee": "no",
+    "operator": "McDonald\u2019s"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13645259333,
+   "lat": 37.5664352,
+   "lon": -77.4392979,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13669046722,
+   "lat": 37.5512035,
+   "lon": -77.4623094,
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1808",
+    "addr:postcode": "23220",
+    "addr:state": "VA",
+    "addr:street": "Grove Avenue",
+    "amenity": "toilets",
+    "name": "Portapotty",
+    "note": "Next to Dumpster",
+    "portable": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13792350108,
+   "lat": 37.5153564,
+   "lon": -77.4063517,
+   "tags": {
+    "amenity": "drinking_water",
+    "fountain": "bubbler",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13810906870,
+   "lat": 37.5283765,
+   "lon": -77.4147344,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "portable": "yes",
+    "toilets:disposal": "tank"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13894507197,
+   "lat": 37.5476701,
+   "lon": -77.4449971,
+   "tags": {
+    "amenity": "drinking_water",
+    "dog": "designated",
+    "fountain": "bottle_refill"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13908365626,
+   "lat": 37.5336271,
+   "lon": -77.4285267,
+   "tags": {
+    "amenity": "drinking_water",
+    "bottle": "yes",
+    "dog": "designated",
+    "fountain": "bubbler",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13908365627,
+   "lat": 37.5342865,
+   "lon": -77.4279959,
+   "tags": {
+    "amenity": "drinking_water",
+    "bottle": "yes",
+    "dog": "designated",
+    "fountain": "bubbler",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 14052616211,
+   "lat": 37.5703797,
+   "lon": -77.4232027,
+   "tags": {
+    "amenity": "drinking_water",
+    "fountain": "bubbler"
+   }
+  },
+  {
+   "type": "node",
+   "id": 14236117879,
+   "lat": 37.5249359,
+   "lon": -77.4767203,
+   "tags": {
+    "amenity": "drinking_water",
+    "fountain": "bubbler",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 38173762,
+   "center": {
+    "lat": 37.546841,
+    "lon": -77.4694156
+   },
+   "tags": {
+    "amenity": "social_facility",
+    "name": "Winthrop Manor",
+    "old_name": "West End School",
+    "social_facility": "assisted_living",
+    "website": "https://winthropmanor.com/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 45089239,
+   "center": {
+    "lat": 37.5606637,
+    "lon": -77.4458849
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1801",
+    "addr:postcode": "23232",
+    "addr:state": "VA",
+    "addr:street": "Brook Road",
+    "amenity": "post_office",
+    "building": "yes",
+    "name": "Richmond Main Post Office",
+    "opening_hours": "Mo-Fr 09:00-17:00; Sa 09:00-14:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 804-775-6304",
+    "ref": "1582129",
+    "website": "https://tools.usps.com/locations/home.htm?location=1582129"
+   }
+  },
+  {
+   "type": "way",
+   "id": 60826456,
+   "center": {
+    "lat": 37.5477933,
+    "lon": -77.4535609
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "901",
+    "addr:postcode": "23284",
+    "addr:state": "VA",
+    "addr:street": "Park Avenue",
+    "amenity": "library",
+    "building": "yes",
+    "name": "James Branch Cabell Library",
+    "operator": "Virginia Commonwealth University",
+    "operator:type": "university",
+    "website": "https://www.library.vcu.edu/about/libraries/cabell/",
+    "wheelchair": "yes",
+    "wikidata": "Q67179857"
+   }
+  },
+  {
+   "type": "way",
+   "id": 182382385,
+   "center": {
+    "lat": 37.554036,
+    "lon": -77.4404857
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "436",
+    "addr:postcode": "23220",
+    "addr:state": "VA",
+    "addr:street": "Calhoun Street",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Calhoun Community Center",
+    "source": "esri_USDOT_Virgina"
+   }
+  },
+  {
+   "type": "way",
+   "id": 224510147,
+   "center": {
+    "lat": 37.5412494,
+    "lon": -77.4289177
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "509",
+    "addr:postcode": "23219",
+    "addr:state": "VA",
+    "addr:street": "North 12th Street",
+    "amenity": "library",
+    "building": "yes",
+    "building:levels": "3",
+    "name": "Tompkins-McCaw Library",
+    "operator": "Virginia Commonwealth University",
+    "operator:type": "university",
+    "phone": "+1 804-828-0636",
+    "source": "esri_USDOT_Virgina",
+    "website": "https://www.library.vcu.edu/about/libraries/tompkins-mccaw/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 235998644,
+   "center": {
+    "lat": 37.558117,
+    "lon": -77.4884225
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "12",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "North Thompson Street",
+    "amenity": "clinic",
+    "building": "yes",
+    "check_date": "2025-01-13",
+    "contact:phone": "+1 804-359-1337",
+    "contact:website": "https://www.patientfirst.com/locations/richmond/carytown",
+    "healthcare": "clinic",
+    "name": "Patient First",
+    "opening_hours": "08:00-20:00",
+    "opening_hours:signed": "yes",
+    "operator": "Patient First",
+    "operator:wikidata": "Q7144966",
+    "operator:wikipedia": "en:Patient First",
+    "source": "esri_USDOT_Virgina",
+    "source:opening_hours": "entrance; website"
+   }
+  },
+  {
+   "type": "way",
+   "id": 235998646,
+   "center": {
+    "lat": 37.5576709,
+    "lon": -77.4867699
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "3517",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "Floyd Avenue",
+    "amenity": "post_office",
+    "brand": "United States Post Office",
+    "brand:wikidata": "Q668687",
+    "building": "yes",
+    "building:levels": "1",
+    "check_date": "2024-12-27",
+    "contact:website": "https://tools.usps.com/locations/details/1383568",
+    "name": "Richmond Post Office",
+    "opening_hours": "Mo-Fr 09:00-17:00; Sa 09:00-12:00; Su off",
+    "opening_hours:signed": "yes",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1-804-359-2206",
+    "ref": "1383568",
+    "roof:shape": "flat",
+    "short_name": "USPS",
+    "source": "esri_USDOT_Virgina",
+    "source:opening_hours": "entrance;website",
+    "website": "https://tools.usps.com/locations/home.htm?location=1383568"
+   }
+  },
+  {
+   "type": "way",
+   "id": 236144762,
+   "center": {
+    "lat": 37.5543777,
+    "lon": -77.4796539
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "3100",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "Ellwood Avenue",
+    "amenity": "library",
+    "building": "yes",
+    "name": "Richmond Public Library - Belmont Branch",
+    "opening_hours": "Mo 10:00-20:00; Tu 10:00-18:00; We 10:00-20:00; Th-Fr 10:00-18:00; Sa 10:00-17:00; Su off",
+    "operator": "Richmond Public Library",
+    "operator:type": "public",
+    "phone": "+1 804-646-1139",
+    "source": "esri_USDOT_Virgina",
+    "website": "https://rvalibrary.org/about/locations/belmont/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 253544775,
+   "center": {
+    "lat": 37.559949,
+    "lon": -77.4518358
+   },
+   "tags": {
+    "amenity": "library",
+    "building": "yes",
+    "name": "L Douglas Wilder Library",
+    "operator:type": "university",
+    "website": "https://www.vuu.edu/library"
+   }
+  },
+  {
+   "type": "way",
+   "id": 264659459,
+   "center": {
+    "lat": 37.5397543,
+    "lon": -77.4114201
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1200",
+    "addr:postcode": "23223",
+    "addr:state": "VA",
+    "addr:street": "North 25th Street",
+    "amenity": "library",
+    "building": "yes",
+    "ele": "50",
+    "gnis:feature_id": "1780579",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "East End Branch Library",
+    "opening_hours": "Mo,We,Fr 09:00-18:00; Tu,Th 09:00-20:00; Sa 09:00-17:00; PH off",
+    "operator": "Richmond Public Library",
+    "operator:type": "public",
+    "operator:wikidata": "Q69493382",
+    "phone": "+1 804-646-4474",
+    "source": "USGS Geonames",
+    "website": "https://rvalibrary.org/about/locations/east-end/",
+    "wikidata": "Q130638847"
+   }
+  },
+  {
+   "type": "way",
+   "id": 264659465,
+   "center": {
+    "lat": 37.5195477,
+    "lon": -77.4457041
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1400",
+    "addr:postcode": "23224",
+    "addr:state": "VA",
+    "addr:street": "Hull Street",
+    "amenity": "library",
+    "building": "yes",
+    "name": "Hull Street Branch Library",
+    "operator": "Richmond Public Library",
+    "operator:type": "public",
+    "phone": "+1 804-646-8699",
+    "website": "https://rvalibrary.org/about/locations/hull-street/",
+    "wikidata": "Q69767134"
+   }
+  },
+  {
+   "type": "way",
+   "id": 264659468,
+   "center": {
+    "lat": 37.5427782,
+    "lon": -77.4424694
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "101",
+    "addr:postcode": "23219",
+    "addr:state": "VA",
+    "addr:street": "East Franklin Street",
+    "amenity": "library",
+    "branch": "Main Library",
+    "building": "civic",
+    "building:levels": "2",
+    "building:levels:underground": "1",
+    "check_date": "2026-04-16",
+    "height": "14.2",
+    "max_level": "1",
+    "min_level": "-1",
+    "name": "Richmond Public Library",
+    "opening_hours": "Mo-Th 09:00-20:00; Fr 09:00-18:00; Sa 09:00-17:00; Su 13:00-17:00",
+    "operator": "Richmond Public Library",
+    "operator:type": "public",
+    "phone": "+1 804-646-7223",
+    "website": "https://rvalibrary.org/about/locations/main-library/",
+    "wikidata": "Q23137558"
+   }
+  },
+  {
+   "type": "way",
+   "id": 264659472,
+   "center": {
+    "lat": 37.5701479,
+    "lon": -77.4325484
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "2901",
+    "addr:postcode": "23222",
+    "addr:state": "VA",
+    "addr:street": "North Avenue",
+    "amenity": "library",
+    "building": "yes",
+    "name": "North Avenue Branch Library",
+    "opening_hours": "Mo,We 10:00-20:00; Tu,Th,Fr 10:00-18:00; Sa 10:00-17:00; PH off",
+    "operator": "Richmond Public Library",
+    "operator:type": "public",
+    "phone": "+1 804-646-6675",
+    "website": "https://rvalibrary.org/about/locations/north-avenue/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 266877967,
+   "center": {
+    "lat": 37.5168714,
+    "lon": -77.4560278
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "2409",
+    "addr:state": "VA",
+    "addr:street": "Bainbridge Street",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Boys & Girls Club of Metro Richmond",
+    "phone": "+1 804-230-0757",
+    "website": "https://www.bgcmr.org/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 266956514,
+   "center": {
+    "lat": 37.5293872,
+    "lon": -77.4214565
+   },
+   "tags": {
+    "addr:housenumber": "2400",
+    "addr:postcode": "23223",
+    "addr:street": "East Main Street",
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "building": "yes",
+    "building:levels": "1",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "opening_hours": "Sa 10:00-13:30, 14:00-18:00; Su 11:00-13:30, 14:00-17:00; Mo-Fr 09:00-13:30, 14:00-20:00",
+    "phone": "+18046431383",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/richmond-va-pharmacies/2400-e-main-st-richmond-va-23223/storeid=2973"
+   }
+  },
+  {
+   "type": "way",
+   "id": 297237678,
+   "center": {
+    "lat": 37.5393376,
+    "lon": -77.4118045
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1122",
+    "addr:postcode": "23223",
+    "addr:street": "North 25th Street",
+    "amenity": "clinic",
+    "building": "yes",
+    "healthcare": "counselling",
+    "healthcare:counselling": "antenatal;sexual",
+    "name": "Planned Parenthood",
+    "operator": "Planned Parenthood",
+    "operator:type": "ngo",
+    "operator:wikidata": "Q2553262"
+   }
+  },
+  {
+   "type": "way",
+   "id": 301428815,
+   "center": {
+    "lat": 37.5474897,
+    "lon": -77.4478613
+   },
+   "tags": {
+    "amenity": "clinic",
+    "building": "yes",
+    "healthcare": "clinic",
+    "name": "West Grace Health Center",
+    "operator": "Daily Planet"
+   }
+  },
+  {
+   "type": "way",
+   "id": 334113927,
+   "center": {
+    "lat": 37.55491,
+    "lon": -77.4580113
+   },
+   "tags": {
+    "addr:city": "Richmond City;Richmond",
+    "addr:housenumber": "1645",
+    "addr:postcode": "23220;23220-2106",
+    "addr:state": "VA",
+    "addr:street": "West Broad Street",
+    "amenity": "post_office",
+    "building": "retail",
+    "building:levels": "2",
+    "name": "Saunders Station",
+    "opening_hours": "Mo-Fr 09:00-17:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 804-353-4759",
+    "ref": "1476296",
+    "roof:levels": "0",
+    "roof:shape": "flat",
+    "source": "esri_USDOT_Virgina",
+    "website": "https://tools.usps.com/locations/home.htm?location=1476296"
+   }
+  },
+  {
+   "type": "way",
+   "id": 334124810,
+   "center": {
+    "lat": 37.5624623,
+    "lon": -77.4694564
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "2738",
+    "addr:postcode": "23220",
+    "addr:state": "VA",
+    "addr:street": "West Broad Street",
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "building": "yes",
+    "check_date": "2025-01-29",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "opening_hours:pharmacy": "Mo-Fr 08:00-13:30,14:00-20:00; Sa-Su 10:00-13:30,14:00-18:00",
+    "opening_hours:signed": "yes",
+    "opening_hours:store": "Mo-Su 07:00-25:00",
+    "phone": "+1 804-359-2497",
+    "short_name": "CVS",
+    "source": "esri_USDOT_Virgina",
+    "source:opening_hours": "entrance; website",
+    "website": "https://www.cvs.com/store-locator/richmond-va-pharmacies/2738-west-broad-street-richmond-va-23220/storeid=1530"
+   }
+  },
+  {
+   "type": "way",
+   "id": 334127284,
+   "center": {
+    "lat": 37.5659366,
+    "lon": -77.4756417
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "3212",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "Cutshaw Avenue",
+    "amenity": "clinic",
+    "building": "yes",
+    "healthcare": "clinic",
+    "name": "Panic Anxiety & Depression Center",
+    "phone": "+1 804-353-3324",
+    "source": "esri_USDOT_Virgina"
+   }
+  },
+  {
+   "type": "way",
+   "id": 334127285,
+   "center": {
+    "lat": 37.5594711,
+    "lon": -77.4657281
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "2325",
+    "addr:postcode": "23220",
+    "addr:state": "VA",
+    "addr:street": "West Broad Street",
+    "amenity": "social_facility",
+    "building": "yes",
+    "name": "Family Lifeline",
+    "source": "esri_USDOT_Virgina"
+   }
+  },
+  {
+   "type": "way",
+   "id": 334127338,
+   "center": {
+    "lat": 37.5626627,
+    "lon": -77.4712506
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "2805",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "West Broad Street",
+    "amenity": "clinic",
+    "building": "yes",
+    "description": "Rehabilitation center",
+    "healthcare": "clinic",
+    "name": "Sheltering Arms",
+    "source": "esri_USDOT_Virgina"
+   }
+  },
+  {
+   "type": "way",
+   "id": 366560053,
+   "center": {
+    "lat": 37.5487426,
+    "lon": -77.4604308
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1600",
+    "addr:postcode": "23220",
+    "addr:state": "VA",
+    "addr:street": "Floyd Avenue",
+    "building": "yes",
+    "name": "Lombardy Coin Laundry",
+    "opening_hours": "07:00-22:00",
+    "payment:app": "yes",
+    "payment:cash": "yes",
+    "shop": "laundry",
+    "source": "esri_USDOT_Virgina"
+   }
+  },
+  {
+   "type": "way",
+   "id": 367704066,
+   "center": {
+    "lat": 37.5546438,
+    "lon": -77.4719551
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "200",
+    "addr:postcode": "23220",
+    "addr:state": "VA",
+    "addr:street": "North Robinson Street",
+    "building": "yes",
+    "laundry_service": "yes",
+    "name": "Puritan Cleaners",
+    "phone": "+1 804-359-0739",
+    "self_service": "no",
+    "shop": "laundry",
+    "source": "esri_USDOT_Virgina",
+    "website": "https://www.puritancleaners.com/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 368863121,
+   "center": {
+    "lat": 37.5592887,
+    "lon": -77.4882696
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "104",
+    "addr:postcode": "23221",
+    "addr:state": "VA",
+    "addr:street": "Berrington Court",
+    "amenity": "clinic",
+    "building": "yes",
+    "description": "ABA Therapy Clinic serving families in Carytown, the Fan, Museum District, Scott\u2019s Addition, Westhampton, Lakeside, Westover Hills, Bellevue, and nearby neighborhoods.",
+    "name": "Lil Sprouts Treehouse",
+    "opening_hours": "Mo-Fr 09:00-17:00",
+    "phone": "+1-703-564-1531",
+    "source": "esri_USDOT_Virgina",
+    "website": "https://www.lil-sprouts-treehouse.com/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 503533445,
+   "center": {
+    "lat": 37.5372595,
+    "lon": -77.4825649
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 527251647,
+   "center": {
+    "lat": 37.5475464,
+    "lon": -77.4817182
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 545105530,
+   "center": {
+    "lat": 37.5357124,
+    "lon": -77.4808403
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 576461471,
+   "center": {
+    "lat": 37.5150028,
+    "lon": -77.4046248
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "5051",
+    "addr:postcode": "23231",
+    "addr:street": "Northampton Street",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Powhatan Community Center",
+    "opening_hours": "Sep-May: Mo-Fr 13:30-22:00; Jun-Aug: Mo-Fr 07:30-20:00",
+    "outdoor_seating": "no"
+   }
+  },
+  {
+   "type": "way",
+   "id": 601385963,
+   "center": {
+    "lat": 37.5341234,
+    "lon": -77.4760193
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 745231872,
+   "center": {
+    "lat": 37.5211966,
+    "lon": -77.4760941
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 746447618,
+   "center": {
+    "lat": 37.5331188,
+    "lon": -77.4176961
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "414",
+    "addr:postcode": "23223;23223-9998",
+    "addr:state": "VA",
+    "addr:street": "North 25th Street",
+    "amenity": "post_office",
+    "building": "yes",
+    "ele": "45",
+    "gnis:feature_id": "1779923",
+    "name": "East End Station Richmond Post Office",
+    "opening_hours": "Mo-Fr 09:00-17:00; Sa 10:00-15:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 804-649-3790",
+    "ref": "1361712",
+    "website": "https://tools.usps.com/locations/home.htm?location=1361712"
+   }
+  },
+  {
+   "type": "way",
+   "id": 746468873,
+   "center": {
+    "lat": 37.5717332,
+    "lon": -77.4329977
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "3004",
+    "addr:postcode": "23222",
+    "addr:state": "VA",
+    "addr:street": "North Avenue",
+    "amenity": "post_office",
+    "brand": "United States Post Office",
+    "brand:wikidata": "Q668687",
+    "building": "yes",
+    "name": "North Side Station Post Office",
+    "opening_hours": "Mo-Sa 10:00-13:00,14:00-16:00; Su closed; PH closed",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 804-321-6547",
+    "ref": "1375554",
+    "short_name": "USPS",
+    "website": "https://tools.usps.com/locations/home.htm?location=1375554"
+   }
+  },
+  {
+   "type": "way",
+   "id": 746476342,
+   "center": {
+    "lat": 37.5148649,
+    "lon": -77.3946965
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "5025",
+    "addr:postcode": "23231",
+    "addr:street": "Government Road",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Innovate Fulton",
+    "phone": "+18042446303",
+    "website": "https://innovatefulton.org/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 746477377,
+   "center": {
+    "lat": 37.5142601,
+    "lon": -77.3970691
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1519",
+    "addr:postcode": "23231",
+    "addr:street": "Williamsburg Road",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Neighborhood Resource Center",
+    "opening_hours": "Mo-Fr 10:00-18:00",
+    "phone": "+1-804-864-5797",
+    "website": "https://www.nrccafe.org/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 751094003,
+   "center": {
+    "lat": 37.5788981,
+    "lon": -77.4471343
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "3406",
+    "addr:postcode": "23227",
+    "addr:street": "Chamberlayne Avenue",
+    "amenity": "library",
+    "building": "yes",
+    "name": "William Smith Morton Library",
+    "operator:type": "school",
+    "website": "https://library.upsem.edu/about-the-library/richmond-campus/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 751144371,
+   "center": {
+    "lat": 37.5690717,
+    "lon": -77.4326025
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "2809",
+    "addr:postcode": "23222",
+    "addr:street": "North Avenue",
+    "amenity": "clinic",
+    "building": "yes",
+    "healthcare": "clinic",
+    "healthcare:speciality": "general;paediatrics;surgery;radiology",
+    "internet_access": "yes",
+    "name": "Northside Medical Center",
+    "operator": "Capital Area Health Network",
+    "website": "https://cahealthnet.org/northside-medical-center/",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 753715252,
+   "center": {
+    "lat": 37.5341416,
+    "lon": -77.4153115
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "602",
+    "addr:postcode": "23223",
+    "addr:street": "North 26th Street",
+    "amenity": "social_facility",
+    "building": "school",
+    "gnis:feature_id": "1478252",
+    "name": "Bowler Retirement Community",
+    "old_name": "Springfield School",
+    "social_facility": "group_home",
+    "social_facility:for": "senior",
+    "wikidata": "Q7581045",
+    "wikipedia": "en:Springfield School, Richmond"
+   }
+  },
+  {
+   "type": "way",
+   "id": 753726191,
+   "center": {
+    "lat": 37.5304654,
+    "lon": -77.4044529
+   },
+   "tags": {
+    "amenity": "social_facility",
+    "ele": "45",
+    "gnis:feature_id": "1478128",
+    "name": "Bacon Retirement Community",
+    "social_facility": "assisted_living",
+    "social_facility:for": "underprivileged",
+    "wikidata": "Q6969492"
+   }
+  },
+  {
+   "type": "way",
+   "id": 755106976,
+   "center": {
+    "lat": 37.5444883,
+    "lon": -77.3986449
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "2101",
+    "addr:postcode": "23223",
+    "addr:street": "Creighton Road",
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 755374730,
+   "center": {
+    "lat": 37.5460662,
+    "lon": -77.4097663
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1706",
+    "addr:postcode": "23223",
+    "addr:street": "North 22nd Street",
+    "amenity": "community_centre",
+    "building": "yes",
+    "community_centre": "youth_centre",
+    "name": "Peter Paul Development Center"
+   }
+  },
+  {
+   "type": "way",
+   "id": 761038911,
+   "center": {
+    "lat": 37.5204341,
+    "lon": -77.4466321
+   },
+   "tags": {
+    "amenity": "post_office",
+    "building": "yes",
+    "ele": "28",
+    "gnis:feature_id": "1779889",
+    "name": "Hull Street Station Richmond Post Office"
+   }
+  },
+  {
+   "type": "way",
+   "id": 822407065,
+   "center": {
+    "lat": 37.5408122,
+    "lon": -77.4008097
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1665",
+    "addr:postcode": "23223",
+    "addr:state": "VA",
+    "addr:street": "North 31st Street",
+    "amenity": "community_centre",
+    "building": "yes",
+    "source": "esri_USDOT_Virginia"
+   }
+  },
+  {
+   "type": "way",
+   "id": 822822918,
+   "center": {
+    "lat": 37.551276,
+    "lon": -77.4291332
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "501",
+    "addr:postcode": "23219",
+    "addr:state": "VA",
+    "addr:street": "Hospital Street",
+    "building": "yes",
+    "name": "Staff Zone",
+    "office": "employment_agency",
+    "source": "esri_USDOT_Virgina"
+   }
+  },
+  {
+   "type": "way",
+   "id": 840391728,
+   "center": {
+    "lat": 37.5311159,
+    "lon": -77.4015587
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "3701",
+    "addr:postcode": "23223",
+    "addr:street": "R Street",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Boys and Girls Club"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1510371489,
+   "center": {
+    "lat": 37.5429698,
+    "lon": -77.4424192
+   },
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "indoor": "area",
+    "level": "-1"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1510371491,
+   "center": {
+    "lat": 37.5430631,
+    "lon": -77.4425376
+   },
+   "tags": {
+    "amenity": "toilets",
+    "level": "-1"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1510371492,
+   "center": {
+    "lat": 37.5430892,
+    "lon": -77.4425832
+   },
+   "tags": {
+    "amenity": "toilets",
+    "level": "-1"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1548367390,
+   "center": {
+    "lat": 37.5452381,
+    "lon": -77.414934
+   },
+   "tags": {
+    "addr:city": "Richmond",
+    "addr:housenumber": "1925",
+    "addr:postcode": "23223",
+    "addr:state": "VA",
+    "addr:street": "U Street",
+    "amenity": "community_centre",
+    "building": "yes",
+    "community_centre": "community_hall",
+    "name": "Lucks Field Community Center",
+    "opening_hours": "Mo-Fr 09:00-21:00; Sa 10:00-14:00",
+    "operator": "Richmond Department of Parks, Recreation and Community Facilities",
+    "operator:type": "public",
+    "operator:wikidata": "Q136502539"
+   }
+  }
+ ]
+}

@@ -1,0 +1,654 @@
+{
+ "objectIdFieldName": "ObjectId",
+ "uniqueIdField": {
+  "name": "ObjectId",
+  "isSystemMaintained": true
+ },
+ "globalIdFieldName": "",
+ "geometryType": "esriGeometryPoint",
+ "spatialReference": {
+  "wkid": 4326,
+  "latestWkid": 4326
+ },
+ "fields": [
+  {
+   "name": "Record_ID",
+   "type": "esriFieldTypeInteger",
+   "alias": "Record ID",
+   "sqlType": "sqlTypeInteger",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Name",
+   "type": "esriFieldTypeString",
+   "alias": "Store Name",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Street_Address",
+   "type": "esriFieldTypeString",
+   "alias": "Store Street Address",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Additonal_Address",
+   "type": "esriFieldTypeString",
+   "alias": "Additonal Address",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "City",
+   "type": "esriFieldTypeString",
+   "alias": "City",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "State",
+   "type": "esriFieldTypeString",
+   "alias": "State",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Zip_Code",
+   "type": "esriFieldTypeString",
+   "alias": "Zip Code",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Zip4",
+   "type": "esriFieldTypeString",
+   "alias": "Zip4",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "County",
+   "type": "esriFieldTypeString",
+   "alias": "County",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Type",
+   "type": "esriFieldTypeString",
+   "alias": "Store Type",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Latitude",
+   "type": "esriFieldTypeDouble",
+   "alias": "Latitude",
+   "sqlType": "sqlTypeFloat",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Longitude",
+   "type": "esriFieldTypeDouble",
+   "alias": "Longitude",
+   "sqlType": "sqlTypeFloat",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Incentive_Program",
+   "type": "esriFieldTypeString",
+   "alias": "Incentive Program",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Grantee_Name",
+   "type": "esriFieldTypeString",
+   "alias": "Grantee Name",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "ObjectId",
+   "type": "esriFieldTypeOID",
+   "alias": "ObjectId",
+   "sqlType": "sqlTypeInteger",
+   "domain": null,
+   "defaultValue": null
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "Record_ID": 354183,
+    "Store_Name": "Food Lion 425",
+    "Store_Street_Address": "1413 N Main St",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "2563",
+    "County": "MONTGOMERY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.247391,
+    "Longitude": -80.414169,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 11318
+   },
+   "geometry": {
+    "x": -80.414169,
+    "y": 37.24739099999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 566383,
+    "Store_Name": "Food Lion 2573",
+    "Store_Street_Address": "801 Hethwood Blvd",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "4216",
+    "County": "MONTGOMERY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.216911,
+    "Longitude": -80.455025,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 23694
+   },
+   "geometry": {
+    "x": -80.455025,
+    "y": 37.216911
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 394635,
+    "Store_Name": "EATS NATURAL FOODS COOP INC",
+    "Store_Street_Address": "708A N Main",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "5527",
+    "County": "MONTGOMERY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.234863,
+    "Longitude": -80.420158,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 24033
+   },
+   "geometry": {
+    "x": -80.420158,
+    "y": 37.234863
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 367867,
+    "Store_Name": "CVS PHARMACY 6329",
+    "Store_Street_Address": "1775 S Main St",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "5825",
+    "County": "MONTGOMERY",
+    "Store_Type": "Other",
+    "Latitude": 37.210148,
+    "Longitude": -80.398659,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 25716
+   },
+   "geometry": {
+    "x": -80.39865899999998,
+    "y": 37.210148
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 632747,
+    "Store_Name": "KROGER 402",
+    "Store_Street_Address": "1322 S Main St",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "5526",
+    "County": "MONTGOMERY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.216385,
+    "Longitude": -80.402527,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 26091
+   },
+   "geometry": {
+    "x": -80.402527,
+    "y": 37.216384999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 494277,
+    "Store_Name": "CVS Pharmacy 3460",
+    "Store_Street_Address": "833 University City Blvd",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "2707",
+    "County": "MONTGOMERY",
+    "Store_Type": "Other",
+    "Latitude": 37.233818,
+    "Longitude": -80.434547,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 30156
+   },
+   "geometry": {
+    "x": -80.434547,
+    "y": 37.23381799999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 704211,
+    "Store_Name": "Kroger 210",
+    "Store_Street_Address": "903 University City Blvd",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "2709",
+    "County": "MONTGOMERY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.236435,
+    "Longitude": -80.434387,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 40677
+   },
+   "geometry": {
+    "x": -80.434387,
+    "y": 37.23643499999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 818690,
+    "Store_Name": "Annie Kays Main Street Market",
+    "Store_Street_Address": "1531 S Main St",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "5821",
+    "County": "MONTGOMERY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.213028,
+    "Longitude": -80.399536,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 60471
+   },
+   "geometry": {
+    "x": -80.39953600000001,
+    "y": 37.213027999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1011317,
+    "Store_Name": "Speedway 4627",
+    "Store_Street_Address": "2211 S Main St",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "6688",
+    "County": "MONTGOMERY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.201439,
+    "Longitude": -80.399719,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 62922
+   },
+   "geometry": {
+    "x": -80.399719,
+    "y": 37.201439
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 903759,
+    "Store_Name": "DollarTree 2178",
+    "Store_Street_Address": "1341 S Main St",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "5525",
+    "County": "MONTGOMERY",
+    "Store_Type": "Other",
+    "Latitude": 37.216599,
+    "Longitude": -80.39978,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 71626
+   },
+   "geometry": {
+    "x": -80.39978,
+    "y": 37.21659899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1113763,
+    "Store_Name": "Fas Mart 3514",
+    "Store_Street_Address": "1710 Prices Fork Rd",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "3836",
+    "County": "MONTGOMERY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.226082,
+    "Longitude": -80.444122,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 89741
+   },
+   "geometry": {
+    "x": -80.444122,
+    "y": 37.226081999999984
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1235865,
+    "Store_Name": "Stop In Food Stores 8163",
+    "Store_Street_Address": "600 N Main St",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "3349",
+    "County": "MONTGOMERY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.232994,
+    "Longitude": -80.417763,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 98165
+   },
+   "geometry": {
+    "x": -80.417763,
+    "y": 37.232994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1584405,
+    "Store_Name": "Sheetz 805",
+    "Store_Street_Address": "1704 S. Main Street",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "    ",
+    "County": "MONTGOMERY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.211021,
+    "Longitude": -80.399681,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 130456
+   },
+   "geometry": {
+    "x": -80.399681,
+    "y": 37.211021
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 988833,
+    "Store_Name": "Friends Of The Farmers Market Inc.",
+    "Store_Street_Address": "108 Roanoke St W",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "3942",
+    "County": "MONTGOMERY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.229202,
+    "Longitude": -80.414474,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 136854
+   },
+   "geometry": {
+    "x": -80.41447400000001,
+    "y": 37.229201999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1399334,
+    "Store_Name": "Dollar General 21820",
+    "Store_Street_Address": "850 University City Blvd",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "2708",
+    "County": "MONTGOMERY",
+    "Store_Type": "Other",
+    "Latitude": 37.234631,
+    "Longitude": -80.433434,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 141769
+   },
+   "geometry": {
+    "x": -80.433434,
+    "y": 37.234631
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1389675,
+    "Store_Name": "7-eleven 18293c 18293C",
+    "Store_Street_Address": "100 Draper Rd SW",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "4723",
+    "County": "MONTGOMERY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.228531,
+    "Longitude": -80.414421,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 150253
+   },
+   "geometry": {
+    "x": -80.414421,
+    "y": 37.228531
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1408173,
+    "Store_Name": "Glade Road Growing",
+    "Store_Street_Address": "2351 Glade Rd",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "1928",
+    "County": "MONTGOMERY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.235809,
+    "Longitude": -80.463089,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 167596
+   },
+   "geometry": {
+    "x": -80.46308900000001,
+    "y": 37.235808999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1573315,
+    "Store_Name": "R-n-f Farms NAFMNP",
+    "Store_Street_Address": "1826 Bishop Rd",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "8812",
+    "County": "MONTGOMERY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.264366,
+    "Longitude": -80.387062,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 171185
+   },
+   "geometry": {
+    "x": -80.387062,
+    "y": 37.264366
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1500967,
+    "Store_Name": "K & S Food Mart (Exxon)",
+    "Store_Street_Address": "3620 S Main St",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "7015",
+    "County": "MONTGOMERY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.186768,
+    "Longitude": -80.408295,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 174809
+   },
+   "geometry": {
+    "x": -80.408295,
+    "y": 37.186767999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1506116,
+    "Store_Name": "Duck In Deli #6",
+    "Store_Street_Address": "900 Lusters Gate Rd",
+    "Additonal_Address": null,
+    "City": "Christiansburg",
+    "State": "VA",
+    "Zip_Code": "24073",
+    "Zip4": "7732",
+    "County": "MONTGOMERY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.19223,
+    "Longitude": -80.366455,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 176575
+   },
+   "geometry": {
+    "x": -80.366455,
+    "y": 37.192230000000016
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 915796,
+    "Store_Name": "Oasis World Market",
+    "Store_Street_Address": "1411 S Main St",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "5527",
+    "County": "MONTGOMERY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.215561,
+    "Longitude": -80.400757,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 203966
+   },
+   "geometry": {
+    "x": -80.400757,
+    "y": 37.215560999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 939521,
+    "Store_Name": "7-Eleven 15112A",
+    "Store_Street_Address": "1201 Toms Creek Rd",
+    "Additonal_Address": null,
+    "City": "Blacksburg",
+    "State": "VA",
+    "Zip_Code": "24060",
+    "Zip4": "3003",
+    "County": "MONTGOMERY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.242832,
+    "Longitude": -80.428238,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 219864
+   },
+   "geometry": {
+    "x": -80.428238,
+    "y": 37.242831999999986
+   }
+  }
+ ]
+}

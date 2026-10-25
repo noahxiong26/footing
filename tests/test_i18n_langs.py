@@ -3,6 +3,7 @@ purpose. Without this, a new string added in English silently shows up in Englis
 screen: that is how the open-water refusal and the receipt button went untranslated (found in session 6 by
 clicking the app through a browser)."""
 import json
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -12,7 +13,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 WEB = ROOT / "footing" / "web"
 
-# Allowed to fall back to English, and why. Keep this short; anything a Virginia user can see belongs in all 8.
+# Allowed to fall back to English, and why. Anything visible in Virginia belongs in all nine.
 ENGLISH_FALLBACK_OK = {
     # The 50-state view is labelled beta and was never translated beyond Spanish.
     "lede", "top", "allStates", "c_access", "c_affordability", "c_criminalization",
@@ -30,7 +31,8 @@ for (const f of ['i18n.js', 'i18n_more.js']) vm.runInContext(fs.readFileSync(pat
 const I = ctx.FootingI18n;
 const out = {};
 for (const l of I.LANGS) out[l] = Object.keys(I.strings[l] || {});
-process.stdout.write(JSON.stringify({ langs: I.LANGS, rtl: I.RTL, keys: out, en: I.strings.en }));
+process.stdout.write(JSON.stringify({ langs: I.LANGS, rtl: I.RTL, machine: I.MACHINE,
+  keys: out, en: I.strings.en, strings: I.strings, reasons: I.vaReasonTemplates }));
 """
 
 
@@ -38,7 +40,7 @@ process.stdout.write(JSON.stringify({ langs: I.LANGS, rtl: I.RTL, keys: out, en:
 def i18n():
     if not shutil.which("node"):
         pytest.skip("node not installed")
-    r = subprocess.run(["node", "-e", SCRIPT, str(WEB)], capture_output=True, text=True, check=True)
+    r = subprocess.run(["node", "-e", SCRIPT, str(WEB)], capture_output=True, text=True, encoding="utf-8", check=True)
     return json.loads(r.stdout)
 
 
@@ -67,3 +69,53 @@ def test_map_tap_refusals_have_their_own_translated_sentence(i18n):
 
 def test_rtl_languages_are_known(i18n):
     assert set(i18n["rtl"]) == {"ar", "fa"} and set(i18n["rtl"]) <= set(i18n["langs"])
+
+
+def test_tagalog_has_language_option_and_honest_review_metadata(i18n):
+    assert "tl" in i18n["langs"] and "tl" in i18n["machine"] and "tl" not in i18n["rtl"]
+    assert i18n["strings"]["tl"]["langName"] == "Tagalog"
+    assert "Hindi pa" in i18n["strings"]["tl"]["machine"]
+    assert set(i18n["machine"]) == set(i18n["langs"]) - {"en"}
+
+
+def test_visible_strings_keep_all_interpolation_slots(i18n):
+    for lang in i18n["langs"]:
+        for key, english in i18n["en"].items():
+            if key in ENGLISH_FALLBACK_OK:
+                continue
+            translated = i18n["strings"][lang][key]
+            assert translated.strip(), (lang, key)
+            assert sorted(re.findall(r"\{\w+\}", translated)) == sorted(re.findall(r"\{\w+\}", english)), (lang, key)
+
+
+def test_data_driven_status_and_program_labels_have_no_english_fallback(i18n):
+    # English/Spanish labels come from eligibility.json; the other languages use st_/p_.
+    eligibility = json.loads((ROOT / "footing/static/eligibility.json").read_text(encoding="utf8"))
+    for lang in set(i18n["langs"]) - {"en", "es"}:
+        for section, prefix in (("statuses", "st_"), ("programs", "p_")):
+            for item in eligibility[section]:
+                key = prefix + item["id"]
+                assert i18n["strings"][lang].get(key), (lang, key)
+
+
+def test_every_reason_template_is_explicitly_translated(i18n):
+    tables = i18n["reasons"]
+    assert set(tables) == set(i18n["langs"])
+    for lang, table in tables.items():
+        assert set(table) == set(tables["en"]), lang
+        for key, text in table.items():
+            assert text.strip(), (lang, key)
+            assert sorted(re.findall(r"\{\w+\}", text)) == sorted(re.findall(r"\{\w+\}", tables["en"][key])), (lang, key)
+            if lang != "en":
+                assert text != tables["en"][key], (lang, key)
+
+
+def test_node_text_output_is_always_decoded_as_utf8():
+    """Windows decodes subprocess text as CP1252 by default and broke on translated output (S8.0)."""
+    import re
+    here = Path(__file__).resolve().parent
+    for path in here.glob("test_*.py"):
+        src = path.read_text(encoding="utf-8")
+        for call in re.findall(r"subprocess\.run\((?:[^()]|\([^()]*\))*\)", src):
+            if "text=True" in call:
+                assert 'encoding="utf-8"' in call or 'encoding="utf8"' in call, (path.name, call[:80])

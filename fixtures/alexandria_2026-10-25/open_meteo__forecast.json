@@ -1,0 +1,43 @@
+{
+ "latitude": 38.81158,
+ "longitude": -77.05007,
+ "generationtime_ms": 0.07641315460205078,
+ "utc_offset_seconds": -14400,
+ "timezone": "America/New_York",
+ "timezone_abbreviation": "GMT-4",
+ "elevation": 13.0,
+ "daily_units": {
+  "time": "iso8601",
+  "temperature_2m_min": "\u00b0F",
+  "temperature_2m_max": "\u00b0F"
+ },
+ "daily": {
+  "time": [
+   "2026-10-25",
+   "2026-10-26",
+   "2026-10-27",
+   "2026-10-28",
+   "2026-10-29",
+   "2026-10-30",
+   "2026-10-31"
+  ],
+  "temperature_2m_min": [
+   41.0,
+   41.2,
+   54.9,
+   51.7,
+   51.9,
+   55.3,
+   60.2
+  ],
+  "temperature_2m_max": [
+   65.7,
+   70.0,
+   69.0,
+   65.5,
+   70.3,
+   77.4,
+   74.6
+  ]
+ }
+}

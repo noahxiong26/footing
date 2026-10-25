@@ -1,0 +1,4 @@
+# Saved responses are hashed in their MANIFEST.json; keep their bytes identical on every OS.
+fixtures/** text eol=lf
+data_raw/*.json text eol=lf
+data_raw/*.jsonl text eol=lf

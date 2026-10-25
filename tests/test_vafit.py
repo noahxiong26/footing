@@ -115,7 +115,13 @@ def test_local_camping_rules_score_as_documented():
     assert get("51770")["score"] == 35         # Roanoke city: limited ban
     assert get("51540")["score"] == 60         # Charlottesville: site closure
     assert get("51590")["score"] is None       # Danville: proposed only
-    assert get("51059")["score"] is None       # Fairfax County: policy, not ordinance
+    # Fairfax County: its encampment-clearing policy (not an ordinance, unscored) was replaced on 2026-10-25
+    # by Park Authority Regulations §1.03(A), primary rule text limited to FCPA parks -> limited ban.
+    assert get("51059")["score"] == 35 and get("51059")["source"] == "fairfax_parks_camping"
+    assert get("51600")["score"] == 35         # Fairfax city is a separate locality with its own park rule
+    assert get("51520")["score"] == 0          # Bristol: provisional broad ban, scope still disputed
+    assert "provisional" in get("51520")["reason"]
+    assert get("51810")["score"] is None       # Virginia Beach: researched, code unreadable -> still Unknown
 
 
 def test_rent_uses_the_bedrooms_the_person_needs():
@@ -127,6 +133,21 @@ def test_rent_uses_the_bedrooms_the_person_needs():
     assert hours({"household": {"bedrooms": 9}})["bedrooms"] == 1          # out of range -> default
     assert hours({"household": {"bedrooms": True}})["bedrooms"] == 1       # not a number -> default
     assert hours({"household": {"bedrooms": 4}})["hours"] > hours({"household": {"bedrooms": 0}})["hours"]
+
+
+def test_typed_bedrooms_above_four_use_huds_fifteen_percent_rule():
+    """HUD publishes FMRs for 0-4 bedrooms; each extra bedroom adds 15% of the 4-bedroom FMR (65 FR 57715)."""
+    comp = lambda b: next(c for c in vafit.fit_score(ELIG, VA, "51121", {"household": {"bedrooms": b}})["components"] if c["id"] == "rent")
+    four = LOCS["51121"]["fmr"]["by_bedrooms"][4]
+    for b, factor in ((5, 1.15), (6, 1.30), (8, 1.60)):
+        c = comp(b)
+        assert c["parts"]["bedrooms"] == b
+        assert c["parts"]["rent"] == int(vafit.js_round(four * factor))
+        assert "plus 15% for each extra bedroom" in c["reason"]
+        assert [s["key"] for s in c["reason_data"]["segments"]] == ["rent", "rent_big"]
+    assert comp(4)["reason_data"]["segments"][-1]["key"] == "rent"           # no note at 4 or fewer
+    assert comp(9)["parts"]["bedrooms"] == 1                                    # above the 8 cap -> default
+    assert comp(-1)["parts"]["bedrooms"] == 1 and comp(2.5)["parts"]["bedrooms"] == 1
 
 
 def test_kids_switch_shelter_to_family_beds():
@@ -182,6 +203,7 @@ CASES = [
     {"profile": {}},
     {"profile": {"household": {"kids": True}}},
     {"profile": {"status": "undocumented", "household": {"kids": True, "bedrooms": 3}}},
+    {"profile": {"status": "tps", "household": {"kids": True, "bedrooms": 6}}},
     {"profile": {"status": "tps", "situation": {"tonight": True}}},
     {"profile": {"status": "citizen", "show_crime": True, "priorities": ["crime", "services"]}},
     {"profile": {"household": {"bedrooms": 0, "mixed": True}, "priorities": ["rent"]},

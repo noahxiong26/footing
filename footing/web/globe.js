@@ -46,7 +46,7 @@
     view: "intro", layer: "fit", selected: null, selectedPoint: null, prevView: "top",
     policy: null, elig: null, va: null, community: {}, heat: null, ranked: [], byCode: {}, vaRanked: [], byFips: {},
     map: null, mapOk: false, statesGeo: null, vaGeo: null, recorded: [], ratingPoint: null, rating: { tags: [] },
-    lit: 999, spinning: false, markers: [], ratingMarker: null, receiptTile: null,
+    lit: 999, spinning: false, markers: [], ratingMarker: null, receiptTile: null, placePopup: null,
   };
   if ((I.LANGS || ["en", "es"]).indexOf(S.lang) === -1) S.lang = "en";
   function t(k, v) { return I.t(S.lang, k, v); }
@@ -258,11 +258,27 @@
     return g.getImageData(0, 0, 16, 16);
   }
 
+  // Computer layout (>= 1100 px, Virginia): a persistent list of all places on one side, the map in the middle,
+  // the detail panel on the other side. Phones and small windows keep the bottom sheet.
+  var DESK = window.matchMedia ? window.matchMedia("(min-width: 1100px)") : { matches: false };
+  function desk() { return !!DESK.matches && isVa() && S.vaRanked.length > 0; }
+  /** Apply the layout switch before anything measures it, so the camera never frames for the wrong layout. */
+  function syncDesk() {
+    var on = desk();
+    document.documentElement.classList.toggle("g-desk", on);
+    return on;
+  }
+
   function sheetPad() {
+    if (syncDesk()) {
+      // Frame the map inside the space the two panels leave open, whatever the language direction.
+      var b = $(".g-sheet").getBoundingClientRect(), W = window.innerWidth, panelLeft = b.left < W / 2;
+      return { top: 90, bottom: 70, left: panelLeft ? Math.round(b.right) + 24 : 40, right: panelLeft ? 40 : Math.round(W - b.left) + 24 };
+    }
     var wide = window.innerWidth >= 900, sh = $(".g-sheet");
     var h = sh ? sh.offsetHeight : 200, rtl = document.documentElement.dir === "rtl";
     if (wide) return rtl ? { top: 90, bottom: 40, left: 40, right: 440 } : { top: 90, bottom: 40, left: 440, right: 40 };
-    return { top: 70, bottom: Math.min(h, window.innerHeight * 0.6) + 20, left: 20, right: 20 };
+    return { top: 116, bottom: Math.min(h, window.innerHeight * 0.6) + 20, left: 20, right: 20 };
   }
 
   function helpGeo() {
@@ -274,6 +290,115 @@
       });
     });
     return { type: "FeatureCollection", features: feats };
+  }
+
+  // ---------------- day and night ----------------
+  /** Where the sun is overhead (NOAA's simplified solar position: declination and equation of time). */
+  function subsolar(d) {
+    var rad = Math.PI / 180, start = Date.UTC(d.getUTCFullYear(), 0, 0);
+    var doy = (d - start) / 86400000, hours = d.getUTCHours() + d.getUTCMinutes() / 60 + d.getUTCSeconds() / 3600;
+    var g = 2 * Math.PI / 365 * (doy - 1 + (hours - 12) / 24);
+    var eqt = 229.18 * (0.000075 + 0.001868 * Math.cos(g) - 0.032077 * Math.sin(g) - 0.014615 * Math.cos(2 * g) - 0.040849 * Math.sin(2 * g));
+    var decl = 0.006918 - 0.399912 * Math.cos(g) + 0.070257 * Math.sin(g) - 0.006758 * Math.cos(2 * g) + 0.000907 * Math.sin(2 * g)
+      - 0.002697 * Math.cos(3 * g) + 0.00148 * Math.sin(3 * g);
+    var lon = -15 * (hours - 12 + eqt / 60);
+    return { lat: decl / rad, lon: ((lon + 540) % 360) - 180 };
+  }
+  /** The sky as a small canvas laid over the whole Earth. Each pixel's colour comes from the sun's altitude there:
+   *  dark below the horizon with a smooth twilight edge, a faint warm sheen where the sun is high. Rows are spaced
+   *  in Web Mercator so the texture lines up with the map; updating it is one cheap texture upload. */
+  var SKY = { W: 360, H: 256, MAXLAT: 85.0511, canvas: null, ctx: null, img: null, rowSin: null, rowCos: null };
+  function skyInit() {
+    SKY.canvas = document.createElement("canvas"); SKY.canvas.width = SKY.W; SKY.canvas.height = SKY.H;
+    SKY.ctx = SKY.canvas.getContext("2d"); SKY.img = SKY.ctx.createImageData(SKY.W, SKY.H);
+    SKY.rowSin = new Float32Array(SKY.H); SKY.rowCos = new Float32Array(SKY.H);
+    for (var j = 0; j < SKY.H; j++) {
+      var lat = Math.atan(Math.sinh(Math.PI * (1 - 2 * (j + 0.5) / SKY.H)));
+      SKY.rowSin[j] = Math.sin(lat); SKY.rowCos[j] = Math.cos(lat);
+    }
+  }
+  // sin(altitude) -> [r, g, b, alpha 0-255]; piecewise linear between the classic twilight steps.
+  // The dark fades out in its own colour before the warm sheen begins, so the sunset edge has no bright seam.
+  var SKY_STOPS = [[-0.309, 0, 2, 10, 190], [-0.105, 3, 10, 31, 150], [-0.009, 10, 24, 56, 80], [0.026, 10, 24, 56, 0],
+    [0.5, 255, 217, 154, 0], [1, 255, 241, 201, 26]];
+  function skyDraw(d) {
+    if (!SKY.canvas) skyInit();
+    var sun = subsolar(d), rad = Math.PI / 180, sd = Math.sin(sun.lat * rad), cd = Math.cos(sun.lat * rad);
+    var W = SKY.W, H = SKY.H, px = SKY.img.data, cosH = new Float32Array(W), i, j, k;
+    for (i = 0; i < W; i++) cosH[i] = Math.cos(((-180 + (i + 0.5) * 360 / W) - sun.lon) * rad);
+    for (j = 0; j < H; j++) {
+      var a = SKY.rowSin[j] * sd, b = SKY.rowCos[j] * cd, o = j * W * 4;
+      for (i = 0; i < W; i++, o += 4) {
+        var x = a + b * cosH[i], lo = SKY_STOPS[0], hi = lo;
+        if (x <= lo[0]) { px[o] = lo[1]; px[o + 1] = lo[2]; px[o + 2] = lo[3]; px[o + 3] = lo[4]; continue; }
+        for (k = 1; k < SKY_STOPS.length; k++) { hi = SKY_STOPS[k]; if (x <= hi[0]) break; lo = hi; }
+        var f = hi === lo ? 0 : (x - lo[0]) / (hi[0] - lo[0]);
+        px[o] = lo[1] + (hi[1] - lo[1]) * f; px[o + 1] = lo[2] + (hi[2] - lo[2]) * f;
+        px[o + 2] = lo[3] + (hi[3] - lo[3]) * f; px[o + 3] = lo[4] + (hi[4] - lo[4]) * f;
+      }
+    }
+    SKY.ctx.putImageData(SKY.img, 0, 0);
+    return SKY.canvas;
+  }
+  var DN = { offset: 0, lapse: false, timer: null, raf: 0, last: 0 };
+  function dnNow() { return new Date(Date.now() + DN.offset); }
+  function dnPaint() {
+    skyDraw(dnNow());
+    var src = S.map && S.map.getSource("daynight");
+    if (src) {
+      if (DN.lapse) src.play();                     // re-upload every frame while the day plays
+      else { src.play(); requestAnimationFrame(function () { requestAnimationFrame(function () { if (!DN.lapse) src.pause(); }); }); }
+      S.map.triggerRepaint();
+    }
+    dnClock();
+  }
+  function dnClock() {
+    var el = $(".g-sunread");
+    if (!el) return;
+    var fmt;
+    try { fmt = new Intl.DateTimeFormat(S.lang === "zh" ? "zh-CN" : S.lang, { hour: "numeric", minute: "2-digit", timeZone: "America/New_York" }); }
+    catch (e) { fmt = new Intl.DateTimeFormat("en", { hour: "numeric", minute: "2-digit", timeZone: "America/New_York" }); }
+    el.textContent = t("dn_read", { time: fmt.format(dnNow()) });
+    var b0 = $(".g-sun");
+    if (b0) { b0.setAttribute("aria-label", t("dn_btn") + ". " + el.textContent); b0.title = t("dn_btn"); }
+    var vaSun = subsolar(dnNow()), rad = Math.PI / 180;
+    var alt = Math.asin(Math.sin(37.5 * rad) * Math.sin(vaSun.lat * rad) + Math.cos(37.5 * rad) * Math.cos(vaSun.lat * rad) * Math.cos((-78.8 - vaSun.lon) * rad)) / rad;
+    var btn = $(".g-sun");
+    if (btn) btn.classList.toggle("night", alt < -3);
+  }
+  function startDaynight() {
+    // No on-screen clock (owner request): the sky simply follows the real sun.
+    dnPaint();
+    clearInterval(DN.timer);
+    DN.timer = setInterval(function () { if (!DN.lapse) dnPaint(); }, 60000);
+  }
+  /** "Watch a day pass": 24 hours in 24 seconds, then back to now. */
+  function toggleLapse() {
+    var b = $(".g-sun");
+    DN.lapse = !DN.lapse;
+    if (b) b.setAttribute("aria-pressed", String(DN.lapse));
+    cancelAnimationFrame(DN.raf);
+    if (!DN.lapse) { DN.offset = 0; dnPaint(); return; }
+    var start = performance.now(), base = DN.offset, last = 0;
+    (function step(ts) {
+      if (!DN.lapse) return;
+      var k = (ts - start) / 24000;
+      DN.offset = base + k * 86400000;
+      if (ts - last > (reduced ? 1000 : 33)) { last = ts; dnPaint(); }      // ~30 updates a second
+      if (k >= 1) { DN.lapse = false; DN.offset = 0; if (b) b.setAttribute("aria-pressed", "false"); dnPaint(); return; }
+      DN.raf = requestAnimationFrame(step);
+    })(start);
+  }
+  /** The picked place breathes gently so the eye finds it on the map. */
+  var PULSE = 0;
+  function pulseSelection() {
+    if (reduced || PULSE || !S.mapOk) return;
+    var t0 = performance.now();
+    (function step(ts) {
+      if (!S.selected || !S.mapOk || !S.map.getLayer("va-selected-glow")) { PULSE = 0; return; }
+      S.map.setPaintProperty("va-selected-glow", "line-opacity", 0.3 + 0.35 * (0.5 + 0.5 * Math.sin((ts - t0) / 380)));
+      PULSE = requestAnimationFrame(function (n) { setTimeout(function () { step(n); }, 33); });
+    })(t0);
   }
 
   function buildMap(states, countries, vaTopo) {
@@ -296,6 +421,8 @@
           va: { type: "geojson", data: S.vaGeo, promoteId: "fips" },
           help: { type: "geojson", data: helpGeo() },
           heat: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
+          daynight: { type: "canvas", canvas: skyDraw(new Date()), animate: false,
+            coordinates: [[-180, SKY.MAXLAT], [180, SKY.MAXLAT], [180, -SKY.MAXLAT], [-180, -SKY.MAXLAT]] },
           imagery: { type: "raster", tiles: [IMAGERY], tileSize: 256, maxzoom: 15,
             attribution: '<a href="https://s2maps.eu">Sentinel-2 cloudless</a> by EOX (Copernicus Sentinel data 2020)' },
           labels: { type: "raster", tiles: LABELS, tileSize: 256, maxzoom: 18,
@@ -310,6 +437,8 @@
           { id: "imagery", type: "raster", source: "imagery", minzoom: 4.5, paint: { "raster-saturation": -0.35, "raster-brightness-max": 0.85,
             "raster-opacity": ["interpolate", ["linear"], ["zoom"], 4.5, 0, 7.5, 0.9] } },
           { id: "land-line", type: "line", source: "land", paint: { "line-color": "rgba(232,236,244,0.18)", "line-width": 0.6 } },
+          // Day and night from the real sun. Drawn under the places, so the lit Virginia map glows on the night side.
+          { id: "daynight", type: "raster", source: "daynight", paint: { "raster-fade-duration": 0, "raster-resampling": "linear" } },
           { id: "states-known", type: "fill", source: "states", filter: ["==", ["get", "known"], true],
             paint: { "fill-color": fillExpr(), "fill-opacity": ["interpolate", ["linear"], ["zoom"], 3, 0.92, 7, 0.55, 10, 0.12, 12, 0] } },
           { id: "states-unknown", type: "fill", source: "states", filter: ["==", ["get", "known"], false],
@@ -325,6 +454,8 @@
             paint: { "fill-pattern": "hatch", "fill-opacity": ["interpolate", ["linear"], ["zoom"], 4, 0.9, 11, 0.3, 13, 0.1] } },
           { id: "va-line", type: "line", source: "va", paint: { "line-color": "rgba(5,7,15,0.85)",
             "line-width": ["interpolate", ["linear"], ["zoom"], 5, 0.4, 8, 1, 11, 1.6] } },
+          { id: "va-selected-glow", type: "line", source: "va", filter: ["==", ["id"], ""],
+            paint: { "line-color": "#f2c14e", "line-blur": 6, "line-opacity": 0.5, "line-width": ["interpolate", ["linear"], ["zoom"], 5, 8, 10, 16] } },
           { id: "va-selected", type: "line", source: "va", filter: ["==", ["id"], ""],
             paint: { "line-color": "#fff1c9", "line-width": ["interpolate", ["linear"], ["zoom"], 5, 2, 10, 4] } },
           { id: "states-selected", type: "line", source: "states", filter: ["==", ["get", "code"], ""],
@@ -363,7 +494,8 @@
       S.mapOk = true;
       paint();
       paintHeat();
-      if (S.selected && isVa()) map.setFilter("va-selected", ["==", ["id"], S.selected]);
+      startDaynight();
+      if (S.selected && isVa()) map.setFilter("va-selected", ["==", ["id"], S.selected]); map.setFilter("va-selected-glow", ["==", ["id"], S.selected]);
       $(".g-loading") && $(".g-loading").remove();
       if (S.view === "rate") return;
       if (S.profile) flyHome(true); else { frameIntro(); startSpin(); }
@@ -385,6 +517,9 @@
       map.on("mouseleave", id, function () { map.getCanvas().style.cursor = ""; });
     });
     map.on("zoomend", function () { if (map.getZoom() >= 10.5) showTownPlaces(); });
+    map.on("resize", function () {
+      if (S.placePopup) requestAnimationFrame(function () { if (S.placePopup) keepPopupVisible(S.placePopup); });
+    });
   }
 
   function helpPopup(f) {
@@ -392,7 +527,33 @@
     var html = '<div class="g-pop"><strong>' + esc(p.name || t("k_" + p.kind)) + "</strong><br>" + esc(t("k_" + p.kind)) +
       (p.hours ? "<br>" + esc(t("hours")) + ": " + esc(p.hours) : "") +
       (p.phone ? '<br><a href="tel:' + esc(p.phone.replace(/[^+\d]/g, "")) + '">' + esc(p.phone) + "</a>" : "") + "</div>";
-    new maplibregl.Popup({ offset: 10, closeButton: true }).setLngLat([p.lon, p.lat]).setHTML(html).addTo(S.map);
+    if (S.placePopup) S.placePopup.remove();
+    var popup = new maplibregl.Popup({ offset: 10, anchor: "bottom", closeButton: true })
+      .setLngLat([p.lon, p.lat]).setHTML(html).addTo(S.map);
+    S.placePopup = popup;
+    popup.on("close", function () { if (S.placePopup === popup) S.placePopup = null; });
+    requestAnimationFrame(function () { keepPopupVisible(popup); });
+  }
+
+  // MapLibre knows the canvas edges, but not the controls covering it. Fit inside the exposed map.
+  function keepPopupVisible(popup) {
+    if (S.placePopup !== popup) return;
+    var el = popup.getElement(), sh = $(".g-sheet").getBoundingClientRect();
+    var top = $(".g-top").getBoundingClientRect().bottom + 8;
+    var left = 8, right = window.innerWidth - 8, bottom = window.innerHeight - 8;
+    if (window.innerWidth < 900) bottom = Math.min(bottom, sh.top - 8);
+    else if (sh.left < window.innerWidth / 2) left = sh.right + 8;
+    else right = sh.left - 8;
+    var legend = $(".g-legend");
+    if (!legend.hidden) bottom = Math.min(bottom, legend.getBoundingClientRect().top - 8);
+    popup.setMaxWidth(Math.max(80, right - left) + "px");
+    var content = el.querySelector(".maplibregl-popup-content");
+    content.style.maxHeight = Math.max(40, bottom - top - 20) + "px";
+    content.style.overflowY = "auto";
+    var r = el.getBoundingClientRect();
+    var dx = r.left < left ? left - r.left : (r.right > right ? right - r.right : 0);
+    var dy = r.top < top ? top - r.top : (r.bottom > bottom ? bottom - r.bottom : 0);
+    if (dx || dy) S.map.panBy([-dx, -dy], { duration: 0 });
   }
 
   function frameIntro() {
@@ -447,7 +608,7 @@
     if (!S.mapOk) return;
     var f = S.vaGeo.features.filter(function (x) { return x.id === fips; })[0];
     if (!f) return;
-    S.map.setFilter("va-selected", ["==", ["id"], fips]);
+    S.map.setFilter("va-selected", ["==", ["id"], fips]); S.map.setFilter("va-selected-glow", ["==", ["id"], fips]); pulseSelection();
     fitTo(f.properties.bbox, 9.2);
   }
 
@@ -491,26 +652,110 @@
   function render() {
     var sh = $(".g-sheet");
     if (!sh) return;
+    if (S.placePopup && S.view !== "locality") S.placePopup.remove();
     var views = { intro: introView, profile: profileView, top: isVa() ? vaTopView : topView, list: isVa() ? vaListView : listView,
-      state: stateView, locality: localityView, rate: rateView };
+      state: stateView, locality: localityView, rate: rateView, reset: resetView };
     var html = (views[S.view] || views.intro)();
     var tall = S.view === "profile" || S.view === "list" || (S.view === "rate" && S.ratingPoint);
     sh.className = "g-sheet" + (tall ? " tall" : "") + (S.view === "rate" && !S.ratingPoint ? " short" : "");
     sh.innerHTML = '<button class="g-grip" aria-label="Resize panel" type="button"></button>' + html;
     bindView();
+    syncDesk();
     renderChrome();
     var h = sh.querySelector("h1, h2");
     if (h) { h.setAttribute("tabindex", "-1"); }
+    countUp(sh);
     updatePeek();
   }
 
+  function filterList(box, input) {
+    var v = input.value.trim().toLowerCase(), shown = 0;
+    box.querySelectorAll(".g-list li").forEach(function (li) {
+      var hit = !v || li.dataset.name.indexOf(v) !== -1;
+      li.hidden = !hit; if (hit) shown++;
+    });
+    box.querySelector(".g-nomatch").hidden = shown > 0;
+  }
+
+  /** Numbers roll up from zero the first time a place opens (not on every re-render). */
+  var _counted = null;
+  function countUp(root) {
+    var key = S.view === "locality" ? "loc:" + S.selected : null;
+    if (!key || key === _counted || reduced) { _counted = key; return; }
+    _counted = key;
+    var els = root.querySelectorAll("[data-countup]"), t0 = performance.now(), DUR = 700;
+    if (!els.length) return;
+    els.forEach(function (el) { el.dataset.final = el.textContent; });
+    (function step(ts) {
+      var k = Math.min(1, (ts - t0) / DUR), e = 1 - Math.pow(1 - k, 3);
+      els.forEach(function (el) {
+        var to = +el.dataset.countup, v = Math.round(to * e);
+        el.textContent = k < 1 ? num(v) + (el.dataset.suffix || "") : el.dataset.final;
+      });
+      if (k < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+
   function updatePeek() {
+    var top = $(".g-top");
+    if (top) document.documentElement.style.setProperty("--top-h", top.offsetHeight + "px");
     var sh = $(".g-sheet");
     if (sh) document.documentElement.style.setProperty("--sheet-peek", Math.min(sh.offsetHeight, window.innerHeight * 0.86) + "px");
   }
 
+  // ---- navigation bar: one place to switch between the app's screens ----
+  var NAV_OF = { intro: "intro", profile: "profile", top: "top", list: "list", locality: "place", state: "place", rate: "rate", reset: "reset" };
+  function renderNav() {
+    var top = $(".g-top");
+    if (!top) return;
+    var nav = $(".g-nav");
+    if (!nav) {
+      nav = document.createElement("nav"); nav.className = "g-nav";
+      var brand = top.querySelector(".g-brand");
+      top.insertBefore(nav, brand ? brand.nextSibling : top.firstChild);
+      nav.addEventListener("click", function (e) {
+        var b = e.target.closest ? e.target.closest("[data-nav]") : null;
+        if (b) navigate(b.dataset.nav);
+      });
+    }
+    nav.setAttribute("aria-label", t("nav_label"));
+    var place = S.selected && (isVa() ? (S.byFips[S.selected] || {}).name : (S.policy && S.policy[S.selected] || {}).name);
+    var items = [["intro", t("nav_home")], ["profile", t("aboutYou")], ["top", t("nav_best")], ["list", t("nav_all")]];
+    if (place) items.push(["place", place]);
+    items.push(["rate", t("nav_rate")], ["reset", t("nav_reset")]);
+    var cur = NAV_OF[S.view];
+    nav.innerHTML = items.map(function (it) {
+      return '<button type="button" data-nav="' + it[0] + '"' + (it[0] === "reset" ? ' class="reset"' : "") +
+        (it[0] === cur ? ' aria-current="page"' : "") + ">" + esc(it[1]) + "</button>";
+    }).join("");
+    var active = nav.querySelector("[aria-current]");
+    if (active && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = active.offsetLeft - 16;
+  }
+
+  function navigate(where) {
+    if (where === NAV_OF[S.view] && where !== "place") return;
+    if (S.view === "rate" && where !== "rate" && S.ratingMarker) { S.ratingMarker.remove(); S.ratingMarker = null; S.ratingPoint = null; }
+    if (where === "intro") { S.view = "intro"; render(); flyHome(false); focusHeading(); return; }
+    if (where === "profile") { go("profile"); return; }
+    if (where === "top") { go("skip"); focusHeading(); return; }
+    if (where === "list") { go("list"); focusHeading(); return; }
+    if (where === "place" && S.selected) { if (isVa()) selectLocality(S.selected, true); else selectState(S.selected, true); return; }
+    if (where === "rate") { go("rate"); focusHeading(); return; }
+    if (where === "reset") { go("reset-ask"); }
+  }
+
   function renderChrome() {
-    $(".g-legend").hidden = S.view === "intro" || S.view === "profile" || S.view === "rate";
+    dnClock();
+    var root = $("#globe-root");
+    if (root && !$(".g-skip")) {
+      var a = document.createElement("a"); a.className = "g-skip"; a.href = "#g-panel";
+      a.addEventListener("click", function (e) { e.preventDefault(); focusHeading(); });
+      root.insertBefore(a, root.firstChild);
+      var live = document.createElement("div"); live.className = "sr-only g-live"; live.setAttribute("aria-live", "polite"); root.appendChild(live);
+    }
+    if ($(".g-skip")) $(".g-skip").textContent = t("skip_panel");
+    $(".g-legend").hidden = S.view === "intro" || S.view === "profile" || S.view === "rate" || S.view === "reset";
+    renderNav();
     var lang = $("#g-lang");
     if (lang.tagName === "SELECT") {
       lang.setAttribute("aria-label", "Language / " + t("lang"));
@@ -518,7 +763,11 @@
         return '<option value="' + l + '"' + (l === S.lang ? " selected" : "") + ">" + esc(I.t(l, "langName")) + "</option>";
       }).join("");
     } else lang.textContent = S.lang === "es" ? "English" : "Español";
-    $("#g-hide").textContent = t("hideShort");
+    // On a computer there is room to say what the quick exit does; "Hide" alone reads like "hide this panel".
+    // Only languages that have the long label use it; the others keep their translated short one.
+    var longHide = document.documentElement.classList.contains("g-desk") && (I.strings[S.lang] || {}).hide;
+    $("#g-hide").textContent = longHide || t("hideShort");
+    $("#g-hide").title = t("hideLong");
     $("#g-hide").setAttribute("aria-label", t("hideLong"));
     $("#g-listbtn").textContent = S.view === "list" ? t("map") : t("list");
     var sel = $("#g-layer");
@@ -542,14 +791,28 @@
   var LOCK = '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="8" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>';
 
   function introView() {
-    return "<h1>" + esc(isVa() ? t("title_va") : t("title")) + "</h1><p>" + esc(isVa() ? t("lede_va") : t("lede")) + "</p>" + machineNote() +
+    var chips = isVa() ? '<ul class="g-hero-chips">' + [["shelter", "#9cb07a"], ["rent", "#f2c14e"], ["services", "#3f7c85"], ["laws", "#a7b1c6"], ["safety", "#ff9e8a"]].map(function (c) {
+      return '<li><i style="background:' + c[1] + '"></i>' + esc(t("c_" + c[0])) + "</li>";
+    }).join("") + '</ul><p class="g-small g-hero-src">' + esc(t("intro_src")) + "</p>" : "<p>" + esc(t("lede")) + "</p>";
+    // The language's own "All 133 places", with its number set large (word order and digits stay as translated).
+    var count = isVa() ? '<p class="g-hero-n">' + esc(t("allPlaces")).replace(/([0-9\u06F0-\u06F9\u0660-\u0669]+)/, "<strong>$1</strong>") + "</p>" : "";
+    return '<h1 class="g-hero">' + esc(isVa() ? t("title_va") : t("title")) + "</h1>" + count + chips + machineNote() +
       '<div class="g-lock">' + LOCK + "<span>" + esc(t("privacy")) + "</span></div>" +
       '<div class="g-actions"><button class="g-primary" data-go="profile" type="button">' + esc(t("start")) + "</button>" +
       '<button class="g-secondary" data-go="skip" type="button">' + esc(t("skip")) + "</button>" +
+      (isVa() ? '<button class="g-secondary g-wide g-sample-btn" data-go="sample" type="button">' + esc(t("sample_btn")) + "</button>" : "") +
       (B.standalone ? "" : '<a class="g-secondary" href="#/start">' + esc(t("nearMe")) + "</a>") +
-      '<a class="g-secondary" href="tel:211">' + esc(t("call211short")) + "</a></div>";
+      '' + call211Btn() + "</div>";
   }
 
+  /** "Start over": an in-page confirmation (hosted pages cannot show confirm()). */
+  function resetView() {
+    return "<h2>" + esc(t("reset_title")) + "</h2><p>" + esc(t("reset_body")) + "</p>" +
+      '<div class="g-actions"><button class="g-primary g-danger" data-go="reset-confirm" type="button">' + esc(t("reset_yes")) + "</button>" +
+      '<button class="g-secondary" data-go="reset-cancel" type="button">' + esc(t("reset_cancel")) + "</button></div>";
+  }
+
+  /** About you, as five numbered steps. Each step is one kind of question, so the screen reads top to bottom. */
   function profileView() {
     var p = draft(), hh = p.household || {}, sit = p.situation || {};
     var statuses = S.elig.statuses.map(function (s) {
@@ -562,24 +825,43 @@
     var ages = [["18_24", "age18"], ["25_49", "age25"], ["50_61", "age50"], ["62_plus", "age62"]].map(function (a) {
       return '<button type="button" class="g-chip" data-age="' + a[0] + '" aria-pressed="' + (p.age_band === a[0]) + '">' + esc(t(a[1])) + "</button>";
     }).join("");
-    var beds = [["auto", "bedAuto"], [0, "bed0"], [1, "bed1"], [2, "bed2"], [3, "bed3"], [4, "bed4"]].map(function (b) {
-      var on = b[0] === "auto" ? (hh.bedrooms === undefined || hh.bedrooms === null) : hh.bedrooms === b[0];
-      return '<button type="button" class="g-chip" data-bed="' + b[0] + '" aria-pressed="' + on + '">' + esc(t(b[1])) + "</button>";
-    }).join("");
-    var crime = isVa() ? "<h3>" + esc(t("crimeQ")) + "</h3><p>" + esc(t("crimeHelp")) + '</p><div class="g-chips">' +
+    var group = function (label, html) {
+      return '<div class="g-grp"><span class="g-grp-l">' + esc(label) + '</span><div class="g-chips">' + html + "</div></div>";
+    };
+    var step = function (n, title, body) {
+      return '<li class="g-step"><h3 class="g-step-h"><span class="n" aria-hidden="true">' + n + "</span>" + esc(title) + "</h3>" + body + "</li>";
+    };
+    var beds = "";
+    if (isVa()) {
+      var has = typeof hh.bedrooms === "number";
+      beds = '<div class="g-beds"><label for="g-beds">' + esc(t("bedroomsQ")) + '</label><div class="g-stepper">' +
+        '<button type="button" data-bedstep="-1" aria-label="' + esc(t("down")) + '">&minus;</button>' +
+        '<input id="g-beds" type="number" inputmode="numeric" min="0" max="' + VaFit.MAX_BEDROOMS + '" step="1" value="' + (has ? hh.bedrooms : "") +
+        '" placeholder="' + bedAuto(p) + '" aria-describedby="g-beds-hint">' +
+        '<button type="button" data-bedstep="1" aria-label="' + esc(t("up")) + '">+</button></div>' +
+        '<p class="g-small" id="g-beds-hint">' + esc(t("bedHint")) + "</p></div>";
+    }
+    var crime = isVa() ? step(5, t("step_crime"), "<p><strong>" + esc(t("crimeQ")) + "</strong></p><p>" + esc(t("crimeHelp")) + '</p><div class="g-chips">' +
       '<button type="button" class="g-chip" data-crime="0" aria-pressed="' + !p.show_crime + '">' + esc(t("crimeOff")) + "</button>" +
-      '<button type="button" class="g-chip" data-crime="1" aria-pressed="' + !!p.show_crime + '">' + esc(t("crimeOn")) + "</button></div>" : "";
-    return "<h2>" + esc(t("aboutYou")) + '</h2><div class="g-lock">' + LOCK + "<span>" + esc(t("privacy")) + "</span></div>" + machineNote() +
-      '<fieldset class="g-fs"><legend><h3>' + esc(t("statusQ")) + "</h3></legend>" +
-      "<p>" + esc(t("statusHelp")) + '</p><div class="g-status">' + statuses + "</div></fieldset>" +
-      "<h3>" + esc(t("whoQ")) + '</h3><div class="g-chips">' + ["kids", "pregnant", "partner", "pets", "mixed"].map(function (k) { return chip("household", k); }).join("") + "</div>" +
-      (isVa() ? "<h3>" + esc(t("bedroomsQ")) + '</h3><div class="g-chips g-beds">' + beds + "</div>" : "") +
-      "<h3>" + esc(t("situationQ")) + '</h3><div class="g-chips">' + ["tonight", "car", "no_id", "veteran", "disability"].map(function (k) { return chip("situation", k); }).join("") + "</div>" +
-      "<h3>" + esc(t("ageQ")) + '</h3><div class="g-chips">' + ages + "</div>" +
-      crime + priorityBlock(p) +
-      '<div class="g-actions"><button class="g-primary g-wide" data-go="save" type="button">' + esc(t("showMap")) + "</button>" +
+      '<button type="button" class="g-chip" data-crime="1" aria-pressed="' + !!p.show_crime + '">' + esc(t("crimeOn")) + "</button></div>") : "";
+    return '<h2 class="g-about-h">' + esc(t("aboutYou")) + '</h2><div class="g-lock">' + LOCK + "<span>" + esc(t("privacy")) + "</span></div>" + machineNote() +
+      '<ol class="g-steps">' +
+      step(1, t("step_papers"), '<fieldset class="g-fs"><legend>' + esc(t("statusQ")) + "</legend><p>" + esc(t("statusHelp")) + '</p><div class="g-status">' + statuses + "</div></fieldset>") +
+      step(2, t("step_home"), group(t("whoQ"), ["kids", "pregnant", "partner", "pets"].map(function (k) { return chip("household", k); }).join("")) + beds) +
+      step(3, t("step_now"), group(t("grp_now"), chip("situation", "tonight") + chip("situation", "car")) +
+        group(t("grp_id"), chip("situation", "no_id")) + group(t("grp_bg"), chip("situation", "veteran") + chip("situation", "disability")) +
+        group(t("ageQ"), ages)) +
+      step(4, t("step_matter"), '<div class="g-pri-wrap">' + priorityBlock(p) + "</div>") +
+      crime + "</ol>" +
+      '<div class="g-actions g-about-actions"><button class="g-primary g-wide" data-go="save" type="button">' + esc(t("showBest")) + "</button>" +
       '<button class="g-secondary g-wide" data-go="forget" type="button">' + esc(t("forget")) + "</button></div>";
   }
+
+  function bedAuto(p) {
+    var q = JSON.parse(JSON.stringify(p)); q.household = q.household || {}; delete q.household.bedrooms;
+    return VaFit.bedrooms(q);
+  }
+  function szLabel(b) { return b <= 4 ? t("sz" + b) : t("szMany", { n: b }); }
 
   function currentOrder(p) {
     var prof = JSON.parse(JSON.stringify(p || S.profile || defaultProfile()));
@@ -599,19 +881,41 @@
     return ch2.filter(function (k) { return sample[k] !== undefined; });
   }
 
+  /** Ranking only: the order is what the person controls, so the weights stay out of sight. A live preview shows
+   *  what that order does to their best matches, with how far each place moved since the last change. */
+  var _prevTop = null;
   function priorityBlock(p) {
-    var order = currentOrder(p), w = Fit.rocWeights(order.length);
-    return "<h3>" + esc(t("priQ")) + "</h3><p>" + esc(t("priHelp")) + '</p><ol class="g-pri">' + order.map(function (k, i) {
-      return "<li><span>" + esc(t("c_" + k)) + '</span><span class="w">' + Math.round(100 * w[i]) + "%</span>" +
+    var order = currentOrder(p), n = order.length;
+    var list = '<ol class="g-pri">' + order.map(function (k, i) {
+      var heat = 1 - i / Math.max(1, n - 1);
+      return '<li data-k="' + k + '" style="--heat:' + heat.toFixed(2) + '"><span class="grip" aria-hidden="true"></span><span class="rk" aria-hidden="true">' + (i + 1) + '</span><span class="nm">' + esc(t("c_" + k)) +
+        (i === 0 ? '<small>' + esc(t("pri_top")) + "</small>" : "") + "</span>" +
         '<button type="button" data-pri="' + k + '" data-dir="-1" aria-label="' + esc(t("up") + ": " + t("c_" + k)) + '"' + (i === 0 ? " disabled" : "") + ">&uarr;</button>" +
-        '<button type="button" data-pri="' + k + '" data-dir="1" aria-label="' + esc(t("down") + ": " + t("c_" + k)) + '"' + (i === order.length - 1 ? " disabled" : "") + ">&darr;</button>" +
-        '<span class="wbar" style="width:' + (100 * w[i] / w[0]).toFixed(1) + '%"></span></li>';
+        '<button type="button" data-pri="' + k + '" data-dir="1" aria-label="' + esc(t("down") + ": " + t("c_" + k)) + '"' + (i === n - 1 ? " disabled" : "") + ">&darr;</button></li>";
     }).join("") + "</ol>";
+    return "<p>" + esc(t("priHelp")) + "</p>" + list + (isVa() && S.va ? previewBlock(p) : "");
+  }
+
+  function previewBlock(p) {
+    var prof = JSON.parse(JSON.stringify(p)), h = (S.heat || {}).localities || {};
+    var top = Object.keys(S.va.localities).map(function (f) {
+      var r = VaFit.fitScore(S.elig, S.va, f, prof, h);
+      return { fips: f, name: r.name, score: r.score };
+    }).filter(function (r) { return r.score !== null; })
+      .sort(function (a, b) { return b.score - a.score || (a.name < b.name ? -1 : 1); }).slice(0, 3);
+    var before = _prevTop || [];
+    _prevTop = top.map(function (r) { return r.fips; });
+    return '<div class="g-preview" aria-live="polite"><p class="g-small">' + esc(t("pri_preview")) + '</p><ol>' + top.map(function (r, i) {
+      var was = before.indexOf(r.fips), mv = !before.length ? "" : was === -1 ? '<span class="mv new">&#9650;</span>' :
+        was > i ? '<span class="mv up">&#9650;' + (was - i) + "</span>" : was < i ? '<span class="mv down">&#9660;' + (i - was) + "</span>" : "";
+      return '<li><span class="pn">' + esc(r.name) + "</span>" + mv + '<span class="ps" style="background:' + rampColor(r.score) + ";color:" + inkOn(r.score) + '">' +
+        Math.round(r.score) + "</span></li>";
+    }).join("") + "</ol></div>";
   }
 
   function scoreBadge(score) {
     if (score === null || score === undefined) return '<div class="g-badge unknown">?<small>' + esc(t("unknownWhy")) + "</small></div>";
-    return '<div class="g-badge" style="background:' + rampColor(score) + ";color:" + inkOn(score) + '">' + Math.round(score) + "<small>/ 100</small></div>";
+    return '<div class="g-badge" style="background:' + rampColor(score) + ";color:" + inkOn(score) + '"><span data-countup="' + Math.round(score) + '">' + Math.round(score) + "</span><small>/ 100</small></div>";
   }
 
   function rangeText(r, short) {
@@ -648,13 +952,25 @@
     var bits = [];
     if (who && p.status !== "undisclosed") bits.push(statusLabel(who));
     if ((p.household || {}).kids) bits.push(t("kids"));
-    bits.push(t("sz" + VaFit.bedrooms(p)));
+    bits.push(szLabel(VaFit.bedrooms(p)));
     return "<p>" + esc(bits.join(", ")) + "</p>";
   }
 
+  /** A strip per place: one segment per part, as wide as it counts for you, colored by how well the place does. */
+  function factorStrip(r) {
+    return '<span class="g-strip" aria-hidden="true">' + r.components.filter(function (c) { return c.weight > 0; }).map(function (c) {
+      return '<i title="' + esc(t("c_" + c.id)) + '" style="flex-grow:' + (100 * c.weight).toFixed(1) + ";" +
+        (c.score === null ? "" : "background:" + rampColor(c.score)) + '"' + (c.score === null ? ' class="unk"' : "") + "></i>";
+    }).join("") + "</span>";
+  }
+
   function vaTopView() {
-    return "<h2>" + esc(t("topVa")) + "</h2>" + whoLine() + machineNote() +
-      '<ul class="g-list">' + vaSorted().slice(0, 5).map(vaRowHTML).join("") + "</ul>" +
+    var top = vaSorted().slice(0, 5);
+    var sample = S.profile && S.profile.sample ? '<div class="g-sample"><span class="tag">' + esc(t("sample_tag")) + "</span><p>" + esc(t("sample_on")) + "</p></div>" : "";
+    return "<h2>" + esc(t("topVa")) + "</h2>" + sample + whoLine() + machineNote() +
+      '<ul class="g-list g-top5">' + top.map(function (r, i) {
+        return vaRowHTML(r).replace('</span></button></li>', '</span>' + factorStrip(r) + '</button></li>').replace('<li ', '<li style="--i:' + i + '" ');
+      }).join("") + "</ul>" +
       '<div class="g-actions"><button class="g-secondary" data-go="list" type="button">' + esc(t("seeAll")) + "</button>" +
       '<button class="g-secondary" data-go="profile" type="button">' + esc(S.profile ? t("editAboutYou") : t("start")) + "</button>" +
       '<button class="g-link g-wide" data-go="scope-us" type="button">' + esc(t("scope_us")) + "</button></div>";
@@ -667,17 +983,40 @@
       '<ul class="g-list">' + vaSorted().map(vaRowHTML).join("") + "</ul>";
   }
 
-  /** One short line per component in the person's language, built from the numbers (details stay in English). */
+  /** Details runs in the person's language. Recorded evidence quotes stay English and are marked so.
+   *  A missing template must never show a wrong sentence: it falls back to the engine's English reason,
+   *  labelled "Details (in English)", and logs once so the gap is visible in the smoke tests. */
+  function reasonRuns(c) {
+    if (S.lang !== "en" && I.vaReasonParts && c.reason_data) {
+      try { return { runs: I.vaReasonParts(S.lang, c), translated: true }; }
+      catch (e) { if (window.console) console.warn("Footing: no " + S.lang + " reason for " + c.id + ": " + e.message); }
+    }
+    return { runs: [{ text: c.reason, lang: "en", kind: "translation" }], translated: S.lang === "en" };
+  }
+  function reasonHTML(runs) {
+    return runs.map(function (p) {
+      return '<span lang="' + esc(p.lang) + '"' + (p.lang === "en" ? ' dir="ltr"' : "") +
+        (p.kind === "quote" ? ' class="g-quote"' : "") + ">" + esc(p.text) + "</span>";
+    }).join(" ");
+  }
+  /** The short line uses only the translated runs; the English evidence quote stays in Details. */
+  function reasonLine(c) {
+    var rr = reasonRuns(c);
+    var own = rr.runs.filter(function (p) { return p.kind === "translation"; });
+    return (own.length ? own : rr.runs).map(function (p) { return p.text; }).join(" ");
+  }
+
+  /** One short line per component in the person's language, built from the numbers. */
   function localLine(c, loc) {
     var kids = !!((S.profile || {}).household || {}).kids;
-    if (c.id === "rent" && c.parts) return t("line_rent", { rent: money(c.parts.rent), size: t("sz" + c.parts.bedrooms), hours: Math.round(c.parts.hours) });
+    if (c.id === "rent" && c.parts) return t("line_rent", { rent: money(c.parts.rent), size: szLabel(c.parts.bedrooms), hours: Math.round(c.parts.hours) });
     if (c.id === "shelter" && c.parts) return t(kids ? "line_shelter_kids" : "line_shelter", { pct: Math.round(100 * c.parts.outside_share), beds: num(c.parts.beds), people: num(c.parts.people) });
     if (c.id === "services") {
       var s = loc.services, osm = s.osm || {}, help = 0;
       ["food_bank", "soup_kitchen", "shelter", "day_center", "clinic", "library", "toilets", "shower", "drinking_water", "laundry"].forEach(function (k) { help += osm[k] || 0; });
       return t("line_services", { groc: num(s.snap.full_grocery), help: num(help) }) + (s.fare_free_transit ? " " + t("line_transit") : "");
     }
-    if (c.id === "laws") return c.score === null ? (loc.local_rule ? c.reason : t("law_null")) : t("law_" + c.score);
+    if (c.id === "laws") return c.score === null ? (loc.local_rule ? reasonLine(c) : t("law_null")) : t("law_" + c.score);
     if (c.id === "safety") return t("safe_" + c.score);
     if (c.id === "crime") {
       if (c.parts && c.parts.level === "block") return t("line_crime_block", {
@@ -686,7 +1025,7 @@
       return c.score === null ? t("crime_null") : t("line_crime", { x: num(loc.crime.violent_per_1k) });
     }
     if (c.id === "community") return c.score === null ? t("community_null") : t("line_community", { n: num(((S.heat && S.heat.localities) || {})[loc.fips] ? S.heat.localities[loc.fips].n : 0) });
-    return c.reason;
+    return reasonLine(c);
   }
 
   function sourceLinks(c) {
@@ -732,6 +1071,30 @@
       '<p class="g-small">' + esc(t("confLine", { k: known, n: r.components.length })) + "</p>";
   }
 
+  function call211Btn() {
+    return '<a class="g-secondary g-211" href="tel:211"><span>' + esc(t("call211short")) + "</span><small>" + esc(t("call211what")) + "</small></a>";
+  }
+
+  /** Everyday costs: a ROUGH DEMO ESTIMATE, not data. Fixed national-ish amounts scaled by how this
+   *  locality's 1-bedroom rent compares with the Virginia median. Shown, never counted in the score. */
+  var _rentMedian = null;
+  function costCard(loc) {
+    if (!_rentMedian) {
+      var all = Object.keys(S.va.localities).map(function (f) { return S.va.localities[f].fmr.by_bedrooms[1]; }).sort(function (a, b) { return a - b; });
+      _rentMedian = all[Math.floor(all.length / 2)];
+    }
+    var idx = loc.fmr.by_bedrooms[1] / _rentMedian, kids = !!((S.profile || {}).household || {}).kids;
+    var r5 = function (x) { return Math.round(x / 5) * 5; };
+    var rows = [["cost_food", r5((330 + (kids ? 220 : 0)) * (0.85 + 0.15 * idx))], ["cost_phone", 30],
+      [loc.services.fare_free_transit ? "cost_bus_free" : "cost_bus", loc.services.fare_free_transit ? 0 : r5(55 * (0.8 + 0.2 * idx))],
+      ["cost_hygiene", r5(45 * idx)]];
+    var total = rows.reduce(function (a, r) { return a + r[1]; }, 0), wage = S.va.state.min_wage;
+    return '<section class="g-cost" aria-labelledby="g-cost-h"><div class="hd"><h3 id="g-cost-h">' + esc(t("cost_title")) + '</h3><span class="est">' + esc(t("est")) + "</span></div>" +
+      '<p class="g-cost-total">' + esc(t("cost_total", { x: money(total) })) + '</p><p class="g-small">' + esc(t("cost_hours", { h: Math.round(total / wage) })) + "</p>" +
+      "<ul>" + rows.map(function (r) { return "<li><span>" + esc(t(r[0])) + "</span><span>" + money(r[1]) + "</span></li>"; }).join("") + "</ul>" +
+      '<p class="g-small g-cost-note">' + esc(t("cost_note")) + "</p></section>";
+  }
+
   function helpList(loc) {
     var pts = loc.help_points || [];
     if (!pts.length) return "<p>" + esc(t("helpNone")) + "</p>";
@@ -757,30 +1120,54 @@
     var known = r.components.filter(function (c) { return c.score !== null; });
     var unknown = r.components.filter(function (c) { return c.score === null; });
     var card = function (c) {
-      var unk = c.score === null;
+      var unk = c.score === null, rr = reasonRuns(c);
       return '<li data-component="' + c.id + '" class="g-c2' + (unk ? " unk" : "") + '"><div class="hd"><span class="name">' + esc(t("c_" + c.id)) + "</span>" +
         '<span class="num" style="' + (unk ? "" : "background:" + rampColor(c.score) + ";color:" + inkOn(c.score)) + '">' + (unk ? "?" : Math.round(c.score)) + "</span></div>" +
-        (unk ? "" : '<span class="w">' + esc(t("weightOf", { w: Math.round(100 * c.share) })) + "</span>") +
+        (unk ? "" : '<div class="g-meter" aria-hidden="true"><i style="width:' + Math.max(2, c.score) + "%;background:" + rampColor(c.score) + '"></i></div>' +
+          '<span class="w">' + esc(t("weightOf", { w: Math.round(100 * c.share) })) + "</span>") +
         '<p class="line">' + esc(localLine(c, loc)) + "</p>" +
-        '<details><summary>' + esc(S.lang === "en" ? t("details") : t("detailsEn")) + '</summary><p lang="en">' + esc(c.reason) + "</p>" +
+        '<details><summary>' + esc(rr.translated ? t("details") : t("detailsEn")) + '</summary><p class="g-reason">' + reasonHTML(rr.runs) + "</p>" +
         (sourceLinks(c) ? '<ul class="g-srcs">' + sourceLinks(c) + "</ul>" : "") + "</details></li>";
     };
+    var tab = S.locTab || "score", helpN = (loc.help_points || []).length;
+    var tabs = [["score", t("tab_score"), ""], ["help", t("tab_help"), helpN], ["programs", t("tab_programs"), ""]];
+    var panel = tab === "help" ? '<div class="g-tabpanel" role="tabpanel">' + helpList(loc) + '<p><a href="tel:211" class="g-ink">' + esc(t("call211")) + "</a></p></div>" :
+      tab === "programs" ? '<div class="g-tabpanel" role="tabpanel"><p class="g-small">' + esc(t("statewide")) + "</p>" + programsHTML("VA") + "</div>" :
+      '<div class="g-tabpanel" role="tabpanel"><h3>' + esc(t("howBuilt")) + "</h3>" + mosaic(r) +
+        '<ul class="g-c2s">' + known.map(card).join("") + "</ul>" +
+        (unknown.length ? "<h3>" + esc(t("unknownParts")) + '</h3><ul class="g-c2s">' + unknown.map(card).join("") + "</ul>" : "") +
+        costCard(loc) + vaSourcesHTML() + "</div>";
     return '<h2 id="g-loc-title">' + esc(r.name) + '</h2><p class="g-kind">' + esc(loc.kind === "city" ? t("city") : t("county")) + "</p>" +
       (pt ? '<p class="g-small g-point-note">' + esc(t("pointScore")) + '</p><button class="g-link" data-go="locality-wide" type="button">' + esc(t("wholeLocality")) + "</button>" : "") +
       '<div class="g-score">' + scoreBadge(r.score) + '<div class="g-meta">' + esc(t("fit")) +
       (r.rank ? "<br><strong>" + esc(t("rankOf", { r: r.rank, n: n })) + "</strong>" : "") +
       "<br>" + esc(t("confidence")) + ": <strong>" + esc(t("conf_" + r.confidence_label)) + "</strong></div></div>" +
-      confMeter(r) +
-      (r.rank_p10 ? '<p class="g-small">' + esc(rangeText(r)) + "</p>" : "") +
-      '<div class="g-actions"><button class="g-secondary" data-go="rate" type="button">' + esc(t("rateHere")) + "</button>" +
-      '<a class="g-secondary" href="tel:211">' + esc(t("call211short")) + "</a>" +
+      glance(r, loc) +
+      '<details class="g-sure"><summary>' + esc(t("confidence")) + "</summary>" + confMeter(r) +
+      (r.rank_p10 ? '<p class="g-small">' + esc(rangeText(r)) + "</p>" : "") + "</details>" +
+      '<div class="g-actions"><button class="g-secondary" data-go="rate" type="button">' + esc(t("rateHere")) + "</button>" + call211Btn() +
       (town && !B.standalone ? '<a class="g-primary g-wide" href="#/receipt?' + new URLSearchParams({ lat: town.lat, lon: town.lon, profile: legacyProfile() }) + '">' + esc(t("openReceipt", { town: town.label })) + "</a>" : "") +
-      "</div><h3>" + esc(t("howBuilt")) + "</h3>" + mosaic(r) +
-      '<ul class="g-c2s">' + known.map(card).join("") + "</ul>" +
-      (unknown.length ? "<h3>" + esc(t("unknownParts")) + '</h3><ul class="g-c2s">' + unknown.map(card).join("") + "</ul>" : "") +
-      "<h3>" + esc(t("helpHere")) + "</h3>" + helpList(loc) +
-      "<h3>" + esc(t("programsVa")) + '</h3><p class="g-small">' + esc(t("statewide")) + "</p>" + programsHTML("VA") +
-      '<p><a href="tel:211" class="g-ink">' + esc(t("call211")) + "</a></p>" + vaSourcesHTML();
+      '</div><div class="g-tabs" role="tablist">' + tabs.map(function (x) {
+        return '<button type="button" role="tab" data-loctab="' + x[0] + '" aria-selected="' + (x[0] === tab) + '" tabindex="' + (x[0] === tab ? 0 : -1) + '">' + esc(x[1]) +
+          (x[2] !== "" ? '<span class="cnt">' + x[2] + "</span>" : "") + "</button>";
+      }).join("") + "</div>" + panel;
+  }
+
+  /** Three numbers that answer "can I live here?" before any reading: rent effort, people outside, help nearby. */
+  function glance(r, loc) {
+    var by = {}; r.components.forEach(function (c) { by[c.id] = c; });
+    var osm = loc.services.osm || {}, help = 0;
+    ["food_bank", "soup_kitchen", "shelter", "day_center", "clinic", "library", "toilets", "shower", "drinking_water", "laundry"].forEach(function (k) { help += osm[k] || 0; });
+    var tile = function (c, big, label) {
+      var sc = c && c.score !== null && c.score !== undefined ? c.score : null;
+      var m = /^(\d+)(.*)$/.exec(String(big).replace(/,/g, ""));
+      var bigHTML = m ? '<span data-countup="' + m[1] + '" data-suffix="' + esc(m[2]) + '">' + esc(big) + "</span>" : esc(big);
+      return '<div class="g-gl"' + (sc === null ? "" : ' style="--c:' + rampColor(sc) + '"') + '><span class="big">' + bigHTML + '</span><span class="lbl">' + esc(label) + "</span></div>";
+    };
+    return '<div class="g-glance">' +
+      (by.rent && by.rent.parts ? tile(by.rent, String(Math.round(by.rent.parts.hours)), t("glance_rent")) : "") +
+      (by.shelter && by.shelter.parts ? tile(by.shelter, Math.round(100 * by.shelter.parts.outside_share) + "%", t("glance_out")) : "") +
+      tile(by.services, num(help), t("glance_help")) + "</div>";
   }
 
   function vaSourcesHTML() {
@@ -818,6 +1205,11 @@
     return "<h2>" + esc(t("allStates")) + "</h2><p>" + esc(t("l_" + S.layer)) + '</p><ul class="g-list">' + sortedForLayer().map(rowHTML).join("") + "</ul>";
   }
 
+  function progRow(label, value, note) {
+    return "<span>" + esc(label) + '</span><span class="v ' + value + '">' + esc(t(value)) + "</span>" +
+      (note ? '<details class="g-why"><summary>' + esc(t("why")) + '</summary><span class="note" lang="en">' + esc(note) + "</span></details>" : "");
+  }
+
   function programsHTML(code) {
     var p = S.profile || defaultProfile(), st = S.policy.states[code];
     var undisclosed = !p.status || p.status === "undisclosed";
@@ -831,20 +1223,30 @@
         if (st.health_children_all) note += " State covers children regardless of status" + (st.health_children_all.note ? " (" + st.health_children_all.note + ")" : "") + ".";
         if (st.health_adults_all) note += " State adult program: " + st.health_adults_all.status + ". " + st.health_adults_all.note;
       }
-      return "<li><span>" + esc(programLabel(g)) + '</span><span class="v ' + rule.value + '">' + esc(t(rule.value)) + "</span>" +
-        (note ? '<span class="note" lang="en">' + esc(note) + "</span>" : "") + "</li>";
+      return { v: rule.value, html: progRow(programLabel(g), rule.value, note) };
     });
     if (!undisclosed) {
       var dl = st.drivers_license_all;
       var lawful = ["undocumented", "unsure"].indexOf(p.status) === -1;
       var val = lawful ? "yes" : (dl ? "yes" : "no");
-      rows.push("<li><span>" + esc(S.lang === "es" ? "Licencia o identificación estatal" : "Driver's license or state ID") + '</span><span class="v ' + val + '">' + esc(t(val)) + "</span>" +
-        '<span class="note" lang="en">' + esc(lawful ? "With your documents." : (dl ? "This state issues a " + dl.form + " regardless of status (since " + dl.year + ")." : "This state requires proof of lawful presence.")) + "</span></li>");
+      rows.push({ v: val, html: progRow(S.lang === "es" ? "Licencia o identificación estatal" : "Driver's license or state ID", val,
+        lawful ? "With your documents." : (dl ? "This state issues a " + dl.form + " regardless of status (since " + dl.year + ")." : "This state requires proof of lawful presence.")) });
     }
     var pc = Fit.programRule(S.elig, "public_charge", p.status);
     var caution = (!undisclosed && pc.value === "limited") ? '<div class="g-caution"><strong>' + esc(t("caution")) + ":</strong> <span lang=\"en\">" + esc(pc.note) +
       '</span><br><a href="https://www.immigrationadvocates.org/legaldirectory/" target="_blank" rel="noopener">' + esc(t("legal")) + "</a></div>" : "";
-    return caution + '<ul class="g-progs">' + rows.join("") + "</ul>";
+    // Same answers sit together: yes, then some, then check, then no. Order within a group is unchanged.
+    var RANK = { yes: 0, limited: 1, varies: 2, no: 3 };
+    rows = rows.map(function (r, i) { return { v: r.v, html: r.html, i: i }; })
+      .sort(function (a, b) { return ((RANK[a.v] === undefined ? 2 : RANK[a.v]) - (RANK[b.v] === undefined ? 2 : RANK[b.v])) || a.i - b.i; });
+    // Three folding groups with counts; "You can use" starts open, the rest start closed.
+    var groups = [["yes", ["yes"], t("grp_yes")], ["maybe", ["limited", "varies"], t("grp_maybe")], ["no", ["no"], t("grp_no")]];
+    return caution + groups.map(function (g) {
+      var mine = rows.filter(function (r) { return g[1].indexOf(r.v) !== -1 || (g[0] === "maybe" && RANK[r.v] === undefined); });
+      if (!mine.length) return "";
+      return '<details class="g-pgroup g-pgroup-' + g[0] + '"' + (g[0] === "yes" ? " open" : "") + '><summary><span class="dot"></span>' + esc(g[2]) +
+        '<span class="cnt">' + mine.length + '</span></summary><ul class="g-progs">' + mine.map(function (r) { return "<li>" + r.html + "</li>"; }).join("") + "</ul></details>";
+    }).join("");
   }
 
   function sourcesHTML() {
@@ -880,7 +1282,7 @@
       (r.rank_p10 ? "<br><span>" + esc(rangeText(r)) + "</span>" : "") + "</div></div>" +
       '<div class="g-actions">' + (r.state === "VA" ? '<button class="g-primary g-wide" data-go="scope-va" type="button">' + esc(t("scope_va")) + "</button>" : "") +
       '<button class="g-secondary" data-go="fly" type="button">' + esc(t("flyIn")) + "</button>" +
-      '<a class="g-secondary" href="tel:211">' + esc(t("call211short")) + "</a>" +
+      '' + call211Btn() + "" +
       "</div><h3>" + esc(t("why")) + '</h3><div class="g-comps">' + comps + "</div>" +
       "<h3>" + esc(t("programs")) + "</h3>" + programsHTML(r.state) +
       '<p><a href="tel:211" class="g-ink">' + esc(t("call211")) + "</a></p>" + sourcesHTML();
@@ -918,6 +1320,24 @@
   function bindView() {
     var sh = $(".g-sheet");
     sh.querySelectorAll("[data-go]").forEach(function (b) { b.addEventListener("click", function () { go(b.dataset.go); }); });
+    var tablist = sh.querySelector(".g-tabs");
+    if (tablist) tablist.addEventListener("keydown", function (e) {
+      var keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
+      if (keys.indexOf(e.key) === -1) return;
+      var btns = Array.prototype.slice.call(tablist.querySelectorAll("[data-loctab]")), i = btns.indexOf(document.activeElement);
+      var rtl = document.documentElement.dir === "rtl", step = (e.key === "ArrowRight") !== rtl ? 1 : -1;
+      var j = e.key === "Home" ? 0 : e.key === "End" ? btns.length - 1 : (i + step + btns.length) % btns.length;
+      e.preventDefault(); btns[j].click();
+    });
+    sh.querySelectorAll("[data-loctab]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var top = sh.querySelector(".g-tabs").offsetTop;
+        S.locTab = b.dataset.loctab; render();
+        var sh2 = $(".g-sheet"), again = sh2.querySelector('[data-loctab="' + S.locTab + '"]');
+        if (sh2.scrollTop > top - 8) sh2.scrollTop = top - 8;      // keep the tabs in view; show the new panel from its start
+        if (again) again.focus({ preventScroll: true });
+      });
+    });
     sh.querySelectorAll("[data-state]").forEach(function (b) { b.addEventListener("click", function () { selectState(b.dataset.state, true); }); });
     sh.querySelectorAll("[data-fips]").forEach(function (b) { b.addEventListener("click", function () { selectLocality(b.dataset.fips, true); }); });
     sh.querySelectorAll("input[name=status]").forEach(function (i) {
@@ -929,6 +1349,8 @@
         d[parts[0]] = d[parts[0]] || {};
         d[parts[0]][parts[1]] = !d[parts[0]][parts[1]];
         b.setAttribute("aria-pressed", d[parts[0]][parts[1]]);
+        var bi = sh.querySelector("#g-beds");
+        if (bi) bi.placeholder = bedAuto(d);
         rerenderPriorities();
       });
     });
@@ -939,13 +1361,28 @@
         sh.querySelectorAll("[data-age]").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.age === d.age_band); });
       });
     });
-    sh.querySelectorAll("[data-bed]").forEach(function (b) {
-      b.addEventListener("click", function () {
-        var d = draft(); d.household = d.household || {};
-        if (b.dataset.bed === "auto") delete d.household.bedrooms; else d.household.bedrooms = +b.dataset.bed;
-        sh.querySelectorAll("[data-bed]").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+    var bedIn = sh.querySelector("#g-beds");
+    var setBeds = function (v) {
+      var d = draft(); d.household = d.household || {};
+      if (v === null) delete d.household.bedrooms; else d.household.bedrooms = Math.max(0, Math.min(VaFit.MAX_BEDROOMS, Math.round(v)));
+      return d.household.bedrooms;
+    };
+    if (bedIn) {
+      bedIn.addEventListener("input", function () {
+        var raw = bedIn.value.trim();
+        setBeds(raw === "" || isNaN(+raw) ? null : +raw);
       });
-    });
+      bedIn.addEventListener("change", function () {   // show the value actually used (clamped, whole number)
+        var b = draft().household.bedrooms;
+        bedIn.value = typeof b === "number" ? b : "";
+      });
+      sh.querySelectorAll("[data-bedstep]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var d = draft(), cur = typeof (d.household || {}).bedrooms === "number" ? d.household.bedrooms : bedAuto(d);
+          bedIn.value = setBeds(cur + (+b.dataset.bedstep));
+        });
+      });
+    }
     sh.querySelectorAll("[data-crime]").forEach(function (b) {
       b.addEventListener("click", function () {
         draft().show_crime = b.dataset.crime === "1";
@@ -969,14 +1406,7 @@
       });
     });
     var q = sh.querySelector("#g-q");
-    if (q) q.addEventListener("input", function () {
-      var v = q.value.trim().toLowerCase(), shown = 0;
-      sh.querySelectorAll(".g-list li").forEach(function (li) {
-        var hit = !v || li.dataset.name.indexOf(v) !== -1;
-        li.hidden = !hit; if (hit) shown++;
-      });
-      sh.querySelector(".g-nomatch").hidden = shown > 0;
-    });
+    if (q) q.addEventListener("input", function () { filterList(sh, q); });
     var grip = sh.querySelector(".g-grip");
     if (grip) grip.addEventListener("click", function () {
       sh.classList.toggle("tall"); updatePeek();
@@ -987,16 +1417,97 @@
   var _draft = null;
   function draft() { if (!_draft) _draft = JSON.parse(JSON.stringify(S.profile || defaultProfile())); return _draft; }
 
+  function announce(msg) { var l = $(".g-live"); if (l) { l.textContent = ""; setTimeout(function () { l.textContent = msg; }, 30); } }
+
   function rerenderPriorities() {
-    var ol = $(".g-pri");
-    if (!ol) return;
-    var tmp = document.createElement("div");
-    tmp.innerHTML = priorityBlock(draft());
-    ol.replaceWith(tmp.querySelector(".g-pri"));
+    var wrap = $(".g-pri-wrap");
+    if (!wrap) return;
+    wrap.innerHTML = priorityBlock(draft());
     bindPriorities($(".g-sheet"));
   }
 
+  /** Drag to reorder. The dragged row follows the pointer; the rows it passes slide out of its way. Only
+   *  transforms change while dragging (GPU, no layout), and the new order is committed after the drop lands,
+   *  so the rerender lands on exactly what is already on screen. Mouse: drag the row. Touch: drag the grip,
+   *  so the panel still scrolls. The arrow buttons stay for keyboards and screen readers. */
+  function startDrag(ol, li, e) {
+    var sh = $(".g-sheet"), items = Array.prototype.slice.call(ol.children), from = items.indexOf(li), n = items.length;
+    var rects = items.map(function (x) { return x.getBoundingClientRect(); });
+    var gap = n > 1 ? rects[1].top - rects[0].bottom : 6, step = rects[from].height + gap;
+    var startY = e.clientY, lastY = e.clientY, scroll0 = sh.scrollTop, to = from, dy = 0, raf = 0, done = false;
+    // A little travel past each end, so the row's middle can cross the first or last row's middle.
+    var reach = rects[from].height / 2 + gap, minDy = rects[0].top - rects[from].top - reach, maxDy = rects[n - 1].bottom - rects[from].bottom + reach;
+    li.setPointerCapture(e.pointerId);
+    li.classList.add("dragging"); ol.classList.add("sorting");
+    function offsetTo(t) {          // how far the dragged row travels to land in slot t
+      var off = 0, i;
+      if (t > from) for (i = from + 1; i <= t; i++) off += rects[i].height + gap;
+      else for (i = t; i < from; i++) off -= rects[i].height + gap;
+      return off;
+    }
+    function frame() {
+      raf = 0;
+      if (done) return;
+      if (update()) raf = requestAnimationFrame(frame);
+    }
+    function update() {
+      var edge = sh.getBoundingClientRect(), speed = 0;           // scroll the panel near its edges
+      if (lastY < edge.top + 48) speed = -Math.ceil((edge.top + 48 - lastY) / 6);
+      else if (lastY > edge.bottom - 72) speed = Math.ceil((lastY - edge.bottom + 72) / 6);
+      if (speed) sh.scrollTop += speed;
+      dy = Math.max(minDy, Math.min(maxDy, lastY - startY + sh.scrollTop - scroll0));
+      var center = rects[from].top + rects[from].height / 2 + dy, t = from, i;
+      for (i = from + 1; i < n; i++) if (center >= rects[i].top + rects[i].height / 2) t = i;
+      for (i = from - 1; i >= 0; i--) if (center <= rects[i].top + rects[i].height / 2) t = i;
+      if (t !== to) { to = t; if (navigator.vibrate) try { navigator.vibrate(8); } catch (x) { /* fine */ } }
+      li.style.transform = "translate3d(0," + dy + "px,0) scale(1.025)";
+      items.forEach(function (x, j) {
+        if (x === li) return;
+        var shift = (from < to && j > from && j <= to) ? -step : (to < from && j >= to && j < from) ? step : 0;
+        x.style.transform = shift ? "translate3d(0," + shift + "px,0)" : "";
+      });
+      return !!speed;
+    }
+    function move(ev) { lastY = ev.clientY; if (!raf) raf = requestAnimationFrame(frame); }
+    function up(ev) {
+      if (ev && ev.clientY !== undefined) lastY = ev.clientY;
+      update();                       // land on where the pointer let go, not on the last painted frame
+      done = true;
+      li.removeEventListener("pointermove", move); li.removeEventListener("pointerup", up); li.removeEventListener("pointercancel", up);
+      if (raf) cancelAnimationFrame(raf);
+      li.classList.remove("dragging"); li.classList.add("landing");
+      li.style.transform = "translate3d(0," + offsetTo(to) + "px,0)";
+      var commit = function () {
+        if (commit.ran) return; commit.ran = true;
+        if (to !== from) {
+          var d = draft(), order = currentOrder(d), k = li.dataset.k;
+          order.splice(order.indexOf(k), 1); order.splice(to, 0, k);
+          if (isVa()) d.priorities = order; else d.priorities_us = order;
+          rerenderPriorities();
+          announce(t("pri_moved", { name: t("c_" + k), n: to + 1 }));
+        } else {
+          ol.classList.remove("sorting"); li.classList.remove("landing");
+          items.forEach(function (x) { x.style.transform = ""; });
+        }
+      };
+      li.addEventListener("transitionend", commit, { once: true });
+      setTimeout(commit, reduced ? 0 : 220);
+    }
+    li.addEventListener("pointermove", move);
+    li.addEventListener("pointerup", up);
+    li.addEventListener("pointercancel", up);
+  }
+
   function bindPriorities(sh) {
+    var ol = sh.querySelector(".g-pri");
+    if (ol) ol.querySelectorAll("li").forEach(function (li) {
+      li.addEventListener("pointerdown", function (e) {
+        if (e.button !== 0 || (e.target.closest && e.target.closest("button"))) return;
+        if (e.pointerType !== "mouse" && !(e.target.closest && e.target.closest(".grip"))) return;
+        e.preventDefault();
+        startDrag(ol, li, e);
+      });
+    });
     sh.querySelectorAll("[data-pri]").forEach(function (b) {
       b.addEventListener("click", function () {
         var d = draft(), order = currentOrder(d), k = b.dataset.pri, i = order.indexOf(k), j = i + (+b.dataset.dir);
@@ -1004,6 +1515,7 @@
         order.splice(i, 1); order.splice(j, 0, k);
         if (isVa()) d.priorities = order; else d.priorities_us = order;
         rerenderPriorities();
+        announce(t("pri_moved", { name: t("c_" + k), n: j + 1 }));
         var again = $('.g-pri [data-pri="' + k + '"][data-dir="' + b.dataset.dir + '"]');
         if (again && !again.disabled) again.focus();
       });
@@ -1013,26 +1525,45 @@
   function setScope(scope) {
     S.scope = scope; store.set("footing.globe.scope", scope);
     S.selected = null; S.selectedPoint = null; S.layer = "fit";
-    if (S.mapOk) { S.map.setFilter("va-selected", ["==", ["id"], ""]); S.map.setFilter("states-selected", ["==", ["get", "code"], ""]); }
+    if (S.mapOk) { S.map.setFilter("va-selected", ["==", ["id"], ""]); S.map.setFilter("va-selected-glow", ["==", ["id"], ""]); S.map.setFilter("states-selected", ["==", ["get", "code"], ""]); }
     S.view = "top"; compute(); render(); flyHome(false); focusHeading();
   }
 
   function go(what) {
-    if (what === "profile") { _draft = null; S.view = "profile"; render(); focusHeading(); return; }
+    if (what === "profile") { _draft = null; _prevTop = null; S.view = "profile"; render(); focusHeading(); return; }
     if (what === "skip") { S.view = "top"; compute(); render(); flyHome(false); return; }
+    if (what === "sample") {
+      // A worked example, clearly labelled: TPS papers, two kids, safety first. Saved like any answers, so
+      // Reset my answers clears it.
+      S.profile = { status: "tps", household: { kids: true }, situation: {}, age_band: "25_49", show_crime: false,
+        priorities: ["safety", "shelter", "rent", "services", "laws", "community"], sample: true };
+      store.set("footing.globe.profile", S.profile);
+      _draft = null; S.view = "top"; compute(); render(); flyHome(false); focusHeading(); return;
+    }
     if (what === "save") {
       S.profile = draft(); _draft = null;
+      delete S.profile.sample;                                   // edited answers are the person's own
+      if (S.profile.household) delete S.profile.household.mixed;   // option retired in S9
       store.set("footing.globe.profile", S.profile);
       S.view = "top"; compute(); render(); flyHome(false); focusHeading(); return;
     }
-    if (what === "forget") {
+    if (what === "forget" || what === "reset-ask") {
+      if (S.view !== "reset") S.prevView = S.view;
+      S.view = "reset"; render(); focusHeading(); return;
+    }
+    if (what === "reset-cancel") { S.view = S.prevView && S.prevView !== "reset" ? S.prevView : "top"; render(); focusHeading(); return; }
+    if (what === "reset-confirm") {
       try {
         Object.keys(localStorage).filter(function (k) { return k.indexOf("footing.") === 0 && k !== "footing.lang"; })
           .forEach(function (k) { localStorage.removeItem(k); });
       } catch (e) { /* fine */ }
-      S.profile = null; S.selectedPoint = null; S.ratingPoint = null;
+      try { sessionStorage.clear(); } catch (e) { /* fine */ }
+      // Everything this visit knows about the person goes; the language they chose stays.
+      S.profile = null; S.selected = null; S.selectedPoint = null; S.ratingPoint = null; S.rating = { tags: [] };
+      S.prevView = "top"; S.layer = "fit";
       if (S.ratingMarker) { S.ratingMarker.remove(); S.ratingMarker = null; }
-      _draft = null; S.view = "intro"; compute(); render(); toast(t("forgot")); return;
+      if (S.mapOk) { S.map.setFilter("va-selected", ["==", ["id"], ""]); S.map.setFilter("va-selected-glow", ["==", ["id"], ""]); S.map.setFilter("states-selected", ["==", ["get", "code"], ""]); }
+      _draft = null; S.view = "intro"; compute(); paint(); paintHeat(); render(); flyHome(true); toast(t("reset_done")); focusHeading(); return;
     }
     if (what === "list") { S.view = "list"; render(); return; }
     if (what === "locality-wide") { S.selectedPoint = null; render(); return; }
@@ -1070,7 +1601,7 @@
     S.selectedPoint = pt && pt.ok && pt.fips === fips ?
       { fips: fips, tile: pt.tile, validity: pt.validity } : null;
     S.selected = fips; S.view = "locality"; render();
-    if (S.mapOk) S.map.setFilter("va-selected", ["==", ["id"], fips]);
+    if (S.mapOk) S.map.setFilter("va-selected", ["==", ["id"], fips]); S.map.setFilter("va-selected-glow", ["==", ["id"], fips]); pulseSelection();
     if (fly) flyToLocality(fips);
     focusHeading();
   }
@@ -1187,6 +1718,11 @@
       if (S.layer === "community" && !(S.heat && S.heat.total)) toast(t("noRatings"));
     });
     window.addEventListener("resize", function () { drawStars(); updatePeek(); });
+    if (DESK.addEventListener) DESK.addEventListener("change", function () {
+      if (!S.va) return;
+      render();
+      if (S.view === "locality" && S.selected) flyToLocality(S.selected); else flyHome(true);
+    });
     window.addEventListener("online", function () { S.map && S.map.triggerRepaint(); });
   }
 
@@ -1253,6 +1789,14 @@
       if (root) root.hidden = true;
       document.body.classList.remove("on-globe");
       stopSpin();
+    },
+    /** Show the sky at another moment (ISO time or ms). For demos and screenshots; null returns to now. */
+    /** Play 24 hours in 24 seconds (for the pitch recording; no on-screen control). */
+    playDay: function () { toggleLapse(); },
+    setTime: function (when) {
+      DN.lapse = false; cancelAnimationFrame(DN.raf);
+      DN.offset = when === null || when === undefined ? 0 : new Date(when).getTime() - Date.now();
+      dnPaint();
     },
     /** Re-read ratings (the standalone page calls this when its shared store changes). */
     refreshHeat: function () {
