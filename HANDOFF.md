@@ -72,11 +72,9 @@ its counts were stored as `0`. They are `null` now, with the reason.
 
 ## S5.2 Do this next, in order
 
-1. **Push to GitHub.** The merge is four commits on a local branch in a cloud sandbox and **has not been
-   pushed**: the repo was attached read-only and the owner asked to be consulted before anything reaches
-   GitHub. Get push access, then open a PR from the merge branch into `main` rather than pushing straight to
-   it, so the diff can be read. If only one thing gets done, make it the `footing/pipeline.py` fix, because
-   `main` as published is broken.
+1. ~~Push to GitHub.~~ **Done.** The merge went up as PR #1 and the owner merged it into `main`
+   (`bd47f69`), so `main` now has everything above, including the `footing/pipeline.py` fix. The
+   `merge/session4-into-main` branch is identical to `main` and can be deleted.
 2. **Click the app through a real browser.** Nobody has. This sandbox cannot install one —
    `cdn.playwright.dev` is not reachable from it, and the network allowlist covers only GitHub and the
    package registries. On a laptop: `pytest -q`, then `uvicorn footing.api:app --port 8080`, then walk
