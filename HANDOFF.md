@@ -1,5 +1,48 @@
 # HANDOFF — Footing (read this first)
 
+## S7.0 Point crime in the panel; reuse saved data first (2026-10-25, Codex)
+
+**S5.2 item 4 is implemented.** A map tap opens the locality panel with that point's incident tile.
+After submitting a rating, its pin is also used. Norfolk and Charlottesville show the nearby violent
+incident count, enforcement-call count (never scored as danger), saved date range, and the correct
+city's source link. Other points retain the FBI fallback; missing reports stay Unknown. Crime stays
+opt-in. The Python and JavaScript engines now expose matching structured counts/dates/source metadata.
+
+The point score has its own label and no locality rank or rank range; the statewide list and map still
+compare whole localities. "Show the whole city or county" restores that comparison, and picking from
+the list clears the previous point. Only a tile and validity stay in the panel state, in memory.
+All three new UI strings are machine translated in all eight languages. Service-worker caches are v9.
+The expanded smoke also found Norfolk help-place phone numbers overflowing the 320 px panel. Help
+rows now put the phone below the name and wrap long values; the layout checks cover this in English/Arabic.
+
+**Owner request: reduce usage spent searching for databases/sources.** Read `AGENTS.md` and
+`docs/DATA_WORK.md`. `python scripts/data_lookup.py <FIPS> --field <field>` prints one saved field
+and its sources; `--list` lists fields. Use captures for implementation and replay for tests. Research
+only an identified gap, discrepancy, requested refresh or current claim, and record outcomes so another
+session can resume. This session made no new publisher-data searches or changes to source captures.
+The session 4 report attributes most work to collection, but there is no token telemetry to quantify it.
+
+**Validation:** 209 unit tests pass (including JS/Python parity); the Virginia builder `--check`
+passes. The standalone browser smoke passes: 11 screenshots, 21 Christiansburg dots, zero API calls or
+profile leakage, including a real Norfolk canvas click. The full-app smoke passes: 72 screenshots
+(320/390/1280 px, English/Arabic), 1,576 requests checked, no profile data sent or layout errors. It
+checks the Norfolk point, source, saved dates, unchanged statewide ranking, reset to FBI, Virginia Beach
+Unknown, and the submitted rating pin. Relevant English/Arabic screenshots were visually inspected.
+Results are in ignored `out/globe/` and `out/standalone/`; no new source capture or independent fact-check
+was performed. The Bash clean-install script was not rerun on this Windows environment.
+
+**This environment is Windows.** The previous session's preinstalled Chromium note was for another
+environment. This session installed project dependencies in ignored `.venv/` and used installed Edge:
+set `FOOTING_BROWSER_CHANNEL=msedge` for either smoke script. The map tests use `easeTo(duration=0)`
+for an offset camera; MapLibre `jumpTo` ignores that offset. Sandbox child processes stalled here;
+the successful test/server processes required normal local process access.
+
+**Next:** S5.2 item 5 (publishing the standalone demo) remains undone; `out/demo` builds locally, but
+no public URL has been published. Then Bristol's disputed ordinance and the independent source checks.
+The data-reuse policy does not replace the independent publisher verification still needed there.
+
+---
+
 Last updated **2026-10-25** by the 6th model (Claude Opus 5.5), which **clicked the app through a real
 browser for the first time** — see S6.x directly below. S5.x is the 5th model, which **merged sessions 3 and 4
 into one `main`**; it is still the best overview. The session 4 report
@@ -141,9 +184,8 @@ its counts were stored as `0`. They are `null` now, with the reason.
 3. ~~Rewrite `scripts/ui_globe_smoke.py`.~~ **Done in S6.0.** Still session 3's; it expects the old language button and the
    state view, so it will fail against the current UI. Section S4.1 item 2 lists what it should cover. Keep
    its privacy check: no profile word may leave the browser.
-4. **Show block-level crime in the locality panel.** The engines and `GET /api/va/fit` support it; the panel
-   does not, because it ranks all 133 localities with no point. It needs a point — the rating pin, or a
-   "near me" — and a browser to click through, which is why this session stopped at the API.
+4. ~~Show block-level crime in the locality panel.~~ **Done in S7.0**, using a map tap or a submitted
+   rating pin. Whole-locality ranking stays separate from the point score.
 5. **Publish the standalone demo as a link.** `python scripts/build_standalone_demo.py out/demo --fragment`,
    then publish as a claude.ai Artifact with the `db` capability for ratings. It is multi-file, so pass
    `files` for `vendor/`, `data/` and the JS (`vapoint.js` is now one of them). A full-page build loads

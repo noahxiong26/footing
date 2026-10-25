@@ -53,8 +53,9 @@ point ─▶ snap to ~1 km tile ─▶ 15 source adapters ─▶ places + measur
 pip install -e ".[dev]"
 FOOTING_MODE=replay uvicorn footing.api:app --port 8080     # open http://localhost:8080
 python -m footing receipt --lat 37.1299 --lon -80.4089 --profile car,kids   # same data, CLI
-pytest -q                                                    # 196 tests
+pytest -q                                                    # 209 tests
 python scripts/build_va_localities.py --check                 # validate the Virginia data
+python scripts/data_lookup.py 51710 --field crime             # one saved field + sources; no network
 python -m footing.vafit --kids --status tps --top 10          # Virginia ranking, CLI
 python scripts/build_standalone_demo.py out/demo             # no-server copy of the app
 python scripts/ui_standalone_smoke.py http://localhost:8799 out/standalone   # click-through of that copy
