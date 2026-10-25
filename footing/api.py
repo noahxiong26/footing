@@ -18,6 +18,8 @@ from .config import Settings
 from .factors import CATEGORIES, PARAMS, catalog_markdown
 from . import ratings as ratings_store
 from .fit import load_eligibility, load_policy
+from . import va as va_geo
+from .vafit import load_va
 from .flyer import FlyerError, read_flyer
 from .gemma import GemmaUnavailable
 from .geo import snap_to_tile
@@ -137,10 +139,24 @@ def policy() -> dict:
     return {"states": load_policy(), "eligibility": load_eligibility()}
 
 
+@router.get("/va")
+def va_data() -> dict:
+    """Virginia's 133 cities and counties: rents, shelter counts, services, local rules, 287(g), crime, all sourced.
+    The phone scores them itself (footing/web/vafit.js) so the person's status and household stay on the device."""
+    return load_va()
+
+
+@router.get("/va/check")
+def va_check(lat: str = Query(...), lon: str = Query(...)) -> dict:
+    """Is this point usable? Never guesses: returns ok=False with a plain reason for NaN, impossible numbers,
+    points outside Virginia, and points on open water."""
+    return va_geo.check_point(lat, lon)
+
+
 @router.post("/ratings")
-def add_rating(body: dict = Body(...)) -> dict:
+def add_rating(request: Request, body: dict = Body(...)) -> dict:
     try:
-        return ratings_store.add(body)
+        return ratings_store.add(body, network=request.client.host if request.client else None)
     except ratings_store.RatingError as e:
         raise HTTPException(status_code=400, detail=str(e))
 

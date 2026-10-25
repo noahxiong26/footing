@@ -51,7 +51,7 @@ def test_validation(conn, body, msg):
 
 
 def test_outside_us_rejected(conn):
-    with pytest.raises(ratings.RatingError, match="50 states"):
+    with pytest.raises(ratings.RatingError, match="Virginia only"):
         ratings.add({"lat": 51.5, "lon": -0.12, "device": DEV, "overall": 3}, conn, NOW)
 
 
@@ -61,9 +61,9 @@ def test_one_rating_per_place_per_day_and_daily_cap(conn):
         ratings.add({**CBURG, "device": DEV, "overall": 5}, conn, NOW + 3_600_000)
     ratings.add({**CBURG, "device": DEV, "overall": 5}, conn, NOW + 90_000_000)   # next day is fine
     for i in range(ratings.MAX_PER_DEVICE_PER_DAY - 1):
-        ratings.add({"lat": 37.13 + 0.02 * (i + 1), "lon": -80.41, "device": DEV, "overall": 3}, conn, NOW + 90_000_000)
+        ratings.add({"lat": 37.13 + 0.02 * (i + 1), "lon": -79.6, "device": DEV, "overall": 3}, conn, NOW + 90_000_000)
     with pytest.raises(ratings.RatingError, match="limit"):
-        ratings.add({"lat": 36.9, "lon": -80.41, "device": DEV, "overall": 3}, conn, NOW + 90_000_000)
+        ratings.add({"lat": 36.9, "lon": -79.6, "device": DEV, "overall": 3}, conn, NOW + 90_000_000)
 
 
 def test_heat_aggregates_with_bayesian_shrinkage(conn):
@@ -72,13 +72,14 @@ def test_heat_aggregates_with_bayesian_shrinkage(conn):
     ratings.add({"lat": 37.27, "lon": -79.94, "device": DEV, "overall": 1}, conn, NOW)
     h = ratings.heat(conn, NOW)
     assert h["total"] == 7 and h["states"]["VA"]["n"] == 7
-    t = {x["tile"]: x for x in h["tiles"]}
     cburg = next(x for x in h["tiles"] if x["n"] == 6)
-    roanoke = next(x for x in h["tiles"] if x["n"] == 1)
-    assert 50 < cburg["score"] < 100 and 25 < roanoke["score"] < 50     # one 1-star rating moves it only a little
+    assert 50 < cburg["score"] < 100
     assert cburg["dimensions"]["safe"] is not None and cburg["dimensions"]["respect"] is None
     assert cburg["tags"] == {"pets_ok": 6}
-    assert len(t) == 2
+    assert len(h["tiles"]) == 1 and h["hidden_tiles"] == 1          # a single rating never shows as its own tile
+    roanoke = h["localities"]["51770"]                                 # ...but it counts for Roanoke city
+    assert roanoke["n"] == 1 and 25 < roanoke["score"] < 50           # one 1-star rating moves it only a little
+    assert h["localities"]["51121"]["n"] == 6                          # Montgomery County
 
 
 def test_api_policy_ratings_and_static(tmp_path, monkeypatch):
@@ -93,4 +94,35 @@ def test_api_policy_ratings_and_static(tmp_path, monkeypatch):
     assert client.get("/api/ratings/heat").json()["states"]["VA"]["n"] == 1
     for path in ("/fit.js", "/globe.js", "/globe.css", "/i18n.js", "/vendor/maplibre-gl.js",
                  "/vendor/topojson-client.min.js", "/data/states-10m.json", "/data/countries-110m.json"):
+        assert client.get(path).status_code == 200, path
+
+
+@pytest.mark.parametrize("lat,lon,msg", [
+    ("nan", -80.4, "not a real number"), (float("inf"), -80.4, "not a real number"), (37.1, "x", "pair of numbers"),
+    (137.1, -80.4, "Latitude must be"), (38.9072, -77.0369, "Virginia only"), (37.30, -76.10, "open water"),
+])
+def test_bad_coordinates_are_refused_with_a_reason(conn, lat, lon, msg):
+    with pytest.raises(ratings.RatingError, match=msg):
+        ratings.add({"lat": lat, "lon": lon, "device": DEV, "overall": 3}, conn, NOW)
+    assert conn.execute("SELECT COUNT(*) FROM ratings").fetchone()[0] == 0
+
+
+def test_network_cap_uses_a_hash_never_the_address(conn, monkeypatch):
+    monkeypatch.setattr(ratings, "MAX_PER_NETWORK_PER_DAY", 3)
+    for i in range(3):
+        ratings.add({"lat": 37.13 + 0.02 * i, "lon": -80.41, "device": f"{DEV}-{i}", "overall": 3}, conn, NOW, network="203.0.113.7")
+    with pytest.raises(ratings.RatingError, match="this network"):
+        ratings.add({"lat": 37.3, "lon": -80.41, "device": f"{DEV}-x", "overall": 3}, conn, NOW, network="203.0.113.7")
+    ratings.add({"lat": 37.3, "lon": -80.41, "device": f"{DEV}-y", "overall": 3}, conn, NOW, network="198.51.100.2")
+    stored = [r[0] for r in conn.execute("SELECT network FROM ratings")]
+    assert all(s and "203.0" not in s and len(s) == 32 for s in stored)
+
+
+def test_api_va_data_and_point_check(tmp_path, monkeypatch):
+    client = TestClient(app)
+    d = client.get("/api/va").json()
+    assert len(d["localities"]) == 133
+    assert client.get("/api/va/check", params={"lat": 37.2296, "lon": -80.4139}).json()["fips"] == "51121"
+    assert client.get("/api/va/check", params={"lat": "nan", "lon": "1"}).json()["code"] == "not_a_number"
+    for path in ("/vafit.js", "/data/va-localities.json"):
         assert client.get(path).status_code == 200, path
