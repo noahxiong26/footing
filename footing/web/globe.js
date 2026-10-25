@@ -46,7 +46,7 @@
     view: "intro", layer: "fit", selected: null, selectedPoint: null, prevView: "top",
     policy: null, elig: null, va: null, community: {}, heat: null, ranked: [], byCode: {}, vaRanked: [], byFips: {},
     map: null, mapOk: false, statesGeo: null, vaGeo: null, recorded: [], ratingPoint: null, rating: { tags: [] },
-    lit: 999, spinning: false, markers: [], ratingMarker: null, receiptTile: null,
+    lit: 999, spinning: false, markers: [], ratingMarker: null, receiptTile: null, placePopup: null,
   };
   if ((I.LANGS || ["en", "es"]).indexOf(S.lang) === -1) S.lang = "en";
   function t(k, v) { return I.t(S.lang, k, v); }
@@ -385,6 +385,9 @@
       map.on("mouseleave", id, function () { map.getCanvas().style.cursor = ""; });
     });
     map.on("zoomend", function () { if (map.getZoom() >= 10.5) showTownPlaces(); });
+    map.on("resize", function () {
+      if (S.placePopup) requestAnimationFrame(function () { if (S.placePopup) keepPopupVisible(S.placePopup); });
+    });
   }
 
   function helpPopup(f) {
@@ -392,7 +395,33 @@
     var html = '<div class="g-pop"><strong>' + esc(p.name || t("k_" + p.kind)) + "</strong><br>" + esc(t("k_" + p.kind)) +
       (p.hours ? "<br>" + esc(t("hours")) + ": " + esc(p.hours) : "") +
       (p.phone ? '<br><a href="tel:' + esc(p.phone.replace(/[^+\d]/g, "")) + '">' + esc(p.phone) + "</a>" : "") + "</div>";
-    new maplibregl.Popup({ offset: 10, closeButton: true }).setLngLat([p.lon, p.lat]).setHTML(html).addTo(S.map);
+    if (S.placePopup) S.placePopup.remove();
+    var popup = new maplibregl.Popup({ offset: 10, anchor: "bottom", closeButton: true })
+      .setLngLat([p.lon, p.lat]).setHTML(html).addTo(S.map);
+    S.placePopup = popup;
+    popup.on("close", function () { if (S.placePopup === popup) S.placePopup = null; });
+    requestAnimationFrame(function () { keepPopupVisible(popup); });
+  }
+
+  // MapLibre knows the canvas edges, but not the controls covering it. Fit inside the exposed map.
+  function keepPopupVisible(popup) {
+    if (S.placePopup !== popup) return;
+    var el = popup.getElement(), sh = $(".g-sheet").getBoundingClientRect();
+    var top = $(".g-top").getBoundingClientRect().bottom + 8;
+    var left = 8, right = window.innerWidth - 8, bottom = window.innerHeight - 8;
+    if (window.innerWidth < 900) bottom = Math.min(bottom, sh.top - 8);
+    else if (sh.left < window.innerWidth / 2) left = sh.right + 8;
+    else right = sh.left - 8;
+    var legend = $(".g-legend");
+    if (!legend.hidden) bottom = Math.min(bottom, legend.getBoundingClientRect().top - 8);
+    popup.setMaxWidth(Math.max(80, right - left) + "px");
+    var content = el.querySelector(".maplibregl-popup-content");
+    content.style.maxHeight = Math.max(40, bottom - top - 20) + "px";
+    content.style.overflowY = "auto";
+    var r = el.getBoundingClientRect();
+    var dx = r.left < left ? left - r.left : (r.right > right ? right - r.right : 0);
+    var dy = r.top < top ? top - r.top : (r.bottom > bottom ? bottom - r.bottom : 0);
+    if (dx || dy) S.map.panBy([-dx, -dy], { duration: 0 });
   }
 
   function frameIntro() {
@@ -491,6 +520,7 @@
   function render() {
     var sh = $(".g-sheet");
     if (!sh) return;
+    if (S.placePopup && S.view !== "locality") S.placePopup.remove();
     var views = { intro: introView, profile: profileView, top: isVa() ? vaTopView : topView, list: isVa() ? vaListView : listView,
       state: stateView, locality: localityView, rate: rateView };
     var html = (views[S.view] || views.intro)();

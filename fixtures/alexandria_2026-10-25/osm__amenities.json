@@ -1,0 +1,1694 @@
+{
+ "version": 0.6,
+ "generator": "Overpass API 0.7.62.11 87bfad18",
+ "osm3s": {
+  "timestamp_osm_base": "2026-10-25T06:49:21Z",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+ },
+ "elements": [
+  {
+   "type": "node",
+   "id": 356580881,
+   "lat": 38.7907173,
+   "lon": -77.0773718,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "5834",
+    "addr:postcode": "22303-9998",
+    "addr:state": "VA",
+    "addr:street": "North Kings Highway",
+    "addr:unit": "C",
+    "amenity": "post_office",
+    "ele": "52",
+    "gnis:feature_id": "1491731",
+    "name": "Jefferson Manor Post Office",
+    "opening_hours": "Mo-Fr 09:00-17:00; Sa 10:00-14:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 703-317-9286",
+    "ref": "1437327",
+    "website": "https://tools.usps.com/locations/home.htm?location=1437327"
+   }
+  },
+  {
+   "type": "node",
+   "id": 356588852,
+   "lat": 38.8237601,
+   "lon": -77.0584095,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "1908",
+    "addr:postcode": "22301",
+    "addr:state": "VA",
+    "addr:street": "Mount Vernon Avenue",
+    "amenity": "post_office",
+    "ele": "13",
+    "gnis:feature_id": "1501750",
+    "name": "Potomac Post Office",
+    "opening_hours": "Mo-Fr 10:00-13:30,14:30-16:30; Sa 09:00-13:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 703-684-7168",
+    "ref": "1378231",
+    "website": "https://tools.usps.com/locations/home.htm?location=1378231"
+   }
+  },
+  {
+   "type": "node",
+   "id": 356588863,
+   "lat": 38.8292559,
+   "lon": -77.0927431,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "3682",
+    "addr:postcode": "22302",
+    "addr:state": "VA",
+    "addr:street": "King Street",
+    "amenity": "post_office",
+    "ele": "64",
+    "gnis:feature_id": "1501760",
+    "name": "Fairlington Post Office",
+    "opening_hours": "Mo-Fr 09:00-17:00; Sa 09:00-13:30",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 703-888-5620",
+    "ref": "1376846",
+    "website": "https://tools.usps.com/locations/home.htm?location=1376846"
+   }
+  },
+  {
+   "type": "node",
+   "id": 367990104,
+   "lat": 38.797474,
+   "lon": -77.0528146,
+   "tags": {
+    "addr:housenumber": "1108",
+    "addr:state": "VA",
+    "addr:street": "Jefferson Street",
+    "amenity": "community_centre",
+    "building": "yes",
+    "check_date": "2026-06-04",
+    "ele": "11",
+    "gnis:feature_id": "1501827",
+    "name": "Nannie J Lee Community Center",
+    "source": "USGS Geonames"
+   }
+  },
+  {
+   "type": "node",
+   "id": 558686003,
+   "lat": 38.7801376,
+   "lon": -77.0520064,
+   "tags": {
+    "amenity": "drinking_water",
+    "dog": "yes",
+    "fee": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 875529366,
+   "lat": 38.820614,
+   "lon": -77.0546034,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/alexandria-va-pharmacies/415-e-monroe-avenue-alexandria-va-22301/storeid=1410"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1190016646,
+   "lat": 38.805189,
+   "lon": -77.0391436,
+   "tags": {
+    "amenity": "drinking_water",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1374127393,
+   "lat": 38.8055227,
+   "lon": -77.0428844,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1727289872,
+   "lat": 38.8065446,
+   "lon": -77.0468923,
+   "tags": {
+    "amenity": "post_office",
+    "source": "knowledge"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2104651708,
+   "lat": 38.7716194,
+   "lon": -77.0805977,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "6717",
+    "addr:postcode": "22306",
+    "addr:state": "VA",
+    "addr:street": "Richmond Highway",
+    "amenity": "pharmacy",
+    "brand": "Walgreens",
+    "brand:wikidata": "Q1591889",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Walgreens",
+    "opening_hours": "Mo-Su 07:00-23:00",
+    "phone": "+1 703-721-0912",
+    "website": "https://www.walgreens.com/locator/walgreens-6717+richmond+hwy-alexandria-va-22306/id=10616"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2104665623,
+   "lat": 38.7778649,
+   "lon": -77.0490871,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2151519987,
+   "lat": 38.8062415,
+   "lon": -77.0514492,
+   "tags": {
+    "amenity": "clinic",
+    "brand": "LasikPlus",
+    "brand:wikidata": "Q126111242",
+    "healthcare": "clinic",
+    "healthcare:speciality": "ophthalmology",
+    "name": "LasikPlus",
+    "phone": "+1 866-755-2026",
+    "website": "https://www.lasikplus.com/location/alexandria-lasik-center/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2249725648,
+   "lat": 38.801665,
+   "lon": -77.0614655,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "1853",
+    "addr:postcode": "22314",
+    "addr:state": "VA",
+    "addr:street": "Emerson Avenue",
+    "amenity": "post_office",
+    "name": "Hallmark / Post Office",
+    "opening_hours": "Mo-Fr 10:00-17:30, Sa 10:00-14:00"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2277913337,
+   "lat": 38.8057513,
+   "lon": -77.0548229,
+   "tags": {
+    "amenity": "post_office",
+    "brand": "The UPS Store",
+    "brand:short": "UPS",
+    "brand:wikidata": "Q7771029",
+    "name": "The UPS Store",
+    "operator": "The UPS Store",
+    "operator:type": "private",
+    "operator:wikidata": "Q7771029",
+    "shop": "copyshop",
+    "short_name": "UPS"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2381822687,
+   "lat": 38.8325601,
+   "lon": -77.0413537,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2381948671,
+   "lat": 38.8326036,
+   "lon": -77.04137,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2388568189,
+   "lat": 38.7995695,
+   "lon": -77.0423378,
+   "tags": {
+    "amenity": "drinking_water",
+    "check_date": "2021-08-01",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2394605175,
+   "lat": 38.8352272,
+   "lon": -77.0870565,
+   "tags": {
+    "amenity": "drinking_water",
+    "drinking_water:seasonal": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2395688707,
+   "lat": 38.8462097,
+   "lon": -77.0677362,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2964472316,
+   "lat": 38.8085393,
+   "lon": -77.0392108,
+   "tags": {
+    "amenity": "drinking_water",
+    "name": "Water Fountain",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3943867821,
+   "lat": 38.8096645,
+   "lon": -77.0594939,
+   "tags": {
+    "amenity": "drinking_water",
+    "check_date": "2025-06-20",
+    "fee": "no",
+    "name": "Blue Park water fountain"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4035733595,
+   "lat": 38.8243255,
+   "lon": -77.0476688,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4099839730,
+   "lat": 38.8041246,
+   "lon": -77.0593692,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "check_date": "2023-04-15",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/alexandria-va-pharmacies/1680-duke-st-alexandria-va-22314/storeid=10876"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4242583088,
+   "lat": 38.810345,
+   "lon": -77.0506901,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "1105",
+    "addr:postcode": "23434",
+    "addr:street": "Oronoco Street",
+    "name": "Monarch Dry Cleaning",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4413742934,
+   "lat": 38.7924228,
+   "lon": -77.0412455,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "bottle": "yes",
+    "fee": "no",
+    "indoor": "no",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4749496691,
+   "lat": 38.8322521,
+   "lon": -77.0506325,
+   "tags": {
+    "amenity": "pharmacy",
+    "branch": "Alexandria",
+    "brand": "Giant",
+    "brand:wikidata": "Q5558336",
+    "email": "min.krishnamurthy@giantfood.com",
+    "healthcare": "pharmacy",
+    "name": "Giant Pharmacy",
+    "opening_hours": "Mo-Fr 10:00-20:00; Sa 10:00-17:00; Su 10:00-16:00",
+    "phone": "+1 703-299-0471",
+    "website": "https://pharmacy.giantfood.com/va/alexandria/621-east-glebe-road"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5562794791,
+   "lat": 38.7796183,
+   "lon": -77.0812147,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "6333",
+    "addr:postcode": "22306",
+    "addr:state": "VA",
+    "addr:street": "South Kings Highway",
+    "addr:unit": "A",
+    "entrance": "yes",
+    "name": "Kingsway Laundromat",
+    "shop": "laundry",
+    "source": "walking survey 4/2018"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5605417528,
+   "lat": 38.8383056,
+   "lon": -77.0720731,
+   "tags": {
+    "amenity": "drinking_water",
+    "bottle": "yes",
+    "fee": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5680741780,
+   "lat": 38.8479361,
+   "lon": -77.0514289,
+   "tags": {
+    "amenity": "drinking_water",
+    "indoor": "yes",
+    "level": "1",
+    "name": "Water Fountain"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5794777969,
+   "lat": 38.805565,
+   "lon": -77.0393286,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "opening_hours": "Apr-Oct 09:00-21:00; Nov-Mar 09:00-17:00",
+    "toilets:disposal": "flush"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8281309355,
+   "lat": 38.8330142,
+   "lon": -77.0480176,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "3000",
+    "addr:postcode": "22305",
+    "addr:state": "VA",
+    "addr:street": "Potomac Avenue",
+    "amenity": "clinic",
+    "check_date": "2023-05-24",
+    "healthcare": "clinic",
+    "name": "Kaiser Permanente Alexandria Medical Center",
+    "opening_hours": "Mo-Fr 08:00-17:00; Sa-Su off",
+    "operator": "Kaiser Permanente",
+    "operator:short": "KP",
+    "operator:type": "private",
+    "operator:website": "https://healthy.kaiserpermanente.org/",
+    "operator:wikidata": "Q1721601",
+    "operator:wikipedia": "en:Kaiser Permanente",
+    "phone": "+1 703-721-6300",
+    "website": "https://healthy.kaiserpermanente.org/maryland-virginia-washington-dc/facilities/Alexandria-Medical-Center-336713"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8426629599,
+   "lat": 38.8282328,
+   "lon": -77.0908132,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "3614",
+    "addr:postcode": "22302",
+    "addr:state": "VA",
+    "addr:street": "King Street",
+    "amenity": "pharmacy",
+    "brand": "Walgreens",
+    "brand:wikidata": "Q1591889",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Walgreens",
+    "opening_hours": "Mo-Fr 09:00-20:00; Sa 09:00-18:00; Su 10:00-18:00"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8426629600,
+   "lat": 38.8285071,
+   "lon": -77.0906409,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "3610",
+    "addr:postcode": "22302",
+    "addr:state": "VA",
+    "addr:street": "King Street",
+    "addr:unit": "D",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "healthcare:speciality": "urgent",
+    "name": "MedStar Health Urgent Care",
+    "opening_hours": "Mo-Su 08:00-20:00",
+    "operator": "MedStar Health",
+    "operator:type": "business",
+    "website": "https://www.medstarhealth.org/locations/urgent-care-alexandria"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9291378278,
+   "lat": 38.8013136,
+   "lon": -77.0398351,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9386899029,
+   "lat": 38.8359952,
+   "lon": -77.0613567,
+   "tags": {
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9576575336,
+   "lat": 38.8086199,
+   "lon": -77.0836097,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "3117",
+    "addr:postcode": "22314",
+    "addr:state": "VA",
+    "addr:street": "Duke Street",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "name": "AllCare Family Medicine and Urgent Care",
+    "website": "https://allcarefamilymed.com/alexandria-va-duke-st"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9890391392,
+   "lat": 38.8015763,
+   "lon": -77.0577982,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9904572277,
+   "lat": 38.7762911,
+   "lon": -77.0617532,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "1636",
+    "addr:postcode": "22307",
+    "addr:state": "VA",
+    "addr:street": "Belle View Boulevard",
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "opening_hours": "Mo-Su 07:00-24:00",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/alexandria-va-pharmacies/1636-belle-view-boulevard-alexandria-va-22307/storeid=1394"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9904572282,
+   "lat": 38.776258,
+   "lon": -77.0612976,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "1626",
+    "addr:postcode": "22307",
+    "addr:state": "VA",
+    "addr:street": "Belle View Boulevard",
+    "amenity": "post_office",
+    "name": "Belle View Post Office",
+    "opening_hours": "Mo-Fr 09:00-17:00; Sa 09:00-13:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 703-768-3675",
+    "ref": "1437261"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10121253317,
+   "lat": 38.7763348,
+   "lon": -77.0613256,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "1626",
+    "addr:postcode": "22307-9998",
+    "addr:state": "VA",
+    "addr:street": "Belle View Boulevard",
+    "amenity": "post_office",
+    "name": "Alexandria Post Office",
+    "opening_hours": "Mo-Fr 09:00-17:00; Sa 09:00-13:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 703-768-3675",
+    "ref": "1437261",
+    "website": "https://tools.usps.com/locations/home.htm?location=1437261"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10694003297,
+   "lat": 38.8440257,
+   "lon": -77.0511864,
+   "tags": {
+    "addr:housenumber": "3535",
+    "addr:state": "VA",
+    "addr:street": "South Ball Street",
+    "amenity": "clinic",
+    "check_date": "2023-02-25",
+    "healthcare": "clinic",
+    "name": "Nova Patient Care",
+    "opening_hours": "Mo-Sa 09:00-18:00; Su off",
+    "phone": "+1 703-348-9111"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10947644726,
+   "lat": 38.8054677,
+   "lon": -77.0771811,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10947644727,
+   "lat": 38.8054117,
+   "lon": -77.0771035,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11460166871,
+   "lat": 38.8472831,
+   "lon": -77.0425522,
+   "tags": {
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "check_date": "2024-01-03",
+    "fee": "no",
+    "level": "0",
+    "male": "yes",
+    "portable": "no",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "toilets:position": "seated;urinal",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11460166872,
+   "lat": 38.8472991,
+   "lon": -77.0426962,
+   "tags": {
+    "amenity": "toilets",
+    "check_date": "2023-12-27",
+    "female": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11460166873,
+   "lat": 38.8485369,
+   "lon": -77.0424576,
+   "tags": {
+    "amenity": "toilets",
+    "check_date": "2023-12-27",
+    "female": "yes",
+    "male": "yes",
+    "note": "two separate down a hallway I didn\u2019t have time to go down next to baggage claim"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11930316784,
+   "lat": 38.805107,
+   "lon": -77.068513,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "2226",
+    "addr:postcode": "22314-4690",
+    "addr:state": "VA",
+    "addr:street": "Duke Street",
+    "amenity": "post_office",
+    "name": "Alexandria Post Office",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 703-684-6759",
+    "ref": "1372670",
+    "website": "https://tools.usps.com/locations/home.htm?location=1372670"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11952741263,
+   "lat": 38.8481833,
+   "lon": -77.0478977,
+   "tags": {
+    "access": "permissive",
+    "amenity": "drinking_water",
+    "fee": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12554862248,
+   "lat": 38.8086557,
+   "lon": -77.08765,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "4214",
+    "addr:postcode": "22302",
+    "addr:state": "VA",
+    "addr:street": "king st",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "healthcare:speciality": "travel_clinic;vaccination",
+    "name": "Passport Health Alexandria Travel Clinic",
+    "operator": "Passport Health",
+    "operator:type": "private",
+    "operator:wikidata": "Q30270336"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12594368023,
+   "lat": 38.7926398,
+   "lon": -77.0414077,
+   "tags": {
+    "amenity": "toilets",
+    "note": "this portable toilet is in addition to the indoor toilets",
+    "portable": "yes",
+    "toilets:disposal": "chemical"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12952971098,
+   "lat": 38.8132157,
+   "lon": -77.0679271,
+   "tags": {
+    "amenity": "drinking_water",
+    "fee": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12978821992,
+   "lat": 38.8089772,
+   "lon": -77.0865893,
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "3213",
+    "addr:postcode": "22314",
+    "addr:state": "VA",
+    "addr:street": "Duke Street",
+    "amenity": "post_office",
+    "brand": "The UPS Store",
+    "brand:short": "UPS",
+    "brand:wikidata": "Q7771029",
+    "name": "The UPS Store",
+    "shop": "copyshop"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13045449718,
+   "lat": 38.8481784,
+   "lon": -77.0479063,
+   "tags": {
+    "amenity": "drinking_water",
+    "check_date": "2026-07-08"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13692354744,
+   "lat": 38.8432323,
+   "lon": -77.0522084,
+   "tags": {
+    "addr:city": "Arlington",
+    "addr:housenumber": "3550",
+    "addr:postcode": "22202",
+    "addr:state": "VA",
+    "addr:street": "South Clark Street",
+    "amenity": "clinic",
+    "description": "Medspa located inside Club Studio.",
+    "healthcare": "clinic",
+    "name": "Kalologie | Club Studio | Arlington",
+    "opening_hours": "Tu,Th 10:00-19:00; We 09:00-13:00; Fr 09:00-13:00; Sa 08:00-13:00; Su-Mo off",
+    "phone": "+1-703-991-7272",
+    "website": "https://kalologie.com/our-locations/kalologie-in-arlington"
+   }
+  },
+  {
+   "type": "way",
+   "id": 27311312,
+   "center": {
+    "lat": 38.8122003,
+    "lon": -77.0503897
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "1100",
+    "addr:postcode": "22314",
+    "addr:state": "VA",
+    "addr:street": "Wythe Street",
+    "amenity": "post_office",
+    "building": "yes",
+    "ele": "12",
+    "gnis:feature_id": "2459340",
+    "name": "Alexandria Post Office",
+    "opening_hours": "Mo-Fr 09:00-18:00; Sa 09:00-16:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 703-684-7168",
+    "ref": "1352667",
+    "source": "Bing",
+    "website": "https://tools.usps.com/locations/home.htm?location=1352667"
+   }
+  },
+  {
+   "type": "way",
+   "id": 27311793,
+   "center": {
+    "lat": 38.8077957,
+    "lon": -77.0471567
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "717",
+    "addr:postcode": "22314",
+    "addr:state": "VA",
+    "addr:street": "Queen Street",
+    "alt_name": "Barrett Library",
+    "amenity": "library",
+    "building": "public",
+    "building:levels": "4",
+    "name": "Kate Waller Barrett Branch Library",
+    "opening_hours": "Mo-Th 10:00-20:00; Fr, Sa 10:00-17:00; Su 13:00-17:00",
+    "operator": "Alexandria Library",
+    "operator:type": "government",
+    "operator:wikidata": "Q4720979",
+    "website": "https://alexlibraryva.org/barrett"
+   }
+  },
+  {
+   "type": "way",
+   "id": 141709919,
+   "center": {
+    "lat": 38.7944957,
+    "lon": -77.0683824
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "5751",
+    "addr:postcode": "22303",
+    "addr:state": "VA",
+    "addr:street": "Liberty Drive",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Huntington Community Center"
+   }
+  },
+  {
+   "type": "way",
+   "id": 160692050,
+   "center": {
+    "lat": 38.805269,
+    "lon": -77.0449285
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "501-503",
+    "addr:postcode": "22314",
+    "addr:state": "VA",
+    "addr:street": "King Street",
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "building": "yes",
+    "check_date": "2026-03-29",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "opening_hours": "24/7",
+    "short_name": "CVS",
+    "source": "knowledge",
+    "website": "https://www.cvs.com/store-locator/alexandria-va-pharmacies/501-king-street-alexandria-va-22314/storeid=2149"
+   }
+  },
+  {
+   "type": "way",
+   "id": 192339431,
+   "center": {
+    "lat": 38.81617,
+    "lon": -77.0717994
+   },
+   "tags": {
+    "addr:housenumber": "2729",
+    "addr:postcode": "22302",
+    "addr:street": "King Street",
+    "amenity": "social_facility",
+    "building": "yes",
+    "building:flats": "141",
+    "building:levels": "3",
+    "ele": "46",
+    "gnis:feature_id": "1501828",
+    "name": "Woodbine Nursing and Convalescent Home",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior",
+    "start_date": "1964"
+   }
+  },
+  {
+   "type": "way",
+   "id": 199290679,
+   "center": {
+    "lat": 38.7926039,
+    "lon": -77.0414401
+   },
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "toilets",
+    "source": "survey",
+    "toilets:disposal": "flush",
+    "unisex": "yes",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 203272952,
+   "center": {
+    "lat": 38.8028726,
+    "lon": -77.0797644
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes",
+    "building:levels": "3"
+   }
+  },
+  {
+   "type": "way",
+   "id": 208490087,
+   "center": {
+    "lat": 38.7866272,
+    "lon": -77.0728775
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "2409",
+    "addr:postcode": "22303",
+    "addr:state": "VA",
+    "addr:street": "Fort Drive",
+    "amenity": "community_centre",
+    "building": "civic",
+    "community_centre": "events_venue",
+    "name": "Fair Haven Community Center",
+    "operator": "Fairhaven Community Association",
+    "operator:type": "private",
+    "website": "https://www.fairhavencommunity.org/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 211292605,
+   "center": {
+    "lat": 38.8344901,
+    "lon": -77.0873289
+   },
+   "tags": {
+    "addr:city": "Arlington",
+    "addr:country": "US",
+    "addr:housename": "Fairlington Community Center",
+    "addr:housenumber": "3308",
+    "addr:postcode": "22206",
+    "addr:state": "VA",
+    "addr:street": "South Stafford Street",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Fairlington Community Center",
+    "phone": "+1 703-228-6588",
+    "website": "https://www.arlingtonva.us/Government/Departments/Parks-Recreation/Locations/Indoor-Facilities/Fairlington-Community-Center-Park"
+   }
+  },
+  {
+   "type": "way",
+   "id": 216702183,
+   "center": {
+    "lat": 38.8007304,
+    "lon": -77.0482874
+   },
+   "tags": {
+    "addr:housenumber": "433",
+    "addr:state": "VA",
+    "addr:street": "South Washington Street",
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/alexandria-va-pharmacies/433-south-washington-street-alexandria-va-22314/storeid=1373"
+   }
+  },
+  {
+   "type": "way",
+   "id": 216702185,
+   "center": {
+    "lat": 38.8018291,
+    "lon": -77.0479731
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "325",
+    "addr:postcode": "22314",
+    "addr:state": "VA",
+    "addr:street": "South Washington Street",
+    "amenity": "clinic",
+    "building": "yes",
+    "healthcare": "clinic",
+    "healthcare:speciality": "internal_medicine",
+    "name": "Inova Medical Group - Old Town",
+    "opening_hours": "Mo-Fr 08:30-17:00; \"Call for Appointment\"",
+    "operator": "Inova Health System",
+    "operator:type": "private",
+    "operator:wikidata": "Q16996992",
+    "phone": "+1 703-683-7220",
+    "website": "https://www.inova.org/inova-medical-group/old-town"
+   }
+  },
+  {
+   "type": "way",
+   "id": 218959467,
+   "center": {
+    "lat": 38.8347277,
+    "lon": -77.0619871
+   },
+   "tags": {
+    "addr:housenumber": "3301",
+    "addr:postcode": "22305",
+    "addr:street": "Landover Street",
+    "amenity": "toilets",
+    "building": "yes",
+    "building:levels": "1"
+   }
+  },
+  {
+   "type": "way",
+   "id": 219063286,
+   "center": {
+    "lat": 38.8065904,
+    "lon": -77.046994
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "200",
+    "addr:postcode": "22314",
+    "addr:state": "VA",
+    "addr:street": "North Washington Street",
+    "amenity": "post_office",
+    "building": "yes",
+    "building:levels": "5",
+    "name": "George Mason Post Office",
+    "opening_hours": "Mo-Fr 10:00-16:30",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 703-519-0386",
+    "ref": "1448453",
+    "start_date": "1965",
+    "website": "https://tools.usps.com/locations/home.htm?location=1448453"
+   }
+  },
+  {
+   "type": "way",
+   "id": 219332906,
+   "center": {
+    "lat": 38.8350708,
+    "lon": -77.0584279
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "3400",
+    "addr:postcode": "22305",
+    "addr:state": "VA",
+    "addr:street": "Commonwealth Avenue",
+    "building": "retail",
+    "name": "Bubble Laundromat",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "way",
+   "id": 219358440,
+   "center": {
+    "lat": 38.8278031,
+    "lon": -77.0606139
+   },
+   "tags": {
+    "access": "yes",
+    "addr:city": "Alexandria",
+    "addr:housenumber": "2501",
+    "addr:postcode": "22301",
+    "addr:state": "VA",
+    "addr:street": "Commonwealth Avenue",
+    "air_conditioning": "yes",
+    "amenity": "library",
+    "building": "yes",
+    "check_date:opening_hours": "2025-07-11",
+    "ele": "12",
+    "fax": "+1 703-746-1785",
+    "name": "James M. Duncan, Jr. Branch Library",
+    "opening_hours": "Mo-Th 10:00-20:00; Fr, Sa 10:00-17:00; Su 13:00-17:00",
+    "operator": "Alexandria Library",
+    "operator:type": "public",
+    "operator:wikidata": "Q4720979",
+    "operator:wikipedia": "en:Alexandria Library (Virginia)",
+    "phone": "+1 703-746-1705",
+    "website": "https://alexlibraryva.org/duncan",
+    "wheelchair": "yes",
+    "wikidata": "Q69766381",
+    "wikimedia_commons": "File:James M Duncan Library.jpg"
+   }
+  },
+  {
+   "type": "way",
+   "id": 219359027,
+   "center": {
+    "lat": 38.8394397,
+    "lon": -77.063397
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "religious",
+    "community_centre": "parish_hall",
+    "religion": "christian"
+   }
+  },
+  {
+   "type": "way",
+   "id": 221687077,
+   "center": {
+    "lat": 38.8292346,
+    "lon": -77.0856195
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:country": "US",
+    "addr:housenumber": "1521",
+    "addr:postcode": "22302",
+    "addr:state": "VA",
+    "addr:street": "North Quaker Lane",
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "opening_hours": "Mo-Sa 07:00-20:00",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/alexandria-va-pharmacies/1521-1523-north-quaker-lane-alexandria-va-22302/storeid=1382",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 222413474,
+   "center": {
+    "lat": 38.8216625,
+    "lon": -77.0932562
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "3640",
+    "addr:postcode": "22304",
+    "addr:state": "VA",
+    "addr:street": "Bishop Walker Circle",
+    "amenity": "library",
+    "building": "yes",
+    "building:levels": "2",
+    "name": "Bishop Payne Library",
+    "operator": "Virginia Theological Seminary",
+    "operator:type": "college",
+    "website": "https://library.vts.edu/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 228620207,
+   "center": {
+    "lat": 38.7730633,
+    "lon": -77.0629767
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "6614",
+    "addr:postcode": "22307-1799",
+    "addr:state": "VA",
+    "addr:street": "Fort Hunt Road",
+    "air_conditioning": "yes",
+    "amenity": "library",
+    "building": "public",
+    "ele": "7",
+    "email": "libMW@fairfaxcounty.gov",
+    "gnis:feature_id": "1491729",
+    "name": "Martha Washington Library",
+    "opening_hours": "Mo-Tu 10:00-21:00; We-Sa 10:00-18:00",
+    "operator": "Fairfax County Public Library",
+    "operator:type": "public",
+    "operator:wikidata": "Q5430165",
+    "phone": "+1 703-768-6700",
+    "public": "yes",
+    "source": "USGS Geonames",
+    "website": "https://www.fairfaxcounty.gov/library/branches/martha-washington",
+    "wikidata": "Q69766692"
+   }
+  },
+  {
+   "type": "way",
+   "id": 228627921,
+   "center": {
+    "lat": 38.7800964,
+    "lon": -77.0521859
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush"
+   }
+  },
+  {
+   "type": "way",
+   "id": 230393847,
+   "center": {
+    "lat": 38.8264286,
+    "lon": -77.0590788
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "2300B",
+    "addr:postcode": "22301",
+    "addr:street": "Mount Vernon Avenue",
+    "amenity": "post_office",
+    "brand": "The UPS Store",
+    "brand:short": "UPS",
+    "brand:wikidata": "Q7771029",
+    "building": "commercial",
+    "name": "The UPS Store",
+    "opening_hours": "Mo-Fr 08:00-19:00, Sa 09:00-17:00, Su 12:00-16:00",
+    "operator": "The UPS Store",
+    "operator:type": "private",
+    "operator:wikidata": "Q7771029",
+    "shop": "copyshop",
+    "short_name": "UPS",
+    "source": "survey"
+   }
+  },
+  {
+   "type": "way",
+   "id": 231646017,
+   "center": {
+    "lat": 38.8341126,
+    "lon": -77.0519068
+   },
+   "tags": {
+    "access": "private",
+    "amenity": "toilets",
+    "building": "toilets"
+   }
+  },
+  {
+   "type": "way",
+   "id": 260398168,
+   "center": {
+    "lat": 38.8086781,
+    "lon": -77.0917951
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "3520",
+    "addr:postcode": "22304",
+    "addr:state": "VA",
+    "addr:street": "Duke Street",
+    "amenity": "social_facility",
+    "building": "commercial",
+    "name": "Sunrise of Alexandria",
+    "opening_hours": "24/7",
+    "operator": "Sunrise Senior Living",
+    "operator:type": "private",
+    "operator:wikidata": "Q612714",
+    "phone": "+1-703-212-9192",
+    "social_facility": "assisted_living",
+    "social_facility:for": "senior",
+    "website": "https://www.sunriseseniorliving.com/communities/sunrise-of-alexandria/about.aspx",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 291930937,
+   "center": {
+    "lat": 38.8203412,
+    "lon": -77.0572475
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "1517",
+    "addr:postcode": "22301",
+    "addr:state": "VA",
+    "addr:street": "Mount Vernon Avenue",
+    "amenity": "pharmacy",
+    "brand": "Walgreens",
+    "brand:wikidata": "Q1591889",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Walgreens",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "phone": "+1 703-838-5709",
+    "website": "https://www.walgreens.com/locator/walgreens-1517+mount+vernon+ave-alexandria-va-22301/id=12359"
+   }
+  },
+  {
+   "type": "way",
+   "id": 299732589,
+   "center": {
+    "lat": 38.8214049,
+    "lon": -77.0524616
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "civic"
+   }
+  },
+  {
+   "type": "way",
+   "id": 310174486,
+   "center": {
+    "lat": 38.8211,
+    "lon": -77.0953613
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "3825",
+    "addr:postcode": "22304",
+    "addr:state": "VA",
+    "addr:street": "Seminary Road",
+    "amenity": "post_office",
+    "building": "yes",
+    "name": "Seminary Post Office"
+   }
+  },
+  {
+   "type": "way",
+   "id": 368175467,
+   "center": {
+    "lat": 38.8356276,
+    "lon": -77.0574599
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "2",
+    "addr:postcode": "22305",
+    "addr:state": "VA",
+    "addr:street": "East Glebe Road",
+    "amenity": "clinic",
+    "building": "health",
+    "description": "Pediatric Care, including Newborn Care Behavioral Health and Family Support Medication Assistance & Lab Services Health Insurance Enrollment Assistance",
+    "healthcare": "clinic",
+    "name": "Neighborhood Health",
+    "opening_hours": "Mo 07:45-17:00; Tu-Fr 07:45-16:30; Sa 08:00-12:30",
+    "phone": "+1 703-535-5568",
+    "website": "https://neighborhoodhealthva.org/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 452112644,
+   "center": {
+    "lat": 38.8220503,
+    "lon": -77.0726323
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes",
+    "community_centre": "parish_hall"
+   }
+  },
+  {
+   "type": "way",
+   "id": 464613748,
+   "center": {
+    "lat": 38.8440334,
+    "lon": -77.0650234
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "4130",
+    "addr:postcode": "22305",
+    "addr:state": "VA",
+    "addr:street": "Mount Vernon Avenue",
+    "building": "yes",
+    "name": "Forest 24 Hr Laudromat",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "way",
+   "id": 584976457,
+   "center": {
+    "lat": 38.847118,
+    "lon": -77.0515052
+   },
+   "tags": {
+    "amenity": "toilets",
+    "indoor": "room",
+    "level": "1",
+    "name": "Men's Restroom South",
+    "room": "toilets"
+   }
+  },
+  {
+   "type": "way",
+   "id": 584976458,
+   "center": {
+    "lat": 38.8471183,
+    "lon": -77.0515494
+   },
+   "tags": {
+    "amenity": "toilets",
+    "indoor": "room",
+    "level": "1",
+    "name": "Women's Restroom South",
+    "room": "toilets"
+   }
+  },
+  {
+   "type": "way",
+   "id": 585144577,
+   "center": {
+    "lat": 38.8479788,
+    "lon": -77.0514174
+   },
+   "tags": {
+    "amenity": "toilets",
+    "indoor": "room",
+    "level": "1",
+    "name": "Men's Restroom North",
+    "room": "toilets"
+   }
+  },
+  {
+   "type": "way",
+   "id": 585144944,
+   "center": {
+    "lat": 38.8479887,
+    "lon": -77.0513739
+   },
+   "tags": {
+    "amenity": "toilets",
+    "indoor": "room",
+    "level": "1",
+    "name": "Women's Restroom North",
+    "room": "toilets"
+   }
+  },
+  {
+   "type": "way",
+   "id": 609774559,
+   "center": {
+    "lat": 38.7807775,
+    "lon": -77.0779367
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "6311",
+    "addr:postcode": "22307",
+    "addr:state": "VA",
+    "addr:street": "Richmond Highway",
+    "amenity": "clinic",
+    "building": "retail",
+    "building:levels": "1",
+    "healthcare": "clinic",
+    "name": "Patient First Alexandria",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "operator": "Patient First",
+    "operator:type": "private",
+    "operator:wikidata": "Q7144966",
+    "website": "https://www.patientfirst.com/locations/washington-dc/alexandria"
+   }
+  },
+  {
+   "type": "way",
+   "id": 930044854,
+   "center": {
+    "lat": 38.7942115,
+    "lon": -77.0698002
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "2250",
+    "addr:postcode": "22303",
+    "addr:state": "VA",
+    "addr:street": "Huntington Avenue",
+    "building": "yes",
+    "internet_access": "wlan",
+    "laundry_service": "yes",
+    "name": "Laundry Station",
+    "phone": "+1-703-341-6735",
+    "self_service": "yes",
+    "shop": "laundry",
+    "website": "https://yourlaundrystation.com/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 935462105,
+   "center": {
+    "lat": 38.8161639,
+    "lon": -77.0730504
+   },
+   "tags": {
+    "amenity": "social_facility",
+    "building": "yes",
+    "check_date": "2026-06-04",
+    "name": "Alexandria Silverado Memory Care",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior"
+   }
+  },
+  {
+   "type": "way",
+   "id": 935825806,
+   "center": {
+    "lat": 38.8286607,
+    "lon": -77.059995
+   },
+   "tags": {
+    "addr:city": "Alexandria",
+    "addr:housenumber": "2701",
+    "addr:postcode": "22305",
+    "addr:state": "VA",
+    "addr:street": "Commonwealth Avenue",
+    "air_conditioning": "yes",
+    "amenity": "community_centre",
+    "building": "civic",
+    "contact:facebook": "https://www.facebook.com/RPCAAlexandriaVA/",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Mount Vernon Recreation Center",
+    "opening_hours": "Mo-Fr 09:00-21:00; Sa 09:00-18:00",
+    "operator": "City of Alexandria",
+    "operator:type": "government",
+    "operator:wikidata": "Q88",
+    "operator:wikipedia": "en:Alexandria, Virginia",
+    "phone": "+1 703-746-5556",
+    "polling_station": "yes",
+    "sport": "basketball;fitness;table_soccer;dance",
+    "website": "https://www.alexandriava.gov/recreation-centers/mount-vernon-recreation-center"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1080557297,
+   "center": {
+    "lat": 38.7779828,
+    "lon": -77.0493204
+   },
+   "tags": {
+    "access": "customers",
+    "addr:housenumber": "6401",
+    "addr:postcode": "22308",
+    "addr:street": "George Washington Memorial Parkway",
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1098941847,
+   "center": {
+    "lat": 38.8472246,
+    "lon": -77.0590563
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1102826029,
+   "center": {
+    "lat": 38.8025968,
+    "lon": -77.050027
+   },
+   "tags": {
+    "addr:housenumber": "313",
+    "addr:postcode": "22314",
+    "addr:street": "South Alfred Street",
+    "amenity": "community_centre",
+    "building": "yes",
+    "building:levels": "2",
+    "community_centre": "parish_hall",
+    "denomination": "baptist",
+    "ele": "11",
+    "gnis:feature_id": "2457882",
+    "religion": "christian",
+    "wikidata": "Q4723487"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1112595388,
+   "center": {
+    "lat": 38.8297544,
+    "lon": -77.0502609
+   },
+   "tags": {
+    "addr:housenumber": "2620",
+    "addr:street": "Main Line Boulevard",
+    "amenity": "social_facility",
+    "building": "residential",
+    "building:levels": "3",
+    "name": "The Landing",
+    "social_facility": "assisted_living",
+    "social_facility:for": "senior"
+   }
+  }
+ ]
+}

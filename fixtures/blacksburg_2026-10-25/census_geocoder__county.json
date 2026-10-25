@@ -1,0 +1,46 @@
+{
+ "result": {
+  "geographies": {
+   "Counties": [
+    {
+     "GEOID": "51121",
+     "CENTLAT": "+37.1742383",
+     "AREAWATER": 6278535,
+     "STATE": "51",
+     "BASENAME": "Montgomery",
+     "OID": "275901172235078",
+     "LSADC": "06",
+     "FUNCSTAT": "A",
+     "INTPTLAT": "+37.1761033",
+     "NAME": "Montgomery County",
+     "OBJECTID": 1903,
+     "CENTLON": "-080.3872654",
+     "COUNTYCC": "H1",
+     "COUNTYNS": "01674630",
+     "AREALAND": 1001932814,
+     "INTPTLON": "-080.3884851",
+     "MTFCC": "G4020",
+     "COUNTY": "121"
+    }
+   ]
+  },
+  "input": {
+   "vintage": {
+    "isDefault": true,
+    "id": "4",
+    "vintageName": "Current_Current",
+    "vintageDescription": "Current Vintage - Current Benchmark"
+   },
+   "location": {
+    "x": -80.415,
+    "y": 37.225
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  }
+ }
+}

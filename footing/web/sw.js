@@ -1,7 +1,7 @@
 // Offline support: the app shell is cached on install; API answers are network-first with the
 // last good answer kept as a fallback, so a receipt or plan opened once still shows with no signal.
-const SHELL = "footing-shell-v9";
-const DATA = "footing-data-v9";
+const SHELL = "footing-shell-v10";
+const DATA = "footing-data-v10";
 const SHELL_FILES = ["./", "index.html", "styles.css", "app.js", "manifest.webmanifest", "icon.svg",
   "globe.css", "globe.js", "fit.js", "vafit.js", "vapoint.js", "i18n.js", "i18n_more.js", "vendor/maplibre-gl.js", "vendor/maplibre-gl.css",
   "vendor/topojson-client.min.js", "data/states-10m.json", "data/countries-110m.json", "data/va-localities.json"];

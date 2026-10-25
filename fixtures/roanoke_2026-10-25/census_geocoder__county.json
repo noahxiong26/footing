@@ -1,0 +1,46 @@
+{
+ "result": {
+  "geographies": {
+   "Counties": [
+    {
+     "GEOID": "51770",
+     "CENTLAT": "+37.2784809",
+     "AREAWATER": 855754,
+     "STATE": "51",
+     "BASENAME": "Roanoke",
+     "OID": "27590675773914",
+     "LSADC": "25",
+     "FUNCSTAT": "F",
+     "INTPTLAT": "+37.2784580",
+     "NAME": "Roanoke city",
+     "OBJECTID": 2288,
+     "CENTLON": "-079.9580847",
+     "COUNTYCC": "C7",
+     "COUNTYNS": "01498439",
+     "AREALAND": 110129877,
+     "INTPTLON": "-079.9581739",
+     "MTFCC": "G4020",
+     "COUNTY": "770"
+    }
+   ]
+  },
+  "input": {
+   "vintage": {
+    "isDefault": true,
+    "id": "4",
+    "vintageName": "Current_Current",
+    "vintageDescription": "Current Vintage - Current Benchmark"
+   },
+   "location": {
+    "x": -79.945,
+    "y": 37.275
+   },
+   "benchmark": {
+    "isDefault": true,
+    "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+    "id": "4",
+    "benchmarkName": "Public_AR_Current"
+   }
+  }
+ }
+}

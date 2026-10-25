@@ -204,7 +204,61 @@
     var c = community && community[fips];
     if (c && c.n > 0) out.community = { score: c.score, n: c.n, freshness: c.freshness, reason: c.n + " rating" + (c.n === 1 ? "" : "s") + " from people who have been here" };
     else out.community = { score: null, reason: "No ratings yet. Be the first to rate a place here." };
+    reasonData(va, fips, profile, out);
     return out;
+  }
+
+  // Presentation-only twin of _reason_data in vafit.py. English reasons are unchanged.
+  function reasonData(va, fips, profile, out) {
+    var loc = va.localities[fips], state = va.state;
+    function add(component, key, values) {
+      if (!out[component].reason_data) out[component].reason_data = { version: 1, segments: [] };
+      out[component].reason_data.segments.push({ key: key, vars: values || {} });
+    }
+    function note(component, text) { if (text) add(component, "recorded_note", { text: text }); }
+    var b = bedrooms(profile), rent = loc.fmr.by_bedrooms[b], wage = state.min_wage;
+    add("rent", "rent", { rent: money(rent), size: b, area: loc.fmr.area,
+      wage: wage.toFixed(2), hours: Math.round(rent * 12 / (0.30 * 52 * wage)) });
+    var c = loc.coc, kids = !!(profile.household || {}).kids, p = out.shelter.parts;
+    add("shelter", "shelter", { name: c.name, pct: Math.round(100 * (c.unsheltered / c.pit_total)), total: commas(c.pit_total) });
+    add("shelter", p.people > 0 ? (kids ? "beds_family" : "beds") : (kids ? "beds_family_none" : "beds_none"),
+      { beds: commas(p.beds), people: commas(p.people) });
+    if (c.unsheltered_carried_from_2024) add("shelter", "carried");
+    var size = stateTotals(va).cocSize[c.code];
+    if (size > 1) add("shelter", size > BIG_COC ? "coc_large" : "coc_shared", { n: size });
+    var s = loc.services, pop = loc.pop_2025;
+    add("services", "grocery", { n: s.snap.full_grocery, rate: num(round1(s.snap.full_grocery / pop * 10000)) });
+    var rm = s.snap.restaurant_meals, help = 0;
+    add("services", rm > 0 ? "meals" : "meals_none", { n: rm });
+    HELP_KINDS.forEach(function (k) { help += (s.osm || {})[k] || 0; });
+    add("services", help > 0 ? "help" : "help_none", { n: help });
+    if (s.fare_free_transit) add("services", "transit", { system: s.fare_free_transit.system });
+    if (pop < SHRINK_POP) add("services", "shrink", { pop: commas(pop) });
+    var r = loc.local_rule;
+    if (r) { add("laws", "law_" + r.status); note("laws", r.note); }
+    else { add("laws", "law_unchecked", { place: loc.name }); note("laws", state.camping_law.note); }
+    if (out.safety) {
+      var g = loc.enforcement_287g || [], tfm = g.filter(function (a) { return a.model === "Task Force Model"; });
+      if (tfm.length || g.length) {
+        var a = (tfm.length ? tfm : g)[0];
+        add("safety", tfm.length ? "safety_task" : "safety_jail", { agency: a.agency, signed: a.signed });
+        if (!tfm.length) note("safety", a.model);
+      } else add("safety", "safety_none", { place: loc.name });
+      note("safety", state.state_287g.note);
+    }
+    if (out.crime) {
+      var cc = out.crime, crime = loc.crime || {};
+      if (cc.level === "block") {
+        p = cc.parts;
+        add("crime", "crime_block", { v: commas(p.violent), e: commas(p.enforcement), name: va.incident_cities[fips].name,
+          start: p.window_start, end: p.window_end });
+        if (crime.violent_per_1k !== null && crime.violent_per_1k !== undefined)
+          add("crime", "crime_city", { rate: num(crime.violent_per_1k) });
+      } else if (cc.level === "none") { add("crime", "crime_unknown"); note("crime", crime.unknown_reason); }
+      else add("crime", "crime_locality", { rate: num(crime.violent_per_1k), n: commas(crime.violent_2025) });
+    }
+    var n = out.community.n;
+    add("community", n ? "community" : "community_none", { n: n || 0 });
   }
 
   function defaultPriorities(elig, profile) {
@@ -257,7 +311,7 @@
       var c = comps[k], has = c.score !== null && c.score !== undefined;
       return { id: k, weight: round3(w[i]), share: has && known > 0 ? round3(w[i] / known) : 0,
         contribution: has && known > 0 ? round1(w[i] / known * c.score) : 0, score: has ? c.score : null,
-        reason: c.reason, parts: c.parts || null, source: c.source || null };
+        reason: c.reason, reason_data: c.reason_data, parts: c.parts || null, source: c.source || null };
     });
     var conf = round3(agg.confidence);
     return { fips: fips, name: va.localities[fips].name, score: agg.score === null ? null : round1(agg.score), confidence: conf,

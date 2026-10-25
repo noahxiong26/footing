@@ -1,0 +1,3483 @@
+{
+ "objectIdFieldName": "ObjectId",
+ "uniqueIdField": {
+  "name": "ObjectId",
+  "isSystemMaintained": true
+ },
+ "globalIdFieldName": "",
+ "geometryType": "esriGeometryPoint",
+ "spatialReference": {
+  "wkid": 4326,
+  "latestWkid": 4326
+ },
+ "fields": [
+  {
+   "name": "Record_ID",
+   "type": "esriFieldTypeInteger",
+   "alias": "Record ID",
+   "sqlType": "sqlTypeInteger",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Name",
+   "type": "esriFieldTypeString",
+   "alias": "Store Name",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Street_Address",
+   "type": "esriFieldTypeString",
+   "alias": "Store Street Address",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Additonal_Address",
+   "type": "esriFieldTypeString",
+   "alias": "Additonal Address",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "City",
+   "type": "esriFieldTypeString",
+   "alias": "City",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "State",
+   "type": "esriFieldTypeString",
+   "alias": "State",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Zip_Code",
+   "type": "esriFieldTypeString",
+   "alias": "Zip Code",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Zip4",
+   "type": "esriFieldTypeString",
+   "alias": "Zip4",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "County",
+   "type": "esriFieldTypeString",
+   "alias": "County",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Type",
+   "type": "esriFieldTypeString",
+   "alias": "Store Type",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Latitude",
+   "type": "esriFieldTypeDouble",
+   "alias": "Latitude",
+   "sqlType": "sqlTypeFloat",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Longitude",
+   "type": "esriFieldTypeDouble",
+   "alias": "Longitude",
+   "sqlType": "sqlTypeFloat",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Incentive_Program",
+   "type": "esriFieldTypeString",
+   "alias": "Incentive Program",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Grantee_Name",
+   "type": "esriFieldTypeString",
+   "alias": "Grantee Name",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "ObjectId",
+   "type": "esriFieldTypeOID",
+   "alias": "ObjectId",
+   "sqlType": "sqlTypeInteger",
+   "domain": null,
+   "defaultValue": null
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "Record_ID": 384179,
+    "Store_Name": "Walgreens 3853",
+    "Store_Street_Address": "2924 Chamberlayne Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "3506",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.571774,
+    "Longitude": -77.445267,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 11060
+   },
+   "geometry": {
+    "x": -77.445267,
+    "y": 37.57177399999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 344002,
+    "Store_Name": "SUNNY MARKET",
+    "Store_Street_Address": "2700 W Cary St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "5121",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.551296,
+    "Longitude": -77.475334,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 12542
+   },
+   "geometry": {
+    "x": -77.475334,
+    "y": 37.551296
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 361956,
+    "Store_Name": "CVS Pharmacy 2973",
+    "Store_Street_Address": "2400 E Main St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "7846",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.529324,
+    "Longitude": -77.4217,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 16062
+   },
+   "geometry": {
+    "x": -77.4217,
+    "y": 37.529324
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 519086,
+    "Store_Name": "Fas Mart 75",
+    "Store_Street_Address": "1201 Westover Hills Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23225",
+    "Zip4": "4433",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.519279,
+    "Longitude": -77.488853,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 19789
+   },
+   "geometry": {
+    "x": -77.488853,
+    "y": 37.51927899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 389413,
+    "Store_Name": "CVS Pharmacy 1989",
+    "Store_Street_Address": "5001 Forest Hill Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23225",
+    "Zip4": "3147",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.521225,
+    "Longitude": -77.488602,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 20364
+   },
+   "geometry": {
+    "x": -77.488602,
+    "y": 37.52122500000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 460234,
+    "Store_Name": "Fas Mart 72",
+    "Store_Street_Address": "2107 Semmes Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23225",
+    "Zip4": "3843",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.521606,
+    "Longitude": -77.455177,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 30123
+   },
+   "geometry": {
+    "x": -77.455177,
+    "y": 37.52160599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 556431,
+    "Store_Name": "JIN'S MARKET",
+    "Store_Street_Address": "3105 Meadowbridge Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "3129",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.572758,
+    "Longitude": -77.419945,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 32717
+   },
+   "geometry": {
+    "x": -77.419945,
+    "y": 37.57275799999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 613076,
+    "Store_Name": "Food Lion 601",
+    "Store_Street_Address": "3089 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "1828",
+    "County": "HENRICO",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.567902,
+    "Longitude": -77.400177,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 36874
+   },
+   "geometry": {
+    "x": -77.400177,
+    "y": 37.56790199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1380785,
+    "Store_Name": "Mo Convenience Store",
+    "Store_Street_Address": "2905 Nine Mile Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "5357",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.541229,
+    "Longitude": -77.403435,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 39284
+   },
+   "geometry": {
+    "x": -77.403435,
+    "y": 37.541229
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 621862,
+    "Store_Name": "KROGER 504",
+    "Store_Street_Address": "3507 W Cary St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "2728",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.555573,
+    "Longitude": -77.487518,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 41106
+   },
+   "geometry": {
+    "x": -77.487518,
+    "y": 37.555572999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 712875,
+    "Store_Name": "WALGREENS 3681",
+    "Store_Street_Address": "1214 Westover Hills Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23225",
+    "Zip4": "4434",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.52063,
+    "Longitude": -77.48867,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 42234
+   },
+   "geometry": {
+    "x": -77.48866999999998,
+    "y": 37.520630000000004
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 659919,
+    "Store_Name": "CVS Pharmacy 1530",
+    "Store_Street_Address": "2738 W Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "1906",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.562397,
+    "Longitude": -77.469948,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 43292
+   },
+   "geometry": {
+    "x": -77.469948,
+    "y": 37.56239699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 590298,
+    "Store_Name": "CVS Pharmacy 1988",
+    "Store_Street_Address": "3514 W Cary St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "2729",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.555569,
+    "Longitude": -77.487335,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 48491
+   },
+   "geometry": {
+    "x": -77.487335,
+    "y": 37.555569
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 653960,
+    "Store_Name": "CHIMBO SUPERMARKET",
+    "Store_Street_Address": "515 Chimborazo Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "7528",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.52903,
+    "Longitude": -77.408318,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 52117
+   },
+   "geometry": {
+    "x": -77.40831800000001,
+    "y": 37.529030000000006
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 998295,
+    "Store_Name": "Shalom Farms",
+    "Store_Street_Address": "1010 W Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23227",
+    "Zip4": "4520",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.584618,
+    "Longitude": -77.448532,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 53716
+   },
+   "geometry": {
+    "x": -77.448532,
+    "y": 37.584617999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 779875,
+    "Store_Name": "701 EXPRESS",
+    "Store_Street_Address": "701 Richmond Hwy",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "5244",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.509983,
+    "Longitude": -77.447327,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 55744
+   },
+   "geometry": {
+    "x": -77.447327,
+    "y": 37.509982999999984
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 878664,
+    "Store_Name": "Family Dollar 6591",
+    "Store_Street_Address": "421 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2120",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.585491,
+    "Longitude": -77.426414,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 65528
+   },
+   "geometry": {
+    "x": -77.426414,
+    "y": 37.58549099999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 878673,
+    "Store_Name": "Family Dollar 7776",
+    "Store_Street_Address": "1720 Williamsburg Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23231",
+    "Zip4": "3428",
+    "County": "HENRICO",
+    "Store_Type": "Other",
+    "Latitude": 37.515514,
+    "Longitude": -77.393341,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 65535
+   },
+   "geometry": {
+    "x": -77.39334100000002,
+    "y": 37.515514
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1657626,
+    "Store_Name": "City Limits Convenience ",
+    "Store_Street_Address": "1911 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "3900",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.553127,
+    "Longitude": -77.411804,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 66352
+   },
+   "geometry": {
+    "x": -77.411804,
+    "y": 37.55312700000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 755278,
+    "Store_Name": "Walgreens 04488",
+    "Store_Street_Address": "3715 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "1331",
+    "County": "HENRICO",
+    "Store_Type": "Other",
+    "Latitude": 37.577072,
+    "Longitude": -77.395874,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 73581
+   },
+   "geometry": {
+    "x": -77.395874,
+    "y": 37.57707199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 941579,
+    "Store_Name": "Cary St Bp Amoco",
+    "Store_Street_Address": "1920 W Cary St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "5331",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.54826,
+    "Longitude": -77.465981,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 75191
+   },
+   "geometry": {
+    "x": -77.46598099999999,
+    "y": 37.54825999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 760766,
+    "Store_Name": "Family Dollar 1715",
+    "Store_Street_Address": "1903 W Main St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "4521",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.548824,
+    "Longitude": -77.464851,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 76104
+   },
+   "geometry": {
+    "x": -77.464851,
+    "y": 37.548823999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 761691,
+    "Store_Name": "Family Dollar 5701",
+    "Store_Street_Address": "1220 N 25th St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "5241",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.540157,
+    "Longitude": -77.411156,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 76144
+   },
+   "geometry": {
+    "x": -77.411156,
+    "y": 37.540157
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 761553,
+    "Store_Name": "Family Dollar 330",
+    "Store_Street_Address": "3703 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "1331",
+    "County": "HENRICO",
+    "Store_Type": "Other",
+    "Latitude": 37.576431,
+    "Longitude": -77.396317,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 76877
+   },
+   "geometry": {
+    "x": -77.39631699999998,
+    "y": 37.576431
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1275105,
+    "Store_Name": "Sunoco Gas Station",
+    "Store_Street_Address": "6 Richmond Hwy",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "3728",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.517612,
+    "Longitude": -77.448883,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 82190
+   },
+   "geometry": {
+    "x": -77.44888300000001,
+    "y": 37.517611999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 864353,
+    "Store_Name": "Walgreens 10106",
+    "Store_Street_Address": "3520 Ellwood Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "2723",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.556995,
+    "Longitude": -77.48761,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 84071
+   },
+   "geometry": {
+    "x": -77.48761000000002,
+    "y": 37.55699500000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 962856,
+    "Store_Name": "Belt Boulevard Express",
+    "Store_Street_Address": "237 E Belt Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "1205",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.505447,
+    "Longitude": -77.479286,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 88844
+   },
+   "geometry": {
+    "x": -77.479286,
+    "y": 37.505447
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1112845,
+    "Store_Name": "Fas Mart 55",
+    "Store_Street_Address": "2600 E Main St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "7850",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.528225,
+    "Longitude": -77.419884,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 88944
+   },
+   "geometry": {
+    "x": -77.419884,
+    "y": 37.52822499999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1055732,
+    "Store_Name": "APlus 40013H",
+    "Store_Street_Address": "1701 E Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "6929",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.535816,
+    "Longitude": -77.425728,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 91056
+   },
+   "geometry": {
+    "x": -77.42572799999999,
+    "y": 37.53581599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1055757,
+    "Store_Name": "APlus 40009H",
+    "Store_Street_Address": "2753 W Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "1905",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.561966,
+    "Longitude": -77.469337,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 91057
+   },
+   "geometry": {
+    "x": -77.46933699999998,
+    "y": 37.561966
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1649915,
+    "Store_Name": "7-eleven #22350b 22350B",
+    "Store_Street_Address": "2808 W Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23230",
+    "Zip4": "5101",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.563023,
+    "Longitude": -77.470474,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 91721
+   },
+   "geometry": {
+    "x": -77.470474,
+    "y": 37.56302299999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1145393,
+    "Store_Name": "Dollar General 15034",
+    "Store_Street_Address": "2128 Hull St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "3636",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.515594,
+    "Longitude": -77.452492,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 96128
+   },
+   "geometry": {
+    "x": -77.452492,
+    "y": 37.515593999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1079914,
+    "Store_Name": "DOLLAR GENERAL 13789",
+    "Store_Street_Address": "2910 North Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "3613",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.570404,
+    "Longitude": -77.432846,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 97428
+   },
+   "geometry": {
+    "x": -77.432846,
+    "y": 37.570403999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1153130,
+    "Store_Name": "DollarTree 5281",
+    "Store_Street_Address": "315 Cowardin Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "2023",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.522106,
+    "Longitude": -77.450844,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 97668
+   },
+   "geometry": {
+    "x": -77.450844,
+    "y": 37.522106
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1243728,
+    "Store_Name": "ALDI 80007 80007",
+    "Store_Street_Address": "927 Myers St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23230",
+    "Zip4": "4812",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.563759,
+    "Longitude": -77.469017,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 103160
+   },
+   "geometry": {
+    "x": -77.46901699999998,
+    "y": 37.563759
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1090524,
+    "Store_Name": "The Fresh Market 139",
+    "Store_Street_Address": "10 N Nansemond St",
+    "Additonal_Address": "Ste B",
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "2725",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.557026,
+    "Longitude": -77.486008,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 106706
+   },
+   "geometry": {
+    "x": -77.486008,
+    "y": 37.557026
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1091485,
+    "Store_Name": "Shop & Go",
+    "Store_Street_Address": "1627 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "3901",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.550362,
+    "Longitude": -77.413567,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 107827
+   },
+   "geometry": {
+    "x": -77.41356699999999,
+    "y": 37.550362
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1195495,
+    "Store_Name": "Golden Eagle Market",
+    "Store_Street_Address": "1005 N 2nd St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23219",
+    "Zip4": "1021",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.551003,
+    "Longitude": -77.434074,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 113382
+   },
+   "geometry": {
+    "x": -77.434074,
+    "y": 37.55100299999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1342587,
+    "Store_Name": "Check In Express 1",
+    "Store_Street_Address": "3200 N Arthur Ashe Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23230",
+    "Zip4": "4205",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.575729,
+    "Longitude": -77.463371,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 118046
+   },
+   "geometry": {
+    "x": -77.46337099999998,
+    "y": 37.575729
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1313268,
+    "Store_Name": "Family Dollar 12045",
+    "Store_Street_Address": "1404 E Brookland Park Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "3932",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.569027,
+    "Longitude": -77.416656,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 118167
+   },
+   "geometry": {
+    "x": -77.416656,
+    "y": 37.56902699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1315344,
+    "Store_Name": "A Plus 40012H",
+    "Store_Street_Address": "4810 Forest Hill Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23225",
+    "Zip4": "3144",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.520882,
+    "Longitude": -77.487938,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 121276
+   },
+   "geometry": {
+    "x": -77.48793799999999,
+    "y": 37.520882
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1231734,
+    "Store_Name": "7-eleven 25240a 25240A",
+    "Store_Street_Address": "1 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "1934",
+    "County": "HENRICO",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.584812,
+    "Longitude": -77.435226,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 121391
+   },
+   "geometry": {
+    "x": -77.43522599999999,
+    "y": 37.58481199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1344958,
+    "Store_Name": "Clay St Market Inc",
+    "Store_Street_Address": "501 N 30th St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "7408",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.530678,
+    "Longitude": -77.41246,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 122240
+   },
+   "geometry": {
+    "x": -77.41245999999998,
+    "y": 37.530678
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1525248,
+    "Store_Name": "Virginia Commonwealth University (VCU)",
+    "Store_Street_Address": "912 W Grace St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23284",
+    "Zip4": "9065",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.550514,
+    "Longitude": -77.451706,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 123228
+   },
+   "geometry": {
+    "x": -77.451706,
+    "y": 37.55051400000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1282697,
+    "Store_Name": "Family Dollar 11750",
+    "Store_Street_Address": "2665 Hull St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "3673",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.512386,
+    "Longitude": -77.457642,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 123369
+   },
+   "geometry": {
+    "x": -77.457642,
+    "y": 37.51238599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1202811,
+    "Store_Name": "College Mart 1",
+    "Store_Street_Address": "1501 Chamberlayne Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "5205",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.556606,
+    "Longitude": -77.442139,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 123687
+   },
+   "geometry": {
+    "x": -77.442139,
+    "y": 37.556605999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1200819,
+    "Store_Name": "Sunrise Market Inc",
+    "Store_Street_Address": "1308 N 22nd St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "5128",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.542294,
+    "Longitude": -77.412956,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 123822
+   },
+   "geometry": {
+    "x": -77.41295599999998,
+    "y": 37.542294
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1203485,
+    "Store_Name": "Broadway Market Place",
+    "Store_Street_Address": "312 E Broad St",
+    "Additonal_Address": "Ste 101",
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23219",
+    "Zip4": "1766",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.543804,
+    "Longitude": -77.438789,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 123837
+   },
+   "geometry": {
+    "x": -77.43878899999999,
+    "y": 37.54380399999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1319228,
+    "Store_Name": "Lidl 1199",
+    "Store_Street_Address": "4700 W Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23230",
+    "Zip4": "3208",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.579891,
+    "Longitude": -77.490334,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 125522
+   },
+   "geometry": {
+    "x": -77.490334,
+    "y": 37.579890999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1181019,
+    "Store_Name": "North Avenue Market & Deli 1",
+    "Store_Street_Address": "2301 North Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "4326",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.56361,
+    "Longitude": -77.433174,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 126744
+   },
+   "geometry": {
+    "x": -77.433174,
+    "y": 37.56361
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1375026,
+    "Store_Name": "Harrison Minimart",
+    "Store_Street_Address": "911 N Harrison St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "2225",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.554394,
+    "Longitude": -77.449783,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 128506
+   },
+   "geometry": {
+    "x": -77.449783,
+    "y": 37.554394
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1322267,
+    "Store_Name": "Farm Fresh Richmond",
+    "Store_Street_Address": "2320 E Main St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "7844",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.529789,
+    "Longitude": -77.42247,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 129321
+   },
+   "geometry": {
+    "x": -77.42247000000002,
+    "y": 37.52978900000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1376170,
+    "Store_Name": "Halifax Convenience",
+    "Store_Street_Address": "1115 Richmond Hwy",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "6620",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.504913,
+    "Longitude": -77.446648,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 129862
+   },
+   "geometry": {
+    "x": -77.446648,
+    "y": 37.504912999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1393052,
+    "Store_Name": "Whole Foods Market 10598",
+    "Store_Street_Address": "2024 W Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "2056",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.558079,
+    "Longitude": -77.461349,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 131375
+   },
+   "geometry": {
+    "x": -77.461349,
+    "y": 37.558079000000006
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1527441,
+    "Store_Name": "DollarTree 9192",
+    "Store_Street_Address": "502 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2123",
+    "County": "HENRICO",
+    "Store_Type": "Other",
+    "Latitude": 37.586674,
+    "Longitude": -77.425095,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 131434
+   },
+   "geometry": {
+    "x": -77.42509500000001,
+    "y": 37.586674
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1596835,
+    "Store_Name": "7-Eleven #34547C 34547C",
+    "Store_Street_Address": "221 W Main St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "5627",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.544304,
+    "Longitude": -77.447075,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 131542
+   },
+   "geometry": {
+    "x": -77.447075,
+    "y": 37.544304
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1393255,
+    "Store_Name": "Mechanicsville Seafood",
+    "Store_Street_Address": "3631 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "1329",
+    "County": "HENRICO",
+    "Store_Type": "Specialty Store",
+    "Latitude": 37.575901,
+    "Longitude": -77.396469,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 131830
+   },
+   "geometry": {
+    "x": -77.39646899999998,
+    "y": 37.575900999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1394323,
+    "Store_Name": "Royal Express Inc.",
+    "Store_Street_Address": "201 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2029",
+    "County": "HENRICO",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.584999,
+    "Longitude": -77.430557,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 132712
+   },
+   "geometry": {
+    "x": -77.430557,
+    "y": 37.584998999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1048053,
+    "Store_Name": "Goldies",
+    "Store_Street_Address": "3338 N Boulevard",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23230",
+    "Zip4": "4207",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.577728,
+    "Longitude": -77.461906,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 135204
+   },
+   "geometry": {
+    "x": -77.461906,
+    "y": 37.577728
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 989789,
+    "Store_Name": "Wawa 8615",
+    "Store_Street_Address": "11052 W Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "    ",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.554008,
+    "Longitude": -77.455994,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 136767
+   },
+   "geometry": {
+    "x": -77.455994,
+    "y": 37.554008
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1338145,
+    "Store_Name": "7-Eleven 22719K",
+    "Store_Street_Address": "3600 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "1330",
+    "County": "HENRICO",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.574627,
+    "Longitude": -77.398239,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 143709
+   },
+   "geometry": {
+    "x": -77.398239,
+    "y": 37.574626999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1262998,
+    "Store_Name": "7-eleven 25203B",
+    "Store_Street_Address": "2910 Patterson Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "1711",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.559956,
+    "Longitude": -77.473351,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 146510
+   },
+   "geometry": {
+    "x": -77.473351,
+    "y": 37.55995600000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1427704,
+    "Store_Name": "Publix North Carolina LP 1588",
+    "Store_Street_Address": "3535 Ellwood Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "2722",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.556969,
+    "Longitude": -77.488075,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 148288
+   },
+   "geometry": {
+    "x": -77.488075,
+    "y": 37.55696899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1364626,
+    "Store_Name": "True Seeds Llc / River City Market",
+    "Store_Street_Address": "16 W Brookland Park Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2632",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.571564,
+    "Longitude": -77.43338,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 148667
+   },
+   "geometry": {
+    "x": -77.43337999999999,
+    "y": 37.571564
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1352810,
+    "Store_Name": "Church Hill North Market Llc",
+    "Store_Street_Address": "1330 N 25th St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "5243",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.54081,
+    "Longitude": -77.410179,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 149740
+   },
+   "geometry": {
+    "x": -77.410179,
+    "y": 37.54080999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1461943,
+    "Store_Name": "Cool Mart 1",
+    "Store_Street_Address": "5011 Government Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23231",
+    "Zip4": "1518",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.515011,
+    "Longitude": -77.39489,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 150340
+   },
+   "geometry": {
+    "x": -77.39489,
+    "y": 37.515011
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1355614,
+    "Store_Name": "Davis Market",
+    "Store_Street_Address": "301 W Grace St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "4907",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.546413,
+    "Longitude": -77.445564,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 151903
+   },
+   "geometry": {
+    "x": -77.445564,
+    "y": 37.546412999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1381210,
+    "Store_Name": "7-eleven 40034a 40034A",
+    "Store_Street_Address": "2206 W Main St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "4433",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.550274,
+    "Longitude": -77.468765,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 152182
+   },
+   "geometry": {
+    "x": -77.46876500000002,
+    "y": 37.550273999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1381715,
+    "Store_Name": "Commerce Market N Deli",
+    "Store_Street_Address": "1641 Commerce Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "7501",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.503353,
+    "Longitude": -77.430664,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 152346
+   },
+   "geometry": {
+    "x": -77.430664,
+    "y": 37.503353000000004
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1430993,
+    "Store_Name": "7-eleven 35882b 35882B",
+    "Store_Street_Address": "1001 East Main St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23219",
+    "Zip4": "3547",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.537476,
+    "Longitude": -77.435349,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 154032
+   },
+   "geometry": {
+    "x": -77.435349,
+    "y": 37.537476
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1357856,
+    "Store_Name": "Family Dollar 12344",
+    "Store_Street_Address": "624 W Southside Plz",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "    ",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Other",
+    "Latitude": 37.501205,
+    "Longitude": -77.477943,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 154222
+   },
+   "geometry": {
+    "x": -77.477943,
+    "y": 37.501205
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1574518,
+    "Store_Name": "Oh Seafood",
+    "Store_Street_Address": "8 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "1935",
+    "County": "HENRICO",
+    "Store_Type": "Specialty Store",
+    "Latitude": 37.585625,
+    "Longitude": -77.434547,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 154315
+   },
+   "geometry": {
+    "x": -77.434547,
+    "y": 37.585625
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1357209,
+    "Store_Name": "Fast Mart & Deli 1",
+    "Store_Street_Address": "2003 Williamsburg Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23231",
+    "Zip4": "3431",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.516506,
+    "Longitude": -77.390045,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 154375
+   },
+   "geometry": {
+    "x": -77.390045,
+    "y": 37.516505999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1357230,
+    "Store_Name": "Saifi Express Llc",
+    "Store_Street_Address": "625 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2206",
+    "County": "HENRICO",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.585449,
+    "Longitude": -77.421249,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 154395
+   },
+   "geometry": {
+    "x": -77.421249,
+    "y": 37.585448999999976
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1569789,
+    "Store_Name": "Save A Lot",
+    "Store_Street_Address": "441 E Belt Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "1703",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.504784,
+    "Longitude": -77.473679,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 154648
+   },
+   "geometry": {
+    "x": -77.47367900000002,
+    "y": 37.504784000000015
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1338131,
+    "Store_Name": "Wawa 8648",
+    "Store_Street_Address": "3100 N Boulevard",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23230",
+    "Zip4": "4204",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.574471,
+    "Longitude": -77.46373,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 156368
+   },
+   "geometry": {
+    "x": -77.46373,
+    "y": 37.574470999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1660565,
+    "Store_Name": "7-eleven 20728B",
+    "Store_Street_Address": "1101 W Main St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "4809",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.545673,
+    "Longitude": -77.455605,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 157552
+   },
+   "geometry": {
+    "x": -77.455605,
+    "y": 37.545672999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1452659,
+    "Store_Name": "Bp Food Store",
+    "Store_Street_Address": "2931 Chamberlayne Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "3505",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.571789,
+    "Longitude": -77.444664,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 159368
+   },
+   "geometry": {
+    "x": -77.44466400000002,
+    "y": 37.571788999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1455187,
+    "Store_Name": "Birdhouse Farmers Market",
+    "Store_Street_Address": "1507 Grayland Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "    ",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.544041,
+    "Longitude": -77.4617,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 163198
+   },
+   "geometry": {
+    "x": -77.46170000000001,
+    "y": 37.54404100000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1514187,
+    "Store_Name": "Carolina Express",
+    "Store_Street_Address": "3100 Carolina Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "3206",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.57354,
+    "Longitude": -77.420258,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 165002
+   },
+   "geometry": {
+    "x": -77.420258,
+    "y": 37.573539999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1657972,
+    "Store_Name": "K H M  Convenience Store",
+    "Store_Street_Address": "507A East Main St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23219",
+    "Zip4": "2407",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.539978,
+    "Longitude": -77.439644,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 167415
+   },
+   "geometry": {
+    "x": -77.439644,
+    "y": 37.539978
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1490716,
+    "Store_Name": "John's Mart",
+    "Store_Street_Address": "4419 W Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23230",
+    "Zip4": "3201",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.576317,
+    "Longitude": -77.487892,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 167704
+   },
+   "geometry": {
+    "x": -77.487892,
+    "y": 37.576316999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1498882,
+    "Store_Name": "The Northside Foodshed",
+    "Store_Street_Address": "2901 Woodrow Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "    ",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.569527,
+    "Longitude": -77.429146,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 170486
+   },
+   "geometry": {
+    "x": -77.429146,
+    "y": 37.569526999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1499519,
+    "Store_Name": "Red Mini Mart",
+    "Store_Street_Address": "3729 E Broad Rock Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "3427",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.501591,
+    "Longitude": -77.467308,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 170805
+   },
+   "geometry": {
+    "x": -77.467308,
+    "y": 37.50159099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1518002,
+    "Store_Name": "Sureway Mart 1",
+    "Store_Street_Address": "1317 Hull St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "3920",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.520309,
+    "Longitude": -77.445656,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 171102
+   },
+   "geometry": {
+    "x": -77.445656,
+    "y": 37.520309
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1551765,
+    "Store_Name": "The Yellow Store",
+    "Store_Street_Address": "3159 Midlothian Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "1957",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.511852,
+    "Longitude": -77.466812,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 171706
+   },
+   "geometry": {
+    "x": -77.466812,
+    "y": 37.51185199999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1599254,
+    "Store_Name": "Main Street Market",
+    "Store_Street_Address": "1802 E Main St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "6962",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.532921,
+    "Longitude": -77.427338,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 175728
+   },
+   "geometry": {
+    "x": -77.427338,
+    "y": 37.532921
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1604141,
+    "Store_Name": "Royal Farms 470",
+    "Store_Street_Address": "2401 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "2327",
+    "County": "HENRICO",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.558907,
+    "Longitude": -77.407532,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 175739
+   },
+   "geometry": {
+    "x": -77.407532,
+    "y": 37.558906999999984
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1496344,
+    "Store_Name": "Northside Farmers Market",
+    "Store_Street_Address": "201 E Brookland Park Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2722",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.570881,
+    "Longitude": -77.429878,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 178412
+   },
+   "geometry": {
+    "x": -77.42987799999999,
+    "y": 37.570881
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1503076,
+    "Store_Name": "Carytown Farmers Market",
+    "Store_Street_Address": "3201 Maplewood Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "3435",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.549366,
+    "Longitude": -77.487114,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 178562
+   },
+   "geometry": {
+    "x": -77.487114,
+    "y": 37.549366000000006
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1677373,
+    "Store_Name": "Sea And Sea Fish Market",
+    "Store_Street_Address": "111 E Belt Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "1203",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Specialty Store",
+    "Latitude": 37.507492,
+    "Longitude": -77.484764,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 179950
+   },
+   "geometry": {
+    "x": -77.48476399999998,
+    "y": 37.50749199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1573607,
+    "Store_Name": "Royal Convenience Store",
+    "Store_Street_Address": "2800 Nine Mile Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "5356",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.541348,
+    "Longitude": -77.405022,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 181001
+   },
+   "geometry": {
+    "x": -77.405022,
+    "y": 37.541347999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1538890,
+    "Store_Name": "Sims Seafood",
+    "Store_Street_Address": "3916 Hull Street Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "1714",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Specialty Store",
+    "Latitude": 37.503693,
+    "Longitude": -77.473846,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 181081
+   },
+   "geometry": {
+    "x": -77.473846,
+    "y": 37.503693
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1509057,
+    "Store_Name": "Mini Mart 1",
+    "Store_Street_Address": "7 N 8th St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23219",
+    "Zip4": "3318",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.538967,
+    "Longitude": -77.436363,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 182756
+   },
+   "geometry": {
+    "x": -77.436363,
+    "y": 37.538966999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1548234,
+    "Store_Name": "Cary St Mini Mart",
+    "Store_Street_Address": "1317 W Cary St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "5428",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.545071,
+    "Longitude": -77.458572,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 186948
+   },
+   "geometry": {
+    "x": -77.458572,
+    "y": 37.54507099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1542675,
+    "Store_Name": "Best Food Mart",
+    "Store_Street_Address": "4209 North Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "1141",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.586876,
+    "Longitude": -77.442169,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 191973
+   },
+   "geometry": {
+    "x": -77.442169,
+    "y": 37.58687599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1528699,
+    "Store_Name": "Oaxaca Llc",
+    "Store_Street_Address": "610 N Sheppard St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "1712",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.560707,
+    "Longitude": -77.47435,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 192536
+   },
+   "geometry": {
+    "x": -77.47435,
+    "y": 37.560707
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1220503,
+    "Store_Name": "Superfresh",
+    "Store_Street_Address": "640 W Southside Plaza St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "1721",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.501087,
+    "Longitude": -77.477798,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 194133
+   },
+   "geometry": {
+    "x": -77.477798,
+    "y": 37.501087
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1665766,
+    "Store_Name": "SMS Market",
+    "Store_Street_Address": "1008 Oakwood Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "7744",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.533222,
+    "Longitude": -77.404854,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 198763
+   },
+   "geometry": {
+    "x": -77.404854,
+    "y": 37.533222
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 548398,
+    "Store_Name": "Kings Supermarket",
+    "Store_Street_Address": "2102 Keswick Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "7420",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.50462,
+    "Longitude": -77.440247,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 199241
+   },
+   "geometry": {
+    "x": -77.440247,
+    "y": 37.50462
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1130900,
+    "Store_Name": "360 Convenience Store",
+    "Store_Street_Address": "3075 Hull St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "3573",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.5089,
+    "Longitude": -77.463036,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 199965
+   },
+   "geometry": {
+    "x": -77.463036,
+    "y": 37.50889999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 834216,
+    "Store_Name": "7-Eleven Inc F 26245",
+    "Store_Street_Address": "3301 W Cary St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "3403",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.553955,
+    "Longitude": -77.482964,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 200161
+   },
+   "geometry": {
+    "x": -77.482964,
+    "y": 37.55395500000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1307555,
+    "Store_Name": "7-eleven 24395b 24395B",
+    "Store_Street_Address": "4601 W Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23230",
+    "Zip4": "3205",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.578072,
+    "Longitude": -77.489258,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 200680
+   },
+   "geometry": {
+    "x": -77.489258,
+    "y": 37.578071999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1064414,
+    "Store_Name": "7-Eleven Inc F 26834A",
+    "Store_Street_Address": "1301 Jefferson Davis Hwy",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "7201",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.502975,
+    "Longitude": -77.446724,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 201086
+   },
+   "geometry": {
+    "x": -77.446724,
+    "y": 37.502975
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1566407,
+    "Store_Name": "Ellwood Thompson's Local Market",
+    "Store_Street_Address": "4 N Thompson St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "2718",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.557617,
+    "Longitude": -77.488495,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 201400
+   },
+   "geometry": {
+    "x": -77.48849499999999,
+    "y": 37.55761699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1158294,
+    "Store_Name": "Queens Mart & Deli",
+    "Store_Street_Address": "2717 Byron St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "1313",
+    "County": "HENRICO",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.572533,
+    "Longitude": -77.392456,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 203106
+   },
+   "geometry": {
+    "x": -77.392456,
+    "y": 37.572532999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1208287,
+    "Store_Name": "Market Place  14",
+    "Store_Street_Address": "1235 Mosby St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "4311",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.543999,
+    "Longitude": -77.417046,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 204694
+   },
+   "geometry": {
+    "x": -77.417046,
+    "y": 37.54399899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1082756,
+    "Store_Name": "Meadowbridge Bp",
+    "Store_Street_Address": "607 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2206",
+    "County": "HENRICO",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.585533,
+    "Longitude": -77.422806,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 205302
+   },
+   "geometry": {
+    "x": -77.42280599999998,
+    "y": 37.58553299999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1260366,
+    "Store_Name": "Racetrack Market Place",
+    "Store_Street_Address": "3815 Meadowbridge Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2126",
+    "County": "HENRICO",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.584568,
+    "Longitude": -77.423599,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 207248
+   },
+   "geometry": {
+    "x": -77.42359899999998,
+    "y": 37.58456799999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1531195,
+    "Store_Name": "Belt Boulevard BP",
+    "Store_Street_Address": "1 Westover Hills Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23225",
+    "Zip4": "6359",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.50959,
+    "Longitude": -77.486649,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 207735
+   },
+   "geometry": {
+    "x": -77.486649,
+    "y": 37.50959000000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1180965,
+    "Store_Name": "King's Food Market",
+    "Store_Street_Address": "4 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "1935",
+    "County": "HENRICO",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.585068,
+    "Longitude": -77.434563,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 208722
+   },
+   "geometry": {
+    "x": -77.434563,
+    "y": 37.585068
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1531441,
+    "Store_Name": "Goldys",
+    "Store_Street_Address": "4024 W Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23230",
+    "Zip4": "3916",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.573574,
+    "Longitude": -77.48304,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 208784
+   },
+   "geometry": {
+    "x": -77.48304,
+    "y": 37.573574
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1152062,
+    "Store_Name": "Tiger Mart",
+    "Store_Street_Address": "200 W Hill St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "2420",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.554466,
+    "Longitude": -77.436768,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 210524
+   },
+   "geometry": {
+    "x": -77.436768,
+    "y": 37.554466000000005
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1063155,
+    "Store_Name": "Exxon Foodmart",
+    "Store_Street_Address": "2607 Chamberlayne Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "3501",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.567265,
+    "Longitude": -77.444336,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 212256
+   },
+   "geometry": {
+    "x": -77.44433599999999,
+    "y": 37.56726499999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 818171,
+    "Store_Name": "The Market Place",
+    "Store_Street_Address": "2605 Hull St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "3673",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.513042,
+    "Longitude": -77.457001,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 212576
+   },
+   "geometry": {
+    "x": -77.45700099999999,
+    "y": 37.51304199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 871294,
+    "Store_Name": "Quick Trip",
+    "Store_Street_Address": "510 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2123",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.585747,
+    "Longitude": -77.424721,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 212716
+   },
+   "geometry": {
+    "x": -77.424721,
+    "y": 37.58574699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 832629,
+    "Store_Name": "The Park Express Convenience",
+    "Store_Street_Address": "1401 E Brookland Park Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "3931",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.569103,
+    "Longitude": -77.416946,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 215107
+   },
+   "geometry": {
+    "x": -77.416946,
+    "y": 37.569103000000005
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1186905,
+    "Store_Name": "7-Eleven Store 30480A",
+    "Store_Street_Address": "3600 W Cary St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23221",
+    "Zip4": "2730",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.556389,
+    "Longitude": -77.489037,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 217184
+   },
+   "geometry": {
+    "x": -77.489037,
+    "y": 37.556389
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 825935,
+    "Store_Name": "Quik Stop",
+    "Store_Street_Address": "4012 Government Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "8130",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.524158,
+    "Longitude": -77.404121,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 219112
+   },
+   "geometry": {
+    "x": -77.404121,
+    "y": 37.524158
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1059598,
+    "Store_Name": "25th Street Market",
+    "Store_Street_Address": "1009 N 25th St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "5261",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.537899,
+    "Longitude": -77.412506,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 221756
+   },
+   "geometry": {
+    "x": -77.412506,
+    "y": 37.537898999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1565413,
+    "Store_Name": "Tortilleria La Patrona 1",
+    "Store_Street_Address": "1017 Richmond Hwy",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "6618",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Grocery Store",
+    "Latitude": 37.50592,
+    "Longitude": -77.4468,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 222546
+   },
+   "geometry": {
+    "x": -77.4468,
+    "y": 37.50592
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1700728,
+    "Store_Name": "Yazan Convenient Mart Llc",
+    "Store_Street_Address": "823 N 24th St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "6409",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.537243,
+    "Longitude": -77.414696,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 222908
+   },
+   "geometry": {
+    "x": -77.414696,
+    "y": 37.537243000000004
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1561685,
+    "Store_Name": "250 Breeze Food Mart",
+    "Store_Street_Address": "3217 W Broad St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23230",
+    "Zip4": "5001",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.5662,
+    "Longitude": -77.475517,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 223260
+   },
+   "geometry": {
+    "x": -77.475517,
+    "y": 37.56620000000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1673067,
+    "Store_Name": "KROGER 511",
+    "Store_Street_Address": "901 N Lombardy St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "2201",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Super Store",
+    "Latitude": 37.555664,
+    "Longitude": -77.453957,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 224370
+   },
+   "geometry": {
+    "x": -77.453957,
+    "y": 37.55566399999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1569844,
+    "Store_Name": "Save A Lot",
+    "Store_Street_Address": "3808 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "1114",
+    "County": "HENRICO",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.57938,
+    "Longitude": -77.39595,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 224542
+   },
+   "geometry": {
+    "x": -77.39595,
+    "y": 37.57938
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1695423,
+    "Store_Name": "Ocean World Seafood Market",
+    "Store_Street_Address": "4814 Government Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23231",
+    "Zip4": "1515",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Specialty Store",
+    "Latitude": 37.516953,
+    "Longitude": -77.395203,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 225339
+   },
+   "geometry": {
+    "x": -77.39520299999998,
+    "y": 37.516953
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1586615,
+    "Store_Name": "7-eleven 23360B",
+    "Store_Street_Address": "122 S Belvidere St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "5511",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.543411,
+    "Longitude": -77.449615,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 226230
+   },
+   "geometry": {
+    "x": -77.44961499999998,
+    "y": 37.54341099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1606944,
+    "Store_Name": "New Grand Mart Mechanicsville",
+    "Store_Street_Address": "1915 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "3900",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Supermarket",
+    "Latitude": 37.552959,
+    "Longitude": -77.41095,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 228019
+   },
+   "geometry": {
+    "x": -77.41094999999999,
+    "y": 37.552958999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1606172,
+    "Store_Name": "Hull St Market",
+    "Store_Street_Address": "1125 Hull St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "4059",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.521313,
+    "Longitude": -77.444046,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 228938
+   },
+   "geometry": {
+    "x": -77.44404599999999,
+    "y": 37.52131299999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1474304,
+    "Store_Name": "7-eleven 18700c 18700C",
+    "Store_Street_Address": "1003 W Grace St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23220",
+    "Zip4": "3610",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.550831,
+    "Longitude": -77.453583,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 231446
+   },
+   "geometry": {
+    "x": -77.45358299999998,
+    "y": 37.550830999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1573025,
+    "Store_Name": "Six Point Express Mart",
+    "Store_Street_Address": "2933 2nd Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "3910",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.569534,
+    "Longitude": -77.418221,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 231864
+   },
+   "geometry": {
+    "x": -77.418221,
+    "y": 37.56953399999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1613197,
+    "Store_Name": "Chamberlayne MCD #1576",
+    "Store_Street_Address": "2011 Chamberlayne Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "4813",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Restaurant Meals Program",
+    "Latitude": 37.562111,
+    "Longitude": -77.442627,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 233432
+   },
+   "geometry": {
+    "x": -77.442627,
+    "y": 37.562110999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1613186,
+    "Store_Name": "Mechanicsville MCD #22790",
+    "Store_Street_Address": "2310 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "2326",
+    "County": "HENRICO",
+    "Store_Type": "Restaurant Meals Program",
+    "Latitude": 37.558586,
+    "Longitude": -77.408829,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 233455
+   },
+   "geometry": {
+    "x": -77.408829,
+    "y": 37.558586
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1611889,
+    "Store_Name": "KFC G135165",
+    "Store_Street_Address": "3800 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "1114",
+    "County": "HENRICO",
+    "Store_Type": "Restaurant Meals Program",
+    "Latitude": 37.577961,
+    "Longitude": -77.396004,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 233472
+   },
+   "geometry": {
+    "x": -77.396004,
+    "y": 37.577961
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1613262,
+    "Store_Name": "Labernum MCD #19030",
+    "Store_Street_Address": "607 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2206",
+    "County": "HENRICO",
+    "Store_Type": "Restaurant Meals Program",
+    "Latitude": 37.585232,
+    "Longitude": -77.423042,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 233917
+   },
+   "geometry": {
+    "x": -77.42304199999998,
+    "y": 37.58523199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1624446,
+    "Store_Name": "RVA Black Farmers Market",
+    "Store_Street_Address": "1311 Westwood Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23227",
+    "Zip4": "4625",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.577782,
+    "Longitude": -77.452606,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 235188
+   },
+   "geometry": {
+    "x": -77.452606,
+    "y": 37.57778199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1623561,
+    "Store_Name": "Garden of Eden BLK",
+    "Store_Street_Address": "1100 N 21st St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "5116",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.540867,
+    "Longitude": -77.415817,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 235241
+   },
+   "geometry": {
+    "x": -77.415817,
+    "y": 37.540867
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1661373,
+    "Store_Name": "Market Place",
+    "Store_Street_Address": "101 E Brookland Park Blvd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2711",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.571293,
+    "Longitude": -77.431145,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 235295
+   },
+   "geometry": {
+    "x": -77.43114499999999,
+    "y": 37.571293
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1595929,
+    "Store_Name": "Stuart's Fresh Catch",
+    "Store_Street_Address": "2400 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "2328",
+    "County": "HENRICO",
+    "Store_Type": "Specialty Store",
+    "Latitude": 37.559078,
+    "Longitude": -77.408501,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 235622
+   },
+   "geometry": {
+    "x": -77.408501,
+    "y": 37.55907800000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1649414,
+    "Store_Name": "Richmond Food Justice Alliance ",
+    "Store_Street_Address": "2100 1/2 Redd St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "4210",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 37.546093,
+    "Longitude": -77.418358,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 237988
+   },
+   "geometry": {
+    "x": -77.418358,
+    "y": 37.54609299999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1640230,
+    "Store_Name": "Bp Subway",
+    "Store_Street_Address": "3606 Nine Mile Rd",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "4812",
+    "County": "HENRICO",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.544117,
+    "Longitude": -77.38913,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 238075
+   },
+   "geometry": {
+    "x": -77.38913,
+    "y": 37.54411699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1643195,
+    "Store_Name": "Freedom Food Mart 13",
+    "Store_Street_Address": "2308 Chamberlayne Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "4204",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.564541,
+    "Longitude": -77.444496,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 238950
+   },
+   "geometry": {
+    "x": -77.444496,
+    "y": 37.564541
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 758750,
+    "Store_Name": "301 Express",
+    "Store_Street_Address": "2012 Maury St",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23224",
+    "Zip4": "3752",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.51268,
+    "Longitude": -77.447601,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 242232
+   },
+   "geometry": {
+    "x": -77.44760100000002,
+    "y": 37.51268
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1492500,
+    "Store_Name": "K & K Food Mart",
+    "Store_Street_Address": "1400 Mechanicsville Tpke",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23223",
+    "Zip4": "4308",
+    "County": "RICHMOND CITY",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.545521,
+    "Longitude": -77.416855,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 243551
+   },
+   "geometry": {
+    "x": -77.416855,
+    "y": 37.545521
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1687199,
+    "Store_Name": "Noure's Mart & Deli",
+    "Store_Street_Address": "401 E Laburnum Ave",
+    "Additonal_Address": null,
+    "City": "Richmond",
+    "State": "VA",
+    "Zip_Code": "23222",
+    "Zip4": "2120",
+    "County": "HENRICO",
+    "Store_Type": "Convenience Store",
+    "Latitude": 37.585197,
+    "Longitude": -77.428391,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 247603
+   },
+   "geometry": {
+    "x": -77.428391,
+    "y": 37.58519699999999
+   }
+  }
+ ]
+}

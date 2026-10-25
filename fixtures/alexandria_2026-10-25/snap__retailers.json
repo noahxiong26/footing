@@ -1,0 +1,2793 @@
+{
+ "objectIdFieldName": "ObjectId",
+ "uniqueIdField": {
+  "name": "ObjectId",
+  "isSystemMaintained": true
+ },
+ "globalIdFieldName": "",
+ "geometryType": "esriGeometryPoint",
+ "spatialReference": {
+  "wkid": 4326,
+  "latestWkid": 4326
+ },
+ "fields": [
+  {
+   "name": "Record_ID",
+   "type": "esriFieldTypeInteger",
+   "alias": "Record ID",
+   "sqlType": "sqlTypeInteger",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Name",
+   "type": "esriFieldTypeString",
+   "alias": "Store Name",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Street_Address",
+   "type": "esriFieldTypeString",
+   "alias": "Store Street Address",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Additonal_Address",
+   "type": "esriFieldTypeString",
+   "alias": "Additonal Address",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "City",
+   "type": "esriFieldTypeString",
+   "alias": "City",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "State",
+   "type": "esriFieldTypeString",
+   "alias": "State",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Zip_Code",
+   "type": "esriFieldTypeString",
+   "alias": "Zip Code",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Zip4",
+   "type": "esriFieldTypeString",
+   "alias": "Zip4",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "County",
+   "type": "esriFieldTypeString",
+   "alias": "County",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Store_Type",
+   "type": "esriFieldTypeString",
+   "alias": "Store Type",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Latitude",
+   "type": "esriFieldTypeDouble",
+   "alias": "Latitude",
+   "sqlType": "sqlTypeFloat",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Longitude",
+   "type": "esriFieldTypeDouble",
+   "alias": "Longitude",
+   "sqlType": "sqlTypeFloat",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Incentive_Program",
+   "type": "esriFieldTypeString",
+   "alias": "Incentive Program",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "Grantee_Name",
+   "type": "esriFieldTypeString",
+   "alias": "Grantee Name",
+   "sqlType": "sqlTypeNVarchar",
+   "length": 4000,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "ObjectId",
+   "type": "esriFieldTypeOID",
+   "alias": "ObjectId",
+   "sqlType": "sqlTypeInteger",
+   "domain": null,
+   "defaultValue": null
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "Record_ID": 332958,
+    "Store_Name": "GIANT FOOD 760",
+    "Store_Street_Address": "6800 Richmond Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22306",
+    "Zip4": "1704",
+    "County": "FAIRFAX",
+    "Store_Type": "Super Store",
+    "Latitude": 38.770763,
+    "Longitude": -77.083633,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 9758
+   },
+   "geometry": {
+    "x": -77.083633,
+    "y": 38.770762999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 355855,
+    "Store_Name": "Bolling JBA Commissary 2506",
+    "Store_Street_Address": "185 Chappie James Blvd SW",
+    "Additonal_Address": null,
+    "City": "Bolling AFB",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "7717",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.842285,
+    "Longitude": -77.016418,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 10808
+   },
+   "geometry": {
+    "x": -77.016418,
+    "y": 38.842285000000004
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 321297,
+    "Store_Name": "Walgreens 18330",
+    "Store_Street_Address": "3614 King St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22302",
+    "Zip4": "1908",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Other",
+    "Latitude": 38.828869,
+    "Longitude": -77.090401,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 15760
+   },
+   "geometry": {
+    "x": -77.09040100000001,
+    "y": 38.828869
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 404214,
+    "Store_Name": "Giant Food 2742",
+    "Store_Street_Address": "621 E Glebe Rd",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "3045",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Super Store",
+    "Latitude": 38.832325,
+    "Longitude": -77.050766,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 18355
+   },
+   "geometry": {
+    "x": -77.050766,
+    "y": 38.832325
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 541620,
+    "Store_Name": "SAFEWAY  866",
+    "Store_Street_Address": "500 S Royal St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "4140",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.799522,
+    "Longitude": -77.044678,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 20912
+   },
+   "geometry": {
+    "x": -77.044678,
+    "y": 38.79952199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 406735,
+    "Store_Name": "CVS PHARMACY 1410",
+    "Store_Street_Address": "415 E Monroe Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22301",
+    "Zip4": "1624",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Other",
+    "Latitude": 38.820831,
+    "Longitude": -77.054688,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 22111
+   },
+   "geometry": {
+    "x": -77.05468799999998,
+    "y": 38.82083099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 411609,
+    "Store_Name": "CVS PHARMACY 1373",
+    "Store_Street_Address": "433 S Washington St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "3629",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Other",
+    "Latitude": 38.800667,
+    "Longitude": -77.047943,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 23370
+   },
+   "geometry": {
+    "x": -77.047943,
+    "y": 38.80066699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 521672,
+    "Store_Name": "CVS PHARMACY 1394",
+    "Store_Street_Address": "1636 Belle View Blvd",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22307",
+    "Zip4": "6531",
+    "County": "FAIRFAX",
+    "Store_Type": "Other",
+    "Latitude": 38.776234,
+    "Longitude": -77.061043,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 24105
+   },
+   "geometry": {
+    "x": -77.06104300000001,
+    "y": 38.776233999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 523176,
+    "Store_Name": "CVS PHARMACY 1382",
+    "Store_Street_Address": "1521 N Quaker Ln",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22302",
+    "Zip4": "2614",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Other",
+    "Latitude": 38.829342,
+    "Longitude": -77.08548,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 24493
+   },
+   "geometry": {
+    "x": -77.08548,
+    "y": 38.82934199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 425115,
+    "Store_Name": "GIANT FOOD 261",
+    "Store_Street_Address": "3131 Duke St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "4518",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Super Store",
+    "Latitude": 38.807869,
+    "Longitude": -77.084366,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 29062
+   },
+   "geometry": {
+    "x": -77.08436599999999,
+    "y": 38.807869
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 689524,
+    "Store_Name": "Trader Joe's 647",
+    "Store_Street_Address": "612 N Saint Asaph St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "1910",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.811028,
+    "Longitude": -77.044548,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 29680
+   },
+   "geometry": {
+    "x": -77.044548,
+    "y": 38.81102800000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 464191,
+    "Store_Name": "CVS PHARMACY 2149",
+    "Store_Street_Address": "501 King St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "3103",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Other",
+    "Latitude": 38.804829,
+    "Longitude": -77.044891,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 30789
+   },
+   "geometry": {
+    "x": -77.044891,
+    "y": 38.804829
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 496031,
+    "Store_Name": "GIANT FOOD 748",
+    "Store_Street_Address": "2901-11 S Glebe Rd",
+    "Additonal_Address": null,
+    "City": "Arlington",
+    "State": "VA",
+    "Zip_Code": "22206",
+    "Zip4": "2710",
+    "County": "ARLINGTON",
+    "Store_Type": "Super Store",
+    "Latitude": 38.845692,
+    "Longitude": -77.068741,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 33754
+   },
+   "geometry": {
+    "x": -77.068741,
+    "y": 38.845692
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 844439,
+    "Store_Name": "Mellon Convenience Store",
+    "Store_Street_Address": "2921 Martin Luther King Jr Ave SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "2563",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.845291,
+    "Longitude": -76.997292,
+    "Incentive_Program": null,
+    "Grantee_Name": "DC Central Kitchen Inc",
+    "ObjectId": 39319
+   },
+   "geometry": {
+    "x": -76.997292,
+    "y": 38.845291
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 615848,
+    "Store_Name": "GIANT FOOD 341",
+    "Store_Street_Address": "20 Audrey Ln",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "1301",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Super Store",
+    "Latitude": 38.817181,
+    "Longitude": -77.002281,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 40890
+   },
+   "geometry": {
+    "x": -77.00228100000001,
+    "y": 38.81718099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 583378,
+    "Store_Name": "Safeway 1019",
+    "Store_Street_Address": "1624 Belle View Blvd",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22307",
+    "Zip4": "6531",
+    "County": "FAIRFAX",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.776211,
+    "Longitude": -77.060532,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 42570
+   },
+   "geometry": {
+    "x": -77.060532,
+    "y": 38.776211
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 767405,
+    "Store_Name": "MOM's Organic Market 3",
+    "Store_Street_Address": "3831 Mount Vernon Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "2410",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Super Store",
+    "Latitude": 38.84079,
+    "Longitude": -77.062607,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 44663
+   },
+   "geometry": {
+    "x": -77.062607,
+    "y": 38.84078999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 808615,
+    "Store_Name": "ALDI 78053 78053",
+    "Store_Street_Address": "6301 Livingston Rd",
+    "Additonal_Address": "Ste B",
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "3090",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.803288,
+    "Longitude": -76.98967,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 47175
+   },
+   "geometry": {
+    "x": -76.98967,
+    "y": 38.803287999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 776137,
+    "Store_Name": "Whole Foods Market 10185",
+    "Store_Street_Address": "1700 Duke St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "6103",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Super Store",
+    "Latitude": 38.804272,
+    "Longitude": -77.059685,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 51917
+   },
+   "geometry": {
+    "x": -77.059685,
+    "y": 38.80427199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 878011,
+    "Store_Name": "Walgreens 10616",
+    "Store_Street_Address": "6717 Richmond Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22306",
+    "Zip4": "6704",
+    "County": "FAIRFAX",
+    "Store_Type": "Other",
+    "Latitude": 38.771545,
+    "Longitude": -77.081268,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 56354
+   },
+   "geometry": {
+    "x": -77.08126800000001,
+    "y": 38.771545
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1003224,
+    "Store_Name": "CVS 2777",
+    "Store_Street_Address": "162 Fleet St",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "1575",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Other",
+    "Latitude": 38.783821,
+    "Longitude": -77.014801,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 58554
+   },
+   "geometry": {
+    "x": -77.014801,
+    "y": 38.783820999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 832529,
+    "Store_Name": "Harris Teeter 235",
+    "Store_Street_Address": "4250 Campbell Ave",
+    "Additonal_Address": null,
+    "City": "Arlington",
+    "State": "VA",
+    "Zip_Code": "22206",
+    "Zip4": "3426",
+    "County": "ARLINGTON",
+    "Store_Type": "Super Store",
+    "Latitude": 38.841557,
+    "Longitude": -77.09021,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 61065
+   },
+   "geometry": {
+    "x": -77.09021,
+    "y": 38.841556999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 856837,
+    "Store_Name": "DollarTree 3651",
+    "Store_Street_Address": "5209 Indian Head Hwy",
+    "Additonal_Address": "A",
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "    ",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Other",
+    "Latitude": 38.817703,
+    "Longitude": -77.003571,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 66497
+   },
+   "geometry": {
+    "x": -77.003571,
+    "y": 38.817702999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1293674,
+    "Store_Name": "CVS Pharmacy 10876",
+    "Store_Street_Address": "1680 Duke St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "3474",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Other",
+    "Latitude": 38.804207,
+    "Longitude": -77.059296,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 77635
+   },
+   "geometry": {
+    "x": -77.05929599999999,
+    "y": 38.804207
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1040927,
+    "Store_Name": "Wheeler Market",
+    "Store_Street_Address": "4133 Wheeler Rd SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "4346",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.833565,
+    "Longitude": -76.990219,
+    "Incentive_Program": null,
+    "Grantee_Name": "DC Central Kitchen Inc",
+    "ObjectId": 78142
+   },
+   "geometry": {
+    "x": -76.990219,
+    "y": 38.83356499999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1207057,
+    "Store_Name": "7-Eleven 37144K",
+    "Store_Street_Address": "6138 N Kings Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22303",
+    "Zip4": "2441",
+    "County": "FAIRFAX",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.783642,
+    "Longitude": -77.078728,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 79584
+   },
+   "geometry": {
+    "x": -77.078728,
+    "y": 38.783642
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 907742,
+    "Store_Name": "CVS Pharmacy 2239",
+    "Store_Street_Address": "8201 Oxon Hill Rd",
+    "Additonal_Address": null,
+    "City": "Fort Washington",
+    "State": "MD",
+    "Zip_Code": "20744",
+    "Zip4": "4718",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Other",
+    "Latitude": 38.777027,
+    "Longitude": -77.006699,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 79853
+   },
+   "geometry": {
+    "x": -77.006699,
+    "y": 38.777027000000004
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1441221,
+    "Store_Name": "Elmira Market",
+    "Store_Street_Address": "4401 S Capitol St SW",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "2107",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.825893,
+    "Longitude": -77.007629,
+    "Incentive_Program": null,
+    "Grantee_Name": "DC Central Kitchen Inc",
+    "ObjectId": 86313
+   },
+   "geometry": {
+    "x": -77.007629,
+    "y": 38.825893
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1106325,
+    "Store_Name": "Central Supermarket",
+    "Store_Street_Address": "6222 Richmond Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22303",
+    "Zip4": "2438",
+    "County": "FAIRFAX",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.783585,
+    "Longitude": -77.077332,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 90195
+   },
+   "geometry": {
+    "x": -77.077332,
+    "y": 38.783584999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1442173,
+    "Store_Name": "DollarTree 8740",
+    "Store_Street_Address": "6711 Richmond Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22306",
+    "Zip4": "6712",
+    "County": "FAIRFAX",
+    "Store_Type": "Other",
+    "Latitude": 38.772572,
+    "Longitude": -77.080528,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 90336
+   },
+   "geometry": {
+    "x": -77.080528,
+    "y": 38.77257199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1054306,
+    "Store_Name": "Liffs Market",
+    "Store_Street_Address": "600 Alabama Ave SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "4103",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.843426,
+    "Longitude": -76.997589,
+    "Incentive_Program": null,
+    "Grantee_Name": "DC Central Kitchen Inc",
+    "ObjectId": 91834
+   },
+   "geometry": {
+    "x": -76.99758899999999,
+    "y": 38.843426
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1444543,
+    "Store_Name": "Ward 8 Farmers Market",
+    "Store_Street_Address": "3200 6th St SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "3801",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 38.842552,
+    "Longitude": -76.998169,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 93019
+   },
+   "geometry": {
+    "x": -76.998169,
+    "y": 38.84255199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1065838,
+    "Store_Name": "Alexandria Old Town Farmers' Market",
+    "Store_Street_Address": "301 King St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "3211",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 38.804588,
+    "Longitude": -77.04303,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 94657
+   },
+   "geometry": {
+    "x": -77.04303,
+    "y": 38.804588
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1154072,
+    "Store_Name": "Walgreens 12359",
+    "Store_Street_Address": "1517 Mount Vernon Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22301",
+    "Zip4": "1717",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Other",
+    "Latitude": 38.820457,
+    "Longitude": -77.057579,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 102905
+   },
+   "geometry": {
+    "x": -77.057579,
+    "y": 38.82045699999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1090769,
+    "Store_Name": "Fort Carroll Market",
+    "Store_Street_Address": "3705 Martin Luther King Jr Ave SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "1549",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.837769,
+    "Longitude": -77.006248,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 106805
+   },
+   "geometry": {
+    "x": -77.00624800000001,
+    "y": 38.837768999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1646071,
+    "Store_Name": "7-Eleven #10732C 10732C",
+    "Store_Street_Address": "1667 N Quaker Ln",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22302",
+    "Zip4": "2338",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.831547,
+    "Longitude": -77.084801,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 107035
+   },
+   "geometry": {
+    "x": -77.084801,
+    "y": 38.831547
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1130198,
+    "Store_Name": "The Fresh Market 174",
+    "Store_Street_Address": "3680 King St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22302",
+    "Zip4": "1908",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.830109,
+    "Longitude": -77.092041,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 111553
+   },
+   "geometry": {
+    "x": -77.092041,
+    "y": 38.83010899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 971922,
+    "Store_Name": "Walmart Supercenter 5753",
+    "Store_Street_Address": "6303 Richmond Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22306",
+    "Zip4": "6410",
+    "County": "FAIRFAX",
+    "Store_Type": "Super Store",
+    "Latitude": 38.77998,
+    "Longitude": -77.076569,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 112328
+   },
+   "geometry": {
+    "x": -77.076569,
+    "y": 38.77998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1229478,
+    "Store_Name": "7-Eleven 22685C",
+    "Store_Street_Address": "6327 S Kings Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22306",
+    "Zip4": "1052",
+    "County": "FAIRFAX",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.780117,
+    "Longitude": -77.080994,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 114274
+   },
+   "geometry": {
+    "x": -77.080994,
+    "y": 38.780117
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1271118,
+    "Store_Name": "Tiger Market & Bakery",
+    "Store_Street_Address": "3903 Mount Vernon Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "2223",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.841572,
+    "Longitude": -77.063377,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 115762
+   },
+   "geometry": {
+    "x": -77.063377,
+    "y": 38.84157199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1169691,
+    "Store_Name": "Harris Teeter 398",
+    "Store_Street_Address": "735 N Saint Asaph St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "1911",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Super Store",
+    "Latitude": 38.812702,
+    "Longitude": -77.044106,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 116900
+   },
+   "geometry": {
+    "x": -77.04410599999999,
+    "y": 38.812701999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1314124,
+    "Store_Name": "Ram Grocery",
+    "Store_Street_Address": "3509 Wheeler Rd Se",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "4140",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.839203,
+    "Longitude": -76.993622,
+    "Incentive_Program": null,
+    "Grantee_Name": "DC Central Kitchen Inc",
+    "ObjectId": 120595
+   },
+   "geometry": {
+    "x": -76.993622,
+    "y": 38.83920299999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1318190,
+    "Store_Name": "Salinas Oriental Store",
+    "Store_Street_Address": "9205 Oxon Hill Rd",
+    "Additonal_Address": null,
+    "City": "Fort Washington",
+    "State": "MD",
+    "Zip_Code": "20744",
+    "Zip4": "4834",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.763863,
+    "Longitude": -77.005424,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 121162
+   },
+   "geometry": {
+    "x": -77.005424,
+    "y": 38.763863
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1174873,
+    "Store_Name": "Safeway 3250",
+    "Store_Street_Address": "3526 King St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22302",
+    "Zip4": "1907",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.827995,
+    "Longitude": -77.089333,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 122167
+   },
+   "geometry": {
+    "x": -77.089333,
+    "y": 38.827994999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1173773,
+    "Store_Name": "Fort Drum Market",
+    "Store_Street_Address": "4686 Martin Luther King Jr Ave SW",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "1132",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.820957,
+    "Longitude": -77.010674,
+    "Incentive_Program": null,
+    "Grantee_Name": "DC Central Kitchen Inc",
+    "ObjectId": 122983
+   },
+   "geometry": {
+    "x": -77.010674,
+    "y": 38.820956999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1347472,
+    "Store_Name": "Royal Farms 278",
+    "Store_Street_Address": "100 Monument Ave",
+    "Additonal_Address": null,
+    "City": "National Harbor",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "4732",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.799408,
+    "Longitude": -77.002991,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 126172
+   },
+   "geometry": {
+    "x": -77.002991,
+    "y": 38.79940799999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1183408,
+    "Store_Name": "7-Eleven 39737A",
+    "Store_Street_Address": "4154 S 4 Mile Run Dr",
+    "Additonal_Address": null,
+    "City": "Arlington",
+    "State": "VA",
+    "Zip_Code": "22206",
+    "Zip4": "1188",
+    "County": "ARLINGTON",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.849045,
+    "Longitude": -77.098976,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 126923
+   },
+   "geometry": {
+    "x": -77.098976,
+    "y": 38.84904499999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 985052,
+    "Store_Name": "Four Mile Run Farmers Market",
+    "Store_Street_Address": "4109 Mount Vernon Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "2227",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 38.843075,
+    "Longitude": -77.064003,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 128916
+   },
+   "geometry": {
+    "x": -77.064003,
+    "y": 38.84307499999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1327511,
+    "Store_Name": "Tiger Market N/A",
+    "Store_Street_Address": "823 Southern Ave",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "3460",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Super Store",
+    "Latitude": 38.828934,
+    "Longitude": -76.991341,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 136963
+   },
+   "geometry": {
+    "x": -76.991341,
+    "y": 38.828934
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1302942,
+    "Store_Name": "Family Dollar 5638",
+    "Store_Street_Address": "6151 Livingston Rd",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "3006",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Other",
+    "Latitude": 38.804642,
+    "Longitude": -76.99041,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 137143
+   },
+   "geometry": {
+    "x": -76.99041,
+    "y": 38.804642
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1253905,
+    "Store_Name": "ALDI 71067 71067",
+    "Store_Street_Address": "425 E Monroe Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22301",
+    "Zip4": "1645",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.820904,
+    "Longitude": -77.053658,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 138009
+   },
+   "geometry": {
+    "x": -77.05365799999998,
+    "y": 38.820904000000006
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1510950,
+    "Store_Name": "Dmv Mini Mart 1",
+    "Store_Street_Address": "3915 S Capitol St SW",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "2308",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.832287,
+    "Longitude": -77.008713,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 138343
+   },
+   "geometry": {
+    "x": -77.00871299999999,
+    "y": 38.83228699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1310380,
+    "Store_Name": "CVS Pharmacy 10900",
+    "Store_Street_Address": "2441 Eisenhower Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "4684",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Other",
+    "Latitude": 38.801418,
+    "Longitude": -77.070938,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 144551
+   },
+   "geometry": {
+    "x": -77.070938,
+    "y": 38.801417999999984
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1356342,
+    "Store_Name": "Old Town North Farmers Market ",
+    "Store_Street_Address": "901 N Royal St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "1527",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 38.81432,
+    "Longitude": -77.041519,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 152234
+   },
+   "geometry": {
+    "x": -77.041519,
+    "y": 38.81432
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1434003,
+    "Store_Name": "South Capitol Discount Tobacco & Grocery Inc",
+    "Store_Street_Address": "4675 S Capitol St SW",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "2717",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.821198,
+    "Longitude": -77.001785,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 155386
+   },
+   "geometry": {
+    "x": -77.001785,
+    "y": 38.821197999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1450784,
+    "Store_Name": "Save A Lot",
+    "Store_Street_Address": "6309 Livingston Rd",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "3027",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.802109,
+    "Longitude": -76.989685,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 157138
+   },
+   "geometry": {
+    "x": -76.989685,
+    "y": 38.802108999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1432333,
+    "Store_Name": "Gabhagos Inc",
+    "Store_Street_Address": "5515 Livingston Rd",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "2037",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.81472,
+    "Longitude": -76.996628,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 157834
+   },
+   "geometry": {
+    "x": -76.996628,
+    "y": 38.814719999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1578451,
+    "Store_Name": "Area 2 Farms",
+    "Store_Street_Address": "2600 S Oxford St",
+    "Additonal_Address": null,
+    "City": "Arlington",
+    "State": "VA",
+    "Zip_Code": "22206",
+    "Zip4": "2310",
+    "County": "ARLINGTON",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 38.84528,
+    "Longitude": -77.092659,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 160974
+   },
+   "geometry": {
+    "x": -77.092659,
+    "y": 38.84528
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1477513,
+    "Store_Name": "Euro Foods",
+    "Store_Street_Address": "5900 N Kings Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22303",
+    "Zip4": "2018",
+    "County": "FAIRFAX",
+    "Store_Type": "Other",
+    "Latitude": 38.789841,
+    "Longitude": -77.077049,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 161351
+   },
+   "geometry": {
+    "x": -77.07704899999999,
+    "y": 38.789840999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1412341,
+    "Store_Name": "CVS Pharmacy 11191",
+    "Store_Street_Address": "4060 Campbell Ave",
+    "Additonal_Address": null,
+    "City": "Arlington",
+    "State": "VA",
+    "Zip_Code": "22206",
+    "Zip4": "3424",
+    "County": "ARLINGTON",
+    "Store_Type": "Other",
+    "Latitude": 38.840687,
+    "Longitude": -77.088531,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 163620
+   },
+   "geometry": {
+    "x": -77.088531,
+    "y": 38.840686999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1479105,
+    "Store_Name": "Old Town Mini Mart Llc",
+    "Store_Street_Address": "822 King St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "3017",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.805183,
+    "Longitude": -77.049034,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 164003
+   },
+   "geometry": {
+    "x": -77.049034,
+    "y": 38.805182999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1438247,
+    "Store_Name": "Chesapeake Big Market",
+    "Store_Street_Address": "601 Chesapeake St SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "3635",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.829006,
+    "Longitude": -76.998291,
+    "Incentive_Program": null,
+    "Grantee_Name": "DC Central Kitchen Inc",
+    "ObjectId": 164318
+   },
+   "geometry": {
+    "x": -76.998291,
+    "y": 38.82900599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1681545,
+    "Store_Name": "Kabul Bazaar Halal Mkt.",
+    "Store_Street_Address": "3218 Duke St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "4521",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.807831,
+    "Longitude": -77.086128,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 164701
+   },
+   "geometry": {
+    "x": -77.086128,
+    "y": 38.807830999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1260602,
+    "Store_Name": "Mercadito Ramos Va 3",
+    "Store_Street_Address": "4102 Mount Vernon Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "2226",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.843689,
+    "Longitude": -77.064857,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 167892
+   },
+   "geometry": {
+    "x": -77.06485700000002,
+    "y": 38.84368899999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1497569,
+    "Store_Name": "Juana Supermarket",
+    "Store_Street_Address": "5838 N Kings Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22303",
+    "Zip4": "2025",
+    "County": "FAIRFAX",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.789841,
+    "Longitude": -77.077049,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 168098
+   },
+   "geometry": {
+    "x": -77.07704899999999,
+    "y": 38.789840999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1702674,
+    "Store_Name": "7-Eleven 11695K",
+    "Store_Street_Address": "5521 Livingston Rd",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "2037",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.814606,
+    "Longitude": -76.996223,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 168873
+   },
+   "geometry": {
+    "x": -76.996223,
+    "y": 38.814606
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1481293,
+    "Store_Name": "7-eleven 10773c 10773C",
+    "Store_Street_Address": "2800 Beacon Hill Rd",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22306",
+    "Zip4": "1614",
+    "County": "FAIRFAX",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.772301,
+    "Longitude": -77.080009,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 169368
+   },
+   "geometry": {
+    "x": -77.080009,
+    "y": 38.772300999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1498655,
+    "Store_Name": "A & Imran Corporation",
+    "Store_Street_Address": "5519A Livingston Rd",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "2037",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.814915,
+    "Longitude": -76.996262,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 170028
+   },
+   "geometry": {
+    "x": -76.996262,
+    "y": 38.814914999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1498923,
+    "Store_Name": "Wonder Mart Convenience",
+    "Store_Street_Address": "2743 Martin Luther King Jr Ave SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "2608",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.846939,
+    "Longitude": -76.996414,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 170497
+   },
+   "geometry": {
+    "x": -76.996414,
+    "y": 38.846939000000006
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1499656,
+    "Store_Name": "Wegmans Carlyle 142",
+    "Store_Street_Address": "150 Stovall Street",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22134",
+    "Zip4": "    ",
+    "County": "PRINCE WILLIAM",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.803051,
+    "Longitude": -77.072784,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 173877
+   },
+   "geometry": {
+    "x": -77.072784,
+    "y": 38.803050999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1499725,
+    "Store_Name": "Lucas Seafood Deli Market 0",
+    "Store_Street_Address": "5519 Livingston Rd",
+    "Additonal_Address": "#B",
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "    ",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.81469,
+    "Longitude": -76.996429,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 173982
+   },
+   "geometry": {
+    "x": -76.996429,
+    "y": 38.81468999999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1468886,
+    "Store_Name": "La Feria Latina",
+    "Store_Street_Address": "3842 Mount Vernon Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "2409",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.83989,
+    "Longitude": -77.063004,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 175828
+   },
+   "geometry": {
+    "x": -77.063004,
+    "y": 38.83988999999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1586660,
+    "Store_Name": "The Fresh Food Factory Market Ste",
+    "Store_Street_Address": "1110 Oak Dr SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "5951",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.846195,
+    "Longitude": -76.990204,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 177223
+   },
+   "geometry": {
+    "x": -76.990204,
+    "y": 38.846195
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1537988,
+    "Store_Name": "ALDI 71141",
+    "Store_Street_Address": "6218 N Kings Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22303",
+    "Zip4": "2442",
+    "County": "FAIRFAX",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.782143,
+    "Longitude": -77.079369,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 178053
+   },
+   "geometry": {
+    "x": -77.079369,
+    "y": 38.78214299999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1487218,
+    "Store_Name": "Ocean Front Liquors",
+    "Store_Street_Address": "4682 Mlk Jr Ave SW",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "1132",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.821129,
+    "Longitude": -77.010651,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 179454
+   },
+   "geometry": {
+    "x": -77.010651,
+    "y": 38.821129
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1471385,
+    "Store_Name": "Dc Poultry Market Corporation",
+    "Store_Street_Address": "3225 Colvin St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "4504",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Specialty Store",
+    "Latitude": 38.807369,
+    "Longitude": -77.086205,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 180597
+   },
+   "geometry": {
+    "x": -77.086205,
+    "y": 38.807369
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1546279,
+    "Store_Name": "Livingston Bp 1",
+    "Store_Street_Address": "5507 Livingston Rd",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "2037",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.814873,
+    "Longitude": -76.997116,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 184884
+   },
+   "geometry": {
+    "x": -76.997116,
+    "y": 38.814872999999984
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1558163,
+    "Store_Name": "DollarTree 9353",
+    "Store_Street_Address": "3811 Mount Vernon Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "2410",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Other",
+    "Latitude": 38.840794,
+    "Longitude": -77.062607,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 187064
+   },
+   "geometry": {
+    "x": -77.062607,
+    "y": 38.840793999999995
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1474914,
+    "Store_Name": "7-Eleven Store 40318H",
+    "Store_Street_Address": "3500 King St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22302",
+    "Zip4": "1907",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.827312,
+    "Longitude": -77.08889,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 189439
+   },
+   "geometry": {
+    "x": -77.08889,
+    "y": 38.827312
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1474344,
+    "Store_Name": "Marathon Gas station",
+    "Store_Street_Address": "6211 Livingston Rd",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "3008",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.80381,
+    "Longitude": -76.990623,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 189584
+   },
+   "geometry": {
+    "x": -76.990623,
+    "y": 38.80381
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1560283,
+    "Store_Name": "Freshfarm Kiddies Ms",
+    "Store_Street_Address": "1130 Varney St SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "4372",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 38.836845,
+    "Longitude": -76.98806,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 190043
+   },
+   "geometry": {
+    "x": -76.98806,
+    "y": 38.836845
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1551784,
+    "Store_Name": "Quality 01 Convenience Store",
+    "Store_Street_Address": "2922 1/2 Martin Luther King Jr Ave SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "2522",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.845329,
+    "Longitude": -76.99688,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 190618
+   },
+   "geometry": {
+    "x": -76.99688,
+    "y": 38.845328999999985
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 967366,
+    "Store_Name": "7-Eleven Inc F 10784A",
+    "Store_Street_Address": "2108 Mount Vernon Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22301",
+    "Zip4": "1395",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.825214,
+    "Longitude": -77.058517,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 192304
+   },
+   "geometry": {
+    "x": -77.058517,
+    "y": 38.82521399999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1282409,
+    "Store_Name": "Food Star",
+    "Store_Street_Address": "206 W Glebe Rd",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "2301",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Super Store",
+    "Latitude": 38.837017,
+    "Longitude": -77.062401,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 194054
+   },
+   "geometry": {
+    "x": -77.062401,
+    "y": 38.837017
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 832487,
+    "Store_Name": "7-Eleven Inc F 10766A",
+    "Store_Street_Address": "2305 Huntington Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22303",
+    "Zip4": "1529",
+    "County": "FAIRFAX",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.794182,
+    "Longitude": -77.071434,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 194412
+   },
+   "geometry": {
+    "x": -77.071434,
+    "y": 38.79418199999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 775186,
+    "Store_Name": "FRIENDLY MART",
+    "Store_Street_Address": "2727 Duke St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "4589",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.807129,
+    "Longitude": -77.07766,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 195052
+   },
+   "geometry": {
+    "x": -77.07766,
+    "y": 38.80712899999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 855647,
+    "Store_Name": "7-Eleven Inc F 10768A",
+    "Store_Street_Address": "2405 Fairhaven Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22303",
+    "Zip4": "2301",
+    "County": "FAIRFAX",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.784718,
+    "Longitude": -77.073868,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 196354
+   },
+   "geometry": {
+    "x": -77.073868,
+    "y": 38.784717999999984
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1128896,
+    "Store_Name": "7-Eleven Inc F 10769A",
+    "Store_Street_Address": "421 E Braddock Rd",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22301",
+    "Zip4": "2119",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.81337,
+    "Longitude": -77.05555,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 198368
+   },
+   "geometry": {
+    "x": -77.05555,
+    "y": 38.81337
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1112080,
+    "Store_Name": "La Bendicion Market 2",
+    "Store_Street_Address": "6285 Oxon Hill Rd",
+    "Additonal_Address": "Ste C",
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "6013",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.803509,
+    "Longitude": -76.988586,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 199631
+   },
+   "geometry": {
+    "x": -76.988586,
+    "y": 38.803509
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1025313,
+    "Store_Name": "7-Eleven Inc F 34269A",
+    "Store_Street_Address": "504 John Carlyle St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "6802",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.801907,
+    "Longitude": -77.061523,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 200191
+   },
+   "geometry": {
+    "x": -77.061523,
+    "y": 38.801906999999986
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 815499,
+    "Store_Name": "Bestway Supermarket",
+    "Store_Street_Address": "5695 Telegraph Rd",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22303",
+    "Zip4": "1233",
+    "County": "FAIRFAX",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.796757,
+    "Longitude": -77.080093,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 201896
+   },
+   "geometry": {
+    "x": -77.080093,
+    "y": 38.79675699999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1012990,
+    "Store_Name": "Ali Baba Groceries And Halal Meat",
+    "Store_Street_Address": "6701 Richmond Hwy",
+    "Additonal_Address": "Ste 104",
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22306",
+    "Zip4": "6710",
+    "County": "FAIRFAX",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.773064,
+    "Longitude": -77.081047,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 203181
+   },
+   "geometry": {
+    "x": -77.081047,
+    "y": 38.773064
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 846510,
+    "Store_Name": "7-Eleven Inc F 10765A",
+    "Store_Street_Address": "3412 Mount Vernon Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "2604",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.836105,
+    "Longitude": -77.061508,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 205279
+   },
+   "geometry": {
+    "x": -77.061508,
+    "y": 38.836105
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1153861,
+    "Store_Name": "Colonial Market",
+    "Store_Street_Address": "1605 Commonwealth Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22301",
+    "Zip4": "1903",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.820274,
+    "Longitude": -77.063004,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 205854
+   },
+   "geometry": {
+    "x": -77.063004,
+    "y": 38.820274
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1531491,
+    "Store_Name": "Top Mart Inc 1",
+    "Store_Street_Address": "3109 Martin Luther King Jr Ave Se",
+    "Additonal_Address": "Ste B",
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "1606",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.843681,
+    "Longitude": -76.999588,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 208913
+   },
+   "geometry": {
+    "x": -76.999588,
+    "y": 38.843681
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 898342,
+    "Store_Name": "Target Store 1076",
+    "Store_Street_Address": "3101 Jefferson Davis Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "3042",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Super Store",
+    "Latitude": 38.833614,
+    "Longitude": -77.051216,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 209857
+   },
+   "geometry": {
+    "x": -77.051216,
+    "y": 38.83361399999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 864071,
+    "Store_Name": "Today's Crab House",
+    "Store_Street_Address": "4950 Indian Head Hwy",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "2009",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Specialty Store",
+    "Latitude": 38.820229,
+    "Longitude": -77.000221,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 211217
+   },
+   "geometry": {
+    "x": -77.000221,
+    "y": 38.82022899999998
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 829105,
+    "Store_Name": "7-Eleven Inc F 10764A",
+    "Store_Street_Address": "800 Franklin St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "4106",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.798351,
+    "Longitude": -77.049843,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 212558
+   },
+   "geometry": {
+    "x": -77.04984300000001,
+    "y": 38.79835099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 898364,
+    "Store_Name": "Target Store 1533",
+    "Store_Street_Address": "6600 Richmond Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22306",
+    "Zip4": "6601",
+    "County": "FAIRFAX",
+    "Store_Type": "Super Store",
+    "Latitude": 38.77626,
+    "Longitude": -77.080727,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 215377
+   },
+   "geometry": {
+    "x": -77.080727,
+    "y": 38.77626
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1156888,
+    "Store_Name": "7-Eleven Store 37029A",
+    "Store_Street_Address": "2002 Eisenhower Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "4650",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.800552,
+    "Longitude": -77.063576,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 216237
+   },
+   "geometry": {
+    "x": -77.063576,
+    "y": 38.800551999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1007082,
+    "Store_Name": "7-eleven 34336",
+    "Store_Street_Address": "5834 N Kings Hwy",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22303",
+    "Zip4": "2039",
+    "County": "FAIRFAX",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.790749,
+    "Longitude": -77.077423,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 217986
+   },
+   "geometry": {
+    "x": -77.077423,
+    "y": 38.790749000000005
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1259284,
+    "Store_Name": "Lucky Seven",
+    "Store_Street_Address": "3215 24th St S",
+    "Additonal_Address": null,
+    "City": "Arlington",
+    "State": "VA",
+    "Zip_Code": "22206",
+    "Zip4": "2578",
+    "County": "ARLINGTON",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.848896,
+    "Longitude": -77.084381,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 218580
+   },
+   "geometry": {
+    "x": -77.084381,
+    "y": 38.84889599999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 837111,
+    "Store_Name": "7-Eleven Inc F 10743B",
+    "Store_Street_Address": "2815 S Wakefield St",
+    "Additonal_Address": null,
+    "City": "Arlington",
+    "State": "VA",
+    "Zip_Code": "22206",
+    "Zip4": "1103",
+    "County": "ARLINGTON",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.844154,
+    "Longitude": -77.097778,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 220148
+   },
+   "geometry": {
+    "x": -77.097778,
+    "y": 38.844153999999996
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1141627,
+    "Store_Name": "Jano Mart",
+    "Store_Street_Address": "4105 Duke St",
+    "Additonal_Address": "Ste 101",
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22304",
+    "Zip4": "2419",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Grocery Store",
+    "Latitude": 38.810966,
+    "Longitude": -77.10125,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 220725
+   },
+   "geometry": {
+    "x": -77.10125,
+    "y": 38.810966
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1590296,
+    "Store_Name": "7-eleven #10780a 10780A",
+    "Store_Street_Address": "3023 Duke St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "4516",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.807869,
+    "Longitude": -77.082062,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 226854
+   },
+   "geometry": {
+    "x": -77.082062,
+    "y": 38.807869
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1622974,
+    "Store_Name": "Souf East Earthlings BLK",
+    "Store_Street_Address": "413 Xenia St SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "3723",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 38.832809,
+    "Longitude": -77.000008,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 233603
+   },
+   "geometry": {
+    "x": -77.000008,
+    "y": 38.832809
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1624463,
+    "Store_Name": "Green Valley Farmers Market",
+    "Store_Street_Address": "2412 S Shirlington Rd",
+    "Additonal_Address": null,
+    "City": "Arlington",
+    "State": "VA",
+    "Zip_Code": "22206",
+    "Zip4": "2525",
+    "County": "ARLINGTON",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 38.848095,
+    "Longitude": -77.08403,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 235191
+   },
+   "geometry": {
+    "x": -77.08403,
+    "y": 38.848095
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1692814,
+    "Store_Name": "Dmv Dc Mini Mart 1",
+    "Store_Street_Address": "3923 S Capitol St SW",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "2308",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.832031,
+    "Longitude": -77.008583,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 236783
+   },
+   "geometry": {
+    "x": -77.008583,
+    "y": 38.83203099999999
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1618117,
+    "Store_Name": "Ashley Tienda Latina 1",
+    "Store_Street_Address": "7408 Livingston Rd D1",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "2074",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.787731,
+    "Longitude": -76.989494,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 237290
+   },
+   "geometry": {
+    "x": -76.98949399999998,
+    "y": 38.787730999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1521189,
+    "Store_Name": "Balduccis 3601",
+    "Store_Street_Address": "600 Franklin St",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "4127",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Supermarket",
+    "Latitude": 38.797832,
+    "Longitude": -77.047905,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 237442
+   },
+   "geometry": {
+    "x": -77.047905,
+    "y": 38.79783200000001
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1626362,
+    "Store_Name": "Wheeler Liquor & Grocery",
+    "Store_Street_Address": "4137 Wheeler Rd SE",
+    "Additonal_Address": null,
+    "City": "Washington",
+    "State": "DC",
+    "Zip_Code": "20032",
+    "Zip4": "4346",
+    "County": "DIST OF COLUMBIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.83342,
+    "Longitude": -76.990036,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 240392
+   },
+   "geometry": {
+    "x": -76.990036,
+    "y": 38.83342
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1664773,
+    "Store_Name": "24 Express Food Store",
+    "Store_Street_Address": "4007 Mount Vernon Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22305",
+    "Zip4": "2225",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.842709,
+    "Longitude": -77.063515,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 241089
+   },
+   "geometry": {
+    "x": -77.06351500000001,
+    "y": 38.842709000000006
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1694030,
+    "Store_Name": "King Street Station Farmers Market FFAB",
+    "Store_Street_Address": "1800 Diagonal Rd",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22314",
+    "Zip4": "2840",
+    "County": "ALEXANDRIA",
+    "Store_Type": "Farmers and Markets",
+    "Latitude": 38.80563,
+    "Longitude": -77.060455,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 246634
+   },
+   "geometry": {
+    "x": -77.060455,
+    "y": 38.805629999999994
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1686924,
+    "Store_Name": "Stop & Go Convenience Store",
+    "Store_Street_Address": "2266 Huntington Ave",
+    "Additonal_Address": null,
+    "City": "Alexandria",
+    "State": "VA",
+    "Zip_Code": "22303",
+    "Zip4": "1508",
+    "County": "FAIRFAX",
+    "Store_Type": "Convenience Store",
+    "Latitude": 38.794395,
+    "Longitude": -77.070282,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 247068
+   },
+   "geometry": {
+    "x": -77.070282,
+    "y": 38.794395
+   }
+  },
+  {
+   "attributes": {
+    "Record_ID": 1693404,
+    "Store_Name": "CAPTAIN WHITE SEAFOOD CITY",
+    "Store_Street_Address": "6308 Livingston Rd",
+    "Additonal_Address": null,
+    "City": "Oxon Hill",
+    "State": "MD",
+    "Zip_Code": "20745",
+    "Zip4": "3026",
+    "County": "PRINCE GEORGES",
+    "Store_Type": "Specialty Store",
+    "Latitude": 38.802841,
+    "Longitude": -76.987976,
+    "Incentive_Program": null,
+    "Grantee_Name": null,
+    "ObjectId": 247476
+   },
+   "geometry": {
+    "x": -76.987976,
+    "y": 38.802841
+   }
+  }
+ ]
+}

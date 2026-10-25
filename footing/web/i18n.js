@@ -298,8 +298,46 @@
   }
   function t(lang, key, vars) {
     var s = (S[lang] && S[lang][key]) || S.en[key] || key;
-    if (vars) Object.keys(vars).forEach(function (k) { s = s.replace("{" + k + "}", vars[k]); });
+    if (vars) s = s.replace(/\{(\w+)\}/g, function (match, k) {
+      return Object.prototype.hasOwnProperty.call(vars, k) ? String(vars[k]) : match;
+    });
     return s;
   }
-  root.FootingI18n = { t: t, strings: S, reason: reason, _reasonPart: reasonPart };
+  /** Virginia component -> plain text runs. Quote runs carry lang=en for screen readers.
+   * Use textContent/HTML escaping at the call site. No returned text is safe HTML.
+   * Fail on missing templates/metadata instead of silently leaking English into Details.
+   */
+  function vaReasonParts(lang, component) {
+    if (lang === "en") return [{ text: component.reason, lang: "en", kind: "translation" }];
+    var data = component.reason_data, tables = root.FootingI18n.vaReasonTemplates;
+    if (!data || data.version !== 1 || !Array.isArray(data.segments)) throw new Error("Missing Virginia reason_data v1");
+    var table = tables && tables[lang];
+    if (!table) throw new Error("Unsupported Virginia reason language: " + lang);
+    var runs = [];
+    data.segments.forEach(function (segment) {
+      var template = table[segment.key], values = segment.vars || {};
+      if (typeof template !== "string") throw new Error("Missing Virginia reason template: " + lang + "/" + segment.key);
+      if (segment.key === "recorded_note") {
+        runs.push({ text: template, lang: lang, kind: "quote_label" });
+        runs.push({ text: "“" + values.text + "”", lang: "en", kind: "quote" });
+        return;
+      }
+      var text = template.replace(/\{(\w+)\}/g, function (_, key) {
+        if (!Object.prototype.hasOwnProperty.call(values, key)) throw new Error("Missing Virginia reason value: " + key);
+        if (segment.key === "rent" && key === "size") {
+          var size = S[lang] && S[lang]["sz" + values.size];
+          if (!size) throw new Error("Missing Virginia bedroom translation");
+          return size;
+        }
+        return String(values[key]);
+      });
+      runs.push({ text: text, lang: lang, kind: "translation" });
+    });
+    return runs;
+  }
+  function vaReason(lang, component) {
+    return vaReasonParts(lang, component).map(function (run) { return run.text; }).join(" ");
+  }
+  root.FootingI18n = { t: t, strings: S, reason: reason, _reasonPart: reasonPart,
+    vaReason: vaReason, vaReasonParts: vaReasonParts };
 })(typeof self !== "undefined" ? self : this);

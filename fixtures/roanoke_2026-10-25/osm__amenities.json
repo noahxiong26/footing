@@ -1,0 +1,1474 @@
+{
+ "version": 0.6,
+ "generator": "Overpass API 0.7.62.11 87bfad18",
+ "osm3s": {
+  "timestamp_osm_base": "2026-10-25T06:41:05Z",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+ },
+ "elements": [
+  {
+   "type": "node",
+   "id": 288557395,
+   "lat": 37.2803037,
+   "lon": -79.8977215,
+   "tags": {
+    "addr:city": "Vinton",
+    "addr:housenumber": "119",
+    "addr:postcode": "24179-9998",
+    "addr:state": "VA",
+    "addr:street": "South Pollard Street",
+    "amenity": "post_office",
+    "name": "Vinton Post Office",
+    "opening_hours": "Mo-Fr 09:00-17:00; Sa 09:00-11:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 540-345-1495",
+    "ref": "1386024",
+    "website": "https://tools.usps.com/locations/home.htm?location=1386024"
+   }
+  },
+  {
+   "type": "node",
+   "id": 356593234,
+   "lat": 37.2619891,
+   "lon": -79.9462695,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1234",
+    "addr:postcode": "24014",
+    "addr:state": "VA",
+    "addr:street": "Franklin Road Southwest",
+    "amenity": "clinic",
+    "gnis:feature_id": "1706935",
+    "healthcare": "clinic",
+    "name": "Jefferson Surgical Clinic",
+    "phone": "+1 540 283 6000",
+    "source": "esri_Virginia",
+    "website": "https://www.jeffersonsurgical.com/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 356593396,
+   "lat": 37.2889983,
+   "lon": -79.985102,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "3018",
+    "addr:postcode": "24017-9998",
+    "addr:state": "VA",
+    "addr:street": "Melrose Avenue Northwest",
+    "amenity": "post_office",
+    "ele": "315",
+    "gnis:feature_id": "1707147",
+    "name": "Melrose Station Roanoke Post Office",
+    "opening_hours": "Mo-Fr 08:30-17:00; Sa 09:00-12:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 540-342-8871",
+    "ref": "1372654",
+    "website": "https://tools.usps.com/locations/home.htm?location=1372654",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 367979689,
+   "lat": 37.2923582,
+   "lon": -79.9858722,
+   "tags": {
+    "addr:state": "VA",
+    "amenity": "social_facility",
+    "ele": "333",
+    "gnis:feature_id": "1707208",
+    "name": "Roanoke Methodist Home",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior",
+    "source": "USGS Geonames"
+   }
+  },
+  {
+   "type": "node",
+   "id": 367986954,
+   "lat": 37.286154,
+   "lon": -79.9784882,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "2502",
+    "addr:state": "VA",
+    "addr:street": "Melrose Avenue Northwest",
+    "addr:unit": "Suite D",
+    "amenity": "library",
+    "ele": "308",
+    "gnis:feature_id": "1706941",
+    "name": "Melrose Branch Roanoke City Public Library",
+    "operator": "Roanoke City",
+    "operator:type": "public",
+    "operator:wikidata": "Q501796",
+    "phone": "+1 540 853 2648",
+    "source": "USGS Geonames",
+    "website": "https://www.roanokeva.gov/1129/Library-Events-Programs"
+   }
+  },
+  {
+   "type": "node",
+   "id": 367992083,
+   "lat": 37.269304,
+   "lon": -79.9292042,
+   "tags": {
+    "addr:state": "VA",
+    "amenity": "community_centre",
+    "ele": "291",
+    "gnis:feature_id": "1706961",
+    "name": "Southeast Community Center",
+    "source": "USGS Geonames"
+   }
+  },
+  {
+   "type": "node",
+   "id": 367992102,
+   "lat": 37.2508497,
+   "lon": -79.9906078,
+   "tags": {
+    "addr:state": "VA",
+    "amenity": "community_centre",
+    "ele": "328",
+    "gnis:feature_id": "1707094",
+    "name": "Grandin Court Community Center",
+    "source": "USGS Geonames"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2328693392,
+   "lat": 37.3164193,
+   "lon": -79.954272,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "Walgreens",
+    "brand:wikidata": "Q1591889",
+    "drive_through": "yes",
+    "healthcare": "pharmacy",
+    "name": "Walgreens",
+    "operator": "Walgreens"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2368030614,
+   "lat": 37.274551,
+   "lon": -79.9073155,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2368054483,
+   "lat": 37.2617786,
+   "lon": -79.9103997,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "no",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "operator:wikidata": "Q126898700",
+    "portable": "no",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2868958438,
+   "lat": 37.2362748,
+   "lon": -79.9713461,
+   "tags": {
+    "amenity": "social_facility",
+    "name": "Honeytree Child Learning Center",
+    "social_facility:for": "child"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2890043665,
+   "lat": 37.2563104,
+   "lon": -79.9545882,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/roanoke-va-pharmacies/2001-colonial-avenue-sw-roanoke-va-24015/storeid=3949"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2900153071,
+   "lat": 37.2501669,
+   "lon": -79.9155951,
+   "tags": {
+    "addr:housenumber": "2145",
+    "addr:street": "Mount Pleasant Boulevard",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "name": "Carilion Clinic Family Medicine",
+    "phone": "+1-540-427-9200",
+    "website": "https://www.carilionclinic.org/locations/carilion-clinic-family-medicine-southeast"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2957206680,
+   "lat": 37.2459393,
+   "lon": -79.9804311,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 2957444976,
+   "lat": 37.2526176,
+   "lon": -79.9849435,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3749282650,
+   "lat": 37.2513304,
+   "lon": -79.9464324,
+   "tags": {
+    "amenity": "toilets"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4042976122,
+   "lat": 37.2852628,
+   "lon": -79.9338095,
+   "tags": {
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "name": "Roanoke City Health Clinic"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7644565108,
+   "lat": 37.2501625,
+   "lon": -79.956222,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "Walgreens",
+    "brand:wikidata": "Q1591889",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Walgreens"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7850007711,
+   "lat": 37.2548756,
+   "lon": -79.9449499,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "fee": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9077277913,
+   "lat": 37.2853481,
+   "lon": -79.9683456,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1916",
+    "addr:postcode": "24017",
+    "addr:state": "VA",
+    "addr:street": "Orange Avenue Northwest",
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "dispensing": "yes",
+    "drive_through": "yes",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "opening_hours": "Mo-Fr 08:00-13:30, 14:00-18:00; Sa 10:00-13:30, 14:00-18:00; Su 11:00-13:30, 14:00-17:00",
+    "phone": "+1-540-981-1366",
+    "ref": "6284",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/roanoke-va-pharmacies/1916-orange-ave-roanoke-va-24017/storeid=6284"
+   }
+  },
+  {
+   "type": "node",
+   "id": 9215206977,
+   "lat": 37.2318402,
+   "lon": -79.9507205,
+   "tags": {
+    "amenity": "toilets",
+    "operator:wikidata": "Q308439"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10705650910,
+   "lat": 37.2647231,
+   "lon": -79.9256498,
+   "tags": {
+    "amenity": "drinking_water"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10751364234,
+   "lat": 37.2706533,
+   "lon": -79.9425333,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "101",
+    "addr:postcode": "24011",
+    "addr:state": "VA",
+    "addr:street": "Church Avenue Southwest",
+    "amenity": "post_office",
+    "check_date": "2026-06-02",
+    "name": "Downtown Roanoke Post Office",
+    "opening_hours": "Mo-Fr 09:00-13:30,14:30-16:30",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 540-343-3578",
+    "ref": "1361174",
+    "website": "https://tools.usps.com/locations/home.htm?location=1361174"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10980810844,
+   "lat": 37.2714242,
+   "lon": -79.9498164,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "425",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "Campbell Avenue Southwest",
+    "addr:unit": "111",
+    "amenity": "community_centre",
+    "community_centre:for": "lgbtq",
+    "lgbtq": "primary",
+    "name": "Roanoke Diversity Center",
+    "source": "esri_USDOT_Virginia",
+    "website": "https://www.roanokediversitycenter.com/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11038015686,
+   "lat": 37.2618381,
+   "lon": -79.9450728,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1240",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "3rd Street Southwest",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "name": "Bradley Free Clinic",
+    "source": "esri_Virginia"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11038015687,
+   "lat": 37.2619662,
+   "lon": -79.9456816,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1229",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "3rd Street Southwest",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "healthcare:speciality": "cardiology;community",
+    "name": "Carilion Clinic Community Care",
+    "operator": "Carilion Clinic",
+    "operator:type": "private_non_profit",
+    "source": "esri_Virginia"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11038015698,
+   "lat": 37.2612675,
+   "lon": -79.9451447,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1310",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "3rd Street Southwest",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "healthcare:speciality": "physiatry",
+    "name": "Spine and Orthopedic Rehab of VA",
+    "source": "esri_Virginia"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11038025611,
+   "lat": 37.26297,
+   "lon": -79.9462872,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1204",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "Franklin Road Southwest",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "healthcare:speciality": "dermatology;mohs_surgery",
+    "name": "Carilion Clinic Dermatology & Mohs Surgery",
+    "operator": "Carilion Clinic",
+    "operator:type": "private_non_profit",
+    "source": "esri_Virginia"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11053196513,
+   "lat": 37.2505917,
+   "lon": -79.9467305,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "127",
+    "addr:postcode": "24014",
+    "addr:state": "VA",
+    "addr:street": "McClanahan Street Southwest",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "healthcare:speciality": "cardiology;pulmonology",
+    "name": "Carilion Clinic Cardiac & Pulmonary Rehabilitation",
+    "operator": "Carilion Clinic",
+    "operator:type": "private_non_profit"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11053243371,
+   "lat": 37.2677336,
+   "lon": -79.9278786,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/roanoke-va-pharmacies/702-9th-st-s-e-roanoke-va-24013/storeid=6285"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11057639179,
+   "lat": 37.2699074,
+   "lon": -79.9312172,
+   "tags": {
+    "amenity": "social_facility",
+    "operator": "The Salvation Army",
+    "operator:short": "TSA",
+    "operator:type": "charitable",
+    "operator:wikidata": "Q188307"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11063984825,
+   "lat": 37.269663,
+   "lon": -79.9772834,
+   "tags": {
+    "amenity": "drinking_water",
+    "bottle": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11241946036,
+   "lat": 37.2627974,
+   "lon": -79.9421811,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1118",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "First Street SW",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "healthcare:speciality": "plastic_surgery",
+    "name": "Roanoke Plastic Surgery"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11289342580,
+   "lat": 37.2618058,
+   "lon": -79.9470886,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1315",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "Franklin Road Southwest",
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "healthcare:speciality": "behavior",
+    "name": "Blue Ridge Behavior Healthcare",
+    "source": "esri_Virginia"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11394142621,
+   "lat": 37.2946062,
+   "lon": -79.8994432,
+   "tags": {
+    "amenity": "social_facility",
+    "name": "Richfield Living",
+    "social_facility": "assisted_living",
+    "social_facility:for": "senior"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11701938197,
+   "lat": 37.2720517,
+   "lon": -79.9632669,
+   "tags": {
+    "amenity": "community_centre",
+    "name": "West End Center for Youth"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11756968474,
+   "lat": 37.2727888,
+   "lon": -79.9518861,
+   "tags": {
+    "amenity": "social_facility",
+    "name": "Samaritan Inn",
+    "social_facility": "shelter",
+    "social_facility:for": "homeless"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11948820274,
+   "lat": 37.2469705,
+   "lon": -79.9821575,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "fee": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12011182504,
+   "lat": 37.2559351,
+   "lon": -79.9564619,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "614",
+    "addr:postcode": "24015",
+    "addr:state": "VA",
+    "addr:street": "Brandon Avenue Southwest",
+    "amenity": "pharmacy",
+    "branch": "Towers",
+    "brand": "Kroger",
+    "brand:wikidata": "Q153417",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Kroger Pharmacy",
+    "opening_hours": "Mo-Fr 09:00-20:00;Sa 09:00-18:00;Su 10:00-17:00",
+    "phone": "+1-540-342-9897",
+    "ref": "02900400",
+    "website": "https://www.kroger.com/stores/pharmacy/va/roanoke/029/00400"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12016035388,
+   "lat": 37.25027,
+   "lon": -79.9460513,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "2001",
+    "addr:postcode": "24014",
+    "addr:state": "VA",
+    "addr:street": "Crystal Spring Avenue Southwest",
+    "amenity": "pharmacy",
+    "branch": "Crystal Spring",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Carilion Clinic Pharmacy",
+    "opening_hours": "Mo-Fr 08:30-18:00",
+    "operator:wikidata": "Q5039556",
+    "phone": "+1-540-853-0905",
+    "website": "https://www.carilionclinic.org/locations/carilion-clinic-pharmacy-crystal-spring"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12016048151,
+   "lat": 37.2558036,
+   "lon": -79.9427231,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "3",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "Riverside Circle Southwest",
+    "amenity": "pharmacy",
+    "branch": "Riverside",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Carilion Clinic Pharmacy",
+    "opening_hours": "Mo-Fr 09:00-13:00,13:30-17:00",
+    "operator:wikidata": "Q5039556",
+    "phone": "+1-540-526-1450",
+    "website": "https://www.carilionclinic.org/locations/carilion-clinic-pharmacy-riverside"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12016049125,
+   "lat": 37.2517013,
+   "lon": -79.9410456,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1906",
+    "addr:postcode": "24014",
+    "addr:state": "VA",
+    "addr:street": "Belleview Avenue Southeast",
+    "amenity": "pharmacy",
+    "branch": "Carilion Roanoke Memorial Hospital",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Carilion Clinic Pharmacy",
+    "opening_hours": "24/7",
+    "operator": "Q5039556",
+    "phone": "+1-540-266-6480",
+    "website": "https://www.carilionclinic.org/locations/carilion-clinic-pharmacy-carilion-roanoke-memorial-hospital"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12022891756,
+   "lat": 37.2617691,
+   "lon": -79.9103774,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "bottle": "no",
+    "covered": "yes",
+    "fee": "no",
+    "indoor": "no",
+    "lit": "yes",
+    "operator:wikidata": "Q126898700",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12030084489,
+   "lat": 37.2545295,
+   "lon": -79.9461363,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "no",
+    "fee": "no",
+    "portable": "yes",
+    "toilets:disposal": "chemical",
+    "toilets:handwashing": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12030084490,
+   "lat": 37.2516808,
+   "lon": -79.9463634,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "no",
+    "fee": "no",
+    "portable": "yes",
+    "toilets:disposal": "chemical"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12064024361,
+   "lat": 37.263003,
+   "lon": -79.9231598,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "bottle": "no",
+    "covered": "yes",
+    "fee": "no",
+    "indoor": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12064051861,
+   "lat": 37.2582119,
+   "lon": -79.9233918,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "fee": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12067126258,
+   "lat": 37.2613229,
+   "lon": -79.9348234,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "bottle": "yes",
+    "check_date": "2024-07-21",
+    "covered": "no",
+    "description": "Out of order as of 7/21/24",
+    "fee": "no",
+    "indoor": "no",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12102974559,
+   "lat": 37.2549732,
+   "lon": -79.946047,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "fee": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12230216498,
+   "lat": 37.2537352,
+   "lon": -79.9482063,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "bottle": "yes",
+    "covered": "no",
+    "fee": "no",
+    "indoor": "no",
+    "lit": "no",
+    "wheelchair": "limited"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12414034981,
+   "lat": 37.2565744,
+   "lon": -79.9554969,
+   "tags": {
+    "amenity": "clinic",
+    "healthcare": "clinic",
+    "name": "AFC Urgent Care",
+    "operator": "AFC Urgent Care",
+    "operator:type": "private",
+    "operator:wikidata": "Q110552174",
+    "urgent_care": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13664185902,
+   "lat": 37.2609507,
+   "lon": -79.945187,
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1320",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "3rd Street Southwest",
+    "amenity": "social_facility",
+    "brand": "Visiting Angels",
+    "brand:wikidata": "Q139761092",
+    "name": "Visiting Angels",
+    "official_name": "Visiting Angels Senior Home Care",
+    "phone": "+1-540-904-7104",
+    "social_facility": "ambulatory_care",
+    "social_facility:for": "senior",
+    "start_date": "2008-10-01",
+    "website": "https://www.visitingangels.com/roanokeva/home"
+   }
+  },
+  {
+   "type": "way",
+   "id": 44596250,
+   "center": {
+    "lat": 37.3079585,
+    "lon": -79.9475954
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "3837",
+    "addr:state": "VA",
+    "addr:street": "Williamson Road Northeast",
+    "amenity": "library",
+    "building": "yes",
+    "ele": "325",
+    "gnis:feature_id": "1707288",
+    "name": "Williamson Road Library",
+    "opening_hours": "Mo 10:00-20:00; Tu-Th 10:00-18:00; Fr-Sa 10:00-17:00; Su off",
+    "operator": "Roanoke City",
+    "operator:type": "public",
+    "operator:wikidata": "Q501796",
+    "phone": "+1 540 853 2473",
+    "source": "Yahoo",
+    "website": "https://www.roanokeva.gov/1129/Library-Events-Programs"
+   }
+  },
+  {
+   "type": "way",
+   "id": 44818540,
+   "center": {
+    "lat": 37.2771563,
+    "lon": -79.9334696
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "419",
+    "addr:postcode": "24022-9998",
+    "addr:state": "VA",
+    "addr:street": "Rutherford Avenue Northeast",
+    "amenity": "post_office",
+    "building": "public",
+    "ele": "289",
+    "gnis:feature_id": "1707209",
+    "name": "Roanoke Post Office",
+    "opening_hours": "Mo-Fr 09:00-18:00; Sa 09:00-12:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 540-985-8802",
+    "ref": "1437371",
+    "website": "https://tools.usps.com/locations/home.htm?location=1437371"
+   }
+  },
+  {
+   "type": "way",
+   "id": 222714921,
+   "center": {
+    "lat": 37.263989,
+    "lon": -79.9769995
+   },
+   "tags": {
+    "building": "yes",
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "way",
+   "id": 222719023,
+   "center": {
+    "lat": 37.2650758,
+    "lon": -79.9394801
+   },
+   "tags": {
+    "amenity": "clinic",
+    "building": "yes",
+    "healthcare": "clinic",
+    "name": "Jefferson Community Medical Clinic"
+   }
+  },
+  {
+   "type": "way",
+   "id": 371355314,
+   "center": {
+    "lat": 37.2538102,
+    "lon": -79.9481324
+   },
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "portable": "no",
+    "power_supply": "no",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "toilets:position": "seated;urinal",
+    "wheelchair": "limited"
+   }
+  },
+  {
+   "type": "way",
+   "id": 484970116,
+   "center": {
+    "lat": 37.2509556,
+    "lon": -79.9559595
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "2331",
+    "addr:postcode": "24014",
+    "addr:street": "Franklin Road Southwest",
+    "amenity": "clinic",
+    "building": "yes",
+    "check_date:opening_hours": "2021-11-18",
+    "healthcare": "clinic",
+    "name": "Carilion Clinic Outpatient Therapy",
+    "opening_hours": "Mo-Fr 08:00-17:00",
+    "operator": "Carilion Clinic",
+    "phone": "+1 540 981 8050",
+    "website": "https://www.carilionclinic.org/locations/outpatient-therapy-institute-orthopaedics-neurosciences"
+   }
+  },
+  {
+   "type": "way",
+   "id": 494790797,
+   "center": {
+    "lat": 37.2497482,
+    "lon": -79.9353894
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "2000",
+    "addr:postcode": "24013",
+    "addr:state": "VA",
+    "addr:street": "J P Fishburn Parkway",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Mill Mountain Discovery Center"
+   }
+  },
+  {
+   "type": "way",
+   "id": 515613348,
+   "center": {
+    "lat": 37.2825431,
+    "lon": -79.9493375
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "611",
+    "addr:postcode": "24016",
+    "addr:street": "McDowell Avenue Northwest",
+    "amenity": "clinic",
+    "building": "hospital",
+    "gnis:feature_id": "1499195",
+    "healthcare": "clinic",
+    "healthcare:speciality": "psychiatry",
+    "name": "The Burrell Center",
+    "old_name": "Burrell Memorial Hospital",
+    "operator": "Blue Ridge Behavioral Healthcare",
+    "phone": "+1 540 266 9200",
+    "website": "https://brbh.org/adult_family_serv.htm",
+    "wikidata": "Q16849562",
+    "wikipedia": "en:Burrell Memorial Hospital"
+   }
+  },
+  {
+   "type": "way",
+   "id": 530725553,
+   "center": {
+    "lat": 37.2506525,
+    "lon": -79.9327956
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "source": "EsriWorldImagery"
+   }
+  },
+  {
+   "type": "way",
+   "id": 546891499,
+   "center": {
+    "lat": 37.2479111,
+    "lon": -79.9474259
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "2229",
+    "addr:postcode": "24014-9998",
+    "addr:state": "VA",
+    "addr:street": "Crystal Spring Avenue Southwest",
+    "amenity": "post_office",
+    "building": "commercial",
+    "name": "South Roanoke Post Office",
+    "opening_hours": "Mo-Fr 09:00-13:15; Sa 10:00-12:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 540-342-7251",
+    "ref": "1382256",
+    "website": "https://tools.usps.com/locations/home.htm?location=1382256"
+   }
+  },
+  {
+   "type": "way",
+   "id": 549561361,
+   "center": {
+    "lat": 37.2700351,
+    "lon": -79.9460397
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "313",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "Luck Avenue Southwest",
+    "amenity": "social_facility",
+    "building": "commercial",
+    "email": "info@vcwblueridge.com",
+    "fax": "+1-540-343-4416",
+    "name": "Virgina Career Works",
+    "phone": "+1-540-562-8442",
+    "social_facility": "outreach",
+    "social_facility:for": "unemployed",
+    "website": "https://vcwblueridge.com/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 550954793,
+   "center": {
+    "lat": 37.2694112,
+    "lon": -79.9637475
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "714",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "13th Street Southwest",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Historic Fishburn Mansion",
+    "operator": "Roanoke City Parks and Recreation",
+    "operator:type": "public",
+    "source": "esri_Virginia",
+    "website": "https://www.playroanoke.com/parks-facilities/fishburn-mansion/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 553855504,
+   "center": {
+    "lat": 37.2563113,
+    "lon": -79.9849089
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "2112",
+    "addr:postcode": "24015",
+    "addr:state": "VA",
+    "addr:street": "Grandin Road Southwest",
+    "amenity": "library",
+    "building": "yes",
+    "ele": "322",
+    "gnis:feature_id": "1707193",
+    "name": "Raleigh Court Branch Roanoke City Public Library",
+    "opening_hours": "Mo 10:00-20:00; Tu-Th 10:00-18:00; Fr-Sa 10:00-17:00; Su off",
+    "operator": "Roanoke City",
+    "operator:type": "public",
+    "operator:wikidata": "Q501796",
+    "phone": "+1 540 853 2240",
+    "website": "https://www.roanokeva.gov/1129/Library-Events-Programs"
+   }
+  },
+  {
+   "type": "way",
+   "id": 553855505,
+   "center": {
+    "lat": 37.2565315,
+    "lon": -79.9702331
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 553855506,
+   "center": {
+    "lat": 37.246969,
+    "lon": -79.9821806
+   },
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 556785817,
+   "center": {
+    "lat": 37.2772729,
+    "lon": -79.9411601
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "15",
+    "addr:state": "VA",
+    "addr:street": "Patton Avenue Northwest",
+    "amenity": "library",
+    "building": "yes",
+    "ele": "292",
+    "gnis:feature_id": "1706925",
+    "name": "Gainsboro Branch Roanoke City Public Library",
+    "opening_hours": "Mo 10:00-20:00; Tu-Th 10:00-18:00; Fr-Sa 10:00-17:00; Su off",
+    "operator": "Roanoke Public Libraries",
+    "operator:type": "public",
+    "phone": "+1 540 853 2540",
+    "website": "https://www.roanokeva.gov/2934/Libraries",
+    "wikidata": "Q16891488"
+   }
+  },
+  {
+   "type": "way",
+   "id": 742385579,
+   "center": {
+    "lat": 37.2693448,
+    "lon": -79.9486149
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "406",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "Luck Avenue Southwest",
+    "amenity": "social_facility",
+    "building": "yes",
+    "name": "Acts 2 Ministry",
+    "phone": "+1-540-245-2495",
+    "social_facility": "outreach",
+    "social_facility:for": "juvenile",
+    "source": "esri_USDOT_Virginia",
+    "website": "https://www.acts2ministry.org/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 742409578,
+   "center": {
+    "lat": 37.269731,
+    "lon": -79.9468142
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "333",
+    "addr:postcode": "24016",
+    "addr:state": "VA",
+    "addr:street": "Luck Avenue Southwest",
+    "amenity": "social_facility",
+    "building": "yes",
+    "name": "Straight Street",
+    "social_facility": "outreach",
+    "social_facility:for": "juvenile",
+    "source": "esri_USDOT_Virginia",
+    "website": "https://www.straightstreet.org/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 919352637,
+   "center": {
+    "lat": 37.2477499,
+    "lon": -79.9470328
+   },
+   "tags": {
+    "addr:state": "VA",
+    "amenity": "library",
+    "building": "yes",
+    "name": "South Roanoke E Branch",
+    "operator:type": "public",
+    "website": "https://www.roanokeva.gov/2650/Crystal-Spring-eBranch"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1007403458,
+   "center": {
+    "lat": 37.2614078,
+    "lon": -79.9798677
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1733",
+    "addr:postcode": "24015-9998",
+    "addr:state": "VA",
+    "addr:street": "Grandin Road Southwest",
+    "amenity": "post_office",
+    "building": "yes",
+    "check_date": "2026-06-02",
+    "name": "Grandin Road Post Office",
+    "opening_hours": "Mo-Fr 08:30-17:00; Sa 09:00-12:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1 540-343-2764",
+    "ref": "1365349",
+    "short_name": "USPS",
+    "source": "esri_Virginia",
+    "website": "https://tools.usps.com/locations/home.htm?location=1365349"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1088252263,
+   "center": {
+    "lat": 37.2679383,
+    "lon": -79.9401354
+   },
+   "tags": {
+    "addr:state": "VA",
+    "amenity": "library",
+    "building": "yes",
+    "ele": "291",
+    "gnis:feature_id": "1706951",
+    "name": "Roanoke City Public Library",
+    "operator:type": "public",
+    "source": "USGS Geonames",
+    "website": "https://www.roanokeva.gov/2934/Libraries",
+    "wikidata": "Q69767140"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1135960391,
+   "center": {
+    "lat": 37.2787322,
+    "lon": -79.8974674
+   },
+   "tags": {
+    "addr:city": "Vinton",
+    "addr:housenumber": "300",
+    "addr:postcode": "24179",
+    "addr:state": "VA",
+    "addr:street": "South Pollard Street",
+    "amenity": "library",
+    "building": "yes",
+    "name": "Vinton Library",
+    "opening_hours": "Mo-Th 10:00-20:00; Fr-Sa 10:00-17:00; Su off",
+    "operator": "Roanoke County Public Library",
+    "operator:type": "public",
+    "operator:wikidata": "Q69493386",
+    "phone": "+1 540 857 5043",
+    "website": "https://www.roanokecountyva.gov/2421/Vinton-Library"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1170985915,
+   "center": {
+    "lat": 37.2856279,
+    "lon": -79.9804905
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Roanoke EnVision Center",
+    "opening_hours": "Mo-Fr 09:00-17:00",
+    "operator": "City of Roanoke Redevelopment and Housing Authority",
+    "operator:type": "government"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1190422490,
+   "center": {
+    "lat": 37.2656458,
+    "lon": -79.9254083
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1101",
+    "addr:postcode": "24013",
+    "addr:state": "VA",
+    "addr:street": "Morningside Street Southeast",
+    "amenity": "library",
+    "building": "yes",
+    "ele": "305",
+    "gnis:feature_id": "1706932",
+    "name": "Belmont Branch Roanoke City Public Library",
+    "opening_hours": "Mo 10:00-20:00; Tu-Th 10:00-18:00; Fr-Sa 10:00-17:00; Su off",
+    "operator": "Roanoke City",
+    "operator:type": "public",
+    "phone": "+1 540 853 2640",
+    "website": "https://www.roanokeva.gov/2934/Libraries"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1190930130,
+   "center": {
+    "lat": 37.263038,
+    "lon": -79.9231356
+   },
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1191681821,
+   "center": {
+    "lat": 37.270419,
+    "lon": -79.9779452
+   },
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Norwich Park Recreation Center",
+    "operator": "Roanoke City Parks and Recreation",
+    "operator:type": "public"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1193392223,
+   "center": {
+    "lat": 37.3117169,
+    "lon": -79.9471156
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "3137",
+    "addr:postcode": "24012",
+    "addr:state": "VA",
+    "addr:street": "Preston Avenue Northwest",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Preston Park Rereation Center",
+    "operator": "Roanoke City Parks and Recreation",
+    "operator:type": "public",
+    "website": "https://www.playroanoke.com/parks-facilities/preston-park/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1258788857,
+   "center": {
+    "lat": 37.290256,
+    "lon": -79.9513598
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "1626",
+    "addr:postcode": "24012",
+    "addr:state": "VA",
+    "addr:street": "10th Street Northwest",
+    "amenity": "community_centre",
+    "building": "yes",
+    "name": "Lick Run CDC",
+    "website": "https://www.lickruncdc.org/home"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1295839470,
+   "center": {
+    "lat": 37.2528704,
+    "lon": -79.9577134
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:housenumber": "2311",
+    "addr:postcode": "24014",
+    "addr:state": "VA",
+    "addr:street": "Sanford Avenue Southwest",
+    "amenity": "pharmacy",
+    "building": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Fair Way Pharmacy",
+    "opening_hours": "Mo-Tu 10:00-18:00; We 10:00-20:00; Th-Fr 10:00-18:00",
+    "phone": "+1-540-524-9983",
+    "source": "microsoft/BuildingFootprints",
+    "website": "https://www.thefairwaypharmacy.com"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1348045081,
+   "center": {
+    "lat": 37.2681891,
+    "lon": -79.9769527
+   },
+   "tags": {
+    "addr:city": "Roanoke",
+    "addr:state": "VA",
+    "amenity": "social_facility",
+    "building": "yes",
+    "ele": "311",
+    "gnis:feature_id": "1707138",
+    "landuse": "residential",
+    "name": "Mary Louisa Home for the Aged",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior",
+    "source": "USGS Geonames;esri/Virginia_building"
+   }
+  }
+ ]
+}

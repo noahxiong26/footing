@@ -1,0 +1,47 @@
+{
+  "fmr.xlsx": {
+    "url": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx",
+    "checked_at": "2026-10-25T06:31:53.220369+00:00",
+    "status": "ok",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "bytes": 367248,
+    "sha256": "0b130fd046c7bedbee5d206ab55654d390d27da423ff22e307e0698fbb56ad9c",
+    "final_url": "https://www.huduser.gov/portal/datasets/fmr/fmr2026/FY26_FMRs_revised.xlsx"
+  },
+  "hic.xlsx": {
+    "url": "https://www.huduser.gov/portal/sites/default/files/xls/2007-2025-HIC-Counts-by-CoC.xlsx",
+    "checked_at": "2026-10-25T06:31:53.312579+00:00",
+    "status": "ok",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "bytes": 2598803,
+    "sha256": "d4dd3a9dc84384976fa2efcde2d89081a4deeea57be43c73eb587c77ed527bc1",
+    "final_url": "https://www.huduser.gov/portal/sites/default/files/xls/2007-2025-HIC-Counts-by-CoC.xlsx"
+  },
+  "pit.xlsb": {
+    "url": "https://www.huduser.gov/portal/sites/default/files/xls/2007-2025-PIT-Counts-by-CoC.xlsb",
+    "checked_at": "2026-10-25T06:31:53.482680+00:00",
+    "status": "ok",
+    "content_type": "application/vnd.ms-excel.sheet.binary.macroEnabled.12",
+    "bytes": 8859426,
+    "sha256": "8deeb058001d6ecc0dfba0587baafc5e82eb46354e724c7e83a2a75eaa86e2f3",
+    "final_url": "https://www.huduser.gov/portal/sites/default/files/xls/2007-2025-PIT-Counts-by-CoC.xlsb"
+  },
+  "ice": {
+    "url": "https://www.ice.gov/file-download/download/public/209716",
+    "checked_at": "2026-10-25T06:29:58.952957+00:00",
+    "status": "ok",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "bytes": 277585,
+    "sha256": "e8b76ba2e3b2b4e4917e07710c9f2281ad5d333a84ef301608af7c904a8dd1df",
+    "final_url": "https://www.ice.gov/file-download/download/public/209716"
+  },
+  "snap.json": {
+    "url": "https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/snap_retailer_location_data/FeatureServer/0/query?where=State%3D%27VA%27&groupByFieldsForStatistics=County%2CStore_Type&outStatistics=%5B%7B%22statisticType%22%3A%22count%22%2C%22onStatisticField%22%3A%22ObjectId%22%2C%22outStatisticFieldName%22%3A%22n%22%7D%5D&returnGeometry=false&f=json",
+    "checked_at": "2026-10-25T06:29:59.368536+00:00",
+    "status": "ok",
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 53842,
+    "sha256": "c47462e68f427015252a2ee623c2b53bcf8030cc84aa7b983d8ca5aaf759c2c3",
+    "final_url": "https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/snap_retailer_location_data/FeatureServer/0/query?where=State%3D%27VA%27&groupByFieldsForStatistics=County%2CStore_Type&outStatistics=%5B%7B%22statisticType%22%3A%22count%22%2C%22onStatisticField%22%3A%22ObjectId%22%2C%22outStatisticFieldName%22%3A%22n%22%7D%5D&returnGeometry=false&f=json"
+  }
+}

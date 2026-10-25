@@ -1,0 +1,995 @@
+{
+ "version": 0.6,
+ "generator": "Overpass API 0.7.62.11 87bfad18",
+ "osm3s": {
+  "timestamp_osm_base": "2026-10-25T06:45:06Z",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+ },
+ "elements": [
+  {
+   "type": "node",
+   "id": 570170229,
+   "lat": 37.233808,
+   "lon": -80.431794,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "University City Boulevard",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 691124867,
+   "lat": 37.220667,
+   "lon": -80.4221877,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "895",
+    "addr:postcode": "24061",
+    "addr:state": "VA",
+    "addr:street": "Washington Street",
+    "amenity": "clinic",
+    "email": "health@vt.edu",
+    "fax": "+1-540-231-7473",
+    "healthcare": "clinic",
+    "name": "Schiffert Health Center",
+    "operator": "Virginia Tech",
+    "phone": "+1-540-231-6444"
+   }
+  },
+  {
+   "type": "node",
+   "id": 937030090,
+   "lat": 37.2340487,
+   "lon": -80.4187357,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "610",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "North Main Street",
+    "addr:unit": "Suite B",
+    "amenity": "post_office",
+    "brand": "FedEx;UPS",
+    "email": "easywaypc@gmail.com",
+    "fax": "+1-540-951-4765",
+    "name": "Easy Way Packaging Center",
+    "not:brand:wikidata": "Q459477",
+    "opening_hours": "Mo-Fr 10:00-17:30; Sa 10:00-14:00; Su off",
+    "operator": "Easy Way Packaging Center",
+    "phone": "+1-540-951-4351",
+    "start_date": "1985",
+    "website": "https://easywayvt.com/",
+    "wheelchair": "limited"
+   }
+  },
+  {
+   "type": "node",
+   "id": 937031091,
+   "lat": 37.2491381,
+   "lon": -80.4154566,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "1510",
+    "addr:state": "VA",
+    "addr:street": "Seneca Drive",
+    "amenity": "social_facility",
+    "name": "Greenwood Assisted Living",
+    "social_facility": "group_home",
+    "social_facility:for": "senior"
+   }
+  },
+  {
+   "type": "node",
+   "id": 937065640,
+   "lat": 37.2296637,
+   "lon": -80.4145044,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "125",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "North Main Street",
+    "addr:unit": "500",
+    "amenity": "post_office",
+    "branch": "Virginia Tech",
+    "brand": "The UPS Store",
+    "brand:short": "UPS",
+    "brand:wikidata": "Q7771029",
+    "collection_times": "Mo-Fr 17:30",
+    "contact:facebook": "https://www.facebook.com/TheUPSStore3421/",
+    "email": "store3421@theupsstore.com",
+    "fax": "+1-540-953-0032",
+    "name": "The UPS Store",
+    "opening_hours": "Mo-Fr 08:00-18:00; Sa 09:00-17:00; Su off",
+    "phone": "+1-540-953-9000",
+    "ref": "3421",
+    "shop": "copyshop",
+    "short_name": "UPS",
+    "website": "https://locations.theupsstore.com/va/blacksburg/125-n-main-st"
+   }
+  },
+  {
+   "type": "node",
+   "id": 937081324,
+   "lat": 37.2307541,
+   "lon": -80.414063,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "141",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Jackson Street",
+    "amenity": "social_facility",
+    "branch": "Blacksburg",
+    "brand": "Montgomery County Emergency Assistance Program",
+    "brand:short": "MCEAP",
+    "contact:facebook": "https://www.facebook.com/blacksburg.mceap.clothing.bank",
+    "contact:instagram": "https://www.instagram.com/mceap_blacksburg_clothing_bank/",
+    "name": "Blacksburg Clothing Bank",
+    "opening_hours": "Th 08:00-12:30; Fr-We off",
+    "operator": "Montgomery County Emergency Assistance Program",
+    "operator:short": "MCEAP",
+    "phone": "+1-540-392-0097",
+    "social_facility": "clothing_bank"
+   }
+  },
+  {
+   "type": "node",
+   "id": 937097719,
+   "lat": 37.2001395,
+   "lon": -80.3995637,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "2401",
+    "addr:state": "VA",
+    "addr:street": "South Main Street",
+    "addr:unit": "F",
+    "name": "Express Employment Profession",
+    "office": "employment_agency"
+   }
+  },
+  {
+   "type": "node",
+   "id": 937142908,
+   "lat": 37.2256396,
+   "lon": -80.4189715,
+   "tags": {
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 937142920,
+   "lat": 37.224772,
+   "lon": -80.4181363,
+   "tags": {
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 937142923,
+   "lat": 37.2253952,
+   "lon": -80.4183555,
+   "tags": {
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 937151418,
+   "lat": 37.226418,
+   "lon": -80.417848,
+   "tags": {
+    "operator": "Virginia Tech",
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 937151419,
+   "lat": 37.2248613,
+   "lon": -80.4209183,
+   "tags": {
+    "operator": "Virginia Tech",
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1245916030,
+   "lat": 37.2244794,
+   "lon": -80.4196355,
+   "tags": {
+    "amenity": "post_office",
+    "name": "Pritchard Mailroom",
+    "operator": "Virginia Tech",
+    "operator:wikidata": "Q65379"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1245933906,
+   "lat": 37.2266461,
+   "lon": -80.4193205,
+   "tags": {
+    "amenity": "post_office",
+    "name": "Owens Package Pick-up",
+    "opening_hours": "Mo-Fr 08:00-17:00",
+    "operator": "Virginia Tech",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1254871955,
+   "lat": 37.2252459,
+   "lon": -80.4195613,
+   "tags": {
+    "amenity": "post_office",
+    "name": "Peddrew-Yates Mail Room",
+    "operator": "Virginia Tech",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1257000900,
+   "lat": 37.225895,
+   "lon": -80.4181768,
+   "tags": {
+    "amenity": "post_office",
+    "name": "Mailroom",
+    "operator": "Virginia Tech"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1923737731,
+   "lat": 37.2259772,
+   "lon": -80.4164973,
+   "tags": {
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3739536348,
+   "lat": 37.2270016,
+   "lon": -80.4175958,
+   "tags": {
+    "operator": "Virginia Tech",
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3739536371,
+   "lat": 37.2267454,
+   "lon": -80.4176817,
+   "tags": {
+    "operator": "Virginia Tech",
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4422603991,
+   "lat": 37.2319846,
+   "lon": -80.4325023,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "600",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "University City Boulevard",
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "phone": "+1 540 951 4911",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/blacksburg-va-pharmacies/600-university-city-blvd-blacksburg-va-24060/storeid=3460",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 6685388846,
+   "lat": 37.2102267,
+   "lon": -80.398544,
+   "tags": {
+    "amenity": "pharmacy",
+    "brand": "CVS Pharmacy",
+    "brand:website": "https://www.cvs.com/",
+    "brand:wikidata": "Q2078880",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "CVS Pharmacy",
+    "short_name": "CVS",
+    "website": "https://www.cvs.com/store-locator/blacksburg-va-pharmacies/1775-south-main-st-blacksburg-va-24060/storeid=6329"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7998066931,
+   "lat": 37.1832158,
+   "lon": -80.410606,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:housenumber": "777",
+    "addr:street": "Triangle Street",
+    "name": "Arbor's Laundromat",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10608838584,
+   "lat": 37.2275371,
+   "lon": -80.4118481,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "301",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "South Main Street",
+    "addr:unit": "107",
+    "amenity": "pharmacy",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Counts Family Pharmacy",
+    "opening_hours": "Mo-Fr 09:00-18:00; Sa 09:00-13:00; Su off",
+    "phone": "+1-540-605-7721",
+    "website": "https://countspharmacy.com/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12076124873,
+   "lat": 37.2450968,
+   "lon": -80.4596677,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "portable": "yes",
+    "toilets:disposal": "chemical",
+    "unisex": "yes",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12077422182,
+   "lat": 37.2377492,
+   "lon": -80.4607299,
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "portable": "yes",
+    "toilets:disposal": "chemical",
+    "unisex": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12139081633,
+   "lat": 37.2190393,
+   "lon": -80.451753,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "2617",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Sheffield Drive",
+    "addr:unit": "Second Floor",
+    "amenity": "clinic",
+    "branch": "Blacksburg",
+    "healthcare": "optometrist",
+    "healthcare:speciality": "ophthalmology",
+    "level": "1",
+    "name": "Vistar Eye Center",
+    "phone": "+1-540-855-5100",
+    "website": "https://www.vistareye.com/locations/blacksburg/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12139081634,
+   "lat": 37.2189523,
+   "lon": -80.4516383,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "2617",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Sheffield Drive",
+    "addr:unit": "First Floor",
+    "amenity": "clinic",
+    "branch": "Blacksburg",
+    "email": "ContactUs@newriverdermatology.com",
+    "healthcare:speciality": "dermatology",
+    "level": "0",
+    "name": "New River Dermatology",
+    "phone": "+1-540-953-2210",
+    "website": "https://www.newriverdermatology.com/"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12504678106,
+   "lat": 37.2247776,
+   "lon": -80.4290163,
+   "tags": {
+    "access": "yes",
+    "amenity": "drinking_water",
+    "fee": "no",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13164359276,
+   "lat": 37.2285101,
+   "lon": -80.4187798,
+   "tags": {
+    "amenity": "drinking_water",
+    "bottle": "yes",
+    "cold_water": "no",
+    "fee": "no",
+    "fountain": "bottle_refill;bubbler",
+    "hot_water": "no",
+    "iced_water": "no",
+    "opening_hours": "24/7",
+    "panoramax": "5bed519d-6814-4b14-9193-5e8c80a8fba0",
+    "room_temperature_water": "yes",
+    "warm_water": "no"
+   }
+  },
+  {
+   "type": "node",
+   "id": 14003746009,
+   "lat": 37.2357313,
+   "lon": -80.435122,
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:housenumber": "903",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "University City Boulevard",
+    "amenity": "pharmacy",
+    "brand": "Kroger",
+    "brand:wikidata": "Q153417",
+    "healthcare": "pharmacy",
+    "name": "Kroger Pharmacy",
+    "opening_hours": "Mo-Fr 09:00-20:00; Sa 09:00-13:00,13:30-18:00; Su 10:00-13:00,13:30-17:00",
+    "phone": "+1-540-951-4136",
+    "website": "https://www.kroger.com/stores/pharmacy/va/blacksburg/029/00210"
+   }
+  },
+  {
+   "type": "way",
+   "id": 32935317,
+   "center": {
+    "lat": 37.2300571,
+    "lon": -80.4142666
+   },
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "118",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "North Main Street",
+    "amenity": "post_office",
+    "building": "public",
+    "building:levels": "2",
+    "building:material": "brick",
+    "name": "Downtown Blacksburg Post Office",
+    "opening_hours": "Mo-Fr 08:30-17:00; Sa 09:30-13:00; Su off",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1-540-951-3034",
+    "ref": "1361147",
+    "roof:levels": "0",
+    "website": "https://tools.usps.com/locations/home.htm?location=1361147"
+   }
+  },
+  {
+   "type": "way",
+   "id": 33743509,
+   "center": {
+    "lat": 37.225946,
+    "lon": -80.4126058
+   },
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "200",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Miller Street",
+    "amenity": "library",
+    "building": "civic",
+    "building:levels": "1",
+    "building:material": "brick",
+    "check_date": "2025-02-23",
+    "fax": "+1-540-552-8265",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Blacksburg Library",
+    "opening_hours": "Mo-Th 09:00-20:00; Fr-Sa 10:00-17:00; Su 13:00-17:00",
+    "operator": "Montgomery-Floyd Regional Library",
+    "operator:type": "public",
+    "operator:wikidata": "Q69493325",
+    "phone": "+1-540-552-8246",
+    "roof:levels": "1",
+    "website": "https://www.mfrl.org/hours.php?branch=b",
+    "wheelchair": "yes",
+    "wikidata": "Q69766939"
+   }
+  },
+  {
+   "type": "way",
+   "id": 51326941,
+   "center": {
+    "lat": 37.2363932,
+    "lon": -80.4354492
+   },
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "909",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "University City Boulevard",
+    "amenity": "post_office",
+    "building": "public",
+    "name": "Blacksburg Post Office",
+    "opening_hours": "Mo-Fr 08:30-17:00; Sa 09:30-13:00",
+    "operator": "United States Postal Service",
+    "operator:short": "USPS",
+    "operator:type": "public",
+    "operator:website": "https://www.usps.com",
+    "operator:wikidata": "Q668687",
+    "operator:wikipedia": "en:United States Postal Service",
+    "phone": "+1-540-552-2751",
+    "ref": "1355075",
+    "website": "https://tools.usps.com/locations/home.htm?location=1355075"
+   }
+  },
+  {
+   "type": "way",
+   "id": 54782614,
+   "center": {
+    "lat": 37.2164307,
+    "lon": -80.4611809
+   },
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "3110",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Prices Fork Road",
+    "amenity": "clinic",
+    "building": "house",
+    "building:levels": "1",
+    "building:material": "vinyl",
+    "email": "vtautismcenter@vt.edu",
+    "healthcare": "psychotherapist",
+    "healthcare:speciality": "autism",
+    "name": "Virginia Tech Autism Clinic",
+    "operator": "Virginia Tech",
+    "operator:wikidata": "Q65379",
+    "operator:wikipedia": "en:Virginia Tech",
+    "phone": "+1-540-231-8747",
+    "ref": "270",
+    "roof:levels": "0",
+    "short_name": "VTAC",
+    "website": "https://www.vtcar.science.vt.edu/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 54782615,
+   "center": {
+    "lat": 37.2163526,
+    "lon": -80.4613806
+   },
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "3110",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Prices Fork Road",
+    "amenity": "clinic",
+    "building": "house",
+    "building:levels": "2",
+    "building:material": "brick",
+    "fax": "+1-540-231-4250",
+    "healthcare": "psychotherapist",
+    "name": "Virginia Tech Psychological Services Center",
+    "operator": "Virginia Tech",
+    "operator:wikidata": "Q65379",
+    "operator:wikipedia": "en:Virginia Tech",
+    "phone": "+1-540-231-6914",
+    "ref": "308",
+    "roof:levels": "1",
+    "short_name": "PSC",
+    "website": "https://psyc.vt.edu/clinicalservices/psychological-services.html"
+   }
+  },
+  {
+   "type": "way",
+   "id": 54783034,
+   "center": {
+    "lat": 37.2185506,
+    "lon": -80.4242972
+   },
+   "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 54783423,
+   "center": {
+    "lat": 37.2248585,
+    "lon": -80.4444649
+   },
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "901",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Plantation Road",
+    "amenity": "clinic",
+    "branch": "Blacksburg",
+    "brand": "Carilion Clinic",
+    "brand:wikidata": "Q5039556",
+    "building": "commercial",
+    "building:levels": "1",
+    "building:material": "brick",
+    "healthcare": "clinic",
+    "name": "Carilion Clinic Blacksburg",
+    "operator": "Carilion Clinic",
+    "operator:wikidata": "Q5039556",
+    "operator:wikipedia": "en:Carilion Clinic",
+    "roof:levels": "0",
+    "website": "https://www.carilionclinic.org/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 54784900,
+   "center": {
+    "lat": 37.239007,
+    "lon": -80.4203622
+   },
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "1003",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "North Main Street",
+    "building": "commercial",
+    "building:levels": "1",
+    "building:material": "vinyl",
+    "name": "North Main Street Laundromat",
+    "opening_hours": "Mo-Su 06:00-22:00",
+    "operator": "About Clean",
+    "payment:coins": "yes",
+    "phone": "+1-540-682-4955",
+    "roof:levels": "0",
+    "self_service": "yes",
+    "shop": "laundry",
+    "website": "https://www.aboutcleanva.com/home/laundromat-locations/north-main-street-laundromat"
+   }
+  },
+  {
+   "type": "way",
+   "id": 54789115,
+   "center": {
+    "lat": 37.2225154,
+    "lon": -80.4138217
+   },
+   "tags": {
+    "access": "private",
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "507",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Center Street",
+    "building": "commercial",
+    "building:levels": "1",
+    "building:material": "vinyl",
+    "operator": "Bolte Development",
+    "private": "residents",
+    "roof:levels": "1",
+    "self_service": "yes",
+    "shop": "laundry"
+   }
+  },
+  {
+   "type": "way",
+   "id": 54789289,
+   "center": {
+    "lat": 37.229869,
+    "lon": -80.4137006
+   },
+   "tags": {
+    "access": "private",
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "105",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Roanoke Street",
+    "amenity": "community_centre",
+    "building": "civic",
+    "building:levels": "3",
+    "building:material": "brick",
+    "club": "freemasonry",
+    "contact:facebook": "https://www.facebook.com/hunters156/",
+    "email": "hunters156va@gmail.com",
+    "name": "Hunter's Lodge No. 156",
+    "private": "members",
+    "ref": "156",
+    "roof:levels": "0",
+    "start_date": "1928"
+   }
+  },
+  {
+   "type": "way",
+   "id": 54792142,
+   "center": {
+    "lat": 37.2441879,
+    "lon": -80.4120997
+   },
+   "tags": {
+    "access": "yes",
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "725",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Patrick Henry Drive",
+    "amenity": "community_centre",
+    "building": "public",
+    "building:levels": "1",
+    "building:material": "brick",
+    "name": "Blacksburg Community Center",
+    "operator": "Blacksburg Parks and Recreation",
+    "operator:type": "public",
+    "operator:wikidata": "Q110062985",
+    "phone": "+1-540-443-1140",
+    "roof:levels": "1",
+    "sport": "multi",
+    "website": "https://www.blacksburg.gov/departments/departments-l-z/parks-and-recreation/community-center"
+   }
+  },
+  {
+   "type": "way",
+   "id": 426063475,
+   "center": {
+    "lat": 37.1963317,
+    "lon": -80.4232636
+   },
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:housenumber": "1000",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Litton Lane",
+    "amenity": "social_facility",
+    "name": "Wybe & Marietje Kroontje Health Care Center",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 520443868,
+   "center": {
+    "lat": 37.191184,
+    "lon": -80.4055177
+   },
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "3400",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "South Point Drive",
+    "amenity": "social_facility",
+    "building": "apartments",
+    "building:levels": "2",
+    "building:material": "vinyl",
+    "name": "English Meadows Blacksburg Campus",
+    "phone": "+1-540-317-3463",
+    "roof:levels": "1",
+    "social_facility": "assisted_living",
+    "social_facility:for": "senior",
+    "website": "https://blacksburg.care/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 992925061,
+   "center": {
+    "lat": 37.2370677,
+    "lon": -80.4050399
+   },
+   "tags": {
+    "amenity": "social_facility",
+    "building": "commercial",
+    "building:levels": "1",
+    "building:material": "metal",
+    "contact:facebook": "https://www.facebook.com/BburgInterfaithFoodPantry/",
+    "email": "bburgifp@gmail.com",
+    "name": "Blacksburg Interfaith Food Pantry",
+    "opening_hours": "Mo-Tu 16:00-17:30; We-Th 10:00-11:30; Fr-Su off",
+    "operator": "New River Community Action",
+    "operator:type": "religious",
+    "phone": "+1-540-951-8134",
+    "roof:levels": "0",
+    "social_facility": "food_bank",
+    "website": "https://blacksburginterfaithfoodpantry.org/"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1159224912,
+   "center": {
+    "lat": 37.2151031,
+    "lon": -80.4578201
+   },
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "outbuilding",
+    "building:levels": "1",
+    "building:material": "brick",
+    "fee": "no",
+    "nohousenumber": "yes",
+    "roof:levels": "0",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "toilets:paper_supplied": "yes",
+    "toilets:position": "seated"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1314237762,
+   "center": {
+    "lat": 37.1875904,
+    "lon": -80.4293854
+   },
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "pitlatrine",
+    "unisex": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1417411299,
+   "center": {
+    "lat": 37.2419922,
+    "lon": -80.4118185
+   },
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "outbuilding",
+    "operator": "Blacksburg Parks and Recreation",
+    "operator:type": "public",
+    "operator:wikidata": "Q110062985",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1420892384,
+   "center": {
+    "lat": 37.2435467,
+    "lon": -80.4253418
+   },
+   "tags": {
+    "access": "private",
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "1200",
+    "addr:postcode": "24060",
+    "addr:state": "VA",
+    "addr:street": "Snyder Lane",
+    "amenity": "community_centre",
+    "building": "civic",
+    "building:levels": "4",
+    "building:material": "vinyl",
+    "operator": "Hub Blacksburg",
+    "private": "residents",
+    "roof:levels": "0",
+    "start_date": "2021"
+   }
+  },
+  {
+   "type": "relation",
+   "id": 548450,
+   "center": {
+    "lat": 37.2288134,
+    "lon": -80.4192389
+   },
+   "tags": {
+    "addr:city": "Blacksburg",
+    "addr:country": "US",
+    "addr:housenumber": "560",
+    "addr:postcode": "24061",
+    "addr:state": "VA",
+    "addr:street": "Drillfield Drive",
+    "amenity": "library",
+    "building": "university",
+    "building:levels": "6",
+    "building:material": "stone",
+    "description": "Main library at Virginia Tech",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Newman Library",
+    "official_name": "Carol M. Newman Library",
+    "operator": "Virginia Tech University Libraries",
+    "operator:type": "university",
+    "operator:wikidata": "Q52635547",
+    "ref": "177",
+    "roof:levels": "0",
+    "short_name": "LIBR",
+    "start_date": "1955",
+    "type": "multipolygon",
+    "website": "https://lib.vt.edu/",
+    "wikidata": "Q105074202"
+   }
+  }
+ ]
+}

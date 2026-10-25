@@ -1,5 +1,64 @@
 # HANDOFF — Footing (read this first)
 
+## S8.0 Claude: resume this checkpoint first (2026-10-25, Codex)
+
+The owner asked to finish the session and hand work to **Claude**. This is an unfinished checkpoint on
+`codex/claude-handoff-2026-10-25`; `b7aefc8` is the last previously verified main commit. **Do not treat
+S7's green test counts or the older next-model prompt as validation of S8.** No worker committed or pushed.
+
+What is saved:
+
+- **Town receipts:** five new `fixtures/{roanoke,richmond,blacksburg,harrisonburg,alexandria}_2026-10-25/`
+  sets, eight real responses each (40 total), manifests and append-only request logs. Read
+  `docs/TOWN_CAPTURE.md`, `scripts/record_towns.py`, and `tests/test_town_captures.py`. BLS failed with
+  HTTP 503; ACS/HUD/EIA/Places/Transitland/Kroger had no keys; HRSA remains an empty local table. Never
+  fill those gaps with guesses. The recorder and its shell wrapper changed.
+- **Ordinances:** `data_raw/local_rules_research.json` covers 23 localities: nine scoped rules, thirteen
+  Unknown, and disputed Bristol. Read `docs/LOCAL_RULES_REVIEW.md` and the builder diff. Bristol's old
+  broad/0 classification remains provisional. The other locality codes are not all reviewed.
+  **The builder changed but generated `footing/static/va_localities.json` still needs reconciliation.**
+- **Translations:** Tagalog and reusable Virginia reason templates were added in `i18n*.js`, with
+  matching `reason_data` in both vafit engines. English `c.reason` is preserved. Renderer integration is
+  unfinished: use `FootingI18n.vaReason(lang, component)` or `vaReasonParts(lang, component)` (escaped
+  `{text, lang, kind}` runs), switch localized headings to `t("details")`, and replace raw unscored-law
+  reasons too. Native-speaker review is entirely pending. Check whether a translation review doc exists.
+- **Small UI fixes:** language-select arrow and popup fitting around the sheet/legend were implemented;
+  caches bumped to v10. These changes have not completed browser validation.
+- **Hosting:** `demo/SITES.json` records the one registered, private Site. It is **not published**.
+  Reuse project `appgprj_6adda30ead888191a0b182aa7c797982`; never create another Site for this demo.
+  The ignored `out/footing-site` has a Vinext starter and identity; dependency installation was stopped.
+  Durable ratings backend, adapter, schema, packaging script and hosting tests were not implemented.
+  Fetch a fresh source credential through Sites when resuming; no credentials were saved in the repo.
+- **Independent audit inputs:** `scripts/capture_audit_sources.py` retrieved five primary bulk inputs
+  (HUD FMR/HIC/PIT, ICE list, grouped USDA counts) into ignored `out/audit-sources/`, with hashes/URLs.
+  Their metadata is retained in `data_raw/audit_inputs_2026-10-25_MANIFEST.json` for cross-machine resume.
+  The ten-locality comparison report was **not generated**. These files are local, not in the Git push.
+  Empty HTTP200 bodies must remain unverified. A browser-compatible User-Agent fixed HUD downloads;
+  PIT uses `/sites/default/files/xls/2007-2025-PIT-Counts-by-CoC.xlsb`. HUD FMR has malformed workbook
+  properties (`2026- 2-19...`); ignore metadata in memory only, preserve worksheet/source bytes.
+
+Validation before this checkpoint: ordinance-focused tests 20 passed; town-focused tests 25 passed
+before final OSM additions; localization-focused run 50 passed with 8 dictionary-fixture encoding
+errors (Windows CP1252 vs UTF-8). These are partial runs, not an overall green suite. The current full
+suite/data check must be reviewed and rerun. No S8 browser smoke has completed.
+
+**Final checkpoint run:** `pytest -q` completed: **237 passed, 3 failed, 8 errors**. Failures:
+`test_healthz_reports_demo` assumes a single capture date, `test_plan_tonight_card_compare` assumes
+Roanoke is unrecorded, and `test_committed_va_json_matches_build_script` detects the pending regeneration.
+The eight `tests/test_i18n_langs.py` fixture errors are CP1252 decoding of UTF-8 Node output; set explicit
+UTF-8 on its subprocess call. Builder `--check` also confirms the stale generated JSON. These failures
+are saved deliberately in this WIP branch, not described as a finished or deployable release.
+
+Next, in order: review/finish current diffs; regenerate the locality JSON and reconcile the existing
+Fairfax County score assertion; fix explicit UTF-8 decoding in multilingual subprocess tests; wire
+the Details renderer; rerun final town/replay checks; complete the independent sample and remaining
+code research; finish durable hosting; run both browser smokes including Tagalog and inspect screenshots.
+Audit sample: `random.Random(20261025).sample(sorted(localities), 10)` = 51640, 51530, 51117, 51103,
+51680, 51036, 51600, 51197, 51075, 51071. Fairfax **city** 51600 is distinct from Fairfax County 51059.
+Keep using `AGENTS.md` and `docs/DATA_WORK.md` to avoid repeated discovery and bulk recapture.
+
+---
+
 ## S7.0 Point crime in the panel; reuse saved data first (2026-10-25, Codex)
 
 **S5.2 item 4 is implemented.** A map tap opens the locality panel with that point's incident tile.

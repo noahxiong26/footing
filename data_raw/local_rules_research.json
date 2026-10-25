@@ -1,0 +1,1163 @@
+{
+  "schema_version": 1,
+  "retrieved_on": "2026-10-25",
+  "field": "local_rule",
+  "scope": "Bristol; S5.2 item 8 priority batch; user random sample local rules only. No FMR/PIT/HIC/SNAP/287(g) refresh.",
+  "method": [
+    "Read AGENTS.md, current HANDOFF.md, docs/DATA_WORK.md, data_raw/README.md, saved LOCAL_RULES and docs/FACT_CHECK.md first.",
+    "Primary municipal code, council enactment records and published municipal rule text only for decisions. Search excerpts and city-hosted third-party presentations are leads, not verified enactments.",
+    "A limited_ban records the identified property class only; it does not establish permission elsewhere or exclude a broader rule.",
+    "County records do not cover independent cities or municipal town rules. Dates below are retrieval dates, not claims that an entire code was updated on that date.",
+    "No result, inaccessible code and private-land zoning do not prove no ban. Unverified decisions remain null.",
+    "Browser fallbacks failed: Edge and built-in browser creation timed out; Windows computer-use list_apps also timed out. Normal-process urllib access to the Municode API returned HTTP 403."
+  ],
+  "status_definitions": {
+    "broad_ban": "Camping/sleeping banned on public property broadly; score 0.",
+    "limited_ban": "Verified restriction in named areas or property classes; score 35; scope is explicit.",
+    "site_closure": "One site closed, trespass enforced; score 60.",
+    "proposed": "Debated, adoption unconfirmed; unscored.",
+    "clearing_policy": "Clearing policy; unscored.",
+    "checked_none_found": "A bounded search found no relevant rule, not proof of no ban; source and score null."
+  },
+  "localities": {
+    "51013": {
+      "name": "Arlington County",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "verified_scoped_rule",
+      "decision": {
+        "status": "limited_ban",
+        "note": "Arlington Park/Facilities Use Rules item 2 allows camping only by permit in places specifically provided for it. This covers county park facilities; other public property, including federal parks, remains unverified.",
+        "source_id": "arlington_park_camping",
+        "evidence_index": 0,
+        "scope_kind": "named_areas"
+      },
+      "observations": [
+        {
+          "url": "https://www.arlingtonva.us/Government/Departments/Parks-Recreation/About/Arlington-County-Park-Rules-Regulations",
+          "section": "Park/Facilities Use Rules/Regulations item 2",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Camping requires a permit and is allowed only in places provided for that purpose.",
+          "coverage": "Arlington County park facilities governed by these rules, not all county land or federal parks.",
+          "publisher": "Arlington County Department of Parks and Recreation",
+          "title": "Park/Facilities Use Rules item 2: camping",
+          "kind": "municipal_regulation"
+        }
+      ],
+      "searches": [],
+      "next_action": "Check the rest of the code and uncodified enactments for broader restrictions; the exported rule covers only the stated property."
+    },
+    "51036": {
+      "name": "Charles City County",
+      "batch": "random_sample",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://www.charlescityva.us/157/Codes-Ordinances",
+          "section": "County code portal",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_index_read",
+          "summary": "Portal links code publisher, zoning and pending code updates. No camping-specific code text read.",
+          "coverage": "Charles City County, Virginia; not Charles City, Iowa."
+        },
+        {
+          "url": "https://www.charlescityva.us/facilities/facility/details/Lawrence-Lewis-Jr-Park-5",
+          "section": "Primitive camping area",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_summary_read",
+          "summary": "Park offers registered primitive camping for cyclists/paddlers with one-night maximum. A reservation option is not proof of no ban elsewhere.",
+          "coverage": "Lawrence Lewis Jr. Park camping area only."
+        },
+        {
+          "url": "https://charlescityva.us/DocumentCenter/View/4877/Charles-City-County---Parks-and-Recreation-Rental-Application---3-20---complete---fillable",
+          "section": "Rental Policies: Section 1, Primitive Camping Area, printed p.6",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Registration required for one-night dusk-to-dawn campsite use; vacate by 8 a.m. A campground rental condition does not establish the requested general public sleeping/camping ordinance.",
+          "coverage": "Lawrence Lewis Jr. Park primitive sites only.",
+          "publisher": "Charles City County Parks and Recreation",
+          "title": "Facility rental policies",
+          "kind": "municipal_regulation"
+        },
+        {
+          "url": "https://www.charlescityva.us/157/Codes-Ordinances",
+          "section": "Code portal linked Municode Website",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Code publisher click failed; portal itself readable.",
+          "coverage": "No further law text retrieved; failure does not prove absence."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Charles City County Virginia parks camping ordinance",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51041": {
+      "name": "Chesterfield County",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://www.chesterfield.gov/163/Parks-and-Facilities",
+          "section": "Regulations: §§20-4(a), 20-9(c), 20-9(e)",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_summary_read",
+          "summary": "County describes dawn-to-dusk park hours, after-hours trespass, no overnight parking and towing. No camping-specific operative code was retrieved.",
+          "coverage": "County-owned/maintained/operated park and recreation property; does not prove a public camping ban or its absence."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Chesterfield county code parks \"camping\" prohibited",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51059": {
+      "name": "Fairfax County",
+      "batch": "priority",
+      "previous_rule": {
+        "status": "clearing_policy",
+        "note": "The county clears encampments on land it owns under its own guidelines (not an ordinance we could find). Other owners (state, schools, parks) can use trespass law.",
+        "source": "fairfax_encampments",
+        "score": null
+      },
+      "previous_source": {
+        "title": "NAACP still has concerns about Fairfax County's clearing of homeless encampments",
+        "publisher": "FFXnow",
+        "url": "https://www.ffxnow.com/2025/04/01/naacp-still-has-concerns-about-fairfax-countys-clearing-of-homeless-encampments/",
+        "as_of": "2025-04-01",
+        "read_on": "2026-10-24"
+      },
+      "progress": "verified_scoped_rule",
+      "decision": {
+        "status": "limited_ban",
+        "note": "Fairfax County Park Authority Regulations §1.03(A) restrict overnight camping/lodging to posted designated camping areas, with registration and fees. This covers Park Authority land, not all public land or independent Fairfax city; broader rules remain unverified.",
+        "source_id": "fairfax_parks_camping",
+        "evidence_index": 0,
+        "scope_kind": "named_areas"
+      },
+      "observations": [
+        {
+          "url": "https://www.fairfaxcounty.gov/parks/sites/parks/files/Assets/documents/administrative/policy-appendix-regulations.pdf",
+          "section": "Park Authority Regulations Appendix 6 §1.03(A), printed A-37",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Overnight camping/lodging sites are restricted to posted designated camping areas; registration and payment required. Appendix identifies statutory rulemaking authority and Class 4 enforcement.",
+          "coverage": "Areas owned/maintained by Fairfax County Park Authority; no finding for all county land, NOVA Parks, state/federal land, towns or independent Fairfax city.",
+          "publisher": "Fairfax County Park Authority",
+          "title": "Park Authority Regulations: §1.03(A) Camping",
+          "kind": "municipal_regulation",
+          "as_of": "Appendix states adopted 2002-10-23, amended 2006-05-24; linked as published on retrieval date."
+        },
+        {
+          "url": "https://www.fairfaxcounty.gov/parks/sites/parks/files/assets/documents/administrative/park-policy-manual.pdf",
+          "section": "Current full manual Appendix 6",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Web parser refused the 26,021,071-byte document as too large. Separate regulations appendix and current camping page were readable.",
+          "coverage": "Full manual not read."
+        },
+        {
+          "url": "https://www.fairfaxcounty.gov/parks/rules/camping",
+          "section": "Registration Requirements; Campsites",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Current camping rules require registration, identification and fees; campgrounds are for recreational nonresidential use; sleeping in cars, truck cabs or on bare ground without a tent is prohibited.",
+          "coverage": "FCPA campgrounds only.",
+          "publisher": "Fairfax County Park Authority",
+          "title": "Camping Rules",
+          "kind": "municipal_regulation"
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "site.fairfaxcounty.gov parks \"camping\" \"regulations\"",
+          "outcome": "Verified only the scope and rule stated in decision."
+        }
+      ],
+      "next_action": "Check the rest of the code and uncodified enactments for broader restrictions; the exported rule covers only the stated property."
+    },
+    "51071": {
+      "name": "Giles County",
+      "batch": "random_sample",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://virginiasmtnplayground.com/building-codes/",
+          "section": "Official zoning ordinance link and disclaimer",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_index_read",
+          "summary": "County links current official 2026 zoning PDF and warns later amendments may not be incorporated.",
+          "coverage": "Giles County zoning jurisdiction; incorporated towns require separate checks."
+        },
+        {
+          "url": "https://virginiasmtnplayground.com/wp-content/uploads/2026/08/Official-Zoning-Ordinance-CURRENT-8-24-2026.pdf",
+          "section": "Zoning §302.141-1; §§602.02-22, 602.04-3, 603.03-3",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Private seasonal camps and recreational development/occupancy are regulated. Current private-camp definition is §302.141-1, not §302.140-1 in the older indexed PDF. Stored accessory RV occupancy prohibited in §602.04-3. None establishes a general public-space camping ordinance.",
+          "coverage": "County land use outside incorporated towns; private-lot provisions do not establish public sleeping permission.",
+          "publisher": "Giles County, Virginia",
+          "title": "Zoning Ordinance effective August 24, 2026",
+          "kind": "municipal_code"
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Giles County Virginia camping public ordinance",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51075": {
+      "name": "Goochland County",
+      "batch": "random_sample",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://library.municode.com/va/goochland_county/code_of_ordinances",
+          "section": "Current Code",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "HTTP 403; search index identifies supplement 128 updated 2026-09-14 but no operative camping provision was read.",
+          "coverage": "Goochland County only."
+        },
+        {
+          "url": "https://www.goochlandva.us/236/Parks-Recreation",
+          "section": "Outdoor facilities hours",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_summary_read",
+          "summary": "Department lists dawn-to-dusk hours. This is not enough to classify a camping-specific prohibition.",
+          "coverage": "Department outdoor facilities; other public land unverified."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Goochland County camping parks code",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51087": {
+      "name": "Henrico County",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "verified_scoped_rule",
+      "decision": {
+        "status": "limited_ban",
+        "note": "Henrico Recreation and Parks Policy RP0001 item 11 requires prior written director approval to camp in county public recreational property. This covers parks and recreational facilities; rules for other public land remain unverified.",
+        "source_id": "henrico_park_camping",
+        "evidence_index": 0,
+        "scope_kind": "named_areas"
+      },
+      "observations": [
+        {
+          "url": "https://henrico.gov/assets/RP-Policy-General-Rules-and-Regulations.pdf",
+          "section": "Policy RP0001, Rules and Regulations item 11, PDF p.3; scope on p.1",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Camping in any manner in a Park requires prior written approval of the director. Scope is property owned, maintained or operated for public recreation. Rule 6 separately controls closed-park entry.",
+          "coverage": "Henrico public recreational property only; independent Richmond city is excluded.",
+          "publisher": "Henrico County Division of Recreation and Parks",
+          "title": "RP0001 item 11: camping approval",
+          "kind": "municipal_regulation",
+          "as_of": "Effective 2023-10-01; revised 2024-09-17."
+        },
+        {
+          "url": "https://henrico.gov/rec/countycode-chpt014parksrecreation-8-11/",
+          "section": "Historical code §14-46 Camping",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Indexed historical chapter copy exists in search results; direct URL returned 404. Current Municode chapter returned an empty shell; no current §14-46 text read.",
+          "coverage": "No reliance on old numbering to establish current criminal penalty."
+        },
+        {
+          "url": "https://henrico.gov/pdfs/countyattorney/Chpt014ParksandRecreation.pdf",
+          "section": "Candidate county chapter copy",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Inaccessible candidate PDF route.",
+          "coverage": "No further law text retrieved; failure does not prove absence."
+        },
+        {
+          "url": "https://henrico.gov/attorney/code-of-ordinances/",
+          "section": "Candidate code landing page",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Inaccessible candidate route.",
+          "coverage": "No further law text retrieved; failure does not prove absence."
+        },
+        {
+          "url": "https://library.municode.com/va/henrico_county/codes/code_of_ordinances?nodeId=COOR_CH14PARE_ARTIIPARU",
+          "section": "Candidate park rules article",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Inaccessible candidate route.",
+          "coverage": "No further law text retrieved; failure does not prove absence."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "site.henrico.gov \"camping\" parks rules",
+          "outcome": "Verified only the scope and rule stated in decision."
+        }
+      ],
+      "next_action": "Check the rest of the code and uncodified enactments for broader restrictions; the exported rule covers only the stated property."
+    },
+    "51103": {
+      "name": "Lancaster County",
+      "batch": "random_sample",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://www.lancova.com/page2.asp?pageID=30",
+          "section": "Code of Ordinances & Land Development Code",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_index_read",
+          "summary": "County identifies Municode as its online code publisher.",
+          "coverage": "Lancaster County, Virginia; not Pennsylvania."
+        },
+        {
+          "url": "https://library.municode.com/va/lancaster_county/codes/land_development_code?nodeId=PTIZOOR_ART19MAREEQ",
+          "section": "Land Development Code §§19-1-3, 19-2-1–19-2-7",
+          "retrieved_on": "2026-10-25",
+          "outcome": "indexed_code_excerpt",
+          "summary": "Indexed publisher text limits recreational equipment living/business use and occupancy outside approved campgrounds; temporary habitation requires zoning permission with specified grounds. Direct opening returned an empty shell. These are zoning controls, not a verified public-space camping rule.",
+          "coverage": "County zoning lots; towns and public-space enforcement not checked."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Lancaster County Virginia code camping parks ordinance",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51107": {
+      "name": "Loudoun County",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "verified_scoped_rule",
+      "decision": {
+        "status": "limited_ban",
+        "note": "Loudoun PRCS Park Facility Rental Policy 3-3 §4.12 requires a permit for overnight camping at its park facilities. This is a park-use rule; town parks and other public property remain unverified.",
+        "source_id": "loudoun_park_camping",
+        "evidence_index": 0,
+        "scope_kind": "named_areas"
+      },
+      "observations": [
+        {
+          "url": "https://www.loudoun.gov/DocumentCenter/View/115605",
+          "section": "PRCS Policy 3-3 Park Facility Rental §4.12, PDF p.120",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Overnight camping requests require a permit; a facility supervisor need not remain on site. Policy 3-3 concerns PRCS park facilities, issued by the director.",
+          "coverage": "Loudoun PRCS park facilities under this rental policy; town-operated parks and non-PRCS land not checked.",
+          "publisher": "Loudoun County PRCS",
+          "title": "PRCS Policy 3-3 §4.12: overnight camping permits",
+          "kind": "municipal_regulation",
+          "as_of": "Policy effective 2002-12-01; revision 2004-08-04; published manual retrieved 2026-10-25."
+        },
+        {
+          "url": "https://codelibrary.amlegal.com/codes/loudouncounty/latest/loudounco_va/0-0-0-9634",
+          "section": "Code §1092.04",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Unauthorized entry into a park closed by the department is prohibited. This closure provision is not itself a camping prohibition.",
+          "coverage": "County parks; code page identifies 2026 S-28.",
+          "publisher": "Loudoun County / American Legal Publishing",
+          "title": "§1092.04 Entering Closed Parks",
+          "kind": "municipal_code"
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "site.loudoun.gov \"camping\" \"rules\"",
+          "outcome": "Verified only the scope and rule stated in decision."
+        }
+      ],
+      "next_action": "Check the rest of the code and uncodified enactments for broader restrictions; the exported rule covers only the stated property."
+    },
+    "51117": {
+      "name": "Mecklenburg County",
+      "batch": "random_sample",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://www.mecklenburgva.com/DocumentCenter/View/1107/Zoning-Ordinance-Effective-July-1-2026",
+          "section": "Zoning §7.1-5(G), printed pp.115–116",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Campground units cannot be permanent residences except operator residence; campground occupancy limited to 180 days in rolling 12 months. Zoning facility standards are not a verified outdoor public-space camping ban.",
+          "coverage": "County zoning jurisdiction and campground use; incorporated towns and federal/state land excluded. Not Mecklenburg County, North Carolina.",
+          "publisher": "Mecklenburg County, Virginia",
+          "title": "Zoning Ordinance effective July 1, 2026",
+          "kind": "municipal_code"
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Mecklenburg County Virginia code camping parks ordinance",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51153": {
+      "name": "Prince William County",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://www.pwcva.gov/news/leaving-no-trace-our-parks",
+          "section": "Leave No Trace principle 5",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_summary_read",
+          "summary": "County article states camping and campfires are not allowed at county parks. Formal regulation/enacted code behind this statement was not retrieved.",
+          "coverage": "Prince William County-operated parks; excludes independent Manassas/Manassas Park and federal/state parks.",
+          "publisher": "Prince William County",
+          "title": "Leaving No Trace in Our Parks",
+          "kind": "municipal_summary"
+        },
+        {
+          "url": "https://www.pwcva.gov/department/neighborhood-services/vehicles/",
+          "section": "Restricted parking zones; Code §13-320.1",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_summary_read",
+          "summary": "RV/trailer parking restriction in specified street zones is not evidence of a general tent or sleeping ban.",
+          "coverage": "Specified roads; do not substitute parking/zoning rules for public sleeping law."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Prince William County code camping public property",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51197": {
+      "name": "Wythe County",
+      "batch": "random_sample",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://www.wytheco.org/484/Codes-Ordinances",
+          "section": "Code and uncodified ordinance archives",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_index_read",
+          "summary": "County directs readers to new Municode database and uncodified ordinance archive.",
+          "coverage": "Wythe County; Town of Wytheville has separate rules."
+        },
+        {
+          "url": "https://library.municode.com/va/wythe_county/codes/code_of_ordinances?nodeId=COOR_CH22MAHO",
+          "section": "§22-40 Campgrounds and parks for RVs, travel trailers and motor homes",
+          "retrieved_on": "2026-10-25",
+          "outcome": "indexed_code_excerpt",
+          "summary": "Publisher search excerpt requires a special use permit for campground development/expansion; direct opening failed. This does not verify a public-space camping ban.",
+          "coverage": "County land-use facilities only."
+        },
+        {
+          "url": "https://secure.rec1.com/VA/wythe-county-va/catalog",
+          "section": "Rural Retreat Lake Campground Policies & Rules",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_summary_read",
+          "summary": "Indexed county booking rules address occupancy, campsite conduct and eviction for rule violations. No general public-space camping rule verified.",
+          "coverage": "Rural Retreat Lake campground only; state/federal campgrounds excluded."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Wythe County Virginia code camping parks ordinance",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51510": {
+      "name": "Alexandria city",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "verified_scoped_rule",
+      "decision": {
+        "status": "limited_ban",
+        "note": "Alexandria publishes an overnight camping restriction for temporary shelters at Fort Ward Park, with conditional exceptions for large groups. This verified rule covers Fort Ward only; the broader city code remains unverified.",
+        "source_id": "alexandria_fort_ward_camping",
+        "evidence_index": 0,
+        "scope_kind": "named_areas"
+      },
+      "observations": [
+        {
+          "url": "https://www.alexandriava.gov/parks/location/fort-ward-park-historic-site",
+          "section": "Prohibited Activities: Camping",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Overnight camping in tents, shacks, trailers or other temporary shelters is prohibited; large-group overnight camping may be allowed under conditions.",
+          "coverage": "Fort Ward Park only; no inference about all city parks, streets or squares.",
+          "publisher": "City of Alexandria",
+          "title": "Fort Ward Park: Prohibited Activities, Camping",
+          "kind": "municipal_regulation"
+        },
+        {
+          "url": "https://library.municode.com/va/alexandria/codes/code_of_ordinances?nodeId=TIT6PARECUAC_CH1GERE_S6-1-8CEREPA",
+          "section": "Candidate Code §6-1-8",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Current code route inaccessible; third-party section descriptions not adopted as evidence.",
+          "coverage": "General park code and any nighttime public sleeping rule remain unverified."
+        },
+        {
+          "url": "https://codelibrary.amlegal.com/codes/alexandria/latest/alexandria_va/0-0-0-1",
+          "section": "Candidate code publisher route",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Inaccessible; not used as citation.",
+          "coverage": "No further law text retrieved; failure does not prove absence."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "site.alexandriava.gov \"6-1\" \"camping\"",
+          "outcome": "Verified only the scope and rule stated in decision."
+        }
+      ],
+      "next_action": "Check the rest of the code and uncodified enactments for broader restrictions; the exported rule covers only the stated property."
+    },
+    "51520": {
+      "name": "Bristol city",
+      "batch": "priority",
+      "previous_rule": {
+        "status": "broad_ban",
+        "note": "Camping on city streets, sidewalks, alleys and other public rights of way is a Class 4 misdemeanor (up to $250). Passed August 9, 2022. Whether the ban reaches parks and other city land, rather than only rights of way, has not been confirmed from the city code.",
+        "source": "bristol_camping",
+        "score": 0
+      },
+      "previous_source": {
+        "title": "Bristol, Virginia City Council passes public camping ban",
+        "publisher": "WSET",
+        "url": "https://wset.com/news/local/bristol-virginia-city-council-passes-public-camping-ban",
+        "as_of": "2022-08-09",
+        "read_on": "2026-10-24"
+      },
+      "progress": "disputed_scope",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://d3n9y02raazwpg.cloudfront.net/bristolva/97b1562e-f625-11ec-baa3-0050569183fa-9a2ee4f8-c7d7-4526-ad5b-591383a5deed-1658767296.pdf",
+          "section": "Ordinance 22-9; City Code §74-8, packet printed p.29",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "2022 text prohibits camping on city-owned streets, sidewalks, alleys and other public rights-of-way; sleeping in a motor vehicle is an exception. This supports limited scope for that version, not present law.",
+          "coverage": "Bristol, Virginia city-owned rights-of-way; not Bristol, Tennessee.",
+          "publisher": "City of Bristol, Virginia",
+          "title": "2022 council packet: Ordinance 22-9",
+          "kind": "council_packet"
+        },
+        {
+          "url": "https://d3n9y02raazwpg.cloudfront.net/bristolva/1aedca2c-9eab-11ee-a93d-0050569183fa-f5eb21b6-13a7-4f7f-a766-a9c62b975c0d-1724431285.pdf",
+          "section": "Ordinance 24-13 amending §74-8; printed pp.82–83 (PDF indexes 81–82)",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "2024 amendment text adds property to the camping definition and exceptions and marks deletion of the motor-vehicle sleeping exception. Penalty redline extracts as class 41; screenshot verification failed. The operative prohibition still enumerates streets, sidewalks, alleys and rights-of-way. Draft adoption/date fields are blank; printed 9-12-24 is not reliable adoption evidence.",
+          "coverage": "City-owned property in definition versus rights-of-way in operative sentence; reach beyond rights-of-way remains internally inconsistent.",
+          "publisher": "City of Bristol, Virginia",
+          "title": "August 27, 2024 council packet: Ordinance 24-13",
+          "kind": "council_packet"
+        },
+        {
+          "url": "https://d3n9y02raazwpg.cloudfront.net/bristolva/c0146623-9eaa-11ee-a93d-0050569183fa-f5eb21b6-13a7-4f7f-a766-a9c62b975c0d-1725633176.pdf",
+          "section": "August 27, 2024 council minutes, item F.1; printed pp.53–54 (PDF indexes 52–53)",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Staff describes expansion of the prohibition to public property. Postponement fails 2–3; second reading and adoption each pass 3–2. Proves adoption, not resolution of the conflicting scope language.",
+          "coverage": "Bristol city; historical adoption of amendment, not certification of the current compiled text.",
+          "publisher": "City of Bristol, Virginia",
+          "title": "September 10, 2024 packet containing August 27 minutes",
+          "kind": "council_minutes"
+        },
+        {
+          "url": "https://library.municode.com/va/bristol/codes/code_of_ordinances",
+          "section": "Current §74-8",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Web retrieval HTTP 403. Section/chapter URL variants also failed; see access_attempts.",
+          "coverage": "Current codified text not retrieved."
+        },
+        {
+          "url": "https://api.municode.com/Clients/name?clientName=Bristol&stateAbbr=VA",
+          "section": "Publisher API client lookup",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Normal-process Python urllib returned HTTP 403; node fetch also failed.",
+          "coverage": "No code text retrieved."
+        },
+        {
+          "url": "https://bristolva.granicus.com/ViewPublisher.php?view_id=1",
+          "section": "City council agenda/minutes/packet index",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_index_read",
+          "summary": "City website links this council index. Followed August 27 and September 10, 2024 packets. Individual minutes/agenda clicks failed, but packet copies yielded text.",
+          "coverage": "City of Bristol, Virginia council records."
+        },
+        {
+          "url": "https://d3n9y02raazwpg.cloudfront.net/bristolva/1aedca2c-9eab-11ee-a93d-0050569183fa-f5eb21b6-13a7-4f7f-a766-a9c62b975c0d-1724431285.pdf#page=82",
+          "section": "Ordinance 24-13 redline image, PDF index 81",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "PDF screenshot request returned Cache miss. The text extraction was readable; no visual redline verification. Penalty changes should be rechecked in signed text.",
+          "coverage": "Council packet image only."
+        },
+        {
+          "url": "https://d3n9y02raazwpg.cloudfront.net/bristolva/c0124de8-9eaa-11ee-a93d-0050569183fa-f5eb21b6-13a7-4f7f-a766-a9c62b975c0d-1723230166.pdf",
+          "section": "August 13, 2024 packet §74-8, printed p.50",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "First-reading version contains same scope conflict. Text extraction joins redlined class numbers as 41; screenshot retrieval failed with Cache miss. Do not treat this draft as final signed code.",
+          "coverage": "City council draft, not current code.",
+          "publisher": "City of Bristol, Virginia",
+          "title": "August 13, 2024 Ordinance 24-13 draft",
+          "kind": "council_packet"
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Bristol VA code \"74-8\" camping",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Obtain the clerk-certified/current §74-8 and final signed Ordinance 24-13; reconcile operative prohibition with expanded definition. Retain the pre-existing broad_ban score provisionally, explicitly flagged; do not advertise this as a settled code interpretation.",
+      "access_attempts": [
+        {
+          "url": "https://library.municode.com/va/bristol/codes/code_of_ordinances?nodeId=COOR_CH74STSIOTPUPL_ARTIINGE_S74-8CAPUSIRI-WICI",
+          "retrieved_on": "2026-10-25",
+          "section": "Candidate route for current §74-8",
+          "outcome": "access_failure",
+          "coverage": "Bristol city current code; guessed URL routes do not establish section existence or absence.",
+          "summary": "Web tool reported inaccessible; current code not retrieved."
+        },
+        {
+          "url": "https://library.municode.com/va/bristol/codes/code_of_ordinances?nodeId=PTIICO_CH74STSIOTPUPL_ARTIINGE",
+          "retrieved_on": "2026-10-25",
+          "section": "Candidate route for current §74-8",
+          "outcome": "access_failure",
+          "coverage": "Bristol city current code; guessed URL routes do not establish section existence or absence.",
+          "summary": "Web tool reported inaccessible; current code not retrieved."
+        },
+        {
+          "url": "https://library.municode.com/va/bristol/codes/code_of_ordinances?nodeId=PTIICO_CH74STSIOTPUPL_ARTIINGE_S74-8CAPUSIRI-WICI",
+          "retrieved_on": "2026-10-25",
+          "section": "Candidate route for current §74-8",
+          "outcome": "access_failure",
+          "coverage": "Bristol city current code; guessed URL routes do not establish section existence or absence.",
+          "summary": "Web tool reported inaccessible; current code not retrieved."
+        },
+        {
+          "url": "https://library.municode.com/va/bristol/codes/code_of_ordinances?nodeId=PTIICO_CH74STSIOTPUPL",
+          "retrieved_on": "2026-10-25",
+          "section": "Candidate route for current §74-8",
+          "outcome": "access_failure",
+          "coverage": "Bristol city current code; guessed URL routes do not establish section existence or absence.",
+          "summary": "Web tool reported inaccessible; current code not retrieved."
+        },
+        {
+          "url": "https://library.municode.com/VA/Bristol/codes/Code_of_Ordinances?nodeId=PTIICO_CH74STSIOTPUPL_ARTIINGE_S74-8CAPUSIRI-WICI",
+          "retrieved_on": "2026-10-25",
+          "section": "Candidate route for current §74-8",
+          "outcome": "access_failure",
+          "coverage": "Bristol city current code; guessed URL routes do not establish section existence or absence.",
+          "summary": "Web tool reported inaccessible; current code not retrieved."
+        },
+        {
+          "url": "https://library.municode.com/va/bristol/codes/code_of_ordinances?nodeId=PTIICO_CH74STSIOTPUPL_ARTIINGE&showChanges=true",
+          "retrieved_on": "2026-10-25",
+          "section": "Candidate route for current §74-8",
+          "outcome": "access_failure",
+          "coverage": "Bristol city current code; guessed URL routes do not establish section existence or absence.",
+          "summary": "Web tool reported inaccessible; current code not retrieved."
+        },
+        {
+          "url": "https://library.municode.com/va/bristol/codes/code_of_ordinances?nodeId=CH74STSIOTPUPL_ARTIINGE",
+          "retrieved_on": "2026-10-25",
+          "section": "Candidate route for current §74-8",
+          "outcome": "access_failure",
+          "coverage": "Bristol city current code; guessed URL routes do not establish section existence or absence.",
+          "summary": "Web tool reported inaccessible; current code not retrieved."
+        },
+        {
+          "url": "https://library.municode.com/va/bristol/codes/code_of_ordinances?nodeId=CH74STSIOTPUPL_ARTIINGE_S74-8CAPUSIRI-WICI",
+          "retrieved_on": "2026-10-25",
+          "section": "Candidate route for current §74-8",
+          "outcome": "access_failure",
+          "coverage": "Bristol city current code; guessed URL routes do not establish section existence or absence.",
+          "summary": "Web tool reported inaccessible; current code not retrieved."
+        },
+        {
+          "url": "https://library.municode.com/HTML/10480/level2/CH74STSIOTPUPL_ARTIINGE.html",
+          "retrieved_on": "2026-10-25",
+          "section": "Candidate route for current §74-8",
+          "outcome": "access_failure",
+          "coverage": "Bristol city current code; guessed URL routes do not establish section existence or absence.",
+          "summary": "Web tool reported inaccessible; current code not retrieved."
+        }
+      ]
+    },
+    "51530": {
+      "name": "Buena Vista city",
+      "batch": "random_sample",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://library.municode.com/va/buena_vista/codes/code_of_ordinances",
+          "section": "Current City Code",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "HTTP 403; indexed charter powers to regulate parks do not prove a camping prohibition.",
+          "coverage": "Buena Vista, Virginia independent city; Colorado results excluded."
+        },
+        {
+          "url": "https://buenavistava.gov/government/departments/parks-recreation/",
+          "section": "Parks and Recreation / Glen Maury Park",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "HTTP 403. Search excerpt identifies park camping, but no operative restriction was verified.",
+          "coverage": "Municipal campground and general public-space rule remain unverified."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Buena Vista Virginia code camping ordinance parks",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51550": {
+      "name": "Chesapeake city",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "verified_scoped_rule",
+      "decision": {
+        "status": "limited_ban",
+        "note": "At Northwest River Park campground, city rules prohibit long-term camping, limit stays to 14 nights in 30 days, and prohibit sleeping without a tent/hammock or in a vehicle not designed for camping. This is a campground-specific restriction; other public land remains unverified.",
+        "source_id": "chesapeake_campground_rules",
+        "evidence_index": 0,
+        "scope_kind": "named_areas"
+      },
+      "observations": [
+        {
+          "url": "https://www.cityofchesapeake.net/3015/Campground-Rules-and-Regulations",
+          "section": "Northwest River Park: Campsites and Cabins",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Long-term camping is prohibited; rentals limited to 14 nights per 30 days. Sleeping without a tent/hammock or in a vehicle not designed for camping is prohibited. Campers stay in campground area after sunset except official programs.",
+          "coverage": "Northwest River Park campground only; does not establish a general park or citywide ban.",
+          "publisher": "City of Chesapeake Parks, Recreation and Tourism",
+          "title": "Northwest River Park Campground Rules: Campsites and Cabins",
+          "kind": "municipal_regulation"
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Chesapeake code \"camping\" \"prohibited\"",
+          "outcome": "Verified only the scope and rule stated in decision."
+        }
+      ],
+      "next_action": "Check the rest of the code and uncodified enactments for broader restrictions; the exported rule covers only the stated property."
+    },
+    "51600": {
+      "name": "Fairfax city",
+      "batch": "random_sample",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "verified_scoped_rule",
+      "decision": {
+        "status": "limited_ban",
+        "note": "Fairfax city Parks Rules and Regulations §1.02(10) requires advance written city permission for camping in its parks. This is the independent city, not Fairfax County; broader public-space restrictions remain unverified.",
+        "source_id": "fairfax_city_park_camping",
+        "evidence_index": 0,
+        "scope_kind": "named_areas"
+      },
+      "observations": [
+        {
+          "url": "https://www.fairfaxva.gov/files/assets/city/v/1/parks-amp-rec/documents/2018-park-rules-ordinance-adopted-10918.pdf",
+          "section": "Parks Rules and Regulations §1.02 item 10, PDF p.1",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Camping in any manner in a Park requires advance written city permission; introductory scope covers parks and recreational property owned/maintained/operated by city.",
+          "coverage": "Independent City of Fairfax park property only; not Fairfax County.",
+          "publisher": "City of Fairfax Parks and Recreation",
+          "title": "Parks Rules and Regulations §1.02(10): camping",
+          "kind": "municipal_regulation",
+          "as_of": "File identifies adopted 2018-10-09; published rule retrieved 2026-10-25."
+        },
+        {
+          "url": "https://www.fairfaxva.gov/Government/City-Codes",
+          "section": "City Codes; ordinance archive",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_index_read",
+          "summary": "City says codification is annual and directs readers to uncodified ordinance archive. Broader code not certified by this park-only check.",
+          "coverage": "Fairfax city only."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Fairfax city Virginia code camping parks ordinance",
+          "outcome": "Verified only the scope and rule stated in decision."
+        }
+      ],
+      "next_action": "Check the rest of the code and uncodified enactments for broader restrictions; the exported rule covers only the stated property."
+    },
+    "51640": {
+      "name": "Galax city",
+      "batch": "random_sample",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://ecode360.com/GA1297",
+          "section": "Code table of contents, legislation through 2026-08-10",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_index_read",
+          "summary": "No camping-specific chapter in table of contents. Selected chapters read/searched below; this is not a full-code absence finding.",
+          "coverage": "Galax independent city; no inference for Grayson or Carroll counties."
+        },
+        {
+          "url": "https://ecode360.com/6550167",
+          "section": "Chapter 107 Offenses, Miscellaneous",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Targeted camping term search found no match.",
+          "coverage": "Selected Galax provisions only; no full absence finding.",
+          "publisher": "City of Galax / General Code",
+          "title": "Chapter 107 Offenses, Miscellaneous",
+          "kind": "municipal_code"
+        },
+        {
+          "url": "https://ecode360.com/6550643",
+          "section": "Chapter 127 Streets, Sidewalks and Public Places",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Targeted camping term search found no match.",
+          "coverage": "Selected Galax provisions only; no full absence finding.",
+          "publisher": "City of Galax / General Code",
+          "title": "Chapter 127 Streets, Sidewalks and Public Places",
+          "kind": "municipal_code"
+        },
+        {
+          "url": "https://ecode360.com/6550097",
+          "section": "Chapter 89 Loitering",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Sleeping term search found no match; loitering is not automatically a camping ban.",
+          "coverage": "Selected Galax provisions only; no full absence finding.",
+          "publisher": "City of Galax / General Code",
+          "title": "Chapter 89 Loitering",
+          "kind": "municipal_code"
+        },
+        {
+          "url": "https://ecode360.com/6551122",
+          "section": "§§143-1–143-3 Trespassing",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Trespass after owner notice/signage is prohibited. No specific site closure or camping prohibition established.",
+          "coverage": "Selected Galax provisions only; no full absence finding.",
+          "publisher": "City of Galax / General Code",
+          "title": "§§143-1–143-3 Trespassing",
+          "kind": "municipal_code"
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Galax Virginia code camping public property ordinance",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51680": {
+      "name": "Lynchburg city",
+      "batch": "random_sample",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "verified_scoped_rule",
+      "decision": {
+        "status": "limited_ban",
+        "note": "Lynchburg Parks and Recreation General Park Rules item 9 prohibits camping except in designated areas. This covers city parks governed by these rules; restrictions on other public property remain unverified.",
+        "source_id": "lynchburg_park_camping",
+        "evidence_index": 0,
+        "scope_kind": "named_areas"
+      },
+      "observations": [
+        {
+          "url": "https://www.lynchburgparksandrec.com/wp-content/uploads/2021/07/2021_07_Park_Rules.pdf",
+          "section": "General Park Rules item 9",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Camping and open fires allowed only in areas designated for those uses. Other rules address posted park hours.",
+          "coverage": "Lynchburg city parks governed by department rules, not surrounding counties or all city property.",
+          "publisher": "City of Lynchburg Parks and Recreation",
+          "title": "General Park Rules item 9: camping",
+          "kind": "municipal_regulation",
+          "as_of": "2021/07 file path; posted rule retrieved 2026-10-25, not a claimed 2026 enactment."
+        },
+        {
+          "url": "https://library.municode.com/va/lynchburg/codes/code_of_ordinances",
+          "section": "Current City Code",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "HTTP 403. Broader code and uncodified ordinance review incomplete.",
+          "coverage": "Current general public-space ordinance not read."
+        },
+        {
+          "url": "https://www.lynchburgparksandrec.com/park-rules/",
+          "section": "Candidate landing page",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Inaccessible; direct PDF was readable.",
+          "coverage": "No further law text retrieved; failure does not prove absence."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Lynchburg Virginia code camping public parks ordinance",
+          "outcome": "Verified only the scope and rule stated in decision."
+        }
+      ],
+      "next_action": "Check the rest of the code and uncodified enactments for broader restrictions; the exported rule covers only the stated property."
+    },
+    "51700": {
+      "name": "Newport News city",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "verified_scoped_rule",
+      "decision": {
+        "status": "limited_ban",
+        "note": "Newport News Parks and Recreation rule 16 permits camping only in Newport News Park Campground within its park/watershed properties. Other public land remains unverified; this does not apply a citywide ban or import York County rules.",
+        "source_id": "newport_news_park_camping",
+        "evidence_index": 0,
+        "scope_kind": "named_areas"
+      },
+      "observations": [
+        {
+          "url": "https://nnparksandrec.org/parks-rules-ordinances/",
+          "section": "Park Rules and Ordinances item 16",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Camping and campfires permitted only in Newport News Park Campground. Page identifies department address and nnva.gov contact; regulates park and watershed properties.",
+          "coverage": "Department-managed park/watershed properties, some possibly in York County; export limited to Newport News locality, not all public land.",
+          "publisher": "City of Newport News Parks and Recreation",
+          "title": "Park Rules and Ordinances item 16: camping",
+          "kind": "municipal_regulation"
+        },
+        {
+          "url": "https://library.municode.com/va/newport_news/codes/code_of_ordinances?nodeId=CD_ORD_CH29PARE",
+          "section": "Candidate park chapter",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Inaccessible candidate code route.",
+          "coverage": "No further law text retrieved; failure does not prove absence."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "\"Newport News\" \"Camping\" ordinance park grounds",
+          "outcome": "Verified only the scope and rule stated in decision."
+        }
+      ],
+      "next_action": "Check the rest of the code and uncodified enactments for broader restrictions; the exported rule covers only the stated property."
+    },
+    "51710": {
+      "name": "Norfolk city",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://norfolk.gov/6090/Policies",
+          "section": "Norfolk Public Library Code of Conduct item 4",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_text_read",
+          "summary": "Library conduct rules prohibit sleeping. Indoor library conduct does not establish an outdoor public-space camping ordinance.",
+          "coverage": "Norfolk Public Library premises; no citywide outdoor finding.",
+          "publisher": "City of Norfolk",
+          "title": "Library Policies: Code of Conduct",
+          "kind": "municipal_regulation"
+        },
+        {
+          "url": "https://library.municode.com/va/norfolk/codes/code_of_ordinances?nodeId=COCI_CH28PARE",
+          "section": "Parks chapter candidate",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "No accessible code text at attempted chapter route. Search led to vehicle parking sections, not a camping-specific ordinance.",
+          "coverage": "Outdoor camping/sleeping law remains unverified; Norfolk, Nebraska results excluded."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Norfolk Virginia code \"sleeping\" \"parks\"",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51760": {
+      "name": "Richmond city",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://www.rva.gov/sites/default/files/2021-08/Richmond%27s%20Guide%20to%20Being%20a%20Good%20Neighbor%20-%20RVA.gov_.pdf",
+          "section": "Guide: Camping; cited Code §8-273",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_summary_read",
+          "summary": "City guide describes prohibition of camping/tenting on public grounds, parks and playing fields and lying on benches. Read the operative code before exporting a broad status; guide is a summary.",
+          "coverage": "Richmond independent city, not Richmond County."
+        },
+        {
+          "url": "https://library.municode.com/va/richmond/codes/code_of_ordinances?nodeId=PTIICICO_CH8PARE_ARTIVPAREFA_S8-273CATELYBE",
+          "section": "Current Code §8-273",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Attempted section route inaccessible.",
+          "coverage": "No current operative code retrieved."
+        },
+        {
+          "url": "https://richmondva.legistar.com/View.ashx?GUID=84C7DB9E-95A4-40C8-8D3C-AA5FF5D4DFC1&ID=9016962&M=F",
+          "section": "2020 code attachment, §8-273, printed p.344",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Search located historical council code PDF; opening failed. Table-of-contents excerpt alone is not code verification.",
+          "coverage": "Historical attachment, not current code certification."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "site.rva.gov \"8-273\" camping",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    },
+    "51810": {
+      "name": "Virginia Beach city",
+      "batch": "priority",
+      "previous_rule": null,
+      "previous_source": null,
+      "progress": "unverified",
+      "decision": null,
+      "observations": [
+        {
+          "url": "https://library.municode.com/va/virginia_beach/codes/code_of_ordinances?nodeId=CO_CH23OF",
+          "section": "Chapter 23 §§23-54, 23-55, 23-56",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Indexed table of contents identifies these sections, but full retrieval returned HTTP 403. Article URL returned an empty JavaScript shell.",
+          "coverage": "City of Virginia Beach; operative current text unverified."
+        },
+        {
+          "url": "https://edocs.vbgov.com/WebLink/ElectronicFile.aspx?dbid=0&docid=51129977&repo=CityClerk",
+          "section": "PIN Ministry Shelter Plan slide quoting §§23-54 and 23-55",
+          "retrieved_on": "2026-10-25",
+          "outcome": "primary_hosted_submission",
+          "summary": "Search excerpt quotes automobile sleeping prohibition and public-property sleeping prohibition 8 p.m.–8 a.m. This is an advocacy presentation stored by the clerk, not the enacted code; not used to assign a status.",
+          "coverage": "Historical quoted sections only; no independent present-law verification."
+        },
+        {
+          "url": "https://library.municode.com/va/virginia_beach/codes/code_of_ordinances?nodeId=CO_CH23OF_S23-55SLPUPAPUPR",
+          "section": "Candidate §23-55",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Inaccessible section route.",
+          "coverage": "No further law text retrieved; failure does not prove absence."
+        },
+        {
+          "url": "https://library.municode.com/va/virginia_beach/codes/code_of_ordinances?nodeId=CO_CH23OF_ARTIMIOF",
+          "section": "Chapter 23 Article I",
+          "retrieved_on": "2026-10-25",
+          "outcome": "access_failure",
+          "summary": "Empty JavaScript shell, no operative text.",
+          "coverage": "No further law text retrieved; failure does not prove absence."
+        }
+      ],
+      "searches": [
+        {
+          "retrieved_on": "2026-10-25",
+          "query": "Virginia Beach code camping public property 23-54",
+          "outcome": "No sufficiently verified general public-space rule for a new scored row. This is not proof of no ban."
+        }
+      ],
+      "next_action": "Read the current public-space camping/sleeping provisions and uncodified enactments; do not infer permission from this review."
+    }
+  }
+}
