@@ -55,6 +55,18 @@ rows do not count.
 and its CSS only shows it when not `hidden`. Checked in Chromium at 1440 px (en, ar): 133 rail rows, a rail
 click opens the place and highlights it, Hide then Open again restores the app; no page errors.
 
+**Navigation bar and Start over (Version 3, owner request: switching between screens was confusing).**
+`renderNav()` builds a `<nav class="g-nav">` in the top bar: Start · About you · Best fits · All places ·
+[picked place] · Rate a place · Start over, with `aria-current="page"` on the current screen (`NAV_OF` maps views
+to tabs). Tabs sit inline on >= 1100 px and form a scrollable strip under the brand on phones (phone map padding
+and toasts moved down to 116 px). The old List toggle is hidden; smoke tests click `.g-nav [data-nav=list]`.
+"Start over" (and the profile's "Forget my answers") opens an in-page confirmation (`resetView`); confirming
+clears every `footing.*` key except the language, session storage, the profile, the picked place and point, the
+rating draft and map layer, and returns to Start. Ratings already sent stay in the shared store and contain no
+profile. 11 new strings in all 9 languages (machine translated). Checked in Chromium at 1440 (en), 390 (en) and
+1280 (ar): every tab reaches its screen and is marked, Cancel keeps answers, confirm clears them and keeps the
+language, no sideways scroll, no page errors; standalone smoke passes. The full globe smoke was not rerun.
+
 **UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
 1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the
    layer picker is cut to "Angkop para"; the brand is cut to "FOOTIN". Consider shorter legend labels or a

@@ -65,7 +65,7 @@ def run() -> int:
             errors.append("top view does not show 5 places")
         shot("03_top_fits")
 
-        page.click("#g-listbtn")
+        page.click(".g-nav [data-nav=list]")
         page.wait_for_selector("#g-q")
         page.fill("#g-q", "Norfolk")
         page.click(".g-sheet .g-list li:visible >> nth=0")
@@ -87,7 +87,7 @@ def run() -> int:
             errors.append("standalone map tap did not show block incidents")
         crime.scroll_into_view_if_needed()
         shot("03b_norfolk_blocks")
-        page.click("#g-listbtn")
+        page.click(".g-nav [data-nav=list]")
         page.wait_for_selector("#g-q")
         page.fill("#g-q", "Montgomery")
         page.wait_for_timeout(200)

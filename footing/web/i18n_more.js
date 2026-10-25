@@ -616,6 +616,130 @@
       crime_block: "{v} marahas na insidente ang naiulat sa loob ng mga 1.5 km ({start} hanggang {end}; datos ng pulisya ng {name}). Ang {e} tawag sa malapit tungkol sa pagpasok nang walang pahintulot, paglalagalag o kaguluhan ay nagpapakita kung saan nakikipag-ugnayan ang pulisya; hindi ito binibilang bilang panganib.", crime_city: "Sa buong lungsod: {rate} marahas na krimen bawat 1,000 tao (FBI, 2025).", crime_locality: "{rate} marahas na krimen ang naiulat sa FBI bawat 1,000 tao noong 2025 ({n} ulat). Sumasalamin ang ulat sa gawain ng pulisya at panganib; mas madalas na biktima kaysa salarin ang mga taong walang tahanan.", crime_unknown: "Hindi kasama: walang magagamit na datos ng FBI tungkol sa krimen sa lugar na ito.", community: "{n} pagtataya mula sa mga taong nakapunta rito.", community_none: "Wala pang pagtataya. Mauna sa pagbibigay ng pagtataya sa lugar dito.", recorded_note: "Nakaimbak na tala ng pinagmulan (sa Ingles):"
     }
   };
+  // S9 navigation bar and "start over". Machine translated like the rest (I.MACHINE); English is the source.
+  var NAV = {
+   "en": {
+    "nav_label": "Sections",
+    "nav_home": "Start",
+    "nav_best": "Best fits",
+    "nav_all": "All places",
+    "nav_rate": "Rate a place",
+    "nav_reset": "Start over",
+    "reset_title": "Start over?",
+    "reset_body": "This clears your answers, your priorities, the place you picked and the list of places you rated on this device. Your language stays. Ratings you already sent stay on the shared map; they never included your answers.",
+    "reset_yes": "Clear everything",
+    "reset_cancel": "Cancel",
+    "reset_done": "Cleared. You are starting fresh."
+   },
+   "es": {
+    "nav_label": "Secciones",
+    "nav_home": "Inicio",
+    "nav_best": "Mejores lugares",
+    "nav_all": "Todos los lugares",
+    "nav_rate": "Calificar un lugar",
+    "nav_reset": "Empezar de nuevo",
+    "reset_title": "¿Empezar de nuevo?",
+    "reset_body": "Esto borra tus respuestas, tus prioridades, el lugar que elegiste y la lista de lugares que calificaste en este dispositivo. Tu idioma se mantiene. Las calificaciones que ya enviaste siguen en el mapa compartido; nunca incluyeron tus respuestas.",
+    "reset_yes": "Borrar todo",
+    "reset_cancel": "Cancelar",
+    "reset_done": "Listo. Empiezas de nuevo."
+   },
+   "vi": {
+    "nav_label": "Các mục",
+    "nav_home": "Bắt đầu",
+    "nav_best": "Nơi phù hợp nhất",
+    "nav_all": "Tất cả địa điểm",
+    "nav_rate": "Đánh giá một nơi",
+    "nav_reset": "Làm lại từ đầu",
+    "reset_title": "Làm lại từ đầu?",
+    "reset_body": "Thao tác này xóa câu trả lời, thứ tự ưu tiên, nơi bạn đã chọn và danh sách nơi bạn đã đánh giá trên thiết bị này. Ngôn ngữ của bạn được giữ nguyên. Các đánh giá đã gửi vẫn ở trên bản đồ chung; chúng không bao giờ chứa câu trả lời của bạn.",
+    "reset_yes": "Xóa tất cả",
+    "reset_cancel": "Hủy",
+    "reset_done": "Đã xóa. Bạn bắt đầu lại từ đầu."
+   },
+   "ko": {
+    "nav_label": "메뉴",
+    "nav_home": "처음",
+    "nav_best": "가장 맞는 곳",
+    "nav_all": "모든 지역",
+    "nav_rate": "장소 평가",
+    "nav_reset": "처음부터 다시",
+    "reset_title": "처음부터 다시 시작할까요?",
+    "reset_body": "이 기기에 저장된 답변, 우선순위, 선택한 장소, 평가한 장소 목록이 지워집니다. 언어 설정은 그대로입니다. 이미 보낸 평가는 공유 지도에 남지만, 거기에는 답변이 들어 있지 않습니다.",
+    "reset_yes": "모두 지우기",
+    "reset_cancel": "취소",
+    "reset_done": "지웠습니다. 새로 시작합니다."
+   },
+   "zh": {
+    "nav_label": "栏目",
+    "nav_home": "开始",
+    "nav_best": "最适合的地方",
+    "nav_all": "所有地方",
+    "nav_rate": "评价一个地方",
+    "nav_reset": "重新开始",
+    "reset_title": "要重新开始吗？",
+    "reset_body": "这会清除你在这台设备上的回答、优先顺序、选中的地方和已评价地方的记录。语言设置保持不变。你已经提交的评价仍留在共享地图上，其中从不包含你的回答。",
+    "reset_yes": "全部清除",
+    "reset_cancel": "取消",
+    "reset_done": "已清除，重新开始。"
+   },
+   "ar": {
+    "nav_label": "الأقسام",
+    "nav_home": "البداية",
+    "nav_best": "أنسب الأماكن",
+    "nav_all": "كل الأماكن",
+    "nav_rate": "قيّم مكانًا",
+    "nav_reset": "البدء من جديد",
+    "reset_title": "هل تريد البدء من جديد؟",
+    "reset_body": "سيؤدي هذا إلى مسح إجاباتك وأولوياتك والمكان الذي اخترته وقائمة الأماكن التي قيّمتها على هذا الجهاز. تبقى لغتك كما هي. التقييمات التي أرسلتها تبقى على الخريطة المشتركة، ولم تتضمن إجاباتك أبدًا.",
+    "reset_yes": "امسح كل شيء",
+    "reset_cancel": "إلغاء",
+    "reset_done": "تم المسح. ستبدأ من جديد."
+   },
+   "am": {
+    "nav_label": "ክፍሎች",
+    "nav_home": "መጀመሪያ",
+    "nav_best": "በጣም የሚስማሙ",
+    "nav_all": "ሁሉም ቦታዎች",
+    "nav_rate": "ቦታ ይገምግሙ",
+    "nav_reset": "እንደገና ጀምር",
+    "reset_title": "እንደገና መጀመር ይፈልጋሉ?",
+    "reset_body": "ይህ በዚህ መሣሪያ ላይ ያሉትን መልሶችዎን፣ ቅድሚያዎችዎን፣ የመረጡትን ቦታ እና የገመገሟቸውን ቦታዎች ዝርዝር ያጠፋል። ቋንቋዎ አይቀየርም። አስቀድመው የላኳቸው ግምገማዎች በጋራ ካርታው ላይ ይቆያሉ፤ መልሶችዎን በፍጹም አልያዙም።",
+    "reset_yes": "ሁሉንም አጥፋ",
+    "reset_cancel": "ሰርዝ",
+    "reset_done": "ተጠርጓል። እንደ አዲስ ይጀምራሉ።"
+   },
+   "fa": {
+    "nav_label": "بخش‌ها",
+    "nav_home": "آغاز",
+    "nav_best": "مناسب‌ترین جاها",
+    "nav_all": "همه جاها",
+    "nav_rate": "به یک جا نمره بدهید",
+    "nav_reset": "از نو شروع کنید",
+    "reset_title": "از نو شروع می‌کنید؟",
+    "reset_body": "این کار جواب‌ها، اولویت‌ها، جایی که انتخاب کرده‌اید و فهرست جاهایی را که در این دستگاه نمره داده‌اید پاک می‌کند. زبان شما تغییر نمی‌کند. نمره‌هایی که قبلاً فرستاده‌اید در نقشه مشترک می‌مانند؛ آن‌ها هیچ‌وقت جواب‌های شما را نداشتند.",
+    "reset_yes": "همه را پاک کن",
+    "reset_cancel": "لغو",
+    "reset_done": "پاک شد. از نو شروع می‌کنید."
+   },
+   "tl": {
+    "nav_label": "Mga seksiyon",
+    "nav_home": "Simula",
+    "nav_best": "Pinakaangkop",
+    "nav_all": "Lahat ng lugar",
+    "nav_rate": "Mag-rate ng lugar",
+    "nav_reset": "Magsimula muli",
+    "reset_title": "Magsimula muli?",
+    "reset_body": "Buburahin nito ang iyong mga sagot, mga priyoridad, ang lugar na pinili mo at ang listahan ng mga lugar na ni-rate mo sa device na ito. Hindi magbabago ang iyong wika. Mananatili sa pinagsasaluhang mapa ang mga rating na naipadala mo na; hindi kailanman kasama roon ang iyong mga sagot.",
+    "reset_yes": "Burahin lahat",
+    "reset_cancel": "Kanselahin",
+    "reset_done": "Nabura na. Nagsisimula ka muli."
+   }
+  };
+  Object.keys(NAV).forEach(function (lang) {
+    I.strings[lang] = I.strings[lang] || {};
+    Object.keys(NAV[lang]).forEach(function (key) { I.strings[lang][key] = NAV[lang][key]; });
+  });
   I.LANGS = ["en", "es", "vi", "ko", "zh", "ar", "am", "fa", "tl"];
   I.RTL = ["ar", "fa"];
   I.MACHINE = ["es", "vi", "ko", "zh", "ar", "am", "fa", "tl"];   // No native review is recorded.

@@ -281,7 +281,7 @@
     var wide = window.innerWidth >= 900, sh = $(".g-sheet");
     var h = sh ? sh.offsetHeight : 200, rtl = document.documentElement.dir === "rtl";
     if (wide) return rtl ? { top: 90, bottom: 40, left: 40, right: 440 } : { top: 90, bottom: 40, left: 440, right: 40 };
-    return { top: 70, bottom: Math.min(h, window.innerHeight * 0.6) + 20, left: 20, right: 20 };
+    return { top: 116, bottom: Math.min(h, window.innerHeight * 0.6) + 20, left: 20, right: 20 };
   }
 
   function helpGeo() {
@@ -541,7 +541,7 @@
     if (!sh) return;
     if (S.placePopup && S.view !== "locality") S.placePopup.remove();
     var views = { intro: introView, profile: profileView, top: isVa() ? vaTopView : topView, list: isVa() ? vaListView : listView,
-      state: stateView, locality: localityView, rate: rateView };
+      state: stateView, locality: localityView, rate: rateView, reset: resetView };
     var html = (views[S.view] || views.intro)();
     var tall = S.view === "profile" || S.view === "list" || (S.view === "rate" && S.ratingPoint);
     sh.className = "g-sheet" + (tall ? " tall" : "") + (S.view === "rate" && !S.ratingPoint ? " short" : "");
@@ -592,8 +592,50 @@
     if (sh) document.documentElement.style.setProperty("--sheet-peek", Math.min(sh.offsetHeight, window.innerHeight * 0.86) + "px");
   }
 
+  // ---- navigation bar: one place to switch between the app's screens ----
+  var NAV_OF = { intro: "intro", profile: "profile", top: "top", list: "list", locality: "place", state: "place", rate: "rate", reset: "reset" };
+  function renderNav() {
+    var top = $(".g-top");
+    if (!top) return;
+    var nav = $(".g-nav");
+    if (!nav) {
+      nav = document.createElement("nav"); nav.className = "g-nav";
+      var brand = top.querySelector(".g-brand");
+      top.insertBefore(nav, brand ? brand.nextSibling : top.firstChild);
+      nav.addEventListener("click", function (e) {
+        var b = e.target.closest ? e.target.closest("[data-nav]") : null;
+        if (b) navigate(b.dataset.nav);
+      });
+    }
+    nav.setAttribute("aria-label", t("nav_label"));
+    var place = S.selected && (isVa() ? (S.byFips[S.selected] || {}).name : (S.policy && S.policy[S.selected] || {}).name);
+    var items = [["intro", t("nav_home")], ["profile", t("aboutYou")], ["top", t("nav_best")], ["list", t("nav_all")]];
+    if (place) items.push(["place", place]);
+    items.push(["rate", t("nav_rate")], ["reset", t("nav_reset")]);
+    var cur = NAV_OF[S.view];
+    nav.innerHTML = items.map(function (it) {
+      return '<button type="button" data-nav="' + it[0] + '"' + (it[0] === "reset" ? ' class="reset"' : "") +
+        (it[0] === cur ? ' aria-current="page"' : "") + ">" + esc(it[1]) + "</button>";
+    }).join("");
+    var active = nav.querySelector("[aria-current]");
+    if (active && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = active.offsetLeft - 16;
+  }
+
+  function navigate(where) {
+    if (where === NAV_OF[S.view] && where !== "place") return;
+    if (S.view === "rate" && where !== "rate" && S.ratingMarker) { S.ratingMarker.remove(); S.ratingMarker = null; S.ratingPoint = null; }
+    if (where === "intro") { S.view = "intro"; render(); flyHome(false); focusHeading(); return; }
+    if (where === "profile") { go("profile"); return; }
+    if (where === "top") { go("skip"); focusHeading(); return; }
+    if (where === "list") { go("list"); focusHeading(); return; }
+    if (where === "place" && S.selected) { if (isVa()) selectLocality(S.selected, true); else selectState(S.selected, true); return; }
+    if (where === "rate") { go("rate"); focusHeading(); return; }
+    if (where === "reset") { go("reset-ask"); }
+  }
+
   function renderChrome() {
-    $(".g-legend").hidden = S.view === "intro" || S.view === "profile" || S.view === "rate";
+    $(".g-legend").hidden = S.view === "intro" || S.view === "profile" || S.view === "rate" || S.view === "reset";
+    renderNav();
     var lang = $("#g-lang");
     if (lang.tagName === "SELECT") {
       lang.setAttribute("aria-label", "Language / " + t("lang"));
@@ -635,6 +677,13 @@
       '<button class="g-secondary" data-go="skip" type="button">' + esc(t("skip")) + "</button>" +
       (B.standalone ? "" : '<a class="g-secondary" href="#/start">' + esc(t("nearMe")) + "</a>") +
       '<a class="g-secondary" href="tel:211">' + esc(t("call211short")) + "</a></div>";
+  }
+
+  /** "Start over": an in-page confirmation (hosted pages cannot show confirm()). */
+  function resetView() {
+    return "<h2>" + esc(t("reset_title")) + "</h2><p>" + esc(t("reset_body")) + "</p>" +
+      '<div class="g-actions"><button class="g-primary g-danger" data-go="reset-confirm" type="button">' + esc(t("reset_yes")) + "</button>" +
+      '<button class="g-secondary" data-go="reset-cancel" type="button">' + esc(t("reset_cancel")) + "</button></div>";
   }
 
   function profileView() {
@@ -1128,14 +1177,23 @@
       store.set("footing.globe.profile", S.profile);
       S.view = "top"; compute(); render(); flyHome(false); focusHeading(); return;
     }
-    if (what === "forget") {
+    if (what === "forget" || what === "reset-ask") {
+      if (S.view !== "reset") S.prevView = S.view;
+      S.view = "reset"; render(); focusHeading(); return;
+    }
+    if (what === "reset-cancel") { S.view = S.prevView && S.prevView !== "reset" ? S.prevView : "top"; render(); focusHeading(); return; }
+    if (what === "reset-confirm") {
       try {
         Object.keys(localStorage).filter(function (k) { return k.indexOf("footing.") === 0 && k !== "footing.lang"; })
           .forEach(function (k) { localStorage.removeItem(k); });
       } catch (e) { /* fine */ }
-      S.profile = null; S.selectedPoint = null; S.ratingPoint = null;
+      try { sessionStorage.clear(); } catch (e) { /* fine */ }
+      // Everything this visit knows about the person goes; the language they chose stays.
+      S.profile = null; S.selected = null; S.selectedPoint = null; S.ratingPoint = null; S.rating = { tags: [] };
+      S.prevView = "top"; S.layer = "fit";
       if (S.ratingMarker) { S.ratingMarker.remove(); S.ratingMarker = null; }
-      _draft = null; S.view = "intro"; compute(); render(); toast(t("forgot")); return;
+      if (S.mapOk) { S.map.setFilter("va-selected", ["==", ["id"], ""]); S.map.setFilter("states-selected", ["==", ["get", "code"], ""]); }
+      _draft = null; S.view = "intro"; compute(); paint(); paintHeat(); render(); flyHome(true); toast(t("reset_done")); focusHeading(); return;
     }
     if (what === "list") { S.view = "list"; render(); return; }
     if (what === "locality-wide") { S.selectedPoint = null; render(); return; }

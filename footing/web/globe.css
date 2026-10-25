@@ -289,3 +289,30 @@ body.on-globe > header.top, body.on-globe > main#view { display: none; }
   html.g-desk[dir="rtl"] .g-sheet, html.g-desk[dir="rtl"] .g-sheet.tall, html.g-desk[dir="rtl"] .g-sheet.short { right: auto; left: 16px; }
   html.g-desk[dir="rtl"] .g-legend, html.g-desk[dir="rtl"] .g-toast { left: calc(var(--panel-w) + 32px); right: calc(var(--rail-w) + 32px); }
 }
+
+/* ---- S9: navigation bar (all widths) and "start over" ----
+   Phones: a scrollable strip on its own row under the brand and controls. Computers: tabs inside the top bar. */
+.g-top { flex-wrap: wrap; row-gap: 6px; }
+.g-top > #g-listbtn { display: none; }            /* "All places" in the nav replaces the List toggle */
+.g-nav { order: 10; flex: 1 0 100%; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
+  padding: 3px; border-radius: 22px; background: rgba(8, 12, 24, 0.82); border: 1px solid var(--g-line);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.g-nav::-webkit-scrollbar { display: none; }
+.g-nav button { flex: 0 0 auto; min-height: 36px; padding: 0 13px; border-radius: 18px; border: 0; background: transparent;
+  color: var(--g-ink-2); font: 600 13.5px var(--sans); white-space: nowrap; cursor: pointer; }
+.g-nav button:hover { color: var(--g-ink); background: rgba(232, 236, 244, 0.08); }
+.g-nav button[aria-current="page"] { color: #10131c; background: var(--lamp); }
+.g-nav button:focus-visible { outline: 3px solid var(--lamp); outline-offset: 1px; }
+.g-nav button.reset { color: var(--no); }
+.g-nav button.reset[aria-current="page"] { color: #10131c; background: var(--no); }
+.g-nav button[data-nav="place"] { max-width: 16em; overflow: hidden; text-overflow: ellipsis; }
+.g-danger { background: var(--no) !important; color: #10131c !important; border-color: var(--no) !important; }
+.g-toast { top: 116px; }
+@media (min-width: 1100px) {
+  .g-top { flex-wrap: nowrap; }
+  .g-top > .g-brand { order: 0; }
+  .g-top > .g-nav { order: 1; flex: 0 1 auto; margin-inline: auto; }
+  .g-top > .g-langsel, .g-top > .hide { order: 2; }
+  .g-toast { top: 76px; }
+}
+@media (prefers-reduced-motion: reduce) { .g-nav { scroll-behavior: auto; } }

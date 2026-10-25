@@ -171,7 +171,7 @@ def run() -> int:
                 shot("06_details")
 
                 # The full list and search.
-                page.click("#g-listbtn")
+                page.click(".g-nav [data-nav=list]")
                 page.wait_for_selector("#g-q")
                 n_all = page.locator(".g-sheet .g-list li").count()
                 check(n_all == 133, f"list shows {n_all} places, not 133")
@@ -256,7 +256,7 @@ def run() -> int:
                 check(page.locator(".g-point-note").count() == 0, "whole-locality button kept the point note")
 
                 # Missing FBI reports must stay Unknown, even after viewing a covered block.
-                page.click("#g-listbtn")
+                page.click(".g-nav [data-nav=list]")
                 page.fill("#g-q", "Virginia Beach")
                 page.click(".g-sheet .g-list li:visible >> nth=0")
                 page.wait_for_selector("#g-loc-title")
@@ -314,11 +314,17 @@ def run() -> int:
                 shot("10_after_rating", 800)
 
                 # Forget my answers.
-                page.click("#g-listbtn")                        # back to the map view first
+                page.click(".g-nav [data-nav=list]")                        # back to the map view first
                 page.evaluate("FootingGlobe._state.view = 'profile'")
                 page.evaluate("document.querySelector('#g-lang').dispatchEvent(new Event('change'))")
                 page.wait_for_selector("[data-go=forget]")
                 page.click("[data-go=forget]")
+                # Forgetting now asks first, on the same "Start over" screen as the nav bar's button.
+                page.wait_for_selector("[data-go=reset-confirm]")
+                check(page.locator(".g-nav [data-nav=reset][aria-current=page]").count() == 1, "nav does not mark Start over")
+                page.click("[data-go=reset-confirm]")
+                check(page.evaluate("FootingGlobe._state.view") == "intro", "start over did not return to the start screen")
+                check(page.evaluate("FootingGlobe._state.selected") is None, "start over kept the picked place")
                 check(page.evaluate("localStorage.getItem('footing.globe.profile')") is None, "forget left the profile behind")
                 check(page.evaluate("localStorage.getItem('footing.device')") is None, "forget left the device token behind")
                 check(page.evaluate("JSON.parse(localStorage.getItem('footing.lang'))") == lang, "forget also wiped the language")
