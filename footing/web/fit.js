@@ -166,6 +166,8 @@
     var camp = st.camping_law;
     if (camp && camp.status === "in_effect") out.criminalization = { score: 0, reason: "Statewide camping law: " + camp.note };
     else if (camp && camp.status === "contested") out.criminalization = { score: 50, reason: "Statewide camping law in court: " + camp.note };
+    else if (camp && camp.status === "enforcement_mandate") out.criminalization = { score: 25, reason: "State pushes cities to enforce camping bans: " + camp.note };
+    else if (camp && camp.status === "none_statewide") out.criminalization = { score: 75, reason: camp.note };
     else out.criminalization = { score: null, reason: "Not checked: we have not confirmed a statewide camping law either way." };
     var c = community && community[stCode];
     if (c && c.n > 0) out.community = { score: c.score, reason: c.n + " rating" + (c.n === 1 ? "" : "s") + " from people who have been here", n: c.n, freshness: c.freshness };

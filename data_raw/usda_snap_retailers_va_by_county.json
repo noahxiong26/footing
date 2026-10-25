@@ -1,0 +1,3640 @@
+{
+ "edit": {
+  "lastEditDate": 1792613414412,
+  "schemaLastEditDate": 1792613414412,
+  "dataLastEditDate": 1792613414412
+ },
+ "err": null,
+ "rows": [
+  [
+   "ACCOMACK",
+   "Convenience Store",
+   15
+  ],
+  [
+   "ALBEMARLE",
+   "Convenience Store",
+   26
+  ],
+  [
+   "ALEXANDRIA",
+   "Convenience Store",
+   21
+  ],
+  [
+   "ALLEGHANY",
+   "Convenience Store",
+   7
+  ],
+  [
+   "AMELIA",
+   "Convenience Store",
+   4
+  ],
+  [
+   "AMHERST",
+   "Convenience Store",
+   13
+  ],
+  [
+   "APPOMATTOX",
+   "Convenience Store",
+   7
+  ],
+  [
+   "ARLINGTON",
+   "Convenience Store",
+   29
+  ],
+  [
+   "AUGUSTA",
+   "Convenience Store",
+   26
+  ],
+  [
+   "BATH",
+   "Convenience Store",
+   1
+  ],
+  [
+   "BEDFORD",
+   "Convenience Store",
+   32
+  ],
+  [
+   "BEDFORD CITY",
+   "Convenience Store",
+   1
+  ],
+  [
+   "BLAND",
+   "Convenience Store",
+   3
+  ],
+  [
+   "BOTETOURT",
+   "Convenience Store",
+   11
+  ],
+  [
+   "BRISTOL",
+   "Convenience Store",
+   14
+  ],
+  [
+   "BRUNSWICK",
+   "Convenience Store",
+   7
+  ],
+  [
+   "BUCHANAN",
+   "Convenience Store",
+   12
+  ],
+  [
+   "BUCKINGHAM",
+   "Convenience Store",
+   7
+  ],
+  [
+   "BUENA VISTA",
+   "Convenience Store",
+   3
+  ],
+  [
+   "CAMPBELL",
+   "Convenience Store",
+   19
+  ],
+  [
+   "CAROLINE",
+   "Convenience Store",
+   22
+  ],
+  [
+   "CARROLL",
+   "Convenience Store",
+   25
+  ],
+  [
+   "CHARLES CITY",
+   "Convenience Store",
+   3
+  ],
+  [
+   "CHARLOTTE",
+   "Convenience Store",
+   8
+  ],
+  [
+   "CHARLOTTESVILLE",
+   "Convenience Store",
+   17
+  ],
+  [
+   "CHESAPEAKE",
+   "Convenience Store",
+   78
+  ],
+  [
+   "CHESTERFIELD",
+   "Convenience Store",
+   71
+  ],
+  [
+   "CLARKE",
+   "Convenience Store",
+   4
+  ],
+  [
+   "COLONIAL HEIGHTS",
+   "Convenience Store",
+   11
+  ],
+  [
+   "COVINGTON",
+   "Convenience Store",
+   6
+  ],
+  [
+   "CRAIG",
+   "Convenience Store",
+   1
+  ],
+  [
+   "CULPEPER",
+   "Convenience Store",
+   16
+  ],
+  [
+   "CUMBERLAND",
+   "Convenience Store",
+   2
+  ],
+  [
+   "DANVILLE",
+   "Convenience Store",
+   27
+  ],
+  [
+   "DICKENSON",
+   "Convenience Store",
+   12
+  ],
+  [
+   "DINWIDDIE",
+   "Convenience Store",
+   8
+  ],
+  [
+   "EMPORIA",
+   "Convenience Store",
+   3
+  ],
+  [
+   "ESSEX",
+   "Convenience Store",
+   4
+  ],
+  [
+   "FAIRFAX",
+   "Convenience Store",
+   116
+  ],
+  [
+   "Fairfax City",
+   "Convenience Store",
+   8
+  ],
+  [
+   "Falls Church City",
+   "Convenience Store",
+   2
+  ],
+  [
+   "FAUQUIER",
+   "Convenience Store",
+   12
+  ],
+  [
+   "FLOYD",
+   "Convenience Store",
+   4
+  ],
+  [
+   "FLUVANNA",
+   "Convenience Store",
+   1
+  ],
+  [
+   "FRANKLIN",
+   "Convenience Store",
+   27
+  ],
+  [
+   "FRANKLIN CITY",
+   "Convenience Store",
+   6
+  ],
+  [
+   "FREDERICK",
+   "Convenience Store",
+   31
+  ],
+  [
+   "FREDERICKSBURG",
+   "Convenience Store",
+   14
+  ],
+  [
+   "GALAX",
+   "Convenience Store",
+   5
+  ],
+  [
+   "GILES",
+   "Convenience Store",
+   12
+  ],
+  [
+   "GLOUCESTER",
+   "Convenience Store",
+   16
+  ],
+  [
+   "GOOCHLAND",
+   "Convenience Store",
+   7
+  ],
+  [
+   "GRAYSON",
+   "Convenience Store",
+   7
+  ],
+  [
+   "GREENE",
+   "Convenience Store",
+   4
+  ],
+  [
+   "GREENSVILLE",
+   "Convenience Store",
+   12
+  ],
+  [
+   "HALIFAX",
+   "Convenience Store",
+   22
+  ],
+  [
+   "HAMPTON",
+   "Convenience Store",
+   64
+  ],
+  [
+   "HANOVER",
+   "Convenience Store",
+   42
+  ],
+  [
+   "HARRISONBURG",
+   "Convenience Store",
+   18
+  ],
+  [
+   "HENRICO",
+   "Convenience Store",
+   99
+  ],
+  [
+   "HENRY",
+   "Convenience Store",
+   29
+  ],
+  [
+   "HIGHLAND",
+   "Convenience Store",
+   2
+  ],
+  [
+   "HOPEWELL",
+   "Convenience Store",
+   15
+  ],
+  [
+   "ISLE OF WIGHT",
+   "Convenience Store",
+   10
+  ],
+  [
+   "JAMES CITY",
+   "Convenience Store",
+   20
+  ],
+  [
+   "KING AND QUEEN",
+   "Convenience Store",
+   1
+  ],
+  [
+   "KING GEORGE",
+   "Convenience Store",
+   8
+  ],
+  [
+   "KING WILLIAM",
+   "Convenience Store",
+   6
+  ],
+  [
+   "LANCASTER",
+   "Convenience Store",
+   5
+  ],
+  [
+   "LEE",
+   "Convenience Store",
+   17
+  ],
+  [
+   "LEXINGTON",
+   "Convenience Store",
+   2
+  ],
+  [
+   "LOUDOUN",
+   "Convenience Store",
+   54
+  ],
+  [
+   "LOUISA",
+   "Convenience Store",
+   9
+  ],
+  [
+   "LUNENBURG",
+   "Convenience Store",
+   2
+  ],
+  [
+   "LYNCHBURG",
+   "Convenience Store",
+   31
+  ],
+  [
+   "MADISON",
+   "Convenience Store",
+   6
+  ],
+  [
+   "MANASSAS CITY",
+   "Convenience Store",
+   16
+  ],
+  [
+   "Manassas Park City",
+   "Convenience Store",
+   2
+  ],
+  [
+   "MARTINSVILLE",
+   "Convenience Store",
+   6
+  ],
+  [
+   "MATHEWS",
+   "Convenience Store",
+   2
+  ],
+  [
+   "MECKLENBURG",
+   "Convenience Store",
+   18
+  ],
+  [
+   "MIDDLESEX",
+   "Convenience Store",
+   5
+  ],
+  [
+   "MONTGOMERY",
+   "Convenience Store",
+   33
+  ],
+  [
+   "NELSON",
+   "Convenience Store",
+   4
+  ],
+  [
+   "NEW KENT",
+   "Convenience Store",
+   8
+  ],
+  [
+   "NEWPORT NEWS",
+   "Convenience Store",
+   87
+  ],
+  [
+   "NORFOLK",
+   "Convenience Store",
+   94
+  ],
+  [
+   "NORTHAMPTON",
+   "Convenience Store",
+   5
+  ],
+  [
+   "NORTHUMBERLAND",
+   "Convenience Store",
+   5
+  ],
+  [
+   "NORTON",
+   "Convenience Store",
+   5
+  ],
+  [
+   "NOTTOWAY",
+   "Convenience Store",
+   4
+  ],
+  [
+   "ORANGE",
+   "Convenience Store",
+   11
+  ],
+  [
+   "PAGE",
+   "Convenience Store",
+   4
+  ],
+  [
+   "PATRICK",
+   "Convenience Store",
+   11
+  ],
+  [
+   "PETERSBURG",
+   "Convenience Store",
+   25
+  ],
+  [
+   "PITTSYLVANIA",
+   "Convenience Store",
+   24
+  ],
+  [
+   "POQUOSON CITY",
+   "Convenience Store",
+   3
+  ],
+  [
+   "PORTSMOUTH",
+   "Convenience Store",
+   43
+  ],
+  [
+   "POWHATAN",
+   "Convenience Store",
+   3
+  ],
+  [
+   "PRINCE EDWARD",
+   "Convenience Store",
+   13
+  ],
+  [
+   "PRINCE GEORGE",
+   "Convenience Store",
+   12
+  ],
+  [
+   "PRINCE WILLIAM",
+   "Convenience Store",
+   74
+  ],
+  [
+   "PULASKI",
+   "Convenience Store",
+   20
+  ],
+  [
+   "RADFORD",
+   "Convenience Store",
+   6
+  ],
+  [
+   "RICHMOND",
+   "Convenience Store",
+   2
+  ],
+  [
+   "RICHMOND CITY",
+   "Convenience Store",
+   112
+  ],
+  [
+   "ROANOKE",
+   "Convenience Store",
+   25
+  ],
+  [
+   "ROANOKE CITY",
+   "Convenience Store",
+   62
+  ],
+  [
+   "ROCKBRIDGE",
+   "Convenience Store",
+   14
+  ],
+  [
+   "ROCKINGHAM",
+   "Convenience Store",
+   21
+  ],
+  [
+   "RUSSELL",
+   "Convenience Store",
+   11
+  ],
+  [
+   "SALEM",
+   "Convenience Store",
+   13
+  ],
+  [
+   "SCOTT",
+   "Convenience Store",
+   17
+  ],
+  [
+   "SHENANDOAH",
+   "Convenience Store",
+   19
+  ],
+  [
+   "SMYTH",
+   "Convenience Store",
+   19
+  ],
+  [
+   "SOUTHAMPTON",
+   "Convenience Store",
+   3
+  ],
+  [
+   "SPOTSYLVANIA",
+   "Convenience Store",
+   43
+  ],
+  [
+   "STAFFORD",
+   "Convenience Store",
+   38
+  ],
+  [
+   "STAUNTON",
+   "Convenience Store",
+   17
+  ],
+  [
+   "SUFFOLK",
+   "Convenience Store",
+   33
+  ],
+  [
+   "SURRY",
+   "Convenience Store",
+   4
+  ],
+  [
+   "SUSSEX",
+   "Convenience Store",
+   7
+  ],
+  [
+   "TAZEWELL",
+   "Convenience Store",
+   23
+  ],
+  [
+   "VIRGINIA BEACH",
+   "Convenience Store",
+   122
+  ],
+  [
+   "WARREN",
+   "Convenience Store",
+   23
+  ],
+  [
+   "WASHINGTON",
+   "Convenience Store",
+   32
+  ],
+  [
+   "WAYNESBORO",
+   "Convenience Store",
+   13
+  ],
+  [
+   "WESTMORELAND",
+   "Convenience Store",
+   8
+  ],
+  [
+   "WILLIAMSBURG",
+   "Convenience Store",
+   5
+  ],
+  [
+   "WINCHESTER",
+   "Convenience Store",
+   18
+  ],
+  [
+   "WISE",
+   "Convenience Store",
+   21
+  ],
+  [
+   "WYTHE",
+   "Convenience Store",
+   25
+  ],
+  [
+   "YORK",
+   "Convenience Store",
+   16
+  ],
+  [
+   "ACCOMACK",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "ALBEMARLE",
+   "Farmers and Markets",
+   5
+  ],
+  [
+   "ALEXANDRIA",
+   "Farmers and Markets",
+   5
+  ],
+  [
+   "AMELIA",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "AMHERST",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "ARLINGTON",
+   "Farmers and Markets",
+   9
+  ],
+  [
+   "AUGUSTA",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "BEDFORD",
+   "Farmers and Markets",
+   4
+  ],
+  [
+   "BLAND",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "BOTETOURT",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "BRUNSWICK",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "BUCKINGHAM",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "CAMPBELL",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "CAROLINE",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "CARROLL",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "CHARLOTTESVILLE",
+   "Farmers and Markets",
+   4
+  ],
+  [
+   "CHESTERFIELD",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "CRAIG",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "CULPEPER",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "DANVILLE",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "DINWIDDIE",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "ESSEX",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "FAIRFAX",
+   "Farmers and Markets",
+   10
+  ],
+  [
+   "Falls Church City",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "FAUQUIER",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "FLOYD",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "FLUVANNA",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "FRANKLIN",
+   "Farmers and Markets",
+   4
+  ],
+  [
+   "FREDERICK",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "FREDERICKSBURG",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "GALAX",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "GILES",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "GOOCHLAND",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "GRAYSON",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "GREENE",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "HALIFAX",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "HAMPTON",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "HANOVER",
+   "Farmers and Markets",
+   4
+  ],
+  [
+   "HARRISONBURG",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "HENRICO",
+   "Farmers and Markets",
+   5
+  ],
+  [
+   "HENRY",
+   "Farmers and Markets",
+   4
+  ],
+  [
+   "HIGHLAND",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "HOPEWELL",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "JAMES CITY",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "KING GEORGE",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "KING WILLIAM",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "LOUDOUN",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "LOUISA",
+   "Farmers and Markets",
+   4
+  ],
+  [
+   "LUNENBURG",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "LYNCHBURG",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "MADISON",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "MANASSAS CITY",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "MARTINSVILLE",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "MONTGOMERY",
+   "Farmers and Markets",
+   5
+  ],
+  [
+   "NELSON",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "NEW KENT",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "NEWPORT NEWS",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "NORFOLK",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "NORTHAMPTON",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "NORTON",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "NOTTOWAY",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "ORANGE",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "PATRICK",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "PETERSBURG",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "PITTSYLVANIA",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "POWHATAN",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "PRINCE EDWARD",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "PRINCE GEORGE",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "PRINCE WILLIAM",
+   "Farmers and Markets",
+   6
+  ],
+  [
+   "PULASKI",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "RAPPAHANNOCK",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "RICHMOND",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "RICHMOND CITY",
+   "Farmers and Markets",
+   10
+  ],
+  [
+   "ROANOKE",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "ROANOKE CITY",
+   "Farmers and Markets",
+   4
+  ],
+  [
+   "ROCKBRIDGE",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "ROCKINGHAM",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "RUSSELL",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "SALEM",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "SCOTT",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "SHENANDOAH",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "SMYTH",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "SOUTHAMPTON",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "SPOTSYLVANIA",
+   "Farmers and Markets",
+   4
+  ],
+  [
+   "STAFFORD",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "STAUNTON",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "SUFFOLK",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "SURRY",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "SUSSEX",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "VIRGINIA BEACH",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "WARREN",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "WASHINGTON",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "WAYNESBORO",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "WESTMORELAND",
+   "Farmers and Markets",
+   3
+  ],
+  [
+   "WINCHESTER",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "WISE",
+   "Farmers and Markets",
+   2
+  ],
+  [
+   "WYTHE",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "YORK",
+   "Farmers and Markets",
+   1
+  ],
+  [
+   "ACCOMACK",
+   "Grocery Store",
+   3
+  ],
+  [
+   "ALBEMARLE",
+   "Grocery Store",
+   6
+  ],
+  [
+   "ALEXANDRIA",
+   "Grocery Store",
+   9
+  ],
+  [
+   "ALLEGHANY",
+   "Grocery Store",
+   1
+  ],
+  [
+   "AMELIA",
+   "Grocery Store",
+   1
+  ],
+  [
+   "AMHERST",
+   "Grocery Store",
+   1
+  ],
+  [
+   "ARLINGTON",
+   "Grocery Store",
+   7
+  ],
+  [
+   "AUGUSTA",
+   "Grocery Store",
+   3
+  ],
+  [
+   "BEDFORD",
+   "Grocery Store",
+   1
+  ],
+  [
+   "BOTETOURT",
+   "Grocery Store",
+   2
+  ],
+  [
+   "BRISTOL",
+   "Grocery Store",
+   2
+  ],
+  [
+   "CAMPBELL",
+   "Grocery Store",
+   1
+  ],
+  [
+   "CARROLL",
+   "Grocery Store",
+   1
+  ],
+  [
+   "CHARLOTTESVILLE",
+   "Grocery Store",
+   9
+  ],
+  [
+   "CHESAPEAKE",
+   "Grocery Store",
+   3
+  ],
+  [
+   "CHESTERFIELD",
+   "Grocery Store",
+   16
+  ],
+  [
+   "COLONIAL HEIGHTS",
+   "Grocery Store",
+   2
+  ],
+  [
+   "CULPEPER",
+   "Grocery Store",
+   1
+  ],
+  [
+   "CUMBERLAND",
+   "Grocery Store",
+   2
+  ],
+  [
+   "DANVILLE",
+   "Grocery Store",
+   1
+  ],
+  [
+   "DICKENSON",
+   "Grocery Store",
+   2
+  ],
+  [
+   "DINWIDDIE",
+   "Grocery Store",
+   2
+  ],
+  [
+   "ESSEX",
+   "Grocery Store",
+   1
+  ],
+  [
+   "FAIRFAX",
+   "Grocery Store",
+   49
+  ],
+  [
+   "Fairfax City",
+   "Grocery Store",
+   2
+  ],
+  [
+   "Falls Church City",
+   "Grocery Store",
+   3
+  ],
+  [
+   "FAUQUIER",
+   "Grocery Store",
+   2
+  ],
+  [
+   "FLOYD",
+   "Grocery Store",
+   3
+  ],
+  [
+   "FLUVANNA",
+   "Grocery Store",
+   1
+  ],
+  [
+   "FRANKLIN",
+   "Grocery Store",
+   4
+  ],
+  [
+   "FREDERICK",
+   "Grocery Store",
+   8
+  ],
+  [
+   "FREDERICKSBURG",
+   "Grocery Store",
+   4
+  ],
+  [
+   "GALAX",
+   "Grocery Store",
+   1
+  ],
+  [
+   "GILES",
+   "Grocery Store",
+   2
+  ],
+  [
+   "GLOUCESTER",
+   "Grocery Store",
+   1
+  ],
+  [
+   "GRAYSON",
+   "Grocery Store",
+   1
+  ],
+  [
+   "GREENSVILLE",
+   "Grocery Store",
+   1
+  ],
+  [
+   "HALIFAX",
+   "Grocery Store",
+   1
+  ],
+  [
+   "HAMPTON",
+   "Grocery Store",
+   4
+  ],
+  [
+   "HANOVER",
+   "Grocery Store",
+   1
+  ],
+  [
+   "HARRISONBURG",
+   "Grocery Store",
+   13
+  ],
+  [
+   "HENRICO",
+   "Grocery Store",
+   25
+  ],
+  [
+   "HENRY",
+   "Grocery Store",
+   4
+  ],
+  [
+   "HIGHLAND",
+   "Grocery Store",
+   1
+  ],
+  [
+   "HOPEWELL",
+   "Grocery Store",
+   3
+  ],
+  [
+   "LEE",
+   "Grocery Store",
+   4
+  ],
+  [
+   "LOUDOUN",
+   "Grocery Store",
+   14
+  ],
+  [
+   "LOUISA",
+   "Grocery Store",
+   1
+  ],
+  [
+   "LYNCHBURG",
+   "Grocery Store",
+   3
+  ],
+  [
+   "MANASSAS CITY",
+   "Grocery Store",
+   3
+  ],
+  [
+   "MARTINSVILLE",
+   "Grocery Store",
+   1
+  ],
+  [
+   "MECKLENBURG",
+   "Grocery Store",
+   1
+  ],
+  [
+   "MONTGOMERY",
+   "Grocery Store",
+   3
+  ],
+  [
+   "NELSON",
+   "Grocery Store",
+   1
+  ],
+  [
+   "NEWPORT NEWS",
+   "Grocery Store",
+   9
+  ],
+  [
+   "NORFOLK",
+   "Grocery Store",
+   9
+  ],
+  [
+   "NOTTOWAY",
+   "Grocery Store",
+   3
+  ],
+  [
+   "ORANGE",
+   "Grocery Store",
+   1
+  ],
+  [
+   "PETERSBURG",
+   "Grocery Store",
+   6
+  ],
+  [
+   "PITTSYLVANIA",
+   "Grocery Store",
+   1
+  ],
+  [
+   "PORTSMOUTH",
+   "Grocery Store",
+   2
+  ],
+  [
+   "PRINCE WILLIAM",
+   "Grocery Store",
+   27
+  ],
+  [
+   "RICHMOND CITY",
+   "Grocery Store",
+   13
+  ],
+  [
+   "ROANOKE",
+   "Grocery Store",
+   5
+  ],
+  [
+   "ROANOKE CITY",
+   "Grocery Store",
+   16
+  ],
+  [
+   "SHENANDOAH",
+   "Grocery Store",
+   3
+  ],
+  [
+   "SMYTH",
+   "Grocery Store",
+   1
+  ],
+  [
+   "SPOTSYLVANIA",
+   "Grocery Store",
+   6
+  ],
+  [
+   "STAFFORD",
+   "Grocery Store",
+   12
+  ],
+  [
+   "VIRGINIA BEACH",
+   "Grocery Store",
+   11
+  ],
+  [
+   "WARREN",
+   "Grocery Store",
+   1
+  ],
+  [
+   "WAYNESBORO",
+   "Grocery Store",
+   1
+  ],
+  [
+   "WINCHESTER",
+   "Grocery Store",
+   4
+  ],
+  [
+   "WISE",
+   "Grocery Store",
+   1
+  ],
+  [
+   "WYTHE",
+   "Grocery Store",
+   1
+  ],
+  [
+   "YORK",
+   "Grocery Store",
+   2
+  ],
+  [
+   "ACCOMACK",
+   "Other",
+   9
+  ],
+  [
+   "ALBEMARLE",
+   "Other",
+   7
+  ],
+  [
+   "ALEXANDRIA",
+   "Other",
+   14
+  ],
+  [
+   "ALLEGHANY",
+   "Other",
+   3
+  ],
+  [
+   "AMELIA",
+   "Other",
+   4
+  ],
+  [
+   "AMHERST",
+   "Other",
+   8
+  ],
+  [
+   "APPOMATTOX",
+   "Other",
+   6
+  ],
+  [
+   "ARLINGTON",
+   "Other",
+   21
+  ],
+  [
+   "AUGUSTA",
+   "Other",
+   14
+  ],
+  [
+   "BATH",
+   "Other",
+   2
+  ],
+  [
+   "BEDFORD",
+   "Other",
+   20
+  ],
+  [
+   "BLAND",
+   "Other",
+   2
+  ],
+  [
+   "BOTETOURT",
+   "Other",
+   4
+  ],
+  [
+   "BRISTOL",
+   "Other",
+   8
+  ],
+  [
+   "BRUNSWICK",
+   "Other",
+   5
+  ],
+  [
+   "BUCHANAN",
+   "Other",
+   7
+  ],
+  [
+   "BUCKINGHAM",
+   "Other",
+   4
+  ],
+  [
+   "BUENA VISTA",
+   "Other",
+   3
+  ],
+  [
+   "CAMPBELL",
+   "Other",
+   14
+  ],
+  [
+   "CAROLINE",
+   "Other",
+   6
+  ],
+  [
+   "CARROLL",
+   "Other",
+   10
+  ],
+  [
+   "CHARLES CITY",
+   "Other",
+   2
+  ],
+  [
+   "CHARLOTTE",
+   "Other",
+   7
+  ],
+  [
+   "CHARLOTTESVILLE",
+   "Other",
+   8
+  ],
+  [
+   "CHESAPEAKE",
+   "Other",
+   39
+  ],
+  [
+   "CHESTERFIELD",
+   "Other",
+   48
+  ],
+  [
+   "CLARKE",
+   "Other",
+   2
+  ],
+  [
+   "COLONIAL HEIGHTS",
+   "Other",
+   7
+  ],
+  [
+   "COVINGTON",
+   "Other",
+   4
+  ],
+  [
+   "CRAIG",
+   "Other",
+   1
+  ],
+  [
+   "CULPEPER",
+   "Other",
+   7
+  ],
+  [
+   "CUMBERLAND",
+   "Other",
+   3
+  ],
+  [
+   "DANVILLE",
+   "Other",
+   23
+  ],
+  [
+   "DICKENSON",
+   "Other",
+   3
+  ],
+  [
+   "DINWIDDIE",
+   "Other",
+   8
+  ],
+  [
+   "ESSEX",
+   "Other",
+   3
+  ],
+  [
+   "FAIRFAX",
+   "Other",
+   87
+  ],
+  [
+   "Fairfax City",
+   "Other",
+   6
+  ],
+  [
+   "Falls Church City",
+   "Other",
+   2
+  ],
+  [
+   "FAUQUIER",
+   "Other",
+   9
+  ],
+  [
+   "FLOYD",
+   "Other",
+   5
+  ],
+  [
+   "FLUVANNA",
+   "Other",
+   3
+  ],
+  [
+   "FRANKLIN",
+   "Other",
+   14
+  ],
+  [
+   "FRANKLIN CITY",
+   "Other",
+   4
+  ],
+  [
+   "FREDERICK",
+   "Other",
+   13
+  ],
+  [
+   "FREDERICKSBURG",
+   "Other",
+   7
+  ],
+  [
+   "GALAX",
+   "Other",
+   5
+  ],
+  [
+   "GILES",
+   "Other",
+   6
+  ],
+  [
+   "GLOUCESTER",
+   "Other",
+   8
+  ],
+  [
+   "GOOCHLAND",
+   "Other",
+   3
+  ],
+  [
+   "GRAYSON",
+   "Other",
+   2
+  ],
+  [
+   "GREENE",
+   "Other",
+   4
+  ],
+  [
+   "GREENSVILLE",
+   "Other",
+   7
+  ],
+  [
+   "HALIFAX",
+   "Other",
+   13
+  ],
+  [
+   "HAMPTON",
+   "Other",
+   24
+  ],
+  [
+   "HANOVER",
+   "Other",
+   17
+  ],
+  [
+   "HARRISONBURG",
+   "Other",
+   12
+  ],
+  [
+   "HENRICO",
+   "Other",
+   61
+  ],
+  [
+   "HENRY",
+   "Other",
+   23
+  ],
+  [
+   "HIGHLAND",
+   "Other",
+   2
+  ],
+  [
+   "HOPEWELL",
+   "Other",
+   10
+  ],
+  [
+   "ISLE OF WIGHT",
+   "Other",
+   11
+  ],
+  [
+   "JAMES CITY",
+   "Other",
+   10
+  ],
+  [
+   "KING AND QUEEN",
+   "Other",
+   1
+  ],
+  [
+   "KING GEORGE",
+   "Other",
+   6
+  ],
+  [
+   "KING WILLIAM",
+   "Other",
+   6
+  ],
+  [
+   "LANCASTER",
+   "Other",
+   6
+  ],
+  [
+   "LEE",
+   "Other",
+   10
+  ],
+  [
+   "LEXINGTON",
+   "Other",
+   2
+  ],
+  [
+   "LOUDOUN",
+   "Other",
+   28
+  ],
+  [
+   "LOUISA",
+   "Other",
+   13
+  ],
+  [
+   "LUNENBURG",
+   "Other",
+   3
+  ],
+  [
+   "LYNCHBURG",
+   "Other",
+   15
+  ],
+  [
+   "MADISON",
+   "Other",
+   1
+  ],
+  [
+   "MANASSAS CITY",
+   "Other",
+   9
+  ],
+  [
+   "Manassas Park City",
+   "Other",
+   1
+  ],
+  [
+   "MARTINSVILLE",
+   "Other",
+   9
+  ],
+  [
+   "MATHEWS",
+   "Other",
+   3
+  ],
+  [
+   "MECKLENBURG",
+   "Other",
+   16
+  ],
+  [
+   "MIDDLESEX",
+   "Other",
+   5
+  ],
+  [
+   "MONTGOMERY",
+   "Other",
+   12
+  ],
+  [
+   "NELSON",
+   "Other",
+   4
+  ],
+  [
+   "NEW KENT",
+   "Other",
+   4
+  ],
+  [
+   "NEWPORT NEWS",
+   "Other",
+   36
+  ],
+  [
+   "NORFOLK",
+   "Other",
+   40
+  ],
+  [
+   "NORTHAMPTON",
+   "Other",
+   7
+  ],
+  [
+   "NORTHUMBERLAND",
+   "Other",
+   7
+  ],
+  [
+   "NORTON",
+   "Other",
+   4
+  ],
+  [
+   "NOTTOWAY",
+   "Other",
+   7
+  ],
+  [
+   "ORANGE",
+   "Other",
+   13
+  ],
+  [
+   "PAGE",
+   "Other",
+   8
+  ],
+  [
+   "PATRICK",
+   "Other",
+   5
+  ],
+  [
+   "PETERSBURG",
+   "Other",
+   15
+  ],
+  [
+   "PITTSYLVANIA",
+   "Other",
+   15
+  ],
+  [
+   "POQUOSON CITY",
+   "Other",
+   3
+  ],
+  [
+   "PORTSMOUTH",
+   "Other",
+   22
+  ],
+  [
+   "POWHATAN",
+   "Other",
+   5
+  ],
+  [
+   "PRINCE EDWARD",
+   "Other",
+   9
+  ],
+  [
+   "PRINCE GEORGE",
+   "Other",
+   4
+  ],
+  [
+   "PRINCE WILLIAM",
+   "Other",
+   41
+  ],
+  [
+   "PULASKI",
+   "Other",
+   9
+  ],
+  [
+   "RADFORD",
+   "Other",
+   3
+  ],
+  [
+   "RICHMOND",
+   "Other",
+   6
+  ],
+  [
+   "RICHMOND CITY",
+   "Other",
+   36
+  ],
+  [
+   "ROANOKE",
+   "Other",
+   11
+  ],
+  [
+   "ROANOKE CITY",
+   "Other",
+   29
+  ],
+  [
+   "ROCKBRIDGE",
+   "Other",
+   5
+  ],
+  [
+   "ROCKINGHAM",
+   "Other",
+   14
+  ],
+  [
+   "RUSSELL",
+   "Other",
+   7
+  ],
+  [
+   "SALEM",
+   "Other",
+   8
+  ],
+  [
+   "SCOTT",
+   "Other",
+   9
+  ],
+  [
+   "SHENANDOAH",
+   "Other",
+   12
+  ],
+  [
+   "SMYTH",
+   "Other",
+   12
+  ],
+  [
+   "SOUTHAMPTON",
+   "Other",
+   4
+  ],
+  [
+   "SPOTSYLVANIA",
+   "Other",
+   22
+  ],
+  [
+   "STAFFORD",
+   "Other",
+   19
+  ],
+  [
+   "STAUNTON",
+   "Other",
+   8
+  ],
+  [
+   "SUFFOLK",
+   "Other",
+   17
+  ],
+  [
+   "SURRY",
+   "Other",
+   3
+  ],
+  [
+   "SUSSEX",
+   "Other",
+   5
+  ],
+  [
+   "TAZEWELL",
+   "Other",
+   16
+  ],
+  [
+   "VIRGINIA BEACH",
+   "Other",
+   60
+  ],
+  [
+   "WARREN",
+   "Other",
+   4
+  ],
+  [
+   "WASHINGTON",
+   "Other",
+   16
+  ],
+  [
+   "WAYNESBORO",
+   "Other",
+   7
+  ],
+  [
+   "WESTMORELAND",
+   "Other",
+   11
+  ],
+  [
+   "WILLIAMSBURG",
+   "Other",
+   3
+  ],
+  [
+   "WINCHESTER",
+   "Other",
+   10
+  ],
+  [
+   "WISE",
+   "Other",
+   14
+  ],
+  [
+   "WYTHE",
+   "Other",
+   10
+  ],
+  [
+   "YORK",
+   "Other",
+   9
+  ],
+  [
+   "BEDFORD",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "BLAND",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "CHESAPEAKE",
+   "Restaurant Meals Program",
+   2
+  ],
+  [
+   "CHESTERFIELD",
+   "Restaurant Meals Program",
+   3
+  ],
+  [
+   "COLONIAL HEIGHTS",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "COVINGTON",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "DANVILLE",
+   "Restaurant Meals Program",
+   2
+  ],
+  [
+   "DINWIDDIE",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "EMPORIA",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "ESSEX",
+   "Restaurant Meals Program",
+   2
+  ],
+  [
+   "FAIRFAX",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "FREDERICKSBURG",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "HALIFAX",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "HAMPTON",
+   "Restaurant Meals Program",
+   5
+  ],
+  [
+   "HANOVER",
+   "Restaurant Meals Program",
+   2
+  ],
+  [
+   "HARRISONBURG",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "HENRICO",
+   "Restaurant Meals Program",
+   6
+  ],
+  [
+   "HENRY",
+   "Restaurant Meals Program",
+   2
+  ],
+  [
+   "HOPEWELL",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "LYNCHBURG",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "MONTGOMERY",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "NEWPORT NEWS",
+   "Restaurant Meals Program",
+   14
+  ],
+  [
+   "NORFOLK",
+   "Restaurant Meals Program",
+   4
+  ],
+  [
+   "PETERSBURG",
+   "Restaurant Meals Program",
+   2
+  ],
+  [
+   "PORTSMOUTH",
+   "Restaurant Meals Program",
+   4
+  ],
+  [
+   "POWHATAN",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "PRINCE EDWARD",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "PULASKI",
+   "Restaurant Meals Program",
+   2
+  ],
+  [
+   "RICHMOND CITY",
+   "Restaurant Meals Program",
+   3
+  ],
+  [
+   "ROANOKE CITY",
+   "Restaurant Meals Program",
+   2
+  ],
+  [
+   "SPOTSYLVANIA",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "STAUNTON",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "VIRGINIA BEACH",
+   "Restaurant Meals Program",
+   4
+  ],
+  [
+   "WINCHESTER",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "WYTHE",
+   "Restaurant Meals Program",
+   1
+  ],
+  [
+   "ACCOMACK",
+   "Specialty Store",
+   2
+  ],
+  [
+   "ALEXANDRIA",
+   "Specialty Store",
+   1
+  ],
+  [
+   "CAMPBELL",
+   "Specialty Store",
+   1
+  ],
+  [
+   "CHESAPEAKE",
+   "Specialty Store",
+   3
+  ],
+  [
+   "CHESTERFIELD",
+   "Specialty Store",
+   1
+  ],
+  [
+   "COVINGTON",
+   "Specialty Store",
+   1
+  ],
+  [
+   "DINWIDDIE",
+   "Specialty Store",
+   1
+  ],
+  [
+   "FAIRFAX",
+   "Specialty Store",
+   2
+  ],
+  [
+   "GLOUCESTER",
+   "Specialty Store",
+   1
+  ],
+  [
+   "GREENSVILLE",
+   "Specialty Store",
+   1
+  ],
+  [
+   "HAMPTON",
+   "Specialty Store",
+   4
+  ],
+  [
+   "HENRICO",
+   "Specialty Store",
+   4
+  ],
+  [
+   "HENRY",
+   "Specialty Store",
+   1
+  ],
+  [
+   "HOPEWELL",
+   "Specialty Store",
+   2
+  ],
+  [
+   "ISLE OF WIGHT",
+   "Specialty Store",
+   1
+  ],
+  [
+   "JAMES CITY",
+   "Specialty Store",
+   2
+  ],
+  [
+   "LEE",
+   "Specialty Store",
+   1
+  ],
+  [
+   "LOUDOUN",
+   "Specialty Store",
+   1
+  ],
+  [
+   "Manassas Park City",
+   "Specialty Store",
+   1
+  ],
+  [
+   "MECKLENBURG",
+   "Specialty Store",
+   1
+  ],
+  [
+   "MONTGOMERY",
+   "Specialty Store",
+   1
+  ],
+  [
+   "NEWPORT NEWS",
+   "Specialty Store",
+   5
+  ],
+  [
+   "NORFOLK",
+   "Specialty Store",
+   1
+  ],
+  [
+   "NORTHAMPTON",
+   "Specialty Store",
+   1
+  ],
+  [
+   "NORTHUMBERLAND",
+   "Specialty Store",
+   1
+  ],
+  [
+   "ORANGE",
+   "Specialty Store",
+   1
+  ],
+  [
+   "PETERSBURG",
+   "Specialty Store",
+   2
+  ],
+  [
+   "PITTSYLVANIA",
+   "Specialty Store",
+   1
+  ],
+  [
+   "POQUOSON CITY",
+   "Specialty Store",
+   1
+  ],
+  [
+   "PORTSMOUTH",
+   "Specialty Store",
+   1
+  ],
+  [
+   "PRINCE EDWARD",
+   "Specialty Store",
+   1
+  ],
+  [
+   "PRINCE WILLIAM",
+   "Specialty Store",
+   1
+  ],
+  [
+   "PULASKI",
+   "Specialty Store",
+   2
+  ],
+  [
+   "RICHMOND",
+   "Specialty Store",
+   1
+  ],
+  [
+   "RICHMOND CITY",
+   "Specialty Store",
+   4
+  ],
+  [
+   "ROANOKE",
+   "Specialty Store",
+   1
+  ],
+  [
+   "SCOTT",
+   "Specialty Store",
+   1
+  ],
+  [
+   "SHENANDOAH",
+   "Specialty Store",
+   2
+  ],
+  [
+   "STAFFORD",
+   "Specialty Store",
+   1
+  ],
+  [
+   "SUFFOLK",
+   "Specialty Store",
+   1
+  ],
+  [
+   "SURRY",
+   "Specialty Store",
+   1
+  ],
+  [
+   "VIRGINIA BEACH",
+   "Specialty Store",
+   4
+  ],
+  [
+   "WASHINGTON",
+   "Specialty Store",
+   1
+  ],
+  [
+   "WISE",
+   "Specialty Store",
+   3
+  ],
+  [
+   "ACCOMACK",
+   "Super Store",
+   1
+  ],
+  [
+   "ALBEMARLE",
+   "Super Store",
+   8
+  ],
+  [
+   "ALEXANDRIA",
+   "Super Store",
+   11
+  ],
+  [
+   "ALLEGHANY",
+   "Super Store",
+   1
+  ],
+  [
+   "AMHERST",
+   "Super Store",
+   1
+  ],
+  [
+   "APPOMATTOX",
+   "Super Store",
+   2
+  ],
+  [
+   "ARLINGTON",
+   "Super Store",
+   17
+  ],
+  [
+   "BEDFORD",
+   "Super Store",
+   3
+  ],
+  [
+   "BOTETOURT",
+   "Super Store",
+   2
+  ],
+  [
+   "BRISTOL",
+   "Super Store",
+   1
+  ],
+  [
+   "BUCHANAN",
+   "Super Store",
+   1
+  ],
+  [
+   "CAMPBELL",
+   "Super Store",
+   2
+  ],
+  [
+   "CHARLOTTESVILLE",
+   "Super Store",
+   4
+  ],
+  [
+   "CHESAPEAKE",
+   "Super Store",
+   20
+  ],
+  [
+   "CHESTERFIELD",
+   "Super Store",
+   23
+  ],
+  [
+   "COLONIAL HEIGHTS",
+   "Super Store",
+   3
+  ],
+  [
+   "COVINGTON",
+   "Super Store",
+   1
+  ],
+  [
+   "CULPEPER",
+   "Super Store",
+   3
+  ],
+  [
+   "DANVILLE",
+   "Super Store",
+   5
+  ],
+  [
+   "ESSEX",
+   "Super Store",
+   1
+  ],
+  [
+   "FAIRFAX",
+   "Super Store",
+   93
+  ],
+  [
+   "Fairfax City",
+   "Super Store",
+   6
+  ],
+  [
+   "Falls Church City",
+   "Super Store",
+   3
+  ],
+  [
+   "FAUQUIER",
+   "Super Store",
+   3
+  ],
+  [
+   "FRANKLIN",
+   "Super Store",
+   4
+  ],
+  [
+   "FRANKLIN CITY",
+   "Super Store",
+   1
+  ],
+  [
+   "FREDERICK",
+   "Super Store",
+   4
+  ],
+  [
+   "FREDERICKSBURG",
+   "Super Store",
+   4
+  ],
+  [
+   "GALAX",
+   "Super Store",
+   1
+  ],
+  [
+   "GILES",
+   "Super Store",
+   1
+  ],
+  [
+   "GLOUCESTER",
+   "Super Store",
+   2
+  ],
+  [
+   "GREENE",
+   "Super Store",
+   1
+  ],
+  [
+   "GREENSVILLE",
+   "Super Store",
+   1
+  ],
+  [
+   "HALIFAX",
+   "Super Store",
+   1
+  ],
+  [
+   "HAMPTON",
+   "Super Store",
+   7
+  ],
+  [
+   "HANOVER",
+   "Super Store",
+   7
+  ],
+  [
+   "HARRISONBURG",
+   "Super Store",
+   6
+  ],
+  [
+   "HENRICO",
+   "Super Store",
+   26
+  ],
+  [
+   "HENRY",
+   "Super Store",
+   1
+  ],
+  [
+   "ISLE OF WIGHT",
+   "Super Store",
+   1
+  ],
+  [
+   "JAMES CITY",
+   "Super Store",
+   6
+  ],
+  [
+   "KING GEORGE",
+   "Super Store",
+   1
+  ],
+  [
+   "LANCASTER",
+   "Super Store",
+   2
+  ],
+  [
+   "LEE",
+   "Super Store",
+   1
+  ],
+  [
+   "LEXINGTON",
+   "Super Store",
+   1
+  ],
+  [
+   "LOUDOUN",
+   "Super Store",
+   35
+  ],
+  [
+   "LOUISA",
+   "Super Store",
+   1
+  ],
+  [
+   "LYNCHBURG",
+   "Super Store",
+   7
+  ],
+  [
+   "MANASSAS CITY",
+   "Super Store",
+   6
+  ],
+  [
+   "MARTINSVILLE",
+   "Super Store",
+   2
+  ],
+  [
+   "MECKLENBURG",
+   "Super Store",
+   2
+  ],
+  [
+   "MONTGOMERY",
+   "Super Store",
+   6
+  ],
+  [
+   "NEWPORT NEWS",
+   "Super Store",
+   12
+  ],
+  [
+   "NORFOLK",
+   "Super Store",
+   12
+  ],
+  [
+   "NORTON",
+   "Super Store",
+   1
+  ],
+  [
+   "NOTTOWAY",
+   "Super Store",
+   1
+  ],
+  [
+   "ORANGE",
+   "Super Store",
+   1
+  ],
+  [
+   "PAGE",
+   "Super Store",
+   1
+  ],
+  [
+   "PATRICK",
+   "Super Store",
+   1
+  ],
+  [
+   "PETERSBURG",
+   "Super Store",
+   1
+  ],
+  [
+   "PORTSMOUTH",
+   "Super Store",
+   5
+  ],
+  [
+   "POWHATAN",
+   "Super Store",
+   1
+  ],
+  [
+   "PRINCE EDWARD",
+   "Super Store",
+   1
+  ],
+  [
+   "PRINCE WILLIAM",
+   "Super Store",
+   35
+  ],
+  [
+   "PULASKI",
+   "Super Store",
+   2
+  ],
+  [
+   "RADFORD",
+   "Super Store",
+   1
+  ],
+  [
+   "RICHMOND CITY",
+   "Super Store",
+   10
+  ],
+  [
+   "ROANOKE",
+   "Super Store",
+   6
+  ],
+  [
+   "ROANOKE CITY",
+   "Super Store",
+   10
+  ],
+  [
+   "ROCKBRIDGE",
+   "Super Store",
+   1
+  ],
+  [
+   "ROCKINGHAM",
+   "Super Store",
+   3
+  ],
+  [
+   "RUSSELL",
+   "Super Store",
+   1
+  ],
+  [
+   "SALEM",
+   "Super Store",
+   4
+  ],
+  [
+   "SHENANDOAH",
+   "Super Store",
+   1
+  ],
+  [
+   "SMYTH",
+   "Super Store",
+   2
+  ],
+  [
+   "SPOTSYLVANIA",
+   "Super Store",
+   7
+  ],
+  [
+   "STAFFORD",
+   "Super Store",
+   11
+  ],
+  [
+   "STAUNTON",
+   "Super Store",
+   2
+  ],
+  [
+   "SUFFOLK",
+   "Super Store",
+   6
+  ],
+  [
+   "TAZEWELL",
+   "Super Store",
+   4
+  ],
+  [
+   "VIRGINIA BEACH",
+   "Super Store",
+   33
+  ],
+  [
+   "WARREN",
+   "Super Store",
+   2
+  ],
+  [
+   "WASHINGTON",
+   "Super Store",
+   4
+  ],
+  [
+   "WAYNESBORO",
+   "Super Store",
+   5
+  ],
+  [
+   "WILLIAMSBURG",
+   "Super Store",
+   1
+  ],
+  [
+   "WINCHESTER",
+   "Super Store",
+   5
+  ],
+  [
+   "WYTHE",
+   "Super Store",
+   1
+  ],
+  [
+   "YORK",
+   "Super Store",
+   3
+  ],
+  [
+   "ACCOMACK",
+   "Supermarket",
+   3
+  ],
+  [
+   "ALBEMARLE",
+   "Supermarket",
+   8
+  ],
+  [
+   "ALEXANDRIA",
+   "Supermarket",
+   12
+  ],
+  [
+   "AMELIA",
+   "Supermarket",
+   1
+  ],
+  [
+   "AMHERST",
+   "Supermarket",
+   3
+  ],
+  [
+   "ARLINGTON",
+   "Supermarket",
+   7
+  ],
+  [
+   "AUGUSTA",
+   "Supermarket",
+   4
+  ],
+  [
+   "BEDFORD",
+   "Supermarket",
+   4
+  ],
+  [
+   "BLAND",
+   "Supermarket",
+   1
+  ],
+  [
+   "BOTETOURT",
+   "Supermarket",
+   2
+  ],
+  [
+   "BRISTOL",
+   "Supermarket",
+   2
+  ],
+  [
+   "BRUNSWICK",
+   "Supermarket",
+   1
+  ],
+  [
+   "BUCHANAN",
+   "Supermarket",
+   2
+  ],
+  [
+   "BUCKINGHAM",
+   "Supermarket",
+   1
+  ],
+  [
+   "BUENA VISTA",
+   "Supermarket",
+   1
+  ],
+  [
+   "CAMPBELL",
+   "Supermarket",
+   5
+  ],
+  [
+   "CAROLINE",
+   "Supermarket",
+   2
+  ],
+  [
+   "CARROLL",
+   "Supermarket",
+   1
+  ],
+  [
+   "CHARLOTTE",
+   "Supermarket",
+   1
+  ],
+  [
+   "CHARLOTTESVILLE",
+   "Supermarket",
+   2
+  ],
+  [
+   "CHESAPEAKE",
+   "Supermarket",
+   18
+  ],
+  [
+   "CHESTERFIELD",
+   "Supermarket",
+   30
+  ],
+  [
+   "COLONIAL HEIGHTS",
+   "Supermarket",
+   3
+  ],
+  [
+   "COVINGTON",
+   "Supermarket",
+   1
+  ],
+  [
+   "CRAIG",
+   "Supermarket",
+   1
+  ],
+  [
+   "CULPEPER",
+   "Supermarket",
+   4
+  ],
+  [
+   "DANVILLE",
+   "Supermarket",
+   10
+  ],
+  [
+   "DICKENSON",
+   "Supermarket",
+   1
+  ],
+  [
+   "DINWIDDIE",
+   "Supermarket",
+   2
+  ],
+  [
+   "ESSEX",
+   "Supermarket",
+   1
+  ],
+  [
+   "FAIRFAX",
+   "Supermarket",
+   55
+  ],
+  [
+   "Fairfax City",
+   "Supermarket",
+   5
+  ],
+  [
+   "Falls Church City",
+   "Supermarket",
+   3
+  ],
+  [
+   "FAUQUIER",
+   "Supermarket",
+   4
+  ],
+  [
+   "FLOYD",
+   "Supermarket",
+   2
+  ],
+  [
+   "FLUVANNA",
+   "Supermarket",
+   1
+  ],
+  [
+   "FRANKLIN",
+   "Supermarket",
+   1
+  ],
+  [
+   "FRANKLIN CITY",
+   "Supermarket",
+   1
+  ],
+  [
+   "FREDERICK",
+   "Supermarket",
+   4
+  ],
+  [
+   "FREDERICKSBURG",
+   "Supermarket",
+   1
+  ],
+  [
+   "GALAX",
+   "Supermarket",
+   2
+  ],
+  [
+   "GILES",
+   "Supermarket",
+   3
+  ],
+  [
+   "GLOUCESTER",
+   "Supermarket",
+   3
+  ],
+  [
+   "GOOCHLAND",
+   "Supermarket",
+   2
+  ],
+  [
+   "GRAYSON",
+   "Supermarket",
+   1
+  ],
+  [
+   "GREENE",
+   "Supermarket",
+   2
+  ],
+  [
+   "GREENSVILLE",
+   "Supermarket",
+   1
+  ],
+  [
+   "HALIFAX",
+   "Supermarket",
+   3
+  ],
+  [
+   "HAMPTON",
+   "Supermarket",
+   8
+  ],
+  [
+   "HANOVER",
+   "Supermarket",
+   9
+  ],
+  [
+   "HARRISONBURG",
+   "Supermarket",
+   8
+  ],
+  [
+   "HENRICO",
+   "Supermarket",
+   26
+  ],
+  [
+   "HENRY",
+   "Supermarket",
+   3
+  ],
+  [
+   "HOPEWELL",
+   "Supermarket",
+   3
+  ],
+  [
+   "ISLE OF WIGHT",
+   "Supermarket",
+   4
+  ],
+  [
+   "JAMES CITY",
+   "Supermarket",
+   5
+  ],
+  [
+   "KING GEORGE",
+   "Supermarket",
+   3
+  ],
+  [
+   "KING WILLIAM",
+   "Supermarket",
+   2
+  ],
+  [
+   "LANCASTER",
+   "Supermarket",
+   1
+  ],
+  [
+   "LEE",
+   "Supermarket",
+   2
+  ],
+  [
+   "LOUDOUN",
+   "Supermarket",
+   15
+  ],
+  [
+   "LOUISA",
+   "Supermarket",
+   2
+  ],
+  [
+   "LUNENBURG",
+   "Supermarket",
+   2
+  ],
+  [
+   "LYNCHBURG",
+   "Supermarket",
+   8
+  ],
+  [
+   "MADISON",
+   "Supermarket",
+   2
+  ],
+  [
+   "MANASSAS CITY",
+   "Supermarket",
+   4
+  ],
+  [
+   "MARTINSVILLE",
+   "Supermarket",
+   3
+  ],
+  [
+   "MATHEWS",
+   "Supermarket",
+   1
+  ],
+  [
+   "MECKLENBURG",
+   "Supermarket",
+   4
+  ],
+  [
+   "MIDDLESEX",
+   "Supermarket",
+   2
+  ],
+  [
+   "MONTGOMERY",
+   "Supermarket",
+   6
+  ],
+  [
+   "NELSON",
+   "Supermarket",
+   1
+  ],
+  [
+   "NEW KENT",
+   "Supermarket",
+   4
+  ],
+  [
+   "NEWPORT NEWS",
+   "Supermarket",
+   15
+  ],
+  [
+   "NORFOLK",
+   "Supermarket",
+   17
+  ],
+  [
+   "NORTHAMPTON",
+   "Supermarket",
+   2
+  ],
+  [
+   "NORTHUMBERLAND",
+   "Supermarket",
+   1
+  ],
+  [
+   "NORTON",
+   "Supermarket",
+   1
+  ],
+  [
+   "NOTTOWAY",
+   "Supermarket",
+   1
+  ],
+  [
+   "ORANGE",
+   "Supermarket",
+   3
+  ],
+  [
+   "PAGE",
+   "Supermarket",
+   2
+  ],
+  [
+   "PATRICK",
+   "Supermarket",
+   1
+  ],
+  [
+   "PETERSBURG",
+   "Supermarket",
+   1
+  ],
+  [
+   "PITTSYLVANIA",
+   "Supermarket",
+   2
+  ],
+  [
+   "POQUOSON CITY",
+   "Supermarket",
+   1
+  ],
+  [
+   "PORTSMOUTH",
+   "Supermarket",
+   7
+  ],
+  [
+   "POWHATAN",
+   "Supermarket",
+   2
+  ],
+  [
+   "PRINCE EDWARD",
+   "Supermarket",
+   1
+  ],
+  [
+   "PRINCE GEORGE",
+   "Supermarket",
+   3
+  ],
+  [
+   "PRINCE WILLIAM",
+   "Supermarket",
+   24
+  ],
+  [
+   "PULASKI",
+   "Supermarket",
+   2
+  ],
+  [
+   "RADFORD",
+   "Supermarket",
+   2
+  ],
+  [
+   "RICHMOND",
+   "Supermarket",
+   1
+  ],
+  [
+   "RICHMOND CITY",
+   "Supermarket",
+   16
+  ],
+  [
+   "ROANOKE",
+   "Supermarket",
+   3
+  ],
+  [
+   "ROANOKE CITY",
+   "Supermarket",
+   8
+  ],
+  [
+   "ROCKBRIDGE",
+   "Supermarket",
+   1
+  ],
+  [
+   "ROCKINGHAM",
+   "Supermarket",
+   3
+  ],
+  [
+   "RUSSELL",
+   "Supermarket",
+   1
+  ],
+  [
+   "SALEM",
+   "Supermarket",
+   1
+  ],
+  [
+   "SCOTT",
+   "Supermarket",
+   3
+  ],
+  [
+   "SHENANDOAH",
+   "Supermarket",
+   3
+  ],
+  [
+   "SMYTH",
+   "Supermarket",
+   4
+  ],
+  [
+   "SOUTHAMPTON",
+   "Supermarket",
+   1
+  ],
+  [
+   "SPOTSYLVANIA",
+   "Supermarket",
+   10
+  ],
+  [
+   "STAFFORD",
+   "Supermarket",
+   6
+  ],
+  [
+   "STAUNTON",
+   "Supermarket",
+   4
+  ],
+  [
+   "SUFFOLK",
+   "Supermarket",
+   8
+  ],
+  [
+   "SURRY",
+   "Supermarket",
+   1
+  ],
+  [
+   "SUSSEX",
+   "Supermarket",
+   1
+  ],
+  [
+   "TAZEWELL",
+   "Supermarket",
+   5
+  ],
+  [
+   "VIRGINIA BEACH",
+   "Supermarket",
+   37
+  ],
+  [
+   "WARREN",
+   "Supermarket",
+   2
+  ],
+  [
+   "WASHINGTON",
+   "Supermarket",
+   5
+  ],
+  [
+   "WAYNESBORO",
+   "Supermarket",
+   3
+  ],
+  [
+   "WESTMORELAND",
+   "Supermarket",
+   3
+  ],
+  [
+   "WILLIAMSBURG",
+   "Supermarket",
+   4
+  ],
+  [
+   "WINCHESTER",
+   "Supermarket",
+   1
+  ],
+  [
+   "WISE",
+   "Supermarket",
+   6
+  ],
+  [
+   "WYTHE",
+   "Supermarket",
+   5
+  ],
+  [
+   "YORK",
+   "Supermarket",
+   5
+  ]
+ ]
+}

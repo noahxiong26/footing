@@ -168,3 +168,23 @@ def test_javascript_engine_matches_python_exactly(tmp_path):
         assert _norm(py) == _norm(js["ranked"]), c["profile"]
         if c.get("ratings"):
             assert _norm(fit.bayes_score(c["ratings"], c["now"])) == _norm(js["bayes"])
+
+
+def test_enforcement_mandate_is_not_scored_as_a_statewide_ban():
+    # GA/OK "Safe Neighborhood" laws pressure cities to enforce; they are not statewide bans (session-3 finding).
+    for st in ("GA", "OK"):
+        assert POLICY["states"][st]["camping_law"]["status"] == "enforcement_mandate"
+        crim = fit.components(ELIG, POLICY, st, {"status": "citizen"})["criminalization"]
+        assert crim["score"] == 25 and "enforce" in crim["reason"]
+    assert fit.components(ELIG, POLICY, "FL", {"status": "citizen"})["criminalization"]["score"] == 0
+
+
+def test_aca_notes_mention_2027_cutoff_for_asylum_and_parole():
+    for s in ("asylum_pending", "parole"):
+        assert "Jan 1, 2027" in fit.program_rule(ELIG, "aca", s)["note"]
+
+
+def test_virginia_has_no_statewide_ban_and_scores_75():
+    assert POLICY["states"]["VA"]["camping_law"]["status"] == "none_statewide"
+    c = fit.components(ELIG, POLICY, "VA", {"status": "citizen"})
+    assert c["criminalization"]["score"] == 75
