@@ -3,29 +3,43 @@
 **Where could you land for the next 30 days?** Footing is a free, open-source phone app for
 people experiencing homelessness, including immigrants whose papers decide which help they can use.
 
-It opens on a **globe**. Tell it your immigration status, who is with you and what matters most,
-and the Earth turns, flies to the U.S., and lights up every state by a **Fit Score** computed *on
-your phone*: help you can actually use with your papers, rent against the minimum wage, how many
-people sleep outside, state immigration-enforcement law, camping bans, and ratings from people who
-have been there. Tap a state to see why it scored that way and which programs you can use; zoom
-into a town to rate a place. Your status never leaves the phone (tested on every request).
-Method and citations: [`docs/RATING_FORMULA.md`](docs/RATING_FORMULA.md).
+It opens on **Virginia**: all 133 cities and counties, each scored for you. Tell it your immigration
+status, who is with you and what matters most, and every locality lights up by a **Fit Score** computed
+*on your phone*: shelter beds, rent against the minimum wage, help you can walk to, this city's own rules
+on sleeping outside, 287(g) agreements with ICE, and ratings from people who have been there. Tap one to
+see exactly how the score adds up, part by part, each with the number behind it and a link to its source.
+Your status never leaves the phone (tested on every request). The 50-state view is still there behind
+**All states (beta)**.
+
+In Virginia an independent city is not part of any county, so "Roanoke city" and "Roanoke County" are
+different places with different ordinances and different rents. The data keeps them apart.
+
+Eight languages: English, Spanish, Vietnamese, Korean, Chinese, Arabic, Amharic and Persian/Dari, the last
+two right-to-left. **All translations are machine translations and every screen says so.**
+
+Method and citations: [`docs/RATING_FORMULA.md`](docs/RATING_FORMULA.md) (section 8 is Virginia). How the
+data is built and refreshed: [`docs/PIPELINE.md`](docs/PIPELINE.md). What has been double-checked and what
+has not: [`docs/FACT_CHECK.md`](docs/FACT_CHECK.md).
 
 <p>
-<img src="docs/screenshots/01_intro.png" width="180" alt="Globe intro">
-<img src="docs/screenshots/04_top_fits.png" width="180" alt="Best fits for you">
-<img src="docs/screenshots/05_state_detail.png" width="180" alt="State detail with why this score">
-<img src="docs/screenshots/11_rate.png" width="180" alt="Rate a place">
+<img src="docs/screens/session4/phone_1_intro.png" width="180" alt="Footing intro">
+<img src="docs/screens/session4/phone_2_virginia_top.png" width="180" alt="Best fits in Virginia">
+<img src="docs/screens/session4/phone_3_locality.png" width="180" alt="One locality in detail">
+<img src="docs/screens/session4/phone_4_mosaic_and_reasons.png" width="180" alt="How the score adds up">
 </p>
 
-For a single town, pick it (or share a location rounded to ~1 km) and it (or share a location rounded to ~1 km) and it
+For a single town, pick it (or share a location rounded to ~1 km) and it
 prints a **Settle Receipt**: a 0–100 Settle Score built from live public data, what a week of
 food and gas costs there, the nearest EBT grocery, library, restroom, clinic and post office
 with their hours, and a plain reason for every number it could not find.
 
 ```
+profile (on phone) ─▶ 133 VA localities × (shelter · rent · help nearby · local law · 287(g) · crime · ratings)
+      ─▶ rank-order-centroid weights ─▶ Fit Score + confidence + rank range (200 re-weightings) ─▶ VA map
+      ─▶ tapped point ─▶ block-level crime where a city publishes it; point doubt lowers confidence, not the score
+
 profile (on phone) ─▶ 15 statuses × 12 programs + 51 state policy rows ─▶ 6 parts ─▶ rank-order-centroid weights
-      ─▶ Fit Score per state + confidence + rank range (300 perturbed weightings) ─▶ globe choropleth
+      ─▶ Fit Score per state + confidence + rank range (300 perturbed weightings) ─▶ "All states (beta)"
 anonymous 1-5 ratings ─▶ ~1 km tiles ─▶ time-decayed Bayesian average ─▶ heatmap + "what people here say"
 
 point ─▶ snap to ~1 km tile ─▶ 15 source adapters ─▶ places + measures (each with provenance)
@@ -39,8 +53,10 @@ point ─▶ snap to ~1 km tile ─▶ 15 source adapters ─▶ places + measur
 pip install -e ".[dev]"
 FOOTING_MODE=replay uvicorn footing.api:app --port 8080     # open http://localhost:8080
 python -m footing receipt --lat 37.1299 --lon -80.4089 --profile car,kids   # same data, CLI
-pytest -q                                                    # 123 tests
-python scripts/build_standalone_demo.py out/demo             # no-server copy of the globe
+pytest -q                                                    # 191 tests
+python scripts/build_va_localities.py --check                 # validate the Virginia data
+python -m footing.vafit --kids --status tps --top 10          # Virginia ranking, CLI
+python scripts/build_standalone_demo.py out/demo             # no-server copy of the app
 python scripts/ui_standalone_smoke.py http://localhost:8799 out/standalone   # click-through of that copy
 python -m footing fit --status undocumented --kids --mixed  # Fit Score ranking, CLI
 ```
@@ -54,7 +70,9 @@ Keyed sources show as Unknown because no keys were set when the fixtures were ca
 
 | Screen | What it shows | Where it comes from |
 | --- | --- | --- |
-| **Globe** (`#/`) | Earth from space; flies to the U.S. and colors every state by your Fit Score (or by ratings, shelter, rent, enforcement law). Hatched = no data | `fit.js` on the phone + `/api/policy` |
+| **Virginia map** (`#/`) | All 133 cities and counties coloured by your Fit Score (or by ratings, shelter, rent, local law). Hatched = no data. Search, and a list of all 133 | `vafit.js` on the phone + `/api/va` |
+| **Locality** | "How the score adds up": a mosaic where each part's width is how much it matters to you and its height is how well the place does, then one row per part with the number, its share of your score, a plain sentence, and *Details* with the linked sources. Confidence meter with "based on 4 of 6 parts" | `vafit.js` |
+| **All states (beta)** | The earlier 50-state globe: Earth from space, flies to the U.S., colours every state by your Fit Score | `fit.js` + `/api/policy` |
 | **About you** | 15 immigration statuses (incl. "prefer not to say"), household, situation, age band, and a reorderable priority list that shows each item's weight live | stays in `localStorage`; "Forget my answers" wipes it |
 | **State** | Score, rank, confidence, 90% rank range, a bar per part with its reason, the programs you can use there, a public-charge caution, 211 and legal-aid links, sources | `fit.js` |
 | **Rate a place** | 1-5 stars on overall / felt safe / respected / could get help, plus fixed tags. Filed under a ~1 km tile, no text | `POST /api/ratings` |
@@ -66,7 +84,8 @@ Keyed sources show as Unknown because no keys were set when the fixtures were ca
 | **Snap a flyer** | Photo of a paper flyer → service, days/times, phone, address, marked "community-reported, unconfirmed" | `POST /api/flyer` (Gemma 4 vision) |
 
 The front end is a no-build PWA (`footing/web/`): large tap targets, works at 320 px, high
-contrast, English and Spanish on the globe, a "Hide" button that jumps to a weather page, no sign-in.
+contrast, 8 languages (Arabic and Persian/Dari right-to-left), a "Hide" button that jumps to a weather
+page, no sign-in.
 The only thing the server stores is anonymous ratings (tile, hour, stars, fixed tags, a salted hash
 of a random device token). The service worker keeps the last good answer
 for each screen, so a receipt or plan opened once still shows with no signal.
@@ -126,6 +145,9 @@ All endpoints are under `/api` (also served without the prefix). `lat`/`lon` are
 | `POST /api/flyer` (multipart `photo`) | jpeg/png/webp/heic, ≤6 MB; 503 without a Gemini key |
 | `GET /api/factors`, `GET /api/sources` | the factor catalog and source list |
 | `GET /api/policy` | `state_policy.json` + `eligibility.json` (the phone scores with these) |
+| `GET /api/va` | all 133 Virginia localities with every field and its source (the phone scores with this) |
+| `GET /api/va/check?lat&lon` | is this point usable? names the problem, or lists what makes it doubtful |
+| `GET /api/va/fit?lat&lon&status&kids&bedrooms&crime` | score the locality a point falls in, point doubt folded into confidence |
 | `POST /api/ratings` | `{lat, lon, device, overall, safe?, respect?, help?, tags?}`; any other key is rejected |
 | `GET /api/ratings/heat` | per-tile and per-state Bayesian scores for the heatmap |
 

@@ -1,0 +1,671 @@
+{
+ "hdr_has_2025": true,
+ "n": 133,
+ "out": {
+  "51001": [
+   "Accomack County",
+   33859,
+   33747
+  ],
+  "51003": [
+   "Albemarle County",
+   118356,
+   117312
+  ],
+  "51005": [
+   "Alleghany County",
+   14546,
+   14674
+  ],
+  "51007": [
+   "Amelia County",
+   13632,
+   13707
+  ],
+  "51009": [
+   "Amherst County",
+   31962,
+   31653
+  ],
+  "51011": [
+   "Appomattox County",
+   17172,
+   17003
+  ],
+  "51013": [
+   "Arlington County",
+   243931,
+   239687
+  ],
+  "51015": [
+   "Augusta County",
+   78940,
+   78764
+  ],
+  "51017": [
+   "Bath County",
+   4076,
+   4058
+  ],
+  "51019": [
+   "Bedford County",
+   83059,
+   82467
+  ],
+  "51021": [
+   "Bland County",
+   6151,
+   6186
+  ],
+  "51023": [
+   "Botetourt County",
+   34144,
+   34057
+  ],
+  "51025": [
+   "Brunswick County",
+   15727,
+   15763
+  ],
+  "51027": [
+   "Buchanan County",
+   18492,
+   18723
+  ],
+  "51029": [
+   "Buckingham County",
+   17137,
+   17111
+  ],
+  "51031": [
+   "Campbell County",
+   55629,
+   55563
+  ],
+  "51033": [
+   "Caroline County",
+   34413,
+   33586
+  ],
+  "51035": [
+   "Carroll County",
+   29299,
+   29211
+  ],
+  "51036": [
+   "Charles City County",
+   6623,
+   6582
+  ],
+  "51037": [
+   "Charlotte County",
+   11401,
+   11323
+  ],
+  "51041": [
+   "Chesterfield County",
+   397148,
+   391243
+  ],
+  "51043": [
+   "Clarke County",
+   15609,
+   15631
+  ],
+  "51045": [
+   "Craig County",
+   4800,
+   4822
+  ],
+  "51047": [
+   "Culpeper County",
+   57666,
+   56756
+  ],
+  "51049": [
+   "Cumberland County",
+   10352,
+   10203
+  ],
+  "51051": [
+   "Dickenson County",
+   13236,
+   13388
+  ],
+  "51053": [
+   "Dinwiddie County",
+   28896,
+   28787
+  ],
+  "51057": [
+   "Essex County",
+   10654,
+   10677
+  ],
+  "51059": [
+   "Fairfax County",
+   1167873,
+   1159806
+  ],
+  "51061": [
+   "Fauquier County",
+   76503,
+   75865
+  ],
+  "51063": [
+   "Floyd County",
+   15789,
+   15713
+  ],
+  "51065": [
+   "Fluvanna County",
+   28975,
+   28789
+  ],
+  "51067": [
+   "Franklin County",
+   55526,
+   55612
+  ],
+  "51069": [
+   "Frederick County",
+   99955,
+   98180
+  ],
+  "51071": [
+   "Giles County",
+   16564,
+   16636
+  ],
+  "51073": [
+   "Gloucester County",
+   40097,
+   40067
+  ],
+  "51075": [
+   "Goochland County",
+   29187,
+   28263
+  ],
+  "51077": [
+   "Grayson County",
+   15230,
+   15333
+  ],
+  "51079": [
+   "Greene County",
+   21958,
+   21702
+  ],
+  "51081": [
+   "Greensville County",
+   11181,
+   11175
+  ],
+  "51083": [
+   "Halifax County",
+   33447,
+   33554
+  ],
+  "51085": [
+   "Hanover County",
+   116423,
+   115553
+  ],
+  "51087": [
+   "Henrico County",
+   342775,
+   340024
+  ],
+  "51089": [
+   "Henry County",
+   49242,
+   49523
+  ],
+  "51091": [
+   "Highland County",
+   2318,
+   2336
+  ],
+  "51093": [
+   "Isle of Wight County",
+   41321,
+   40890
+  ],
+  "51095": [
+   "James City County",
+   83326,
+   82896
+  ],
+  "51097": [
+   "King and Queen County",
+   6743,
+   6726
+  ],
+  "51099": [
+   "King George County",
+   29646,
+   28900
+  ],
+  "51101": [
+   "King William County",
+   19617,
+   19279
+  ],
+  "51103": [
+   "Lancaster County",
+   10995,
+   10971
+  ],
+  "51105": [
+   "Lee County",
+   21642,
+   21777
+  ],
+  "51107": [
+   "Loudoun County",
+   449749,
+   443749
+  ],
+  "51109": [
+   "Louisa County",
+   42924,
+   42176
+  ],
+  "51111": [
+   "Lunenburg County",
+   12058,
+   12078
+  ],
+  "51113": [
+   "Madison County",
+   14237,
+   14224
+  ],
+  "51115": [
+   "Mathews County",
+   8529,
+   8585
+  ],
+  "51117": [
+   "Mecklenburg County",
+   30747,
+   30809
+  ],
+  "51119": [
+   "Middlesex County",
+   10841,
+   10941
+  ],
+  "51121": [
+   "Montgomery County",
+   98434,
+   98357
+  ],
+  "51125": [
+   "Nelson County",
+   14920,
+   14817
+  ],
+  "51127": [
+   "New Kent County",
+   28022,
+   27196
+  ],
+  "51131": [
+   "Northampton County",
+   11879,
+   12021
+  ],
+  "51133": [
+   "Northumberland County",
+   12557,
+   12412
+  ],
+  "51135": [
+   "Nottoway County",
+   15796,
+   15690
+  ],
+  "51137": [
+   "Orange County",
+   40083,
+   39193
+  ],
+  "51139": [
+   "Page County",
+   23762,
+   23687
+  ],
+  "51141": [
+   "Patrick County",
+   17424,
+   17395
+  ],
+  "51143": [
+   "Pittsylvania County",
+   59490,
+   59505
+  ],
+  "51145": [
+   "Powhatan County",
+   32591,
+   32362
+  ],
+  "51147": [
+   "Prince Edward County",
+   22391,
+   22319
+  ],
+  "51149": [
+   "Prince George County",
+   43936,
+   43742
+  ],
+  "51153": [
+   "Prince William County",
+   502966,
+   498352
+  ],
+  "51155": [
+   "Pulaski County",
+   33586,
+   33552
+  ],
+  "51157": [
+   "Rappahannock County",
+   7439,
+   7443
+  ],
+  "51159": [
+   "Richmond County",
+   9294,
+   9220
+  ],
+  "51161": [
+   "Roanoke County",
+   97150,
+   97373
+  ],
+  "51163": [
+   "Rockbridge County",
+   22663,
+   22457
+  ],
+  "51165": [
+   "Rockingham County",
+   89316,
+   88319
+  ],
+  "51167": [
+   "Russell County",
+   25332,
+   25430
+  ],
+  "51169": [
+   "Scott County",
+   21200,
+   21388
+  ],
+  "51171": [
+   "Shenandoah County",
+   45839,
+   45468
+  ],
+  "51173": [
+   "Smyth County",
+   28882,
+   29133
+  ],
+  "51175": [
+   "Southampton County",
+   18110,
+   18018
+  ],
+  "51177": [
+   "Spotsylvania County",
+   155388,
+   152461
+  ],
+  "51179": [
+   "Stafford County",
+   170803,
+   168788
+  ],
+  "51181": [
+   "Surry County",
+   6603,
+   6593
+  ],
+  "51183": [
+   "Sussex County",
+   10755,
+   10742
+  ],
+  "51185": [
+   "Tazewell County",
+   38635,
+   38986
+  ],
+  "51187": [
+   "Warren County",
+   42740,
+   42484
+  ],
+  "51191": [
+   "Washington County",
+   53898,
+   54114
+  ],
+  "51193": [
+   "Westmoreland County",
+   19715,
+   19338
+  ],
+  "51195": [
+   "Wise County",
+   34824,
+   35035
+  ],
+  "51197": [
+   "Wythe County",
+   27983,
+   28046
+  ],
+  "51199": [
+   "York County",
+   71374,
+   71338
+  ],
+  "51510": [
+   "Alexandria city",
+   160662,
+   159367
+  ],
+  "51520": [
+   "Bristol city",
+   16418,
+   16454
+  ],
+  "51530": [
+   "Buena Vista city",
+   6672,
+   6611
+  ],
+  "51540": [
+   "Charlottesville city",
+   44388,
+   44609
+  ],
+  "51550": [
+   "Chesapeake city",
+   255332,
+   254770
+  ],
+  "51570": [
+   "Colonial Heights city",
+   18738,
+   18620
+  ],
+  "51580": [
+   "Covington city",
+   5680,
+   5688
+  ],
+  "51590": [
+   "Danville city",
+   41647,
+   41958
+  ],
+  "51595": [
+   "Emporia city",
+   5447,
+   5410
+  ],
+  "51600": [
+   "Fairfax city",
+   26772,
+   26038
+  ],
+  "51610": [
+   "Falls Church city",
+   15159,
+   15046
+  ],
+  "51620": [
+   "Franklin city",
+   8478,
+   8404
+  ],
+  "51630": [
+   "Fredericksburg city",
+   30393,
+   29985
+  ],
+  "51640": [
+   "Galax city",
+   6670,
+   6701
+  ],
+  "51650": [
+   "Hampton city",
+   137315,
+   137399
+  ],
+  "51660": [
+   "Harrisonburg city",
+   50839,
+   50792
+  ],
+  "51670": [
+   "Hopewell city",
+   23261,
+   23064
+  ],
+  "51678": [
+   "Lexington city",
+   7769,
+   7701
+  ],
+  "51680": [
+   "Lynchburg city",
+   81347,
+   80316
+  ],
+  "51683": [
+   "Manassas city",
+   44332,
+   44038
+  ],
+  "51685": [
+   "Manassas Park city",
+   16560,
+   16428
+  ],
+  "51690": [
+   "Martinsville city",
+   13849,
+   13789
+  ],
+  "51700": [
+   "Newport News city",
+   183230,
+   183401
+  ],
+  "51710": [
+   "Norfolk city",
+   231013,
+   231105
+  ],
+  "51720": [
+   "Norton city",
+   3477,
+   3516
+  ],
+  "51730": [
+   "Petersburg city",
+   33734,
+   34030
+  ],
+  "51735": [
+   "Poquoson city",
+   13292,
+   12863
+  ],
+  "51740": [
+   "Portsmouth city",
+   96777,
+   96845
+  ],
+  "51750": [
+   "Radford city",
+   17243,
+   17239
+  ],
+  "51760": [
+   "Richmond city",
+   237257,
+   234807
+  ],
+  "51770": [
+   "Roanoke city",
+   99111,
+   98690
+  ],
+  "51775": [
+   "Salem city",
+   25816,
+   25737
+  ],
+  "51790": [
+   "Staunton city",
+   26801,
+   26260
+  ],
+  "51800": [
+   "Suffolk city",
+   104699,
+   103007
+  ],
+  "51810": [
+   "Virginia Beach city",
+   453737,
+   453763
+  ],
+  "51820": [
+   "Waynesboro city",
+   23951,
+   23575
+  ],
+  "51830": [
+   "Williamsburg city",
+   15861,
+   15944
+  ],
+  "51840": [
+   "Winchester city",
+   28272,
+   28082
+  ]
+ }
+}

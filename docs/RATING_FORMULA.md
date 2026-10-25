@@ -32,7 +32,7 @@ Each part is scored 0–100 for each state. A part can also be **Unknown**. Unkn
 | **Rent you can afford** (`affordability`) | How far a minimum-wage job is from a 2-bedroom at fair market rent | `ratio = housing wage ÷ state minimum wage`, mapped linearly from 1.5 (=100) to 5.0 (=0) | NLIHC *Out of Reach 2026*; U.S. DOL state minimum wage table (July 1, 2026) |
 | **Shelter space** (`shelter`) | How many people without homes had to sleep outside | `unsheltered ÷ total`, mapped linearly from 5% (=100) to 65% (=0) | HUD 2025 Point-in-Time count (state totals add up to HUD's 745,652) |
 | **Safety from immigration enforcement** (`safety`) | How much state law limits cooperation with immigration enforcement | `100 × (9 − tier) ÷ 8` on ILRC's 9-tier scale (tier 1 = most protective) | ILRC *State Map on Immigration Enforcement* |
-| **Laws against sleeping outside** (`criminalization`) | Is there a statewide camping ban? | ban in effect = 0, state forces local enforcement but no statewide ban (GA, OK) = 25, ban struck down in court = 50, not checked = Unknown | State statutes (FL HB 1365, TX HB 1925, TN, GA, OK, LA, IN, KY), after *City of Grants Pass v. Johnson* (2024) |
+| **Laws against sleeping outside** (`criminalization`) | Is there a statewide camping ban? | statewide ban in effect = 0, state forces cities to enforce local bans (GA, OK "Safe Neighborhood" laws) = 25, in court = 50, confirmed no statewide ban but some local bans (VA) = 75, not checked = Unknown | State statutes (FL HB 1365, TX HB 1925, TN, LA, IN, KY bans; GA, OK enforcement mandates), after *City of Grants Pass v. Johnson* (2024) |
 | **What people here say** (`community`) | Ratings from people who have been there | Time-decayed Bayesian average (section 6) | Footing users |
 
 **Safety only applies when it is relevant.** It is included for statuses at medium or high risk (asylum pending, TPS, DACA, parole, T/U/VAWA, visa, no papers, not sure) and for anyone in a mixed-status family. For a citizen, the part is simply not shown. It is not scored as 100, because a citizen should not see Oregon outrank Ohio for a reason that does not affect them.
@@ -132,6 +132,92 @@ We list these so nobody mistakes the score for more than it is:
 - **State averages hide cities.** Rent in Chicago is not rent in Carbondale. Zoom into a recorded town for the local picture.
 - **The law is moving.** The public charge rule (effective Sept 18, 2026), the vacatur of the PRWORA notices (*New York v. DOJ*, D.R.I., Sept 2026, which binds only the plaintiff states), and HUD's proposed mixed-status rule (Feb 2026, not final) can all change. Every program row links its source and date. The app always recommends a legal aid office before applying when a green card may be in the person's future.
 - **Program reasons are in English only.** The interface is fully translated into Spanish, but the per-state "why" sentences come from the data files and are English for now.
+
+## 8. The Virginia score
+
+Sections 1–7 describe the 50-state score, which rates Virginia as one place. Footing now opens on
+Virginia's **133 localities** — 95 counties and 38 independent cities — and scores each one separately.
+State law still decides program access and immigration-enforcement risk; local data replaces the state
+averages everywhere we have it. Engine: `footing/web/vafit.js` on the phone, with a line-for-line Python
+twin in `footing/vafit.py`. `tests/test_vafit.py` runs both on the same inputs and requires identical
+output, so neither can drift.
+
+**In Virginia a city is not part of any county.** "Roanoke city" (FIPS 51770) and "Roanoke County" (51161)
+are different places with different ordinances, different police forces and different rents. FIPS codes 510
+and above are cities. Every source is matched by FIPS code, never by name.
+
+### 8.1 The seven parts
+
+| Part | What it measures | How it is scored | Source |
+|---|---|---|---|
+| **Shelter beds** (`shelter`) | Whether there is anywhere indoors, and how many had to sleep out | share of people counted outside, and beds per person, for the locality's Continuum of Care | HUD Point-in-Time and Housing Inventory Count, Jan 2025 |
+| **Rent** (`rent`) | Hours of minimum-wage work for the rent of the size you need | hours a week for HUD's Fair Market Rent at $12.77/hr | HUD FMR FY2026 |
+| **Help nearby** (`services`) | Whether there is anything to walk to | grocers taking EBT per 10k (0.3), mapped help places per 10k (0.2), how many places there are at all, on a log scale (0.2), fare-free buses (0.2), hot-meal EBT stores (0.1) | USDA SNAP retailers, OpenStreetMap, APTA/DRPT |
+| **Local laws** (`laws`) | This city's or county's rules on sleeping outside | broad ban 0, limited ban 35, site closure 60; proposed, clearing policy and searched-and-nothing-found are shown but **not scored** | city code and council records, one at a time |
+| **Immigration enforcement** (`safety`) | 287(g) agreements covering this place | task force model 10, jail model 40, none listed 80. Only included when the person's status is at risk | ICE 287(g) list |
+| **Reported crime** (`crime`) | Violent crime reported to police | **off unless the person turns it on** — see 8.4 | FBI CDE 2025, plus city incident reports where published |
+| **What people here say** (`community`) | Ratings from people who have been there | section 6, grouped by locality | Footing users |
+
+Weights are the rank-order-centroid weights of section 3, over the person's priority order. **Unknown parts
+drop out and the rest renormalise; nothing is ever scored 0 because we could not find it.**
+
+### 8.2 Small places are pulled toward the state rate
+
+A town of 2,000 with one grocery store is not a food paradise. Per-person counts are shrunk toward the
+Virginia rate as if 25,000 more people lived there (`SHRINK_POP`), so one lucky shop in a tiny place cannot
+outrank a city with twenty.
+
+### 8.3 Confidence, and the point you tapped
+
+Confidence is the sum of `weight × freshness` over the parts that are **known**, so a missing or stale part
+visibly lowers it. Freshness is 0.95 for rent, 0.9 for enforcement, 0.7 for shelter and crime, 0.6 for
+services and laws.
+
+**Shelter is the weakest number in the whole score and the score says so.** HUD counts by Continuum of
+Care, not by town. Virginia has 16, and the Balance of State CoC covers 71 localities with a single count.
+Freshness drops to 0.5 there, 0.6 for a CoC covering 2–10 localities, and 0.7 where the count covers only
+that place. Covington shares Roanoke's count, but the beds are about 50 miles away: the screen says the
+beds may be in a neighbouring locality, and confidence falls.
+
+When the score comes from a **tapped or typed point** (`fit_point`, `GET /api/va/fit`), the point's own
+reliability multiplies that confidence — and never the score, because where you tap inside a county cannot
+change that county's rent:
+
+| Point | Effect |
+|---|---|
+| not a number, off the globe, outside Virginia, on open water | refused, no score, with a plain reason |
+| latitude and longitude swapped | refused, and it suggests what you probably meant |
+| rounded to one decimal place (about 11 km) | × 0.6 — the numbers may be a neighbouring locality's |
+| within 1 km of the locality line | × 0.85 — in Virginia the neighbour is often a separate city with its own rules |
+
+### 8.4 Why crime is off by default
+
+Footing does not count reported crime unless the person asks for it, for four reasons:
+
+1. Crime reports measure where police write reports as much as where danger is.
+2. Using them pushes people away from poorer and Black neighbourhoods — the redlining pattern.
+3. People without homes are far more often victims than offenders.
+4. Virginia Beach's police department reported nothing for 2025, so the state's largest agency is missing.
+
+Where a city publishes incident-level reports — **Norfolk and Charlottesville** — a point is scored on the
+violent incidents in the 3×3 tiles around it (about 3 km across) over 12 months, against a scale whose
+"bad" end is the 90th percentile of the recorded tiles. Everywhere else, and for any whole locality, it is
+the FBI's yearly figure, and the reason says which one it used.
+
+**Trespass, loitering, drunkenness and similar calls are counted and shown, and never scored as danger.**
+They record where police make contact, which is disproportionately where unhoused people already are. The
+tile at Charlottesville's downtown mall has more of those than violent incidents; scoring them as risk
+would steer someone away from exactly the public places they are most likely to be.
+
+### 8.5 What the Virginia score still does not know
+
+- **121 of 133 localities' camping rules are Unknown**, and Unknown is never shown as "no ban". Six are
+  confirmed; Montgomery County was searched with nothing found, which is recorded as its own answer.
+- **Shelter is per Continuum of Care, not per town** (8.3). HUD does not publish bed locations.
+- **Block-level crime exists for two cities only**, and the UI does not surface it yet.
+- **Reasons are built in English.** The interface is translated into 8 languages and the one-line summaries
+  are translated; the detailed "why" text inside *Details* is English, and is labelled as such.
+- **All translations are machine translations**, and every screen says so.
 
 ## References
 

@@ -45,3 +45,52 @@ experience should still read the `eligibility.json` notes before real-world use.
 - Newsweek license map: https://newsweek.com/map-shows-states-immigration-driving-licenses-2115122
 - ILRC state map: https://www.ilrc.org/state-law-map
 - NLIHC Out of Reach 2026, Virginia: https://nlihc.org/sites/default/files/oor/2026-OOR-VA.pdf
+
+---
+
+# Virginia locality data: what the merge cross-checked (2026-10-25)
+
+Sessions 3 and 4 both built a Virginia locality dataset, independently, from their own captures of the same
+publishers. Neither had been checked against anything. Merging them made each one a check on the other,
+which is the only real review either has had. **This is still two Claude sessions, not a person**: the open
+items below need someone who can open the publishers' sites.
+
+## Agreed, independently, with no changes needed
+
+| Field | Result |
+|---|---|
+| HUD Fair Market Rents FY2026, studio to 4 bedrooms | identical for all **133** localities |
+| HUD Continuum of Care mapping (which CoC each locality is in) | identical for all **133** |
+| FBI CDE offence counts, per agency | identical for all **240** agencies both captures hold |
+
+## Found and fixed by the comparison
+
+| Item | Was | Now | Why |
+|---|---|---|---|
+| **Farmville PD** (and St. Paul, Saltville, Kilmarnock) | Session 4's builder took the first county the FBI lists, so Farmville's 37 violent and 153 property offences landed in **Cumberland County** (population 9,664), quintupling its violent count | placed by the agency's own published coordinates, which fall in **Prince Edward County**, where the town is seated | The FBI lists `CUMBERLAND, PRINCE EDWARD` for agencies that straddle a line. Splitting the counts would invent a division the data does not contain. All four such agencies resolve to the county the town is seated in. |
+| **Months reported** for Middleburg, Remington and Quantico PD | session 4's capture said 12 of 12 for all three | 11, 3 and 0, from the second capture, and each is flagged as a coverage gap | Session 4's capture records only 12 or 0 and nothing between, so it appears to have inferred "reported at all" rather than reading the monthly breakdown. Taking the lower value flags a partial year instead of counting it as a full one. |
+| **Virginia Beach** crime counts | stored as `0` with a null rate | stored as `null` with the reason | Virginia Beach PD reported nothing for 2025. A stored `0` reads as a crime-free city of 450,000. |
+| **Montgomery County** camping rule | absent, which the engine shows as "not checked yet" | `checked_none_found`, shown and still not scored | A search that found no ordinance is weaker than "no ban" and stronger than "not checked". The codes were not read line by line, so it is not a confirmed "no ban". |
+
+After these fixes the two captures agree on **violent and property counts for all 133 localities**.
+
+## Open: needs someone who can reach the sources
+
+1. **Bristol's camping ordinance.** The two sessions read the same summary and classified it differently:
+   session 4 as a broad ban (scored 0), session 3 as a partial ban (scored 35), on the grounds that parks
+   and other city land are not "public rights of way". Neither read the ordinance; both cited news coverage.
+   **Kept at 0**, because the two errors do not cost the same: scoring Bristol harsher than it is costs
+   someone an option, scoring it gentler sends them somewhere they can be charged. Read Bristol City Code
+   and set it properly.
+2. **The three months-reported disagreements.** Open CDE for ORI `VA0530200` (Middleburg), `VA0300100`
+   (Remington) and `VA0750400` (Quantico) and record the real figures. Effect today is 5 property offences
+   in Loudoun County, so this is tidiness, not a correctness risk.
+3. **The other 127 localities' camping rules** are still Unknown, and Unknown is never shown as "no ban".
+   Six are confirmed (Hampton, Bristol, Roanoke, Charlottesville, Danville, Fairfax County) plus Montgomery
+   as searched-and-nothing-found.
+4. **Ten random localities end to end.** Still the right next check: FMR, PIT, HIC, SNAP counts, 287(g) and
+   the local rule, read off the publishers' own pages. Nobody has done this.
+5. **The block-level incident data** (Norfolk, Charlottesville) exists in one capture only, so it has no
+   second opinion. `data_raw/city_incidents_MANIFEST.json` records the capture method and its own internal
+   checks (tile totals equal the placed counts, which the builder re-verifies on every build).
+

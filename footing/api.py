@@ -5,9 +5,7 @@ logged or stored per user. Endpoints live under /api; the app itself is served a
 """
 from __future__ import annotations
 
-import hashlib
 import json
-import secrets
 import time
 from pathlib import Path
 
@@ -20,6 +18,9 @@ from .config import Settings
 from .factors import CATEGORIES, PARAMS, catalog_markdown
 from . import ratings as ratings_store
 from .fit import load_eligibility, load_policy
+from . import va as va_geo
+from . import vafit
+from .vafit import load_va
 from .flyer import FlyerError, read_flyer
 from .gemma import GemmaUnavailable
 from .geo import snap_to_tile
@@ -139,38 +140,60 @@ def policy() -> dict:
     return {"states": load_policy(), "eligibility": load_eligibility()}
 
 
-# The device token is made by the phone, so a script can mint a new one per request and get around the
-# per-device limit. This second limit counts ratings per network address per day, in memory only: the address
-# is hashed with a per-process salt, never written to disk, and the table resets with the process.
-IP_LIMIT_PER_DAY = 40
-_IP_SALT = secrets.token_hex(16)
-_IP_COUNTS: dict[str, list[float]] = {}
+@router.get("/va")
+def va_data() -> dict:
+    """Virginia's 133 cities and counties: rents, shelter counts, services, local rules, 287(g), crime, all sourced.
+    The phone scores them itself (footing/web/vafit.js) so the person's status and household stay on the device."""
+    return load_va()
 
 
-def _ip_allowed(request: Request) -> bool:
+@router.get("/va/check")
+def va_check(lat: str = Query(...), lon: str = Query(...)) -> dict:
+    """Is this point usable? Never guesses: returns ok=False with a plain reason for NaN, impossible numbers,
+    points outside Virginia, and points on open water."""
+    return va_geo.check_point(lat, lon)
+
+
+@router.get("/va/fit")
+def va_fit(lat: str = Query(...), lon: str = Query(...), status: str | None = Query(None),
+           kids: bool = Query(False), bedrooms: int | None = Query(None), crime: bool = Query(False)) -> dict:
+    """Score the locality a point falls in, using everything the point itself can tell us.
+
+    In Norfolk and Charlottesville, which publish incident-level reports, the crime part is the violent
+    incidents in the 3x3 tiles (about 3 km) around the point rather than the citywide yearly figure. A
+    rounded or near-the-line point keeps the same score and reports lower confidence, with the reason.
+
+    The phone does not need this endpoint - footing/web/vafit.js and vapoint.js do the same work on the
+    device, which is how a person's status stays off the network. It is here for anything that is not the
+    phone, and so the two engines can be compared against each other.
+    """
+    profile: dict = {"show_crime": crime, "household": {"kids": kids}}
+    if status:
+        profile["status"] = status
+    if bedrooms is not None:
+        profile["household"]["bedrooms"] = bedrooms
+    return vafit.fit_point(load_eligibility(), load_va(), lat, lon, profile)
+
+
+def _client_network(request: Request) -> str | None:
+    """The caller's address as the API sees it, for the per-network daily cap in footing/ratings.py.
+
+    Behind a proxy (Cloud Run, any load balancer) request.client.host is the proxy, so every person would
+    share one bucket and the cap would lock out a whole deployment. X-Forwarded-For's first entry is the
+    original client. The address is never stored: ratings.py keeps only a salted hash of it.
+    """
     fwd = request.headers.get("x-forwarded-for", "")
-    addr = fwd.split(",")[0].strip() or (request.client.host if request.client else "")
-    key = hashlib.sha256((_IP_SALT + addr).encode()).hexdigest()[:24]
-    now = time.time()
-    hits = [t for t in _IP_COUNTS.get(key, []) if now - t < 86_400]
-    if len(hits) >= IP_LIMIT_PER_DAY:
-        _IP_COUNTS[key] = hits
-        return False
-    hits.append(now)
-    _IP_COUNTS[key] = hits
-    if len(_IP_COUNTS) > 50_000:                      # bounded memory
-        _IP_COUNTS.clear()
-    return True
+    return fwd.split(",")[0].strip() or (request.client.host if request.client else None)
 
 
 @router.post("/ratings")
 def add_rating(request: Request, body: dict = Body(...)) -> dict:
-    if not _ip_allowed(request):
-        raise HTTPException(status_code=429, detail="too many ratings from this network today")
+
     try:
-        return ratings_store.add(body)
+        return ratings_store.add(body, network=_client_network(request))
     except ratings_store.RatingError as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        # The per-network cap is rate limiting, not bad input, so it gets 429 and not 400.
+        raise HTTPException(status_code=429 if "this network" in str(e) else 400, detail=str(e))
 
 
 @router.get("/ratings/heat")

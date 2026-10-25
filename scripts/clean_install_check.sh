@@ -18,7 +18,9 @@ fail=0
 for path in "/" "/app.js" "/sw.js" "/api/healthz" "/api/receipt?$Q" "/api/plan?$Q" "/api/tonight?$Q" \
             "/api/pocket-card.svg?$Q" "/api/factors" "/api/sources" "/api/compare?points=37.1299,-80.4089;37.2710,-79.9414" \
             "/globe.js" "/fit.js" "/i18n.js" "/globe.css" "/vendor/maplibre-gl.js" "/vendor/topojson-client.min.js" \
-            "/data/states-10m.json" "/data/countries-110m.json" "/api/policy" "/api/ratings/heat"; do
+            "/data/states-10m.json" "/data/countries-110m.json" "/api/policy" "/api/ratings/heat" \
+            "/vafit.js" "/vapoint.js" "/i18n_more.js" "/data/va-localities.json" "/data/counties-10m.json" \
+            "/api/va" "/api/va/check?$Q" "/api/va/fit?$Q"; do
   code=$(curl -s -o /dev/null -w "%{http_code}" "localhost:$PORT$path")
   printf "%s %s\n" "$code" "$path"
   [ "$code" = "200" ] || fail=1
@@ -29,5 +31,11 @@ echo "settle_score (replay, Christiansburg) = $score"
 n=$(curl -s "localhost:$PORT/api/policy" | python3 -c "import json,sys; d=json.load(sys.stdin); print(len(d['states']['states']) if 'states' in d['states'] else len(d['states']))")
 echo "states in /api/policy = $n"
 [ "$n" = "51" ] || { echo "state policy data missing from the installed package"; fail=1; }
+v=$(curl -s "localhost:$PORT/api/va" | python3 -c "import json,sys; print(len(json.load(sys.stdin)['localities']))")
+echo "Virginia localities in /api/va = $v"
+[ "$v" = "133" ] || { echo "Virginia locality data missing from the installed package"; fail=1; }
+f=$(curl -s "localhost:$PORT/api/va/fit?$Q" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['name'], d['score'])")
+echo "va fit (Christiansburg) = $f"
+case "$f" in "Montgomery County"*) ;; *) echo "point scoring broken on a clean install"; fail=1;; esac
 [ $fail = 0 ] || { tail -20 "$TMP/server.log"; exit 1; }
 echo "clean install OK"

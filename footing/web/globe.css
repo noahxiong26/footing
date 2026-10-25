@@ -156,3 +156,85 @@ body.on-globe > header.top, body.on-globe > main#view { display: none; }
 
 /* rating: the "tap the map" instruction is the whole point of the short sheet, so make it stand out */
 .g-sheet .g-pick strong { color: var(--g-ink); font-size: 17px; }
+/* ---- session 4: Virginia ---- */
+.g-langsel { appearance: none; -webkit-appearance: none; padding: 0 12px; width: auto; max-width: 118px; flex: 0 1 auto; text-overflow: ellipsis; }
+.g-langsel option { color: #10131c; }
+.g-fs { border: 0; padding: 0; margin: 0; }
+.g-fs h3 { margin-top: 6px; }
+.g-machine { font-size: 12.5px; color: var(--some); border-left: 3px solid var(--some); padding-left: 8px; }
+.g-kind { margin-top: -4px !important; font-size: 13px; }
+.g-small { font-size: 12.5px !important; }
+.g-ink { color: var(--g-ink); }
+.g-link { min-height: 44px; background: none; border: 0; color: var(--g-ink-2); font: 500 14px var(--sans); text-decoration: underline;
+  text-underline-offset: 3px; cursor: pointer; }
+.g-back { min-height: 40px; background: none; border: 0; color: var(--g-ink-2); font: 500 14px var(--sans); cursor: pointer; padding: 0; margin-top: -2px; }
+.g-sheet.short { max-height: 34vh; }
+.g-spot { color: var(--g-ink) !important; }
+
+/* confidence: a meter with the medium/high thresholds marked */
+.g-conf { margin: 6px 0 2px; }
+.g-conf .bar { position: relative; display: block; height: 8px; border-radius: 4px; background: rgba(232, 236, 244, 0.1); }
+.g-conf .v { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; background: var(--g-ink); }
+.g-conf i { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--g-panel); }
+.sig { display: inline-flex; align-items: flex-end; gap: 2px; height: 10px; margin-right: 6px; vertical-align: -1px; }
+.sig i { display: block; width: 3px; background: rgba(232, 236, 244, 0.25); border-radius: 1px; }
+.sig i:nth-child(1) { height: 4px; } .sig i:nth-child(2) { height: 7px; } .sig i:nth-child(3) { height: 10px; }
+.sig.low i:nth-child(1), .sig.medium i:nth-child(-n+2), .sig.high i { background: var(--g-ink); }
+
+/* the score as area: width = how much it matters to you, height = how this place does */
+.g-mosaic { margin: 8px 0 14px; }
+.g-mosaic .cols { display: flex; gap: 3px; height: 116px; align-items: stretch; }
+.g-mosaic .col { position: relative; flex: 1 1 0; min-width: 16px; border-radius: 4px; overflow: hidden;
+  background: rgba(232, 236, 244, 0.07); box-shadow: inset 0 0 0 1px rgba(232, 236, 244, 0.12); }
+.g-mosaic .col.unk { background: repeating-linear-gradient(135deg, transparent 0 5px, rgba(167, 177, 198, 0.28) 5px 7px); }
+.g-mosaic .fill { position: absolute; left: 0; right: 0; bottom: 0; }
+.g-mosaic .lbl { position: absolute; left: 0; right: 0; bottom: 4px; text-align: center; font: 800 13px var(--sign); font-variant-numeric: tabular-nums; }
+.g-mosaic .names { display: flex; gap: 3px; margin-top: 4px; }
+.g-mosaic .names span { flex: 1 1 0; min-width: 16px; font-size: 10.5px; line-height: 1.2; color: var(--g-ink-2); overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap; }
+.g-mosaic figcaption { font-size: 12.5px; color: var(--g-ink-2); line-height: 1.45; margin-top: 8px; }
+
+/* reasoning list: one entry per part, plain words first, sources one tap away */
+.g-c2s { list-style: none; padding: 0; margin: 6px 0; display: grid; gap: 0; }
+.g-c2 { padding: 10px 0; border-top: 1px solid var(--g-line); }
+.g-c2:first-child { border-top: 0; }
+.g-c2 .hd { display: grid; grid-template-columns: 1fr 44px; gap: 10px; align-items: center; }
+.g-c2 .name { font: 600 15px var(--sans); }
+.g-c2 .num { font: 800 16px var(--sign); text-align: center; border-radius: 8px; padding: 4px 0; font-variant-numeric: tabular-nums; }
+.g-c2.unk .num { border: 1px dashed var(--g-ink-2); color: var(--g-ink-2); }
+.g-c2 .w { display: block; font-size: 12px; color: var(--lamp); margin-top: 1px; }
+.g-c2 .line { color: var(--g-ink) !important; font-size: 14px; margin: 4px 0 !important; }
+.g-c2 details { font-size: 12.5px; color: var(--g-ink-2); }
+.g-c2 summary { cursor: pointer; min-height: 32px; display: flex; align-items: center; }
+.g-c2 details p { font-size: 12.5px; }
+.g-srcs { padding-left: 18px; margin: 4px 0; line-height: 1.45; }
+.g-srcs a { color: var(--g-ink-2); }
+
+/* help places */
+.g-help { list-style: none; padding: 0; margin: 6px 0; display: grid; gap: 6px; }
+.g-help li { display: grid; grid-template-columns: 12px 1fr auto; gap: 10px; align-items: start; font-size: 14px; }
+.g-help i { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; border: 1px solid #05070f; }
+.g-help .k, .g-help .h { display: block; font-size: 12px; color: var(--g-ink-2); }
+.g-help a { color: var(--g-ink); font-size: 13px; white-space: nowrap; min-height: 32px; }
+.g-place { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #05070f; padding: 0; cursor: pointer; }
+.g-pop { color: #10131c; font: 13px var(--sans); line-height: 1.4; }
+.g-pop a { color: #10131c; }
+
+/* search */
+.g-search input { width: 100%; min-height: 46px; border-radius: 10px; border: 1px solid var(--g-line); background: rgba(232, 236, 244, 0.05);
+  color: var(--g-ink); padding: 0 12px; font: 15px var(--sans); margin: 4px 0 6px; }
+.g-search input:focus-visible { outline: 3px solid var(--lamp); outline-offset: 1px; }
+
+/* right-to-left languages (Arabic, Persian/Dari) */
+[dir="rtl"] .g-row, [dir="rtl"] .g-c2 .hd, [dir="rtl"] .g-pri li { text-align: right; }
+[dir="rtl"] .g-machine { border-left: 0; border-right: 3px solid var(--some); padding-left: 0; padding-right: 8px; }
+[dir="rtl"] .g-srcs { padding-left: 0; padding-right: 18px; }
+[dir="rtl"] .g-ramp .unk { border-left: 0; border-right: 1px solid var(--g-line); padding-left: 0; padding-right: 6px; }
+[dir="rtl"] .sig { margin-right: 0; margin-left: 6px; }
+[dir="rtl"] .g-brand { margin-right: 0; margin-left: auto; }
+@media (min-width: 900px) {
+  [dir="rtl"] .g-sheet, [dir="rtl"] .g-sheet.tall { left: auto; right: 16px; }
+  [dir="rtl"] .g-legend { left: auto; right: 432px; }
+  [dir="rtl"] .g-toast { left: auto; right: 432px; }
+  .g-sheet.short { max-height: none; }
+}

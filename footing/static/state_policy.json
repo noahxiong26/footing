@@ -1172,7 +1172,10 @@
    "health_children_all": false,
    "health_adults_all": false,
    "state_food_immigrants": false,
-   "camping_law": null
+   "camping_law": {
+    "status": "none_statewide",
+    "note": "No statewide camping ban; some cities ban it (Hampton, Bristol) or limit it (Roanoke). HB1394 (2026), which would have stopped cities from punishing sleeping outside, was continued to 2027."
+   }
   },
   "WA": {
    "name": "Washington",

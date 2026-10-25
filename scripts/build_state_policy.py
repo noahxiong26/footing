@@ -205,11 +205,16 @@ CAMPING = {
     "FL": ("in_effect", "HB 1365 (2024): bans public sleeping/camping; counties may designate areas. Effective Oct 1, 2024."),
     "TX": ("in_effect", "HB 1925 (2021): camping in unapproved public places is a Class C misdemeanor."),
     "TN": ("in_effect", "2022 law: camping on state property is a Class E felony (Tenn. Code 39-14-414)."),
+    # GA and OK do not ban camping statewide; their 'Safe Neighborhood' laws pressure cities to enforce
+    # local bans (owners can seek compensation). Scored separately from a statewide ban.
     "GA": ("enforcement_mandate", "'Safe Neighborhood' law: owners can seek compensation if localities don't enforce camping laws. Not a statewide ban."),
     "OK": ("enforcement_mandate", "'Safe Neighborhood' law: owners can seek compensation if localities don't enforce camping laws. Not a statewide ban."),
     "LA": ("in_effect", "2026 law making unauthorized public camping a crime; adds a Homelessness Court diversion."),
     "IN": ("in_effect", "2026 law banning unauthorized camping, sleeping and sheltering on state or local public land (from July 2026)."),
     "KY": ("contested", "HB 5 (2024) unlawful-camping offense; NHLC reports a court ruled the statewide ban unconstitutional."),
+    # Virginia (checked in depth in session 4, see build_va_localities.py): no statewide ban; cities and counties
+    # set their own rules. Scored 75, not 100, because local bans exist (Hampton, Bristol, Roanoke).
+    "VA": ("none_statewide", "No statewide camping ban; some cities ban it (Hampton, Bristol) or limit it (Roanoke). HB1394 (2026), which would have stopped cities from punishing sleeping outside, was continued to 2027."),
 }
 
 NAMES = {

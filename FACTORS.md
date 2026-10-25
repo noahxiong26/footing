@@ -1,3 +1,16 @@
+# Settle Score factor catalog
+
+These are the parameters behind the **Settle Receipt** for a single point (`/api/receipt`), not the Fit
+Score. Two different scores:
+
+- **Fit Score** — compares places, on the phone, from pre-built data. 50 states in `footing/fit.py`,
+  Virginia's 133 localities in `footing/vafit.py`. Method: `docs/RATING_FORMULA.md`.
+- **Settle Score** — scores one point in depth by calling live sources for it. That is this table.
+
+Session 4's handoff listed this file as "still describes the 50-state version". It does not: the receipt has
+always been point-based, so there is nothing state-specific to rewrite here. Live-source coverage is the
+same in Virginia as anywhere else.
+
 | Category (weight) | Parameter | Weight | Sources | Refresh | Scoring rule | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | Shelter and safe sleep (18) | Shelters within 3 km | 3 | osm, google_places | daily | count, k=1 (1 shelter -> 63, 3 -> 95); zero trusted only if Google Places answered | built |
