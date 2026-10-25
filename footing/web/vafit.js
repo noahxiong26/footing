@@ -181,7 +181,9 @@
       if (c && c.violent_per_1k !== null && c.violent_per_1k !== undefined) {
         reason += " Citywide: " + num(c.violent_per_1k) + " violent crimes per 1,000 people (FBI, 2025).";
       }
-      return { score: round1(linear(v, sc.good, sc.bad)), coverage: 1.0, level: "block", freshness: 0.95, reason: reason };
+      return { score: round1(linear(v, sc.good, sc.bad)), coverage: 1.0, level: "block", freshness: 0.95, reason: reason,
+        source: "city_incidents", parts: { level: "block", violent: v, enforcement: e,
+          window_start: city.window_start, window_end: city.latest_date } };
     }
     if (!c || c.violent_per_1k === null || c.violent_per_1k === undefined)
       return { score: null, coverage: 0, level: "none", reason: "Not counted: " + (c && c.unknown_reason ? c.unknown_reason : "no FBI data for this place.") };

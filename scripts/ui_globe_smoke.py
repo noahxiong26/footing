@@ -16,6 +16,7 @@ the browser in a request URL or body. Satellite/label tiles and web fonts may fa
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -69,7 +70,7 @@ def run() -> int:
     sent: list[dict] = []
     shots = 0
     with sync_playwright() as p:
-        b = p.chromium.launch(args=ARGS)
+        b = p.chromium.launch(args=ARGS, channel=os.environ.get("FOOTING_BROWSER_CHANNEL"))
         for lang in LANGS:
             for w in WIDTHS:
                 tag = f"{lang}_{w}"
@@ -116,6 +117,7 @@ def run() -> int:
                 page.click("[data-chip='household.kids']")
                 page.click("[data-chip='household.mixed']")
                 page.click("[data-chip='situation.car']")
+                page.click("[data-crime='1']")
                 before = page.inner_text(".g-pri")
                 page.click(".g-pri li:nth-child(3) [data-pri][data-dir='-1']") if page.locator(
                     ".g-pri li:nth-child(3) [data-pri][data-dir='-1']").count() else page.click(".g-pri li:nth-child(3) button >> nth=0")
@@ -164,8 +166,75 @@ def run() -> int:
                 check(page.locator(".g-list li:visible").count() == 0 and page.is_visible(".g-nomatch"),
                       "search with no match does not say so")
                 page.fill("#g-q", "")
-                page.click(".g-list li:visible >> nth=2")
+                page.fill("#g-q", "Norfolk")
+                page.click(".g-list li:visible >> nth=0")
                 page.wait_for_selector("#g-loc-title")
+                check(page.locator(".g-point-note").count() == 0, "list selection kept a previous point")
+                citywide = page.locator("[data-component=crime] .num").inner_text()
+                ranked_before = page.evaluate("JSON.stringify(FootingGlobe._state.byFips['51710'])")
+
+                # A real mouse tap through the map canvas, not a direct call to a selection function.
+                def tap_locality(lat: float, lon: float):
+                    # The list-to-locality transition changes the exposed map area.
+                    page.wait_for_timeout(400)
+                    page.evaluate("""([lat, lon]) => { const m = FootingGlobe._state.map;
+                      m.stop(); const c = m.getCanvas().getBoundingClientRect();
+                      const top = document.querySelector('.g-sheet').getBoundingClientRect().top;
+                      const y = top > 150 ? (110 + top) / 2 : c.top + c.height / 2;
+                      m.easeTo({center: [lon, lat], zoom: 12, duration: 0, padding: {top: 0, bottom: 0, left: 0, right: 0},
+                        offset: [0, y - (c.top + c.height / 2)]}); }""", [lat, lon])
+                    page.wait_for_function("""([lat, lon]) => { const m = FootingGlobe._state.map;
+                      return m.queryRenderedFeatures(m.project([lon, lat]), {layers: ['va-known', 'va-unknown']})
+                        .some(f => String(f.id) === '51710'); }""", arg=[lat, lon])
+                    x, y = page.evaluate("""([lat, lon]) => { const m = FootingGlobe._state.map,
+                      p = m.project([lon, lat]), c = m.getCanvas().getBoundingClientRect();
+                      return [c.left + p.x, c.top + p.y]; }""", [lat, lon])
+                    page.mouse.click(x, y)
+                    try:
+                        page.wait_for_selector(".g-point-note", timeout=8000)
+                    except Exception:
+                        page.screenshot(path=str(OUT / f"{tag}_failed_point.png"))
+                        print(page.evaluate("""([x, y]) => { const s = FootingGlobe._state; return {
+                          selected: s.selected, point: s.selectedPoint,
+                          click: [x,y], element: document.elementFromPoint(x,y).outerHTML.slice(0,200)
+                        }; }""", [x, y]), flush=True)
+                        raise
+
+                tap_locality(36.8508, -76.2859)
+                crime = page.locator("[data-component=crime]")
+                expected = page.evaluate("""() => { const s = FootingGlobe._state;
+                  return FootingVaFit.fitScore(s.elig, s.va, '51710', s.profile, {},
+                    FootingVaFit.tileOf(36.8508, -76.2859)).components.find(c => c.id === 'crime'); }""")
+                check(crime.locator(".num").inner_text() == str(round(expected["score"])), "point crime score differs from the engine")
+                line = crime.locator(".line").inner_text()
+                check(expected["parts"]["window_start"] in line and expected["parts"]["window_end"] in line,
+                      "block summary omits the saved capture window")
+                if lang == "en":
+                    check("violent incidents" in line and "not counted as danger" in line, "no block-level crime summary")
+                else:
+                    check(any("\u0600" <= ch <= "\u06ff" for ch in line), "block summary is not in Arabic")
+                crime.locator("summary").click()
+                check(crime.locator("a[href='https://data.norfolk.gov/resource/r7bn-2egr.json']").count() == 1,
+                      "point Details lacks the city incident source")
+                check("Norfolk police data" in crime.locator("p[lang=en]").inner_text(), "point still shows the FBI-only reason")
+                check(page.evaluate("JSON.stringify(FootingGlobe._state.byFips['51710'])") == ranked_before,
+                      "a point changed the statewide locality ranking")
+                crime.scroll_into_view_if_needed()
+                shot("07b_norfolk_blocks")
+                page.click("[data-go=locality-wide]")
+                check(page.locator("[data-component=crime] .num").inner_text() == citywide,
+                      "whole-locality button did not restore the FBI score")
+                check(page.locator(".g-point-note").count() == 0, "whole-locality button kept the point note")
+
+                # Missing FBI reports must stay Unknown, even after viewing a covered block.
+                page.click("#g-listbtn")
+                page.fill("#g-q", "Virginia Beach")
+                page.click(".g-list li:visible >> nth=0")
+                page.wait_for_selector("#g-loc-title")
+                check(page.locator("[data-component=crime] .num").inner_text() == "?", "Virginia Beach crime is not Unknown")
+                check(page.locator(".g-point-note").count() == 0, "a point leaked into another locality")
+                page.locator("[data-component=crime]").scroll_into_view_if_needed()
+                shot("07c_crime_unknown")
 
                 # Rate: open from the locality, then tap the map. Bad taps must be refused with the right reason.
                 page.click("[data-go=rate]")
@@ -208,6 +277,9 @@ def run() -> int:
                 heat = page.evaluate("FootingGlobe._state.heat") or {}
                 check(heat.get("total", 0) == total_before + 1, f"heat total {heat.get('total')} did not go up by one")
                 check(page.evaluate("FootingGlobe._state.view") != "rate", "still on the rate screen after sending")
+                check(page.locator(".g-point-note").count() == 1, "rating pin did not become the locality point")
+                check("FBI" in page.locator("[data-component=crime] details p").text_content(),
+                      "a point without incident data did not fall back to the FBI")
                 shot("10_after_rating", 800)
 
                 # Forget my answers.

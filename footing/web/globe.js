@@ -43,7 +43,7 @@
     lang: store.get("footing.lang", guessLang()),
     profile: store.get("footing.globe.profile", null),
     scope: store.get("footing.globe.scope", "va"),
-    view: "intro", layer: "fit", selected: null, prevView: "top",
+    view: "intro", layer: "fit", selected: null, selectedPoint: null, prevView: "top",
     policy: null, elig: null, va: null, community: {}, heat: null, ranked: [], byCode: {}, vaRanked: [], byFips: {},
     map: null, mapOk: false, statesGeo: null, vaGeo: null, recorded: [], ratingPoint: null, rating: { tags: [] },
     lit: 999, spinning: false, markers: [], ratingMarker: null, receiptTile: null,
@@ -376,7 +376,7 @@
       var f = hits[0];
       if (f.layer.id === "help-dots") { helpPopup(f); return; }
       if (f.layer.id === "states-dim") { toast(t("vaOnly")); return; }
-      if (isVa()) selectLocality(String(f.id || f.properties.fips), true);
+      if (isVa()) selectLocality(String(f.id || f.properties.fips), true, checkPoint(e.lngLat.lat, e.lngLat.lng));
       else selectState(f.properties.code, true);
     });
     ["mousedown", "touchstart", "wheel"].forEach(function (ev) { map.on(ev, stopSpin); });
@@ -679,7 +679,12 @@
     }
     if (c.id === "laws") return c.score === null ? (loc.local_rule ? c.reason : t("law_null")) : t("law_" + c.score);
     if (c.id === "safety") return t("safe_" + c.score);
-    if (c.id === "crime") return c.score === null ? t("crime_null") : t("line_crime", { x: loc.crime.violent_per_1k });
+    if (c.id === "crime") {
+      if (c.parts && c.parts.level === "block") return t("line_crime_block", {
+        v: num(c.parts.violent), e: num(c.parts.enforcement), from: c.parts.window_start, to: c.parts.window_end
+      });
+      return c.score === null ? t("crime_null") : t("line_crime", { x: num(loc.crime.violent_per_1k) });
+    }
     if (c.id === "community") return c.score === null ? t("community_null") : t("line_community", { n: num(((S.heat && S.heat.localities) || {})[loc.fips] ? S.heat.localities[loc.fips].n : 0) });
     return c.reason;
   }
@@ -687,10 +692,16 @@
   function sourceLinks(c) {
     var keys = (COMP_SOURCES[c.id] || []).slice();
     if (c.id === "laws" && c.source) keys = [c.source];
+    if (c.id === "crime" && c.source) keys.unshift(c.source);
     if (c.id === "services" && !S.va.localities[S.selected].services.fare_free_transit) keys = keys.filter(function (k) { return k !== "apta_fare_free"; });
     var src = S.va.sources;
     return keys.filter(function (k) { return src[k]; }).map(function (k) {
       var s = src[k];
+      if (k === "city_incidents") {
+        var city = S.va.incident_cities[S.selected];
+        s = { title: city.agency, url: city.source_url, publisher: city.name,
+          as_of: city.window_start + " – " + city.latest_date };
+      }
       return '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + "</a>, " + esc(s.publisher) + " (" + esc(t("asOf")) + " " + esc(s.as_of) + ")</li>";
     }).join("");
   }
@@ -734,6 +745,12 @@
   function localityView() {
     var r = S.byFips[S.selected];
     if (!r) return "";
+    var pt = S.selectedPoint;
+    if (pt && pt.fips === S.selected) {
+      r = VaFit.fitScore(S.elig, S.va, S.selected, profileFor("va"), (S.heat || {}).localities || {}, pt.tile);
+      r.confidence = Math.round(r.confidence * pt.validity * 1000) / 1000;
+      r.confidence_label = r.confidence >= 0.7 ? "high" : (r.confidence >= 0.45 ? "medium" : "low");
+    }
     var loc = S.va.localities[r.fips];
     var n = S.vaRanked.filter(function (x) { return x.rank; }).length;
     var town = S.recorded.filter(function (x) { return localityAt(x.lat, x.lon) === r.fips; })[0];
@@ -741,7 +758,7 @@
     var unknown = r.components.filter(function (c) { return c.score === null; });
     var card = function (c) {
       var unk = c.score === null;
-      return '<li class="g-c2' + (unk ? " unk" : "") + '"><div class="hd"><span class="name">' + esc(t("c_" + c.id)) + "</span>" +
+      return '<li data-component="' + c.id + '" class="g-c2' + (unk ? " unk" : "") + '"><div class="hd"><span class="name">' + esc(t("c_" + c.id)) + "</span>" +
         '<span class="num" style="' + (unk ? "" : "background:" + rampColor(c.score) + ";color:" + inkOn(c.score)) + '">' + (unk ? "?" : Math.round(c.score)) + "</span></div>" +
         (unk ? "" : '<span class="w">' + esc(t("weightOf", { w: Math.round(100 * c.share) })) + "</span>") +
         '<p class="line">' + esc(localLine(c, loc)) + "</p>" +
@@ -749,6 +766,7 @@
         (sourceLinks(c) ? '<ul class="g-srcs">' + sourceLinks(c) + "</ul>" : "") + "</details></li>";
     };
     return '<h2 id="g-loc-title">' + esc(r.name) + '</h2><p class="g-kind">' + esc(loc.kind === "city" ? t("city") : t("county")) + "</p>" +
+      (pt ? '<p class="g-small g-point-note">' + esc(t("pointScore")) + '</p><button class="g-link" data-go="locality-wide" type="button">' + esc(t("wholeLocality")) + "</button>" : "") +
       '<div class="g-score">' + scoreBadge(r.score) + '<div class="g-meta">' + esc(t("fit")) +
       (r.rank ? "<br><strong>" + esc(t("rankOf", { r: r.rank, n: n })) + "</strong>" : "") +
       "<br>" + esc(t("confidence")) + ": <strong>" + esc(t("conf_" + r.confidence_label)) + "</strong></div></div>" +
@@ -994,7 +1012,7 @@
 
   function setScope(scope) {
     S.scope = scope; store.set("footing.globe.scope", scope);
-    S.selected = null; S.layer = "fit";
+    S.selected = null; S.selectedPoint = null; S.layer = "fit";
     if (S.mapOk) { S.map.setFilter("va-selected", ["==", ["id"], ""]); S.map.setFilter("states-selected", ["==", ["get", "code"], ""]); }
     S.view = "top"; compute(); render(); flyHome(false); focusHeading();
   }
@@ -1012,9 +1030,12 @@
         Object.keys(localStorage).filter(function (k) { return k.indexOf("footing.") === 0 && k !== "footing.lang"; })
           .forEach(function (k) { localStorage.removeItem(k); });
       } catch (e) { /* fine */ }
-      S.profile = null; _draft = null; S.view = "intro"; compute(); render(); toast(t("forgot")); return;
+      S.profile = null; S.selectedPoint = null; S.ratingPoint = null;
+      if (S.ratingMarker) { S.ratingMarker.remove(); S.ratingMarker = null; }
+      _draft = null; S.view = "intro"; compute(); render(); toast(t("forgot")); return;
     }
     if (what === "list") { S.view = "list"; render(); return; }
+    if (what === "locality-wide") { S.selectedPoint = null; render(); return; }
     if (what === "scope-us") { setScope("us"); return; }
     if (what === "scope-va") { setScope("va"); return; }
     if (what === "fly") {
@@ -1044,8 +1065,10 @@
     focusHeading();
   }
 
-  function selectLocality(fips, fly) {
+  function selectLocality(fips, fly, pt) {
     if (!S.byFips[fips]) return;
+    S.selectedPoint = pt && pt.ok && pt.fips === fips ?
+      { fips: fips, tile: pt.tile, validity: pt.validity } : null;
     S.selected = fips; S.view = "locality"; render();
     if (S.mapOk) S.map.setFilter("va-selected", ["==", ["id"], fips]);
     if (fly) flyToLocality(fips);
@@ -1056,11 +1079,14 @@
    *  The shoreline file is not loaded on the phone (it is large and only the open-water case needs it);
    *  footing/ratings.py re-checks with it before storing, so a water tap is still refused, just later. */
   function checkPoint(lat, lon) {
-    if (!VaPoint || !S.vaGeo) return { ok: !!localityAt(lat, lon), code: "ok", issues: [], validity: 1 };
-    return VaPoint.checkPoint(S.vaGeo, lat, lon, {
+    if (!VaPoint || !S.vaGeo) return { ok: !!localityAt(lat, lon), fips: localityAt(lat, lon),
+      tile: VaFit.tileOf(lat, lon), code: "ok", issues: [], validity: 1 };
+    var pt = VaPoint.checkPoint(S.vaGeo, lat, lon, {
       stateAt: function (la, lo) { return stateCodeAt(la, lo); },
       stateName: S.policy && S.policy.states ? stateNames() : null,
     });
+    if (pt.ok) pt.tile = VaFit.tileOf(lat, lon);
+    return pt;
   }
 
   function stateNames() {
@@ -1132,7 +1158,7 @@
         S.ratingPoint = null;
         return loadHeat().then(function () {
           compute(); paintHeat();
-          if (isVa() && fips) selectLocality(fips, false); else { S.view = S.prevView || "top"; render(); }
+          if (isVa() && fips) selectLocality(fips, false, checkPoint(pt.lat, pt.lon)); else { S.view = S.prevView || "top"; render(); }
         });
       })
       .catch(function (e) { toast(navigator.onLine === false ? t("rateNeedsServer") : e.message); });

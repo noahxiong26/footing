@@ -238,6 +238,19 @@ def test_a_point_in_an_incident_city_is_scored_on_its_own_blocks():
     assert "Charlottesville police data" in cville["reason"]
 
 
+@pytest.mark.parametrize("point,fips", [(NORFOLK_DOWNTOWN, "51710"), (CVILLE_MALL, "51540")])
+def test_block_summary_exposes_counts_dates_and_source_for_the_panel(point, fips):
+    crime = next(c for c in vafit.fit_point(ELIG, VA, *point, CRIME_ON)["components"] if c["id"] == "crime")
+    tile = vafit.tile_of(*point)
+    city = VA["incident_cities"][fips]
+    assert crime["source"] == "city_incidents"
+    assert crime["parts"] == {
+        "level": "block", "violent": vafit.neighbourhood(VA, tile, "v"),
+        "enforcement": vafit.neighbourhood(VA, tile, "e"),
+        "window_start": city["window_start"], "window_end": city["latest_date"],
+    }
+
+
 def test_everywhere_else_falls_back_to_the_yearly_fbi_figure():
     crime = next(c for c in vafit.fit_point(ELIG, VA, *CHRISTIANSBURG, CRIME_ON)["components"] if c["id"] == "crime")
     assert "FBI" in crime["reason"] and "police data" not in crime["reason"]

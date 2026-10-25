@@ -444,6 +444,52 @@
     }
   };
   Object.keys(M).forEach(function (k) { I.strings[k] = M[k]; });
+  // Point summaries use the saved capture window, not a moving "last 12 months" claim.
+  var POINT = {
+    en: {
+      pointScore: "Score for the tapped spot. Rankings compare whole cities and counties.",
+      wholeLocality: "Show the whole city or county",
+      line_crime_block: "{v} violent incidents reported within about 1.5 km ({from} to {to}). {e} trespass, loitering or disorderly calls nearby; these are not counted as danger."
+    },
+    es: {
+      pointScore: "Puntuación del lugar tocado. Las clasificaciones comparan ciudades y condados completos.",
+      wholeLocality: "Ver toda la ciudad o el condado",
+      line_crime_block: "{v} incidentes violentos reportados a unos 1,5 km ({from} a {to}). {e} avisos cercanos por entrada sin permiso, merodeo o desorden; no se cuentan como peligro."
+    },
+    vi: {
+      pointScore: "Điểm cho chỗ đã chạm. Xếp hạng so sánh toàn bộ thành phố và quận.",
+      wholeLocality: "Xem toàn bộ thành phố hoặc quận",
+      line_crime_block: "{v} vụ bạo lực được báo cáo trong khoảng 1,5 km ({from} đến {to}). {e} cuộc gọi gần đó về xâm nhập, lảng vảng hoặc gây rối; không tính là nguy hiểm."
+    },
+    ko: {
+      pointScore: "누른 지점의 점수입니다. 순위는 시와 카운티 전체를 비교합니다.",
+      wholeLocality: "시 또는 카운티 전체 보기",
+      line_crime_block: "약 1.5km 이내에서 신고된 폭력 사건 {v}건 ({from}~{to}). 주변의 무단침입, 배회 또는 소란 신고 {e}건은 위험으로 계산하지 않습니다."
+    },
+    zh: {
+      pointScore: "这是所点位置的分数。排名比较整个城市和县。",
+      wholeLocality: "查看整个城市或县",
+      line_crime_block: "约1.5公里内报告了{v}起暴力事件（{from}至{to}）。附近有{e}起擅自进入、游荡或扰乱秩序的报警；这些不计为危险。"
+    },
+    ar: {
+      pointScore: "درجة الموقع الذي نقرت عليه. تقارن التصنيفات المدن والمقاطعات بأكملها.",
+      wholeLocality: "عرض المدينة أو المقاطعة بأكملها",
+      line_crime_block: "تم الإبلاغ عن {v} حادثة عنف ضمن نحو 1.5 كم ({from} إلى {to}). و{e} بلاغًا قريبًا عن التعدي أو التجول أو الإخلال بالنظام؛ لا تُحسب هذه البلاغات كخطر."
+    },
+    am: {
+      pointScore: "የነኩት ቦታ ነጥብ። ደረጃዎች ሙሉ ከተሞችንና ካውንቲዎችን ያወዳድራሉ።",
+      wholeLocality: "ሙሉ ከተማውን ወይም ካውንቲውን አሳይ",
+      line_crime_block: "በ1.5 ኪ.ሜ ገደማ ውስጥ {v} የጥቃት ክስተቶች ተመዝግበዋል ({from} እስከ {to})። በአቅራቢያ {e} ያለፈቃድ መግባት፣ መንከራተት ወይም ረብሻ ጥሪዎች፤ እነዚህ እንደ አደጋ አይቆጠሩም።"
+    },
+    fa: {
+      pointScore: "امتیاز جای لمس‌شده. رتبه‌بندی‌ها تمام شهرها و کانتی‌ها را مقایسه می‌کنند.",
+      wholeLocality: "نمایش تمام شهر یا کانتی",
+      line_crime_block: "{v} رویداد خشونت‌آمیز در حدود ۱٫۵ کیلومتری گزارش شده ({from} تا {to}). {e} تماس نزدیک درباره ورود غیرمجاز، پرسه‌زدن یا بی‌نظمی؛ این‌ها خطر حساب نمی‌شوند."
+    }
+  };
+  Object.keys(POINT).forEach(function (lang) {
+    Object.keys(POINT[lang]).forEach(function (key) { I.strings[lang][key] = POINT[lang][key]; });
+  });
   I.LANGS = ["en", "es", "vi", "ko", "zh", "ar", "am", "fa"];
   I.RTL = ["ar", "fa"];
   I.MACHINE = ["es", "vi", "ko", "zh", "ar", "am", "fa"];   // Spanish came from earlier AI sessions; no record of native review either

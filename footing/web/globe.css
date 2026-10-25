@@ -223,10 +223,12 @@ body.on-globe > header.top, body.on-globe > main#view { display: none; }
 
 /* help places */
 .g-help { list-style: none; padding: 0; margin: 6px 0; display: grid; gap: 6px; }
-.g-help li { display: grid; grid-template-columns: 12px 1fr auto; gap: 10px; align-items: start; font-size: 14px; }
+.g-help li { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 14px; }
+.g-help li > span { overflow-wrap: anywhere; }
 .g-help i { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; border: 1px solid #05070f; }
 .g-help .k, .g-help .h { display: block; font-size: 12px; color: var(--g-ink-2); }
-.g-help a { color: var(--g-ink); font-size: 13px; white-space: nowrap; min-height: 32px; }
+.g-help a { grid-column: 2; max-width: 100%; color: var(--g-ink); font-size: 13px;
+  overflow-wrap: anywhere; min-height: 32px; }
 .g-place { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #05070f; padding: 0; cursor: pointer; }
 .g-pop { color: #10131c; font: 13px var(--sans); line-height: 1.4; }
 .g-pop a { color: #10131c; }

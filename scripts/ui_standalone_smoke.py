@@ -11,6 +11,7 @@ leaves the page. Exit 1 on any failure.
 """
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -31,7 +32,7 @@ def run() -> int:
     urls: list[str] = []
     n_places = 0
     with sync_playwright() as p:
-        b = p.chromium.launch(args=ARGS)
+        b = p.chromium.launch(args=ARGS, channel=os.environ.get("FOOTING_BROWSER_CHANNEL"))
         page = b.new_context(viewport={"width": 390, "height": H}, device_scale_factor=1).new_page()
         page.on("pageerror", lambda e: errors.append(f"page error: {e}"))
         page.on("console", lambda m: errors.append(f"console: {m.text}") if m.type == "error"
@@ -55,6 +56,7 @@ def run() -> int:
         page.click("[data-go=profile]")
         page.check("input[name=status][value=undocumented]")
         page.click("[data-chip='household.kids']")
+        page.click("[data-crime='1']")
         shot("02_about_you")
         page.click("[data-go=save]")
         page.wait_for_selector(".g-list .g-row")
@@ -63,6 +65,28 @@ def run() -> int:
             errors.append("top view does not show 5 places")
         shot("03_top_fits")
 
+        page.click("#g-listbtn")
+        page.wait_for_selector("#g-q")
+        page.fill("#g-q", "Norfolk")
+        page.click(".g-list li:visible >> nth=0")
+        page.wait_for_selector("#g-loc-title")
+        page.wait_for_timeout(400)
+        page.evaluate("""() => { const m = FootingGlobe._state.map; m.stop();
+          const c = m.getCanvas().getBoundingClientRect();
+          const top = document.querySelector('.g-sheet').getBoundingClientRect().top;
+          m.easeTo({center: [-76.2859, 36.8508], zoom: 12, duration: 0,
+            padding: {top: 0, bottom: 0, left: 0, right: 0},
+            offset: [0, (110 + top) / 2 - (c.top + c.height / 2)]}); }""")
+        page.wait_for_timeout(500)
+        x, y = page.evaluate("""() => { const m = FootingGlobe._state.map, p = m.project([-76.2859, 36.8508]),
+          c = m.getCanvas().getBoundingClientRect(); return [c.left + p.x, c.top + p.y]; }""")
+        page.mouse.click(x, y)
+        page.wait_for_selector(".g-point-note")
+        crime = page.locator("[data-component=crime]")
+        if "violent incidents" not in crime.locator(".line").inner_text():
+            errors.append("standalone map tap did not show block incidents")
+        crime.scroll_into_view_if_needed()
+        shot("03b_norfolk_blocks")
         page.click("#g-listbtn")
         page.wait_for_selector("#g-q")
         page.fill("#g-q", "Montgomery")
@@ -94,7 +118,8 @@ def run() -> int:
         # A real tap, through the canvas, on Christiansburg - moved into the open strip of map first.
         page.evaluate("""([lat, lon, top]) => { const m = FootingGlobe._state.map;
             const y = (110 + top) / 2, c = m.getCanvas().getBoundingClientRect();
-            m.jumpTo({center: [lon, lat], zoom: 12, offset: [0, y - (c.top + c.height / 2)]}); }""",
+            m.easeTo({center: [lon, lat], zoom: 12, duration: 0,
+              padding: {top: 0, bottom: 0, left: 0, right: 0}, offset: [0, y - (c.top + c.height / 2)]}); }""",
                       [*CHRISTIANSBURG, sheet_top])
         page.wait_for_timeout(300)
         x, y = page.evaluate("""([lat, lon]) => { const m = FootingGlobe._state.map, p = m.project([lon, lat]),
@@ -117,6 +142,8 @@ def run() -> int:
         toast = page.locator(".g-toast").inner_text() if page.locator(".g-toast").count() else ""
         shot("08_after_rating")
         heat = page.evaluate("FootingGlobe._state.heat")
+        if page.locator(".g-point-note").count() != 1:
+            errors.append("standalone rating pin did not become the locality point")
         if not (heat and heat.get("total", 0) >= 1):
             errors.append(f"rating did not reach the heatmap: {heat}")
         if "this device" not in toast.lower() and "montgomery" not in toast.lower():
