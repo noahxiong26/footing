@@ -1077,6 +1077,10 @@
   });
   var RENT_BIG = {"en": "HUD sets rents above 4 bedrooms at the 4-bedroom rent plus 15% for each extra bedroom.", "es": "HUD calcula el alquiler de más de 4 habitaciones como el de 4 habitaciones más un 15% por cada habitación extra.", "vi": "HUD tính tiền thuê trên 4 phòng ngủ bằng giá 4 phòng ngủ cộng 15% cho mỗi phòng thêm.", "ko": "HUD는 방 4개를 넘는 집의 임대료를 방 4개 임대료에 추가 방마다 15%를 더해 정합니다.", "zh": "超过4居室的租金，HUD按4居室租金每多一间加15%计算。", "ar": "تحدد HUD إيجار ما يزيد على 4 غرف نوم بإيجار 4 غرف مع زيادة 15% لكل غرفة إضافية.", "am": "HUD ከ4 መኝታ በላይ ላለው ቤት ኪራዩን በ4 መኝታ ኪራይ ላይ ለእያንዳንዱ ተጨማሪ መኝታ 15% በመጨመር ያሰላል።", "fa": "HUD کرایهٔ خانه‌های بیش از ۴ اتاق‌خواب را کرایهٔ ۴ اتاق‌خوابه به‌اضافهٔ ۱۵٪ برای هر اتاق اضافه حساب می‌کند.", "tl": "Itinatakda ng HUD ang upa sa higit sa 4 na kuwarto bilang upa ng 4 na kuwarto dagdag ang 15% sa bawat dagdag na kuwarto."};
   Object.keys(RENT_BIG).forEach(function (lang) { I.vaReasonTemplates[lang].rent_big = RENT_BIG[lang]; });
+  var SHOW_BEST = {"en": "Show my best fits", "es": "Ver mis mejores lugares", "vi": "Xem nơi phù hợp nhất với tôi", "ko": "나에게 가장 맞는 곳 보기", "zh": "查看最适合我的地方", "ar": "اعرض أنسب الأماكن لي", "am": "በጣም የሚስማሙኝን አሳይ", "fa": "مناسب‌ترین جاها را نشان بده", "tl": "Ipakita ang pinakaangkop sa akin"};
+  Object.keys(SHOW_BEST).forEach(function (lang) { I.strings[lang].showBest = SHOW_BEST[lang]; });
+  var PRI_HELP = {"en": "Drag what matters most to the top, or use the arrows.", "es": "Arrastra lo más importante hacia arriba, o usa las flechas.", "vi": "Kéo điều quan trọng nhất lên đầu, hoặc dùng mũi tên.", "ko": "가장 중요한 것을 끌어서 맨 위로 옮기거나 화살표를 쓰세요.", "zh": "把最重要的拖到最上面，或使用箭头。", "ar": "اسحب الأهم إلى الأعلى، أو استخدم الأسهم.", "am": "በጣም አስፈላጊውን ወደ ላይ ይጎትቱ፣ ወይም ቀስቶቹን ይጠቀሙ።", "fa": "مهم‌ترین را به بالا بکشید، یا از تیرها استفاده کنید.", "tl": "I-drag pataas ang pinakamahalaga, o gamitin ang mga arrow."};
+  Object.keys(PRI_HELP).forEach(function (lang) { I.strings[lang].priHelp = PRI_HELP[lang]; });
   I.LANGS = ["en", "es", "vi", "ko", "zh", "ar", "am", "fa", "tl"];
   I.RTL = ["ar", "fa"];
   I.MACHINE = ["es", "vi", "ko", "zh", "ar", "am", "fa", "tl"];   // No native review is recorded.

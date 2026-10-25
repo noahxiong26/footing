@@ -264,19 +264,16 @@
   function desk() { return !!DESK.matches && isVa() && S.vaRanked.length > 0; }
   /** Apply the layout switch before anything measures it, so the camera never frames for the wrong layout. */
   function syncDesk() {
-    var root = $("#globe-root"), rail = $(".g-rail"), on = desk();
-    if (!rail && root) { rail = document.createElement("aside"); rail.className = "g-rail"; root.appendChild(rail); }
+    var on = desk();
     document.documentElement.classList.toggle("g-desk", on);
-    if (rail) rail.hidden = !on;
-    return on && !!rail;
+    return on;
   }
 
   function sheetPad() {
     if (syncDesk()) {
       // Frame the map inside the space the two panels leave open, whatever the language direction.
-      var a = $(".g-rail").getBoundingClientRect(), b = $(".g-sheet").getBoundingClientRect(), W = window.innerWidth;
-      var lo = Math.min(a.left, b.left) === a.left ? a : b, hi = lo === a ? b : a;
-      return { top: 90, bottom: 70, left: Math.round(lo.right) + 24, right: Math.round(W - hi.left) + 24 };
+      var b = $(".g-sheet").getBoundingClientRect(), W = window.innerWidth, panelLeft = b.left < W / 2;
+      return { top: 90, bottom: 70, left: panelLeft ? Math.round(b.right) + 24 : 40, right: panelLeft ? 40 : Math.round(W - b.left) + 24 };
     }
     var wide = window.innerWidth >= 900, sh = $(".g-sheet");
     var h = sh ? sh.offsetHeight : 200, rtl = document.documentElement.dir === "rtl";
@@ -547,35 +544,11 @@
     sh.className = "g-sheet" + (tall ? " tall" : "") + (S.view === "rate" && !S.ratingPoint ? " short" : "");
     sh.innerHTML = '<button class="g-grip" aria-label="Resize panel" type="button"></button>' + html;
     bindView();
-    renderRail();
+    syncDesk();
     renderChrome();
     var h = sh.querySelector("h1, h2");
     if (h) { h.setAttribute("tabindex", "-1"); }
     updatePeek();
-  }
-
-  /** The computer layout's list of all 133 places. Re-rendered with the sheet; keeps its search and scroll. */
-  function renderRail() {
-    if (!syncDesk()) return;
-    var rail = $(".g-rail");
-    var oldQ = rail.querySelector("#g-rail-q"), oldList = rail.querySelector(".g-list");
-    var q = oldQ ? oldQ.value : "", scroll = oldList ? oldList.scrollTop : 0, hadFocus = oldQ && document.activeElement === oldQ;
-    rail.setAttribute("aria-label", t("allPlaces"));
-    rail.innerHTML = "<h2>" + esc(t("allPlaces")) + '</h2><p class="g-small">' + esc(t("l_" + S.layer)) + "</p>" +
-      '<label class="g-search"><span class="sr-only">' + esc(t("search")) + '</span><input type="search" id="g-rail-q" placeholder="' +
-      esc(t("search")) + '" autocomplete="off"></label><p class="g-nomatch" hidden>' + esc(t("noMatch")) + "</p>" +
-      '<ul class="g-list">' + vaSorted().map(vaRowHTML).join("") + "</ul>";
-    var cur = S.view === "locality" && rail.querySelector('[data-fips="' + S.selected + '"]');
-    if (cur) cur.setAttribute("aria-current", "true");
-    rail.querySelectorAll("[data-fips]").forEach(function (b) {
-      b.addEventListener("click", function () { selectLocality(b.dataset.fips, true); });
-    });
-    var input = rail.querySelector("#g-rail-q");
-    input.value = q;
-    filterList(rail, input);
-    input.addEventListener("input", function () { filterList(rail, input); });
-    rail.querySelector(".g-list").scrollTop = scroll;
-    if (hadFocus) input.focus();
   }
 
   function filterList(box, input) {
@@ -729,7 +702,7 @@
         group(t("ageQ"), ages)) +
       step(4, t("step_matter"), '<div class="g-pri-wrap">' + priorityBlock(p) + "</div>") +
       crime + "</ol>" +
-      '<div class="g-actions g-about-actions"><button class="g-primary g-wide" data-go="save" type="button">' + esc(t("showMap")) + "</button>" +
+      '<div class="g-actions g-about-actions"><button class="g-primary g-wide" data-go="save" type="button">' + esc(t("showBest")) + "</button>" +
       '<button class="g-secondary g-wide" data-go="forget" type="button">' + esc(t("forget")) + "</button></div>";
   }
 
@@ -764,7 +737,7 @@
     var order = currentOrder(p), n = order.length;
     var list = '<ol class="g-pri">' + order.map(function (k, i) {
       var heat = 1 - i / Math.max(1, n - 1);
-      return '<li style="--heat:' + heat.toFixed(2) + '"><span class="rk" aria-hidden="true">' + (i + 1) + '</span><span class="nm">' + esc(t("c_" + k)) +
+      return '<li data-k="' + k + '" style="--heat:' + heat.toFixed(2) + '"><span class="grip" aria-hidden="true"></span><span class="rk" aria-hidden="true">' + (i + 1) + '</span><span class="nm">' + esc(t("c_" + k)) +
         (i === 0 ? '<small>' + esc(t("pri_top")) + "</small>" : "") + "</span>" +
         '<button type="button" data-pri="' + k + '" data-dir="-1" aria-label="' + esc(t("up") + ": " + t("c_" + k)) + '"' + (i === 0 ? " disabled" : "") + ">&uarr;</button>" +
         '<button type="button" data-pri="' + k + '" data-dir="1" aria-label="' + esc(t("down") + ": " + t("c_" + k)) + '"' + (i === n - 1 ? " disabled" : "") + ">&darr;</button></li>";
@@ -1239,7 +1212,87 @@
     bindPriorities($(".g-sheet"));
   }
 
+  /** Drag to reorder. The dragged row follows the pointer; the rows it passes slide out of its way. Only
+   *  transforms change while dragging (GPU, no layout), and the new order is committed after the drop lands,
+   *  so the rerender lands on exactly what is already on screen. Mouse: drag the row. Touch: drag the grip,
+   *  so the panel still scrolls. The arrow buttons stay for keyboards and screen readers. */
+  function startDrag(ol, li, e) {
+    var sh = $(".g-sheet"), items = Array.prototype.slice.call(ol.children), from = items.indexOf(li), n = items.length;
+    var rects = items.map(function (x) { return x.getBoundingClientRect(); });
+    var gap = n > 1 ? rects[1].top - rects[0].bottom : 6, step = rects[from].height + gap;
+    var startY = e.clientY, lastY = e.clientY, scroll0 = sh.scrollTop, to = from, dy = 0, raf = 0, done = false;
+    // A little travel past each end, so the row's middle can cross the first or last row's middle.
+    var reach = rects[from].height / 2 + gap, minDy = rects[0].top - rects[from].top - reach, maxDy = rects[n - 1].bottom - rects[from].bottom + reach;
+    li.setPointerCapture(e.pointerId);
+    li.classList.add("dragging"); ol.classList.add("sorting");
+    function offsetTo(t) {          // how far the dragged row travels to land in slot t
+      var off = 0, i;
+      if (t > from) for (i = from + 1; i <= t; i++) off += rects[i].height + gap;
+      else for (i = t; i < from; i++) off -= rects[i].height + gap;
+      return off;
+    }
+    function frame() {
+      raf = 0;
+      if (done) return;
+      if (update()) raf = requestAnimationFrame(frame);
+    }
+    function update() {
+      var edge = sh.getBoundingClientRect(), speed = 0;           // scroll the panel near its edges
+      if (lastY < edge.top + 48) speed = -Math.ceil((edge.top + 48 - lastY) / 6);
+      else if (lastY > edge.bottom - 72) speed = Math.ceil((lastY - edge.bottom + 72) / 6);
+      if (speed) sh.scrollTop += speed;
+      dy = Math.max(minDy, Math.min(maxDy, lastY - startY + sh.scrollTop - scroll0));
+      var center = rects[from].top + rects[from].height / 2 + dy, t = from, i;
+      for (i = from + 1; i < n; i++) if (center >= rects[i].top + rects[i].height / 2) t = i;
+      for (i = from - 1; i >= 0; i--) if (center <= rects[i].top + rects[i].height / 2) t = i;
+      if (t !== to) { to = t; if (navigator.vibrate) try { navigator.vibrate(8); } catch (x) { /* fine */ } }
+      li.style.transform = "translate3d(0," + dy + "px,0) scale(1.025)";
+      items.forEach(function (x, j) {
+        if (x === li) return;
+        var shift = (from < to && j > from && j <= to) ? -step : (to < from && j >= to && j < from) ? step : 0;
+        x.style.transform = shift ? "translate3d(0," + shift + "px,0)" : "";
+      });
+      return !!speed;
+    }
+    function move(ev) { lastY = ev.clientY; if (!raf) raf = requestAnimationFrame(frame); }
+    function up(ev) {
+      if (ev && ev.clientY !== undefined) lastY = ev.clientY;
+      update();                       // land on where the pointer let go, not on the last painted frame
+      done = true;
+      li.removeEventListener("pointermove", move); li.removeEventListener("pointerup", up); li.removeEventListener("pointercancel", up);
+      if (raf) cancelAnimationFrame(raf);
+      li.classList.remove("dragging"); li.classList.add("landing");
+      li.style.transform = "translate3d(0," + offsetTo(to) + "px,0)";
+      var commit = function () {
+        if (commit.ran) return; commit.ran = true;
+        if (to !== from) {
+          var d = draft(), order = currentOrder(d), k = li.dataset.k;
+          order.splice(order.indexOf(k), 1); order.splice(to, 0, k);
+          if (isVa()) d.priorities = order; else d.priorities_us = order;
+          rerenderPriorities();
+        } else {
+          ol.classList.remove("sorting"); li.classList.remove("landing");
+          items.forEach(function (x) { x.style.transform = ""; });
+        }
+      };
+      li.addEventListener("transitionend", commit, { once: true });
+      setTimeout(commit, reduced ? 0 : 220);
+    }
+    li.addEventListener("pointermove", move);
+    li.addEventListener("pointerup", up);
+    li.addEventListener("pointercancel", up);
+  }
+
   function bindPriorities(sh) {
+    var ol = sh.querySelector(".g-pri");
+    if (ol) ol.querySelectorAll("li").forEach(function (li) {
+      li.addEventListener("pointerdown", function (e) {
+        if (e.button !== 0 || (e.target.closest && e.target.closest("button"))) return;
+        if (e.pointerType !== "mouse" && !(e.target.closest && e.target.closest(".grip"))) return;
+        e.preventDefault();
+        startDrag(ol, li, e);
+      });
+    });
     sh.querySelectorAll("[data-pri]").forEach(function (b) {
       b.addEventListener("click", function () {
         var d = draft(), order = currentOrder(d), k = b.dataset.pri, i = order.indexOf(k), j = i + (+b.dataset.dir);

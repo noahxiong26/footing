@@ -44,7 +44,7 @@ including rating as a signed-in viewer. Native-speaker review of all 8 translati
 
 **Computer layout (Version 2 of the Artifact, owner request: "computer friendly instead of phone first").**
 At 1100 px and wider, Virginia mode shows three columns: a persistent, searchable list of all 133 places
-(`.g-rail`, rendered by `renderRail()`), the map framed to the space between the panels (`sheetPad()` measures
+(removed in Version 5), the map framed to the space between the panels (`sheetPad()` measures
 both panels, `syncDesk()` applies the layout before any camera move), and a wider details panel
 (`--panel-w: clamp(440px, 34vw, 600px)`) with larger type and two-line mosaic labels. Arabic/Persian mirror it.
 Below 1100 px nothing changed. The top bar says "Hide this page" on desktop where that label is translated
@@ -91,6 +91,17 @@ language, no sideways scroll, no page errors; standalone smoke passes. The full 
   free), laundry/personal care, from fixed amounts scaled by the locality's 1-bedroom FMR against the Virginia
   median. Labelled "Estimate", explained on the card, **never counted in the score**. Replace with real data
   (e.g. BLS/USDA plans) before any real use.
+
+**Owner feedback round 2 (Version 5).**
+- **Priorities: drag to reorder** (`startDrag` in `globe.js`). Mouse drags the whole row; touch drags the grip
+  so the panel still scrolls. Only transforms change during the drag; the new order is committed after the drop
+  animation lands. The panel auto-scrolls near its edges; the drop uses the final pointer position. Measured in
+  headless Chromium: 16.7 ms median / 16.8 ms p95 frame time while dragging (60 fps). Up/down buttons remain for
+  keyboards and screen readers. The globe smoke now drags the last row to the top with a real mouse.
+- **The left "All places" rail is removed** (the nav's "All places" tab covers it). The computer layout is
+  map + wide right panel (mirrored in RTL); `sheetPad()` frames the map beside the panel.
+- **Numbers are centered** in rank columns and score chips.
+- **"Show my map" is now "Show my best fits"** (`showBest`, 9 languages).
 
 **UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
 1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the

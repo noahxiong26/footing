@@ -126,6 +126,19 @@ def run() -> int:
                 page.click(".g-pri li:nth-child(3) [data-pri][data-dir='-1']") if page.locator(
                     ".g-pri li:nth-child(3) [data-pri][data-dir='-1']").count() else page.click(".g-pri li:nth-child(3) button >> nth=0")
                 check(page.inner_text(".g-pri") != before, "priority order did not change")
+                # Drag with a real mouse: the last row to the top.
+                last = page.locator(".g-pri li").last
+                lk = last.get_attribute("data-k")
+                src, dst = last.locator(".nm").bounding_box(), page.locator(".g-pri li").first.bounding_box()
+                page.mouse.move(src["x"] + 20, src["y"] + src["height"] / 2)
+                page.mouse.down()
+                for i in range(1, 13):
+                    page.mouse.move(src["x"] + 20, src["y"] + src["height"] / 2 + (dst["y"] - src["y"] - 6) * i / 12)
+                    page.wait_for_timeout(16)
+                page.mouse.up()
+                page.wait_for_timeout(400)
+                check(page.locator(".g-pri li").first.get_attribute("data-k") == lk, "dragging the last priority to the top did not move it")
+                check(page.locator(".g-pri .w, .g-pri .wbar").count() == 0 or "%" not in page.inner_text(".g-pri"), "priorities still show percentages")
                 page.evaluate("document.querySelector('.g-sheet').scrollTop = 0")
                 shot("02_profile")
                 page.locator(".g-pri").scroll_into_view_if_needed()
