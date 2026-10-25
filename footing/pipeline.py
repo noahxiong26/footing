@@ -62,7 +62,9 @@ def _manifest_tile(folder: Path) -> str | None:
     m = folder / "MANIFEST.json"
     if not m.exists():
         return None
-    point = json.loads(m.read_text(encoding="utf-8"))["point"]
+    point = json.loads(m.read_text(encoding="utf-8")).get("point")
+    if not point:   # statewide data sets (e.g. fixtures/va_*) have no single point; they are not receipt replays
+        return None
     return snap_to_tile(point["lat"], point["lon"])[0]
 
 
@@ -101,6 +103,8 @@ def recorded_sets(settings: Settings) -> list[dict]:
     by_tile: dict[str, Path] = {}
     for f in folders:                       # one entry per tile: the newest recording
         t = _manifest_tile(f)
+        if t is None:                       # statewide data set with no single point: not a receipt replay
+            continue
         if t not in by_tile or _captured_at(f) > _captured_at(by_tile[t]):
             by_tile[t] = f
     out = []
