@@ -43,18 +43,22 @@
     return out;
   }
   function heat() {
-    var now = Date.now(), byTile = {}, byState = {};
+    var now = Date.now(), byTile = {}, byState = {}, byFips = {};
     rows.forEach(function (r) {
       if (!r || typeof r.overall !== "number" || !r.state) return;
       (byTile[r.tile] = byTile[r.tile] || []).push(r);
       (byState[r.state] = byState[r.state] || []).push(r);
+      if (r.fips) (byFips[r.fips] = byFips[r.fips] || []).push(r);
     });
-    var tiles = Object.keys(byTile).sort().map(function (k) {
+    var localities = {};
+    Object.keys(byFips).forEach(function (k) { localities[k] = summarize(byFips[k], now); });
+    // Same rule as the server: a tile is only shown once 3 or more ratings are in it.
+    var tiles = Object.keys(byTile).filter(function (k) { return byTile[k].length >= 3; }).sort().map(function (k) {
       var s = summarize(byTile[k], now); s.tile = k; s.lat = byTile[k][0].lat; s.lon = byTile[k][0].lon; s.state = byTile[k][0].state; return s;
     });
     var states = {};
     Object.keys(byState).forEach(function (k) { states[k] = summarize(byState[k], now); });
-    return Promise.resolve({ tiles: tiles, states: states, total: rows.length,
+    return Promise.resolve({ tiles: tiles, states: states, localities: localities, total: rows.length,
       method: "time-decayed Bayesian average, prior 3/5 with m=5, half-life 90 days" });
   }
 
@@ -62,20 +66,22 @@
     var lat = +body.lat, lon = +body.lon;
     var i = Math.floor(lat / TILE), j = Math.floor(lon / TILE);
     var clat = Math.round((i + 0.5) * TILE * 1e4) / 1e4, clon = Math.round((j + 0.5) * TILE * 1e4) / 1e4;
-    var state = stateAt(clat, clon) || stateAt(lat, lon);
-    if (!state) return Promise.reject(new Error("Ratings are for places in the 50 states and DC."));
+    if (!isFinite(lat) || !isFinite(lon)) return Promise.reject(new Error("That location is not a real number."));
+    var fips = window.FootingGlobe && FootingGlobe.localityAt(lat, lon);
+    if (!fips) return Promise.reject(new Error("Footing covers Virginia only for now."));
+    var state = "VA";
     var tile = "t" + i + "_" + j, now = Date.now(), hour = Math.floor(now / 3600000) * 3600000;
     var mine = get("footing.demo.rated", []).filter(function (x) { return now - x.t < 86400000; });
     if (mine.length >= 20) return Promise.reject(new Error("Daily rating limit reached on this device."));
     if (mine.some(function (x) { return x.tile === tile; })) return Promise.reject(new Error("You already rated this place today."));
     // Exactly these fields are stored. No profile, no status, no device id, no text.
-    var doc = { tile: tile, lat: clat, lon: clon, state: state, hour_ms: hour, overall: body.overall,
+    var doc = { tile: tile, lat: clat, lon: clon, state: state, fips: fips, hour_ms: hour, overall: body.overall,
       safe: body.safe || null, respect: body.respect || null, help: body.help || null,
       tags: (body.tags || []).filter(function (t) { return TAGS.indexOf(t) !== -1; }).sort() };
     var done = function (shared) {
       mine.push({ tile: tile, t: now }); put("footing.demo.rated", mine);
       if (!shared) { rows.push(doc); }
-      return { ok: true, tile: tile, state: state, shared: shared };
+      return { ok: true, tile: tile, state: state, fips: fips, shared: shared };
     };
     if (!db) return Promise.resolve(done(false));
     return db.collection("ratings").add(doc).then(function () { return done(true); }, function (e) {
@@ -89,6 +95,7 @@
     noImagery: true,
     dataBase: "data/",
     policy: function () { return json("data/policy.json"); },
+    va: function () { return json("data/va.json"); },
     towns: function () { return json("data/towns.json"); },
     receipt: function () { return json("data/receipt-christiansburg.json"); },
     heat: heat,
