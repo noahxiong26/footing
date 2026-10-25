@@ -115,7 +115,13 @@ def test_local_camping_rules_score_as_documented():
     assert get("51770")["score"] == 35         # Roanoke city: limited ban
     assert get("51540")["score"] == 60         # Charlottesville: site closure
     assert get("51590")["score"] is None       # Danville: proposed only
-    assert get("51059")["score"] is None       # Fairfax County: policy, not ordinance
+    # Fairfax County: its encampment-clearing policy (not an ordinance, unscored) was replaced on 2026-10-25
+    # by Park Authority Regulations §1.03(A), primary rule text limited to FCPA parks -> limited ban.
+    assert get("51059")["score"] == 35 and get("51059")["source"] == "fairfax_parks_camping"
+    assert get("51600")["score"] == 35         # Fairfax city is a separate locality with its own park rule
+    assert get("51520")["score"] == 0          # Bristol: provisional broad ban, scope still disputed
+    assert "provisional" in get("51520")["reason"]
+    assert get("51810")["score"] is None       # Virginia Beach: researched, code unreadable -> still Unknown
 
 
 def test_rent_uses_the_bedrooms_the_person_needs():

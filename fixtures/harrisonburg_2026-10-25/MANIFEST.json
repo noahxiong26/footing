@@ -17,7 +17,8 @@
       "method": "GET",
       "form": null,
       "json_body": null,
-      "sha256": "0f62144a045d0c7b9061e50d2a916a0b7ec5fe52373a98b324cc98f6e05e5dd2"
+      "sha256": "9e990b7b2e1ac3dc1132d068a41673fcfcf1d25287f5573aeebafb6c9ae9fd7c",
+      "sha256_windows_crlf": "0f62144a045d0c7b9061e50d2a916a0b7ec5fe52373a98b324cc98f6e05e5dd2"
     },
     "nws__alerts.json": {
       "url": "https://api.weather.gov/alerts/active?point=38.4450%2C-78.8650",
@@ -28,7 +29,8 @@
       "method": "GET",
       "form": null,
       "json_body": null,
-      "sha256": "7dd472b2101c07ffbcecb7b1569789bc173ee57ef9de649aad39971c3b8ee03e"
+      "sha256": "b23a3b7241cee0d436f8efb7b9ced66c5b9038cf7000259469a27fd7ab13c4c3",
+      "sha256_windows_crlf": "7dd472b2101c07ffbcecb7b1569789bc173ee57ef9de649aad39971c3b8ee03e"
     },
     "nws__points.json": {
       "url": "https://api.weather.gov/points/38.4450,-78.8650",
@@ -39,7 +41,8 @@
       "method": "GET",
       "form": null,
       "json_body": null,
-      "sha256": "07d5cb591c88b07dec2ecf4a356128a6391179375c8803b45ada80c79e45552c"
+      "sha256": "0559fe62612160f5f7dd859433c56681792194728c5d0ff4e7d2aeda360b621c",
+      "sha256_windows_crlf": "07d5cb591c88b07dec2ecf4a356128a6391179375c8803b45ada80c79e45552c"
     },
     "open_meteo__forecast.json": {
       "url": "https://api.open-meteo.com/v1/forecast?latitude=38.445&longitude=-78.865&daily=temperature_2m_min%2Ctemperature_2m_max&temperature_unit=fahrenheit&timezone=auto&forecast_days=7",
@@ -50,7 +53,8 @@
       "method": "GET",
       "form": null,
       "json_body": null,
-      "sha256": "ecba45843372784556942145c94fbb8faa899c83f8ba8efd8bf685b083404db3"
+      "sha256": "25d6e974b816bb7b37457b6abbb3a9a51416a2ed7cfc15dad0ffd93257c3ad8c",
+      "sha256_windows_crlf": "ecba45843372784556942145c94fbb8faa899c83f8ba8efd8bf685b083404db3"
     },
     "osm__amenities.json": {
       "url": "https://overpass.maprva.org/api/interpreter",
@@ -65,7 +69,8 @@
       "json_body": null,
       "user_agent": "Mozilla/5.0 (compatible; Footing public-data audit)",
       "timeout_s": 45.0,
-      "sha256": "c04ab4f6617873e6d66566d655220259be0b52eb6f5020d3774ad0136eb44a0d"
+      "sha256": "4457f327521ffce9b55eea8ff54e36df0d049a12ea7c892c85200d74ddea2c69",
+      "sha256_windows_crlf": "c04ab4f6617873e6d66566d655220259be0b52eb6f5020d3774ad0136eb44a0d"
     },
     "snap__layer_meta.json": {
       "url": "https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/snap_retailer_location_data/FeatureServer/0?f=json",
@@ -76,7 +81,8 @@
       "method": "GET",
       "form": null,
       "json_body": null,
-      "sha256": "b2dbdfb106898eea442791ae7a3769505a2e6a49ac2abc0a15baaac7eabe60c8"
+      "sha256": "cb053510d1cbf9e0b50645e3962980a477214455d3eae388647ace0d7078a759",
+      "sha256_windows_crlf": "b2dbdfb106898eea442791ae7a3769505a2e6a49ac2abc0a15baaac7eabe60c8"
     },
     "snap__retailers.json": {
       "url": "https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/snap_retailer_location_data/FeatureServer/0/query?where=1%3D1&geometry=-78.92241%2C38.40003%2C-78.80759%2C38.48997&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&resultOffset=0&resultRecordCount=1000&f=json",
@@ -87,7 +93,8 @@
       "method": "GET",
       "form": null,
       "json_body": null,
-      "sha256": "d00710f88ba6862a165e9cba4361590f2818274064c0980a239a8054dcfe1e44"
+      "sha256": "332c12a73defed4446ba1c267c9d36718ca46c3acfaa57c506e294f2750221e9",
+      "sha256_windows_crlf": "d00710f88ba6862a165e9cba4361590f2818274064c0980a239a8054dcfe1e44"
     },
     "urban_ed__schools_51.json": {
       "url": "https://educationdata.urban.org/api/v1/schools/ccd/directory/2022/?fips=51",
@@ -98,7 +105,8 @@
       "method": "GET",
       "form": null,
       "json_body": null,
-      "sha256": "26d41f6793c3b783aadbfa711b057c8a93366b5c39a569e0ab9c751d43f2d2bf"
+      "sha256": "9050b96eda7c2744a3d1556ea19b8f4bde0dded3637a8beeb1e1ee3f67acb01b",
+      "sha256_windows_crlf": "26d41f6793c3b783aadbfa711b057c8a93366b5c39a569e0ab9c751d43f2d2bf"
     }
   },
   "not_captured": {
@@ -517,5 +525,6 @@
       "captured_json": 1,
       "failed": 3
     }
-  ]
+  ],
+  "sha256_basis": "sha256 is over the saved JSON text with LF line endings (footing.http.content_sha256). The 2026-10-25 capture ran on Windows and first hashed the CRLF form; that value is kept as sha256_windows_crlf. Both describe the same bytes apart from line endings (checked 2026-10-25)."
 }

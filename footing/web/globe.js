@@ -697,7 +697,30 @@
       '<ul class="g-list">' + vaSorted().map(vaRowHTML).join("") + "</ul>";
   }
 
-  /** One short line per component in the person's language, built from the numbers (details stay in English). */
+  /** Details runs in the person's language. Recorded evidence quotes stay English and are marked so.
+   *  A missing template must never show a wrong sentence: it falls back to the engine's English reason,
+   *  labelled "Details (in English)", and logs once so the gap is visible in the smoke tests. */
+  function reasonRuns(c) {
+    if (S.lang !== "en" && I.vaReasonParts && c.reason_data) {
+      try { return { runs: I.vaReasonParts(S.lang, c), translated: true }; }
+      catch (e) { if (window.console) console.warn("Footing: no " + S.lang + " reason for " + c.id + ": " + e.message); }
+    }
+    return { runs: [{ text: c.reason, lang: "en", kind: "translation" }], translated: S.lang === "en" };
+  }
+  function reasonHTML(runs) {
+    return runs.map(function (p) {
+      return '<span lang="' + esc(p.lang) + '"' + (p.lang === "en" ? ' dir="ltr"' : "") +
+        (p.kind === "quote" ? ' class="g-quote"' : "") + ">" + esc(p.text) + "</span>";
+    }).join(" ");
+  }
+  /** The short line uses only the translated runs; the English evidence quote stays in Details. */
+  function reasonLine(c) {
+    var rr = reasonRuns(c);
+    var own = rr.runs.filter(function (p) { return p.kind === "translation"; });
+    return (own.length ? own : rr.runs).map(function (p) { return p.text; }).join(" ");
+  }
+
+  /** One short line per component in the person's language, built from the numbers. */
   function localLine(c, loc) {
     var kids = !!((S.profile || {}).household || {}).kids;
     if (c.id === "rent" && c.parts) return t("line_rent", { rent: money(c.parts.rent), size: t("sz" + c.parts.bedrooms), hours: Math.round(c.parts.hours) });
@@ -707,7 +730,7 @@
       ["food_bank", "soup_kitchen", "shelter", "day_center", "clinic", "library", "toilets", "shower", "drinking_water", "laundry"].forEach(function (k) { help += osm[k] || 0; });
       return t("line_services", { groc: num(s.snap.full_grocery), help: num(help) }) + (s.fare_free_transit ? " " + t("line_transit") : "");
     }
-    if (c.id === "laws") return c.score === null ? (loc.local_rule ? c.reason : t("law_null")) : t("law_" + c.score);
+    if (c.id === "laws") return c.score === null ? (loc.local_rule ? reasonLine(c) : t("law_null")) : t("law_" + c.score);
     if (c.id === "safety") return t("safe_" + c.score);
     if (c.id === "crime") {
       if (c.parts && c.parts.level === "block") return t("line_crime_block", {
@@ -716,7 +739,7 @@
       return c.score === null ? t("crime_null") : t("line_crime", { x: num(loc.crime.violent_per_1k) });
     }
     if (c.id === "community") return c.score === null ? t("community_null") : t("line_community", { n: num(((S.heat && S.heat.localities) || {})[loc.fips] ? S.heat.localities[loc.fips].n : 0) });
-    return c.reason;
+    return reasonLine(c);
   }
 
   function sourceLinks(c) {
@@ -787,12 +810,12 @@
     var known = r.components.filter(function (c) { return c.score !== null; });
     var unknown = r.components.filter(function (c) { return c.score === null; });
     var card = function (c) {
-      var unk = c.score === null;
+      var unk = c.score === null, rr = reasonRuns(c);
       return '<li data-component="' + c.id + '" class="g-c2' + (unk ? " unk" : "") + '"><div class="hd"><span class="name">' + esc(t("c_" + c.id)) + "</span>" +
         '<span class="num" style="' + (unk ? "" : "background:" + rampColor(c.score) + ";color:" + inkOn(c.score)) + '">' + (unk ? "?" : Math.round(c.score)) + "</span></div>" +
         (unk ? "" : '<span class="w">' + esc(t("weightOf", { w: Math.round(100 * c.share) })) + "</span>") +
         '<p class="line">' + esc(localLine(c, loc)) + "</p>" +
-        '<details><summary>' + esc(S.lang === "en" ? t("details") : t("detailsEn")) + '</summary><p lang="en">' + esc(c.reason) + "</p>" +
+        '<details><summary>' + esc(rr.translated ? t("details") : t("detailsEn")) + '</summary><p class="g-reason">' + reasonHTML(rr.runs) + "</p>" +
         (sourceLinks(c) ? '<ul class="g-srcs">' + sourceLinks(c) + "</ul>" : "") + "</details></li>";
     };
     return '<h2 id="g-loc-title">' + esc(r.name) + '</h2><p class="g-kind">' + esc(loc.kind === "city" ? t("city") : t("county")) + "</p>" +

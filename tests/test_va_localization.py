@@ -80,6 +80,15 @@ def corpus():
     loc["coc"]["people_in_families"] = 0
     loc["coc"]["unsheltered_carried_from_2024"] = True
     rare["localities"] = {"51121": loc}
+    # No real locality has a clearing policy since Fairfax County's was replaced by a park rule; keep the
+    # template exercised with the retired row's wording.
+    rare_policy = copy.deepcopy(VA)
+    policy_loc = rare_policy["localities"]["51059"]
+    policy_loc["local_rule"] = {"status": "clearing_policy", "source": "fairfax_encampments", "score": None,
+        "note": "The county clears encampments on land it owns under its own guidelines (not an ordinance we "
+                "could find). Other owners (state, schools, parks) can use trespass law."}
+    rare_policy["localities"] = {"51059": policy_loc}
+    requests.append({"fips": "51059", "profile": {}, "va": rare_policy})
     requests.append({"fips": "51121", "profile": {"show_crime": True, "household": {"kids": True}}, "va": rare})
     py = []
     for r in requests:

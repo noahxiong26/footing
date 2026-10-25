@@ -8,7 +8,7 @@ import pytest
 
 from footing.config import Settings
 from footing.geo import snap_to_tile
-from footing.http import Fetcher
+from footing.http import Fetcher, content_sha256
 from footing.pipeline import build_receipt, recorded_sets, resolve_replay
 from footing.sources import ALL_SOURCES
 
@@ -66,7 +66,9 @@ def test_capture_manifest_and_receipt_match_actual_coverage(town):
     requests = [json.loads(line) for line in (folder / "REQUESTS.jsonl").read_text(encoding="utf-8").splitlines()]
     for filename, metadata in manifest["files"].items():
         body = (folder / filename).read_bytes()
-        assert hashlib.sha256(body).hexdigest() == metadata["sha256"]
+        assert content_sha256(body) == metadata["sha256"]
+        # The Windows capture first hashed the CRLF checkout; keep that link to the original receipt.
+        assert hashlib.sha256(body.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")).hexdigest() == metadata["sha256_windows_crlf"]
         assert json.loads(body)  # Reject empty bodies / JSON null / empty HTML.
         assert metadata["live"] and metadata["trimmed"] is False
         started = datetime.fromisoformat(metadata["started_at"])
@@ -87,3 +89,14 @@ def test_capture_manifest_and_receipt_match_actual_coverage(town):
     for unknown in receipt["unknowns"]:
         assert unknown["reason"]
     assert all(m["value"] is None for m in receipt["money"] if m["state"] == "unknown")
+
+
+def test_receipt_hash_ignores_checkout_line_endings():
+    lf = b'{\n "a": 1\n}'
+    assert content_sha256(lf) == content_sha256(lf.replace(b"\n", b"\r\n")) == hashlib.sha256(lf).hexdigest()
+    assert content_sha256(lf) != content_sha256(b'{\n "a": 2\n}')
+
+
+def test_fixtures_are_pinned_to_lf_in_git():
+    attributes = (ROOT.parent / ".gitattributes").read_text(encoding="utf-8")
+    assert "fixtures/** text eol=lf" in attributes

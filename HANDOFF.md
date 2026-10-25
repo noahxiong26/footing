@@ -1,5 +1,64 @@
 # HANDOFF — Footing (read this first)
 
+## S9.0 A clickable draft to review the UI; S8 checkpoint finished (2026-10-25, Claude Opus 5.5)
+
+**Live demo (private to the owner until shared):** https://claude.ai/artifact/DDBbpzuwhFrMmQThLwLitN
+The standalone app as a claude.ai Artifact with the `db` capability. It has the 133-locality Virginia map, the
+score mosaic, translated Details in 9 languages, search, six recorded towns with place dots, and ratings. Ratings
+go to the artifact's shared `ratings` collection for signed-in viewers who can write, and stay on the device
+otherwise; the toast says which. Rebuild and republish with
+`python scripts/build_standalone_demo.py out/demo-artifact --fragment`, then publish `out/demo-artifact/index.html`
+with its files to the same URL. **The owner asked for this run to end on a presentable, interactive draft so
+the next session can improve the UI from it.** `demo/SITES.json` (a ChatGPT Site) is superseded and unused.
+
+What this session did, on top of S8's checkpoint:
+
+- **Tests: 251 pass**, builder `--check` passes (Linux). S8 left 237/3 failed/8 errors on Windows.
+  - Town captures: the manifests' sha256 values were taken over the Windows CRLF checkout, so all five failed on
+    Linux. Hashes are now taken over LF text (`footing.http.content_sha256`), the recorder and manifest writers
+    always write LF, `.gitattributes` pins `fixtures/**` to LF, and each file keeps its original
+    `sha256_windows_crlf` (checked: same bytes apart from line endings).
+  - `test_healthz_reports_demo` / `test_plan_tonight_card_compare` now expect six recorded towns; the "not
+    recorded -> no score" case uses Danville instead of Roanoke.
+  - The CP1252 errors: every Node subprocess call in the tests decodes UTF-8; a new test fails if one does not.
+- **Locality JSON regenerated** from the reviewed ordinance ledger. Exactly 10 rows changed: nine `limited_ban`
+  (35) park/facility rules (Arlington, Fairfax County, Henrico, Loudoun, Alexandria, Chesapeake, Fairfax city,
+  Lynchburg, Newport News) and Bristol's corrected citation (still provisional broad/0). Fairfax County's
+  clearing policy was replaced by FCPA §1.03(A); the test now says so. No locality has a clearing policy any more,
+  so the translation corpus keeps that template covered with a synthetic row.
+- **Details are translated in the app.** `globe.js` renders `FootingI18n.vaReasonParts`: own-language runs,
+  English evidence quotes in `<span lang="en" dir="ltr" class="g-quote">` after a translated label, and the
+  heading is `t("details")`. Unscored-law and fall-through summary lines use the translated runs too. A missing
+  template falls back to the English reason under "Details (in English)" and logs `Footing: no <lang> reason`,
+  which the smoke treats as a failure. Service-worker caches are v11.
+- **Demo ships all six town receipts** (built from `fixtures/` with `recorded_sets`, not a hard-coded list).
+- **`scripts/ui_globe_smoke.py` covers Tagalog** (en, ar, tl × 320/390/1280) and checks every Details card
+  against `FootingI18n.vaReason`. Its map tap now aims between the top bar and the legend/sheet.
+
+**What was and was not checked here.** `scripts/ui_standalone_smoke.py` passed on the rebuilt demo (11 screens,
+21 Christiansburg dots, no /api calls, no profile data sent). The extended full-app smoke ran through en and ar
+and reached Tagalog at 320 px, where the old tap heuristic hit the taller legend; that fix is in, but **the full
+3-language run was not repeated** (the owner switched the run's goal to the demo). The live Artifact was
+published and its `ratings` store read back (empty, as expected); **nobody has clicked the hosted page yet**,
+including rating as a signed-in viewer. Native-speaker review of all 8 translations is still pending.
+
+**UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
+1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the
+   layer picker is cut to "Angkop para"; the brand is cut to "FOOTIN". Consider shorter legend labels or a
+   collapsible legend at narrow widths.
+2. The map area above the sheet is small on phones once a locality is open (about 150 px between the top bar
+   and the legend).
+3. Place dots use English kind names in their popups (`kind.replace(/_/g, " ")`, "min walk", "Open now").
+4. Decide whether a park-only "camp only in designated areas" rule should score the same 35 as Roanoke's
+   downtown sidewalk ban. Researched localities now score lower than unchecked ones (which are not counted).
+
+**Next, in order:** review the live demo and list UI changes → run both smokes in full and look at the
+screenshots → the 10-locality independent audit (sample in S8.0; audit inputs are on the Windows machine only)
+→ remaining ordinance gaps from `data_raw/local_rules_research.json` next_action entries (Bristol current code
+first) → native review of translations.
+
+---
+
 ## S8.0 Claude: resume this checkpoint first (2026-10-25, Codex)
 
 The owner asked to finish the session and hand work to **Claude**. This is an unfinished checkpoint on

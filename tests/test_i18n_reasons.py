@@ -12,6 +12,6 @@ pytestmark = pytest.mark.skipif(shutil.which("node") is None, reason="node not i
 
 def test_every_engine_reason_has_spanish():
     out = json.loads(subprocess.run(["node", str(HERE / "js" / "check_reasons.js")], capture_output=True,
-                                    text=True, check=True).stdout)
+                                    text=True, encoding="utf-8", check=True).stdout)
     assert out["checked"] > 10000
     assert out["bad"] == [], out["bad"][:5]

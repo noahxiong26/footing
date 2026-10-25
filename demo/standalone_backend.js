@@ -97,7 +97,7 @@
     policy: function () { return json("data/policy.json"); },
     va: function () { return json("data/va.json"); },
     towns: function () { return json("data/towns.json"); },
-    receipt: function () { return json("data/receipt-christiansburg.json"); },
+    receipt: function (town) { return json("data/receipt-" + encodeURIComponent(town.set) + ".json"); },
     heat: heat,
     rate: rate,
     hide: function () {

@@ -20,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from footing import cli, pipeline
 from footing.config import Settings
 from footing.geo import snap_to_tile
-from footing.http import Fetcher, SourceHTTPError
+from footing.http import Fetcher, SourceHTTPError, content_sha256
 from footing.sources.base import Source
 
 TOWNS = {
@@ -74,7 +74,7 @@ def record_town(slug: str, out: Path, resume: bool = False, *, timeout_s=20.0,
     old_files = prior.get("files", {})
 
     def append_log(entry):
-        with (out / "REQUESTS.jsonl").open("a", encoding="utf-8") as f:
+        with (out / "REQUESTS.jsonl").open("a", encoding="utf-8", newline="\n") as f:
             f.write(json.dumps(safe(entry), ensure_ascii=True) + "\n")
 
     class AuditedFetcher(Fetcher):
@@ -141,7 +141,7 @@ def record_town(slug: str, out: Path, resume: bool = False, *, timeout_s=20.0,
             try:
                 if filename in old_files and filename != "kroger__token.json":
                     body = (out / filename).read_bytes()
-                    if hashlib.sha256(body).hexdigest() != old_files[filename]["sha256"]:
+                    if content_sha256(body) != old_files[filename]["sha256"]:
                         raise ValueError(f"{filename}: saved response hash changed")
                     data = json.loads(body)
                     self.recorded[filename] = old_files[filename]["url"]
@@ -183,7 +183,7 @@ def record_town(slug: str, out: Path, resume: bool = False, *, timeout_s=20.0,
         else:
             entry = next(r for r in requests if r["file"] == filename and r["outcome"] == "captured_json")
             info.update({k: entry[k] for k in ("started_at", "finished_at", "method", "form", "json_body", "user_agent", "timeout_s")})
-            info["sha256"] = hashlib.sha256((out / filename).read_bytes()).hexdigest()
+            info["sha256"] = content_sha256((out / filename).read_bytes())
     manifest.update(
         how="Existing footing.cli record / pipeline with scripts/record_towns.py request and source audit.",
         first_capture_started_at=prior.get("first_capture_started_at", started),
@@ -195,7 +195,7 @@ def record_town(slug: str, out: Path, resume: bool = False, *, timeout_s=20.0,
                     "captured_json": sum(r["outcome"] == "captured_json" for r in requests),
                     "failed": sum(r["outcome"] == "failed" for r in requests)}],
     )
-    manifest_path.write_text(json.dumps(safe(manifest), indent=2) + "\n", encoding="utf-8")
+    manifest_path.write_text(json.dumps(safe(manifest), indent=2) + "\n", encoding="utf-8", newline="\n")
     return manifest
 
 

@@ -40,7 +40,7 @@ process.stdout.write(JSON.stringify({ langs: I.LANGS, rtl: I.RTL, machine: I.MAC
 def i18n():
     if not shutil.which("node"):
         pytest.skip("node not installed")
-    r = subprocess.run(["node", "-e", SCRIPT, str(WEB)], capture_output=True, text=True, check=True)
+    r = subprocess.run(["node", "-e", SCRIPT, str(WEB)], capture_output=True, text=True, encoding="utf-8", check=True)
     return json.loads(r.stdout)
 
 
@@ -108,3 +108,14 @@ def test_every_reason_template_is_explicitly_translated(i18n):
             assert sorted(re.findall(r"\{\w+\}", text)) == sorted(re.findall(r"\{\w+\}", tables["en"][key])), (lang, key)
             if lang != "en":
                 assert text != tables["en"][key], (lang, key)
+
+
+def test_node_text_output_is_always_decoded_as_utf8():
+    """Windows decodes subprocess text as CP1252 by default and broke on translated output (S8.0)."""
+    import re
+    here = Path(__file__).resolve().parent
+    for path in here.glob("test_*.py"):
+        src = path.read_text(encoding="utf-8")
+        for call in re.findall(r"subprocess\.run\((?:[^()]|\([^()]*\))*\)", src):
+            if "text=True" in call:
+                assert 'encoding="utf-8"' in call or 'encoding="utf8"' in call, (path.name, call[:80])

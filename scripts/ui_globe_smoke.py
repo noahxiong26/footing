@@ -29,7 +29,7 @@ OFFLINE_OK = ("tiles.maps.eox.at", "basemaps.cartocdn.com", "fonts.g", "demotile
 SECRET_WORDS = ("undocumented", "mixed", "status", "pregnant", "no_id", "situation", "household", "priorities")
 ARGS = ["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"]
 WIDTHS = (320, 390, 1280)
-LANGS = ("en", "ar")
+LANGS = ("en", "ar", "tl")   # Tagalog: added in S8, left-to-right, Latin script
 CHRISTIANSBURG = (37.1299, -80.4089)
 
 # Run in the page: everything that must hold on every screen, whatever the width or language.
@@ -75,11 +75,12 @@ def run() -> int:
             for w in WIDTHS:
                 tag = f"{lang}_{w}"
                 ctx = b.new_context(viewport={"width": w, "height": 800 if w > 900 else 844},
-                                    device_scale_factor=1, locale="ar" if lang == "ar" else "en-US")
+                                    device_scale_factor=1, locale={"ar": "ar", "tl": "fil-PH"}.get(lang, "en-US"))
                 page = ctx.new_page()
                 page.on("pageerror", lambda e, tag=tag: errors.append(f"[{tag}] page error: {e}"))
-                page.on("console", lambda m, tag=tag: errors.append(f"[{tag}] console: {m.text}") if m.type == "error"
-                        and "Failed to load resource" not in m.text and "net::" not in m.text else None)
+                page.on("console", lambda m, tag=tag: errors.append(f"[{tag}] console: {m.text}") if (m.type == "error"
+                        and "Failed to load resource" not in m.text and "net::" not in m.text)
+                        or "Footing: no " in m.text else None)   # a missing reason template is a failure
                 page.on("requestfailed", lambda r, tag=tag: None if any(h in r.url for h in OFFLINE_OK)
                         else errors.append(f"[{tag}] request failed: {r.url}"))
                 page.on("request", lambda r: sent.append({"url": r.url, "body": r.post_data or ""}))
@@ -108,7 +109,8 @@ def run() -> int:
                 if lang == "ar":
                     check(page.evaluate("getComputedStyle(document.querySelector('.g-sheet')).direction") == "rtl",
                           "sheet text is not laid out right-to-left")
-                    check(page.is_visible(".g-machine"), "Arabic screen does not say it is machine translated")
+                if lang != "en":
+                    check(page.is_visible(".g-machine"), f"{lang} screen does not say it is machine translated")
                 shot("01_intro", 1000)
 
                 # Profile: status, household, situation, a priority moved up.
@@ -147,7 +149,24 @@ def run() -> int:
                 d = page.locator(".g-c2 details >> nth=0")
                 d.locator("summary").click()
                 check(d.evaluate("e => e.open"), "Details did not open")
-                check(len(d.locator("p[lang=en]").inner_text().strip()) > 20, "Details has no reason text")
+                check(len(d.locator("p.g-reason").inner_text().strip()) > 20, "Details has no reason text")
+                # Every part's Details is in the person's language; only a labelled recorded quote may be English.
+                det = page.evaluate("""(lang) => { const I = FootingI18n, s = FootingGlobe._state;
+                  const r = FootingVaFit.fitScore(s.elig, s.va, s.selected, s.profile, (s.heat || {}).localities || {});
+                  return [...document.querySelectorAll('.g-c2')].map(li => {
+                    const c = r.components.find(x => x.id === li.dataset.component);
+                    return {id: c.id, summary: li.querySelector('summary').textContent, want: I.t(lang, 'details'),
+                      text: li.querySelector('p.g-reason').textContent, english: c.reason,
+                      expect: I.vaReason(lang, c),
+                      stray: [...li.querySelectorAll('p.g-reason [lang=en]')].filter(e => !e.classList.contains('g-quote')).length,
+                      line: li.querySelector('.line').textContent}; }); }""", lang)
+                for c in det:
+                    check(c["summary"] == c["want"], f"{c['id']} Details heading is {c['summary']!r}, not {c['want']!r}")
+                    check(c["text"] == c["expect"], f"{c['id']} Details text differs from FootingI18n.vaReason")
+                    if lang != "en":
+                        check(c["text"] != c["english"], f"{c['id']} Details is still English")
+                        check(c["stray"] == 0, f"{c['id']} Details has unlabelled English")
+                        check(c["line"] != c["english"], f"{c['id']} summary line is the raw English reason")
                 d.scroll_into_view_if_needed()
                 shot("06_details")
 
@@ -179,8 +198,13 @@ def run() -> int:
                     page.wait_for_timeout(400)
                     page.evaluate("""([lat, lon]) => { const m = FootingGlobe._state.map;
                       m.stop(); const c = m.getCanvas().getBoundingClientRect();
+                      // Aim at the middle of the map a person can actually see: below the top bar, above the
+                      // legend and the sheet. Longer labels (Tagalog at 320 px) make the legend taller.
                       const top = document.querySelector('.g-sheet').getBoundingClientRect().top;
-                      const y = top > 150 ? (110 + top) / 2 : c.top + c.height / 2;
+                      const bar = document.querySelector('.g-top').getBoundingClientRect().bottom;
+                      const leg = document.querySelector('.g-legend');
+                      const floor = Math.min(top, leg && !leg.hidden ? leg.getBoundingClientRect().top : top);
+                      const y = top > 150 ? (bar + floor) / 2 : c.top + c.height / 2;
                       m.easeTo({center: [lon, lat], zoom: 12, duration: 0, padding: {top: 0, bottom: 0, left: 0, right: 0},
                         offset: [0, y - (c.top + c.height / 2)]}); }""", [lat, lon])
                     page.wait_for_function("""([lat, lon]) => { const m = FootingGlobe._state.map;
@@ -211,12 +235,17 @@ def run() -> int:
                       "block summary omits the saved capture window")
                 if lang == "en":
                     check("violent incidents" in line and "not counted as danger" in line, "no block-level crime summary")
-                else:
+                elif lang == "ar":
                     check(any("\u0600" <= ch <= "\u06ff" for ch in line), "block summary is not in Arabic")
+                else:
+                    check("violent incidents" not in line and "insidente" in line, f"block summary is not in Tagalog: {line!r}")
                 crime.locator("summary").click()
                 check(crime.locator("a[href='https://data.norfolk.gov/resource/r7bn-2egr.json']").count() == 1,
                       "point Details lacks the city incident source")
-                check("Norfolk police data" in crime.locator("p[lang=en]").inner_text(), "point still shows the FBI-only reason")
+                reason = crime.locator("p.g-reason").inner_text()
+                check("Norfolk" in reason and "FBI" not in reason, "point still shows the FBI-only reason")
+                if lang == "en":
+                    check("Norfolk police data" in reason, "point reason lost the city source wording")
                 check(page.evaluate("JSON.stringify(FootingGlobe._state.byFips['51710'])") == ranked_before,
                       "a point changed the statewide locality ranking")
                 crime.scroll_into_view_if_needed()
@@ -251,12 +280,14 @@ def run() -> int:
 
                 msg = tap(39.29, -76.61)                       # Baltimore
                 check(page.evaluate("FootingGlobe._state.ratingPoint") is None and msg != "", "a tap in Maryland was not refused")
-                if lang == "ar":
-                    check(any("\u0600" <= ch <= "\u06ff" for ch in msg), f"Maryland refusal is not in Arabic: {msg!r}")
+                if lang != "en":
+                    want = page.evaluate("(l) => FootingI18n.t(l, 'outsideTap')", lang)
+                    check(msg == want, f"Maryland refusal is not the {lang} sentence: {msg!r}")
                 msg = tap(37.0, -75.7)                          # Atlantic, off the Eastern Shore
                 check(page.evaluate("FootingGlobe._state.ratingPoint") is None and msg != "", "a tap on open water was not refused")
-                if lang == "ar":
-                    check(any("\u0600" <= ch <= "\u06ff" for ch in msg), f"open-water refusal is not in Arabic: {msg!r}")
+                if lang != "en":
+                    want = page.evaluate("(l) => FootingI18n.t(l, 'waterTap')", lang)
+                    check(msg == want, f"open-water refusal is not the {lang} sentence: {msg!r}")
                 else:
                     check("open water" in msg, f"open-water tap gave the wrong reason: {msg!r}")
                 tap(*CHRISTIANSBURG)

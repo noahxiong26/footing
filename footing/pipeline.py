@@ -285,5 +285,5 @@ def record_fixture_set(lat: float, lon: float, label: str, out_dir: Path, settin
         "not_captured": {r.source: r.reason for r in bundle.sources.values() if r.status != "ok"},
     }
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "MANIFEST.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    (out_dir / "MANIFEST.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8", newline="\n")
     return manifest
