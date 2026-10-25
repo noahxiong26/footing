@@ -1,0 +1,1332 @@
+{
+ "51001": {
+  "area": "Accomack County, VA",
+  "fmr": [
+   740,
+   856,
+   1054,
+   1367,
+   1549
+  ]
+ },
+ "51003": {
+  "area": "Charlottesville, VA MSA",
+  "fmr": [
+   1421,
+   1602,
+   1824,
+   2218,
+   2731
+  ]
+ },
+ "51005": {
+  "area": "Alleghany County-Clifton Forge city-Covington city, VA HUD Nonmet",
+  "fmr": [
+   773,
+   778,
+   914,
+   1259,
+   1358
+  ]
+ },
+ "51007": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51009": {
+  "area": "Lynchburg, VA MSA",
+  "fmr": [
+   1027,
+   1033,
+   1187,
+   1635,
+   1750
+  ]
+ },
+ "51011": {
+  "area": "Lynchburg, VA MSA",
+  "fmr": [
+   1027,
+   1033,
+   1187,
+   1635,
+   1750
+  ]
+ },
+ "51013": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51015": {
+  "area": "Staunton-Stuarts Draft, VA MSA",
+  "fmr": [
+   1088,
+   1095,
+   1261,
+   1734,
+   1941
+  ]
+ },
+ "51017": {
+  "area": "Bath County, VA",
+  "fmr": [
+   796,
+   801,
+   977,
+   1171,
+   1528
+  ]
+ },
+ "51019": {
+  "area": "Lynchburg, VA MSA",
+  "fmr": [
+   1027,
+   1033,
+   1187,
+   1635,
+   1750
+  ]
+ },
+ "51021": {
+  "area": "Bland County, VA",
+  "fmr": [
+   745,
+   749,
+   914,
+   1271,
+   1429
+  ]
+ },
+ "51023": {
+  "area": "Roanoke, VA HUD Metro FMR Area",
+  "fmr": [
+   1004,
+   1053,
+   1254,
+   1743,
+   2104
+  ]
+ },
+ "51025": {
+  "area": "Brunswick County, VA",
+  "fmr": [
+   745,
+   749,
+   914,
+   1271,
+   1389
+  ]
+ },
+ "51027": {
+  "area": "Buchanan County, VA",
+  "fmr": [
+   792,
+   834,
+   914,
+   1271,
+   1494
+  ]
+ },
+ "51029": {
+  "area": "Buckingham County, VA",
+  "fmr": [
+   830,
+   875,
+   959,
+   1266,
+   1419
+  ]
+ },
+ "51031": {
+  "area": "Lynchburg, VA MSA",
+  "fmr": [
+   1027,
+   1033,
+   1187,
+   1635,
+   1750
+  ]
+ },
+ "51033": {
+  "area": "Caroline County, VA",
+  "fmr": [
+   859,
+   1021,
+   1246,
+   1733,
+   2090
+  ]
+ },
+ "51035": {
+  "area": "Carroll County-Galax city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   765,
+   770,
+   914,
+   1271,
+   1481
+  ]
+ },
+ "51036": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51037": {
+  "area": "Charlotte County, VA",
+  "fmr": [
+   692,
+   697,
+   914,
+   1146,
+   1533
+  ]
+ },
+ "51041": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51043": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51045": {
+  "area": "Roanoke, VA HUD Metro FMR Area",
+  "fmr": [
+   1004,
+   1053,
+   1254,
+   1743,
+   2104
+  ]
+ },
+ "51047": {
+  "area": "Culpeper County, VA HUD Metro FMR Area",
+  "fmr": [
+   1149,
+   1170,
+   1423,
+   1978,
+   2007
+  ]
+ },
+ "51049": {
+  "area": "Cumberland County, VA",
+  "fmr": [
+   812,
+   817,
+   997,
+   1195,
+   1673
+  ]
+ },
+ "51051": {
+  "area": "Dickenson County, VA",
+  "fmr": [
+   745,
+   749,
+   914,
+   1096,
+   1346
+  ]
+ },
+ "51053": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51057": {
+  "area": "Essex County, VA",
+  "fmr": [
+   907,
+   912,
+   1113,
+   1341,
+   1556
+  ]
+ },
+ "51059": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51061": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51063": {
+  "area": "Floyd County, VA HUD Metro FMR Area",
+  "fmr": [
+   830,
+   834,
+   1094,
+   1312,
+   1448
+  ]
+ },
+ "51065": {
+  "area": "Charlottesville, VA MSA",
+  "fmr": [
+   1421,
+   1602,
+   1824,
+   2218,
+   2731
+  ]
+ },
+ "51067": {
+  "area": "Franklin County, VA HUD Metro FMR Area",
+  "fmr": [
+   771,
+   861,
+   944,
+   1313,
+   1584
+  ]
+ },
+ "51069": {
+  "area": "Winchester, VA-WV MSA",
+  "fmr": [
+   1133,
+   1255,
+   1573,
+   1965,
+   2639
+  ]
+ },
+ "51071": {
+  "area": "Giles County, VA HUD Metro FMR Area",
+  "fmr": [
+   746,
+   898,
+   984,
+   1180,
+   1651
+  ]
+ },
+ "51073": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51075": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51077": {
+  "area": "Grayson County, VA",
+  "fmr": [
+   792,
+   834,
+   914,
+   1241,
+   1252
+  ]
+ },
+ "51079": {
+  "area": "Charlottesville, VA MSA",
+  "fmr": [
+   1421,
+   1602,
+   1824,
+   2218,
+   2731
+  ]
+ },
+ "51081": {
+  "area": "Greensville County-Emporia city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   764,
+   769,
+   1001,
+   1392,
+   1679
+  ]
+ },
+ "51083": {
+  "area": "Halifax County, VA",
+  "fmr": [
+   792,
+   827,
+   914,
+   1167,
+   1340
+  ]
+ },
+ "51085": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51087": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51089": {
+  "area": "Henry County-Martinsville city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   749,
+   753,
+   914,
+   1096,
+   1282
+  ]
+ },
+ "51091": {
+  "area": "Highland County, VA",
+  "fmr": [
+   745,
+   749,
+   914,
+   1233,
+   1429
+  ]
+ },
+ "51093": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51095": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51097": {
+  "area": "King and Queen County, VA HUD Metro FMR Area",
+  "fmr": [
+   1089,
+   1139,
+   1250,
+   1536,
+   1929
+  ]
+ },
+ "51099": {
+  "area": "King George County, VA",
+  "fmr": [
+   1182,
+   1211,
+   1469,
+   2043,
+   2464
+  ]
+ },
+ "51101": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51103": {
+  "area": "Lancaster County, VA",
+  "fmr": [
+   857,
+   862,
+   1052,
+   1463,
+   1765
+  ]
+ },
+ "51105": {
+  "area": "Lee County, VA",
+  "fmr": [
+   693,
+   697,
+   914,
+   1226,
+   1429
+  ]
+ },
+ "51107": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51109": {
+  "area": "Louisa County, VA",
+  "fmr": [
+   1080,
+   1138,
+   1247,
+   1734,
+   1950
+  ]
+ },
+ "51111": {
+  "area": "Lunenburg County, VA",
+  "fmr": [
+   692,
+   697,
+   914,
+   1127,
+   1254
+  ]
+ },
+ "51113": {
+  "area": "Madison County, VA",
+  "fmr": [
+   923,
+   971,
+   1066,
+   1483,
+   1667
+  ]
+ },
+ "51115": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51117": {
+  "area": "Mecklenburg County, VA",
+  "fmr": [
+   719,
+   724,
+   950,
+   1224,
+   1258
+  ]
+ },
+ "51119": {
+  "area": "Middlesex County, VA",
+  "fmr": [
+   1052,
+   1058,
+   1291,
+   1548,
+   2018
+  ]
+ },
+ "51121": {
+  "area": "Blacksburg-Christiansburg-Radford, VA HUD Metro FMR Area",
+  "fmr": [
+   910,
+   993,
+   1271,
+   1706,
+   2132
+  ]
+ },
+ "51125": {
+  "area": "Charlottesville, VA MSA",
+  "fmr": [
+   1421,
+   1602,
+   1824,
+   2218,
+   2731
+  ]
+ },
+ "51127": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51131": {
+  "area": "Northampton County, VA",
+  "fmr": [
+   719,
+   723,
+   949,
+   1320,
+   1592
+  ]
+ },
+ "51133": {
+  "area": "Northumberland County, VA",
+  "fmr": [
+   1066,
+   1073,
+   1309,
+   1569,
+   2047
+  ]
+ },
+ "51135": {
+  "area": "Nottoway County, VA",
+  "fmr": [
+   738,
+   743,
+   975,
+   1356,
+   1587
+  ]
+ },
+ "51137": {
+  "area": "Orange County, VA",
+  "fmr": [
+   1005,
+   1012,
+   1234,
+   1716,
+   1929
+  ]
+ },
+ "51139": {
+  "area": "Page County, VA",
+  "fmr": [
+   800,
+   811,
+   924,
+   1157,
+   1550
+  ]
+ },
+ "51141": {
+  "area": "Patrick County, VA",
+  "fmr": [
+   758,
+   763,
+   914,
+   1146,
+   1429
+  ]
+ },
+ "51143": {
+  "area": "Pittsylvania County-Danville city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   630,
+   738,
+   914,
+   1263,
+   1415
+  ]
+ },
+ "51145": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51147": {
+  "area": "Prince Edward County, VA",
+  "fmr": [
+   916,
+   922,
+   1094,
+   1312,
+   1448
+  ]
+ },
+ "51149": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51153": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51155": {
+  "area": "Pulaski County, VA HUD Metro FMR Area",
+  "fmr": [
+   699,
+   840,
+   921,
+   1252,
+   1545
+  ]
+ },
+ "51157": {
+  "area": "Rappahannock County, VA HUD Metro FMR Area",
+  "fmr": [
+   1198,
+   1254,
+   1375,
+   1649,
+   2307
+  ]
+ },
+ "51159": {
+  "area": "Richmond County, VA",
+  "fmr": [
+   876,
+   882,
+   1157,
+   1464,
+   1825
+  ]
+ },
+ "51161": {
+  "area": "Roanoke, VA HUD Metro FMR Area",
+  "fmr": [
+   1004,
+   1053,
+   1254,
+   1743,
+   2104
+  ]
+ },
+ "51163": {
+  "area": "Rockbridge County-Buena Vista city-Lexington city, VA HUD Nonmetr",
+  "fmr": [
+   870,
+   917,
+   1005,
+   1398,
+   1686
+  ]
+ },
+ "51165": {
+  "area": "Harrisonburg, VA MSA",
+  "fmr": [
+   1050,
+   1057,
+   1322,
+   1801,
+   2125
+  ]
+ },
+ "51167": {
+  "area": "Russell County, VA",
+  "fmr": [
+   744,
+   748,
+   914,
+   1156,
+   1377
+  ]
+ },
+ "51169": {
+  "area": "Kingsport-Bristol, TN-VA MSA",
+  "fmr": [
+   720,
+   818,
+   1044,
+   1338,
+   1464
+  ]
+ },
+ "51171": {
+  "area": "Shenandoah County, VA",
+  "fmr": [
+   849,
+   855,
+   1091,
+   1394,
+   1523
+  ]
+ },
+ "51173": {
+  "area": "Smyth County, VA",
+  "fmr": [
+   642,
+   753,
+   914,
+   1191,
+   1429
+  ]
+ },
+ "51175": {
+  "area": "Southampton County-Franklin city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   811,
+   817,
+   1051,
+   1346,
+   1764
+  ]
+ },
+ "51177": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51179": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51181": {
+  "area": "Surry County, VA HUD Metro FMR Area",
+  "fmr": [
+   905,
+   920,
+   1039,
+   1445,
+   1743
+  ]
+ },
+ "51183": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51185": {
+  "area": "Tazewell County, VA",
+  "fmr": [
+   727,
+   732,
+   914,
+   1096,
+   1252
+  ]
+ },
+ "51187": {
+  "area": "Warren County, VA HUD Metro FMR Area",
+  "fmr": [
+   953,
+   1002,
+   1315,
+   1754,
+   2206
+  ]
+ },
+ "51191": {
+  "area": "Kingsport-Bristol, TN-VA MSA",
+  "fmr": [
+   720,
+   818,
+   1044,
+   1338,
+   1464
+  ]
+ },
+ "51193": {
+  "area": "Westmoreland County, VA",
+  "fmr": [
+   973,
+   979,
+   1194,
+   1658,
+   1810
+  ]
+ },
+ "51195": {
+  "area": "Wise County-Norton city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   692,
+   697,
+   914,
+   1205,
+   1429
+  ]
+ },
+ "51197": {
+  "area": "Wythe County, VA",
+  "fmr": [
+   758,
+   762,
+   914,
+   1212,
+   1533
+  ]
+ },
+ "51199": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51510": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51520": {
+  "area": "Kingsport-Bristol, TN-VA MSA",
+  "fmr": [
+   720,
+   818,
+   1044,
+   1338,
+   1464
+  ]
+ },
+ "51530": {
+  "area": "Rockbridge County-Buena Vista city-Lexington city, VA HUD Nonmetr",
+  "fmr": [
+   870,
+   917,
+   1005,
+   1398,
+   1686
+  ]
+ },
+ "51540": {
+  "area": "Charlottesville, VA MSA",
+  "fmr": [
+   1421,
+   1602,
+   1824,
+   2218,
+   2731
+  ]
+ },
+ "51550": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51570": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51580": {
+  "area": "Alleghany County-Clifton Forge city-Covington city, VA HUD Nonmet",
+  "fmr": [
+   773,
+   778,
+   914,
+   1259,
+   1358
+  ]
+ },
+ "51590": {
+  "area": "Pittsylvania County-Danville city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   630,
+   738,
+   914,
+   1263,
+   1415
+  ]
+ },
+ "51595": {
+  "area": "Greensville County-Emporia city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   764,
+   769,
+   1001,
+   1392,
+   1679
+  ]
+ },
+ "51600": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51610": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51620": {
+  "area": "Southampton County-Franklin city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   811,
+   817,
+   1051,
+   1346,
+   1764
+  ]
+ },
+ "51630": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51640": {
+  "area": "Carroll County-Galax city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   765,
+   770,
+   914,
+   1271,
+   1481
+  ]
+ },
+ "51650": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51660": {
+  "area": "Harrisonburg, VA MSA",
+  "fmr": [
+   1050,
+   1057,
+   1322,
+   1801,
+   2125
+  ]
+ },
+ "51670": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51678": {
+  "area": "Rockbridge County-Buena Vista city-Lexington city, VA HUD Nonmetr",
+  "fmr": [
+   870,
+   917,
+   1005,
+   1398,
+   1686
+  ]
+ },
+ "51680": {
+  "area": "Lynchburg, VA MSA",
+  "fmr": [
+   1027,
+   1033,
+   1187,
+   1635,
+   1750
+  ]
+ },
+ "51683": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51685": {
+  "area": "Washington-Arlington-Alexandria, DC-VA-MD HUD Metro FMR Area",
+  "fmr": [
+   1953,
+   2015,
+   2246,
+   2835,
+   3332
+  ]
+ },
+ "51690": {
+  "area": "Henry County-Martinsville city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   749,
+   753,
+   914,
+   1096,
+   1282
+  ]
+ },
+ "51700": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51710": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51720": {
+  "area": "Wise County-Norton city, VA HUD Nonmetro FMR Area",
+  "fmr": [
+   692,
+   697,
+   914,
+   1205,
+   1429
+  ]
+ },
+ "51730": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51735": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51740": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51750": {
+  "area": "Blacksburg-Christiansburg-Radford, VA HUD Metro FMR Area",
+  "fmr": [
+   910,
+   993,
+   1271,
+   1706,
+   2132
+  ]
+ },
+ "51760": {
+  "area": "Richmond, VA HUD Metro FMR Area",
+  "fmr": [
+   1442,
+   1507,
+   1655,
+   2072,
+   2553
+  ]
+ },
+ "51770": {
+  "area": "Roanoke, VA HUD Metro FMR Area",
+  "fmr": [
+   1004,
+   1053,
+   1254,
+   1743,
+   2104
+  ]
+ },
+ "51775": {
+  "area": "Roanoke, VA HUD Metro FMR Area",
+  "fmr": [
+   1004,
+   1053,
+   1254,
+   1743,
+   2104
+  ]
+ },
+ "51790": {
+  "area": "Staunton-Stuarts Draft, VA MSA",
+  "fmr": [
+   1088,
+   1095,
+   1261,
+   1734,
+   1941
+  ]
+ },
+ "51800": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51810": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51820": {
+  "area": "Staunton-Stuarts Draft, VA MSA",
+  "fmr": [
+   1088,
+   1095,
+   1261,
+   1734,
+   1941
+  ]
+ },
+ "51830": {
+  "area": "Virginia Beach-Norfolk-Newport News, VA-NC HUD Metro FMR Area",
+  "fmr": [
+   1492,
+   1512,
+   1713,
+   2376,
+   2797
+  ]
+ },
+ "51840": {
+  "area": "Winchester, VA-WV MSA",
+  "fmr": [
+   1133,
+   1255,
+   1573,
+   1965,
+   2639
+  ]
+ }
+}
