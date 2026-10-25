@@ -245,7 +245,9 @@ def run() -> int:
                 check(crime.locator("a[href='https://data.norfolk.gov/resource/r7bn-2egr.json']").count() == 1,
                       "point Details lacks the city incident source")
                 reason = crime.locator("p.g-reason").inner_text()
-                check("Norfolk" in reason and "FBI" not in reason, "point still shows the FBI-only reason")
+                # The block count leads; the citywide FBI rate may follow as a comparison.
+                check("Norfolk" in reason and f"{expected['parts']['violent']:,}" in reason.replace("\u202f", ","),
+                      "point still shows the FBI-only reason")
                 if lang == "en":
                     check("Norfolk police data" in reason, "point reason lost the city source wording")
                 check(page.evaluate("JSON.stringify(FootingGlobe._state.byFips['51710'])") == ranked_before,
