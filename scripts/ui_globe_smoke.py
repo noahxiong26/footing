@@ -131,16 +131,16 @@ def run() -> int:
 
                 # Top 5.
                 page.click("[data-go=save]")
-                page.wait_for_selector(".g-list .g-row")
+                page.wait_for_selector(".g-sheet .g-list .g-row")
                 page.wait_for_timeout(3500)
-                check(page.locator(".g-list .g-row").count() == 5, "top view does not show exactly 5 places")
+                check(page.locator(".g-sheet .g-list .g-row").count() == 5, "top view does not show exactly 5 places")
                 stored = page.evaluate("JSON.parse(localStorage.getItem('footing.globe.profile'))")
                 check(stored["status"] == "undocumented" and stored["household"]["kids"] is True
                       and stored["situation"]["car"] is True, "profile was not saved on the device")
                 shot("04_top5")
 
                 # A locality: score, mosaic, Details.
-                page.click(".g-list .g-row >> nth=0")
+                page.click(".g-sheet .g-list .g-row >> nth=0")
                 page.wait_for_selector("#g-loc-title")
                 page.wait_for_timeout(1800)
                 check(page.locator(".g-c2s .g-c2").count() >= 5, "locality shows fewer than 5 parts")
@@ -173,20 +173,20 @@ def run() -> int:
                 # The full list and search.
                 page.click("#g-listbtn")
                 page.wait_for_selector("#g-q")
-                n_all = page.locator(".g-list li").count()
+                n_all = page.locator(".g-sheet .g-list li").count()
                 check(n_all == 133, f"list shows {n_all} places, not 133")
                 page.fill("#g-q", "Roanoke")
                 page.wait_for_timeout(200)
-                shown = page.locator(".g-list li:visible").all_inner_texts()
+                shown = page.locator(".g-sheet .g-list li:visible").all_inner_texts()
                 check(len(shown) == 2 and all("Roanoke" in s for s in shown), f"search 'Roanoke' shows {shown}")
                 shot("07_search")
                 page.fill("#g-q", "zzzz")
                 page.wait_for_timeout(200)
-                check(page.locator(".g-list li:visible").count() == 0 and page.is_visible(".g-nomatch"),
+                check(page.locator(".g-sheet .g-list li:visible").count() == 0 and page.is_visible(".g-nomatch"),
                       "search with no match does not say so")
                 page.fill("#g-q", "")
                 page.fill("#g-q", "Norfolk")
-                page.click(".g-list li:visible >> nth=0")
+                page.click(".g-sheet .g-list li:visible >> nth=0")
                 page.wait_for_selector("#g-loc-title")
                 check(page.locator(".g-point-note").count() == 0, "list selection kept a previous point")
                 citywide = page.locator("[data-component=crime] .num").inner_text()
@@ -258,7 +258,7 @@ def run() -> int:
                 # Missing FBI reports must stay Unknown, even after viewing a covered block.
                 page.click("#g-listbtn")
                 page.fill("#g-q", "Virginia Beach")
-                page.click(".g-list li:visible >> nth=0")
+                page.click(".g-sheet .g-list li:visible >> nth=0")
                 page.wait_for_selector("#g-loc-title")
                 check(page.locator("[data-component=crime] .num").inner_text() == "?", "Virginia Beach crime is not Unknown")
                 check(page.locator(".g-point-note").count() == 0, "a point leaked into another locality")

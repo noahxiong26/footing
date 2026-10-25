@@ -42,6 +42,19 @@ and reached Tagalog at 320 px, where the old tap heuristic hit the taller legend
 published and its `ratings` store read back (empty, as expected); **nobody has clicked the hosted page yet**,
 including rating as a signed-in viewer. Native-speaker review of all 8 translations is still pending.
 
+**Computer layout (Version 2 of the Artifact, owner request: "computer friendly instead of phone first").**
+At 1100 px and wider, Virginia mode shows three columns: a persistent, searchable list of all 133 places
+(`.g-rail`, rendered by `renderRail()`), the map framed to the space between the panels (`sheetPad()` measures
+both panels, `syncDesk()` applies the layout before any camera move), and a wider details panel
+(`--panel-w: clamp(440px, 34vw, 600px)`) with larger type and two-line mosaic labels. Arabic/Persian mirror it.
+Below 1100 px nothing changed. The top bar says "Hide this page" on desktop where that label is translated
+(en, es); other languages keep their short label. Smoke selectors now target `.g-sheet .g-list` so the rail's
+rows do not count.
+**"Page closed" on the live page:** the quick exit had been triggered (most likely the "Hide" button read as
+"hide this panel"), and in the hosted demo it could not be undone. The cover now has an "Open again" link,
+and its CSS only shows it when not `hidden`. Checked in Chromium at 1440 px (en, ar): 133 rail rows, a rail
+click opens the place and highlights it, Hide then Open again restores the app; no page errors.
+
 **UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
 1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the
    layer picker is cut to "Angkop para"; the brand is cut to "FOOTIN". Consider shorter legend labels or a

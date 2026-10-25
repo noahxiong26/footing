@@ -59,16 +59,16 @@ def run() -> int:
         page.click("[data-crime='1']")
         shot("02_about_you")
         page.click("[data-go=save]")
-        page.wait_for_selector(".g-list .g-row")
+        page.wait_for_selector(".g-sheet .g-list .g-row")
         page.wait_for_timeout(3500)
-        if page.locator(".g-list .g-row").count() != 5:
+        if page.locator(".g-sheet .g-list .g-row").count() != 5:
             errors.append("top view does not show 5 places")
         shot("03_top_fits")
 
         page.click("#g-listbtn")
         page.wait_for_selector("#g-q")
         page.fill("#g-q", "Norfolk")
-        page.click(".g-list li:visible >> nth=0")
+        page.click(".g-sheet .g-list li:visible >> nth=0")
         page.wait_for_selector("#g-loc-title")
         page.wait_for_timeout(400)
         page.evaluate("""() => { const m = FootingGlobe._state.map; m.stop();
@@ -91,7 +91,7 @@ def run() -> int:
         page.wait_for_selector("#g-q")
         page.fill("#g-q", "Montgomery")
         page.wait_for_timeout(200)
-        page.click(".g-list li:visible >> nth=0")
+        page.click(".g-sheet .g-list li:visible >> nth=0")
         page.wait_for_selector("#g-loc-title")
         if "Montgomery" not in page.inner_text("#g-loc-title"):
             errors.append(f"search led to {page.inner_text('#g-loc-title')!r}, not Montgomery County")

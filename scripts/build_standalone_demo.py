@@ -34,7 +34,9 @@ SHELL = """<title>Footing Virginia</title>
 html, body { height: 100%; margin: 0; background: #05070f; color: #e8ecf4; font-family: var(--sans); }
 * { box-sizing: border-box; }
 a { color: inherit; }
-#cover { position: fixed; inset: 0; background: #ffffff; color: #1b1b1b; display: flex; align-items: center; justify-content: center; font: 16px system-ui, sans-serif; }
+#cover:not([hidden]) { position: fixed; inset: 0; background: #ffffff; color: #1b1b1b; display: flex; align-items: center; justify-content: center; font: 16px system-ui, sans-serif; }
+#cover { z-index: 20; flex-direction: column; gap: 12px; }
+#cover-back { font: 13px system-ui, sans-serif; color: #555; background: none; border: 0; text-decoration: underline; cursor: pointer; }
 .g-top { padding-top: env(safe-area-inset-top, 0px); }
 </style>
 <style>
@@ -60,7 +62,7 @@ a { color: inherit; }
   </div>
   <section class="g-sheet" aria-label="Details"></section>
 </div>
-<div id="cover" hidden><p>Page closed.</p></div>
+<div id="cover" hidden><p>Page closed.</p><button type="button" id="cover-back">Open again</button></div>
 <script src="vendor/maplibre-gl.js"></script>
 <script src="vendor/topojson-client.min.js"></script>
 <script src="fit.js"></script>

@@ -100,12 +100,21 @@
     receipt: function (town) { return json("data/receipt-" + encodeURIComponent(town.set) + ".json"); },
     heat: heat,
     rate: rate,
+    // Quick exit: blank the page at once. The demo keeps a small "Open again" link, because a hosted page
+    // cannot be reloaded from inside and a stray click would otherwise end the visit.
     hide: function () {
       try { sessionStorage.clear(); } catch (e) { /* fine */ }
-      document.getElementById("globe-root").remove();
+      document.getElementById("globe-root").hidden = true;
       document.getElementById("cover").hidden = false;
     },
   };
+
+  document.addEventListener("click", function (e) {
+    if (!e.target || e.target.id !== "cover-back") return;
+    document.getElementById("cover").hidden = true;
+    document.getElementById("globe-root").hidden = false;
+    if (window.FootingGlobe) FootingGlobe.show();
+  });
 
   if (window.claude && window.claude.use) {
     window.claude.use("db").then(function (d) {

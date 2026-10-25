@@ -258,7 +258,26 @@
     return g.getImageData(0, 0, 16, 16);
   }
 
+  // Computer layout (>= 1100 px, Virginia): a persistent list of all places on one side, the map in the middle,
+  // the detail panel on the other side. Phones and small windows keep the bottom sheet.
+  var DESK = window.matchMedia ? window.matchMedia("(min-width: 1100px)") : { matches: false };
+  function desk() { return !!DESK.matches && isVa() && S.vaRanked.length > 0; }
+  /** Apply the layout switch before anything measures it, so the camera never frames for the wrong layout. */
+  function syncDesk() {
+    var root = $("#globe-root"), rail = $(".g-rail"), on = desk();
+    if (!rail && root) { rail = document.createElement("aside"); rail.className = "g-rail"; root.appendChild(rail); }
+    document.documentElement.classList.toggle("g-desk", on);
+    if (rail) rail.hidden = !on;
+    return on && !!rail;
+  }
+
   function sheetPad() {
+    if (syncDesk()) {
+      // Frame the map inside the space the two panels leave open, whatever the language direction.
+      var a = $(".g-rail").getBoundingClientRect(), b = $(".g-sheet").getBoundingClientRect(), W = window.innerWidth;
+      var lo = Math.min(a.left, b.left) === a.left ? a : b, hi = lo === a ? b : a;
+      return { top: 90, bottom: 70, left: Math.round(lo.right) + 24, right: Math.round(W - hi.left) + 24 };
+    }
     var wide = window.innerWidth >= 900, sh = $(".g-sheet");
     var h = sh ? sh.offsetHeight : 200, rtl = document.documentElement.dir === "rtl";
     if (wide) return rtl ? { top: 90, bottom: 40, left: 40, right: 440 } : { top: 90, bottom: 40, left: 440, right: 40 };
@@ -528,10 +547,44 @@
     sh.className = "g-sheet" + (tall ? " tall" : "") + (S.view === "rate" && !S.ratingPoint ? " short" : "");
     sh.innerHTML = '<button class="g-grip" aria-label="Resize panel" type="button"></button>' + html;
     bindView();
+    renderRail();
     renderChrome();
     var h = sh.querySelector("h1, h2");
     if (h) { h.setAttribute("tabindex", "-1"); }
     updatePeek();
+  }
+
+  /** The computer layout's list of all 133 places. Re-rendered with the sheet; keeps its search and scroll. */
+  function renderRail() {
+    if (!syncDesk()) return;
+    var rail = $(".g-rail");
+    var oldQ = rail.querySelector("#g-rail-q"), oldList = rail.querySelector(".g-list");
+    var q = oldQ ? oldQ.value : "", scroll = oldList ? oldList.scrollTop : 0, hadFocus = oldQ && document.activeElement === oldQ;
+    rail.setAttribute("aria-label", t("allPlaces"));
+    rail.innerHTML = "<h2>" + esc(t("allPlaces")) + '</h2><p class="g-small">' + esc(t("l_" + S.layer)) + "</p>" +
+      '<label class="g-search"><span class="sr-only">' + esc(t("search")) + '</span><input type="search" id="g-rail-q" placeholder="' +
+      esc(t("search")) + '" autocomplete="off"></label><p class="g-nomatch" hidden>' + esc(t("noMatch")) + "</p>" +
+      '<ul class="g-list">' + vaSorted().map(vaRowHTML).join("") + "</ul>";
+    var cur = S.view === "locality" && rail.querySelector('[data-fips="' + S.selected + '"]');
+    if (cur) cur.setAttribute("aria-current", "true");
+    rail.querySelectorAll("[data-fips]").forEach(function (b) {
+      b.addEventListener("click", function () { selectLocality(b.dataset.fips, true); });
+    });
+    var input = rail.querySelector("#g-rail-q");
+    input.value = q;
+    filterList(rail, input);
+    input.addEventListener("input", function () { filterList(rail, input); });
+    rail.querySelector(".g-list").scrollTop = scroll;
+    if (hadFocus) input.focus();
+  }
+
+  function filterList(box, input) {
+    var v = input.value.trim().toLowerCase(), shown = 0;
+    box.querySelectorAll(".g-list li").forEach(function (li) {
+      var hit = !v || li.dataset.name.indexOf(v) !== -1;
+      li.hidden = !hit; if (hit) shown++;
+    });
+    box.querySelector(".g-nomatch").hidden = shown > 0;
   }
 
   function updatePeek() {
@@ -548,7 +601,11 @@
         return '<option value="' + l + '"' + (l === S.lang ? " selected" : "") + ">" + esc(I.t(l, "langName")) + "</option>";
       }).join("");
     } else lang.textContent = S.lang === "es" ? "English" : "Español";
-    $("#g-hide").textContent = t("hideShort");
+    // On a computer there is room to say what the quick exit does; "Hide" alone reads like "hide this panel".
+    // Only languages that have the long label use it; the others keep their translated short one.
+    var longHide = document.documentElement.classList.contains("g-desk") && (I.strings[S.lang] || {}).hide;
+    $("#g-hide").textContent = longHide || t("hideShort");
+    $("#g-hide").title = t("hideLong");
     $("#g-hide").setAttribute("aria-label", t("hideLong"));
     $("#g-listbtn").textContent = S.view === "list" ? t("map") : t("list");
     var sel = $("#g-layer");
@@ -1022,14 +1079,7 @@
       });
     });
     var q = sh.querySelector("#g-q");
-    if (q) q.addEventListener("input", function () {
-      var v = q.value.trim().toLowerCase(), shown = 0;
-      sh.querySelectorAll(".g-list li").forEach(function (li) {
-        var hit = !v || li.dataset.name.indexOf(v) !== -1;
-        li.hidden = !hit; if (hit) shown++;
-      });
-      sh.querySelector(".g-nomatch").hidden = shown > 0;
-    });
+    if (q) q.addEventListener("input", function () { filterList(sh, q); });
     var grip = sh.querySelector(".g-grip");
     if (grip) grip.addEventListener("click", function () {
       sh.classList.toggle("tall"); updatePeek();
@@ -1240,6 +1290,11 @@
       if (S.layer === "community" && !(S.heat && S.heat.total)) toast(t("noRatings"));
     });
     window.addEventListener("resize", function () { drawStars(); updatePeek(); });
+    if (DESK.addEventListener) DESK.addEventListener("change", function () {
+      if (!S.va) return;
+      render();
+      if (S.view === "locality" && S.selected) flyToLocality(S.selected); else flyHome(true);
+    });
     window.addEventListener("online", function () { S.map && S.map.triggerRepaint(); });
   }
 
