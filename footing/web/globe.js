@@ -367,13 +367,7 @@
     if (btn) btn.classList.toggle("night", alt < -3);
   }
   function startDaynight() {
-    if (!$(".g-sun")) {
-      var root = $("#globe-root"), b = document.createElement("button");
-      b.type = "button"; b.className = "g-sun"; b.setAttribute("aria-pressed", "false");
-      b.innerHTML = '<span class="orb" aria-hidden="true"></span><span class="g-sunread"></span>';
-      b.addEventListener("click", toggleLapse);
-      if (root) root.appendChild(b);                // its own control, visible on every screen including Start
-    }
+    // No on-screen clock (owner request): the sky simply follows the real sun.
     dnPaint();
     clearInterval(DN.timer);
     DN.timer = setInterval(function () { if (!DN.lapse) dnPaint(); }, 60000);
@@ -806,6 +800,7 @@
       '<div class="g-lock">' + LOCK + "<span>" + esc(t("privacy")) + "</span></div>" +
       '<div class="g-actions"><button class="g-primary" data-go="profile" type="button">' + esc(t("start")) + "</button>" +
       '<button class="g-secondary" data-go="skip" type="button">' + esc(t("skip")) + "</button>" +
+      (isVa() ? '<button class="g-secondary g-wide g-sample-btn" data-go="sample" type="button">' + esc(t("sample_btn")) + "</button>" : "") +
       (B.standalone ? "" : '<a class="g-secondary" href="#/start">' + esc(t("nearMe")) + "</a>") +
       '' + call211Btn() + "</div>";
   }
@@ -971,7 +966,8 @@
 
   function vaTopView() {
     var top = vaSorted().slice(0, 5);
-    return "<h2>" + esc(t("topVa")) + "</h2>" + whoLine() + machineNote() +
+    var sample = S.profile && S.profile.sample ? '<div class="g-sample"><span class="tag">' + esc(t("sample_tag")) + "</span><p>" + esc(t("sample_on")) + "</p></div>" : "";
+    return "<h2>" + esc(t("topVa")) + "</h2>" + sample + whoLine() + machineNote() +
       '<ul class="g-list g-top5">' + top.map(function (r, i) {
         return vaRowHTML(r).replace('</span></button></li>', '</span>' + factorStrip(r) + '</button></li>').replace('<li ', '<li style="--i:' + i + '" ');
       }).join("") + "</ul>" +
@@ -1536,8 +1532,17 @@
   function go(what) {
     if (what === "profile") { _draft = null; _prevTop = null; S.view = "profile"; render(); focusHeading(); return; }
     if (what === "skip") { S.view = "top"; compute(); render(); flyHome(false); return; }
+    if (what === "sample") {
+      // A worked example, clearly labelled: TPS papers, two kids, safety first. Saved like any answers, so
+      // Reset my answers clears it.
+      S.profile = { status: "tps", household: { kids: true }, situation: {}, age_band: "25_49", show_crime: false,
+        priorities: ["safety", "shelter", "rent", "services", "laws", "community"], sample: true };
+      store.set("footing.globe.profile", S.profile);
+      _draft = null; S.view = "top"; compute(); render(); flyHome(false); focusHeading(); return;
+    }
     if (what === "save") {
       S.profile = draft(); _draft = null;
+      delete S.profile.sample;                                   // edited answers are the person's own
       if (S.profile.household) delete S.profile.household.mixed;   // option retired in S9
       store.set("footing.globe.profile", S.profile);
       S.view = "top"; compute(); render(); flyHome(false); focusHeading(); return;
@@ -1786,6 +1791,8 @@
       stopSpin();
     },
     /** Show the sky at another moment (ISO time or ms). For demos and screenshots; null returns to now. */
+    /** Play 24 hours in 24 seconds (for the pitch recording; no on-screen control). */
+    playDay: function () { toggleLapse(); },
     setTime: function (when) {
       DN.lapse = false; cancelAnimationFrame(DN.raf);
       DN.offset = when === null || when === undefined ? 0 : new Date(when).getTime() - Date.now();

@@ -138,6 +138,11 @@ Details, the Norfolk point, the rating flow and "Reset my answers" with confirma
 - **Pitch video draft** (1:45 script, shot list, voice-over, research-backed guidelines, rubric coverage) is a
   Claude Docs doc owned by Jordan: "Footing pitch video draft".
 
+**Version 8 (owner request):** the on-screen clock / sun button is removed; the sky still follows the real sun,
+and `FootingGlobe.playDay()` plays a day for recordings. The Start screen has **See an example person** (TPS,
+two kids, safety first, age 25-49), labelled "Example" on Best fits; saving your own answers drops the label, and
+Reset my answers clears it.
+
 **UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
 1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the
    layer picker is cut to "Angkop para"; the brand is cut to "FOOTIN". Consider shorter legend labels or a

@@ -495,3 +495,11 @@ html.g-desk .g-about-actions { margin-inline: -24px; padding-inline: 24px; botto
 .g-skip { position: absolute; z-index: 30; top: 8px; inset-inline-start: 8px; padding: 10px 14px; border-radius: 10px; background: var(--lamp); color: #10131c;
   font: 700 14px var(--sans); text-decoration: none; transform: translateY(-160%); }
 .g-skip:focus { transform: none; outline: 3px solid #fff1c9; outline-offset: 2px; }
+
+/* ---- S9: example person ---- */
+.g-sample-btn { border-style: dashed; }
+.g-sample { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 10px; padding: 10px 12px; border-radius: 12px;
+  border: 1px dashed var(--lamp); background: rgba(242, 193, 78, 0.06); }
+.g-sample .tag { flex: 0 0 auto; font: 700 11px var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: #10131c; background: var(--lamp);
+  border-radius: 10px; padding: 3px 8px; margin-top: 2px; }
+.g-sheet .g-sample p { margin: 0; font-size: 13.5px; color: var(--g-ink); }
