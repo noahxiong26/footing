@@ -1,0 +1,16 @@
+{
+  "name": "Footing survival basket (one adult, one week, no full kitchen)",
+  "definition_note": "Footing's own shelf-stable list, chosen for people without a reliable kitchen. It is NOT the USDA Thrifty Food Plan market basket; the TFP figure is only the comparison baseline.",
+  "items": [
+    {"id": "bread", "term": "white bread loaf", "qty": 2},
+    {"id": "peanut_butter", "term": "peanut butter 16 oz", "qty": 1},
+    {"id": "canned_beans", "term": "canned beans 15 oz", "qty": 4},
+    {"id": "canned_tuna", "term": "canned tuna 5 oz", "qty": 4},
+    {"id": "instant_oats", "term": "instant oatmeal packets", "qty": 1},
+    {"id": "bananas", "term": "bananas", "qty": 7},
+    {"id": "shelf_milk", "term": "shelf stable milk", "qty": 2},
+    {"id": "crackers", "term": "saltine crackers", "qty": 1},
+    {"id": "water", "term": "bottled water 24 pack", "qty": 1},
+    {"id": "granola_bars", "term": "granola bars", "qty": 1}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "source": "https://fns-prod.azureedge.us/sites/default/files/resource-files/cnpp-costfood-june2026.pdf",
+  "plan": "Official USDA Thrifty Food Plan, U.S. average, June 2026 (issued August 2026)",
+  "household_note": "Costs are for individuals in 4-person households; USDA applies size adjustments for other household sizes, not applied here.",
+  "weekly_usd": {
+    "child_1": 26.40, "child_2_3": 39.90, "child_4_5": 43.40, "child_6_8": 48.30, "child_9_11": 55.80,
+    "female_12_13": 51.70, "female_14_19": 60.00, "female_20_50": 58.50, "female_51_70": 54.50, "female_71_plus": 60.20,
+    "male_12_13": 59.70, "male_14_19": 75.30, "male_20_50": 73.50, "male_51_70": 64.80, "male_71_plus": 61.80,
+    "reference_family_of_four": 236.10
+  },
+  "default_person_for_basket": "male_20_50"
+}

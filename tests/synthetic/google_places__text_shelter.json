@@ -1,0 +1,19 @@
+{
+ "_synthetic": "MADE-UP VALUES for parser tests only. Shapes follow each provider's public docs. Never use as data.",
+ "places": [
+  {
+   "id": "SYN1",
+   "displayName": {
+    "text": "Synthetic Shelter A"
+   },
+   "location": {
+    "latitude": 37.131,
+    "longitude": -80.402
+   },
+   "formattedAddress": "1 Test St",
+   "types": [
+    "establishment"
+   ]
+  }
+ ]
+}

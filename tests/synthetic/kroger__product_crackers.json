@@ -1,0 +1,26 @@
+{
+ "_synthetic": "MADE-UP VALUES for parser tests only. Shapes follow each provider's public docs. Never use as data.",
+ "data": [
+  {
+   "productId": "p7",
+   "items": [
+    {
+     "price": {
+      "regular": 2.0,
+      "promo": 0
+     }
+    }
+   ]
+  },
+  {
+   "productId": "q7",
+   "items": [
+    {
+     "price": {
+      "regular": 2.5
+     }
+    }
+   ]
+  }
+ ]
+}

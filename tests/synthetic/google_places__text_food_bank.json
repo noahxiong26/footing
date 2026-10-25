@@ -1,0 +1,19 @@
+{
+ "_synthetic": "MADE-UP VALUES for parser tests only. Shapes follow each provider's public docs. Never use as data.",
+ "places": [
+  {
+   "id": "SYN2",
+   "displayName": {
+    "text": "Agape Center NRV (Google copy)"
+   },
+   "location": {
+    "latitude": 37.14485,
+    "longitude": -80.40595
+   },
+   "formattedAddress": "1175 Cambria St NE",
+   "types": [
+    "establishment"
+   ]
+  }
+ ]
+}

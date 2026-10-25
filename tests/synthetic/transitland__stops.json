@@ -1,0 +1,29 @@
+{
+ "_synthetic": "MADE-UP VALUES for parser tests only. Shapes follow each provider's public docs. Never use as data.",
+ "stops": [
+  {
+   "onestop_id": "s-syn-1",
+   "stop_name": "Synthetic Stop 1",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.405,
+     37.126
+    ]
+   },
+   "wheelchair_boarding": 1
+  },
+  {
+   "onestop_id": "s-syn-2",
+   "stop_name": "Synthetic Stop 2",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.407,
+     37.124
+    ]
+   },
+   "wheelchair_boarding": 0
+  }
+ ]
+}
