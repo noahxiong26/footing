@@ -34,6 +34,17 @@ body.on-globe > header.top, body.on-globe > main#view { display: none; }
   background: rgba(8, 12, 24, 0.72); color: var(--g-ink); font: 500 14px var(--sans); cursor: pointer;
   backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
 .g-btn.hide { border-color: rgba(255, 158, 138, 0.6); }
+/* Narrow phones (320-380 px): the bar needs ~380 px at full size, and the Hide button, the quick exit, was the
+   part pushed off screen. Tighten it, and let the brand give way before any button does. */
+.g-brand { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: clip; white-space: nowrap; }
+.g-top > .g-btn { flex: 0 0 auto; }
+.g-top > .g-langsel { flex: 0 1 auto; min-width: 64px; }
+@media (max-width: 380px) {
+  .g-top { padding-left: 12px; padding-right: 12px; gap: 6px; }
+  .g-brand { font-size: 15px; letter-spacing: 0; }
+  .g-btn { padding: 0 10px; font-size: 13px; }
+  .g-top .g-langsel { max-width: 96px; padding: 0 8px; }
+}
 .g-btn:focus-visible, .g-chip:focus-visible, .g-row:focus-visible, .g-sheet button:focus-visible, .g-sheet a:focus-visible,
 .g-sheet select:focus-visible { outline: 3px solid var(--lamp); outline-offset: 2px; }
 

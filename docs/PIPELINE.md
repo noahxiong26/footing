@@ -26,7 +26,7 @@ Deterministic: the same inputs always give the same output.
 ```bash
 python scripts/build_va_localities.py            # rebuild footing/static/va_localities.json
 python scripts/build_va_localities.py --check     # validate without writing
-pytest -q                                         # 191 tests, including JS/Python parity
+pytest -q                                         # 196 tests, including JS/Python parity
 ```
 
 `--check` is also run by the test suite, and `tests/test_vafit.py` rebuilds the dataset and asserts the

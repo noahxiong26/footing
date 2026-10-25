@@ -1086,7 +1086,10 @@
     var pt = checkPoint(lat, lon);
     // Say what is actually wrong with the spot ("that is in Maryland", "that is on open water") instead of
     // one catch-all message. The engine writes these in English; t() covers the ones we have translated.
-    if (!pt.ok) { toast(pt.code === "outside_virginia" ? t("outsideTap") : pt.reason || t("outsideTap")); return; }
+    // A tap can only be outside Virginia or on water (swapped or non-numeric coordinates need typing); both are
+    // translated. Anything else falls back to the engine's English reason rather than a wrong sentence.
+    var TAP = { outside_virginia: "outsideTap", open_water: "waterTap" };
+    if (!pt.ok) { toast(TAP[pt.code] ? t(TAP[pt.code]) : pt.reason || t("outsideTap")); return; }
     if (S.map.getZoom() < 10) {
       S.map.flyTo({ center: [lon, lat], zoom: 12, duration: reduced ? 0 : 1600, essential: true });
       toast(t("tapZoom"));

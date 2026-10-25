@@ -1,9 +1,67 @@
 # HANDOFF — Footing (read this first)
 
-Last updated **2026-10-25, early hours** by the 5th model in the rotation (Claude Opus 5), which **merged
-sessions 3 and 4 into one `main`**. Sections S5.x are this session. The session 4 report
+Last updated **2026-10-25** by the 6th model (Claude Opus 5.5), which **clicked the app through a real
+browser for the first time** — see S6.x directly below. S5.x is the 5th model, which **merged sessions 3 and 4
+into one `main`**; it is still the best overview. The session 4 report
 (`docs/SESSION4_REPORT.md`) is still worth reading for the designer notes; where it disagrees with S5, S5
 wins, because some of what it lists as unfinished is now done.
+
+## S6.0 The app has now been clicked through a real browser
+
+The S5 handoff said this sandbox could not run a browser. That is no longer true: Chromium and Playwright come
+pre-installed (`require('playwright')`, `chromium.launch()` with no options; do **not** `playwright install`).
+So S5.2 items 2 and 3 are done:
+
+- **`scripts/ui_globe_smoke.py` is rewritten** for the Virginia app. It walks intro → profile (status, chips,
+  a priority moved) → top 5 → locality → mosaic → *Details* → list of 133 + search ("Roanoke" finds exactly
+  the city and the county; nonsense says "no match") → rate, at **320, 390 and 1280 px, in English and in
+  Arabic**: 60 screenshots. The rate step taps the map: a tap in Baltimore and a tap in the Atlantic must be
+  refused with the right reason, a tap on Christiansburg must file under Montgomery County (51121), Send must
+  stay disabled until an overall rating, the POST must return 200 and the heat count must go up by exactly one.
+  Then *Forget my answers* must clear the profile and device token but keep the language. On every screen it
+  checks: no sideways scroll, nothing sticking out of the sheet, every top-bar control fully on screen, legend
+  not under the layer picker, `dir=rtl` and right-to-left layout in Arabic, the machine-translation note shown.
+  The privacy check from session 3 is kept: no profile word ever leaves the browser.
+- **`scripts/ui_standalone_smoke.py` is rewritten** too (it was also still session 3's, waiting for a
+  50-state list that no longer exists). It picks the rating spot with a **real mouse click through the map
+  canvas**, checks 21 Christiansburg place dots appear at zoom 12, that nothing calls `/api`, and that Hide
+  covers the page.
+
+**What clicking found (all fixed, each with a check that fails on the old code):**
+
+1. **At 320 px the Hide button — the quick exit — was pushed off screen**, in every language: off the right
+   edge in English, off the left in Arabic. The top bar needed ~380 px. `globe.css` now tightens it below
+   381 px and lets the brand shrink before any button does. Service-worker cache bumped to v8 so phones that
+   already have the app pick up the fix.
+2. **The open-water refusal was English in every language.** `globe.js` passed the engine's English reason
+   straight to the toast. A tap can only be refused as outside Virginia or on water, so both now have
+   translated sentences (`outsideTap`, new `waterTap`) in all 8 languages.
+3. **Six languages were missing 24 strings** that silently fell back to English. Two are visible in the
+   Virginia app: the "Open the {town} receipt" button and the standalone "saved on this device" toast; both
+   are translated now. The rest are the 50-state beta view, digits, or unused, and are listed with reasons in
+   the new `tests/test_i18n_langs.py`, which fails if any other English string goes missing in any language.
+
+**Tests: 196 pass** (191 + 5 in `tests/test_i18n_langs.py`). Both smoke scripts pass. `clean_install_check.sh`
+passes. The new translations are machine translations like the rest of S4's; they need the same native review.
+
+**Not done, noticed while clicking:** the language picker has no dropdown arrow (`appearance: none`), so it
+reads as a plain button; a place popup opened near the bottom of the map can sit under the legend. Neither
+blocks anything. The *Details* reasons are still English in every language (S5.2 item 9).
+
+## S6.1 Next, in order
+
+S5.2 items 2 and 3 are done. Continue with **S5.2 item 4** (block-level crime in the locality panel — now
+testable here: extend `ui_globe_smoke.py` to tap a Norfolk point and assert the panel shows the block-level
+crime line), then 5 onward. Run both smoke scripts before you hand off:
+
+```bash
+FOOTING_MODE=replay FOOTING_RATINGS_DB=/tmp/r.sqlite uvicorn footing.api:app --port 8765 &
+python scripts/ui_globe_smoke.py http://localhost:8765 out/globe          # 60 screenshots
+python scripts/build_standalone_demo.py out/demo && python -m http.server -d out/demo 8799 &
+python scripts/ui_standalone_smoke.py http://localhost:8799 out/standalone
+```
+
+Look at the screenshots, not just the exit code: the Hide-button bug was found by eye first.
 
 ## S5.0 The merge, in one page
 
@@ -75,12 +133,12 @@ its counts were stored as `0`. They are `null` now, with the reason.
 1. ~~Push to GitHub.~~ **Done.** The merge went up as PR #1 and the owner merged it into `main`
    (`bd47f69`), so `main` now has everything above, including the `footing/pipeline.py` fix. The
    `merge/session4-into-main` branch is identical to `main` and can be deleted.
-2. **Click the app through a real browser.** Nobody has. This sandbox cannot install one —
+2. ~~Click the app through a real browser.~~ **Done in S6.0.** Original note, kept for history: Nobody has. This sandbox cannot install one —
    `cdn.playwright.dev` is not reachable from it, and the network allowlist covers only GitHub and the
    package registries. On a laptop: `pytest -q`, then `uvicorn footing.api:app --port 8080`, then walk
    through intro → profile → top 5 → locality → mosaic → *Details* → search → rate, at 320, 390 and 1280 px,
    in English and in Arabic (right-to-left). The rating flow and RTL have never been seen working.
-3. **Rewrite `scripts/ui_globe_smoke.py`.** Still session 3's; it expects the old language button and the
+3. ~~Rewrite `scripts/ui_globe_smoke.py`.~~ **Done in S6.0.** Still session 3's; it expects the old language button and the
    state view, so it will fail against the current UI. Section S4.1 item 2 lists what it should cover. Keep
    its privacy check: no profile word may leave the browser.
 4. **Show block-level crime in the locality panel.** The engines and `GET /api/va/fit` support it; the panel
@@ -130,10 +188,10 @@ its counts were stored as `0`. They are `null` now, with the reason.
 
 ## S5.4 Prompt for the next model
 
-> You are the 6th model continuing Footing, a hackathon app for people experiencing homelessness in
+> You are the 7th model continuing Footing, a hackathon app for people experiencing homelessness in
 > Virginia, including immigrants. Sessions 3 and 4 have been merged into one `main`. Read `HANDOFF.md`
-> sections S5.0–S5.3 first, then `docs/PIPELINE.md`, `docs/FACT_CHECK.md`, and `docs/SESSION4_REPORT.md`
-> for the designer notes. Run `pytest -q` (expect 191 passed) and
+> sections S6.0–S6.1 and S5.0–S5.3 first, then `docs/PIPELINE.md`, `docs/FACT_CHECK.md`, and `docs/SESSION4_REPORT.md`
+> for the designer notes. Run `pytest -q` (expect 196 passed) and
 > `python scripts/build_va_localities.py --check`. Then work S5.2 in order.
 >
 > Rules from the owner:
@@ -141,7 +199,7 @@ its counts were stored as `0`. They are `null` now, with the reason.
 > - Say plainly what you could not test, and why. "Done" only counts if it is actually done.
 > - Keep JS/Python parity, keep the tests green, add tests for what you change.
 > - Boil the ocean: complete, tested, documented.
-> - Before you hand off, update S5.0/S5.2 (or add S6.x) at the top of this file.
+> - Before you hand off, run both UI smoke scripts (S6.1) and add S7.x at the top of this file.
 
 ---
 
