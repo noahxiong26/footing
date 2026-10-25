@@ -29,3 +29,34 @@ water, so `footing/va.py` also checks the us-atlas shoreline to tell open water 
 
 To refresh: repeat the requests above (any normal laptop can reach these hosts directly), replace the files,
 run `python scripts/build_va_localities.py`, then `pytest -q`.
+
+## City incident reports (Norfolk, Charlottesville) — `city_incidents_tiles_2026-10-24.json`
+
+Captured by the session-3 run that `main` carried, and kept through the session 3 / session 4 merge because
+no other Virginia source is finer than a whole city. **`city_incidents_MANIFEST.json` records exactly how it
+was captured**, including the checks on the tile totals.
+
+- **Sources:** Norfolk Police incidents (`data.norfolk.gov/resource/r7bn-2egr.json`), Charlottesville Police
+  crime data (`gisweb.charlottesville.org/.../OpenData_2/MapServer/6`), both geocoded with the U.S. Census
+  batch geocoder. Window: 2025-10-24 to 2026-10-24.
+- **What is kept:** counts per 0.01-degree (~1 km) tile in three buckets, per-city totals and match rates,
+  and the offense-label-to-bucket table. No address, incident ID or officer name was kept.
+- **Buckets:** `footing/static/va_offense_classes.json`, applied by `scripts/capture/va_incidents_browser.js`.
+  `tests/test_vafit.py` checks the script and the JSON have not drifted apart. Trespass, loitering,
+  drunkenness and similar calls are bucketed as **enforcement** and are never counted as danger: they record
+  where police make contact, which is disproportionately where unhoused people already are.
+- **Used by:** `scripts/build_va_localities.py` (`incident_tiles()`), which validates that each city's tile
+  counts add up to its `placed` total and derives the 3x3 scale from the tiles themselves.
+- **Only two cities.** Everywhere else uses the FBI's yearly per-agency figures, and the score says which
+  one it used ("Norfolk police data" vs "reported to the FBI").
+
+## A second, independent capture — `second_capture_*.json`
+
+`main` captured HUD FMRs, FBI CDE agency crime, HUD HIC and the HUD CoC map separately from session 4's
+files above. Both captures are kept, because comparing them is the only real check either one has: rent
+matches for all 133 localities and the CoC mapping matches for all 133. See `docs/FACT_CHECK.md`.
+
+These files were under `fixtures/` until the merge. That folder is for recorded replay sets for the receipt
+pipeline, each with a `MANIFEST.json` naming one point; a statewide capture dropped in there crashed
+`/api/healthz` and the receipt, plan and tonight endpoints, because the resolver assumed every manifest had
+a point. They live here now, with the rest of the raw data.

@@ -19,6 +19,7 @@ from .factors import CATEGORIES, PARAMS, catalog_markdown
 from . import ratings as ratings_store
 from .fit import load_eligibility, load_policy
 from . import va as va_geo
+from . import vafit
 from .vafit import load_va
 from .flyer import FlyerError, read_flyer
 from .gemma import GemmaUnavailable
@@ -151,6 +152,27 @@ def va_check(lat: str = Query(...), lon: str = Query(...)) -> dict:
     """Is this point usable? Never guesses: returns ok=False with a plain reason for NaN, impossible numbers,
     points outside Virginia, and points on open water."""
     return va_geo.check_point(lat, lon)
+
+
+@router.get("/va/fit")
+def va_fit(lat: str = Query(...), lon: str = Query(...), status: str | None = Query(None),
+           kids: bool = Query(False), bedrooms: int | None = Query(None), crime: bool = Query(False)) -> dict:
+    """Score the locality a point falls in, using everything the point itself can tell us.
+
+    In Norfolk and Charlottesville, which publish incident-level reports, the crime part is the violent
+    incidents in the 3x3 tiles (about 3 km) around the point rather than the citywide yearly figure. A
+    rounded or near-the-line point keeps the same score and reports lower confidence, with the reason.
+
+    The phone does not need this endpoint - footing/web/vafit.js and vapoint.js do the same work on the
+    device, which is how a person's status stays off the network. It is here for anything that is not the
+    phone, and so the two engines can be compared against each other.
+    """
+    profile: dict = {"show_crime": crime, "household": {"kids": kids}}
+    if status:
+        profile["status"] = status
+    if bedrooms is not None:
+        profile["household"]["bedrooms"] = bedrooms
+    return vafit.fit_point(load_eligibility(), load_va(), lat, lon, profile)
 
 
 def _client_network(request: Request) -> str | None:

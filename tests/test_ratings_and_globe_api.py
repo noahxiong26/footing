@@ -151,3 +151,14 @@ def test_bad_input_is_still_400_not_429(tmp_path, monkeypatch):
     r = client.post("/api/ratings", json={"lat": 38.9072, "lon": -77.0369, "device": DEV, "overall": 3},
                     headers={"x-forwarded-for": "203.0.113.11"})
     assert r.status_code == 400 and "Virginia only" in r.json()["detail"]
+
+
+def test_api_va_fit_scores_a_point():
+    client = TestClient(app)
+    r = client.get("/api/va/fit", params={"lat": 36.8508, "lon": -76.2859, "crime": True}).json()
+    assert r["fips"] == "51710" and r["score"] is not None
+    assert "Norfolk police data" in next(c for c in r["components"] if c["id"] == "crime")["reason"]
+    rounded = client.get("/api/va/fit", params={"lat": 37.1, "lon": -80.4}).json()
+    assert rounded["fips"] == "51121" and [i["code"] for i in rounded["point_issues"]] == ["coarse"]
+    swapped = client.get("/api/va/fit", params={"lat": -80.4089, "lon": 37.1299}).json()
+    assert swapped["score"] is None and swapped["point_issues"][0]["code"] == "swapped"

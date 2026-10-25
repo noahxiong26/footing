@@ -169,6 +169,11 @@ CASES = [
     {"profile": {"household": {"bedrooms": 0, "mixed": True}, "priorities": ["rent"]},
      "community": {"51121": {"n": 4, "score": 72.5, "freshness": 0.8}, "51760": {"n": 1, "score": 25.0, "freshness": 0.4}}},
     {"profile": {"status": "undisclosed", "household": {"bedrooms": 4}}, "samples": 50},
+    # Block-level crime: inside Norfolk and Charlottesville the crime part comes from the 3x3 tiles around
+    # the point, not the citywide FBI figure, so both engines have to agree tile by tile.
+    {"profile": {"status": "citizen", "show_crime": True}, "samples": 50,
+     "tiles": [[36.8508, -76.2859], [36.8625, -76.3050], [38.0307, -78.4800], [38.0400, -78.5000],
+               [37.1299, -80.4089], [36.7000, -76.4000]]},
 ]
 
 
@@ -179,4 +184,81 @@ def test_js_and_python_agree(tmp_path):
     js = json.loads(subprocess.check_output(["node", str(HERE / "js" / "run_vafit.js"), str(f)]))
     for case, got in zip(CASES, js):
         want = vafit.rank_localities(ELIG, VA, case["profile"], case.get("community"), samples=case.get("samples", 200))
-        assert json.loads(json.dumps(want)) == got, case
+        if not case.get("tiles"):
+            assert json.loads(json.dumps(want)) == got, case
+            continue
+        assert json.loads(json.dumps(want)) == got["ranked"], case
+        for (lat, lon), got_pt in zip(case["tiles"], got["points"]):
+            pt = vageo.check_point(lat, lon)
+            if not pt["ok"]:
+                want_pt = {"fips": None, "score": None}
+            else:
+                want_pt = vafit.fit_score(ELIG, VA, pt["fips"], case["profile"], case.get("community"),
+                                          tile=vafit.tile_of(lat, lon))
+            assert json.loads(json.dumps(want_pt)) == got_pt, (lat, lon)
+
+
+# ---- block-level crime (from main's retired engine) --------------------------------------------------
+NORFOLK_DOWNTOWN = (36.8508, -76.2859)
+CVILLE_MALL = (38.0307, -78.4800)
+CHRISTIANSBURG = (37.1299, -80.4089)
+CRIME_ON = {"status": "citizen", "show_crime": True}
+
+
+def test_incident_tiles_only_cover_the_two_cities_that_publish_them():
+    assert set(VA["incident_cities"]) == {"51710", "51540"}       # Norfolk, Charlottesville
+    assert len(VA["incident_tiles"]) == 189
+    for t in VA["incident_tiles"].values():
+        assert t["fips"] in VA["incident_cities"] and t["v"] >= 0 and t["e"] >= 0
+
+
+def test_a_point_in_an_incident_city_is_scored_on_its_own_blocks():
+    r = vafit.fit_point(ELIG, VA, *NORFOLK_DOWNTOWN, CRIME_ON)
+    crime = next(c for c in r["components"] if c["id"] == "crime")
+    assert r["fips"] == "51710" and "Norfolk police data" in crime["reason"]
+    cville = next(c for c in vafit.fit_point(ELIG, VA, *CVILLE_MALL, CRIME_ON)["components"] if c["id"] == "crime")
+    assert "Charlottesville police data" in cville["reason"]
+
+
+def test_everywhere_else_falls_back_to_the_yearly_fbi_figure():
+    crime = next(c for c in vafit.fit_point(ELIG, VA, *CHRISTIANSBURG, CRIME_ON)["components"] if c["id"] == "crime")
+    assert "FBI" in crime["reason"] and "police data" not in crime["reason"]
+
+
+def test_a_whole_locality_with_no_point_uses_the_yearly_figure_even_in_norfolk():
+    crime = next(c for c in vafit.fit_score(ELIG, VA, "51710", CRIME_ON)["components"] if c["id"] == "crime")
+    assert "FBI" in crime["reason"], "a city-wide question cannot be answered with one block's incidents"
+
+
+def test_enforcement_calls_are_reported_but_never_scored_as_danger():
+    """The mall in Charlottesville has more trespass and loitering calls than violent incidents. Counting
+    those as danger would push someone away from exactly the public places they are most likely to be."""
+    r = vafit.fit_point(ELIG, VA, *CVILLE_MALL, CRIME_ON)
+    crime = next(c for c in r["components"] if c["id"] == "crime")
+    tile = vafit.tile_of(*CVILLE_MALL)
+    violent = vafit.neighbourhood(VA, tile, "v")
+    enforcement = vafit.neighbourhood(VA, tile, "e")
+    assert enforcement > violent, "this test is pointless if the mall stops being an enforcement hotspot"
+    assert "not counted as danger" in crime["reason"]
+    from footing.fit import linear, round1
+    assert crime["score"] == round1(linear(violent, VA["incident_scale"]["good"], VA["incident_scale"]["bad"]))
+
+
+def test_crime_stays_opt_in_even_where_block_data_exists():
+    r = vafit.fit_point(ELIG, VA, *NORFOLK_DOWNTOWN, {"status": "citizen"})
+    assert not any(c["id"] == "crime" for c in r["components"])
+
+
+def test_virginia_beach_reported_nothing_and_that_is_unknown_not_zero():
+    vb = LOCS["51810"]["crime"]
+    assert vb["violent_per_1k"] is None and "reported 0 of 12 months" in vb["unknown_reason"]
+    crime = next(c for c in vafit.fit_score(ELIG, VA, "51810", CRIME_ON)["components"] if c["id"] == "crime")
+    assert crime["score"] is None and "Not counted" in crime["reason"]
+
+
+def test_offense_rules_in_the_capture_script_match_the_committed_json():
+    root = HERE.parent
+    js = (root / "scripts" / "capture" / "va_incidents_browser.js").read_text(encoding="utf-8")
+    rules = json.loads((root / "footing" / "static" / "va_offense_classes.json").read_text(encoding="utf-8"))["rules"]
+    block = js[js.index("var RULES = [") + len("var RULES = "):js.index("].map(")] + "]"
+    assert json.loads(block) == rules, "the capture script and the published bucket table have drifted apart"

@@ -142,23 +142,57 @@
     return { score: 80, reason: "No local 287(g) agreement with ICE is listed for " + loc.name + " (ICE list, Oct 2026). Federal agents can still act anywhere." + stateNote };
   }
 
-  function crimeComponent(loc) {
+  function tileOf(lat, lon) {
+    return "t" + Math.floor(lat * 100) + "_" + Math.floor(lon * 100);
+  }
+
+  // Sum one incident class over the 3x3 tiles around `tile`, about 3 km across.
+  function neighbourhood(va, tile, key) {
+    var parts = tile.slice(1).split("_");
+    var i = parseInt(parts[0], 10), j = parseInt(parts[1], 10), total = 0;
+    for (var di = -1; di <= 1; di++) {
+      for (var dj = -1; dj <= 1; dj++) {
+        var t = va.incident_tiles["t" + (i + di) + "_" + (j + dj)];
+        if (t) total += t[key];
+      }
+    }
+    return total;
+  }
+
+  /* Reported crime, as local as the data allows. Norfolk and Charlottesville publish incident-level
+   * reports, so a point in either is scored on the violent incidents in the 3x3 tiles around it over 12
+   * months; everywhere else it is the FBI's yearly figure for the whole city or county.
+   * Trespass, loitering and drunkenness calls are counted separately and never as danger: they show where
+   * police make contact, which is where unhoused people already are. */
+  function crimeComponent(va, loc, fips, tile) {
     var c = loc.crime;
+    if (tile && va.incident_cities && va.incident_cities[fips] && va.incident_tiles[tile]) {
+      var city = va.incident_cities[fips], sc = va.incident_scale;
+      var v = neighbourhood(va, tile, "v"), e = neighbourhood(va, tile, "e");
+      var reason = commas(v) + " violent incident" + (v === 1 ? "" : "s") + " reported within about 1.5 km in the " +
+        "last 12 months (" + city.name + " police data); " + commas(e) + " trespass, loitering or disorderly calls " +
+        "nearby, which show where police make contact and are not counted as danger.";
+      if (c && c.violent_per_1k !== null && c.violent_per_1k !== undefined) {
+        reason += " Citywide: " + num(c.violent_per_1k) + " violent crimes per 1,000 people (FBI, 2025).";
+      }
+      return { score: round1(linear(v, sc.good, sc.bad)), coverage: 1.0, level: "block", freshness: 0.95, reason: reason };
+    }
     if (!c || c.violent_per_1k === null || c.violent_per_1k === undefined)
-      return { score: null, coverage: 0, reason: "Not counted: " + (c && c.unknown_reason ? c.unknown_reason : "no FBI data for this place.") };
+      return { score: null, coverage: 0, level: "none", reason: "Not counted: " + (c && c.unknown_reason ? c.unknown_reason : "no FBI data for this place.") };
     return { score: round1(linear(c.violent_per_1k, 1.0, 8.0)), coverage: c.coverage === null ? 0 : c.coverage,
+      level: "locality",
       reason: num(c.violent_per_1k) + " violent crimes reported to the FBI per 1,000 people in 2025 (" + commas(c.violent_2025) +
         " reports). Reports reflect policing as well as danger; people without homes are more often victims than offenders." };
   }
 
-  function components(va, fips, profile, community) {
+  function components(va, fips, profile, community, tile) {
     var loc = va.localities[fips], state = va.state, out = {}, tot = stateTotals(va);
     out.shelter = shelterComponent(loc, profile, tot);
     out.rent = rentComponent(loc, state.min_wage, profile);
     out.services = servicesComponent(loc, tot);
     out.laws = lawsComponent(loc, state);
     if (Fit.safetyApplies(profile._elig, profile)) out.safety = safetyComponent(loc, state);
-    if (profile.show_crime) out.crime = crimeComponent(loc);
+    if (profile.show_crime) out.crime = crimeComponent(va, loc, fips, tile);
     var c = community && community[fips];
     if (c && c.n > 0) out.community = { score: c.score, n: c.n, freshness: c.freshness, reason: c.n + " rating" + (c.n === 1 ? "" : "s") + " from people who have been here" };
     else out.community = { score: null, reason: "No ratings yet. Be the first to rate a place here." };
@@ -185,6 +219,8 @@
   }
 
   function freshness(k, c) {
+    // block-level crime carries its own; it is fresher than a yearly total
+    if (c.freshness !== undefined && c.freshness !== null && k !== "community") return c.freshness;
     if (k === "community") return c.freshness || 0.5;
     if (k === "crime") return FRESHNESS.crime * (c.coverage || 0);
     if (k === "shelter") return FRESHNESS.shelter * (c.precision === undefined ? 1 : c.precision);
@@ -202,9 +238,9 @@
     return { score: den > 0 ? num_ / den : null, confidence: conf };
   }
 
-  function fitScore(elig, va, fips, profile, community) {
+  function fitScore(elig, va, fips, profile, community, tile) {
     var p = withElig(profile, elig);
-    var comps = components(va, fips, p, community);
+    var comps = components(va, fips, p, community, tile);
     var order = priorities(elig, p, comps);
     var w = Fit.rocWeights(order.length);
     var agg = aggregate(order, w, comps);
@@ -257,6 +293,7 @@
     return results;
   }
 
-  return { COMPONENTS: COMPONENTS, bedrooms: bedrooms, components: function (va, f, p, c, elig) { return components(va, f, withElig(p, elig), c); },
+  return { COMPONENTS: COMPONENTS, bedrooms: bedrooms, components: function (va, f, p, c, elig, tile) { return components(va, f, withElig(p, elig), c, tile); },
+    tileOf: tileOf,
     defaultPriorities: defaultPriorities, fitScore: fitScore, rankLocalities: rankLocalities };
 });

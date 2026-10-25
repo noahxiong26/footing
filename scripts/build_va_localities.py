@@ -65,6 +65,14 @@ SOURCES = {
                 "url": "https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/explorer/crime/crime-trend",
                 "as_of": "2025 calendar year (CDE refreshed 2026-10-15)", "read_on": READ_ON,
                 "note": "Reported offenses, not risk. Reporting and policing differ by place."},
+    "city_incidents": {"title": "Police incident reports, 12 months, geocoded to ~1 km tiles (Norfolk and Charlottesville)",
+                       "publisher": "City of Norfolk and City of Charlottesville open data; U.S. Census batch geocoder",
+                       "url": "https://data.norfolk.gov/resource/r7bn-2egr.json",
+                       "as_of": "2025-10-24 to 2026-10-24", "read_on": READ_ON,
+                       "note": "Counts per tile only. No address, incident ID or officer name was kept. Trespass, "
+                               "loitering, drunkenness and similar calls are bucketed as 'enforcement' and are never "
+                               "counted as danger: they show where police make contact, which is where unhoused "
+                               "people already are. Capture method: data_raw/city_incidents_MANIFEST.json."},
     "ice_287g": {"title": "287(g) Participating Agencies", "publisher": "U.S. Immigration and Customs Enforcement",
                  "url": "https://www.ice.gov/identify-and-arrest/287g", "as_of": "file downloaded 2026-10-24", "read_on": READ_ON},
     "va_ed1_2026": {"title": "Spanberger ends agreement between state law enforcement agencies and ICE", "publisher": "Cardinal News",
@@ -209,6 +217,51 @@ def crime_by_locality(idx: dict, pop: dict) -> dict:
     return out
 
 
+
+def incident_tiles() -> tuple[dict, dict, dict]:
+    """Block-level incident counts for the two cities that publish them, as ~1 km (0.01 degree) tiles.
+
+    Captured by main's session-3 run (data_raw/city_incidents_MANIFEST.json describes exactly how) and kept
+    through the session 3 / session 4 merge, because no other Virginia source is finer than a whole city.
+    Only Norfolk and Charlottesville publish incident-level data we could geocode; everywhere else stays on
+    the FBI's per-agency yearly figures, and the score says which it used.
+
+    Returns (cities, tiles, scale): tiles are keyed "t{lat*100}_{lon*100}" with v/p/e counts, and scale is
+    the good/bad pair for a 3x3 tile neighbourhood, taken from the recorded tiles themselves.
+    """
+    raw = load("city_incidents_tiles_2026-10-24.json")
+    classes = json.loads((ROOT / "footing" / "static" / "va_offense_classes.json").read_text(encoding="utf-8"))
+    cities, tiles = {}, {}
+    for c in raw["cities"]:
+        total = {"v": 0, "p": 0, "e": 0}
+        for t in c["tiles"]:
+            tiles[t["tile"]] = {"lat": t["lat"], "lon": t["lon"], "fips": c["fips"],
+                                "v": t["violent"], "p": t["property"], "e": t["enforcement"]}
+            total["v"] += t["violent"]
+            total["p"] += t["property"]
+            total["e"] += t["enforcement"]
+        placed = c["placed"]
+        if total["v"] + total["p"] + total["e"] != placed:
+            raise SystemExit(f"{c['name']}: tile counts {total} do not add up to placed={placed}")
+        cities[c["fips"]] = {"name": c["name"], "agency": c["agency"], "source_url": c["source_url"],
+                             "license": c["license"], "window_start": raw["window_start"],
+                             "latest_date": c["latest_date"], "records_in_window": c["records_in_window"],
+                             "used": c["used"], "placed": placed, "not_placed": c["not_placed"],
+                             "by_class": c["by_class"], "tile_count": len(c["tiles"])}
+    # How many violent incidents in a 3x3 block of tiles (about 3 km across) counts as a lot? Take it from
+    # the recorded tiles rather than a round number: 0 is the best case, the 90th percentile is the worst.
+    sums = []
+    for key, t in tiles.items():
+        i, j = (int(x) for x in key[1:].split("_"))
+        sums.append(sum(tiles.get(f"t{i + di}_{j + dj}", {}).get("v", 0) for di in (-1, 0, 1) for dj in (-1, 0, 1)))
+    sums.sort()
+    bad = float(sums[min(len(sums) - 1, int(round(0.9 * (len(sums) - 1))))]) if sums else 0.0
+    scale = {"good": 0, "bad": bad,
+             "rule": "violent incidents in the 3x3 tiles around a point (about 3 km across) over 12 months; "
+                     "bad = 90th percentile of the recorded tiles"}
+    return cities, tiles, {"classes_about": classes["about"], "scale": scale}
+
+
 def build() -> dict:
     idx = name_index()
     pops = {k: v[1] for k, v in load("census_pep_v2025_va.json")["out"].items()}
@@ -220,6 +273,7 @@ def build() -> dict:
     snap_rows = load("usda_snap_retailers_va_by_county.json")["rows"]
     ice = load("ice_287g_va_2026-10-24.json")["rows"]
     crime = crime_by_locality(idx, pops)
+    inc_cities, inc_tiles, inc_meta = incident_tiles()
 
     snap: dict[str, dict] = {}
     for county, kind, n in snap_rows:
@@ -287,8 +341,13 @@ def build() -> dict:
         "field_sources": {"center": "census_tiger", "pop_2025": "census_pep", "fmr": "hud_fmr", "coc": "hud_coc_areas",
                           "coc.pit": "hud_pit", "coc.beds": "hud_hic", "services.osm": "osm", "services.snap": "usda_snap",
                           "services.fare_free_transit": "apta_fare_free", "help_points": "osm",
-                          "local_rule": "local_rule.source", "enforcement_287g": "ice_287g", "crime": "fbi_cde"},
+                          "local_rule": "local_rule.source", "enforcement_287g": "ice_287g", "crime": "fbi_cde",
+                          "incident_tiles": "city_incidents"},
         "sources": SOURCES,
+        "incident_cities": inc_cities,
+        "incident_tiles": inc_tiles,
+        "incident_scale": inc_meta["scale"],
+        "offense_classes_about": inc_meta["classes_about"],
         "localities": rows,
     }
 

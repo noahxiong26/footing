@@ -186,17 +186,58 @@ def safety_component(loc, state):
                                    f"Federal agents can still act anywhere." + state_note}
 
 
-def crime_component(loc):
+def tile_of(lat, lon):
+    """The ~1 km tile a point falls in, keyed the way the builder writes them."""
+    return f"t{math.floor(lat * 100)}_{math.floor(lon * 100)}"
+
+
+def neighbourhood(va, tile, key):
+    """Sum one incident class over the 3x3 tiles around `tile`, about 3 km across."""
+    i, j = (int(x) for x in tile[1:].split("_"))
+    total = 0
+    for di in (-1, 0, 1):
+        for dj in (-1, 0, 1):
+            t = va["incident_tiles"].get(f"t{i + di}_{j + dj}")
+            if t:
+                total += t[key]
+    return total
+
+
+def crime_component(va, loc, fips, tile=None):
+    """Reported crime, as local as the data allows.
+
+    Norfolk and Charlottesville publish incident-level reports, so for a point in one of them we count the
+    violent incidents in the 3x3 tiles around it (about 3 km across) over 12 months. Everywhere else, and
+    for a whole locality with no point, it is the FBI's yearly figure for the city or county.
+
+    Trespass, loitering, drunkenness and similar calls are counted separately and never as danger. They
+    measure where police make contact, which is disproportionately where unhoused people already are, so
+    scoring them as risk would push someone away from the places they are most likely to be.
+    """
+    if tile and fips in va.get("incident_cities", {}) and va["incident_tiles"].get(tile):
+        city = va["incident_cities"][fips]
+        sc = va["incident_scale"]
+        v = neighbourhood(va, tile, "v")
+        e = neighbourhood(va, tile, "e")
+        reason = (f"{commas(v)} violent incident{'' if v == 1 else 's'} reported within about 1.5 km in the last "
+                  f"12 months ({city['name']} police data); {commas(e)} trespass, loitering or disorderly calls "
+                  f"nearby, which show where police make contact and are not counted as danger.")
+        c = loc.get("crime") or {}
+        if c.get("violent_per_1k") is not None:
+            reason += f" Citywide: {num(c['violent_per_1k'])} violent crimes per 1,000 people (FBI, 2025)."
+        return {"score": round1(linear(v, sc["good"], sc["bad"])), "coverage": 1.0, "level": "block",
+                "freshness": 0.95, "reason": reason}
     c = loc.get("crime")
     if not c or c.get("violent_per_1k") is None:
-        return {"score": None, "coverage": 0,
+        return {"score": None, "coverage": 0, "level": "none",
                 "reason": "Not counted: " + (c["unknown_reason"] if c and c.get("unknown_reason") else "no FBI data for this place.")}
     return {"score": round1(linear(c["violent_per_1k"], 1.0, 8.0)), "coverage": 0 if c.get("coverage") is None else c["coverage"],
+            "level": "locality",
             "reason": f"{num(c['violent_per_1k'])} violent crimes reported to the FBI per 1,000 people in 2025 ({commas(c['violent_2025'])} reports). "
                       f"Reports reflect policing as well as danger; people without homes are more often victims than offenders."}
 
 
-def components(va, fips, profile, community=None):
+def components(va, fips, profile, community=None, tile=None):
     loc, state, out, tot = va["localities"][fips], va["state"], {}, state_totals(va)
     out["shelter"] = shelter_component(loc, profile, tot)
     out["rent"] = rent_component(loc, state["min_wage"], profile)
@@ -205,7 +246,7 @@ def components(va, fips, profile, community=None):
     if safety_applies(profile["_elig"], profile):
         out["safety"] = safety_component(loc, state)
     if profile.get("show_crime"):
-        out["crime"] = crime_component(loc)
+        out["crime"] = crime_component(va, loc, fips, tile)
     c = (community or {}).get(fips)
     if c and c.get("n", 0) > 0:
         out["community"] = {"score": c["score"], "n": c["n"], "freshness": c.get("freshness"),
@@ -240,6 +281,8 @@ def priorities(elig, profile, comps):
 
 
 def _freshness(k, c):
+    if c.get("freshness") is not None and k != "community":
+        return c["freshness"]            # block-level crime carries its own; it is fresher than a yearly total
     if k == "community":
         return c.get("freshness") or 0.5
     if k == "crime":
@@ -267,9 +310,9 @@ def _with_elig(profile, elig):
     return p
 
 
-def fit_score(elig, va, fips, profile, community=None):
+def fit_score(elig, va, fips, profile, community=None, tile=None):
     p = _with_elig(profile, elig)
-    comps = components(va, fips, p, community)
+    comps = components(va, fips, p, community, tile)
     order = priorities(elig, p, comps)
     w = roc_weights(len(order))
     agg = aggregate(order, w, comps)
@@ -292,19 +335,23 @@ def fit_score(elig, va, fips, profile, community=None):
 
 
 def fit_point(elig, va, lat, lon, profile, community=None):
-    """Score the locality a tapped or typed point falls in, with the point's own doubt folded into confidence.
+    """Score the locality a tapped or typed point falls in, using the point for everything it can tell us.
 
-    A locality score does not depend on where in the locality the point is, so the score is exactly
-    fit_score's. What the point changes is how much the answer can be trusted: rounded coordinates or a spot
-    a few hundred metres from a city line mean the numbers may belong to the place next door. That lowers
-    confidence and is listed in `point_issues`; it never alters the score itself. An unusable point gets no
-    score at all and says why (footing.va.check_point). Mirrored in footing/web/vapoint.js.
+    Two things depend on where the point is. In Norfolk and Charlottesville, which publish incident-level
+    reports, the crime part switches from the citywide FBI figure to the 3x3 tiles around the point. And
+    the point's own doubt - rounded coordinates, a spot a few hundred metres from a city line - lowers
+    CONFIDENCE and is listed in `point_issues`.
+
+    Everything else is a property of the whole city or county, so it cannot change with the tap: rent,
+    shelter beds and local law are the same anywhere inside the locality, and the score reflects that. An
+    unusable point gets no score at all and says why (footing.va.check_point).
+    Mirrored in footing/web/vapoint.js and footing/web/vafit.js.
     """
     pt = vageo.check_point(lat, lon)
     if not pt["ok"]:
         return {"fips": None, "name": None, "score": None, "confidence": 0.0, "confidence_label": "low",
                 "components": [], "point": pt, "point_issues": [{"code": pt["code"], "text": pt["reason"]}]}
-    out = fit_score(elig, va, pt["fips"], profile, community)
+    out = fit_score(elig, va, pt["fips"], profile, community, tile=tile_of(float(lat), float(lon)))
     out["confidence"] = round3(out["confidence"] * pt["validity"])
     out["confidence_label"] = ("high" if out["confidence"] >= 0.7 else
                                "medium" if out["confidence"] >= 0.45 else "low")
