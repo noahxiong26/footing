@@ -65,6 +65,12 @@ SOURCES = {
                 "url": "https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/explorer/crime/crime-trend",
                 "as_of": "2025 calendar year (CDE refreshed 2026-10-15)", "read_on": READ_ON,
                 "note": "Reported offenses, not risk. Reporting and policing differ by place."},
+    "fbi_cde_second": {"title": "Crime Data Explorer, agency summaries - second independent capture",
+                       "publisher": "FBI UCR", "url": "https://cde.ucr.cjis.gov",
+                       "as_of": "2025 calendar year", "read_on": READ_ON,
+                       "note": "Captured separately from fbi_cde on the same day. Used to cross-check the offence "
+                               "counts (they agree for all 240 shared agencies) and for months reported, where it is "
+                               "the more precise of the two. See docs/FACT_CHECK.md."},
     "city_incidents": {"title": "Police incident reports, 12 months, geocoded to ~1 km tiles (Norfolk and Charlottesville)",
                        "publisher": "City of Norfolk and City of Charlottesville open data; U.S. Census batch geocoder",
                        "url": "https://data.norfolk.gov/resource/r7bn-2egr.json",
@@ -118,8 +124,15 @@ LOCAL_RULES = {
     "51650": ("broad_ban", "Camping and sleeping outdoors on public property is a Class 2 misdemeanor (up to 6 months and "
               "$1,000). Police must warn several times and offer housing help before a summons. Approved April 8, 2026.",
               "hampton_camping"),
+    # Scored as a broad ban, but this one is a judgement call and the merge recorded it rather than hiding it.
+    # Session 4 read "streets, sidewalks, alleys and other public rights of way" as a broad ban (0); session 3
+    # read the same summary as a partial ban (35), because parks and other city land are not rights of way.
+    # Neither session read the ordinance itself - both cited news coverage. Kept at 0 because the cost of the
+    # two errors is not equal: scoring Bristol harsher than it is costs someone an option, scoring it gentler
+    # sends them somewhere they can be charged. docs/FACT_CHECK.md asks for the city code to settle it.
     "51520": ("broad_ban", "Camping on city streets, sidewalks, alleys and other public rights of way is a Class 4 "
-              "misdemeanor (up to $250). Passed August 9, 2022.", "bristol_camping"),
+              "misdemeanor (up to $250). Passed August 9, 2022. Whether the ban reaches parks and other city "
+              "land, rather than only rights of way, has not been confirmed from the city code.", "bristol_camping"),
     "51770": ("limited_ban", "Camping on downtown sidewalks is a Class 4 misdemeanor (up to $250). In effect since 2022.",
               "roanoke_camping"),
     "51540": ("site_closure", "The Free Bridge encampment by the Rivanna River closed on Sept 1, 2026; staying there can "
@@ -129,8 +142,14 @@ LOCAL_RULES = {
               "We could not confirm what happened after.", "danville_postponed"),
     "51059": ("clearing_policy", "The county clears encampments on land it owns under its own guidelines (not an "
               "ordinance we could find). Other owners (state, schools, parks) can use trespass law.", "fairfax_encampments"),
+    # Searched and found nothing. That is weaker than "no ban" and stronger than "not checked yet", so it is
+    # recorded as its own status and still not scored: the town and county codes were not read line by line.
+    "51121": ("checked_none_found", "A news and ordinance search on 2026-10-24 found no camping or sleeping ban for "
+              "Montgomery County, Blacksburg or Christiansburg. The town and county codes were not read line by line, "
+              "so this is not a confirmed 'no ban'.", None),
 }
-RULE_SCORE = {"broad_ban": 0, "limited_ban": 35, "site_closure": 60}   # proposed / clearing_policy: shown, not scored
+# proposed / clearing_policy / checked_none_found: shown to the person, never scored.
+RULE_SCORE = {"broad_ban": 0, "limited_ban": 35, "site_closure": 60}
 
 # ---- Fare-free buses (APTA list Aug 2026; DRPT zero-fare projects FY2025) ------------------------------------------
 FARE_FREE = {
@@ -174,14 +193,56 @@ def fips_for(name: str, idx: dict) -> str | None:
     return idx.get(n)
 
 
+def reported_months() -> dict:
+    """Months each agency actually reported in 2025, from whichever of the two captures is more precise.
+
+    The FBI's CDE was captured twice, independently, on the same day: data_raw/fbi_cde_va_agencies_2025.json
+    (412 agencies) and data_raw/second_capture_fbi_cde_agencies_2025_va.json (240, the ones with a
+    population). They agree on the offence counts of every one of the 240 agencies they share. They disagree
+    on months reported for exactly three: Middleburg PD (12 vs 11), Remington PD (12 vs 3) and Quantico PD
+    (12 vs 0). The first capture records only 12 or 0 and nothing between, so it looks like it inferred
+    "reported at all" rather than reading the monthly breakdown, which the second did.
+
+    Neither can be re-checked from the build sandbox, which cannot reach cde.ucr.cjis.gov, so this takes the
+    LOWER of the two. That is the conservative direction: a partial year is flagged as a coverage gap
+    instead of being counted as a full one. All three are small town departments with 0 violent offences
+    between them, so the whole effect is 5 property offences in Loudoun County. Written up in
+    docs/FACT_CHECK.md for someone who can open CDE to settle.
+    """
+    second = load("second_capture_fbi_cde_agencies_2025_va.json")
+    out = {}
+    for row in second["rows"]:
+        a = dict(zip(second["cols"], row))
+        out[a["ori"]] = (a["months_violent"], a["months_property"])
+    return out
+
+
 def crime_by_locality(idx: dict, pop: dict) -> dict:
     raw = load("fbi_cde_va_agencies_2025.json")
     cols = raw["columns"]
+    months = reported_months()
     agg: dict[str, dict] = {}
     for row in raw["rows"]:
         a = dict(zip(cols, row))
+        if a["ori"] in months:
+            mv, mp = months[a["ori"]]
+            a["violent_months"] = min(a["violent_months"], mv)
+            a["property_months"] = min(a["property_months"], mp)
         names = [x.strip() for x in (a["counties"] or "").split(",") if x.strip()]
-        f = fips_for(names[0], idx) if names and names[0] not in ("NOT SPECIFIED", "UNMAPPED COUNTY") else None
+        names = [n for n in names if n not in ("NOT SPECIFIED", "UNMAPPED COUNTY")]
+        # Four town police departments straddle a county line and the FBI lists both counties (Farmville,
+        # St. Paul, Saltville, Kilmarnock). Taking the first name put Farmville's 37 violent offences in
+        # Cumberland County, population 9,664, which quintupled its count; the town is seated in Prince
+        # Edward. Splitting the counts between counties would invent a division the data does not contain,
+        # so place the agency where its own published coordinates fall, and only when they land in one of
+        # the counties it lists. All four resolve to the county the town is actually seated in.
+        f = None
+        if len(names) > 1 and a["lat"] is not None:
+            hit = locality_at(a["lat"], a["lon"])
+            if hit and hit["fips"] in {fips_for(n, idx) for n in names}:
+                f = hit["fips"]
+        if not f and names:
+            f = fips_for(names[0], idx)
         if not f and a["lat"] is not None:
             hit = locality_at(a["lat"], a["lon"])
             f = hit["fips"] if hit else None
@@ -210,7 +271,11 @@ def crime_by_locality(idx: dict, pop: dict) -> dict:
             reason = "No reporting agency with a population here."
         else:
             rate = round(1000 * g["violent"] / g["pop_covered"], 2)
-        out[f] = {"violent_2025": g["violent"], "property_2025": g["property"], "pop_covered": g["pop_covered"],
+        # "Unknown is never zero" has to hold in the stored data too, not just in the score: where no
+        # agency produced a usable year, the counts are null and the reason says why.
+        out[f] = {"violent_2025": g["violent"] if rate is not None else None,
+                  "property_2025": g["property"] if rate is not None else None,
+                  "pop_covered": g["pop_covered"],
                   "coverage": round(min(1.0, g["pop_covered"] / p), 3) if p else None,
                   "violent_per_1k": rate, "property_per_1k": round(1000 * g["property"] / g["pop_covered"], 2) if rate is not None else None,
                   "unknown_reason": reason, "gaps": g["gaps"]}
@@ -341,7 +406,7 @@ def build() -> dict:
         "field_sources": {"center": "census_tiger", "pop_2025": "census_pep", "fmr": "hud_fmr", "coc": "hud_coc_areas",
                           "coc.pit": "hud_pit", "coc.beds": "hud_hic", "services.osm": "osm", "services.snap": "usda_snap",
                           "services.fare_free_transit": "apta_fare_free", "help_points": "osm",
-                          "local_rule": "local_rule.source", "enforcement_287g": "ice_287g", "crime": "fbi_cde",
+                          "local_rule": "local_rule.source", "enforcement_287g": "ice_287g", "crime": "fbi_cde", "crime.months": "fbi_cde_second",
                           "incident_tiles": "city_incidents"},
         "sources": SOURCES,
         "incident_cities": inc_cities,
@@ -367,7 +432,12 @@ def validate(data: dict) -> list[str]:
             errs.append(f"{f}: odd FMR {b}")
         if not x["pop_2025"] or x["pop_2025"] < 2000:
             errs.append(f"{f}: odd population {x['pop_2025']}")
-        if x["local_rule"] and x["local_rule"]["source"] not in data["sources"]:
+        rule = x["local_rule"]
+        if rule and rule["status"] == "checked_none_found":
+            # A search that found nothing has nothing to cite; it must also never carry a score.
+            if rule["source"] is not None or rule["score"] is not None:
+                errs.append(f"{f}: a 'checked, none found' rule must have no source and no score")
+        elif rule and rule["source"] not in data["sources"]:
             errs.append(f"{f}: local rule cites unknown source")
     if len(by_coc) != 16:
         errs.append(f"expected 16 CoCs, got {len(by_coc)}")

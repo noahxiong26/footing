@@ -162,12 +162,23 @@ def services_component(loc, tot):
     return {"score": round1(n / d), "reason": "; ".join(why) + "." + small, "parts": parts}
 
 
+NOT_SCORED = {"proposed": "not adopted.", "clearing_policy": "not an ordinance.",
+              "checked_none_found": "we found no ban, but we did not read the whole code, so this is not a "
+                                    "confirmed 'no ban'."}
+
+
 def laws_component(loc, state):
+    """Local rules on sleeping outside. Only a confirmed rule is scored; everything else is shown, not scored.
+
+    There are three different things here and the person is told which one applies: a rule we confirmed and
+    scored, a rule we found but cannot score (proposed, or a clearing policy that is not an ordinance, or a
+    search that turned up nothing), and a place nobody has checked. A blank has never meant "no ban".
+    """
     r = loc.get("local_rule")
     if r and r.get("score") is not None:
         return {"score": r["score"], "reason": r["note"], "source": r["source"]}
     if r:
-        return {"score": None, "reason": r["note"] + " Not scored: " + ("not adopted." if r["status"] == "proposed" else "not an ordinance."),
+        return {"score": None, "reason": r["note"] + " Not scored: " + NOT_SCORED.get(r["status"], "not an ordinance."),
                 "source": r["source"]}
     return {"score": None, "reason": state["camping_law"]["note"] + f" We have not checked {loc['name']}'s own code yet, so this part is not counted."}
 

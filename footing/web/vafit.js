@@ -124,10 +124,16 @@
     return { score: round1(num_ / den), reason: why.join("; ") + "." + small, parts: parts };
   }
 
+  /* Local rules on sleeping outside. Only a confirmed rule is scored; a proposed rule, a clearing policy
+   * that is not an ordinance, and a search that turned up nothing are all shown but not scored. A blank
+   * has never meant "no ban". */
+  var NOT_SCORED = { proposed: "not adopted.", clearing_policy: "not an ordinance.",
+    checked_none_found: "we found no ban, but we did not read the whole code, so this is not a confirmed 'no ban'." };
+
   function lawsComponent(loc, state) {
     var r = loc.local_rule;
     if (r && r.score !== null && r.score !== undefined) return { score: r.score, reason: r.note, source: r.source };
-    if (r) return { score: null, reason: r.note + " Not scored: " + (r.status === "proposed" ? "not adopted." : "not an ordinance."), source: r.source };
+    if (r) return { score: null, reason: r.note + " Not scored: " + (NOT_SCORED[r.status] || "not an ordinance."), source: r.source };
     return { score: null, reason: state.camping_law.note + " We have not checked " + loc.name + "'s own code yet, so this part is not counted." };
   }
 

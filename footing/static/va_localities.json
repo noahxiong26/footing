@@ -28,6 +28,7 @@
   "local_rule": "local_rule.source",
   "enforcement_287g": "ice_287g",
   "crime": "fbi_cde",
+  "crime.months": "fbi_cde_second",
   "incident_tiles": "city_incidents"
  },
  "sources": {
@@ -99,6 +100,14 @@
    "as_of": "2025 calendar year (CDE refreshed 2026-10-15)",
    "read_on": "2026-10-24",
    "note": "Reported offenses, not risk. Reporting and policing differ by place."
+  },
+  "fbi_cde_second": {
+   "title": "Crime Data Explorer, agency summaries - second independent capture",
+   "publisher": "FBI UCR",
+   "url": "https://cde.ucr.cjis.gov",
+   "as_of": "2025 calendar year",
+   "read_on": "2026-10-24",
+   "note": "Captured separately from fbi_cde on the same day. Used to cross-check the offence counts (they agree for all 240 shared agencies) and for months reported, where it is the more precise of the two. See docs/FACT_CHECK.md."
   },
   "city_incidents": {
    "title": "Police incident reports, 12 months, geocoded to ~1 km tiles (Norfolk and Charlottesville)",
@@ -3534,12 +3543,12 @@
    "local_rule": null,
    "enforcement_287g": [],
    "crime": {
-    "violent_2025": 45,
-    "property_2025": 185,
-    "pop_covered": 17249,
-    "coverage": 1.0,
-    "violent_per_1k": 2.61,
-    "property_per_1k": 10.73,
+    "violent_2025": 8,
+    "property_2025": 32,
+    "pop_covered": 9664,
+    "coverage": 0.934,
+    "violent_per_1k": 0.83,
+    "property_per_1k": 3.31,
     "unknown_reason": null,
     "gaps": []
    }
@@ -3953,12 +3962,18 @@
    "crime": {
     "violent_2025": 42,
     "property_2025": 263,
-    "pop_covered": 76799,
-    "coverage": 1.0,
+    "pop_covered": 76150,
+    "coverage": 0.995,
     "violent_per_1k": 0.55,
-    "property_per_1k": 3.42,
+    "property_per_1k": 3.45,
     "unknown_reason": null,
-    "gaps": []
+    "gaps": [
+     {
+      "agency": "Remington PD",
+      "population": 649,
+      "months": 3
+     }
+    ]
    }
   },
   "51063": {
@@ -5494,13 +5509,19 @@
    ],
    "crime": {
     "violent_2025": 404,
-    "property_2025": 2973,
-    "pop_covered": 449890,
-    "coverage": 1.0,
+    "property_2025": 2968,
+    "pop_covered": 449188,
+    "coverage": 0.999,
     "violent_per_1k": 0.9,
     "property_per_1k": 6.61,
     "unknown_reason": null,
-    "gaps": []
+    "gaps": [
+     {
+      "agency": "Middleburg PD",
+      "population": 702,
+      "months": 11
+     }
+    ]
    }
   },
   "51109": {
@@ -5983,7 +6004,12 @@
      "osm": "w1022334571"
     }
    ],
-   "local_rule": null,
+   "local_rule": {
+    "status": "checked_none_found",
+    "note": "A news and ordinance search on 2026-10-24 found no camping or sleeping ban for Montgomery County, Blacksburg or Christiansburg. The town and county codes were not read line by line, so this is not a confirmed 'no ban'.",
+    "source": null,
+    "score": null
+   },
    "enforcement_287g": [],
    "crime": {
     "violent_2025": 127,
@@ -6775,12 +6801,12 @@
    "local_rule": null,
    "enforcement_287g": [],
    "crime": {
-    "violent_2025": 31,
-    "property_2025": 78,
-    "pop_covered": 15370,
-    "coverage": 0.686,
-    "violent_per_1k": 2.02,
-    "property_per_1k": 5.07,
+    "violent_2025": 68,
+    "property_2025": 231,
+    "pop_covered": 22955,
+    "coverage": 1.0,
+    "violent_per_1k": 2.96,
+    "property_per_1k": 10.06,
     "unknown_reason": null,
     "gaps": []
    }
@@ -6960,12 +6986,18 @@
    "crime": {
     "violent_2025": 1065,
     "property_2025": 6419,
-    "pop_covered": 501930,
-    "coverage": 0.998,
+    "pop_covered": 501336,
+    "coverage": 0.997,
     "violent_per_1k": 2.12,
-    "property_per_1k": 12.79,
+    "property_per_1k": 12.8,
     "unknown_reason": null,
-    "gaps": []
+    "gaps": [
+     {
+      "agency": "Quantico PD",
+      "population": 594,
+      "months": 0
+     }
+    ]
    }
   },
   "51155": {
@@ -7457,11 +7489,11 @@
    "enforcement_287g": [],
    "crime": {
     "violent_2025": 52,
-    "property_2025": 228,
-    "pop_covered": 26075,
-    "coverage": 1.0,
-    "violent_per_1k": 1.99,
-    "property_per_1k": 8.74,
+    "property_2025": 209,
+    "pop_covered": 25247,
+    "coverage": 0.997,
+    "violent_per_1k": 2.06,
+    "property_per_1k": 8.28,
     "unknown_reason": null,
     "gaps": []
    }
@@ -8390,11 +8422,11 @@
    ],
    "crime": {
     "violent_2025": 58,
-    "property_2025": 264,
-    "pop_covered": 34126,
-    "coverage": 0.98,
-    "violent_per_1k": 1.7,
-    "property_per_1k": 7.74,
+    "property_2025": 283,
+    "pop_covered": 34954,
+    "coverage": 1.0,
+    "violent_per_1k": 1.66,
+    "property_per_1k": 8.1,
     "unknown_reason": null,
     "gaps": []
    }
@@ -8652,7 +8684,7 @@
    "help_points": [],
    "local_rule": {
     "status": "broad_ban",
-    "note": "Camping on city streets, sidewalks, alleys and other public rights of way is a Class 4 misdemeanor (up to $250). Passed August 9, 2022.",
+    "note": "Camping on city streets, sidewalks, alleys and other public rights of way is a Class 4 misdemeanor (up to $250). Passed August 9, 2022. Whether the ban reaches parks and other city land, rather than only rights of way, has not been confirmed from the city code.",
     "source": "bristol_camping",
     "score": 0
    },
@@ -11291,8 +11323,8 @@
    "local_rule": null,
    "enforcement_287g": [],
    "crime": {
-    "violent_2025": 0,
-    "property_2025": 0,
+    "violent_2025": null,
+    "property_2025": null,
     "pop_covered": 0,
     "coverage": 0.0,
     "violent_per_1k": null,

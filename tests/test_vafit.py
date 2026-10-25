@@ -37,8 +37,14 @@ def test_every_va_field_cites_a_source():
             continue
         assert src in VA["sources"], field
     for f, l in LOCS.items():
-        if l["local_rule"]:
-            assert l["local_rule"]["source"] in VA["sources"], f
+        rule = l["local_rule"]
+        if not rule:
+            continue
+        if rule["status"] == "checked_none_found":
+            # A search that found no ordinance has nothing to cite, and must never carry a score either.
+            assert rule["source"] is None and rule["score"] is None, f
+        else:
+            assert rule["source"] in VA["sources"], f
     for s in VA["sources"].values():
         assert s["url"].startswith("https://")
 
@@ -85,10 +91,22 @@ def test_scores_are_in_range_and_confidence_reflects_known_parts():
 
 
 def test_unknown_is_never_zero():
-    r = vafit.fit_score(ELIG, VA, "51121", {})
+    unchecked = next(f for f, l in LOCS.items() if not l["local_rule"])
+    r = vafit.fit_score(ELIG, VA, unchecked, {})
     laws = next(c for c in r["components"] if c["id"] == "laws")
     assert laws["score"] is None and laws["contribution"] == 0 and laws["share"] == 0
     assert "not counted" in laws["reason"]
+
+
+def test_searched_and_found_nothing_is_its_own_answer():
+    """Montgomery County was searched and no ordinance turned up. That is not "no ban" (we did not read the
+    whole code) and not "not checked" (we did look), so it is shown, said plainly, and still not scored."""
+    rule = LOCS["51121"]["local_rule"]
+    assert rule["status"] == "checked_none_found" and rule["score"] is None
+    laws = next(c for c in vafit.fit_score(ELIG, VA, "51121", {})["components"] if c["id"] == "laws")
+    assert laws["score"] is None and laws["contribution"] == 0
+    assert "found no camping or sleeping ban" in laws["reason"]
+    assert "not a confirmed 'no ban'" in laws["reason"]
 
 
 def test_local_camping_rules_score_as_documented():
@@ -262,3 +280,33 @@ def test_offense_rules_in_the_capture_script_match_the_committed_json():
     rules = json.loads((root / "footing" / "static" / "va_offense_classes.json").read_text(encoding="utf-8"))["rules"]
     block = js[js.index("var RULES = [") + len("var RULES = "):js.index("].map(")] + "]"
     assert json.loads(block) == rules, "the capture script and the published bucket table have drifted apart"
+
+
+def test_the_two_fbi_captures_agree_after_the_multi_county_fix():
+    """Four town police departments straddle a county line and the FBI lists both counties. Taking the first
+    name put Farmville's offences in Cumberland County (population 9,664) instead of Prince Edward, which
+    quintupled Cumberland's violent count. Placing each by its own published coordinates fixes all four, and
+    the two independent captures of the FBI's data then agree on every one of the 133 localities."""
+    second = json.loads((HERE.parent / "data_raw" / "second_capture_fbi_cde_agencies_2025_va.json")
+                        .read_text(encoding="utf-8"))
+    by_ori = {dict(zip(second["cols"], r))["ori"]: dict(zip(second["cols"], r)) for r in second["rows"]}
+    assert by_ori["VA0730100"]["county"] == "CUMBERLAND, PRINCE EDWARD"      # Farmville PD
+    assert LOCS["51049"]["crime"]["violent_2025"] == 8                       # Cumberland, its own SO only
+    assert LOCS["51147"]["crime"]["violent_2025"] == 68                      # Prince Edward, incl. Farmville
+    assert LOCS["51195"]["crime"]["property_2025"] == 283                    # Wise, incl. St. Paul
+    assert LOCS["51167"]["crime"]["property_2025"] == 209                    # Russell, without St. Paul
+
+
+def test_a_locality_with_no_usable_report_stores_no_number():
+    """Virginia Beach PD reported nothing for 2025. Storing 0 would read as a crime-free city."""
+    vb = LOCS["51810"]["crime"]
+    assert vb["violent_2025"] is None and vb["property_2025"] is None
+    assert "reported 0 of 12 months" in vb["unknown_reason"]
+
+
+def test_partial_year_reporting_is_flagged_as_a_gap():
+    """Where the two captures disagreed on months reported, the builder takes the lower one, so a partial
+    year is flagged rather than counted as a full one."""
+    gaps = {g["agency"] for f in ("51107", "51061", "51153") for g in LOCS[f]["crime"]["gaps"]}
+    assert {"Middleburg PD", "Remington PD", "Quantico PD"} <= gaps
+    assert LOCS["51107"]["crime"]["property_2025"] == 2968     # Middleburg's 5 offences left out
