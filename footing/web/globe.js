@@ -292,6 +292,121 @@
     return { type: "FeatureCollection", features: feats };
   }
 
+  // ---------------- day and night ----------------
+  /** Where the sun is overhead (NOAA's simplified solar position: declination and equation of time). */
+  function subsolar(d) {
+    var rad = Math.PI / 180, start = Date.UTC(d.getUTCFullYear(), 0, 0);
+    var doy = (d - start) / 86400000, hours = d.getUTCHours() + d.getUTCMinutes() / 60 + d.getUTCSeconds() / 3600;
+    var g = 2 * Math.PI / 365 * (doy - 1 + (hours - 12) / 24);
+    var eqt = 229.18 * (0.000075 + 0.001868 * Math.cos(g) - 0.032077 * Math.sin(g) - 0.014615 * Math.cos(2 * g) - 0.040849 * Math.sin(2 * g));
+    var decl = 0.006918 - 0.399912 * Math.cos(g) + 0.070257 * Math.sin(g) - 0.006758 * Math.cos(2 * g) + 0.000907 * Math.sin(2 * g)
+      - 0.002697 * Math.cos(3 * g) + 0.00148 * Math.sin(3 * g);
+    var lon = -15 * (hours - 12 + eqt / 60);
+    return { lat: decl / rad, lon: ((lon + 540) % 360) - 180 };
+  }
+  /** The sky as a small canvas laid over the whole Earth. Each pixel's colour comes from the sun's altitude there:
+   *  dark below the horizon with a smooth twilight edge, a faint warm sheen where the sun is high. Rows are spaced
+   *  in Web Mercator so the texture lines up with the map; updating it is one cheap texture upload. */
+  var SKY = { W: 360, H: 256, MAXLAT: 85.0511, canvas: null, ctx: null, img: null, rowSin: null, rowCos: null };
+  function skyInit() {
+    SKY.canvas = document.createElement("canvas"); SKY.canvas.width = SKY.W; SKY.canvas.height = SKY.H;
+    SKY.ctx = SKY.canvas.getContext("2d"); SKY.img = SKY.ctx.createImageData(SKY.W, SKY.H);
+    SKY.rowSin = new Float32Array(SKY.H); SKY.rowCos = new Float32Array(SKY.H);
+    for (var j = 0; j < SKY.H; j++) {
+      var lat = Math.atan(Math.sinh(Math.PI * (1 - 2 * (j + 0.5) / SKY.H)));
+      SKY.rowSin[j] = Math.sin(lat); SKY.rowCos[j] = Math.cos(lat);
+    }
+  }
+  // sin(altitude) -> [r, g, b, alpha 0-255]; piecewise linear between the classic twilight steps.
+  // The dark fades out in its own colour before the warm sheen begins, so the sunset edge has no bright seam.
+  var SKY_STOPS = [[-0.309, 0, 2, 10, 190], [-0.105, 3, 10, 31, 150], [-0.009, 10, 24, 56, 80], [0.026, 10, 24, 56, 0],
+    [0.5, 255, 217, 154, 0], [1, 255, 241, 201, 26]];
+  function skyDraw(d) {
+    if (!SKY.canvas) skyInit();
+    var sun = subsolar(d), rad = Math.PI / 180, sd = Math.sin(sun.lat * rad), cd = Math.cos(sun.lat * rad);
+    var W = SKY.W, H = SKY.H, px = SKY.img.data, cosH = new Float32Array(W), i, j, k;
+    for (i = 0; i < W; i++) cosH[i] = Math.cos(((-180 + (i + 0.5) * 360 / W) - sun.lon) * rad);
+    for (j = 0; j < H; j++) {
+      var a = SKY.rowSin[j] * sd, b = SKY.rowCos[j] * cd, o = j * W * 4;
+      for (i = 0; i < W; i++, o += 4) {
+        var x = a + b * cosH[i], lo = SKY_STOPS[0], hi = lo;
+        if (x <= lo[0]) { px[o] = lo[1]; px[o + 1] = lo[2]; px[o + 2] = lo[3]; px[o + 3] = lo[4]; continue; }
+        for (k = 1; k < SKY_STOPS.length; k++) { hi = SKY_STOPS[k]; if (x <= hi[0]) break; lo = hi; }
+        var f = hi === lo ? 0 : (x - lo[0]) / (hi[0] - lo[0]);
+        px[o] = lo[1] + (hi[1] - lo[1]) * f; px[o + 1] = lo[2] + (hi[2] - lo[2]) * f;
+        px[o + 2] = lo[3] + (hi[3] - lo[3]) * f; px[o + 3] = lo[4] + (hi[4] - lo[4]) * f;
+      }
+    }
+    SKY.ctx.putImageData(SKY.img, 0, 0);
+    return SKY.canvas;
+  }
+  var DN = { offset: 0, lapse: false, timer: null, raf: 0, last: 0 };
+  function dnNow() { return new Date(Date.now() + DN.offset); }
+  function dnPaint() {
+    skyDraw(dnNow());
+    var src = S.map && S.map.getSource("daynight");
+    if (src) {
+      if (DN.lapse) src.play();                     // re-upload every frame while the day plays
+      else { src.play(); requestAnimationFrame(function () { requestAnimationFrame(function () { if (!DN.lapse) src.pause(); }); }); }
+      S.map.triggerRepaint();
+    }
+    dnClock();
+  }
+  function dnClock() {
+    var el = $(".g-sunread");
+    if (!el) return;
+    var fmt;
+    try { fmt = new Intl.DateTimeFormat(S.lang === "zh" ? "zh-CN" : S.lang, { hour: "numeric", minute: "2-digit", timeZone: "America/New_York" }); }
+    catch (e) { fmt = new Intl.DateTimeFormat("en", { hour: "numeric", minute: "2-digit", timeZone: "America/New_York" }); }
+    el.textContent = t("dn_read", { time: fmt.format(dnNow()) });
+    var b0 = $(".g-sun");
+    if (b0) { b0.setAttribute("aria-label", t("dn_btn") + ". " + el.textContent); b0.title = t("dn_btn"); }
+    var vaSun = subsolar(dnNow()), rad = Math.PI / 180;
+    var alt = Math.asin(Math.sin(37.5 * rad) * Math.sin(vaSun.lat * rad) + Math.cos(37.5 * rad) * Math.cos(vaSun.lat * rad) * Math.cos((-78.8 - vaSun.lon) * rad)) / rad;
+    var btn = $(".g-sun");
+    if (btn) btn.classList.toggle("night", alt < -3);
+  }
+  function startDaynight() {
+    if (!$(".g-sun")) {
+      var root = $("#globe-root"), b = document.createElement("button");
+      b.type = "button"; b.className = "g-sun"; b.setAttribute("aria-pressed", "false");
+      b.innerHTML = '<span class="orb" aria-hidden="true"></span><span class="g-sunread"></span>';
+      b.addEventListener("click", toggleLapse);
+      if (root) root.appendChild(b);                // its own control, visible on every screen including Start
+    }
+    dnPaint();
+    clearInterval(DN.timer);
+    DN.timer = setInterval(function () { if (!DN.lapse) dnPaint(); }, 60000);
+  }
+  /** "Watch a day pass": 24 hours in 24 seconds, then back to now. */
+  function toggleLapse() {
+    var b = $(".g-sun");
+    DN.lapse = !DN.lapse;
+    if (b) b.setAttribute("aria-pressed", String(DN.lapse));
+    cancelAnimationFrame(DN.raf);
+    if (!DN.lapse) { DN.offset = 0; dnPaint(); return; }
+    var start = performance.now(), base = DN.offset, last = 0;
+    (function step(ts) {
+      if (!DN.lapse) return;
+      var k = (ts - start) / 24000;
+      DN.offset = base + k * 86400000;
+      if (ts - last > (reduced ? 1000 : 33)) { last = ts; dnPaint(); }      // ~30 updates a second
+      if (k >= 1) { DN.lapse = false; DN.offset = 0; if (b) b.setAttribute("aria-pressed", "false"); dnPaint(); return; }
+      DN.raf = requestAnimationFrame(step);
+    })(start);
+  }
+  /** The picked place breathes gently so the eye finds it on the map. */
+  var PULSE = 0;
+  function pulseSelection() {
+    if (reduced || PULSE || !S.mapOk) return;
+    var t0 = performance.now();
+    (function step(ts) {
+      if (!S.selected || !S.mapOk || !S.map.getLayer("va-selected-glow")) { PULSE = 0; return; }
+      S.map.setPaintProperty("va-selected-glow", "line-opacity", 0.3 + 0.35 * (0.5 + 0.5 * Math.sin((ts - t0) / 380)));
+      PULSE = requestAnimationFrame(function (n) { setTimeout(function () { step(n); }, 33); });
+    })(t0);
+  }
+
   function buildMap(states, countries, vaTopo) {
     var topo = window.topojson;
     S.statesGeo = topo.feature(states, states.objects.states);
@@ -312,6 +427,8 @@
           va: { type: "geojson", data: S.vaGeo, promoteId: "fips" },
           help: { type: "geojson", data: helpGeo() },
           heat: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
+          daynight: { type: "canvas", canvas: skyDraw(new Date()), animate: false,
+            coordinates: [[-180, SKY.MAXLAT], [180, SKY.MAXLAT], [180, -SKY.MAXLAT], [-180, -SKY.MAXLAT]] },
           imagery: { type: "raster", tiles: [IMAGERY], tileSize: 256, maxzoom: 15,
             attribution: '<a href="https://s2maps.eu">Sentinel-2 cloudless</a> by EOX (Copernicus Sentinel data 2020)' },
           labels: { type: "raster", tiles: LABELS, tileSize: 256, maxzoom: 18,
@@ -326,6 +443,8 @@
           { id: "imagery", type: "raster", source: "imagery", minzoom: 4.5, paint: { "raster-saturation": -0.35, "raster-brightness-max": 0.85,
             "raster-opacity": ["interpolate", ["linear"], ["zoom"], 4.5, 0, 7.5, 0.9] } },
           { id: "land-line", type: "line", source: "land", paint: { "line-color": "rgba(232,236,244,0.18)", "line-width": 0.6 } },
+          // Day and night from the real sun. Drawn under the places, so the lit Virginia map glows on the night side.
+          { id: "daynight", type: "raster", source: "daynight", paint: { "raster-fade-duration": 0, "raster-resampling": "linear" } },
           { id: "states-known", type: "fill", source: "states", filter: ["==", ["get", "known"], true],
             paint: { "fill-color": fillExpr(), "fill-opacity": ["interpolate", ["linear"], ["zoom"], 3, 0.92, 7, 0.55, 10, 0.12, 12, 0] } },
           { id: "states-unknown", type: "fill", source: "states", filter: ["==", ["get", "known"], false],
@@ -341,6 +460,8 @@
             paint: { "fill-pattern": "hatch", "fill-opacity": ["interpolate", ["linear"], ["zoom"], 4, 0.9, 11, 0.3, 13, 0.1] } },
           { id: "va-line", type: "line", source: "va", paint: { "line-color": "rgba(5,7,15,0.85)",
             "line-width": ["interpolate", ["linear"], ["zoom"], 5, 0.4, 8, 1, 11, 1.6] } },
+          { id: "va-selected-glow", type: "line", source: "va", filter: ["==", ["id"], ""],
+            paint: { "line-color": "#f2c14e", "line-blur": 6, "line-opacity": 0.5, "line-width": ["interpolate", ["linear"], ["zoom"], 5, 8, 10, 16] } },
           { id: "va-selected", type: "line", source: "va", filter: ["==", ["id"], ""],
             paint: { "line-color": "#fff1c9", "line-width": ["interpolate", ["linear"], ["zoom"], 5, 2, 10, 4] } },
           { id: "states-selected", type: "line", source: "states", filter: ["==", ["get", "code"], ""],
@@ -379,7 +500,8 @@
       S.mapOk = true;
       paint();
       paintHeat();
-      if (S.selected && isVa()) map.setFilter("va-selected", ["==", ["id"], S.selected]);
+      startDaynight();
+      if (S.selected && isVa()) map.setFilter("va-selected", ["==", ["id"], S.selected]); map.setFilter("va-selected-glow", ["==", ["id"], S.selected]);
       $(".g-loading") && $(".g-loading").remove();
       if (S.view === "rate") return;
       if (S.profile) flyHome(true); else { frameIntro(); startSpin(); }
@@ -492,7 +614,7 @@
     if (!S.mapOk) return;
     var f = S.vaGeo.features.filter(function (x) { return x.id === fips; })[0];
     if (!f) return;
-    S.map.setFilter("va-selected", ["==", ["id"], fips]);
+    S.map.setFilter("va-selected", ["==", ["id"], fips]); S.map.setFilter("va-selected-glow", ["==", ["id"], fips]); pulseSelection();
     fitTo(f.properties.bbox, 9.2);
   }
 
@@ -548,6 +670,7 @@
     renderChrome();
     var h = sh.querySelector("h1, h2");
     if (h) { h.setAttribute("tabindex", "-1"); }
+    countUp(sh);
     updatePeek();
   }
 
@@ -558,6 +681,25 @@
       li.hidden = !hit; if (hit) shown++;
     });
     box.querySelector(".g-nomatch").hidden = shown > 0;
+  }
+
+  /** Numbers roll up from zero the first time a place opens (not on every re-render). */
+  var _counted = null;
+  function countUp(root) {
+    var key = S.view === "locality" ? "loc:" + S.selected : null;
+    if (!key || key === _counted || reduced) { _counted = key; return; }
+    _counted = key;
+    var els = root.querySelectorAll("[data-countup]"), t0 = performance.now(), DUR = 700;
+    if (!els.length) return;
+    els.forEach(function (el) { el.dataset.final = el.textContent; });
+    (function step(ts) {
+      var k = Math.min(1, (ts - t0) / DUR), e = 1 - Math.pow(1 - k, 3);
+      els.forEach(function (el) {
+        var to = +el.dataset.countup, v = Math.round(to * e);
+        el.textContent = k < 1 ? num(v) + (el.dataset.suffix || "") : el.dataset.final;
+      });
+      if (k < 1) requestAnimationFrame(step);
+    })(t0);
   }
 
   function updatePeek() {
@@ -609,6 +751,15 @@
   }
 
   function renderChrome() {
+    dnClock();
+    var root = $("#globe-root");
+    if (root && !$(".g-skip")) {
+      var a = document.createElement("a"); a.className = "g-skip"; a.href = "#g-panel";
+      a.addEventListener("click", function (e) { e.preventDefault(); focusHeading(); });
+      root.insertBefore(a, root.firstChild);
+      var live = document.createElement("div"); live.className = "sr-only g-live"; live.setAttribute("aria-live", "polite"); root.appendChild(live);
+    }
+    if ($(".g-skip")) $(".g-skip").textContent = t("skip_panel");
     $(".g-legend").hidden = S.view === "intro" || S.view === "profile" || S.view === "rate" || S.view === "reset";
     renderNav();
     var lang = $("#g-lang");
@@ -769,7 +920,7 @@
 
   function scoreBadge(score) {
     if (score === null || score === undefined) return '<div class="g-badge unknown">?<small>' + esc(t("unknownWhy")) + "</small></div>";
-    return '<div class="g-badge" style="background:' + rampColor(score) + ";color:" + inkOn(score) + '">' + Math.round(score) + "<small>/ 100</small></div>";
+    return '<div class="g-badge" style="background:' + rampColor(score) + ";color:" + inkOn(score) + '"><span data-countup="' + Math.round(score) + '">' + Math.round(score) + "</span><small>/ 100</small></div>";
   }
 
   function rangeText(r, short) {
@@ -1001,7 +1152,7 @@
       '<div class="g-actions"><button class="g-secondary" data-go="rate" type="button">' + esc(t("rateHere")) + "</button>" + call211Btn() +
       (town && !B.standalone ? '<a class="g-primary g-wide" href="#/receipt?' + new URLSearchParams({ lat: town.lat, lon: town.lon, profile: legacyProfile() }) + '">' + esc(t("openReceipt", { town: town.label })) + "</a>" : "") +
       '</div><div class="g-tabs" role="tablist">' + tabs.map(function (x) {
-        return '<button type="button" role="tab" data-loctab="' + x[0] + '" aria-selected="' + (x[0] === tab) + '">' + esc(x[1]) +
+        return '<button type="button" role="tab" data-loctab="' + x[0] + '" aria-selected="' + (x[0] === tab) + '" tabindex="' + (x[0] === tab ? 0 : -1) + '">' + esc(x[1]) +
           (x[2] !== "" ? '<span class="cnt">' + x[2] + "</span>" : "") + "</button>";
       }).join("") + "</div>" + panel;
   }
@@ -1013,7 +1164,9 @@
     ["food_bank", "soup_kitchen", "shelter", "day_center", "clinic", "library", "toilets", "shower", "drinking_water", "laundry"].forEach(function (k) { help += osm[k] || 0; });
     var tile = function (c, big, label) {
       var sc = c && c.score !== null && c.score !== undefined ? c.score : null;
-      return '<div class="g-gl"' + (sc === null ? "" : ' style="--c:' + rampColor(sc) + '"') + '><span class="big">' + esc(big) + '</span><span class="lbl">' + esc(label) + "</span></div>";
+      var m = /^(\d+)(.*)$/.exec(String(big).replace(/,/g, ""));
+      var bigHTML = m ? '<span data-countup="' + m[1] + '" data-suffix="' + esc(m[2]) + '">' + esc(big) + "</span>" : esc(big);
+      return '<div class="g-gl"' + (sc === null ? "" : ' style="--c:' + rampColor(sc) + '"') + '><span class="big">' + bigHTML + '</span><span class="lbl">' + esc(label) + "</span></div>";
     };
     return '<div class="g-glance">' +
       (by.rent && by.rent.parts ? tile(by.rent, String(Math.round(by.rent.parts.hours)), t("glance_rent")) : "") +
@@ -1171,6 +1324,15 @@
   function bindView() {
     var sh = $(".g-sheet");
     sh.querySelectorAll("[data-go]").forEach(function (b) { b.addEventListener("click", function () { go(b.dataset.go); }); });
+    var tablist = sh.querySelector(".g-tabs");
+    if (tablist) tablist.addEventListener("keydown", function (e) {
+      var keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
+      if (keys.indexOf(e.key) === -1) return;
+      var btns = Array.prototype.slice.call(tablist.querySelectorAll("[data-loctab]")), i = btns.indexOf(document.activeElement);
+      var rtl = document.documentElement.dir === "rtl", step = (e.key === "ArrowRight") !== rtl ? 1 : -1;
+      var j = e.key === "Home" ? 0 : e.key === "End" ? btns.length - 1 : (i + step + btns.length) % btns.length;
+      e.preventDefault(); btns[j].click();
+    });
     sh.querySelectorAll("[data-loctab]").forEach(function (b) {
       b.addEventListener("click", function () {
         var top = sh.querySelector(".g-tabs").offsetTop;
@@ -1259,6 +1421,8 @@
   var _draft = null;
   function draft() { if (!_draft) _draft = JSON.parse(JSON.stringify(S.profile || defaultProfile())); return _draft; }
 
+  function announce(msg) { var l = $(".g-live"); if (l) { l.textContent = ""; setTimeout(function () { l.textContent = msg; }, 30); } }
+
   function rerenderPriorities() {
     var wrap = $(".g-pri-wrap");
     if (!wrap) return;
@@ -1324,6 +1488,7 @@
           order.splice(order.indexOf(k), 1); order.splice(to, 0, k);
           if (isVa()) d.priorities = order; else d.priorities_us = order;
           rerenderPriorities();
+          announce(t("pri_moved", { name: t("c_" + k), n: to + 1 }));
         } else {
           ol.classList.remove("sorting"); li.classList.remove("landing");
           items.forEach(function (x) { x.style.transform = ""; });
@@ -1354,6 +1519,7 @@
         order.splice(i, 1); order.splice(j, 0, k);
         if (isVa()) d.priorities = order; else d.priorities_us = order;
         rerenderPriorities();
+        announce(t("pri_moved", { name: t("c_" + k), n: j + 1 }));
         var again = $('.g-pri [data-pri="' + k + '"][data-dir="' + b.dataset.dir + '"]');
         if (again && !again.disabled) again.focus();
       });
@@ -1363,7 +1529,7 @@
   function setScope(scope) {
     S.scope = scope; store.set("footing.globe.scope", scope);
     S.selected = null; S.selectedPoint = null; S.layer = "fit";
-    if (S.mapOk) { S.map.setFilter("va-selected", ["==", ["id"], ""]); S.map.setFilter("states-selected", ["==", ["get", "code"], ""]); }
+    if (S.mapOk) { S.map.setFilter("va-selected", ["==", ["id"], ""]); S.map.setFilter("va-selected-glow", ["==", ["id"], ""]); S.map.setFilter("states-selected", ["==", ["get", "code"], ""]); }
     S.view = "top"; compute(); render(); flyHome(false); focusHeading();
   }
 
@@ -1391,7 +1557,7 @@
       S.profile = null; S.selected = null; S.selectedPoint = null; S.ratingPoint = null; S.rating = { tags: [] };
       S.prevView = "top"; S.layer = "fit";
       if (S.ratingMarker) { S.ratingMarker.remove(); S.ratingMarker = null; }
-      if (S.mapOk) { S.map.setFilter("va-selected", ["==", ["id"], ""]); S.map.setFilter("states-selected", ["==", ["get", "code"], ""]); }
+      if (S.mapOk) { S.map.setFilter("va-selected", ["==", ["id"], ""]); S.map.setFilter("va-selected-glow", ["==", ["id"], ""]); S.map.setFilter("states-selected", ["==", ["get", "code"], ""]); }
       _draft = null; S.view = "intro"; compute(); paint(); paintHeat(); render(); flyHome(true); toast(t("reset_done")); focusHeading(); return;
     }
     if (what === "list") { S.view = "list"; render(); return; }
@@ -1430,7 +1596,7 @@
     S.selectedPoint = pt && pt.ok && pt.fips === fips ?
       { fips: fips, tile: pt.tile, validity: pt.validity } : null;
     S.selected = fips; S.view = "locality"; render();
-    if (S.mapOk) S.map.setFilter("va-selected", ["==", ["id"], fips]);
+    if (S.mapOk) S.map.setFilter("va-selected", ["==", ["id"], fips]); S.map.setFilter("va-selected-glow", ["==", ["id"], fips]); pulseSelection();
     if (fly) flyToLocality(fips);
     focusHeading();
   }
@@ -1618,6 +1784,12 @@
       if (root) root.hidden = true;
       document.body.classList.remove("on-globe");
       stopSpin();
+    },
+    /** Show the sky at another moment (ISO time or ms). For demos and screenshots; null returns to now. */
+    setTime: function (when) {
+      DN.lapse = false; cancelAnimationFrame(DN.raf);
+      DN.offset = when === null || when === undefined ? 0 : new Date(when).getTime() - Date.now();
+      dnPaint();
     },
     /** Re-read ratings (the standalone page calls this when its shared store changes). */
     refreshHeat: function () {

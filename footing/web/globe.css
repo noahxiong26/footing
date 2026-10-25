@@ -476,3 +476,22 @@ html.g-desk .g-about-actions { margin-inline: -24px; padding-inline: 24px; botto
 @media (prefers-reduced-motion: reduce) { .g-sure > summary::after { transition: none; } }
 .g-pri .nm { min-width: 0; overflow-wrap: anywhere; hyphens: auto; }
 @media (max-width: 360px) { .g-pri li { grid-template-columns: 18px 26px minmax(0, 1fr) 40px 40px; gap: 4px; } .g-pri button { width: 40px; } }
+
+/* ---- S9: day and night ---- */
+.g-sun { position: absolute; z-index: 5; top: calc(var(--top-h, 110px) + 8px); inset-inline-start: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 12px 0 6px; border-radius: 18px;
+  border: 1px solid var(--g-line); background: rgba(8, 12, 24, 0.78); color: var(--g-ink-2); font: 600 12px var(--sans); cursor: pointer;
+  font-variant-numeric: tabular-nums; white-space: nowrap; }
+.g-sun:hover { color: var(--g-ink); border-color: rgba(242, 193, 78, 0.6); }
+.g-sun:focus-visible { outline: 3px solid var(--lamp); outline-offset: 2px; }
+.g-sun .orb { width: 22px; height: 22px; border-radius: 50%; flex: 0 0 22px;
+  background: radial-gradient(circle at 35% 35%, #fff6d8, #f2c14e 55%, #c98a1a); box-shadow: 0 0 12px rgba(242, 193, 78, 0.65); }
+.g-sun.night .orb { background: radial-gradient(circle at 62% 38%, transparent 0 7px, #dfe6f5 7.5px); box-shadow: 0 0 10px rgba(200, 215, 255, 0.45); }
+.g-sun[aria-pressed="true"] { color: #10131c; background: var(--lamp); border-color: var(--lamp); }
+.g-sun[aria-pressed="true"] .orb { animation: g-orbit 2s linear infinite; }
+@keyframes g-orbit { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .g-sun[aria-pressed="true"] .orb { animation: none; } }
+@media (max-width: 520px) { .g-sun .g-sunread { display: none; } .g-sun { padding: 0 6px; } }
+/* skip link: hidden until focused, then the first thing on screen */
+.g-skip { position: absolute; z-index: 30; top: 8px; inset-inline-start: 8px; padding: 10px 14px; border-radius: 10px; background: var(--lamp); color: #10131c;
+  font: 700 14px var(--sans); text-decoration: none; transform: translateY(-160%); }
+.g-skip:focus { transform: none; outline: 3px solid #fff1c9; outline-offset: 2px; }
