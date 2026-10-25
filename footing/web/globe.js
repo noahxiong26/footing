@@ -646,7 +646,12 @@
   var LOCK = '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="8" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>';
 
   function introView() {
-    return "<h1>" + esc(isVa() ? t("title_va") : t("title")) + "</h1><p>" + esc(isVa() ? t("lede_va") : t("lede")) + "</p>" + machineNote() +
+    var chips = isVa() ? '<ul class="g-hero-chips">' + [["shelter", "#9cb07a"], ["rent", "#f2c14e"], ["services", "#3f7c85"], ["laws", "#a7b1c6"], ["safety", "#ff9e8a"]].map(function (c) {
+      return '<li><i style="background:' + c[1] + '"></i>' + esc(t("c_" + c[0])) + "</li>";
+    }).join("") + '</ul><p class="g-small g-hero-src">' + esc(t("intro_src")) + "</p>" : "<p>" + esc(t("lede")) + "</p>";
+    // The language's own "All 133 places", with its number set large (word order and digits stay as translated).
+    var count = isVa() ? '<p class="g-hero-n">' + esc(t("allPlaces")).replace(/([0-9\u06F0-\u06F9\u0660-\u0669]+)/, "<strong>$1</strong>") + "</p>" : "";
+    return '<h1 class="g-hero">' + esc(isVa() ? t("title_va") : t("title")) + "</h1>" + count + chips + machineNote() +
       '<div class="g-lock">' + LOCK + "<span>" + esc(t("privacy")) + "</span></div>" +
       '<div class="g-actions"><button class="g-primary" data-go="profile" type="button">' + esc(t("start")) + "</button>" +
       '<button class="g-secondary" data-go="skip" type="button">' + esc(t("skip")) + "</button>" +
@@ -805,9 +810,20 @@
     return "<p>" + esc(bits.join(", ")) + "</p>";
   }
 
+  /** A strip per place: one segment per part, as wide as it counts for you, colored by how well the place does. */
+  function factorStrip(r) {
+    return '<span class="g-strip" aria-hidden="true">' + r.components.filter(function (c) { return c.weight > 0; }).map(function (c) {
+      return '<i title="' + esc(t("c_" + c.id)) + '" style="flex-grow:' + (100 * c.weight).toFixed(1) + ";" +
+        (c.score === null ? "" : "background:" + rampColor(c.score)) + '"' + (c.score === null ? ' class="unk"' : "") + "></i>";
+    }).join("") + "</span>";
+  }
+
   function vaTopView() {
+    var top = vaSorted().slice(0, 5);
     return "<h2>" + esc(t("topVa")) + "</h2>" + whoLine() + machineNote() +
-      '<ul class="g-list">' + vaSorted().slice(0, 5).map(vaRowHTML).join("") + "</ul>" +
+      '<ul class="g-list g-top5">' + top.map(function (r, i) {
+        return vaRowHTML(r).replace('</span></button></li>', '</span>' + factorStrip(r) + '</button></li>').replace('<li ', '<li style="--i:' + i + '" ');
+      }).join("") + "</ul>" +
       '<div class="g-actions"><button class="g-secondary" data-go="list" type="button">' + esc(t("seeAll")) + "</button>" +
       '<button class="g-secondary" data-go="profile" type="button">' + esc(S.profile ? t("editAboutYou") : t("start")) + "</button>" +
       '<button class="g-link g-wide" data-go="scope-us" type="button">' + esc(t("scope_us")) + "</button></div>";
@@ -960,28 +976,49 @@
       var unk = c.score === null, rr = reasonRuns(c);
       return '<li data-component="' + c.id + '" class="g-c2' + (unk ? " unk" : "") + '"><div class="hd"><span class="name">' + esc(t("c_" + c.id)) + "</span>" +
         '<span class="num" style="' + (unk ? "" : "background:" + rampColor(c.score) + ";color:" + inkOn(c.score)) + '">' + (unk ? "?" : Math.round(c.score)) + "</span></div>" +
-        (unk ? "" : '<span class="w">' + esc(t("weightOf", { w: Math.round(100 * c.share) })) + "</span>") +
+        (unk ? "" : '<div class="g-meter" aria-hidden="true"><i style="width:' + Math.max(2, c.score) + "%;background:" + rampColor(c.score) + '"></i></div>' +
+          '<span class="w">' + esc(t("weightOf", { w: Math.round(100 * c.share) })) + "</span>") +
         '<p class="line">' + esc(localLine(c, loc)) + "</p>" +
         '<details><summary>' + esc(rr.translated ? t("details") : t("detailsEn")) + '</summary><p class="g-reason">' + reasonHTML(rr.runs) + "</p>" +
         (sourceLinks(c) ? '<ul class="g-srcs">' + sourceLinks(c) + "</ul>" : "") + "</details></li>";
     };
+    var tab = S.locTab || "score", helpN = (loc.help_points || []).length;
+    var tabs = [["score", t("tab_score"), ""], ["help", t("tab_help"), helpN], ["programs", t("tab_programs"), ""]];
+    var panel = tab === "help" ? '<div class="g-tabpanel" role="tabpanel">' + helpList(loc) + '<p><a href="tel:211" class="g-ink">' + esc(t("call211")) + "</a></p></div>" :
+      tab === "programs" ? '<div class="g-tabpanel" role="tabpanel"><p class="g-small">' + esc(t("statewide")) + "</p>" + programsHTML("VA") + "</div>" :
+      '<div class="g-tabpanel" role="tabpanel"><h3>' + esc(t("howBuilt")) + "</h3>" + mosaic(r) +
+        '<ul class="g-c2s">' + known.map(card).join("") + "</ul>" +
+        (unknown.length ? "<h3>" + esc(t("unknownParts")) + '</h3><ul class="g-c2s">' + unknown.map(card).join("") + "</ul>" : "") +
+        costCard(loc) + vaSourcesHTML() + "</div>";
     return '<h2 id="g-loc-title">' + esc(r.name) + '</h2><p class="g-kind">' + esc(loc.kind === "city" ? t("city") : t("county")) + "</p>" +
       (pt ? '<p class="g-small g-point-note">' + esc(t("pointScore")) + '</p><button class="g-link" data-go="locality-wide" type="button">' + esc(t("wholeLocality")) + "</button>" : "") +
       '<div class="g-score">' + scoreBadge(r.score) + '<div class="g-meta">' + esc(t("fit")) +
       (r.rank ? "<br><strong>" + esc(t("rankOf", { r: r.rank, n: n })) + "</strong>" : "") +
       "<br>" + esc(t("confidence")) + ": <strong>" + esc(t("conf_" + r.confidence_label)) + "</strong></div></div>" +
-      confMeter(r) +
-      (r.rank_p10 ? '<p class="g-small">' + esc(rangeText(r)) + "</p>" : "") +
-      '<div class="g-actions"><button class="g-secondary" data-go="rate" type="button">' + esc(t("rateHere")) + "</button>" +
-      '' + call211Btn() + "" +
+      glance(r, loc) +
+      '<details class="g-sure"><summary>' + esc(t("confidence")) + "</summary>" + confMeter(r) +
+      (r.rank_p10 ? '<p class="g-small">' + esc(rangeText(r)) + "</p>" : "") + "</details>" +
+      '<div class="g-actions"><button class="g-secondary" data-go="rate" type="button">' + esc(t("rateHere")) + "</button>" + call211Btn() +
       (town && !B.standalone ? '<a class="g-primary g-wide" href="#/receipt?' + new URLSearchParams({ lat: town.lat, lon: town.lon, profile: legacyProfile() }) + '">' + esc(t("openReceipt", { town: town.label })) + "</a>" : "") +
-      "</div><h3>" + esc(t("howBuilt")) + "</h3>" + mosaic(r) +
-      '<ul class="g-c2s">' + known.map(card).join("") + "</ul>" +
-      (unknown.length ? "<h3>" + esc(t("unknownParts")) + '</h3><ul class="g-c2s">' + unknown.map(card).join("") + "</ul>" : "") +
-      costCard(loc) +
-      "<h3>" + esc(t("helpHere")) + "</h3>" + helpList(loc) +
-      "<h3>" + esc(t("programsVa")) + '</h3><p class="g-small">' + esc(t("statewide")) + "</p>" + programsHTML("VA") +
-      '<p><a href="tel:211" class="g-ink">' + esc(t("call211")) + "</a></p>" + vaSourcesHTML();
+      '</div><div class="g-tabs" role="tablist">' + tabs.map(function (x) {
+        return '<button type="button" role="tab" data-loctab="' + x[0] + '" aria-selected="' + (x[0] === tab) + '">' + esc(x[1]) +
+          (x[2] !== "" ? '<span class="cnt">' + x[2] + "</span>" : "") + "</button>";
+      }).join("") + "</div>" + panel;
+  }
+
+  /** Three numbers that answer "can I live here?" before any reading: rent effort, people outside, help nearby. */
+  function glance(r, loc) {
+    var by = {}; r.components.forEach(function (c) { by[c.id] = c; });
+    var osm = loc.services.osm || {}, help = 0;
+    ["food_bank", "soup_kitchen", "shelter", "day_center", "clinic", "library", "toilets", "shower", "drinking_water", "laundry"].forEach(function (k) { help += osm[k] || 0; });
+    var tile = function (c, big, label) {
+      var sc = c && c.score !== null && c.score !== undefined ? c.score : null;
+      return '<div class="g-gl"' + (sc === null ? "" : ' style="--c:' + rampColor(sc) + '"') + '><span class="big">' + esc(big) + '</span><span class="lbl">' + esc(label) + "</span></div>";
+    };
+    return '<div class="g-glance">' +
+      (by.rent && by.rent.parts ? tile(by.rent, String(Math.round(by.rent.parts.hours)), t("glance_rent")) : "") +
+      (by.shelter && by.shelter.parts ? tile(by.shelter, Math.round(100 * by.shelter.parts.outside_share) + "%", t("glance_out")) : "") +
+      tile(by.services, num(help), t("glance_help")) + "</div>";
   }
 
   function vaSourcesHTML() {
@@ -1019,6 +1056,11 @@
     return "<h2>" + esc(t("allStates")) + "</h2><p>" + esc(t("l_" + S.layer)) + '</p><ul class="g-list">' + sortedForLayer().map(rowHTML).join("") + "</ul>";
   }
 
+  function progRow(label, value, note) {
+    return "<span>" + esc(label) + '</span><span class="v ' + value + '">' + esc(t(value)) + "</span>" +
+      (note ? '<details class="g-why"><summary>' + esc(t("why")) + '</summary><span class="note" lang="en">' + esc(note) + "</span></details>" : "");
+  }
+
   function programsHTML(code) {
     var p = S.profile || defaultProfile(), st = S.policy.states[code];
     var undisclosed = !p.status || p.status === "undisclosed";
@@ -1032,15 +1074,14 @@
         if (st.health_children_all) note += " State covers children regardless of status" + (st.health_children_all.note ? " (" + st.health_children_all.note + ")" : "") + ".";
         if (st.health_adults_all) note += " State adult program: " + st.health_adults_all.status + ". " + st.health_adults_all.note;
       }
-      return { v: rule.value, html: "<span>" + esc(programLabel(g)) + '</span><span class="v ' + rule.value + '">' + esc(t(rule.value)) + "</span>" +
-        (note ? '<span class="note" lang="en">' + esc(note) + "</span>" : "") };
+      return { v: rule.value, html: progRow(programLabel(g), rule.value, note) };
     });
     if (!undisclosed) {
       var dl = st.drivers_license_all;
       var lawful = ["undocumented", "unsure"].indexOf(p.status) === -1;
       var val = lawful ? "yes" : (dl ? "yes" : "no");
-      rows.push({ v: val, html: "<span>" + esc(S.lang === "es" ? "Licencia o identificación estatal" : "Driver's license or state ID") + '</span><span class="v ' + val + '">' + esc(t(val)) + "</span>" +
-        '<span class="note" lang="en">' + esc(lawful ? "With your documents." : (dl ? "This state issues a " + dl.form + " regardless of status (since " + dl.year + ")." : "This state requires proof of lawful presence.")) + "</span>" });
+      rows.push({ v: val, html: progRow(S.lang === "es" ? "Licencia o identificación estatal" : "Driver's license or state ID", val,
+        lawful ? "With your documents." : (dl ? "This state issues a " + dl.form + " regardless of status (since " + dl.year + ")." : "This state requires proof of lawful presence.")) });
     }
     var pc = Fit.programRule(S.elig, "public_charge", p.status);
     var caution = (!undisclosed && pc.value === "limited") ? '<div class="g-caution"><strong>' + esc(t("caution")) + ":</strong> <span lang=\"en\">" + esc(pc.note) +
@@ -1049,10 +1090,14 @@
     var RANK = { yes: 0, limited: 1, varies: 2, no: 3 };
     rows = rows.map(function (r, i) { return { v: r.v, html: r.html, i: i }; })
       .sort(function (a, b) { return ((RANK[a.v] === undefined ? 2 : RANK[a.v]) - (RANK[b.v] === undefined ? 2 : RANK[b.v])) || a.i - b.i; });
-    return caution + '<ul class="g-progs">' + rows.map(function (r, i) {
-      var first = i === 0 || rows[i - 1].v !== r.v;
-      return '<li class="g-pg-' + r.v + (first && i ? " g-pg-start" : "") + '">' + r.html + "</li>";
-    }).join("") + "</ul>";
+    // Three folding groups with counts; "You can use" starts open, the rest start closed.
+    var groups = [["yes", ["yes"], t("grp_yes")], ["maybe", ["limited", "varies"], t("grp_maybe")], ["no", ["no"], t("grp_no")]];
+    return caution + groups.map(function (g) {
+      var mine = rows.filter(function (r) { return g[1].indexOf(r.v) !== -1 || (g[0] === "maybe" && RANK[r.v] === undefined); });
+      if (!mine.length) return "";
+      return '<details class="g-pgroup g-pgroup-' + g[0] + '"' + (g[0] === "yes" ? " open" : "") + '><summary><span class="dot"></span>' + esc(g[2]) +
+        '<span class="cnt">' + mine.length + '</span></summary><ul class="g-progs">' + mine.map(function (r) { return "<li>" + r.html + "</li>"; }).join("") + "</ul></details>";
+    }).join("");
   }
 
   function sourcesHTML() {
@@ -1126,6 +1171,15 @@
   function bindView() {
     var sh = $(".g-sheet");
     sh.querySelectorAll("[data-go]").forEach(function (b) { b.addEventListener("click", function () { go(b.dataset.go); }); });
+    sh.querySelectorAll("[data-loctab]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var top = sh.querySelector(".g-tabs").offsetTop;
+        S.locTab = b.dataset.loctab; render();
+        var sh2 = $(".g-sheet"), again = sh2.querySelector('[data-loctab="' + S.locTab + '"]');
+        if (sh2.scrollTop > top - 8) sh2.scrollTop = top - 8;      // keep the tabs in view; show the new panel from its start
+        if (again) again.focus({ preventScroll: true });
+      });
+    });
     sh.querySelectorAll("[data-state]").forEach(function (b) { b.addEventListener("click", function () { selectState(b.dataset.state, true); }); });
     sh.querySelectorAll("[data-fips]").forEach(function (b) { b.addEventListener("click", function () { selectLocality(b.dataset.fips, true); }); });
     sh.querySelectorAll("input[name=status]").forEach(function (i) {

@@ -103,6 +103,20 @@ language, no sideways scroll, no page errors; standalone smoke passes. The full 
 - **Numbers are centered** in rank columns and score chips.
 - **"Show my map" is now "Show my best fits"** (`showBest`, 9 languages).
 
+**Readability round (Version 6): answer first, reading optional.**
+- **Start:** title, the language's own "All 133 places" with the number set large, five colored factor chips
+  and one line about sources replace the paragraph.
+- **Best fits:** each of the top 5 shows a factor strip (one segment per part, width = how much it counts for
+  you, color = how well the place does; striped = no data) and rises in with a short stagger.
+- **Place panel:** three at-a-glance numbers (hours of work a week for rent, % of people outside, help places),
+  the confidence explanation folds under "How sure we are", and the rest is split into sticky tabs
+  **Score / Help nearby (count) / Programs**. Factor cards get a fill bar. Default tab is Score; the choice is
+  kept while moving between places (`S.locTab`).
+- **Programs:** three folding groups with counts (You can use, open by default / Maybe: check first / Not open
+  to you); each program's explanation is behind "Why?".
+- 11 new strings in 9 languages. Motion respects `prefers-reduced-motion`.
+- Tagalog at 320 px: long priority names now wrap instead of pushing the ↓ button out of the panel.
+
 **UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
 1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the
    layer picker is cut to "Angkop para"; the brand is cut to "FOOTIN". Consider shorter legend labels or a
