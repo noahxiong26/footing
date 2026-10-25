@@ -210,6 +210,10 @@ def components(elig, policy, code, profile, community=None):
         out["criminalization"] = {"score": 25, "reason": "State law pushes cities to enforce camping bans: " + camp["note"]}
     elif camp and camp["status"] == "contested":
         out["criminalization"] = {"score": 50, "reason": "Statewide camping law in court: " + camp["note"]}
+    elif camp and camp["status"] == "enforcement_mandate":
+        out["criminalization"] = {"score": 25, "reason": "State pushes cities to enforce camping bans: " + camp["note"]}
+    elif camp and camp["status"] == "none_statewide":
+        out["criminalization"] = {"score": 75, "reason": camp["note"]}
     else:
         out["criminalization"] = {"score": None, "reason": "Not checked: we have not confirmed a statewide camping law either way."}
     c = (community or {}).get(code)

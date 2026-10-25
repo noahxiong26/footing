@@ -1,0 +1,160 @@
+{
+ "n": 22,
+ "total_rows": 2697,
+ "rows": [
+  {
+   "agency": "Alleghany County Sheriff's Office",
+   "type": "County",
+   "county": "Alleghany County",
+   "model": "Warrant Service Officer",
+   "signed": "2025-06-03"
+  },
+  {
+   "agency": "Amherst County Sheriff's Office ",
+   "type": "County ",
+   "county": "Amherst County",
+   "model": "Task Force Model",
+   "signed": "2025-07-29"
+  },
+  {
+   "agency": "Appomattox County Sheriff's Office",
+   "type": "County",
+   "county": "Appomattox County",
+   "model": "Task Force Model",
+   "signed": "2025-05-13"
+  },
+  {
+   "agency": "Bedford County Sheriff's Office",
+   "type": "County",
+   "county": "Bedford County ",
+   "model": "Task Force Model",
+   "signed": "2025-03-07"
+  },
+  {
+   "agency": "Buckingham County Sheriff's Office",
+   "type": "County",
+   "county": "Buckingham County",
+   "model": "Task Force Model",
+   "signed": "2025-05-16"
+  },
+  {
+   "agency": "Campbell County Sheriff's Office",
+   "type": "County",
+   "county": "Campbell County",
+   "model": "Task Force Model",
+   "signed": "2025-05-08"
+  },
+  {
+   "agency": "Franklin County Sheriff's Office",
+   "type": "County",
+   "county": "Franklin County",
+   "model": "Task Force Model",
+   "signed": "2025-04-23"
+  },
+  {
+   "agency": "Frederick County Sheriff's Office ",
+   "type": "County",
+   "county": "Frederick County ",
+   "model": "Task Force Model",
+   "signed": "2025-12-08"
+  },
+  {
+   "agency": "Gordonsville Department of Public Safety",
+   "type": "County",
+   "county": "Orange County ",
+   "model": "Task Force Model",
+   "signed": "2026-05-17"
+  },
+  {
+   "agency": "Grayson County Sheriff's Office",
+   "type": "County",
+   "county": "Grayson County",
+   "model": "Task Force Model",
+   "signed": "2025-05-08"
+  },
+  {
+   "agency": "Greene County Sheriff's Office",
+   "type": "County",
+   "county": "Greene County",
+   "model": "Task Force Model",
+   "signed": "2025-05-08"
+  },
+  {
+   "agency": "Hopewell County Sheriff's Office",
+   "type": "County",
+   "county": "Hopewell County",
+   "model": "Task Force Model",
+   "signed": "2025-06-30"
+  },
+  {
+   "agency": "Loudoun County Sheriff's Office",
+   "type": "County",
+   "county": "Loudoun County",
+   "model": "Warrant Service Officer",
+   "signed": "2025-03-26"
+  },
+  {
+   "agency": "Mecklenburg County Sheriff's Office",
+   "type": "County",
+   "county": "Mecklenburg County",
+   "model": "Task Force Model",
+   "signed": "2025-05-13"
+  },
+  {
+   "agency": "Page County Sheriff's Office",
+   "type": "County",
+   "county": "Page County",
+   "model": "Task Force Model",
+   "signed": "2026-03-19"
+  },
+  {
+   "agency": "Richmond County Sheriff's Office",
+   "type": "County",
+   "county": "Richmond County",
+   "model": "Task Force Model",
+   "signed": "2025-06-12"
+  },
+  {
+   "agency": "Scott County Sheriff's Office",
+   "type": "County",
+   "county": "Scott County",
+   "model": "Task Force Model",
+   "signed": "2025-06-11"
+  },
+  {
+   "agency": "Shenandoah County Sheriff's Office",
+   "type": "County",
+   "county": "Shenandoah County ",
+   "model": "Task Force Model",
+   "signed": "2025-04-14"
+  },
+  {
+   "agency": "Shenandoah Police Department",
+   "type": "Municipality",
+   "county": "Page County",
+   "model": "Task Force Model",
+   "signed": "2026-06-09"
+  },
+  {
+   "agency": "Tazewell County Sheriff's Office",
+   "type": "County",
+   "county": "Tazewell County",
+   "model": "Task Force Model",
+   "signed": "2025-09-09"
+  },
+  {
+   "agency": "Washington County Sheriff's Office",
+   "type": "County",
+   "county": "Washington County",
+   "model": "Task Force Model",
+   "signed": "2025-06-11"
+  },
+  {
+   "agency": "Wise County Sheriff's Office",
+   "type": "County",
+   "county": "Wise County",
+   "model": "Task Force Model",
+   "signed": "2025-07-23"
+  }
+ ]
+}

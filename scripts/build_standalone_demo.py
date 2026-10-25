@@ -54,7 +54,7 @@ a { color: inherit; }
   <div class="g-top">
     <a href="#top" class="g-brand" aria-label="Footing">FOOTING</a>
     <button type="button" class="g-btn" id="g-listbtn">List</button>
-    <button type="button" class="g-btn" id="g-lang">Español</button>
+    <select class="g-btn g-langsel" id="g-lang" aria-label="Language"></select>
     <button type="button" class="g-btn hide" id="g-hide">Hide this page</button>
   </div>
   <div class="g-legend">
@@ -68,7 +68,9 @@ a { color: inherit; }
 <script src="vendor/maplibre-gl.js"></script>
 <script src="vendor/topojson-client.min.js"></script>
 <script src="fit.js"></script>
+<script src="vafit.js"></script>
 <script src="i18n.js"></script>
+<script src="i18n_more.js"></script>
 <script src="standalone_backend.js"></script>
 <script src="globe.js"></script>
 <script>document.body.classList.add("on-globe"); FootingGlobe.show();</script>
@@ -88,17 +90,18 @@ def main(out: Path, wrap: bool = True) -> None:
         shutil.rmtree(out)
     (out / "vendor").mkdir(parents=True)
     (out / "data").mkdir()
-    for f in ("fit.js", "i18n.js", "globe.js"):
+    for f in ("fit.js", "vafit.js", "i18n.js", "i18n_more.js", "globe.js"):
         shutil.copy(WEB / f, out / f)
     shutil.copy(ROOT / "demo" / "standalone_backend.js", out / "standalone_backend.js")
     for f in ("maplibre-gl.js", "topojson-client.min.js", "MAPLIBRE-LICENSE.txt", "TOPOJSON-CLIENT-LICENSE.txt"):
         shutil.copy(WEB / "vendor" / f, out / "vendor" / f)
-    for f in ("states-10m.json", "countries-110m.json", "US-ATLAS-LICENSE.txt", "WORLD-ATLAS-LICENSE.txt"):
+    for f in ("states-10m.json", "countries-110m.json", "va-localities.json", "US-ATLAS-LICENSE.txt", "WORLD-ATLAS-LICENSE.txt"):
         shutil.copy(WEB / "data" / f, out / "data" / f)
     policy = {"states": json.loads((STATIC / "state_policy.json").read_text()),
               "eligibility": json.loads((STATIC / "eligibility.json").read_text())}
     (out / "data" / "policy.json").write_text(json.dumps(policy, separators=(",", ":")))
     (out / "data" / "towns.json").write_text(json.dumps(TOWNS))
+    shutil.copy(STATIC / "va_localities.json", out / "data" / "va.json")
     try:
         (out / "data" / "receipt-christiansburg.json").write_text(json.dumps(receipt(), default=str))
     except Exception as e:  # the globe still works; the town just shows no place markers

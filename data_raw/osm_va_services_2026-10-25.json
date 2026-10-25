@@ -1,0 +1,2449 @@
+{
+ "base": "2026-10-25T00:21:32Z",
+ "counts": {
+  "51001": {
+   "post_office": 32,
+   "toilets": 17,
+   "clinic": 5,
+   "laundry": 3,
+   "library": 1,
+   "food_bank": 1,
+   "shower": 1
+  },
+  "51003": {
+   "post_office": 18,
+   "toilets": 25,
+   "clinic": 17,
+   "laundry": 3,
+   "community_centre": 9,
+   "shower": 3,
+   "library": 6,
+   "employment_agency": 2
+  },
+  "51005": {
+   "toilets": 6,
+   "drinking_water": 2,
+   "post_office": 5,
+   "clinic": 1,
+   "shower": 1,
+   "library": 2,
+   "laundry": 1
+  },
+  "51007": {
+   "clinic": 1,
+   "community_centre": 1,
+   "food_bank": 1,
+   "post_office": 3,
+   "library": 1,
+   "toilets": 2
+  },
+  "51009": {
+   "toilets": 5,
+   "drinking_water": 2,
+   "laundry": 1,
+   "clinic": 4,
+   "day_center": 1,
+   "library": 3,
+   "post_office": 4
+  },
+  "51011": {
+   "post_office": 4,
+   "community_centre": 3,
+   "clinic": 3,
+   "drinking_water": 1,
+   "toilets": 5,
+   "library": 2,
+   "shower": 1
+  },
+  "51013": {
+   "drinking_water": 96,
+   "post_office": 14,
+   "library": 13,
+   "toilets": 61,
+   "laundry": 7,
+   "clinic": 21,
+   "food_bank": 2,
+   "community_centre": 13,
+   "shelter": 1
+  },
+  "51015": {
+   "clinic": 8,
+   "toilets": 38,
+   "drinking_water": 4,
+   "post_office": 20,
+   "laundry": 2,
+   "community_centre": 6,
+   "library": 6,
+   "shower": 7,
+   "employment_agency": 3,
+   "food_bank": 1
+  },
+  "51017": {
+   "drinking_water": 1,
+   "shower": 6,
+   "toilets": 5,
+   "post_office": 5,
+   "community_centre": 3,
+   "library": 1,
+   "clinic": 1
+  },
+  "51019": {
+   "post_office": 12,
+   "toilets": 15,
+   "clinic": 11,
+   "employment_agency": 3,
+   "library": 7,
+   "drinking_water": 2,
+   "community_centre": 4
+  },
+  "51021": {
+   "clinic": 1,
+   "toilets": 2,
+   "post_office": 4,
+   "library": 1
+  },
+  "51023": {
+   "post_office": 7,
+   "clinic": 3,
+   "toilets": 11,
+   "laundry": 1,
+   "drinking_water": 1,
+   "library": 4
+  },
+  "51025": {
+   "post_office": 12,
+   "toilets": 2,
+   "clinic": 1,
+   "library": 1
+  },
+  "51027": {
+   "post_office": 15,
+   "clinic": 1,
+   "community_centre": 1,
+   "library": 1
+  },
+  "51029": {
+   "post_office": 5,
+   "library": 2,
+   "toilets": 2,
+   "clinic": 1
+  },
+  "51031": {
+   "clinic": 3,
+   "toilets": 2,
+   "employment_agency": 3,
+   "drinking_water": 2,
+   "post_office": 9,
+   "library": 4,
+   "community_centre": 2
+  },
+  "51033": {
+   "toilets": 7,
+   "clinic": 2,
+   "post_office": 9,
+   "community_centre": 2,
+   "laundry": 1,
+   "library": 4
+  },
+  "51035": {
+   "clinic": 3,
+   "toilets": 4,
+   "post_office": 7,
+   "laundry": 1,
+   "community_centre": 3,
+   "library": 1
+  },
+  "51036": {
+   "toilets": 5,
+   "shower": 1,
+   "post_office": 2,
+   "clinic": 1,
+   "library": 1
+  },
+  "51037": {
+   "post_office": 12,
+   "library": 4,
+   "laundry": 2
+  },
+  "51041": {
+   "toilets": 37,
+   "clinic": 16,
+   "drinking_water": 5,
+   "laundry": 7,
+   "employment_agency": 2,
+   "community_centre": 10,
+   "post_office": 11,
+   "library": 11,
+   "food_bank": 1
+  },
+  "51043": {
+   "library": 2,
+   "toilets": 3,
+   "post_office": 4
+  },
+  "51045": {
+   "toilets": 3,
+   "library": 1,
+   "post_office": 1,
+   "clinic": 1
+  },
+  "51047": {
+   "laundry": 2,
+   "library": 2,
+   "post_office": 10,
+   "toilets": 9,
+   "food_bank": 1,
+   "clinic": 3,
+   "community_centre": 2
+  },
+  "51049": {
+   "clinic": 1,
+   "post_office": 3,
+   "library": 1,
+   "toilets": 3
+  },
+  "51051": {
+   "clinic": 2,
+   "post_office": 6,
+   "library": 2
+  },
+  "51053": {
+   "community_centre": 1,
+   "clinic": 1,
+   "laundry": 1,
+   "toilets": 2,
+   "library": 4,
+   "post_office": 8
+  },
+  "51057": {
+   "clinic": 2,
+   "post_office": 6,
+   "library": 1
+  },
+  "51059": {
+   "drinking_water": 65,
+   "post_office": 41,
+   "library": 30,
+   "toilets": 157,
+   "laundry": 24,
+   "clinic": 84,
+   "employment_agency": 4,
+   "community_centre": 70,
+   "shower": 7,
+   "food_bank": 1,
+   "shelter": 4
+  },
+  "51061": {
+   "post_office": 21,
+   "toilets": 23,
+   "clinic": 4,
+   "library": 4,
+   "laundry": 1,
+   "community_centre": 3
+  },
+  "51063": {
+   "clinic": 1,
+   "toilets": 6,
+   "post_office": 6,
+   "library": 1
+  },
+  "51065": {
+   "library": 2,
+   "toilets": 5,
+   "post_office": 6,
+   "community_centre": 4
+  },
+  "51067": {
+   "clinic": 3,
+   "post_office": 11,
+   "toilets": 4,
+   "library": 2
+  },
+  "51069": {
+   "post_office": 11,
+   "toilets": 19,
+   "laundry": 3,
+   "employment_agency": 1,
+   "clinic": 5,
+   "drinking_water": 2,
+   "community_centre": 4,
+   "library": 1,
+   "shower": 3
+  },
+  "51071": {
+   "community_centre": 1,
+   "post_office": 9,
+   "drinking_water": 1,
+   "toilets": 2,
+   "laundry": 2,
+   "clinic": 2,
+   "library": 2
+  },
+  "51073": {
+   "post_office": 13,
+   "clinic": 3,
+   "community_centre": 1,
+   "toilets": 13,
+   "shower": 3,
+   "laundry": 3,
+   "library": 2
+  },
+  "51075": {
+   "clinic": 3,
+   "post_office": 7,
+   "library": 2,
+   "toilets": 18,
+   "shower": 6,
+   "community_centre": 1
+  },
+  "51077": {
+   "clinic": 2,
+   "post_office": 7,
+   "toilets": 5,
+   "library": 4,
+   "community_centre": 2
+  },
+  "51079": {
+   "toilets": 3,
+   "drinking_water": 1,
+   "post_office": 4,
+   "clinic": 1,
+   "laundry": 1,
+   "library": 2,
+   "community_centre": 1
+  },
+  "51081": {
+   "toilets": 2,
+   "post_office": 1
+  },
+  "51083": {
+   "post_office": 10,
+   "clinic": 2,
+   "toilets": 2,
+   "laundry": 1,
+   "community_centre": 2,
+   "library": 1
+  },
+  "51085": {
+   "clinic": 15,
+   "laundry": 4,
+   "toilets": 30,
+   "community_centre": 8,
+   "drinking_water": 3,
+   "post_office": 10,
+   "library": 7,
+   "employment_agency": 1
+  },
+  "51087": {
+   "toilets": 69,
+   "clinic": 36,
+   "drinking_water": 11,
+   "laundry": 10,
+   "shower": 1,
+   "employment_agency": 1,
+   "community_centre": 14,
+   "food_bank": 1,
+   "library": 12,
+   "post_office": 10
+  },
+  "51089": {
+   "clinic": 1,
+   "library": 3,
+   "laundry": 1,
+   "toilets": 5,
+   "post_office": 7
+  },
+  "51091": {
+   "post_office": 5,
+   "clinic": 2,
+   "library": 1,
+   "toilets": 1
+  },
+  "51093": {
+   "library": 3,
+   "toilets": 9,
+   "clinic": 12,
+   "drinking_water": 1,
+   "laundry": 2,
+   "post_office": 8,
+   "community_centre": 6
+  },
+  "51095": {
+   "clinic": 7,
+   "toilets": 26,
+   "drinking_water": 1,
+   "community_centre": 3,
+   "library": 1,
+   "post_office": 4,
+   "laundry": 1
+  },
+  "51097": {
+   "post_office": 6,
+   "community_centre": 1,
+   "library": 1,
+   "clinic": 1
+  },
+  "51099": {
+   "clinic": 6,
+   "toilets": 2,
+   "drinking_water": 1,
+   "post_office": 6,
+   "library": 1
+  },
+  "51101": {
+   "clinic": 3,
+   "laundry": 1,
+   "library": 2,
+   "post_office": 4
+  },
+  "51103": {
+   "clinic": 1,
+   "post_office": 7,
+   "toilets": 3,
+   "library": 1
+  },
+  "51105": {
+   "community_centre": 3,
+   "laundry": 1,
+   "post_office": 9,
+   "clinic": 1,
+   "toilets": 3,
+   "library": 2
+  },
+  "51107": {
+   "post_office": 19,
+   "community_centre": 117,
+   "toilets": 100,
+   "drinking_water": 29,
+   "laundry": 4,
+   "clinic": 23,
+   "library": 12,
+   "employment_agency": 1,
+   "shower": 1,
+   "shelter": 1
+  },
+  "51109": {
+   "clinic": 2,
+   "shower": 2,
+   "toilets": 8,
+   "laundry": 6,
+   "community_centre": 3,
+   "library": 1,
+   "post_office": 4
+  },
+  "51111": {
+   "post_office": 6,
+   "clinic": 2,
+   "community_centre": 1,
+   "laundry": 1,
+   "library": 2,
+   "toilets": 1
+  },
+  "51113": {
+   "toilets": 5,
+   "post_office": 9,
+   "drinking_water": 4,
+   "library": 1
+  },
+  "51115": {
+   "toilets": 2,
+   "shower": 2,
+   "post_office": 12,
+   "community_centre": 2,
+   "library": 1
+  },
+  "51117": {
+   "post_office": 11,
+   "toilets": 28,
+   "drinking_water": 3,
+   "clinic": 3,
+   "community_centre": 4,
+   "laundry": 3,
+   "food_bank": 1,
+   "library": 4
+  },
+  "51119": {
+   "clinic": 1,
+   "laundry": 3,
+   "toilets": 12,
+   "post_office": 9,
+   "library": 2,
+   "community_centre": 4
+  },
+  "51121": {
+   "laundry": 14,
+   "clinic": 8,
+   "employment_agency": 2,
+   "toilets": 14,
+   "post_office": 8,
+   "drinking_water": 5,
+   "library": 4,
+   "community_centre": 4,
+   "food_bank": 2
+  },
+  "51125": {
+   "community_centre": 1,
+   "toilets": 8,
+   "clinic": 2,
+   "post_office": 10,
+   "library": 1,
+   "drinking_water": 1,
+   "shower": 1
+  },
+  "51127": {
+   "toilets": 2,
+   "post_office": 5,
+   "community_centre": 2,
+   "library": 1
+  },
+  "51131": {
+   "library": 3,
+   "clinic": 3,
+   "toilets": 6,
+   "laundry": 1,
+   "post_office": 12
+  },
+  "51133": {
+   "post_office": 8,
+   "laundry": 1,
+   "community_centre": 1,
+   "library": 1,
+   "toilets": 2
+  },
+  "51135": {
+   "post_office": 4,
+   "laundry": 2,
+   "food_bank": 1,
+   "toilets": 1,
+   "clinic": 1,
+   "library": 3
+  },
+  "51137": {
+   "post_office": 8,
+   "laundry": 2,
+   "clinic": 2,
+   "drinking_water": 2,
+   "toilets": 3,
+   "library": 3,
+   "community_centre": 1
+  },
+  "51139": {
+   "post_office": 4,
+   "toilets": 32,
+   "clinic": 3,
+   "employment_agency": 1,
+   "drinking_water": 6,
+   "laundry": 4,
+   "shower": 4,
+   "library": 3,
+   "community_centre": 2
+  },
+  "51141": {
+   "toilets": 1,
+   "clinic": 1,
+   "post_office": 9,
+   "community_centre": 1,
+   "library": 1
+  },
+  "51143": {
+   "toilets": 3,
+   "shower": 1,
+   "clinic": 5,
+   "post_office": 12,
+   "laundry": 3,
+   "community_centre": 3,
+   "library": 5
+  },
+  "51145": {
+   "clinic": 1,
+   "shower": 1,
+   "post_office": 2,
+   "library": 1,
+   "toilets": 3
+  },
+  "51147": {
+   "laundry": 3,
+   "clinic": 6,
+   "toilets": 15,
+   "drinking_water": 1,
+   "shower": 1,
+   "post_office": 4,
+   "library": 3,
+   "community_centre": 4,
+   "employment_agency": 1
+  },
+  "51149": {
+   "community_centre": 1,
+   "library": 6,
+   "clinic": 2,
+   "toilets": 3,
+   "laundry": 2,
+   "post_office": 4
+  },
+  "51153": {
+   "post_office": 13,
+   "library": 14,
+   "drinking_water": 23,
+   "toilets": 80,
+   "laundry": 15,
+   "clinic": 36,
+   "community_centre": 26,
+   "employment_agency": 1,
+   "shelter": 4,
+   "shower": 1
+  },
+  "51155": {
+   "clinic": 3,
+   "post_office": 6,
+   "drinking_water": 1,
+   "community_centre": 1,
+   "toilets": 15,
+   "shower": 9,
+   "library": 2
+  },
+  "51157": {
+   "toilets": 5,
+   "drinking_water": 2,
+   "clinic": 1,
+   "post_office": 4,
+   "library": 1
+  },
+  "51159": {
+   "clinic": 2,
+   "post_office": 4
+  },
+  "51161": {
+   "laundry": 4,
+   "post_office": 4,
+   "clinic": 6,
+   "drinking_water": 1,
+   "toilets": 12,
+   "library": 7,
+   "community_centre": 1
+  },
+  "51163": {
+   "post_office": 8,
+   "library": 6,
+   "clinic": 6,
+   "toilets": 61,
+   "laundry": 1,
+   "shower": 4
+  },
+  "51165": {
+   "toilets": 22,
+   "post_office": 19,
+   "community_centre": 6,
+   "clinic": 3,
+   "laundry": 1,
+   "shower": 1,
+   "drinking_water": 2,
+   "library": 4
+  },
+  "51167": {
+   "post_office": 8,
+   "library": 3,
+   "clinic": 5,
+   "food_bank": 2,
+   "toilets": 4,
+   "community_centre": 2,
+   "laundry": 1
+  },
+  "51169": {
+   "toilets": 3,
+   "clinic": 1,
+   "post_office": 6,
+   "community_centre": 1,
+   "library": 1
+  },
+  "51171": {
+   "post_office": 11,
+   "drinking_water": 1,
+   "clinic": 4,
+   "community_centre": 2,
+   "toilets": 13,
+   "library": 6,
+   "laundry": 1
+  },
+  "51173": {
+   "post_office": 6,
+   "community_centre": 1,
+   "toilets": 8,
+   "shower": 4,
+   "drinking_water": 2,
+   "library": 3,
+   "clinic": 2
+  },
+  "51175": {
+   "post_office": 9,
+   "clinic": 2,
+   "library": 1
+  },
+  "51177": {
+   "shower": 4,
+   "toilets": 15,
+   "clinic": 11,
+   "community_centre": 21,
+   "laundry": 3,
+   "library": 2,
+   "post_office": 3
+  },
+  "51179": {
+   "toilets": 18,
+   "clinic": 9,
+   "laundry": 2,
+   "drinking_water": 1,
+   "post_office": 6,
+   "community_centre": 10,
+   "library": 2
+  },
+  "51181": {
+   "clinic": 1,
+   "toilets": 22,
+   "shower": 4,
+   "laundry": 1,
+   "post_office": 3,
+   "library": 1
+  },
+  "51183": {
+   "toilets": 1,
+   "post_office": 6,
+   "library": 2,
+   "laundry": 1,
+   "food_bank": 1
+  },
+  "51185": {
+   "post_office": 17,
+   "clinic": 3,
+   "laundry": 3,
+   "food_bank": 1,
+   "community_centre": 2,
+   "library": 5,
+   "toilets": 1
+  },
+  "51187": {
+   "toilets": 14,
+   "clinic": 3,
+   "drinking_water": 8,
+   "post_office": 3,
+   "shower": 1,
+   "laundry": 1,
+   "library": 2
+  },
+  "51191": {
+   "clinic": 3,
+   "toilets": 13,
+   "post_office": 6,
+   "library": 6,
+   "community_centre": 2,
+   "laundry": 1
+  },
+  "51193": {
+   "post_office": 9,
+   "clinic": 2,
+   "laundry": 1,
+   "library": 3
+  },
+  "51195": {
+   "post_office": 7,
+   "library": 5,
+   "clinic": 8,
+   "food_bank": 2,
+   "toilets": 2,
+   "laundry": 1,
+   "community_centre": 1
+  },
+  "51197": {
+   "toilets": 8,
+   "clinic": 2,
+   "post_office": 7,
+   "drinking_water": 4,
+   "employment_agency": 1,
+   "community_centre": 2,
+   "library": 2
+  },
+  "51199": {
+   "post_office": 7,
+   "toilets": 13,
+   "drinking_water": 2,
+   "shower": 1,
+   "laundry": 3,
+   "clinic": 4,
+   "library": 2
+  },
+  "51510": {
+   "post_office": 10,
+   "community_centre": 9,
+   "toilets": 14,
+   "clinic": 12,
+   "drinking_water": 14,
+   "library": 7,
+   "laundry": 4
+  },
+  "51520": {
+   "toilets": 1,
+   "drinking_water": 2,
+   "clinic": 1,
+   "post_office": 1,
+   "laundry": 1,
+   "library": 1
+  },
+  "51530": {
+   "post_office": 1,
+   "library": 2,
+   "toilets": 1
+  },
+  "51540": {
+   "library": 7,
+   "post_office": 3,
+   "shower": 1,
+   "clinic": 14,
+   "drinking_water": 3,
+   "community_centre": 4,
+   "laundry": 5,
+   "toilets": 16,
+   "employment_agency": 2,
+   "shelter": 1
+  },
+  "51550": {
+   "post_office": 9,
+   "toilets": 16,
+   "clinic": 30,
+   "laundry": 4,
+   "shelter": 1,
+   "community_centre": 12,
+   "employment_agency": 2,
+   "shower": 2,
+   "library": 8
+  },
+  "51570": {
+   "clinic": 5,
+   "food_bank": 1,
+   "library": 1,
+   "post_office": 1
+  },
+  "51580": {
+   "clinic": 4
+  },
+  "51590": {
+   "library": 3,
+   "community_centre": 2,
+   "toilets": 5,
+   "clinic": 3,
+   "post_office": 2,
+   "employment_agency": 1
+  },
+  "51595": {
+   "clinic": 3,
+   "laundry": 1,
+   "toilets": 2,
+   "library": 1,
+   "post_office": 1
+  },
+  "51600": {
+   "clinic": 7,
+   "toilets": 2,
+   "library": 1,
+   "post_office": 2,
+   "community_centre": 5
+  },
+  "51620": {
+   "post_office": 1,
+   "community_centre": 1,
+   "library": 2
+  },
+  "51630": {
+   "laundry": 2,
+   "toilets": 4,
+   "drinking_water": 4,
+   "post_office": 3,
+   "clinic": 7,
+   "library": 4,
+   "community_centre": 2
+  },
+  "51640": {
+   "clinic": 3,
+   "laundry": 1,
+   "post_office": 1,
+   "toilets": 1
+  },
+  "51650": {
+   "post_office": 6,
+   "laundry": 1,
+   "toilets": 3,
+   "library": 5,
+   "community_centre": 13,
+   "clinic": 5,
+   "food_bank": 1
+  },
+  "51660": {
+   "clinic": 6,
+   "library": 5,
+   "post_office": 1,
+   "community_centre": 18,
+   "laundry": 2,
+   "toilets": 9
+  },
+  "51670": {
+   "clinic": 1,
+   "toilets": 1,
+   "community_centre": 1,
+   "post_office": 1,
+   "library": 1
+  },
+  "51678": {
+   "clinic": 3,
+   "post_office": 1,
+   "library": 1,
+   "laundry": 1
+  },
+  "51680": {
+   "drinking_water": 39,
+   "toilets": 40,
+   "clinic": 35,
+   "laundry": 6,
+   "employment_agency": 5,
+   "library": 6,
+   "community_centre": 16,
+   "food_bank": 4,
+   "day_center": 1,
+   "post_office": 5,
+   "soup_kitchen": 1,
+   "shelter": 2
+  },
+  "51683": {
+   "clinic": 6,
+   "laundry": 3,
+   "post_office": 2,
+   "community_centre": 7,
+   "library": 1,
+   "shelter": 3,
+   "toilets": 3
+  },
+  "51685": {
+   "toilets": 1
+  },
+  "51690": {
+   "clinic": 2,
+   "drinking_water": 1,
+   "toilets": 3,
+   "post_office": 2,
+   "library": 1
+  },
+  "51700": {
+   "toilets": 23,
+   "drinking_water": 2,
+   "library": 6,
+   "laundry": 5,
+   "clinic": 26,
+   "post_office": 8,
+   "shower": 7,
+   "community_centre": 5,
+   "shelter": 2,
+   "employment_agency": 1
+  },
+  "51710": {
+   "post_office": 10,
+   "clinic": 19,
+   "toilets": 16,
+   "shelter": 6,
+   "drinking_water": 4,
+   "shower": 1,
+   "laundry": 7,
+   "employment_agency": 2,
+   "library": 15,
+   "community_centre": 10,
+   "food_bank": 1
+  },
+  "51720": {
+   "community_centre": 1,
+   "clinic": 1,
+   "shower": 2,
+   "drinking_water": 1,
+   "post_office": 1,
+   "toilets": 3
+  },
+  "51730": {
+   "clinic": 6,
+   "employment_agency": 2,
+   "post_office": 2,
+   "community_centre": 2,
+   "library": 1
+  },
+  "51735": {
+   "library": 1,
+   "post_office": 1,
+   "community_centre": 1
+  },
+  "51740": {
+   "post_office": 4,
+   "shelter": 2,
+   "clinic": 5,
+   "toilets": 6,
+   "laundry": 6,
+   "community_centre": 8,
+   "library": 4
+  },
+  "51750": {
+   "clinic": 1,
+   "post_office": 1,
+   "library": 2
+  },
+  "51760": {
+   "community_centre": 20,
+   "toilets": 49,
+   "drinking_water": 25,
+   "clinic": 19,
+   "laundry": 9,
+   "library": 18,
+   "post_office": 10,
+   "employment_agency": 2
+  },
+  "51770": {
+   "post_office": 6,
+   "clinic": 17,
+   "library": 8,
+   "community_centre": 10,
+   "toilets": 18,
+   "drinking_water": 12,
+   "employment_agency": 1,
+   "shelter": 1,
+   "laundry": 2
+  },
+  "51775": {
+   "clinic": 1,
+   "employment_agency": 1,
+   "library": 2,
+   "post_office": 1,
+   "community_centre": 1,
+   "food_bank": 1
+  },
+  "51790": {
+   "clinic": 9,
+   "toilets": 7,
+   "drinking_water": 1,
+   "laundry": 3,
+   "post_office": 2,
+   "library": 2,
+   "community_centre": 6
+  },
+  "51800": {
+   "post_office": 6,
+   "clinic": 11,
+   "toilets": 9,
+   "library": 3,
+   "community_centre": 12,
+   "employment_agency": 1,
+   "shelter": 1
+  },
+  "51810": {
+   "clinic": 27,
+   "post_office": 16,
+   "toilets": 24,
+   "employment_agency": 2,
+   "laundry": 13,
+   "shelter": 1,
+   "community_centre": 5,
+   "drinking_water": 8,
+   "shower": 19,
+   "library": 12
+  },
+  "51820": {
+   "clinic": 2,
+   "toilets": 1,
+   "laundry": 2,
+   "post_office": 2,
+   "community_centre": 1,
+   "library": 1
+  },
+  "51830": {
+   "toilets": 10,
+   "drinking_water": 2,
+   "post_office": 2,
+   "library": 3,
+   "community_centre": 4,
+   "clinic": 1
+  },
+  "51840": {
+   "toilets": 12,
+   "clinic": 7,
+   "post_office": 2,
+   "employment_agency": 1,
+   "laundry": 2,
+   "library": 2
+  }
+ },
+ "pts": [
+  [
+   "clinic",
+   37.25401,
+   -77.41043,
+   "51570",
+   "Colonial Heights Health Department",
+   "",
+   "",
+   "n356596355"
+  ],
+  [
+   "clinic",
+   37.22067,
+   -80.42219,
+   "51121",
+   "Schiffert Health Center",
+   "",
+   "+1-540-231-6444",
+   "n691124867"
+  ],
+  [
+   "clinic",
+   37.5461,
+   -77.91936,
+   "51145",
+   "Free Clinic of Powhatan",
+   "",
+   "+1-804-598-5637",
+   "n2337553091"
+  ],
+  [
+   "clinic",
+   38.76753,
+   -77.48815,
+   "51683",
+   "Medical Building 1 - Health Center",
+   "",
+   "",
+   "n2355003905"
+  ],
+  [
+   "shelter",
+   36.88007,
+   -76.29017,
+   "51710",
+   "The Dwelling Place",
+   "",
+   "+1-757-624-9879",
+   "n3188840449"
+  ],
+  [
+   "shelter",
+   36.85765,
+   -76.22493,
+   "51710",
+   "Union Mission",
+   "",
+   "+1-757-627-8686",
+   "n3188840451"
+  ],
+  [
+   "shelter",
+   36.82139,
+   -76.27719,
+   "51550",
+   "Our House Families",
+   "",
+   "+1-757-545-4075",
+   "n3188840452"
+  ],
+  [
+   "shelter",
+   36.83402,
+   -76.32052,
+   "51740",
+   "Portsmouth Volunteers for the Homeless",
+   "",
+   "+1-757-399-0200",
+   "n3188840453"
+  ],
+  [
+   "shelter",
+   36.86927,
+   -76.29826,
+   "51710",
+   "Tidewater Arts Outreach",
+   "",
+   "+1-757-796-5515",
+   "n3188922283"
+  ],
+  [
+   "shelter",
+   36.86661,
+   -76.28712,
+   "51710",
+   "Salvation Army",
+   "",
+   "+1-757-754-3810",
+   "n3188922284"
+  ],
+  [
+   "shelter",
+   36.82792,
+   -76.30853,
+   "51740",
+   "Oasis Social Ministry",
+   "",
+   "+1-757-739-8197",
+   "n3188922285"
+  ],
+  [
+   "shelter",
+   36.83989,
+   -76.063,
+   "51810",
+   "Samaritan House",
+   "",
+   "+1-757-763-1071",
+   "n3188922286"
+  ],
+  [
+   "clinic",
+   37.27555,
+   -79.09958,
+   "51031",
+   "Campbell County Health Department",
+   "",
+   "",
+   "n4042194466"
+  ],
+  [
+   "clinic",
+   38.02328,
+   -77.3409,
+   "51033",
+   "Caroline County Health Department",
+   "",
+   "",
+   "n4042194467"
+  ],
+  [
+   "clinic",
+   37.15293,
+   -82.46293,
+   "51051",
+   "Dickenson County Health Department",
+   "",
+   "",
+   "n4042802685"
+  ],
+  [
+   "clinic",
+   37.93234,
+   -76.86296,
+   "51057",
+   "Essex County Health Department",
+   "Mo-Fr 08:30-16:30",
+   "+1-804-443-4076",
+   "n4042802687"
+  ],
+  [
+   "clinic",
+   38.71147,
+   -77.80965,
+   "51061",
+   "Fauquier County Health Department",
+   "",
+   "",
+   "n4042802689"
+  ],
+  [
+   "clinic",
+   37.12946,
+   -80.40435,
+   "51121",
+   "Montgomery County Health Department",
+   "",
+   "",
+   "n4042881933"
+  ],
+  [
+   "clinic",
+   37.70686,
+   -78.934,
+   "51125",
+   "Nelson County Health Department",
+   "",
+   "",
+   "n4042881934"
+  ],
+  [
+   "clinic",
+   37.48269,
+   -75.85481,
+   "51131",
+   "Northampton County Health Department",
+   "Mo-Fr 08:00-17:00",
+   "+1-757-442-6228",
+   "n4042881937"
+  ],
+  [
+   "clinic",
+   37.05015,
+   -80.78396,
+   "51155",
+   "Pulaski County Health Center",
+   "",
+   "",
+   "n4042976115"
+  ],
+  [
+   "clinic",
+   37.95891,
+   -76.76207,
+   "51159",
+   "Richmond County Health Department",
+   "",
+   "",
+   "n4042976118"
+  ],
+  [
+   "clinic",
+   37.54,
+   -77.44119,
+   "51760",
+   "Richmond Health Center",
+   "",
+   "",
+   "n4042976119"
+  ],
+  [
+   "clinic",
+   36.71521,
+   -77.06633,
+   "51175",
+   "Southampton County Health Department",
+   "",
+   "",
+   "n4042983343"
+  ],
+  [
+   "clinic",
+   38.20223,
+   -77.58926,
+   "51177",
+   "Spotsylvania County Health Department",
+   "Mo-Fr 08:00-16:30",
+   "",
+   "n4042983344"
+  ],
+  [
+   "clinic",
+   38.07332,
+   -78.93446,
+   "51820",
+   "Waynesboro-Augusta Health Department",
+   "",
+   "",
+   "n4043017594"
+  ],
+  [
+   "clinic",
+   37.34742,
+   -79.18345,
+   "51680",
+   "CVFP Liberty University Health Center",
+   "",
+   "",
+   "n5882183073"
+  ],
+  [
+   "clinic",
+   37.50208,
+   -77.47816,
+   "51760",
+   "Hayes E. Willis Health Center",
+   "Mo-Fr 07:30-17:00; Sa-Su off",
+   "+1 804-230-7777",
+   "n6520428709"
+  ],
+  [
+   "clinic",
+   39.11949,
+   -78.20029,
+   "51069",
+   "Northwestern Community Services Winchester Clinic",
+   "Mo-Fr 09:00-17:00",
+   "",
+   "n8594361600"
+  ],
+  [
+   "day_center",
+   37.44141,
+   -79.1208,
+   "51009",
+   "ELCM Community Hope Center",
+   "Tu-Fr 10:00-14:00; Sa 10:00-16:00; \"By appointment only\"",
+   "+1 434-851-0843",
+   "n8993655602"
+  ],
+  [
+   "clinic",
+   37.33741,
+   -79.53276,
+   "51019",
+   "Bedford Health Center",
+   "Mo-Th 07:30-18:00; Fr 07:30-17:00",
+   "",
+   "n9356697513"
+  ],
+  [
+   "food_bank",
+   37.24302,
+   -77.39184,
+   "51570",
+   "Colonial Heights Food Pantry",
+   "Mo-We 09:00-16:00; Th-Fr 09:00-14:00",
+   "+1-804-520-7117",
+   "n9953980795"
+  ],
+  [
+   "food_bank",
+   38.84364,
+   -77.08937,
+   "51013",
+   "Arlington Food Assistance Center",
+   "",
+   "",
+   "n10298717235"
+  ],
+  [
+   "clinic",
+   38.86203,
+   -77.37661,
+   "51059",
+   "Fairfax Health Center",
+   "",
+   "+1 571-432-2600",
+   "n10830728484"
+  ],
+  [
+   "clinic",
+   38.85056,
+   -77.29954,
+   "51600",
+   "Joseph Willard Health Center",
+   "",
+   "",
+   "n10947618662"
+  ],
+  [
+   "clinic",
+   37.26184,
+   -79.94507,
+   "51770",
+   "Bradley Free Clinic",
+   "",
+   "",
+   "n11038015686"
+  ],
+  [
+   "clinic",
+   37.26197,
+   -79.94568,
+   "51770",
+   "Carilion Clinic Community Care",
+   "",
+   "",
+   "n11038015687"
+  ],
+  [
+   "food_bank",
+   37.40287,
+   -79.16704,
+   "51680",
+   "Food for Families",
+   "Th,Sa 09:30-14:00",
+   "",
+   "n11048146000"
+  ],
+  [
+   "food_bank",
+   37.40286,
+   -79.167,
+   "51680",
+   "Park View Cafe",
+   "We 16:30-17:30",
+   "",
+   "n11048146001"
+  ],
+  [
+   "day_center",
+   37.40284,
+   -79.16706,
+   "51680",
+   "Community Resource Center",
+   "Mo,We-Fr 09:00-13:00; Tu 11:00-13:00",
+   "+1 434 845 8468 ext. 700",
+   "n11053179703"
+  ],
+  [
+   "food_bank",
+   37.17559,
+   -78.12459,
+   "51135",
+   "Crewe Cares Food Pantry",
+   "",
+   "",
+   "n11182207303"
+  ],
+  [
+   "clinic",
+   36.71147,
+   -80.96897,
+   "51077",
+   "Tri-Area Community Health",
+   "",
+   "",
+   "n11530702677"
+  ],
+  [
+   "food_bank",
+   38.4732,
+   -77.99352,
+   "51047",
+   "Culpeper Food Closet",
+   "",
+   "",
+   "n11666937434"
+  ],
+  [
+   "shelter",
+   37.27279,
+   -79.95189,
+   "51770",
+   "Samaritan Inn",
+   "",
+   "",
+   "n11756968474"
+  ],
+  [
+   "clinic",
+   36.67575,
+   -80.90881,
+   "51640",
+   "Ohlen R. Wilson Health Center",
+   "",
+   "",
+   "n11907455014"
+  ],
+  [
+   "clinic",
+   37.92752,
+   -76.86003,
+   "51057",
+   "Ledwith-Lewis Free Clinic",
+   "",
+   "",
+   "n11907456886"
+  ],
+  [
+   "clinic",
+   38.86792,
+   -78.51583,
+   "51171",
+   "Shenandoah Community Health Clinic",
+   "",
+   "",
+   "n11907493041"
+  ],
+  [
+   "clinic",
+   38.92454,
+   -77.52175,
+   "51107",
+   "Community Health Clinic - Richlands ProAesthetics, MedSpa, and Cosmeto",
+   "Mo-Fr 09:00-17:00",
+   "+1-571-577-6300",
+   "n12092141978"
+  ],
+  [
+   "clinic",
+   36.94092,
+   -82.48473,
+   "51195",
+   "Thomas E. Renfro Community Clinic",
+   "Mo-Fr 08:00-17:00",
+   "+1-276-395-2389",
+   "n12230390610"
+  ],
+  [
+   "food_bank",
+   36.88922,
+   -82.30521,
+   "51167",
+   "Roger E. Jessee Community Food Bank",
+   "",
+   "",
+   "n12240014272"
+  ],
+  [
+   "food_bank",
+   37.3024,
+   -78.08742,
+   "51007",
+   "Amelia Food Pantry",
+   "",
+   "",
+   "n12384638141"
+  ],
+  [
+   "food_bank",
+   36.86035,
+   -82.78972,
+   "51195",
+   "Big Stone Gap Food Bank",
+   "",
+   "",
+   "n12386786535"
+  ],
+  [
+   "food_bank",
+   37.52678,
+   -77.3517,
+   "51087",
+   "Our Giving Box",
+   "",
+   "",
+   "n12389172875"
+  ],
+  [
+   "food_bank",
+   37.41109,
+   -79.14346,
+   "51680",
+   "Blue Ridge Area Food Bank",
+   "",
+   "+1 434 845 4099",
+   "n12802892195"
+  ],
+  [
+   "food_bank",
+   37.08679,
+   -81.80707,
+   "51185",
+   "Good Samaritan Food Pantry",
+   "",
+   "",
+   "n12819565831"
+  ],
+  [
+   "food_bank",
+   36.62071,
+   -78.57226,
+   "51117",
+   "Clarksville Food Pantry",
+   "Mo,Sa 09:00-12:00",
+   "",
+   "n12840607961"
+  ],
+  [
+   "clinic",
+   37.96534,
+   -75.53027,
+   "51001",
+   "Atlantic Community Health Center",
+   "Mo-Fr 08:00-17:00",
+   "+1-757-824-5676",
+   "n13030461598"
+  ],
+  [
+   "clinic",
+   37.34865,
+   -75.94146,
+   "51131",
+   "Eastville Community Health Center",
+   "Mo-Fr 08:00-17:00",
+   "+1-757-331-1086",
+   "n13076194431"
+  ],
+  [
+   "food_bank",
+   38.83784,
+   -77.4341,
+   "51059",
+   "Western Fairfax Christian Ministries",
+   "",
+   "",
+   "n13418250627"
+  ],
+  [
+   "clinic",
+   38.56734,
+   -77.32615,
+   "51153",
+   "Greater Prince William Community Health Center",
+   "",
+   "",
+   "n13479401552"
+  ],
+  [
+   "clinic",
+   38.88037,
+   -77.10725,
+   "51013",
+   "Bloom Health Centers",
+   "Mo-Fr 08:00-17:00",
+   "+1 703-594-7879",
+   "n14167466242"
+  ],
+  [
+   "shelter",
+   38.62666,
+   -77.27498,
+   "51153",
+   "Hilda Barg Homeless Shelter",
+   "",
+   "",
+   "w93973475"
+  ],
+  [
+   "clinic",
+   38.64923,
+   -77.26473,
+   "51153",
+   "Prince William Area Free Clinic",
+   "",
+   "",
+   "w93973528"
+  ],
+  [
+   "shelter",
+   38.56498,
+   -77.32998,
+   "51153",
+   "The Beverly Warren House",
+   "",
+   "",
+   "w98345464"
+  ],
+  [
+   "shelter",
+   38.70784,
+   -77.15982,
+   "51059",
+   "Eleanor U. Kennedy Shelter",
+   "",
+   "+1-703-799-0200",
+   "w143459363"
+  ],
+  [
+   "clinic",
+   38.31214,
+   -77.47807,
+   "51630",
+   "Fredericksburg Community-Based Outpatient Clinic",
+   "",
+   "",
+   "w192355222"
+  ],
+  [
+   "clinic",
+   37.26508,
+   -79.93948,
+   "51770",
+   "Jefferson Community Medical Clinic",
+   "",
+   "",
+   "w222719023"
+  ],
+  [
+   "clinic",
+   37.79043,
+   -79.43211,
+   "51163",
+   "Virginia Military Institute Health Center",
+   "24/7",
+   "",
+   "w249237915"
+  ],
+  [
+   "clinic",
+   38.03646,
+   -78.4888,
+   "51540",
+   "Peterson Health Center - Region Ten",
+   "",
+   "",
+   "w253737211"
+  ],
+  [
+   "clinic",
+   37.54749,
+   -77.44786,
+   "51760",
+   "West Grace Health Center",
+   "",
+   "",
+   "w301428815"
+  ],
+  [
+   "clinic",
+   36.74663,
+   -76.24793,
+   "51550",
+   "Chesapeake Public Health Center",
+   "",
+   "",
+   "w312645828"
+  ],
+  [
+   "clinic",
+   36.73519,
+   -76.22402,
+   "51550",
+   "CHKD Health Center",
+   "",
+   "",
+   "w312688953"
+  ],
+  [
+   "clinic",
+   36.82507,
+   -79.39857,
+   "51143",
+   "PATHS Community Medical Center",
+   "",
+   "",
+   "w313507507"
+  ],
+  [
+   "clinic",
+   38.66174,
+   -78.4703,
+   "51139",
+   "Page County Health Department",
+   "",
+   "+1-540-743-6528",
+   "w315561976"
+  ],
+  [
+   "clinic",
+   37.06305,
+   -76.48509,
+   "51700",
+   "Peninsula Health Center",
+   "",
+   "",
+   "w332769943"
+  ],
+  [
+   "shelter",
+   37.0134,
+   -76.44945,
+   "51700",
+   "Four Oaks Day Service Center",
+   "",
+   "",
+   "w333001743"
+  ],
+  [
+   "shelter",
+   37.12031,
+   -76.52431,
+   "51700",
+   "Menchville House",
+   "",
+   "+1-757-833-5980",
+   "w333150837"
+  ],
+  [
+   "clinic",
+   37.23094,
+   -76.55546,
+   "51199",
+   "Lackey Free Clinic",
+   "",
+   "",
+   "w370170755"
+  ],
+  [
+   "clinic",
+   37.27421,
+   -76.74272,
+   "51095",
+   "Williamsburg & James City Health Center",
+   "",
+   "",
+   "w370495765"
+  ],
+  [
+   "shelter",
+   36.73123,
+   -76.57634,
+   "51800",
+   "Suffolk Homeless Shelter",
+   "",
+   "",
+   "w384053960"
+  ],
+  [
+   "shelter",
+   38.03135,
+   -78.48154,
+   "51540",
+   "The Haven at First and Market",
+   "",
+   "+1-434-973-1234",
+   "w386115144"
+  ],
+  [
+   "food_bank",
+   37.00555,
+   -76.40393,
+   "51650",
+   "Virginia Peninsula Foodbank",
+   "",
+   "",
+   "w388498511"
+  ],
+  [
+   "clinic",
+   38.03748,
+   -78.48852,
+   "51540",
+   "Neighborhood Family Health Center",
+   "",
+   "",
+   "w396519064"
+  ],
+  [
+   "clinic",
+   36.84147,
+   -76.11101,
+   "51810",
+   "CHKD Health Center at Loehmann's Plaza",
+   "Mo-Fr 08:30-17:00",
+   "+1-757-668-4640",
+   "w402428564"
+  ],
+  [
+   "food_bank",
+   38.85419,
+   -77.08277,
+   "51013",
+   "",
+   "",
+   "",
+   "w406961120"
+  ],
+  [
+   "shelter",
+   36.87732,
+   -76.26107,
+   "51710",
+   "St. Columba Ecumenical Ministries",
+   "",
+   "+1-757-762-7031",
+   "w407110057"
+  ],
+  [
+   "shelter",
+   36.86044,
+   -76.25094,
+   "51710",
+   "Barrett Transitional Home",
+   "",
+   "+1-757-624-6990",
+   "w407223449"
+  ],
+  [
+   "food_bank",
+   36.85204,
+   -76.27448,
+   "51710",
+   "Foodbank of Southeastern Virginia and the Eastern Shore",
+   "",
+   "+1-757-627-6599;+1-877-486-4379",
+   "w407238415"
+  ],
+  [
+   "shelter",
+   38.62904,
+   -77.29543,
+   "51153",
+   "",
+   "",
+   "",
+   "w439162956"
+  ],
+  [
+   "shelter",
+   38.74483,
+   -77.49987,
+   "51683",
+   "Serv",
+   "",
+   "",
+   "w453602654"
+  ],
+  [
+   "shelter",
+   38.7445,
+   -77.50015,
+   "51683",
+   "Serv",
+   "",
+   "",
+   "w453602655"
+  ],
+  [
+   "shelter",
+   38.74458,
+   -77.50073,
+   "51683",
+   "Serv",
+   "",
+   "",
+   "w453602658"
+  ],
+  [
+   "clinic",
+   37.16108,
+   -76.57305,
+   "51700",
+   "McDonald Army Health Center",
+   "",
+   "+1 757 314 7500",
+   "w516733213"
+  ],
+  [
+   "shelter",
+   38.84157,
+   -77.39515,
+   "51059",
+   "Katherine Hanley Family Shelter",
+   "",
+   "",
+   "w517730371"
+  ],
+  [
+   "shelter",
+   38.842,
+   -77.39499,
+   "51059",
+   "",
+   "",
+   "",
+   "w517730373"
+  ],
+  [
+   "shelter",
+   38.84213,
+   -77.39477,
+   "51059",
+   "",
+   "",
+   "",
+   "w517730375"
+  ],
+  [
+   "food_bank",
+   37.12423,
+   -82.60427,
+   "51195",
+   "Pound Food Bank",
+   "",
+   "",
+   "w546881824"
+  ],
+  [
+   "clinic",
+   36.71766,
+   -80.50831,
+   "51035",
+   "Tri-Area Community Health Center",
+   "",
+   "",
+   "w552593423"
+  ],
+  [
+   "clinic",
+   37.80375,
+   -79.40509,
+   "51163",
+   "Rockbridge Area Health Center",
+   "",
+   "",
+   "w556031877"
+  ],
+  [
+   "clinic",
+   38.66578,
+   -78.44635,
+   "51139",
+   "Page Free Clinic",
+   "",
+   "",
+   "w561622185"
+  ],
+  [
+   "clinic",
+   37.34125,
+   -77.07318,
+   "51036",
+   "Charles County Health Department",
+   "",
+   "",
+   "w562195644"
+  ],
+  [
+   "clinic",
+   37.10388,
+   -76.4883,
+   "51700",
+   "CHKD Health Center at Tech Center",
+   "",
+   "",
+   "w610943425"
+  ],
+  [
+   "soup_kitchen",
+   37.41417,
+   -79.14602,
+   "51680",
+   "Lynchburg Daily Bread",
+   "",
+   "",
+   "w627075492"
+  ],
+  [
+   "food_bank",
+   37.35547,
+   -79.22295,
+   "51680",
+   "Agape Center",
+   "",
+   "",
+   "w709687045"
+  ],
+  [
+   "food_bank",
+   37.28672,
+   -77.41039,
+   "51041",
+   "Saint Anns Food Pantry",
+   "",
+   "",
+   "w721215139"
+  ],
+  [
+   "clinic",
+   38.01208,
+   -79.81204,
+   "51017",
+   "Bath County Community Hospital",
+   "",
+   "",
+   "w744789331"
+  ],
+  [
+   "clinic",
+   36.77136,
+   -76.08626,
+   "51810",
+   "CHKD Health Center Urgent Care",
+   "",
+   "",
+   "w747461091"
+  ],
+  [
+   "clinic",
+   38.5771,
+   -77.76398,
+   "51061",
+   "Fauquier Health Center",
+   "",
+   "",
+   "w747477138"
+  ],
+  [
+   "clinic",
+   37.41373,
+   -79.1409,
+   "51680",
+   "Free Clinic of Central Virginia",
+   "Mo-Th 08:00-16:30; Fr 08:00-12:00",
+   "+1 434-847-5866",
+   "w806659371"
+  ],
+  [
+   "clinic",
+   36.8586,
+   -76.30471,
+   "51710",
+   "Norfolk City Health Department",
+   "",
+   "",
+   "w822796396"
+  ],
+  [
+   "food_bank",
+   38.20175,
+   -79.0101,
+   "51015",
+   "Verona United Methodist Church Food Pantry",
+   "",
+   "",
+   "w836329501"
+  ],
+  [
+   "clinic",
+   38.41208,
+   -79.57649,
+   "51091",
+   "Highland County Health Department",
+   "Mo-Fr 08:00-16:30",
+   "+1-540-468-2270",
+   "w916069270"
+  ],
+  [
+   "shelter",
+   39.07678,
+   -77.54976,
+   "51107",
+   "Loudoun Homeless Services",
+   "",
+   "",
+   "w964635090"
+  ],
+  [
+   "clinic",
+   37.41465,
+   -79.15093,
+   "51680",
+   "Holcombe H. Hurt Community Health Center",
+   "Mo-Th 08:30-20:30; Fr 08:30-18:00",
+   "",
+   "w992515885"
+  ],
+  [
+   "food_bank",
+   37.23707,
+   -80.40504,
+   "51121",
+   "Blacksburg Interfaith Food Pantry",
+   "Mo-Tu 16:00-17:30; We-Th 10:00-11:30; Fr-Su off",
+   "+1-540-951-8134",
+   "w992925061"
+  ],
+  [
+   "shelter",
+   37.40468,
+   -79.163,
+   "51680",
+   "The Salvation Army Center of Hope",
+   "",
+   "",
+   "w998515033"
+  ],
+  [
+   "shelter",
+   37.40612,
+   -79.16555,
+   "51680",
+   "Refuge on Memorial",
+   "",
+   "",
+   "w998515036"
+  ],
+  [
+   "food_bank",
+   37.14482,
+   -80.40592,
+   "51121",
+   "Agape Center NRV",
+   "",
+   "",
+   "w1022334571"
+  ],
+  [
+   "clinic",
+   36.9911,
+   -76.43781,
+   "51700",
+   "HII Family Health Center",
+   "",
+   "",
+   "w1038384598"
+  ],
+  [
+   "clinic",
+   38.16342,
+   -79.06752,
+   "51790",
+   "Augusta Staunton Health Department",
+   "",
+   "",
+   "w1059990819"
+  ],
+  [
+   "food_bank",
+   36.93533,
+   -81.96751,
+   "51167",
+   "Elk Garden School Ministries Food Bank",
+   "",
+   "",
+   "w1065546532"
+  ],
+  [
+   "shelter",
+   38.86625,
+   -77.07117,
+   "51013",
+   "",
+   "",
+   "",
+   "w1112289881"
+  ],
+  [
+   "food_bank",
+   37.03591,
+   -77.09645,
+   "51183",
+   "Mission Ministries - Food Distribution Center",
+   "",
+   "+18047327548",
+   "w1124016144"
+  ],
+  [
+   "shelter",
+   38.62668,
+   -77.27507,
+   "51153",
+   "",
+   "",
+   "",
+   "w1147123032"
+  ],
+  [
+   "clinic",
+   38.30739,
+   -77.48614,
+   "51630",
+   "Lloyd F. Moss Free Clinic",
+   "",
+   "",
+   "w1175182310"
+  ],
+  [
+   "clinic",
+   37.46759,
+   -79.1205,
+   "51009",
+   "Amherst County Community Health Center",
+   "",
+   "",
+   "w1176935624"
+  ],
+  [
+   "clinic",
+   37.41572,
+   -79.20255,
+   "51680",
+   "Light Family Health Center",
+   "",
+   "",
+   "w1202968565"
+  ],
+  [
+   "clinic",
+   37.32719,
+   -80.73493,
+   "51071",
+   "Giles County Health Department",
+   "Mo-Fr 08:00-16:30",
+   "+1-540-235-3135",
+   "w1281269256"
+  ],
+  [
+   "clinic",
+   37.12929,
+   -78.07909,
+   "51135",
+   "Nottoway County Health Department",
+   "",
+   "",
+   "w1308939054"
+  ],
+  [
+   "food_bank",
+   37.70714,
+   -75.7063,
+   "51001",
+   "Foodbank of Southeastern Virginia and The Eastern Shore",
+   "",
+   "+1-757-787-2557",
+   "w1353798474"
+  ],
+  [
+   "clinic",
+   37.66869,
+   -76.87806,
+   "51097",
+   "King and Queen County Health Department",
+   "",
+   "",
+   "w1369203646"
+  ],
+  [
+   "food_bank",
+   37.27846,
+   -80.03663,
+   "51775",
+   "Feeding Southwest Virginia",
+   "",
+   "",
+   "w1433177099"
+  ],
+  [
+   "clinic",
+   37.33832,
+   -79.52953,
+   "51019",
+   "Bedford Health Department",
+   "",
+   "",
+   "w1443901209"
+  ],
+  [
+   "clinic",
+   36.87634,
+   -81.76923,
+   "51173",
+   "Saltville Community Health Center",
+   "",
+   "",
+   "w1457349489"
+  ],
+  [
+   "clinic",
+   36.88097,
+   -81.75705,
+   "51173",
+   "Southwest Virginia Community Health Systems",
+   "",
+   "",
+   "w1458171962"
+  ],
+  [
+   "clinic",
+   37.50502,
+   -80.11002,
+   "51045",
+   "Craig County Health Center",
+   "",
+   "",
+   "w1534453088"
+  ],
+  [
+   "clinic",
+   37.01294,
+   -76.36624,
+   "51650",
+   "Hampton Health Department",
+   "",
+   "",
+   "r5808956"
+  ]
+ ],
+ "outside": 68,
+ "skipped": 431
+}

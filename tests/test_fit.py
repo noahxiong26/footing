@@ -64,9 +64,13 @@ def test_camping_law_levels_are_ordered_and_documented():
     assert camp("GA")["score"] == 25           # "Safe Neighborhood": enforcement pressure, not a ban
     assert camp("OK")["score"] == 25
     assert camp("KY")["score"] == 50           # ban ruled unconstitutional
-    assert camp("VA")["score"] is None         # not checked is Unknown, never "no ban"
+    # Session 3 asserted VA was Unknown here. Session 4 read the statute and confirmed there is no statewide
+    # ban, so VA is now a checked "none_statewide" (75), tested in full below. A state nobody has checked is
+    # still Unknown and must never be read as "no ban" - WY stands in for that case.
+    assert camp("VA")["score"] == 75
+    assert camp("WY")["score"] is None
     statuses = {st["camping_law"]["status"] for st in POLICY["states"].values() if st["camping_law"]}
-    assert statuses <= {"in_effect", "enforcement_mandate", "contested"}
+    assert statuses <= {"in_effect", "enforcement_mandate", "contested", "none_statewide"}
 
 
 # ---- formula ----------------------------------------------------------------------------------------
@@ -183,3 +187,23 @@ def test_javascript_engine_matches_python_exactly(tmp_path):
         assert _norm(py) == _norm(js["ranked"]), c["profile"]
         if c.get("ratings"):
             assert _norm(fit.bayes_score(c["ratings"], c["now"])) == _norm(js["bayes"])
+
+
+def test_enforcement_mandate_is_not_scored_as_a_statewide_ban():
+    # GA/OK "Safe Neighborhood" laws pressure cities to enforce; they are not statewide bans (session-3 finding).
+    for st in ("GA", "OK"):
+        assert POLICY["states"][st]["camping_law"]["status"] == "enforcement_mandate"
+        crim = fit.components(ELIG, POLICY, st, {"status": "citizen"})["criminalization"]
+        assert crim["score"] == 25 and "enforce" in crim["reason"]
+    assert fit.components(ELIG, POLICY, "FL", {"status": "citizen"})["criminalization"]["score"] == 0
+
+
+def test_aca_notes_mention_2027_cutoff_for_asylum_and_parole():
+    for s in ("asylum_pending", "parole"):
+        assert "Jan 1, 2027" in fit.program_rule(ELIG, "aca", s)["note"]
+
+
+def test_virginia_has_no_statewide_ban_and_scores_75():
+    assert POLICY["states"]["VA"]["camping_law"]["status"] == "none_statewide"
+    c = fit.components(ELIG, POLICY, "VA", {"status": "citizen"})
+    assert c["criminalization"]["score"] == 75

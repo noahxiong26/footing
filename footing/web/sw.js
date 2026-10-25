@@ -3,8 +3,8 @@
 const SHELL = "footing-shell-v6";
 const DATA = "footing-data-v6";
 const SHELL_FILES = ["./", "index.html", "styles.css", "app.js", "manifest.webmanifest", "icon.svg",
-  "globe.css", "globe.js", "fit.js", "i18n.js", "vendor/maplibre-gl.js", "vendor/maplibre-gl.css",
-  "vendor/topojson-client.min.js", "data/states-10m.json", "data/countries-110m.json"];
+  "globe.css", "globe.js", "fit.js", "vafit.js", "i18n.js", "i18n_more.js", "vendor/maplibre-gl.js", "vendor/maplibre-gl.css",
+  "vendor/topojson-client.min.js", "data/states-10m.json", "data/countries-110m.json", "data/va-localities.json"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(SHELL).then((c) => c.addAll(SHELL_FILES)).then(() => self.skipWaiting()));
