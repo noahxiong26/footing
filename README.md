@@ -1,32 +1,52 @@
 # Footing
 
-**Where could you land for the next 30 days?** Footing is a free, open-source phone app for
-people experiencing homelessness, including immigrants whose papers decide which help they can use.
+**If you lost your home tonight, where in Virginia could you actually make it for a month?**
+Footing is a free, open-source app for people experiencing homelessness, including immigrants whose papers
+decide which help they can use. It scores all 133 Virginia cities and counties *for you*: shelter space, rent
+against the minimum wage, help nearby, local rules on sleeping outside, immigration enforcement, and what
+people who have been there say. Every number links to its public source, and anything we could not confirm is
+a question mark, never a zero.
 
-It opens on **Virginia**: all 133 cities and counties, each scored for you. Tell it your immigration
-status, who is with you and what matters most, and every locality lights up by a **Fit Score** computed
-*on your phone*: shelter beds, rent against the minimum wage, help you can walk to, this city's own rules
-on sleeping outside, 287(g) agreements with ICE, and ratings from people who have been there. Tap one to
-see exactly how the score adds up, part by part, each with the number behind it and a link to its source.
-Your status never leaves the phone (tested on every request). The 50-state view is still there behind
-**All states (beta)**.
+**Live demo:** https://noahxiong26.github.io/footing/ (published from [`site/`](site/) by GitHub Pages) ·
+**Run it yourself:** `python -m http.server -d site 8000`, then open http://localhost:8000 (no keys, no server,
+no network after load).
+
+<p>
+<img src="docs/screenshots/s9/1_start_globe.png" width="49%" alt="Start screen: the globe at dusk with Virginia lit">
+<img src="docs/screenshots/s9/2_best_fits.png" width="49%" alt="Best fits for an example person, with a factor strip per place">
+<img src="docs/screenshots/s9/3_place.png" width="49%" alt="One place: score, three numbers at a glance, Score / Help nearby / Programs tabs">
+<img src="docs/screenshots/s9/5_priorities.png" width="49%" alt="About you: drag what matters most; the top three places update live">
+</p>
+
+## For judges: one minute
+
+1. Open the demo and press **See an example person** (TPS papers, two kids, safety first). The map re-lights for her.
+2. Open **About you** and drag a different priority to the top: the live preview shows the best places move.
+3. Open a place: three numbers at a glance, then **Score** (every part with its source), **Help nearby** and
+   **Programs** (grouped by what her papers allow, with a legal-aid caution where it matters).
+4. Switch the language to Arabic (right-to-left) or Tagalog. Press **Hide this page** for the quick exit.
+
+**What makes it different**
+
+* **Two people see two different Virginias.** The profile is scored on the phone and never sent anywhere
+  (a test checks every request).
+* **Honest numbers.** No model in the scoring path; Unknown stays Unknown; every figure cites HUD, the Census,
+  USDA, the FBI, ICE or the city's own code. Two independent data captures were compared and found a real bug.
+* **Built for the people it serves:** nine languages (English, Spanish, Vietnamese, Korean, Chinese, Arabic,
+  Amharic, Dari/Persian, Tagalog; machine translated and labelled), works from a 320 px phone, keyboard and
+  screen-reader support (axe WCAG 2.2 AA: 0 violations on 18 screens), reduced motion respected.
+* **Free to run:** the whole app is one 2.4 MB static folder with zero AI calls to score. Gemma 4 is used only to
+  read photographed flyers and word plans in the server version, and its output is checked against the data.
+
+How it meets the judging rubric, item by item: [`docs/RUBRIC.md`](docs/RUBRIC.md) · Submission text:
+[`docs/DEVPOST.md`](docs/DEVPOST.md) · Method and citations: [`docs/RATING_FORMULA.md`](docs/RATING_FORMULA.md)
+(section 8 is Virginia) · Data pipeline: [`docs/PIPELINE.md`](docs/PIPELINE.md) · What has and has not been
+double-checked: [`docs/FACT_CHECK.md`](docs/FACT_CHECK.md) · Session-by-session log: [`HANDOFF.md`](HANDOFF.md).
 
 In Virginia an independent city is not part of any county, so "Roanoke city" and "Roanoke County" are
 different places with different ordinances and different rents. The data keeps them apart.
 
-Eight languages: English, Spanish, Vietnamese, Korean, Chinese, Arabic, Amharic and Persian/Dari, the last
-two right-to-left. **All translations are machine translations and every screen says so.**
-
-Method and citations: [`docs/RATING_FORMULA.md`](docs/RATING_FORMULA.md) (section 8 is Virginia). How the
-data is built and refreshed: [`docs/PIPELINE.md`](docs/PIPELINE.md). What has been double-checked and what
-has not: [`docs/FACT_CHECK.md`](docs/FACT_CHECK.md).
-
-<p>
-<img src="docs/screens/session4/phone_1_intro.png" width="180" alt="Footing intro">
-<img src="docs/screens/session4/phone_2_virginia_top.png" width="180" alt="Best fits in Virginia">
-<img src="docs/screens/session4/phone_3_locality.png" width="180" alt="One locality in detail">
-<img src="docs/screens/session4/phone_4_mosaic_and_reasons.png" width="180" alt="How the score adds up">
-</p>
+## The full app (server version)
 
 For a single town, pick it (or share a location rounded to ~1 km) and it
 prints a **Settle Receipt**: a 0–100 Settle Score built from live public data, what a week of

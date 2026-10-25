@@ -54,7 +54,7 @@ Updated 2026-10-25 (S9). Live demo: the claude.ai Artifact linked in `HANDOFF.md
 ### Deployment viability (10)
 *A low-friction path to deploy for resource-constrained nonprofits and community groups.*
 
-* **The whole app is one static folder (~2.4 MB):** no server, no database, no API keys. `python scripts/build_standalone_demo.py out/demo` builds it; any free static host (or a claude.ai Artifact, as now) serves it.
+* **The whole app is one static folder (~2.4 MB), committed as `site/`:** no server, no database, no API keys. `python scripts/build_standalone_demo.py site` rebuilds it; `.github/workflows/pages.yml` publishes it to GitHub Pages, and any free static host (or a claude.ai Artifact) can serve it. A test fails if `site/` falls behind the source.
 * **Works offline after the first visit** (service worker) and on old phones (no build step, plain JavaScript).
 * **Optional server** (FastAPI, one Dockerfile, Cloud Run) adds live town receipts and the Gemma features; the static demo does not need it.
 * **Data refresh is plain code:** `scripts/build_va_localities.py` rebuilds and validates against publisher totals (`--check`).
@@ -72,5 +72,5 @@ Updated 2026-10-25 (S9). Live demo: the claude.ai Artifact linked in `HANDOFF.md
 
 * `README.md`: run in 30 seconds with no keys; every data source with its URL and as-of date; the API.
 * `docs/PIPELINE.md` (data pipeline), `docs/DATA_WORK.md` (how to find or refresh a fact), `docs/FACT_CHECK.md` (open questions), `docs/RATING_FORMULA.md`, `AGENTS.md` (rules for AI coding agents), `HANDOFF.md` (what changed each session, what passed, what is next).
-* 252 automated tests including JS/Python parity; two browser smoke scripts.
+* 261 automated tests including JS/Python parity and a check that the published site matches its source; two browser smoke scripts.
 * Apache-2.0 license.

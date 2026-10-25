@@ -143,6 +143,15 @@ and `FootingGlobe.playDay()` plays a day for recordings. The Start screen has **
 two kids, safety first, age 25-49), labelled "Example" on Best fits; saving your own answers drops the label, and
 Reset my answers clears it.
 
+**Hackathon submission prep (2026-10-25).**
+- **`site/`** = the interactive demo, built by `python scripts/build_standalone_demo.py site` (full page, no
+  server). `tests/test_site_build.py` fails if it is stale: **rebuild `site/` after any change to `footing/web`,
+  `demo/standalone_backend.js` or the data.** Serve locally with `python -m http.server -d site 8000`.
+- **`.github/workflows/pages.yml`** deploys `site/` to GitHub Pages on pushes to `main`. A repo admin must
+  turn it on once: Settings → Pages → Source: "GitHub Actions". Expected URL: https://noahxiong26.github.io/footing/
+- README opens with a judges' section and new screenshots (`docs/screenshots/s9/`); `docs/DEVPOST.md` is the
+  current submission text (the team's own [TODO] lines remain); `docs/RUBRIC.md` maps the rubric.
+
 **UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
 1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the
    layer picker is cut to "Angkop para"; the brand is cut to "FOOTIN". Consider shorter legend labels or a
