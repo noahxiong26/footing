@@ -117,6 +117,12 @@ language, no sideways scroll, no page errors; standalone smoke passes. The full 
 - 11 new strings in 9 languages. Motion respects `prefers-reduced-motion`.
 - Tagalog at 320 px: long priority names now wrap instead of pushing the ↓ button out of the panel.
 
+**Full globe smoke passes on Version 6 (2026-10-25, Linux, headless Chromium):** `ui_globe_smoke.py` against the
+replay server: 108 screens (en, ar, tl × 320/390/1280), 4,088 requests checked, no profile data sent, no layout
+errors. It covers the nav bar, About you steps, typed bedrooms (6), a real mouse drag of a priority, translated
+Details, the Norfolk point, the rating flow and "Reset my answers" with confirmation. Screenshots are in ignored
+`out/globe/`. The standalone smoke also passes. Nobody has yet clicked the hosted Artifact on a real phone.
+
 **UI notes for the next pass** (seen in the Tagalog 320 px screenshot and earlier sessions):
 1. At 320 px in Tagalog the legend wraps to two lines ("Hindi gaanong angkop") and covers a band of the map; the
    layer picker is cut to "Angkop para"; the brand is cut to "FOOTIN". Consider shorter legend labels or a
